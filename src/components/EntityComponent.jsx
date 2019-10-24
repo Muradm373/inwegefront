@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import {
-  XYPlot,
+  ComposedChart,
   XAxis,
   YAxis,
-  VerticalGridLines,
-  HorizontalGridLines,
-  AreaSeries
-} from "react-vis";
+  Area,
+  CartesianGrid,
+  Tooltip,
+  Legend
+} from "recharts";
 
 class EntityComponent extends Component {
-  fetchData() {
-    if (this.props.entities !== undefined) {
-      let entities = this.props.entities;
+  fetchData(prop) {
+    if (prop !== undefined) {
+      let entities = prop;
       let menData = entities[1];
       let womenData = entities[0];
-      let maxVal = 0;
+      //let maxVal = 0;
 
       if (menData !== undefined && womenData !== undefined) {
         menData = this.clearData(menData);
         womenData = this.clearData(womenData);
-        maxVal = this.getMax(menData, womenData);
+        // maxVal = this.getMax(menData, womenData);
 
-        this.XAxis = this.createXAxis(maxVal / 10);
+        this.XAxis = this.createXAxis(500);
 
         let menArray = [...new Map(Object.entries(menData)).values()];
         let womenArray = [...new Map(Object.entries(womenData)).values()];
 
-        this.dataMen = this.distributeData(this.XAxis, menArray);
+        this.dataMen = this.distributeData(this.XAxis, menArray, womenArray);
       }
     }
   }
@@ -48,36 +49,51 @@ class EntityComponent extends Component {
     return max;
   }
 
-  distributeData(XAxis, data) {
-    let entities = Array(10).fill(0);
+  distributeData(XAxis, dataMen, dataWomen) {
+    let entitiesMen = Array(10).fill(0);
+    let entitiesWomen = Array(10).fill(0);
     for (let i = 0; i < 10; i++) {
-      entities[Math.floor(data[i] / XAxis[1])]++;
+      entitiesMen[Math.floor(dataMen[i] / XAxis[1])]++;
+      entitiesWomen[Math.floor(dataWomen[i] / XAxis[1])]++;
     }
 
-    console.log(entities);
     let dict = [];
     for (let i = 0; i < 10; i++) {
-      dict.push({ x: XAxis[i], y: entities[i] });
+      dict.push({ x: XAxis[i], men: entitiesMen[i], women: entitiesWomen[i] });
     }
 
     return dict;
   }
 
   render() {
-    this.fetchData();
+    this.fetchData(this.props.entities);
     return (
       <div>
-        <XYPlot width={300} height={300}>
-          <VerticalGridLines />
-          <HorizontalGridLines />
-          <XAxis />
+        <ComposedChart
+          width={1000}
+          height={500}
+          data={this.dataMen}
+          margin={{
+            top: 50,
+            right: 50,
+            bottom: 50,
+            left: 50
+          }}
+        >
+          <CartesianGrid stroke="#f5f5f5" />
+          <XAxis dataKey="x" />
           <YAxis />
-          <AreaSeries
-            className="area-series-example"
-            curve="curveNatural"
-            data={this.dataMen}
+          <Tooltip />
+          <Legend />
+          <Area type="monotone" dataKey="men" fill="#8884d8" stroke="#8884d8" />
+          <Area
+            type="monotone"
+            dataKey="women"
+            fill="#FF0000"
+            stroke="#FF0000"
           />
-        </XYPlot>
+          {/* <Scatter dataKey="cnt" fill="red" /> */}
+        </ComposedChart>
       </div>
     );
   }

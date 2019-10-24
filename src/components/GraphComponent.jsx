@@ -25,8 +25,6 @@ class GraphComponent extends Component {
       });
   }
 
-  retrieveData = () => {};
-
   onRegionChange = event => {
     const url = `${API_URL}/`;
     const region = event.target.value;
