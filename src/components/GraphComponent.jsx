@@ -15,7 +15,7 @@ class GraphComponent extends Component {
     region: "",
     regionSelected: false,
     iscoSelected: false,
-    description: "Hmm"
+    description: ""
   };
 
   componentDidMount() {
@@ -115,16 +115,17 @@ class GraphComponent extends Component {
         >
           <EntityComponent entities={this.state.entities}></EntityComponent>
           <div
-            margin-right={10}
             style={{
-              flex: 1,
               flexDirection: "row",
-              display: "flex",
-              justifyContent: "space-between"
+              display: "flex"
             }}
           >
-            <PieChartComponent key="PieChart" />
-            <p>{this.state.description}</p>
+            <p style={{ flex: 5, display: "flex", alignSelf: "stretch" }}>
+              {this.state.description}
+            </p>
+            <div style={{ flex: 1, marginRight: "5px", display: "flex" }}>
+              <PieChartComponent key="PieChart" />
+            </div>
           </div>
         </div>
       </div>

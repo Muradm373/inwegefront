@@ -39,12 +39,12 @@ class PieChartComponent extends Component {
     this.RADIAN = Math.PI / 180;
     return (
       <div>
-        <PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+        <PieChart width={400} height={400} onMouseEnter={this.onPieEnter}>
           <Pie
             data={this.data}
             dataKey="value"
-            cx={120}
-            cy={200}
+            cx={220}
+            cy={100}
             innerRadius={50}
             outerRadius={80}
             fill="#8884d8"
