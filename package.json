@@ -1,6 +1,10 @@
 {
   "name": "inwege-frontend",
   "version": "0.1.0",
+  "engines": {
+    "npm": "6.11.3",
+    "node": "10.15.3"
+  },
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
