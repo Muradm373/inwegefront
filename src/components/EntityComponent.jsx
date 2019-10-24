@@ -70,6 +70,7 @@ class EntityComponent extends Component {
     return (
       <div>
         <ComposedChart
+          key="composedChart"
           width={1000}
           height={500}
           data={this.dataMen}
@@ -85,13 +86,13 @@ class EntityComponent extends Component {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Area type="monotone" dataKey="men" fill="#8884d8" stroke="#8884d8" />
           <Area
             type="monotone"
             dataKey="women"
-            fill="#FF0000"
-            stroke="#FF0000"
+            fill="#8884d8"
+            stroke="#8884d8"
           />
+          <Area type="monotone" dataKey="men" fill="#FF0000" stroke="#FF0000" />
           {/* <Scatter dataKey="cnt" fill="red" /> */}
         </ComposedChart>
       </div>

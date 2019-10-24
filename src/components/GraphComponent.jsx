@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import EntityComponent from "./EntityComponent";
+import PieChartComponent from "./PieChart";
 
 const API_URL = "https://inwege.herokuapp.com/api";
+const lang = "&lang=en";
 
 class GraphComponent extends Component {
   state = {
@@ -12,7 +14,8 @@ class GraphComponent extends Component {
     isco: "",
     region: "",
     regionSelected: false,
-    iscoSelected: false
+    iscoSelected: false,
+    description: "Hmm"
   };
 
   componentDidMount() {
@@ -30,10 +33,19 @@ class GraphComponent extends Component {
     const region = event.target.value;
 
     axios
-      .get(url + "iscos?region=" + region)
+      .get(url + "jobs/names?region=" + region + lang)
       .then(response => response.data)
       .then(data => {
-        this.setState({ iscos: data.payload });
+        //this.setState({ iscos: data.payload });
+        let names = [];
+        data.payload.forEach(element => {
+          names.push({
+            name: element.name,
+            id: element.id,
+            iscoValid: element.iscoValid
+          });
+        });
+        this.setState({ iscos: names });
       });
 
     this.setState({ region: region, regionSelected: true });
@@ -41,17 +53,28 @@ class GraphComponent extends Component {
 
   onIscoChange = event => {
     const region = this.state.region;
-    const isco = event.target.value;
+    let isco = event.target.value;
+
+    isco = isco.split(",");
 
     this.setState({ isco: isco, iscoSelected: true });
-
     const url =
-      `${API_URL}/salary-entities?region=` + region + "&iscoValid=" + isco;
+      `${API_URL}/jobs?region=` +
+      region +
+      "&isco=" +
+      isco[1] +
+      "&code=" +
+      isco[0] +
+      lang;
     axios
       .get(url)
       .then(response => response.data)
       .then(data => {
-        this.setState({ entities: data.payload });
+        let description = data.payload.jobEntity.description;
+        this.setState({
+          entities: data.payload.salaryEntities,
+          description: description
+        });
       });
   };
 
@@ -74,8 +97,12 @@ class GraphComponent extends Component {
             }}
           >
             {this.state.iscos.map(isco => (
-              <option key={isco} value={isco} className="alert alert-primary">
-                {isco}
+              <option
+                key={isco.id}
+                value={[isco.id, isco.iscoValid]}
+                className="alert alert-primary"
+              >
+                {isco.name}
               </option>
             ))}
           </select>
@@ -87,6 +114,18 @@ class GraphComponent extends Component {
           }}
         >
           <EntityComponent entities={this.state.entities}></EntityComponent>
+          <div
+            margin-right={10}
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              display: "flex",
+              justifyContent: "space-between"
+            }}
+          >
+            <PieChartComponent key="PieChart" />
+            <p>{this.state.description}</p>
+          </div>
         </div>
       </div>
     );
