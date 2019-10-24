@@ -34,7 +34,7 @@ class PieChartComponent extends Component {
       { name: "Group A", value: 400 },
       { name: "Group B", value: 300 }
     ];
-    this.COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+    this.COLORS = ["#FF0000", "#8884d8"];
 
     this.RADIAN = Math.PI / 180;
     return (
@@ -50,7 +50,7 @@ class PieChartComponent extends Component {
             fill="#8884d8"
             paddingAngle={1}
             labelLine={false}
-            label={this.renderCustomizedLabel}
+            label
           >
             {this.data.map((entry, index) => (
               <Cell

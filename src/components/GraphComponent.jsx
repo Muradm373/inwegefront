@@ -120,7 +120,14 @@ class GraphComponent extends Component {
               display: "flex"
             }}
           >
-            <p style={{ flex: 5, display: "flex", alignSelf: "stretch" }}>
+            <p
+              style={{
+                flex: 5,
+                display: "flex",
+                alignSelf: "stretch",
+                textAlign: "left"
+              }}
+            >
               {this.state.description}
             </p>
             <div style={{ flex: 1, marginRight: "5px", display: "flex" }}>
