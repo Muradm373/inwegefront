@@ -15,7 +15,8 @@ class GraphComponent extends Component {
     region: "",
     regionSelected: false,
     iscoSelected: false,
-    description: ""
+    description: "",
+    mean: []
   };
 
   componentDidMount() {
@@ -76,13 +77,27 @@ class GraphComponent extends Component {
           description: description
         });
       });
+
+    const url_mean = `${API_URL}/average-mean?isco=${isco[1]}`;
+    axios
+      .get(url_mean)
+      .then(response => response.data)
+      .then(data => {
+        let mean = data.payload;
+        this.setState({
+          mean: mean
+        });
+      });
   };
 
   render() {
     return (
       <div>
         <div className="btn-group">
-          <select className="mdb-select md-form" onChange={this.onRegionChange}>
+          <select onChange={this.onRegionChange}>
+            <option value="" disabled selected>
+              Select a region
+            </option>
             {this.state.regions.map(region => (
               <option key={region} value={region}>
                 {region}
@@ -96,6 +111,9 @@ class GraphComponent extends Component {
               visibility: this.state.regionSelected ? "visible" : "hidden"
             }}
           >
+            <option value="" disabled selected>
+              Select a job
+            </option>
             {this.state.iscos.map(isco => (
               <option
                 key={isco.id}
@@ -131,7 +149,7 @@ class GraphComponent extends Component {
               {this.state.description}
             </p>
             <div style={{ flex: 1, marginRight: "5px", display: "flex" }}>
-              <PieChartComponent key="PieChart" />
+              <PieChartComponent key="PieChart" mean={this.state.mean} />
             </div>
           </div>
         </div>

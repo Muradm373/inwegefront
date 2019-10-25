@@ -3,6 +3,13 @@ import React, { Component } from "react";
 import { PieChart, Pie, Cell } from "recharts";
 
 class PieChartComponent extends Component {
+  componentWillReceiveProps() {
+    if (this.props.mean[0] !== undefined) {
+      this.meanMen = this.props.mean[0].mean;
+      this.meanWomen = this.props.mean[1].mean;
+    }
+  }
+
   render() {
     this.renderCustomizedLabel = ({
       cx,
@@ -31,12 +38,13 @@ class PieChartComponent extends Component {
     };
 
     this.data = [
-      { name: "Group A", value: 400 },
-      { name: "Group B", value: 300 }
+      { name: "Men", value: this.meanMen },
+      { name: "Women", value: this.meanWomen }
     ];
     this.COLORS = ["#FF0000", "#8884d8"];
 
     this.RADIAN = Math.PI / 180;
+
     return (
       <div>
         <PieChart width={400} height={400} onMouseEnter={this.onPieEnter}>
@@ -44,13 +52,13 @@ class PieChartComponent extends Component {
             data={this.data}
             dataKey="value"
             cx={220}
-            cy={100}
-            innerRadius={50}
-            outerRadius={80}
+            cy={120}
+            innerRadius={60}
+            outerRadius={90}
             fill="#8884d8"
             paddingAngle={1}
             labelLine={false}
-            label
+            label={this.renderCustomizedLabel}
           >
             {this.data.map((entry, index) => (
               <Cell

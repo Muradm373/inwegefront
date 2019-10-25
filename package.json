@@ -6,13 +6,15 @@
     "node": "10.15.3"
   },
   "dependencies": {
+    "axios": "0.19.0",
     "bootstrap": "^4.3.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.2",
-    "axios": "0.19.0",
-    "recharts": "1.8.5",
-    "react-tabs": "3.0.0"
+    "react-select": "^3.0.8",
+    "react-select-search": "^0.10.1",
+    "react-tabs": "3.0.0",
+    "recharts": "1.8.5"
   },
   "scripts": {
     "start": "react-scripts start"
