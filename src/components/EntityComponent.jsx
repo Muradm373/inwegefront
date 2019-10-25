@@ -1,13 +1,23 @@
 import React, { Component } from "react";
+// import {
+//   ComposedChart,
+//   XAxis,
+//   YAxis,
+//   Area,
+//   CartesianGrid,
+//   Tooltip,
+//   Legend,
+//   ReferenceLine
+// } from "recharts";
+
 import {
-  ComposedChart,
+  XYPlot,
   XAxis,
   YAxis,
-  Area,
-  CartesianGrid,
-  Tooltip,
-  Legend
-} from "recharts";
+  VerticalGridLines,
+  HorizontalGridLines,
+  AreaSeries
+} from "react-vis";
 
 class EntityComponent extends Component {
   fetchData(prop) {
@@ -15,14 +25,14 @@ class EntityComponent extends Component {
       let entities = prop;
       let menData = entities[1];
       let womenData = entities[0];
-      //let maxVal = 0;
+      let maxVal = 0;
 
       if (menData !== undefined && womenData !== undefined) {
         menData = this.clearData(menData);
         womenData = this.clearData(womenData);
-        // maxVal = this.getMax(menData, womenData);
+        maxVal = this.getMax(menData, womenData);
 
-        this.XAxis = this.createXAxis(500);
+        this.XAxis = this.createXAxis(maxVal / 10);
 
         let menArray = [...new Map(Object.entries(menData)).values()];
         let womenArray = [...new Map(Object.entries(womenData)).values()];
@@ -58,8 +68,11 @@ class EntityComponent extends Component {
     }
 
     let dict = [];
+    this.men = [];
+    this.women = [];
     for (let i = 0; i < 10; i++) {
-      dict.push({ x: XAxis[i], men: entitiesMen[i], women: entitiesWomen[i] });
+      this.men.push({ x: XAxis[i], y: entitiesMen[i] });
+      this.women.push({ x: XAxis[i], y: entitiesWomen[i] });
     }
 
     return dict;
@@ -68,8 +81,34 @@ class EntityComponent extends Component {
   render() {
     this.fetchData(this.props.entities);
     return (
-      <div>
-        <ComposedChart
+      <div className="centered-and-flexed">
+        <XYPlot width={1000} height={400} animation="gentle">
+          <VerticalGridLines
+            style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.5 }}
+          />
+          <HorizontalGridLines
+            style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.3 }}
+          />
+          <XAxis />
+          <YAxis />
+          <AreaSeries
+            className="area-series-women"
+            curve="curveNatural"
+            data={this.women}
+            strokeWidth="2"
+            style={{ opacity: 0.8 }}
+            fill="#3e59c8"
+          />
+          <AreaSeries
+            className="area-series-men"
+            curve="curveNatural"
+            data={this.men}
+            strokeWidth="2"
+            fill="#f5c324"
+            style={{ opacity: 0.8 }}
+          />
+        </XYPlot>
+        {/* <ComposedChart
           key="composedChart"
           width={1000}
           height={500}
@@ -86,6 +125,7 @@ class EntityComponent extends Component {
           <YAxis />
           <Tooltip />
           <Legend />
+          <ReferenceLine x={1500} stroke="#000" />
           <Area
             type="monotone"
             dataKey="women"
@@ -93,8 +133,7 @@ class EntityComponent extends Component {
             stroke="#f5c324"
           />
           <Area type="monotone" dataKey="men" fill="#3e59c8" stroke="#3e59c8" />
-          {/* <Scatter dataKey="cnt" fill="red" /> */}
-        </ComposedChart>
+        </ComposedChart> */}
       </div>
     );
   }
