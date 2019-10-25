@@ -89,10 +89,10 @@ class EntityComponent extends Component {
           <Area
             type="monotone"
             dataKey="women"
-            fill="#8884d8"
-            stroke="#8884d8"
+            fill="#f5c324"
+            stroke="#f5c324"
           />
-          <Area type="monotone" dataKey="men" fill="#FF0000" stroke="#FF0000" />
+          <Area type="monotone" dataKey="men" fill="#3e59c8" stroke="#3e59c8" />
           {/* <Scatter dataKey="cnt" fill="red" /> */}
         </ComposedChart>
       </div>
