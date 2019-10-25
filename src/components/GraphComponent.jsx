@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import EntityComponent from "./EntityComponent";
 import PieChartComponent from "./PieChart";
-
+import Select from "react-select";
 const API_URL = "https://inwege.herokuapp.com/api";
 const lang = "&lang=en";
 
@@ -25,13 +25,17 @@ class GraphComponent extends Component {
       .get(url + "regions/")
       .then(response => response.data)
       .then(data => {
-        this.setState({ regions: data.payload });
+        let dict = [];
+        data.payload.forEach(element => {
+          dict.push({ label: element, value: element });
+        });
+        this.setState({ regions: dict });
       });
   }
 
   onRegionChange = event => {
     const url = `${API_URL}/`;
-    const region = event.target.value;
+    const region = event.value;
 
     axios
       .get(url + "jobs/names?region=" + region + lang)
@@ -41,9 +45,8 @@ class GraphComponent extends Component {
         let names = [];
         data.payload.forEach(element => {
           names.push({
-            name: element.name,
-            id: element.id,
-            iscoValid: element.iscoValid
+            label: element.name,
+            value: element
           });
         });
         this.setState({ iscos: names });
@@ -54,18 +57,18 @@ class GraphComponent extends Component {
 
   onIscoChange = event => {
     const region = this.state.region;
-    let isco = event.target.value;
 
-    isco = isco.split(",");
+    let isco = event.value.iscoValid;
+    let code = event.value.code;
 
     this.setState({ isco: isco, iscoSelected: true });
     const url =
       `${API_URL}/jobs?region=` +
       region +
       "&isco=" +
-      isco[1] +
+      isco +
       "&code=" +
-      isco[0] +
+      code +
       lang;
     axios
       .get(url)
@@ -78,7 +81,7 @@ class GraphComponent extends Component {
         });
       });
 
-    const url_mean = `${API_URL}/average-mean?isco=${isco[1]}`;
+    const url_mean = `${API_URL}/average-mean?isco=${isco}`;
     axios
       .get(url_mean)
       .then(response => response.data)
@@ -93,37 +96,17 @@ class GraphComponent extends Component {
   render() {
     return (
       <div>
-        <div className="btn-group">
-          <select onChange={this.onRegionChange}>
-            <option value="" disabled selected>
-              Select a region
-            </option>
-            {this.state.regions.map(region => (
-              <option key={region} value={region}>
-                {region}
-              </option>
-            ))}
-          </select>
-          <select
-            className="list-group-item list-group-item-action active"
+        <div>
+          <Select
+            onChange={this.onRegionChange}
+            options={this.state.regions}
+            placeholder="Select region"
+          ></Select>
+          <Select
             onChange={this.onIscoChange}
-            style={{
-              visibility: this.state.regionSelected ? "visible" : "hidden"
-            }}
-          >
-            <option value="" disabled selected>
-              Select a job
-            </option>
-            {this.state.iscos.map(isco => (
-              <option
-                key={isco.id}
-                value={[isco.id, isco.iscoValid]}
-                className="alert alert-primary"
-              >
-                {isco.name}
-              </option>
-            ))}
-          </select>
+            options={this.state.iscos}
+            placeholder="Select job title"
+          ></Select>
         </div>
         <div
           className="graphContainer"
