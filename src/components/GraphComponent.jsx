@@ -108,12 +108,7 @@ class GraphComponent extends Component {
             placeholder="Select job title"
           ></Select>
         </div>
-        <div
-          className="graphContainer"
-          style={{
-            visibility: this.state.iscoSelected ? "visible" : "hidden"
-          }}
-        >
+        <div className="graphContainer">
           <EntityComponent entities={this.state.entities}></EntityComponent>
           <div
             style={{
@@ -133,7 +128,14 @@ class GraphComponent extends Component {
                 ? "No description"
                 : this.state.description}
             </p>
-            <div style={{ flex: 1, marginRight: "5px", display: "flex" }}>
+            <div
+              style={{
+                flex: 1,
+                marginRight: "5px",
+                display: "flex",
+                visibility: this.state.iscoSelected ? "visible" : "hidden"
+              }}
+            >
               <PieChartComponent key="PieChart" mean={this.state.mean} />
             </div>
           </div>
