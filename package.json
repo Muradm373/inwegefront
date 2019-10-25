@@ -14,7 +14,8 @@
     "react-select": "^3.0.8",
     "react-select-search": "^0.10.1",
     "react-tabs": "3.0.0",
-    "recharts": "1.8.5"
+    "recharts": "1.8.5",
+    "react-vis": "1.11.7"
   },
   "scripts": {
     "start": "react-scripts start"
