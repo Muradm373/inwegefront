@@ -7,7 +7,8 @@ import {
   VerticalGridLines,
   HorizontalGridLines,
   AreaSeries,
-  LineSeries
+  LineSeries,
+  Hint
 } from "react-vis";
 
 class EntityComponent extends Component {
@@ -79,7 +80,7 @@ class EntityComponent extends Component {
     this.fetchData(this.props.entities);
 
     return (
-      <div className="centered-and-flexed">
+      <div className="centered">
         <XYPlot width={1000} height={400} animation="gentle">
           <VerticalGridLines
             style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.5 }}
@@ -91,10 +92,10 @@ class EntityComponent extends Component {
           <YAxis tickTotal={10} />
           <AreaSeries
             className="area-series-women"
-            curve="curveNatural"
+            curve="curveBasis"
             data={this.women}
             style={{ opacity: 0.8 }}
-            fill="#3e59c8"
+            fill="#C46440"
           />
           <LineSeries
             data={[{ x: this.womenMean, y: 0 }, { x: this.womenMean, y: 10 }]}
@@ -102,9 +103,10 @@ class EntityComponent extends Component {
           />
           <AreaSeries
             className="area-series-men"
-            curve="curveNatural"
+            curve="curveBasis"
             data={this.men}
-            fill="#f5c324"
+            fill="#593D3D"
+            marginBottom="10px"
             style={{ opacity: 0.8 }}
             onNearestX={this.hoveredCell}
           />
@@ -113,6 +115,24 @@ class EntityComponent extends Component {
             stroke="black"
             label={this.menMean}
           />
+
+          <LineSeries
+            data={[{ x: this.menMean, y: 5 }, { x: this.womenMean, y: 5 }]}
+            stroke="black"
+            strokeDasharray="7, 3"
+            label={this.menMean}
+          />
+          <Hint
+            value={{
+              x: parseInt(this.menMean) / 2 + parseInt(this.womenMean) / 2,
+              y: 7
+            }}
+          >
+            <p>
+              Wage gap is: <br />
+              {parseInt(this.menMean) - parseInt(this.womenMean)}
+            </p>
+          </Hint>
         </XYPlot>
       </div>
     );

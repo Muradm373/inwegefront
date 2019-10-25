@@ -51,7 +51,7 @@ class PieChartComponent extends Component {
       );
     };
 
-    this.COLORS = ["#3e59c8", "#f5c324"];
+    this.COLORS = ["#593D3D", "#C46440"];
     this.RADIAN = Math.PI / 180;
 
     return (
