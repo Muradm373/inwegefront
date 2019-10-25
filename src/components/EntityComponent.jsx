@@ -88,8 +88,8 @@ class EntityComponent extends Component {
           <HorizontalGridLines
             style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.3 }}
           />
-          <XAxis tickTotal={10} />
-          <YAxis tickTotal={10} />
+          <XAxis tickTotal={10} tickFormat={v => `$${v}`} />
+          <YAxis tickTotal={10} tickFormat={v => `${v}0%`} />
           <AreaSeries
             className="area-series-women"
             curve="curveBasis"
@@ -129,8 +129,8 @@ class EntityComponent extends Component {
             }}
           >
             <p>
-              Wage gap is: <br />
-              {parseInt(this.menMean) - parseInt(this.womenMean)}
+              Wage gap is: <br />$
+              {Math.abs(parseInt(this.menMean) - parseInt(this.womenMean))}
             </p>
           </Hint>
         </XYPlot>
