@@ -129,7 +129,9 @@ class GraphComponent extends Component {
                 textAlign: "left"
               }}
             >
-              {this.state.description}
+              {this.state.description === ""
+                ? "No description"
+                : this.state.description}
             </p>
             <div style={{ flex: 1, marginRight: "5px", display: "flex" }}>
               <PieChartComponent key="PieChart" mean={this.state.mean} />
