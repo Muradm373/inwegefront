@@ -88,7 +88,7 @@ class EntityComponent extends Component {
           <HorizontalGridLines
             style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.3 }}
           />
-          <XAxis tickTotal={10} tickFormat={v => `$${v}`} />
+          <XAxis tickTotal={10} tickFormat={v => `€${v}`} />
           <YAxis tickTotal={10} tickFormat={v => `${v * 10}%`} />
           <AreaSeries
             className="area-series-women"
@@ -132,7 +132,7 @@ class EntityComponent extends Component {
             }}
           >
             <p style={{ color: "black" }}>
-              Wage gap is: <br />$
+              Wage gap is: <br />€
               {Math.abs(parseInt(this.menMean) - parseInt(this.womenMean))}
             </p>
           </Hint>
