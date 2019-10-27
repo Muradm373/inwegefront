@@ -137,6 +137,20 @@ class EntityComponent extends Component {
             </p>
           </Hint>
         </XYPlot>
+        <div style={{ marginLeft: "70%" }}>
+          <div class="Column">
+            <div class="Row">
+              <div class="male"> </div>
+              <p class="Column">Male</p>
+            </div>
+          </div>
+          <div class="Column">
+            <div class="Row">
+              <div class="female"> </div>
+              <p class="Column">Female</p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

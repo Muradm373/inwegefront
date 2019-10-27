@@ -54,7 +54,7 @@ class PieChartComponent extends Component {
           opacity={0.9}
           innerRadius={50}
           radius={55}
-          height={250}
+          height={200}
           width={250}
           colorType="literal"
           data={this.state.data}
