@@ -62,8 +62,8 @@ class EntityComponent extends Component {
     let entitiesMen = Array(10).fill(0);
     let entitiesWomen = Array(10).fill(0);
     for (let i = 0; i < 10; i++) {
-      entitiesMen[Math.floor(dataMen[i] / XAxis[1])]++;
-      entitiesWomen[Math.floor(dataWomen[i] / XAxis[1])]++;
+      entitiesMen[Math.floor(dataMen[i] / XAxis[1]) + 1]++;
+      entitiesWomen[Math.floor(dataWomen[i] / XAxis[1]) + 1]++;
     }
 
     this.men = [];
