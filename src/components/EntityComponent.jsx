@@ -89,7 +89,7 @@ class EntityComponent extends Component {
             style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.3 }}
           />
           <XAxis tickTotal={10} tickFormat={v => `€${v}`} />
-          <YAxis tickTotal={10} tickFormat={v => `${v * 10}%`} />
+          <YAxis tickTotal={4} tickFormat={v => `${v * 10}%`} />
           <AreaSeries
             className="area-series-women"
             curve="curveBasis"
@@ -98,7 +98,7 @@ class EntityComponent extends Component {
             fill="#C46440"
           />
           <LineSeries
-            data={[{ x: this.womenMean, y: 0 }, { x: this.womenMean, y: 10 }]}
+            data={[{ x: this.womenMean, y: 0 }, { x: this.womenMean, y: 5 }]}
             strokeWidth="1"
             stroke="black"
           />
@@ -112,14 +112,14 @@ class EntityComponent extends Component {
             onNearestX={this.hoveredCell}
           />
           <LineSeries
-            data={[{ x: this.menMean, y: 0 }, { x: this.menMean, y: 10 }]}
+            data={[{ x: this.menMean, y: 0 }, { x: this.menMean, y: 5 }]}
             strokeWidth="1"
             stroke="black"
             label={this.menMean}
           />
 
           <LineSeries
-            data={[{ x: this.menMean, y: 5 }, { x: this.womenMean, y: 5 }]}
+            data={[{ x: this.menMean, y: 2 }, { x: this.womenMean, y: 2 }]}
             strokeWidth="1"
             stroke="black"
             strokeDasharray="7, 3"
@@ -128,7 +128,7 @@ class EntityComponent extends Component {
           <Hint
             value={{
               x: parseInt(this.menMean) / 2 + parseInt(this.womenMean) / 2,
-              y: 7
+              y: 3
             }}
           >
             <p style={{ color: "black" }}>
