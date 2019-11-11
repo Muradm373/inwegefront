@@ -22,33 +22,26 @@ class EntityComponent extends Component {
       let entities = prop;
       let menData = entities[1];
       let womenData = entities[0];
-      let maxVal = 0;
 
       if (menData !== undefined && womenData !== undefined) {
         this.menMean = menData.mean;
         this.womenMean = womenData.mean;
         menData = this.clearData(menData);
         womenData = this.clearData(womenData);
-        maxVal = this.getMax(menData, womenData);
-
-        this.XAxis = this.createXAxis(maxVal / 10);
 
         let menArray = [...new Map(Object.entries(menData)).values()];
         let womenArray = [...new Map(Object.entries(womenData)).values()];
 
-        this.dataMen = this.distributeData(this.XAxis, menArray, womenArray);
+        this.dataMen = this.distributeData(menArray, womenArray);
       }
     }
   }
 
   clearData(data) {
+    console.log(data);
     let { mean, p1, p2, p3, p4, p6, p7, p8, p9, minVal, maxVal } = data;
 
     return { p1, p2, p3, p4, mean, p6, p7, p8, p9, minVal, maxVal };
-  }
-
-  createXAxis(step) {
-    return Array.from(Array(10), (x, i) => Math.floor(i * step));
   }
 
   getMax(men, women) {
@@ -58,19 +51,27 @@ class EntityComponent extends Component {
     return max;
   }
 
-  distributeData(XAxis, dataMen, dataWomen) {
-    let entitiesMen = Array(10).fill(0);
-    let entitiesWomen = Array(10).fill(0);
-    for (let i = 0; i < 10; i++) {
-      entitiesMen[Math.floor(dataMen[i] / XAxis[1]) + 1]++;
-      entitiesWomen[Math.floor(dataWomen[i] / XAxis[1]) + 1]++;
-    }
+  getMin(men, women) {
+    let minMen = men.minVal;
+    let minWomen = women.minVal;
+    let min = Math.max(minMen, minWomen);
+    return min;
+  }
+
+  distributeData(dataMen, dataWomen) {
+    let men = dataMen.sort((a, b) => parseInt(a) - parseInt(b));
+    let women = dataWomen.sort((a, b) => parseInt(a) - parseInt(b));
 
     this.men = [];
     this.women = [];
-    for (let i = 0; i < 10; i++) {
-      this.men.push({ x: XAxis[i], y: entitiesMen[i] });
-      this.women.push({ x: XAxis[i], y: entitiesWomen[i] });
+    for (let i = 0; i < 11; i++) {
+      if (i <= 5) {
+        this.men.push({ x: parseInt(men[i]), y: i });
+        this.women.push({ x: parseInt(women[i]), y: i });
+      } else {
+        this.men.push({ x: parseInt(men[i]), y: 10 - i });
+        this.women.push({ x: parseInt(women[i]), y: 10 - i });
+      }
     }
 
     return this.men;
@@ -107,7 +108,6 @@ class EntityComponent extends Component {
             curve="curveBasis"
             data={this.men}
             fill="#593D3D"
-            marginBottom="10px"
             style={{ opacity: 0.8 }}
             onNearestX={this.hoveredCell}
           />
