@@ -33,6 +33,11 @@ class EntityComponent extends Component {
         let womenArray = [...new Map(Object.entries(womenData)).values()];
 
         this.dataMen = this.distributeData(menArray, womenArray);
+      } else {
+        this.men = [];
+        this.women = [];
+        this.womenMean = 0;
+        this.menMean = 0;
       }
     }
   }

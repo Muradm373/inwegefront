@@ -15,11 +15,13 @@ class GraphComponent extends Component {
     region: "",
     regionSelected: false,
     iscoSelected: false,
-    description: "",
+    description:
+      "There is no information available for this occupation in this region. Please choose another county or another occupation.",
     mean: [],
     code: "",
     menColor: "#7db0ff",
-    womenColor: "#f00044"
+    womenColor: "#f00044",
+    display: false
   };
 
   componentDidMount() {
@@ -84,6 +86,7 @@ class GraphComponent extends Component {
         } else {
           this.setState({
             entities: [],
+            display: false,
             description:
               "There is no information available for this occupation in this region. Please choose another county or another occupation."
           });
@@ -155,9 +158,7 @@ class GraphComponent extends Component {
                 textAlign: "left"
               }}
             >
-              {this.state.description === ""
-                ? "No description"
-                : this.state.description}
+              {this.state.description}
             </p>
             <div
               style={{
