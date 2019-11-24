@@ -97,6 +97,7 @@ class EntityComponent extends Component {
           />
           <XAxis tickTotal={10} tickFormat={v => `€${v}`} />
           <YAxis tickTotal={4} tickFormat={v => `${v * 10}%`} />
+
           <AreaSeries
             className="area-series-women"
             curve="curveBasis"
@@ -124,6 +125,7 @@ class EntityComponent extends Component {
             stroke="black"
             label={this.menMean}
           />
+
           <LineSeries
             data={[
               { x: this.womenMean, y: 0 },
@@ -144,14 +146,28 @@ class EntityComponent extends Component {
             label={this.menMean}
           />
           <Hint
+            style={
+              parseInt(this.menMean) - parseInt(this.womenMean) !== 0
+                ? {}
+                : { display: "none" }
+            }
             value={{
               x: parseInt(this.menMean) / 2 + parseInt(this.womenMean) / 2,
               y: 3
             }}
           >
-            <p style={{ color: "black" }}>
-              Wage gap is: <br />€
+            <p
+              style={{
+                color: "black"
+              }}
+            >
+              Men earn <br />€
               {Math.abs(parseInt(this.menMean) - parseInt(this.womenMean))}
+              {parseInt(this.menMean) - parseInt(this.womenMean) > 0
+                ? " more"
+                : " less"}
+              <br />
+              than women
             </p>
           </Hint>
         </XYPlot>
