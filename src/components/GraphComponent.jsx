@@ -16,7 +16,10 @@ class GraphComponent extends Component {
     regionSelected: false,
     iscoSelected: false,
     description: "",
-    mean: []
+    mean: [],
+    code: "",
+    menColor: "#7db0ff",
+    womenColor: "#f00044"
   };
 
   componentDidMount() {
@@ -34,9 +37,73 @@ class GraphComponent extends Component {
   }
 
   onRegionChange = event => {
-    const url = `${API_URL}/`;
     const region = event.value;
+    const isco = this.state.isco;
+    const code = this.state.code;
 
+    this.requestFields(region);
+    if (this.state.isco !== "") {
+      this.request(region, isco, code);
+    }
+    this.setState({ region: region, regionSelected: true });
+  };
+
+  onIscoChange = event => {
+    const region = this.state.region;
+
+    let isco = event.value.iscoValid;
+    let code = event.value.code;
+
+    this.setState({ isco: isco, iscoSelected: true, code: code });
+    this.request(region, isco, code);
+  };
+
+  request(region, isco, code) {
+    const url =
+      `${API_URL}/jobs?region=` +
+      region +
+      "&isco=" +
+      isco +
+      "&code=" +
+      code +
+      lang;
+
+    axios
+      .get(url)
+      .then(response => response.data)
+      .then(data => {
+        if (
+          data.payload.jobEntity !== undefined &&
+          data.payload.salaryEntities !== undefined
+        ) {
+          let description = data.payload.jobEntity.description;
+          this.setState({
+            entities: data.payload.salaryEntities,
+            description: description
+          });
+        } else {
+          this.setState({
+            entities: [],
+            description:
+              "There is no information available for this occupation in this region. Please choose another county or another occupation."
+          });
+        }
+      });
+
+    const url_mean = `${API_URL}/average-mean?isco=${isco}`;
+    axios
+      .get(url_mean)
+      .then(response => response.data)
+      .then(data => {
+        let mean = data.payload;
+        this.setState({
+          mean: mean
+        });
+      });
+  }
+
+  requestFields(region) {
+    const url = `${API_URL}/`;
     axios
       .get(url + "jobs/names?region=" + region + lang)
       .then(response => response.data)
@@ -51,47 +118,7 @@ class GraphComponent extends Component {
         });
         this.setState({ iscos: names });
       });
-
-    this.setState({ region: region, regionSelected: true });
-  };
-
-  onIscoChange = event => {
-    const region = this.state.region;
-
-    let isco = event.value.iscoValid;
-    let code = event.value.code;
-
-    this.setState({ isco: isco, iscoSelected: true });
-    const url =
-      `${API_URL}/jobs?region=` +
-      region +
-      "&isco=" +
-      isco +
-      "&code=" +
-      code +
-      lang;
-    axios
-      .get(url)
-      .then(response => response.data)
-      .then(data => {
-        let description = data.payload.jobEntity.description;
-        this.setState({
-          entities: data.payload.salaryEntities,
-          description: description
-        });
-      });
-
-    const url_mean = `${API_URL}/average-mean?isco=${isco}`;
-    axios
-      .get(url_mean)
-      .then(response => response.data)
-      .then(data => {
-        let mean = data.payload;
-        this.setState({
-          mean: mean
-        });
-      });
-  };
+  }
 
   render() {
     return (
@@ -109,7 +136,11 @@ class GraphComponent extends Component {
           ></Select>
         </div>
         <div className="graphContainer">
-          <EntityComponent entities={this.state.entities}></EntityComponent>
+          <EntityComponent
+            entities={this.state.entities}
+            menColor={this.state.menColor}
+            womenColor={this.state.womenColor}
+          ></EntityComponent>
           <div
             style={{
               flexDirection: "row",
@@ -136,7 +167,12 @@ class GraphComponent extends Component {
                 visibility: this.state.iscoSelected ? "visible" : "hidden"
               }}
             >
-              <PieChartComponent key="PieChart" mean={this.state.mean} />
+              <PieChartComponent
+                key="PieChart"
+                mean={this.state.mean}
+                menColor={this.state.menColor}
+                womenColor={this.state.womenColor}
+              />
             </div>
           </div>
         </div>

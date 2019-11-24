@@ -38,7 +38,6 @@ class EntityComponent extends Component {
   }
 
   clearData(data) {
-    console.log(data);
     let { mean, p1, p2, p3, p4, p6, p7, p8, p9, minVal, maxVal } = data;
 
     return { p1, p2, p3, p4, mean, p6, p7, p8, p9, minVal, maxVal };
@@ -79,6 +78,8 @@ class EntityComponent extends Component {
 
   render() {
     this.fetchData(this.props.entities);
+    this.menColor = this.props.menColor;
+    this.womenColor = this.props.womenColor;
 
     return (
       <div className="centered">
@@ -96,30 +97,42 @@ class EntityComponent extends Component {
             curve="curveBasis"
             data={this.women}
             style={{ opacity: 0.8 }}
-            fill="#C46440"
+            fill={this.womenColor}
+            strokeWidth="0"
           />
-          <LineSeries
-            data={[{ x: this.womenMean, y: 0 }, { x: this.womenMean, y: 5 }]}
-            strokeWidth="1"
-            stroke="black"
-          />
+
           <AreaSeries
             className="area-series-men"
             curve="curveBasis"
             data={this.men}
-            fill="#593D3D"
+            fill={this.menColor}
             style={{ opacity: 0.8 }}
+            strokeWidth="0"
             onNearestX={this.hoveredCell}
           />
           <LineSeries
-            data={[{ x: this.menMean, y: 0 }, { x: this.menMean, y: 5 }]}
+            data={[
+              { x: this.menMean, y: 0 },
+              { x: this.menMean, y: 5 }
+            ]}
             strokeWidth="1"
             stroke="black"
             label={this.menMean}
           />
+          <LineSeries
+            data={[
+              { x: this.womenMean, y: 0 },
+              { x: this.womenMean, y: 5 }
+            ]}
+            strokeWidth="1"
+            stroke="black"
+          />
 
           <LineSeries
-            data={[{ x: this.menMean, y: 2 }, { x: this.womenMean, y: 2 }]}
+            data={[
+              { x: this.menMean, y: 2 },
+              { x: this.womenMean, y: 2 }
+            ]}
             strokeWidth="1"
             stroke="black"
             strokeDasharray="7, 3"
@@ -138,16 +151,16 @@ class EntityComponent extends Component {
           </Hint>
         </XYPlot>
         <div style={{ marginLeft: "70%" }}>
-          <div class="Column">
-            <div class="Row">
-              <div class="male"> </div>
-              <p class="Column">Male</p>
+          <div className="Column">
+            <div className="Row">
+              <div className="male"> </div>
+              <p className="Column">Male</p>
             </div>
           </div>
-          <div class="Column">
-            <div class="Row">
-              <div class="female"> </div>
-              <p class="Column">Female</p>
+          <div className="Column">
+            <div className="Row">
+              <div className="female"> </div>
+              <p className="Column">Female</p>
             </div>
           </div>
         </div>

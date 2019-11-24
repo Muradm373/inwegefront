@@ -9,13 +9,13 @@ class PieChartComponent extends Component {
         angle: 1000,
         radius: 5,
         label: "€" + 1000,
-        color: "#593D3D"
+        color: this.props.womenColor
       },
       {
         angle: 1000,
         radius: 5,
         label: "€" + 1000,
-        color: "#C46440"
+        color: this.props.menColor
       }
     ]
   };
@@ -26,19 +26,21 @@ class PieChartComponent extends Component {
     if (this.props.mean[0] !== undefined) {
       this.meanMen = this.props.mean[0].mean;
       this.meanWomen = this.props.mean[1].mean;
+      this.menColor = this.props.menColor;
+      this.womenColor = this.props.womenColor;
 
       const data = [
         {
           angle: this.meanMen,
           radius: 5,
           label: "€" + parseInt(this.meanMen),
-          color: "#593D3D"
+          color: this.menColor
         },
         {
           angle: this.meanWomen,
           radius: 5,
           label: "€" + parseInt(this.meanWomen),
-          color: "#C46440"
+          color: this.womenColor
         }
       ];
 
