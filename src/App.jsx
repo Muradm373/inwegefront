@@ -4,7 +4,7 @@ import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import GraphComponent from "./components/GraphComponent";
 import Select from "react-select";
-import { tabs, main, changeLanguage } from "./text";
+import changeLanguage, { tabs, main } from "./text";
 import ReactDOM from "react-dom";
 
 const languages = [
