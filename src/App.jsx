@@ -17,6 +17,7 @@ function refresh(event) {
   changeLanguage(event.value);
 
   ReactDOM.render(<App />, document.getElementById("root"));
+  ReactDOM.render(<GraphComponent />, document.getElementById("graph"));
 }
 
 function App() {
@@ -78,7 +79,9 @@ function App() {
               <Tab disabled>{tabs[2]}</Tab>
             </TabList>
             <TabPanel>
-              <GraphComponent></GraphComponent>
+              <div id="graph">
+                <GraphComponent></GraphComponent>
+              </div>
             </TabPanel>
             <TabPanel></TabPanel>
             <TabPanel></TabPanel>
