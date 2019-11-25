@@ -66,7 +66,7 @@ class PieChartComponent extends Component {
           labelsRadiusMultiplier={2.2}
         ></RadialChart>
 
-        <p> Average in Estonia</p>
+        <p> {this.props.averageLabel}</p>
       </div>
     );
   }

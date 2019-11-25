@@ -3,8 +3,16 @@ import axios from "axios";
 import EntityComponent from "./EntityComponent";
 import PieChartComponent from "./PieChart";
 import Select from "react-select";
+import {
+  noDescr,
+  averageLabel,
+  differenceLabel,
+  genderLabel,
+  lng
+} from "../text";
+
 const API_URL = "https://inwege.herokuapp.com/api";
-const lang = "&lang=en";
+const lang = "&lang=";
 
 class GraphComponent extends Component {
   state = {
@@ -15,8 +23,7 @@ class GraphComponent extends Component {
     region: "",
     regionSelected: false,
     iscoSelected: false,
-    description:
-      "There is no information available for this occupation in this region. Please choose another county or another occupation.",
+    description: noDescr,
     mean: [],
     code: "",
     menColor: "#7db0ff",
@@ -68,8 +75,10 @@ class GraphComponent extends Component {
       isco +
       "&code=" +
       code +
-      lang;
+      lang +
+      lng;
 
+    console.log(url);
     axios
       .get(url)
       .then(response => response.data)
@@ -87,8 +96,7 @@ class GraphComponent extends Component {
           this.setState({
             entities: [],
             display: false,
-            description:
-              "There is no information available for this occupation in this region. Please choose another county or another occupation."
+            description: noDescr
           });
         }
       });
@@ -108,10 +116,9 @@ class GraphComponent extends Component {
   requestFields(region) {
     const url = `${API_URL}/`;
     axios
-      .get(url + "jobs/names?region=" + region + lang)
+      .get(url + "jobs/names?region=" + region + lang + lng)
       .then(response => response.data)
       .then(data => {
-        //this.setState({ iscos: data.payload });
         let names = [];
         data.payload.forEach(element => {
           names.push({
@@ -143,6 +150,8 @@ class GraphComponent extends Component {
             entities={this.state.entities}
             menColor={this.state.menColor}
             womenColor={this.state.womenColor}
+            differenceLabel={differenceLabel}
+            genderLabel={genderLabel}
           ></EntityComponent>
           <div
             style={{
@@ -173,6 +182,7 @@ class GraphComponent extends Component {
                 mean={this.state.mean}
                 menColor={this.state.menColor}
                 womenColor={this.state.womenColor}
+                averageLabel={averageLabel}
               />
             </div>
           </div>

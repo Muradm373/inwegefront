@@ -93,13 +93,13 @@ class EntityComponent extends Component {
             <div className="Column">
               <div className="Row">
                 <div className="male"> </div>
-                <p className="Column">Male</p>
+                <p className="Column">{this.props.genderLabel[0]}</p>
               </div>
             </div>
             <div className="Column">
               <div className="Row">
                 <div className="female"> </div>
-                <p className="Column">Female</p>
+                <p className="Column">{this.props.genderLabel[1]}</p>
               </div>
             </div>
           </div>
@@ -177,13 +177,13 @@ class EntityComponent extends Component {
                 marginLeft: "-100%"
               }}
             >
-              Men earn <br />€
+              {this.props.differenceLabel[0]} <br />€
               {Math.abs(parseInt(this.menMean) - parseInt(this.womenMean))}
               {parseInt(this.menMean) - parseInt(this.womenMean) > 0
-                ? " more"
-                : " less"}
+                ? this.props.differenceLabel[1]
+                : this.props.differenceLabel[2]}
               <br />
-              than women
+              {this.props.differenceLabel[3]}
             </p>
           </Hint>
         </XYPlot>

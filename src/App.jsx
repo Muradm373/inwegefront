@@ -3,6 +3,21 @@ import "./App.css";
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import GraphComponent from "./components/GraphComponent";
+import Select from "react-select";
+import { tabs, main, changeLanguage } from "./text";
+import ReactDOM from "react-dom";
+
+const languages = [
+  { value: "en", label: "ENG" },
+  { value: "ru", label: "RUS" },
+  { value: "es", label: "EST" }
+];
+
+function refresh(event) {
+  changeLanguage(event.value);
+
+  ReactDOM.render(<App />, document.getElementById("root"));
+}
 
 function App() {
   return (
@@ -27,19 +42,26 @@ function App() {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item active">
                 <a className="nav-link" href="/">
-                  Home
+                  {main[0]}
                   <span className="sr-only">(current)</span>
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">
-                  About
+                  {main[1]}
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">
-                  Contact
+                  {main[2]}
                 </a>
+              </li>
+              <li>
+                <Select
+                  options={languages}
+                  onChange={refresh}
+                  defaultValue={languages[0]}
+                ></Select>
               </li>
             </ul>
           </div>
@@ -51,9 +73,9 @@ function App() {
           <br></br>
           <Tabs id="uncontrolled-tab-example">
             <TabList>
-              <Tab>Wages</Tab>
-              <Tab>Pensions</Tab>
-              <Tab disabled>Salary calculator</Tab>
+              <Tab>{tabs[0]}</Tab>
+              <Tab disabled>{tabs[1]}</Tab>
+              <Tab disabled>{tabs[2]}</Tab>
             </TabList>
             <TabPanel>
               <GraphComponent></GraphComponent>
