@@ -40,6 +40,10 @@
   background: #f00044;
 }
 
+p {
+  text-align: center;
+}
+
 .Row {
   display: table;
   table-layout: fixed; /*Optional*/

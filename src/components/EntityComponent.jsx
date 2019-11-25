@@ -89,6 +89,20 @@ class EntityComponent extends Component {
     return (
       <div className="centered">
         <XYPlot width={1000} height={400} animation="gentle">
+          <div style={{ marginLeft: "80%", marginTop: "-39%" }}>
+            <div className="Column">
+              <div className="Row">
+                <div className="male"> </div>
+                <p className="Column">Male</p>
+              </div>
+            </div>
+            <div className="Column">
+              <div className="Row">
+                <div className="female"> </div>
+                <p className="Column">Female</p>
+              </div>
+            </div>
+          </div>
           <VerticalGridLines
             style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.5 }}
           />
@@ -123,7 +137,7 @@ class EntityComponent extends Component {
             ]}
             strokeWidth="1"
             stroke="black"
-            label={this.menMean}
+            strokeDasharray="7, 3"
           />
 
           <LineSeries
@@ -133,6 +147,7 @@ class EntityComponent extends Component {
             ]}
             strokeWidth="1"
             stroke="black"
+            strokeDasharray="7, 3"
           />
 
           <LineSeries
@@ -158,7 +173,8 @@ class EntityComponent extends Component {
           >
             <p
               style={{
-                color: "black"
+                color: "black",
+                marginLeft: "-100%"
               }}
             >
               Men earn <br />€
@@ -171,20 +187,6 @@ class EntityComponent extends Component {
             </p>
           </Hint>
         </XYPlot>
-        <div style={{ marginLeft: "70%" }}>
-          <div className="Column">
-            <div className="Row">
-              <div className="male"> </div>
-              <p className="Column">Male</p>
-            </div>
-          </div>
-          <div className="Column">
-            <div className="Row">
-              <div className="female"> </div>
-              <p className="Column">Female</p>
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
