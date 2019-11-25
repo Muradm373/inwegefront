@@ -21,7 +21,7 @@ const tabsRus = ["Заработная плата", "Пенсии", "Кальк�
 const mainRus = ["Главная", "О нас", "Контакты"];
 const genderRus = ["Мужчины", "Женщины"];
 
-function changeLanguage(language) {
+export default function changeLanguage(language) {
   switch (language) {
     case "en":
       noDescr = descrEng;
@@ -52,13 +52,4 @@ let lng = lngEng;
 let tabs = tabsEng;
 let main = mainEng;
 
-export {
-  noDescr,
-  averageLabel,
-  differenceLabel,
-  genderLabel,
-  lng,
-  tabs,
-  main,
-  changeLanguage
-};
+export { noDescr, averageLabel, differenceLabel, genderLabel, lng, tabs, main };
