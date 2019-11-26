@@ -20,6 +20,18 @@ function refresh(event) {
   ReactDOM.render(<GraphComponent />, document.getElementById("graph"));
 }
 
+function arrowRenderer() {
+  return <div></div>;
+}
+
+const dropdownIndicatorStyles = (base, state) => {
+  let changes = {
+    // all your override styles
+    display: "none"
+  };
+  return Object.assign(base, changes);
+};
+
 function App() {
   return (
     <div className="App">
@@ -58,11 +70,15 @@ function App() {
                 </a>
               </li>
               <li>
-                <Select
-                  options={languages}
-                  onChange={refresh}
-                  defaultValue={languages[0]}
-                ></Select>
+                <div style={{ width: "250%" }}>
+                  <Select
+                    options={languages}
+                    onChange={refresh}
+                    defaultValue={languages[0]}
+                    styles={{ dropdownIndicator: dropdownIndicatorStyles }}
+                    isSearchable={false}
+                  ></Select>
+                </div>
               </li>
             </ul>
           </div>
