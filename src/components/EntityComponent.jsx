@@ -8,7 +8,8 @@ import {
   HorizontalGridLines,
   AreaSeries,
   LineSeries,
-  Hint
+  Hint,
+  HorizontalBarSeries
 } from "react-vis";
 
 class EntityComponent extends Component {
@@ -87,7 +88,7 @@ class EntityComponent extends Component {
     this.womenColor = this.props.womenColor;
 
     return (
-      <div className="centered">
+      <div className="centered" id="entity">
         <XYPlot width={1000} height={400} animation="gentle">
           <div style={{ marginLeft: "80%", marginTop: "-39%" }}>
             <div className="Column">
@@ -186,6 +187,17 @@ class EntityComponent extends Component {
               {this.props.differenceLabel[3]}
             </p>
           </Hint>
+        </XYPlot>
+        <XYPlot width={1000} height={100} animation="gentle">
+          <XAxis />
+          <HorizontalBarSeries
+            data={[{ y: 1, x: this.menMean }]}
+            color={this.menColor}
+          />
+          <HorizontalBarSeries
+            data={[{ y: 1, x: this.womenMean }]}
+            color={this.womenColor}
+          />
         </XYPlot>
       </div>
     );

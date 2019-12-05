@@ -8,7 +8,9 @@ import {
   averageLabel,
   differenceLabel,
   genderLabel,
-  lng
+  lng,
+  selectRegion,
+  selectOccupation
 } from "../text";
 
 const API_URL = "https://inwege.herokuapp.com/api";
@@ -24,6 +26,7 @@ class GraphComponent extends Component {
     regionSelected: false,
     iscoSelected: false,
     description: noDescr,
+    occupation: "",
     mean: [],
     code: "",
     menColor: "#7db0ff",
@@ -65,6 +68,8 @@ class GraphComponent extends Component {
 
     this.setState({ isco: isco, iscoSelected: true, code: code });
     this.request(region, isco, code);
+
+    this.setState({ occupation: event.value.name });
   };
 
   request(region, isco, code) {
@@ -137,12 +142,12 @@ class GraphComponent extends Component {
           <Select
             onChange={this.onRegionChange}
             options={this.state.regions}
-            placeholder="Select region"
+            placeholder={selectRegion}
           ></Select>
           <Select
             onChange={this.onIscoChange}
             options={this.state.iscos}
-            placeholder="Select job title"
+            placeholder={selectOccupation}
           ></Select>
         </div>
         <div className="graphContainer">
@@ -182,7 +187,7 @@ class GraphComponent extends Component {
                 mean={this.state.mean}
                 menColor={this.state.menColor}
                 womenColor={this.state.womenColor}
-                averageLabel={averageLabel}
+                averageLabel={averageLabel + this.state.occupation}
               />
             </div>
           </div>
