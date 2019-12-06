@@ -8,6 +8,7 @@ const mainEng = ["Home", "About", "Contact"];
 const genderEng = ["Male", "Female"];
 const selectRegionEng = "Select region";
 const selectOccupationEng = "Select job title";
+const averageBetweenMenAndWomenEng = "Average salary between men and women";
 
 const descrRus =
   "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.";
@@ -24,10 +25,12 @@ const mainRus = ["Главная", "О нас", "Контакты"];
 const genderRus = ["Мужчины", "Женщины"];
 const selectRegionRus = "Выберите регион";
 const selectOccupationRus = "Выберите должность";
+const averageBetweenMenAndWomenRus =
+  "Средний показатель между женщинами и мужчинами";
 
 export default function changeLanguage(language) {
   switch (language) {
-    case "en":
+    default:
       noDescr = descrEng;
       averageLabel = averageEng;
       differenceLabel = differenceEng;
@@ -35,6 +38,9 @@ export default function changeLanguage(language) {
       lng = lngEng;
       tabs = tabsEng;
       main = mainEng;
+      selectOccupation = selectOccupationEng;
+      selectRegion = selectRegionEng;
+      averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -46,6 +52,7 @@ export default function changeLanguage(language) {
       main = mainRus;
       selectOccupation = selectOccupationRus;
       selectRegion = selectRegionRus;
+      averageBetweenMenAndWomen = averageBetweenMenAndWomenRus;
 
       break;
   }
@@ -60,6 +67,7 @@ let tabs = tabsEng;
 let main = mainEng;
 let selectOccupation = selectOccupationEng;
 let selectRegion = selectRegionEng;
+let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
 
 export {
   noDescr,
@@ -70,5 +78,6 @@ export {
   tabs,
   main,
   selectOccupation,
-  selectRegion
+  selectRegion,
+  averageBetweenMenAndWomen
 };

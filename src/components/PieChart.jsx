@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { RadialChart } from "react-vis";
 
 class PieChartComponent extends Component {
+  
   updatePiechart() {
     let data = [];
     if (this.props.mean[0] !== undefined) {

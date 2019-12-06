@@ -1,15 +1,17 @@
-import React from "react";
 import "./App.css";
-import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
+import React from "react";
 import "react-tabs/style/react-tabs.css";
 import GraphComponent from "./components/GraphComponent";
 import Select from "react-select";
-import changeLanguage, { tabs, main } from "./text";
+import changeLanguage, { main } from "./text";
 import ReactDOM from "react-dom";
 import Background from "./img/bg.jpg";
 
 const languages = [
-  { value: "en", label: "ENG" },
+  {
+    value: "en",
+    label: "ENG"
+  },
   { value: "ru", label: "RUS" },
   { value: "es", label: "EST" }
 ];
@@ -26,13 +28,17 @@ const dropdownIndicatorStyles = (base, state) => {
     // all your override styles
     display: "none"
   };
+
   return Object.assign(base, changes);
 };
 
 function App() {
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg fixed-top">
+      <nav
+        className="navbar navbar-expand-lg bg-transparent"
+        style={{ position: "absolute", right: "5%" }}
+      >
         <div className="container">
           <button
             className="navbar-toggler"
@@ -78,10 +84,8 @@ function App() {
           </div>
         </div>
       </nav>
-
       <section
         id="home"
-        class="video-hero"
         style={{
           height: "400px",
           backgroundAttachment: "fixed",
@@ -89,7 +93,7 @@ function App() {
         }}
         data-section="home"
       >
-        <div class="display-tc">
+        <div>
           <div style={{ padding: "100px" }}>
             <h2>InWeGe</h2>
             <p>Gender Gaps in Wages and Wealth</p>

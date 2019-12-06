@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React, { Component } from "react";
 
 import {
-  XYPlot,
+  FlexibleWidthXYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
@@ -32,7 +33,7 @@ class EntityComponent extends Component {
           womenColor={this.womenColor}
         />
 
-        <XYPlot width={1000} height={400} animation="gentle">
+        <FlexibleWidthXYPlot height={400} animation="gentle">
           <div style={{ marginLeft: "80%", marginTop: "-39%" }}>
             <div className="Column">
               <div className="Row">
@@ -130,7 +131,7 @@ class EntityComponent extends Component {
               {this.props.differenceLabel[3]}
             </p>
           </Hint>
-        </XYPlot>
+        </FlexibleWidthXYPlot>
       </div>
     );
   }

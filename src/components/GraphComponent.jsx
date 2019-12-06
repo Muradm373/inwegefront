@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from "react";
 import axios from "axios";
 import EntityComponent from "./EntityComponent";
@@ -139,11 +140,11 @@ class GraphComponent extends Component {
     return (
       <div>
         <div>
-          <div class="col-xl col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-              <div class="card-body">
-                <div class="row no-gutters align-items-center">
-                  <div class="col mr-2">
+          <div className="col-xl col-md-6 mb-4">
+            <div className="card border-left-primary shadow h-100 py-2">
+              <div className="card-body">
+                <div className="row no-gutters align-items-center">
+                  <div className="col mr-2">
                     <Select
                       onChange={this.onRegionChange}
                       options={this.state.regions}
@@ -155,19 +156,19 @@ class GraphComponent extends Component {
                       placeholder={selectOccupation}
                     ></Select>
                   </div>
-                  <div class="col-auto">
-                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  <div className="col-auto">
+                    <i className="fas fa-calendar fa-2x text-gray-300"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-xl col-md-6 mb-4">
-          <div class="card border-left-primary shadow h-100 py-2">
-            <div class="card-body">
-              <div class="row no-gutters align-items-center">
-                <div class="col mr-2">
+        <div className="col-xl col-md-6 mb-4">
+          <div className="card border-left-primary shadow h-100 py-2">
+            <div className="card-body">
+              <div className="row no-gutters align-items-center">
+                <div className="col mr-2">
                   <EntityComponent
                     entities={this.state.entities}
                     menColor={this.state.menColor}
