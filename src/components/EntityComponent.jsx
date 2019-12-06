@@ -89,6 +89,17 @@ class EntityComponent extends Component {
 
     return (
       <div className="centered" id="entity">
+        <XYPlot width={1000} height={100} animation="gentle">
+          <XAxis />
+          <HorizontalBarSeries
+            data={[{ y: 1, x: this.menMean }]}
+            color={this.menColor}
+          />
+          <HorizontalBarSeries
+            data={[{ y: 1, x: this.womenMean }]}
+            color={this.womenColor}
+          />
+        </XYPlot>
         <XYPlot width={1000} height={400} animation="gentle">
           <div style={{ marginLeft: "80%", marginTop: "-39%" }}>
             <div className="Column">
@@ -129,7 +140,6 @@ class EntityComponent extends Component {
             fill={this.menColor}
             style={{ opacity: 0.8 }}
             strokeWidth="0"
-            onNearestX={this.hoveredCell}
           />
           <LineSeries
             data={[
@@ -161,6 +171,7 @@ class EntityComponent extends Component {
             strokeDasharray="7, 3"
             label={this.menMean}
           />
+
           <Hint
             style={
               parseInt(this.menMean) - parseInt(this.womenMean) !== 0
@@ -187,17 +198,6 @@ class EntityComponent extends Component {
               {this.props.differenceLabel[3]}
             </p>
           </Hint>
-        </XYPlot>
-        <XYPlot width={1000} height={100} animation="gentle">
-          <XAxis />
-          <HorizontalBarSeries
-            data={[{ y: 1, x: this.menMean }]}
-            color={this.menColor}
-          />
-          <HorizontalBarSeries
-            data={[{ y: 1, x: this.womenMean }]}
-            color={this.womenColor}
-          />
         </XYPlot>
       </div>
     );
