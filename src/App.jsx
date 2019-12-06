@@ -6,6 +6,7 @@ import GraphComponent from "./components/GraphComponent";
 import Select from "react-select";
 import changeLanguage, { tabs, main } from "./text";
 import ReactDOM from "react-dom";
+import Background from "./img/bg.jpg";
 
 const languages = [
   { value: "en", label: "ENG" },
@@ -20,10 +21,6 @@ function refresh(event) {
   ReactDOM.render(<GraphComponent />, document.getElementById("graph"));
 }
 
-function arrowRenderer() {
-  return <div></div>;
-}
-
 const dropdownIndicatorStyles = (base, state) => {
   let changes = {
     // all your override styles
@@ -35,11 +32,8 @@ const dropdownIndicatorStyles = (base, state) => {
 function App() {
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-lg fixed-top">
         <div className="container">
-          <a className="navbar-brand" href="/">
-            InWeGe Project
-          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -85,30 +79,42 @@ function App() {
         </div>
       </nav>
 
-      <section className="py-5">
-        <div className="container">
-          <br></br>
-          <Tabs id="uncontrolled-tab-example">
-            <TabList>
-              <Tab>{tabs[0]}</Tab>
-              <Tab disabled>{tabs[1]}</Tab>
-              <Tab disabled>{tabs[2]}</Tab>
-            </TabList>
-            <TabPanel>
-              <div id="graph">
-                <GraphComponent></GraphComponent>
-              </div>
-            </TabPanel>
-            <TabPanel></TabPanel>
-            <TabPanel></TabPanel>
-          </Tabs>
+      <section
+        id="home"
+        class="video-hero"
+        style={{
+          height: "400px",
+          backgroundAttachment: "fixed",
+          backgroundImage: `url(${Background})`
+        }}
+        data-section="home"
+      >
+        <div class="display-tc">
+          <div style={{ padding: "100px" }}>
+            <h2>InWeGe</h2>
+            <p>Gender Gaps in Wages and Wealth</p>
+          </div>
         </div>
       </section>
 
-      <footer className="py-5 bg-dark">
+      <section className="md-5" style={{ marginTop: "-100px" }}>
+        <div className="container">
+          <div id="graph">
+            <GraphComponent></GraphComponent>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        className="py-5"
+        style={{
+          backgroundAttachment: "fixed",
+          backgroundImage: `url(${Background})`
+        }}
+      >
         <div className="container">
           <p className="m-0 text-center text-white">
-            Copyright &copy; Your Website 2019
+            Copyright &copy; InWeGe 2019
           </p>
         </div>
       </footer>

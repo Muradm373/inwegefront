@@ -139,56 +139,79 @@ class GraphComponent extends Component {
     return (
       <div>
         <div>
-          <Select
-            onChange={this.onRegionChange}
-            options={this.state.regions}
-            placeholder={selectRegion}
-          ></Select>
-          <Select
-            onChange={this.onIscoChange}
-            options={this.state.iscos}
-            placeholder={selectOccupation}
-          ></Select>
+          <div class="col-xl col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <Select
+                      onChange={this.onRegionChange}
+                      options={this.state.regions}
+                      placeholder={selectRegion}
+                    ></Select>
+                    <Select
+                      onChange={this.onIscoChange}
+                      options={this.state.iscos}
+                      placeholder={selectOccupation}
+                    ></Select>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="graphContainer">
-          <EntityComponent
-            entities={this.state.entities}
-            menColor={this.state.menColor}
-            womenColor={this.state.womenColor}
-            differenceLabel={differenceLabel}
-            genderLabel={genderLabel}
-          ></EntityComponent>
-          <div
-            style={{
-              flexDirection: "row",
-              display: "flex"
-            }}
-          >
-            <p
-              style={{
-                flex: 5,
-                display: "flex",
-                alignSelf: "stretch",
-                textAlign: "left"
-              }}
-            >
-              {this.state.description}
-            </p>
-            <div
-              style={{
-                flex: 1,
-                marginRight: "5px",
-                display: "flex",
-                visibility: this.state.iscoSelected ? "visible" : "hidden"
-              }}
-            >
-              <PieChartComponent
-                key="PieChart"
-                mean={this.state.mean}
-                menColor={this.state.menColor}
-                womenColor={this.state.womenColor}
-                averageLabel={averageLabel + this.state.occupation}
-              />
+        <div class="col-xl col-md-6 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <EntityComponent
+                    entities={this.state.entities}
+                    menColor={this.state.menColor}
+                    womenColor={this.state.womenColor}
+                    differenceLabel={differenceLabel}
+                    genderLabel={genderLabel}
+                  ></EntityComponent>
+                  <div
+                    style={{
+                      flexDirection: "row",
+                      display: "flex"
+                    }}
+                  >
+                    <p
+                      style={{
+                        flex: 5,
+                        display: "flex",
+                        alignSelf: "stretch",
+                        textAlign: "left"
+                      }}
+                    >
+                      {this.state.description}
+                    </p>
+                    <div
+                      style={{
+                        flex: 1,
+                        marginRight: "5px",
+                        display: "flex",
+                        visibility: this.state.iscoSelected
+                          ? "visible"
+                          : "hidden"
+                      }}
+                    >
+                      <PieChartComponent
+                        key="PieChart"
+                        mean={this.state.mean}
+                        menColor={this.state.menColor}
+                        womenColor={this.state.womenColor}
+                        averageLabel={averageLabel + this.state.occupation}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

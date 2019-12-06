@@ -89,6 +89,7 @@ class EntityComponent extends Component {
 
     return (
       <div className="centered" id="entity">
+        <p> Average salary between men and women</p>
         <XYPlot width={1000} height={100} animation="gentle">
           <XAxis />
           <HorizontalBarSeries
