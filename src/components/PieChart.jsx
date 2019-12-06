@@ -3,33 +3,15 @@ import React, { Component } from "react";
 import { RadialChart } from "react-vis";
 
 class PieChartComponent extends Component {
-  state = {
-    data: [
-      {
-        angle: 1000,
-        radius: 5,
-        label: "€" + 1000,
-        color: this.props.womenColor
-      },
-      {
-        angle: 1000,
-        radius: 5,
-        label: "€" + 1000,
-        color: this.props.menColor
-      }
-    ]
-  };
-  componentWillReceiveProps() {
-    this.updatePiechart();
-  }
   updatePiechart() {
+    let data = [];
     if (this.props.mean[0] !== undefined) {
       this.meanMen = this.props.mean[0].mean;
       this.meanWomen = this.props.mean[1].mean;
       this.menColor = this.props.menColor;
       this.womenColor = this.props.womenColor;
 
-      const data = [
+      data = [
         {
           angle: this.meanMen,
           radius: 5,
@@ -43,12 +25,13 @@ class PieChartComponent extends Component {
           color: this.womenColor
         }
       ];
-
-      this.setState({ data: data });
     }
+    return data;
   }
 
   render() {
+    let data = this.updatePiechart();
+
     return (
       <div>
         <RadialChart
@@ -59,7 +42,7 @@ class PieChartComponent extends Component {
           height={200}
           width={250}
           colorType="literal"
-          data={this.state.data}
+          data={data}
           animation={true}
           padAngle={0.04}
           showLabels={true}
