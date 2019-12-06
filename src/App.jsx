@@ -6,14 +6,23 @@ import Select from "react-select";
 import changeLanguage, { main } from "./text";
 import ReactDOM from "react-dom";
 import Background from "./img/bg.jpg";
-
 const languages = [
   {
     value: "en",
-    label: "ENG"
+    label: <img width="25px" src={require("./img/flags/us.png")} alt="EN"></img>
   },
-  { value: "ru", label: "RUS" },
-  { value: "es", label: "EST" }
+  {
+    value: "ru",
+    label: (
+      <img width="25px" src={require("./img/flags/russia.png")} alt="RU"></img>
+    )
+  },
+  {
+    value: "es",
+    label: (
+      <img width="25px" src={require("./img/flags/estonia.png")} alt="EE"></img>
+    )
+  }
 ];
 
 function refresh(event) {
@@ -72,6 +81,7 @@ function App() {
               <li>
                 <div style={{ width: "250%" }}>
                   <Select
+                    className="bg-transparent"
                     options={languages}
                     onChange={refresh}
                     defaultValue={languages[0]}
@@ -95,7 +105,7 @@ function App() {
       >
         <div>
           <div style={{ padding: "100px" }}>
-            <h2>InWeGe</h2>
+            <h1>InWeGe</h1>
             <p>Gender Gaps in Wages and Wealth</p>
           </div>
         </div>
