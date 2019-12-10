@@ -14,7 +14,7 @@ import {
   selectOccupation
 } from "../text";
 
-const API_URL = "https://inwege.herokuapp.com/api";
+const API_URL = "http://193.40.11.88/inwege/api";
 const lang = "&lang=";
 
 class GraphComponent extends Component {
@@ -84,32 +84,10 @@ class GraphComponent extends Component {
       lang +
       lng;
 
-    console.log(url);
     axios
       .get(url)
       .then(response => response.data)
-      .then(data => {
-        if (
-          data.payload.jobEntity !== undefined &&
-          data.payload.salaryEntities !== undefined
-        ) {
-          let description = data.payload.jobEntity.description;
-          this.setState({
-            entities: data.payload.salaryEntities,
-            description: description
-          });
-        } else {
-          this.setState({
-            entities: [],
-            display: false,
-            description: noDescr
-          });
-        }
-      });
-
-    const url_mean = `${API_URL}/average-mean?isco=${isco}`;
-    axios
-      .get(url_mean)
+      .then(data => this.saveData(data))
       .then(response => response.data)
       .then(data => {
         let mean = data.payload;
@@ -119,6 +97,27 @@ class GraphComponent extends Component {
       });
   }
 
+  saveData(data) {
+    if (
+      data.payload.jobEntity !== undefined &&
+      data.payload.salaryEntities !== undefined
+    ) {
+      let description = data.payload.jobEntity.description;
+      this.setState({
+        entities: data.payload.salaryEntities,
+        description: description
+      });
+
+      console.log(this.state.entities);
+    } else {
+      this.setState({
+        entities: [],
+        display: false,
+        description: noDescr
+      });
+    }
+    return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
+  }
   requestFields(region) {
     const url = `${API_URL}/`;
     axios
