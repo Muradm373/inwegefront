@@ -1,7 +1,16 @@
 const descrEng =
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";
-const differenceEng = ["Men earn", " more ", " less", " than women."];
+const differenceEng = [
+  "Men earn",
+  " more ",
+  " less",
+  " than",
+  " women",
+  " men",
+  "You earn",
+  " on average"
+];
 const lngEng = "en";
 const tabsEng = ["Wages", "Pensions", "Wage forecast"];
 const mainEng = ["Home", "About", "Contact"];
@@ -17,7 +26,11 @@ const differenceRus = [
   "Мужчины зарабатывают на ",
   " больше ",
   " меньше",
-  " женщин."
+  "",
+  " женщин",
+  " мужчин",
+  "Вы зарабатываете на",
+  " в среднем"
 ];
 const lngRus = "ru";
 const tabsRus = ["Заработная плата", "Пенсии", "Калькулятор зарплаты"];

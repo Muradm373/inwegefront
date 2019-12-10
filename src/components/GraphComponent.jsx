@@ -14,7 +14,7 @@ import {
   selectOccupation
 } from "../text";
 
-const API_URL = "http://193.40.11.88/inwege/api";
+const API_URL = "https://inwege.herokuapp.com/api";
 const lang = "&lang=";
 
 class GraphComponent extends Component {
@@ -32,8 +32,16 @@ class GraphComponent extends Component {
     code: "",
     menColor: "#7db0ff",
     womenColor: "#f00044",
-    display: false
+    wage: 0,
+    gender: genderLabel[0]
   };
+
+  constructor() {
+    super();
+
+    this.salaryChange = this.salaryChange.bind(this);
+    this.genderChange = this.genderChange.bind(this);
+  }
 
   componentDidMount() {
     const url = `${API_URL}/`;
@@ -108,8 +116,6 @@ class GraphComponent extends Component {
           entities: entities,
           description: description
         });
-
-        console.log(this.state.entities);
       } else {
         this.setState({
           entities: entities,
@@ -119,7 +125,6 @@ class GraphComponent extends Component {
     } else {
       this.setState({
         entities: [],
-        display: false,
         description: noDescr
       });
     }
@@ -142,6 +147,13 @@ class GraphComponent extends Component {
       });
   }
 
+  salaryChange(event) {
+    this.setState({ wage: event.target.value });
+  }
+
+  genderChange(event) {
+    this.setState({ gender: event.value });
+  }
   render() {
     return (
       <div>
@@ -162,8 +174,51 @@ class GraphComponent extends Component {
                       placeholder={selectOccupation}
                     ></Select>
                   </div>
-                  <div className="col-auto">
-                    <i className="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-xl col-md-6 mb-4">
+            <div className="card border-left-primary shadow h-100 py-2">
+              <div className="card-body">
+                <div className="row no-gutters align-items-center">
+                  <div className="col mr-2">
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between"
+                      }}
+                    >
+                      <label
+                        style={{
+                          width: "10%",
+                          textAlign: "center",
+                          marginTop: "5px"
+                        }}
+                      >
+                        Your salary:
+                      </label>
+                      <input
+                        name="salary"
+                        className="form-control"
+                        onChange={this.salaryChange}
+                        type="number"
+                        value={this.state.wage}
+                      />
+                    </div>
+                    <div>
+                      <Select
+                        onChange={this.genderChange}
+                        defaultValue={{
+                          label: genderLabel[0],
+                          value: genderLabel[0]
+                        }}
+                        options={[
+                          { label: genderLabel[0], value: genderLabel[0] },
+                          { label: genderLabel[1], value: genderLabel[1] }
+                        ]}
+                      ></Select>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -181,6 +236,8 @@ class GraphComponent extends Component {
                     womenColor={this.state.womenColor}
                     differenceLabel={differenceLabel}
                     genderLabel={genderLabel}
+                    myWage={this.state.wage}
+                    myGender={this.state.gender}
                   ></EntityComponent>
                   <div
                     style={{

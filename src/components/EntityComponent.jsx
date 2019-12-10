@@ -13,6 +13,7 @@ import {
 } from "react-vis";
 import { fetchData } from "./entityFunc";
 import BarComponent from "./BarComponent";
+import { genderLabel } from "../text";
 
 class EntityComponent extends Component {
   render() {
@@ -21,6 +22,11 @@ class EntityComponent extends Component {
     let women = data.women;
     let menMean = data.menMean;
     let womenMean = data.womenMean;
+    let myWage = this.props.myWage;
+    let mean =
+      this.props.myGender === genderLabel[0]
+        ? parseInt(data.menMean)
+        : parseInt(data.womenMean);
     this.menColor = this.props.menColor;
     this.womenColor = this.props.womenColor;
 
@@ -31,6 +37,16 @@ class EntityComponent extends Component {
           womenMean={womenMean}
           menColor={this.menColor}
           womenColor={this.womenColor}
+          label={
+            this.props.differenceLabel[0] +
+            " €" +
+            Math.abs(parseInt(menMean) - parseInt(womenMean)) +
+            (parseInt(menMean) - parseInt(womenMean) > 0
+              ? this.props.differenceLabel[1]
+              : this.props.differenceLabel[2]) +
+            this.props.differenceLabel[3] +
+            this.props.differenceLabel[4]
+          }
         />
 
         <FlexibleWidthXYPlot height={400} animation="gentle">
@@ -76,8 +92,8 @@ class EntityComponent extends Component {
           />
           <LineSeries
             data={[
-              { x: menMean, y: 0 },
-              { x: menMean, y: 5 }
+              { x: mean, y: 0 },
+              { x: mean, y: 5 }
             ]}
             strokeWidth="1"
             stroke="black"
@@ -86,8 +102,8 @@ class EntityComponent extends Component {
 
           <LineSeries
             data={[
-              { x: womenMean, y: 0 },
-              { x: womenMean, y: 5 }
+              { x: myWage, y: 0 },
+              { x: myWage, y: 5 }
             ]}
             strokeWidth="1"
             stroke="black"
@@ -96,13 +112,12 @@ class EntityComponent extends Component {
 
           <LineSeries
             data={[
-              { x: menMean, y: 2 },
-              { x: womenMean, y: 2 }
+              { x: myWage, y: 2 },
+              { x: mean, y: 2 }
             ]}
             strokeWidth="1"
             stroke="black"
             strokeDasharray="7, 3"
-            label={menMean}
           />
 
           <Hint
@@ -122,13 +137,19 @@ class EntityComponent extends Component {
                 marginLeft: "-100%"
               }}
             >
-              {this.props.differenceLabel[0]} <br />€
-              {Math.abs(parseInt(menMean) - parseInt(womenMean))}
-              {parseInt(menMean) - parseInt(womenMean) > 0
-                ? this.props.differenceLabel[1]
-                : this.props.differenceLabel[2]}
-              <br />
-              {this.props.differenceLabel[3]}
+              {this.props.differenceLabel[6] +
+                " €" +
+                Math.abs(parseInt(myWage) - parseInt(mean)) +
+                (parseInt(myWage) - parseInt(mean) > 0
+                  ? this.props.differenceLabel[1]
+                  : this.props.differenceLabel[2]) +
+                this.props.differenceLabel[3] +
+                " " +
+                (this.props.myGender === genderLabel[0]
+                  ? this.props.differenceLabel[5]
+                  : this.props.differenceLabel[4]) +
+                " " +
+                this.props.differenceLabel[7]}
             </p>
           </Hint>
         </FlexibleWidthXYPlot>

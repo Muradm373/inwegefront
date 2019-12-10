@@ -6,10 +6,18 @@ import { averageBetweenMenAndWomen } from "../text";
 class BarComponent extends Component {
   render() {
     return (
-      <div className="barseries" style={{ width: "80%", marginLeft: "10%" }}>
+      <div
+        className="barseries"
+        style={{ width: "80%", marginLeft: "10%" }}
+        style={
+          parseInt(this.props.menMean) - parseInt(this.props.womenMean) !== 0
+            ? {}
+            : { display: "none" }
+        }
+      >
         <p> {averageBetweenMenAndWomen} </p>
         <FlexibleWidthXYPlot height={130} animation="gentle">
-          <XAxis />
+          <XAxis tickTotal={10} />
           <HorizontalBarSeries
             data={[{ y: 2, x: this.props.menMean }]}
             color={this.props.menColor}
@@ -19,6 +27,7 @@ class BarComponent extends Component {
             color={this.props.womenColor}
           />
         </FlexibleWidthXYPlot>
+        <p>{this.props.label}</p>
       </div>
     );
   }
