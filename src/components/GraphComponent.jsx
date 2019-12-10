@@ -98,17 +98,24 @@ class GraphComponent extends Component {
   }
 
   saveData(data) {
-    if (
-      data.payload.jobEntity !== undefined &&
-      data.payload.salaryEntities !== undefined
-    ) {
-      let description = data.payload.jobEntity.description;
-      this.setState({
-        entities: data.payload.salaryEntities,
-        description: description
-      });
+    let entities = data.payload.salaryEntities;
+    let jobEntity = data.payload.jobEntity;
+    if (jobEntity !== undefined && entities !== undefined) {
+      if (entities[0].region !== "All") {
+        console.log(data);
+        let description = jobEntity.description;
+        this.setState({
+          entities: entities,
+          description: description
+        });
 
-      console.log(this.state.entities);
+        console.log(this.state.entities);
+      } else {
+        this.setState({
+          entities: entities,
+          description: noDescr
+        });
+      }
     } else {
       this.setState({
         entities: [],
