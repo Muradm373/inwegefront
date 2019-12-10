@@ -1,5 +1,5 @@
 const descrEng =
-  "There is no information available for this occupation in this region. Please choose another county or another occupation.";
+  "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";
 const differenceEng = ["Men earn", " more ", " less", " than women."];
 const lngEng = "en";
