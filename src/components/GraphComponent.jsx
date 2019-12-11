@@ -148,7 +148,12 @@ class GraphComponent extends Component {
   }
 
   salaryChange(event) {
-    this.setState({ wage: event.target.value });
+    if (
+      event.target.value < 1000000 &&
+      event.target.value >= 0 &&
+      !isNaN(event.target.value)
+    )
+      this.setState({ wage: event.target.value });
   }
 
   genderChange(event) {
