@@ -6,6 +6,7 @@ import Select from "react-select";
 import changeLanguage, { main } from "./text";
 import ReactDOM from "react-dom";
 import Background from "./img/bg.jpg";
+
 const languages = [
   {
     value: "en",
