@@ -45,7 +45,8 @@ class EntityComponent extends Component {
               ? this.props.differenceLabel[1]
               : this.props.differenceLabel[2]) +
             this.props.differenceLabel[3] +
-            this.props.differenceLabel[4]
+            this.props.differenceLabel[4] +
+            this.props.differenceLabel[7]
           }
         />
 
