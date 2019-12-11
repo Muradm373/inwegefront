@@ -138,19 +138,21 @@ class EntityComponent extends Component {
                 marginLeft: "-100%"
               }}
             >
-              {this.props.differenceLabel[6] +
-                " €" +
-                Math.abs(parseInt(myWage) - parseInt(mean)) +
-                (parseInt(myWage) - parseInt(mean) > 0
-                  ? this.props.differenceLabel[1]
-                  : this.props.differenceLabel[2]) +
-                this.props.differenceLabel[3] +
-                " " +
-                (this.props.myGender === genderLabel[0]
-                  ? this.props.differenceLabel[5]
-                  : this.props.differenceLabel[4]) +
-                " " +
-                this.props.differenceLabel[7]}
+              {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
+                ? this.props.differenceLabel[6] +
+                  " €" +
+                  Math.abs(parseInt(myWage) - parseInt(mean)) +
+                  (parseInt(myWage) - parseInt(mean) > 0
+                    ? this.props.differenceLabel[1]
+                    : this.props.differenceLabel[2]) +
+                  this.props.differenceLabel[3] +
+                  " " +
+                  (this.props.myGender === genderLabel[0]
+                    ? this.props.differenceLabel[5]
+                    : this.props.differenceLabel[4]) +
+                  " " +
+                  this.props.differenceLabel[7]
+                : ""}
             </p>
           </Hint>
         </FlexibleWidthXYPlot>
