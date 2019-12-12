@@ -13,7 +13,7 @@ import {
 } from "react-vis";
 import { fetchData } from "./entityFunc";
 import BarComponent from "./BarComponent";
-import { genderLabel } from "../text";
+import { genderLabel, salary } from "../text";
 
 class EntityComponent extends Component {
   render() {
@@ -100,6 +100,41 @@ class EntityComponent extends Component {
             stroke="black"
             strokeDasharray="7, 3"
           />
+
+          <Hint
+            value={{ x: mean, y: 0 }}
+            style={
+              parseInt(menMean) - parseInt(womenMean) !== 0
+                ? {}
+                : { display: "none" }
+            }
+          >
+            <p
+              style={{ fontSize: "10pt", textAlign: "center", color: "black" }}
+            >
+              {this.props.myGender === genderLabel[0]
+                ? this.props.differenceLabel[5]
+                : this.props.differenceLabel[4]}
+              <br />
+              {this.props.differenceLabel[7]}
+            </p>
+          </Hint>
+
+          <Hint
+            value={{ x: myWage, y: 0 }}
+            style={
+              parseInt(menMean) - parseInt(womenMean) !== 0
+                ? {}
+                : { display: "none" }
+            }
+          >
+            <p
+              style={{ fontSize: "10pt", textAlign: "center", color: "black" }}
+            >
+              {salary[0]}
+              <br /> {salary[1]}
+            </p>
+          </Hint>
 
           <LineSeries
             data={[

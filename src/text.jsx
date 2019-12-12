@@ -2,6 +2,7 @@ export const API_URL = "https://inwege.herokuapp.com/api";
 const descrEng =
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";
+const salaryEng = ["your", "salary"];
 const differenceEng = [
   "Men earn",
   " more ",
@@ -34,6 +35,7 @@ const differenceRus = [
   "Вы зарабатываете на",
   " в среднем"
 ];
+const salaryRus = ["ваша", "зарплата"];
 const lngRus = "ru";
 const tabsRus = ["Заработная плата", "Пенсии", "Калькулятор зарплаты"];
 const mainRus = ["Главная", "О нас", "Контакты"];
@@ -58,6 +60,7 @@ export default function changeLanguage(language) {
       selectRegion = selectRegionEng;
       averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
       leaveAFeedBack = leaveAFeedBackEng;
+      salary = salaryEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -71,12 +74,14 @@ export default function changeLanguage(language) {
       selectRegion = selectRegionRus;
       averageBetweenMenAndWomen = averageBetweenMenAndWomenRus;
       leaveAFeedBack = leaveAFeedBackRus;
+      salary = salaryRus;
 
       break;
   }
 }
 
 let noDescr = descrEng;
+let salary = salaryEng;
 let averageLabel = averageEng;
 let differenceLabel = differenceEng;
 let genderLabel = genderEng;
@@ -99,5 +104,6 @@ export {
   selectOccupation,
   selectRegion,
   averageBetweenMenAndWomen,
-  leaveAFeedBack
+  leaveAFeedBack,
+  salary
 };

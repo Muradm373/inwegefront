@@ -84,7 +84,6 @@ class Feedback extends Component {
                     placeholder="Details"
                     className="form-control"
                     type="text"
-                    rows="12"
                     style={{ margin: "10px" }}
                     value={this.state.details}
                     onChange={this.handleDetailsChange}
