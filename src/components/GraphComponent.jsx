@@ -4,6 +4,11 @@ import axios from "axios";
 import EntityComponent from "./EntityComponent";
 import PieChartComponent from "./PieChart";
 import Select from "react-select";
+import Modal from "react-modal";
+
+import { Container, Button, Link } from "react-floating-action-button";
+import Feedback from "./Feedback";
+
 import {
   noDescr,
   averageLabel,
@@ -11,7 +16,8 @@ import {
   genderLabel,
   lng,
   selectRegion,
-  selectOccupation
+  selectOccupation,
+  leaveAFeedBack
 } from "../text";
 
 const API_URL = "https://inwege.herokuapp.com/api";
@@ -33,7 +39,8 @@ class GraphComponent extends Component {
     menColor: "#7db0ff",
     womenColor: "#f00044",
     wage: 0,
-    gender: genderLabel[0]
+    gender: genderLabel[0],
+    showModal: false
   };
 
   constructor() {
@@ -41,6 +48,16 @@ class GraphComponent extends Component {
 
     this.salaryChange = this.salaryChange.bind(this);
     this.genderChange = this.genderChange.bind(this);
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
+
+  handleOpenModal() {
+    this.setState({ showModal: true });
+  }
+
+  handleCloseModal() {
+    this.setState({ showModal: false });
   }
 
   componentDidMount() {
@@ -162,6 +179,10 @@ class GraphComponent extends Component {
   render() {
     return (
       <div>
+        <Modal isOpen={this.state.showModal} className="contentModal">
+          <Feedback handleCloseModal={this.handleCloseModal}></Feedback>
+        </Modal>
+
         <div>
           <div className="col-xl col-md-6 mb-4">
             <div className="card border-left-primary shadow h-100 py-2">
@@ -284,6 +305,19 @@ class GraphComponent extends Component {
             </div>
           </div>
         </div>
+        <Container>
+          <Button
+            tooltip={leaveAFeedBack}
+            icon="fa fa-envelope"
+            rotate={true}
+            onClick={this.handleOpenModal}
+            style={{
+              position: "fixed",
+              bottom: "0px",
+              right: "0px"
+            }}
+          />
+        </Container>
       </div>
     );
   }

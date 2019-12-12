@@ -18,6 +18,7 @@ const genderEng = ["Male", "Female"];
 const selectRegionEng = "Select region";
 const selectOccupationEng = "Select job title";
 const averageBetweenMenAndWomenEng = "Average salary between men and women";
+const leaveAFeedBackEng = "Leave a feedback!";
 
 const descrRus =
   "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.";
@@ -40,6 +41,7 @@ const selectRegionRus = "Выберите регион";
 const selectOccupationRus = "Выберите должность";
 const averageBetweenMenAndWomenRus =
   "Средний показатель между женщинами и мужчинами";
+const leaveAFeedBackRus = "Оставьте отзыв!";
 
 export default function changeLanguage(language) {
   switch (language) {
@@ -54,6 +56,7 @@ export default function changeLanguage(language) {
       selectOccupation = selectOccupationEng;
       selectRegion = selectRegionEng;
       averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
+      leaveAFeedBack = leaveAFeedBackEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -66,6 +69,7 @@ export default function changeLanguage(language) {
       selectOccupation = selectOccupationRus;
       selectRegion = selectRegionRus;
       averageBetweenMenAndWomen = averageBetweenMenAndWomenRus;
+      leaveAFeedBack = leaveAFeedBackRus;
 
       break;
   }
@@ -81,6 +85,7 @@ let main = mainEng;
 let selectOccupation = selectOccupationEng;
 let selectRegion = selectRegionEng;
 let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
+let leaveAFeedBack = leaveAFeedBackEng;
 
 export {
   noDescr,
@@ -92,5 +97,6 @@ export {
   main,
   selectOccupation,
   selectRegion,
-  averageBetweenMenAndWomen
+  averageBetweenMenAndWomen,
+  leaveAFeedBack
 };
