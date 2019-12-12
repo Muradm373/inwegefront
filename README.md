@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App], and is used as a front end for showing salary for various regions and occupations. Helping in understanding gender wage gaps.
+This project was bootstrapped with Create React App, and is used as a front end for showing salary for various regions and occupations. Helping in understanding gender wage gaps.
 
 ## Features
 1. Show the wage gap between genders.
@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App], and is used as a front en
 3. Show the position of the user in the wage distribution.
 4. Illustrate average salary for whole region and country.
 5. Give a full description for the given occupation
-6. Admin panel for uploading and upating the data given by European Union.
+6. Admin panel for uploading and updating the data given by European Union.
 
 ## Requirements
 For building and running the application it is needed to have:
