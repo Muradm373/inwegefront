@@ -17,10 +17,10 @@ import {
   lng,
   selectRegion,
   selectOccupation,
-  leaveAFeedBack
+  leaveAFeedBack,
+  API_URL
 } from "../text";
 
-const API_URL = "https://inwege.herokuapp.com/api";
 const lang = "&lang=";
 
 class GraphComponent extends Component {
@@ -179,7 +179,11 @@ class GraphComponent extends Component {
   render() {
     return (
       <div>
-        <Modal isOpen={this.state.showModal} className="contentModal">
+        <Modal
+          isOpen={this.state.showModal}
+          onRequestClose={this.handleCloseModal}
+          className="contentModal"
+        >
           <Feedback handleCloseModal={this.handleCloseModal}></Feedback>
         </Modal>
 
@@ -309,7 +313,6 @@ class GraphComponent extends Component {
           <Button
             tooltip={leaveAFeedBack}
             icon="fa fa-envelope"
-            rotate={true}
             onClick={this.handleOpenModal}
             style={{
               position: "fixed",

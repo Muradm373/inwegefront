@@ -1,10 +1,47 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { API_URL } from "../text";
 
 class Feedback extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  state = {
+    description: "",
+    details: "",
+    email: ""
+  };
+
+  constructor() {
+    super();
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleDetailsChange = this.handleDetailsChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.sendFeedback = this.sendFeedback.bind(this);
   }
+
+  sendFeedback() {
+    axios
+      .post(`${API_URL}/feedback`, {
+        email: this.state.email,
+        details: this.state.details,
+        description: this.state.description
+      })
+      .then(data => {
+        console.log(data.data);
+      });
+
+    this.props.handleCloseModal();
+  }
+
+  handleDescriptionChange(event) {
+    this.setState({ description: event.target.value });
+  }
+  handleEmailChange(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  handleDetailsChange(event) {
+    this.setState({ details: event.target.value });
+  }
+
   render() {
     return (
       <div
@@ -23,12 +60,15 @@ class Feedback extends Component {
               <div className="row no-gutters align-items-center">
                 <div className="col mr-2">
                   <h2>Your feedback</h2>
+                  <br></br>
                   <input
                     name="description"
                     placeholder="Description"
                     className="form-control"
                     style={{ margin: "10px" }}
                     type="text"
+                    value={this.state.description}
+                    onChange={this.handleDescriptionChange}
                   />
                   <input
                     name="email"
@@ -36,6 +76,8 @@ class Feedback extends Component {
                     className="form-control"
                     type="email"
                     style={{ margin: "10px" }}
+                    value={this.state.email}
+                    onChange={this.handleEmailChange}
                   />
                   <textarea
                     name="details"
@@ -44,8 +86,15 @@ class Feedback extends Component {
                     type="text"
                     rows="12"
                     style={{ margin: "10px" }}
+                    value={this.state.details}
+                    onChange={this.handleDetailsChange}
                   />
-                  <button onClick={this.props.handleCloseModal}>Submit</button>
+                  <button
+                    onClick={this.sendFeedback}
+                    className="btn btn-primary"
+                  >
+                    Submit
+                  </button>
                 </div>
               </div>
             </div>
