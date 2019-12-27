@@ -18,7 +18,8 @@ import {
   selectRegion,
   selectOccupation,
   leaveAFeedBack,
-  API_URL
+  API_URL,
+  salary
 } from "../text";
 
 const lang = "&lang=";
@@ -226,7 +227,7 @@ class GraphComponent extends Component {
                           marginTop: "5px"
                         }}
                       >
-                        Your salary:
+                        {salary[0] + " " + salary[1]}
                       </label>
                       <input
                         name="salary"
@@ -270,7 +271,7 @@ class GraphComponent extends Component {
                     myGender={this.state.gender}
                     occupation={this.state.occupation}
                   ></EntityComponent>
-                  <div className="donutHolder" >
+                  <div className="donutHolder">
                     <p
                       style={{
                         flex: 5,

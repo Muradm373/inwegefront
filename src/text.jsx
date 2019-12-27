@@ -2,7 +2,7 @@ export const API_URL = "https://inwege.herokuapp.com/api";
 const descrEng =
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";
-const salaryEng = ["your", "salary"];
+const salaryEng = ["Your", "salary"];
 const differenceEng = [
   "Men earn",
   " more ",
@@ -35,7 +35,7 @@ const differenceRus = [
   "Вы зарабатываете на",
   " в среднем"
 ];
-const salaryRus = ["ваша", "зарплата"];
+const salaryRus = ["Bаша", "зарплата"];
 const lngRus = "ru";
 const tabsRus = ["Заработная плата", "Пенсии", "Калькулятор зарплаты"];
 const mainRus = ["Главная", "О нас", "Контакты"];
