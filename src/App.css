@@ -39,7 +39,30 @@
   text-align: right;
   background: #f00044;
 }
+.donutHolder {
+  display: flex;
+  flex-direction: row
+}
 
+.differenceLabel {
+  font-size: 10pt; 
+  align-self: stretch;
+  text-align: center;
+   color: black;
+   width: 50%;
+}
+@media only screen and (max-width: 1000px) {
+  .donutHolder{
+    display: flex;
+    flex-direction: column;
+  }
+}
+.donut {
+  flex: 1;
+  margin-right: 5px;
+  display: flex;
+  align-self: stretch;
+}
 p {
   text-align: center;
 }

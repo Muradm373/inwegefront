@@ -37,6 +37,7 @@ class EntityComponent extends Component {
           womenMean={womenMean}
           menColor={this.menColor}
           womenColor={this.womenColor}
+          occupation={this.props.occupation}
           label={
             this.props.differenceLabel[0] +
             " €" +
@@ -163,16 +164,11 @@ class EntityComponent extends Component {
                 : { display: "none" }
             }
             value={{
-              x: parseInt(menMean) / 2 + parseInt(womenMean) / 2,
+              x: parseInt(menMean) / 8 + parseInt(womenMean) / 8,
               y: 3
             }}
           >
-            <p
-              style={{
-                color: "black",
-                marginLeft: "-100%"
-              }}
-            >
+            <p className="differenceLabel">
               {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
                 ? this.props.differenceLabel[6] +
                   " €" +

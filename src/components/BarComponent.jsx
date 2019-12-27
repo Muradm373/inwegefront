@@ -15,7 +15,7 @@ class BarComponent extends Component {
             : { display: "none" }
         }
       >
-        <p> {averageBetweenMenAndWomen} </p>
+        <p> {averageBetweenMenAndWomen + this.props.occupation} </p>
         <FlexibleWidthXYPlot height={130} animation="gentle">
           <XAxis tickTotal={10} />
           <HorizontalBarSeries

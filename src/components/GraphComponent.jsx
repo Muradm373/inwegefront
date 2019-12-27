@@ -268,28 +268,21 @@ class GraphComponent extends Component {
                     genderLabel={genderLabel}
                     myWage={this.state.wage}
                     myGender={this.state.gender}
+                    occupation={this.state.occupation}
                   ></EntityComponent>
-                  <div
-                    style={{
-                      flexDirection: "row",
-                      display: "flex"
-                    }}
-                  >
+                  <div className="donutHolder" >
                     <p
                       style={{
                         flex: 5,
                         display: "flex",
-                        alignSelf: "stretch",
                         textAlign: "left"
                       }}
                     >
                       {this.state.description}
                     </p>
                     <div
+                      className="donut"
                       style={{
-                        flex: 1,
-                        marginRight: "5px",
-                        display: "flex",
                         visibility: this.state.iscoSelected
                           ? "visible"
                           : "hidden"

@@ -19,7 +19,7 @@ const mainEng = ["Home", "About", "Contact"];
 const genderEng = ["Male", "Female"];
 const selectRegionEng = "Select region";
 const selectOccupationEng = "Select job title";
-const averageBetweenMenAndWomenEng = "Average salary between men and women";
+const averageBetweenMenAndWomenEng = "Average salary between men and women in ";
 const leaveAFeedBackEng = "Leave a feedback!";
 
 const descrRus =
