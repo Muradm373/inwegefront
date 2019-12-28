@@ -44,6 +44,9 @@
   flex-direction: row
 }
 
+.incorrect-password{
+  color: red;
+}
 .feedbacks-list {
   overflow:hidden; 
   overflow-y:scroll;

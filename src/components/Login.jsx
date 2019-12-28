@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "../text";
+import { throwStatement } from "@babel/types";
 
 class Login extends Component {
   state = {
     username: "",
     password: "",
-    userToken: ""
+    userToken: "",
+    incorrect: false
   };
   constructor() {
     super();
@@ -30,6 +32,9 @@ class Login extends Component {
       })
       .then(data => {
         this.props.handleCloseModal(data.data.payload.token);
+      })
+      .catch(data => {
+        this.setState({ incorrect: true });
       });
   }
 
@@ -51,7 +56,14 @@ class Login extends Component {
               <div className="row no-gutters align-items-center">
                 <div className="col mr-2">
                   <h2>Login</h2>
-                  <br></br>
+                  {this.state.incorrect ? (
+                    <p className="incorrect-password">
+                      {" "}
+                      Credentials you entered are not correct. Please try again.
+                    </p>
+                  ) : (
+                    <br></br>
+                  )}
                   <input
                     name="username"
                     placeholder="username"
