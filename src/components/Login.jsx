@@ -24,7 +24,7 @@ class Login extends Component {
 
   login() {
     axios
-      .post(`http://inwege-api.cloud.ut.ee/api/auth/signin`, {
+      .post(`${API_URL}/auth/signin`, {
         name: this.state.username,
         password: this.state.password
       })

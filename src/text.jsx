@@ -1,4 +1,4 @@
-export const API_URL = "https://inwege.herokuapp.com/api";
+export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 const descrEng =
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";

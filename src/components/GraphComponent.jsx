@@ -22,6 +22,7 @@ import {
   salary
 } from "../text";
 import Login from "./Login";
+import FeedbacksList from "./FeedbacksList";
 
 const lang = "&lang=";
 
@@ -44,7 +45,9 @@ class GraphComponent extends Component {
     gender: genderLabel[0],
     showModal: false,
     showLoginModal: false,
-    userToken: null
+    showFeedbacksModal: false,
+    userToken: null,
+    feedbacks: []
   };
 
   constructor() {
@@ -56,6 +59,8 @@ class GraphComponent extends Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleOpenLoginModal = this.handleOpenLoginModal.bind(this);
     this.handleCloseLoginModal = this.handleCloseLoginModal.bind(this);
+    this.handleOpenFeedbacksModal = this.handleOpenFeedbacksModal.bind(this);
+    this.handleCloseFeedbacksModal = this.handleCloseFeedbacksModal.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -72,8 +77,26 @@ class GraphComponent extends Component {
   }
 
   handleCloseLoginModal(userToken) {
-    console.log(userToken);
     this.setState({ showLoginModal: false, userToken: userToken });
+  }
+
+  handleOpenFeedbacksModal() {
+    axios
+      .get(`${API_URL}/feedbacks`, {
+        headers: {
+          Authorization: `Bearer ${this.state.userToken}`
+        }
+      })
+      .then(data => {
+        this.setState({
+          feedbacks: data.data.payload,
+          showFeedbacksModal: true
+        });
+      });
+  }
+
+  handleCloseFeedbacksModal() {
+    this.setState({ showFeedbacksModal: false });
   }
 
   logout() {
@@ -146,7 +169,6 @@ class GraphComponent extends Component {
     let jobEntity = data.payload.jobEntity;
     if (jobEntity !== undefined && entities !== undefined) {
       if (entities[0].region !== "All") {
-        console.log(data);
         let description = jobEntity.description;
         this.setState({
           entities: entities,
@@ -211,6 +233,17 @@ class GraphComponent extends Component {
           className="contentModal"
         >
           <Login handleCloseModal={this.handleCloseLoginModal}></Login>
+        </Modal>
+
+        <Modal
+          isOpen={this.state.showFeedbacksModal}
+          onRequestClose={this.handleCloseFeedbacksModal}
+          className="contentModal"
+        >
+          <FeedbacksList
+            handleCloseModal={this.handleCloseFeedbacksModal}
+            feedbacks={this.state.feedbacks}
+          ></FeedbacksList>
         </Modal>
 
         <div>
@@ -334,7 +367,7 @@ class GraphComponent extends Component {
               <Button
                 tooltip={"Read feedbacks"}
                 icon="fa fa-book"
-                onClick={this.handleOpenLoginModal}
+                onClick={this.handleOpenFeedbacksModal}
                 style={{
                   position: "fixed",
                   bottom: "100px",

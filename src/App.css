@@ -44,6 +44,12 @@
   flex-direction: row
 }
 
+.feedbacks-list {
+  overflow:hidden; 
+  overflow-y:scroll;
+  height:50%;
+}
+
 .modal {
   position: fixed;
   text-align: center;
