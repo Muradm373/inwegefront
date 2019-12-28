@@ -21,6 +21,7 @@ import {
   API_URL,
   salary
 } from "../text";
+import Login from "./Login";
 
 const lang = "&lang=";
 
@@ -41,7 +42,9 @@ class GraphComponent extends Component {
     womenColor: "#f00044",
     wage: 0,
     gender: genderLabel[0],
-    showModal: false
+    showModal: false,
+    showLoginModal: false,
+    userToken: null
   };
 
   constructor() {
@@ -51,6 +54,9 @@ class GraphComponent extends Component {
     this.genderChange = this.genderChange.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.handleOpenLoginModal = this.handleOpenLoginModal.bind(this);
+    this.handleCloseLoginModal = this.handleCloseLoginModal.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   handleOpenModal() {
@@ -61,6 +67,18 @@ class GraphComponent extends Component {
     this.setState({ showModal: false });
   }
 
+  handleOpenLoginModal() {
+    this.setState({ showLoginModal: true });
+  }
+
+  handleCloseLoginModal(userToken) {
+    console.log(userToken);
+    this.setState({ showLoginModal: false, userToken: userToken });
+  }
+
+  logout() {
+    this.setState({ userToken: null });
+  }
   componentDidMount() {
     const url = `${API_URL}/`;
     axios
@@ -187,6 +205,13 @@ class GraphComponent extends Component {
         >
           <Feedback handleCloseModal={this.handleCloseModal}></Feedback>
         </Modal>
+        <Modal
+          isOpen={this.state.showLoginModal}
+          onRequestClose={this.handleCloseLoginModal}
+          className="contentModal"
+        >
+          <Login handleCloseModal={this.handleCloseLoginModal}></Login>
+        </Modal>
 
         <div>
           <div className="col-xl mb-4">
@@ -304,16 +329,81 @@ class GraphComponent extends Component {
           </div>
         </div>
         <Container>
-          <Button
-            tooltip={leaveAFeedBack}
-            icon="fa fa-envelope"
-            onClick={this.handleOpenModal}
-            style={{
-              position: "fixed",
-              bottom: "0px",
-              right: "0px"
-            }}
-          />
+          {this.state.userToken != null ? (
+            <div>
+              <Button
+                tooltip={"Read feedbacks"}
+                icon="fa fa-book"
+                onClick={this.handleOpenLoginModal}
+                style={{
+                  position: "fixed",
+                  bottom: "100px",
+                  right: "0px"
+                }}
+              />
+              <Button
+                tooltip={"Logout"}
+                icon="fa fa-user"
+                onClick={this.logout}
+                style={{
+                  position: "fixed",
+                  bottom: "100px",
+                  right: "0px"
+                }}
+              />
+              <Button
+                tooltip={leaveAFeedBack}
+                icon="fa fa-envelope"
+                onClick={this.handleOpenModal}
+                style={{
+                  position: "fixed",
+                  bottom: "0px",
+                  right: "0px"
+                }}
+              />
+
+              <Button
+                icon="fa fa-cog"
+                style={{
+                  position: "fixed",
+                  bottom: "0px",
+                  right: "0px"
+                }}
+              />
+            </div>
+          ) : (
+            <div>
+              <Button
+                tooltip={"Login"}
+                icon="fa fa-user"
+                onClick={this.handleOpenLoginModal}
+                style={{
+                  position: "fixed",
+                  bottom: "100px",
+                  right: "0px"
+                }}
+              />
+              <Button
+                tooltip={leaveAFeedBack}
+                icon="fa fa-envelope"
+                onClick={this.handleOpenModal}
+                style={{
+                  position: "fixed",
+                  bottom: "0px",
+                  right: "0px"
+                }}
+              />
+
+              <Button
+                icon="fa fa-cog"
+                style={{
+                  position: "fixed",
+                  bottom: "0px",
+                  right: "0px"
+                }}
+              />
+            </div>
+          )}
         </Container>
       </div>
     );

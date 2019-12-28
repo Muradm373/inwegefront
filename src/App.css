@@ -44,6 +44,15 @@
   flex-direction: row
 }
 
+.modal {
+  position: fixed;
+  text-align: center;
+  margin-left: 25%;
+  margin-top: 10%;
+  height: 80%;
+  width: 50%;
+}
+
 .differenceLabel {
   font-size: 10pt; 
   align-self: stretch;

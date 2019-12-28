@@ -18,15 +18,11 @@ class Feedback extends Component {
   }
 
   sendFeedback() {
-    axios
-      .post(`${API_URL}/feedback`, {
-        email: this.state.email,
-        details: this.state.details,
-        description: this.state.description
-      })
-      .then(data => {
-        console.log(data.data);
-      });
+    axios.post(`${API_URL}/feedback`, {
+      email: this.state.email,
+      details: this.state.details,
+      description: this.state.description
+    });
 
     this.props.handleCloseModal();
   }
