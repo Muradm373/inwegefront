@@ -12,7 +12,7 @@ import {
   Hint
 } from "react-vis";
 import { fetchData } from "./entityFunc";
-import BarComponent from "./BarComponent";
+import BarComponent from "./graph-representation/BarComponent";
 import { genderLabel, salary } from "../text";
 
 class EntityComponent extends Component {

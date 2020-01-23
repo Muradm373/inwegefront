@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component } from "react";
 import { HorizontalBarSeries, FlexibleWidthXYPlot, XAxis } from "react-vis";
-import { averageBetweenMenAndWomen } from "../text";
+import { averageBetweenMenAndWomen } from "../../text";
 
 class BarComponent extends Component {
   render() {

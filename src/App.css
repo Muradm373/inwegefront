@@ -47,11 +47,7 @@
 .incorrect-password{
   color: red;
 }
-.feedbacks-list {
-  overflow:hidden; 
-  overflow-y:scroll;
-  height:50%;
-}
+
 
 .modal {
   position: fixed;
@@ -3924,6 +3920,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  overflow: scroll;
 }
 
 .nav-link {

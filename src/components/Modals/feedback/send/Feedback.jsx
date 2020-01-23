@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { API_URL } from "../text";
+import { API_URL } from "../../../../text";
 
 class Feedback extends Component {
   state = {

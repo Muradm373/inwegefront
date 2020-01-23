@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import FeedbackListItem from "./FeedbackListItem";
+import Upload from "./Upload";
 
-class FeedbacksList extends Component {
+class FileUploadModal extends Component {
   render() {
-    console.log(this.props.feedbacks);
     return (
       <div
         style={{
@@ -20,19 +19,15 @@ class FeedbacksList extends Component {
             <div className="card-body">
               <div className="row no-gutters align-items-center">
                 <div className="col mr-2">
-                  <nav>
-                    <ul className="feedbacks-list">
-                      {this.props.feedbacks.map(item => (
-                        <FeedbackListItem feedback={item} />
-                      ))}
-                    </ul>
-                  </nav>
-                  <button
-                    onClick={this.props.handleCloseModal}
-                    className="btn btn-primary"
-                  >
-                    Close
-                  </button>
+                  <Upload
+                    userToken={this.props.userToken}
+                    type={"job"}
+                  ></Upload>
+                  <br></br>
+                  <Upload
+                    userToken={this.props.userToken}
+                    type={"salary"}
+                  ></Upload>
                 </div>
               </div>
             </div>
@@ -43,4 +38,4 @@ class FeedbacksList extends Component {
   }
 }
 
-export default FeedbacksList;
+export default FileUploadModal;

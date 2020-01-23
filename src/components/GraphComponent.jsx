@@ -3,11 +3,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import EntityComponent from "./EntityComponent";
 import PieChartComponent from "./PieChart";
+import FileUploadComponent from "./Modals/file-upload/FileUploadComponent";
 import Select from "react-select";
 import Modal from "react-modal";
+import Feedback from "./Modals/feedback/send/Feedback";
 
 import { Container, Button, Link } from "react-floating-action-button";
-import Feedback from "./Feedback";
 
 import {
   noDescr,
@@ -21,8 +22,8 @@ import {
   API_URL,
   salary
 } from "../text";
-import Login from "./Login";
-import FeedbacksList from "./FeedbacksList";
+import Login from "./Modals/Login";
+import FeedbacksList from "./Modals/feedback/fetch/FeedbacksList";
 
 const lang = "&lang=";
 
@@ -46,6 +47,7 @@ class GraphComponent extends Component {
     showModal: false,
     showLoginModal: false,
     showFeedbacksModal: false,
+    showFileUploadModal: false,
     userToken: null,
     feedbacks: []
   };
@@ -61,6 +63,10 @@ class GraphComponent extends Component {
     this.handleCloseLoginModal = this.handleCloseLoginModal.bind(this);
     this.handleOpenFeedbacksModal = this.handleOpenFeedbacksModal.bind(this);
     this.handleCloseFeedbacksModal = this.handleCloseFeedbacksModal.bind(this);
+    this.handleOpenFileUploadModal = this.handleOpenFileUploadModal.bind(this);
+    this.handleCloseFileUploadModal = this.handleCloseFileUploadModal.bind(
+      this
+    );
     this.logout = this.logout.bind(this);
   }
 
@@ -80,6 +86,10 @@ class GraphComponent extends Component {
     this.setState({ showLoginModal: false, userToken: userToken });
   }
 
+  handleCloseFileUploadModal() {
+    this.setState({ showFileUploadModal: false });
+  }
+
   handleOpenFeedbacksModal() {
     axios
       .get(`${API_URL}/feedbacks`, {
@@ -93,6 +103,12 @@ class GraphComponent extends Component {
           showFeedbacksModal: true
         });
       });
+  }
+
+  handleOpenFileUploadModal() {
+    this.setState({
+      showFileUploadModal: true
+    });
   }
 
   handleCloseFeedbacksModal() {
@@ -246,6 +262,17 @@ class GraphComponent extends Component {
           ></FeedbacksList>
         </Modal>
 
+        <Modal
+          isOpen={this.state.showFileUploadModal}
+          onRequestClose={this.handleCloseFileUploadModal}
+          className="contentModal"
+        >
+          <FileUploadComponent
+            handleCloseModal={this.handleCloseFileUploadModal}
+            userToken={this.state.userToken}
+          ></FileUploadComponent>
+        </Modal>
+
         <div>
           <div className="col-xl mb-4">
             <div className="card border-left-primary shadow h-100 py-2">
@@ -364,6 +391,16 @@ class GraphComponent extends Component {
         <Container>
           {this.state.userToken != null ? (
             <div>
+              <Button
+                tooltip={"Upload new data file"}
+                icon="fa fa-upload"
+                onClick={this.handleOpenFileUploadModal}
+                style={{
+                  position: "fixed",
+                  bottom: "100px",
+                  right: "0px"
+                }}
+              />
               <Button
                 tooltip={"Read feedbacks"}
                 icon="fa fa-book"

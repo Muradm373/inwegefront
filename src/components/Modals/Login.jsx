@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { API_URL } from "../text";
-import { throwStatement } from "@babel/types";
+import { API_URL } from "../../text";
 
 class Login extends Component {
   state = {
