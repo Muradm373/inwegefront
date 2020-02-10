@@ -37,6 +37,18 @@ const languages = [
   }
 ];
 
+let mean = [];
+let occupation = "";
+let region = "";
+
+function getData(meanData, occupationData, regionData) {
+  mean = meanData;
+  region = regionData;
+  occupation = occupationData;
+
+  console.log(mean, occupation, region);
+}
+
 function refresh(event) {
   changeLanguage(event.value);
 
@@ -136,7 +148,7 @@ function App() {
         <main id="main">
           <div className="hero-section">
             <div className="wave">
-              <svg width="100%" height="auto" viewBox="0 0 1920 355">
+              <svg width="100%" viewBox="0 0 1920 355">
                 <g
                   id="Page-1"
                   stroke="none"
@@ -158,7 +170,10 @@ function App() {
               </svg>
             </div>
             <div className="selector-style w-75 text-center mx-auto">
-              <GraphComponent id="graph"></GraphComponent>
+              <GraphComponent
+                id="graph"
+                onDataChange={getData}
+              ></GraphComponent>
               <br></br>
               <br></br>
               <br></br>
@@ -181,16 +196,14 @@ function App() {
             <div className="row">
               <div className="col-md-4" data-aos="fade-up" data-aos-delay="">
                 <div className="feature-1 text-center">
-                  <div className="wrap-icon icon-1">
-                    <div className="donut">
-                      {/* <PieChartComponent
-                        key="PieChart"
-                        mean={this.state.mean}
-                        menColor={menColor}
-                        womenColor={womenColor}
-                        averageLabel={averageLabel + this.state.occupation}
-                      /> */}
-                    </div>
+                  <div>
+                    <PieChartComponent
+                      key="PieChart"
+                      mean={mean}
+                      menColor={menColor}
+                      womenColor={womenColor}
+                      averageLabel={averageLabel + occupation}
+                    />
                   </div>
                   <h3 className="mb-3">{averages[0]}</h3>
                   <p>
@@ -204,7 +217,7 @@ function App() {
                   <div className="wrap-icon icon-1">
                     <span className="icon la la-toggle-off"></span>
                   </div>
-                  <h3 className="mb-3">{averages[1]}</h3>
+                  <h3 className="mb-3">Average for {occupation}</h3>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Rem, optio.

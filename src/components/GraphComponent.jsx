@@ -113,6 +113,12 @@ class GraphComponent extends Component {
           mean: mean
         });
       });
+
+    this.props.onDataChange(
+      this.state.mean,
+      this.state.occupation,
+      this.state.region
+    );
   }
 
   getSalaryEntities(data) {

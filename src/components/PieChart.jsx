@@ -43,13 +43,10 @@ class PieChartComponent extends Component {
           width={250}
           colorType="literal"
           data={data}
-          animation={true}
           padAngle={0.04}
           showLabels={true}
           labelsRadiusMultiplier={2.2}
         ></RadialChart>
-
-        <p> {this.props.averageLabel}</p>
       </div>
     );
   }
