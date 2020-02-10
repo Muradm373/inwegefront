@@ -7,9 +7,7 @@ import FileUploadComponent from "./Modals/file-upload/FileUploadComponent";
 import Select from "react-select";
 import Modal from "react-modal";
 import Feedback from "./Modals/feedback/send/Feedback";
-
 import { Container, Button, Link } from "react-floating-action-button";
-
 import {
   noDescr,
   averageLabel,
@@ -20,7 +18,9 @@ import {
   selectOccupation,
   leaveAFeedBack,
   API_URL,
-  salary
+  salary,
+  menColor,
+  womenColor
 } from "../text";
 import Login from "./Modals/Login";
 import FeedbacksList from "./Modals/feedback/fetch/FeedbacksList";
@@ -40,14 +40,8 @@ class GraphComponent extends Component {
     occupation: "",
     mean: [],
     code: "",
-    menColor: "#7db0ff",
-    womenColor: "#f00044",
     wage: 0,
     gender: genderLabel[0],
-    showModal: false,
-    showLoginModal: false,
-    showFeedbacksModal: false,
-    showFileUploadModal: false,
     userToken: null,
     feedbacks: []
   };
@@ -55,69 +49,10 @@ class GraphComponent extends Component {
   constructor() {
     super();
 
-    this.salaryChange = this.salaryChange.bind(this);
-    this.genderChange = this.genderChange.bind(this);
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-    this.handleOpenLoginModal = this.handleOpenLoginModal.bind(this);
-    this.handleCloseLoginModal = this.handleCloseLoginModal.bind(this);
-    this.handleOpenFeedbacksModal = this.handleOpenFeedbacksModal.bind(this);
-    this.handleCloseFeedbacksModal = this.handleCloseFeedbacksModal.bind(this);
-    this.handleOpenFileUploadModal = this.handleOpenFileUploadModal.bind(this);
-    this.handleCloseFileUploadModal = this.handleCloseFileUploadModal.bind(
-      this
-    );
-    this.logout = this.logout.bind(this);
+    this.onSalaryChange = this.onSalaryChange.bind(this);
+    this.onGenderChange = this.onGenderChange.bind(this);
   }
 
-  handleOpenModal() {
-    this.setState({ showModal: true });
-  }
-
-  handleCloseModal() {
-    this.setState({ showModal: false });
-  }
-
-  handleOpenLoginModal() {
-    this.setState({ showLoginModal: true });
-  }
-
-  handleCloseLoginModal(userToken) {
-    this.setState({ showLoginModal: false, userToken: userToken });
-  }
-
-  handleCloseFileUploadModal() {
-    this.setState({ showFileUploadModal: false });
-  }
-
-  handleOpenFeedbacksModal() {
-    axios
-      .get(`${API_URL}/feedbacks`, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`
-        }
-      })
-      .then(data => {
-        this.setState({
-          feedbacks: data.data.payload,
-          showFeedbacksModal: true
-        });
-      });
-  }
-
-  handleOpenFileUploadModal() {
-    this.setState({
-      showFileUploadModal: true
-    });
-  }
-
-  handleCloseFeedbacksModal() {
-    this.setState({ showFeedbacksModal: false });
-  }
-
-  logout() {
-    this.setState({ userToken: null });
-  }
   componentDidMount() {
     const url = `${API_URL}/`;
     axios
@@ -137,9 +72,9 @@ class GraphComponent extends Component {
     const isco = this.state.isco;
     const code = this.state.code;
 
-    this.requestFields(region);
+    this.getOccupations(region);
     if (this.state.isco !== "") {
-      this.request(region, isco, code);
+      this.getMean(region, isco, code);
     }
     this.setState({ region: region, regionSelected: true });
   };
@@ -151,12 +86,12 @@ class GraphComponent extends Component {
     let code = event.value.code;
 
     this.setState({ isco: isco, iscoSelected: true, code: code });
-    this.request(region, isco, code);
+    this.getMean(region, isco, code);
 
     this.setState({ occupation: event.value.name });
   };
 
-  request(region, isco, code) {
+  getMean(region, isco, code) {
     const url =
       `${API_URL}/jobs?region=` +
       region +
@@ -170,7 +105,7 @@ class GraphComponent extends Component {
     axios
       .get(url)
       .then(response => response.data)
-      .then(data => this.saveData(data))
+      .then(data => this.getSalaryEntities(data))
       .then(response => response.data)
       .then(data => {
         let mean = data.payload;
@@ -180,7 +115,7 @@ class GraphComponent extends Component {
       });
   }
 
-  saveData(data) {
+  getSalaryEntities(data) {
     let entities = data.payload.salaryEntities;
     let jobEntity = data.payload.jobEntity;
     if (jobEntity !== undefined && entities !== undefined) {
@@ -204,7 +139,8 @@ class GraphComponent extends Component {
     }
     return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
   }
-  requestFields(region) {
+
+  getOccupations(region) {
     const url = `${API_URL}/`;
     axios
       .get(url + "jobs/names?region=" + region + lang + lng)
@@ -221,7 +157,7 @@ class GraphComponent extends Component {
       });
   }
 
-  salaryChange(event) {
+  onSalaryChange(event) {
     if (
       event.target.value < 1000000 &&
       event.target.value >= 0 &&
@@ -230,49 +166,12 @@ class GraphComponent extends Component {
       this.setState({ wage: event.target.value });
   }
 
-  genderChange(event) {
+  onGenderChange(event) {
     this.setState({ gender: event.value });
   }
   render() {
     return (
       <div>
-        {/* <Modal
-          isOpen={this.state.showModal}
-          onRequestClose={this.handleCloseModal}
-          className="contentModal"
-        >
-          <Feedback handleCloseModal={this.handleCloseModal}></Feedback>
-        </Modal>
-        <Modal
-          isOpen={this.state.showLoginModal}
-          onRequestClose={this.handleCloseLoginModal}
-          className="contentModal"
-        >
-          <Login handleCloseModal={this.handleCloseLoginModal}></Login>
-        </Modal>
-
-        <Modal
-          isOpen={this.state.showFeedbacksModal}
-          onRequestClose={this.handleCloseFeedbacksModal}
-          className="contentModal"
-        >
-          <FeedbacksList
-            handleCloseModal={this.handleCloseFeedbacksModal}
-            feedbacks={this.state.feedbacks}
-          ></FeedbacksList>
-        </Modal>
-
-        <Modal
-          isOpen={this.state.showFileUploadModal}
-          onRequestClose={this.handleCloseFileUploadModal}
-          className="contentModal"
-        >
-          <FileUploadComponent
-            handleCloseModal={this.handleCloseFileUploadModal}
-            userToken={this.state.userToken}
-          ></FileUploadComponent>
-        </Modal> */}
-
         <div className="graph-component">
           <Select
             onChange={this.onRegionChange}
@@ -292,14 +191,14 @@ class GraphComponent extends Component {
               <input
                 name="salary"
                 className="form-control"
-                onChange={this.salaryChange}
+                onChange={this.onSalaryChange}
                 type="number"
                 value={this.state.wage}
               />
             </div>
             <div className="col-2">
               <Select
-                onChange={this.genderChange}
+                onChange={this.onGenderChange}
                 className="gender-select"
                 defaultValue={{
                   label: genderLabel[0],
@@ -318,8 +217,8 @@ class GraphComponent extends Component {
         <div className="col-xl my-4">
           <EntityComponent
             entities={this.state.entities}
-            menColor={this.state.menColor}
-            womenColor={this.state.womenColor}
+            menColor={menColor}
+            womenColor={womenColor}
             differenceLabel={differenceLabel}
             genderLabel={genderLabel}
             myWage={this.state.wage}
@@ -336,113 +235,8 @@ class GraphComponent extends Component {
             >
               {this.state.description}
             </p>
-            {/* <div
-                      className="donut"
-                      style={{
-                        visibility: this.state.iscoSelected
-                          ? "visible"
-                          : "hidden"
-                      }}
-                    >
-                      <PieChartComponent
-                        key="PieChart"
-                        mean={this.state.mean}
-                        menColor={this.state.menColor}
-                        womenColor={this.state.womenColor}
-                        averageLabel={averageLabel + this.state.occupation}
-                      />
-                    </div> */}
           </div>
         </div>
-
-        {/*
-        <Container>
-          {this.state.userToken != null ? (
-            <div>
-              <Button
-                tooltip={"Upload new data file"}
-                icon="fa fa-upload"
-                onClick={this.handleOpenFileUploadModal}
-                style={{
-                  position: "fixed",
-                  bottom: "100px",
-                  right: "0px"
-                }}
-              />
-              <Button
-                tooltip={"Read feedbacks"}
-                icon="fa fa-book"
-                onClick={this.handleOpenFeedbacksModal}
-                style={{
-                  position: "fixed",
-                  bottom: "100px",
-                  right: "0px"
-                }}
-              />
-              <Button
-                tooltip={"Logout"}
-                icon="fa fa-user"
-                onClick={this.logout}
-                style={{
-                  position: "fixed",
-                  bottom: "100px",
-                  right: "0px"
-                }}
-              />
-              <Button
-                tooltip={leaveAFeedBack}
-                icon="fa fa-envelope"
-                onClick={this.handleOpenModal}
-                style={{
-                  position: "fixed",
-                  bottom: "0px",
-                  right: "0px"
-                }}
-              />
-
-              <Button
-                icon="fa fa-cog"
-                style={{
-                  position: "fixed",
-                  bottom: "0px",
-                  right: "0px"
-                }}
-              />
-            </div>
-          ) : (
-            <div>
-              <Button
-                tooltip={"Login"}
-                icon="fa fa-user"
-                onClick={this.handleOpenLoginModal}
-                style={{
-                  position: "fixed",
-                  bottom: "100px",
-                  right: "0px"
-                }}
-              />
-              <Button
-                tooltip={leaveAFeedBack}
-                icon="fa fa-envelope"
-                onClick={this.handleOpenModal}
-                style={{
-                  position: "fixed",
-                  bottom: "0px",
-                  right: "0px"
-                }}
-              />
-
-              <Button
-                icon="fa fa-cog"
-                style={{
-                  position: "fixed",
-                  bottom: "0px",
-                  right: "0px"
-                }}
-              />
-            </div>
-          )}
-        </Container> */}
       </div>
     );
   }

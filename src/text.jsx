@@ -1,5 +1,7 @@
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const APP_NAME = "InWeGe";
+export const menColor = "#7db0ff";
+export const womenColor = "#f00044";
 const descrEng =
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";
@@ -21,7 +23,7 @@ const averagesEng = [
   "Average for Occupation",
   "Average for Region"
 ];
-const mainEng = ["Home", "About", "Contact"];
+const mainEng = ["Home", "About", "Contact", "Navigation"];
 const genderEng = ["Male", "Female"];
 const selectRegionEng = "Select region";
 const selectOccupationEng = "Select job title";

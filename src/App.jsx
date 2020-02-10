@@ -8,13 +8,15 @@ import changeLanguage, {
   APP_NAME,
   averageDataEng,
   main,
-  averages
+  averages,
+  averageLabel,
+  menColor,
+  womenColor
 } from "./text";
 import ReactDOM from "react-dom";
-import Background from "./img/bg.jpg";
-import Login from "./components/Modals/Login";
 import Feedback from "./components/Modals/feedback/send/Feedback";
 import AOS from "aos";
+import PieChartComponent from "./components/PieChart";
 
 const languages = [
   {
@@ -39,7 +41,6 @@ function refresh(event) {
   changeLanguage(event.value);
 
   ReactDOM.render(<App />, document.getElementById("root"));
-  ReactDOM.render(<GraphComponent />, document.getElementById("graph"));
 }
 
 const dropdownIndicatorStyles = (base, state) => {
@@ -54,104 +55,6 @@ const dropdownIndicatorStyles = (base, state) => {
 function App() {
   AOS.init();
   return (
-    // <div className="App">
-    //   <nav
-    //     className="navbar navbar-expand-lg bg-transparent"
-    //     style={{ position: "absolute", right: "5%" }}
-    //   >
-    //     <div className="container">
-    //       <button
-    //         className="navbar-toggler"
-    //         type="button"
-    //         data-toggle="collapse"
-    //         data-target="#navbarResponsive"
-    //         aria-controls="navbarResponsive"
-    //         aria-expanded="false"
-    //         aria-label="Toggle navigation"
-    //       >
-    //         <span className="navbar-toggler-icon"></span>
-    //       </button>
-    //       <div className="collapse navbar-collapse" id="navbarResponsive">
-    //         <ul className="navbar-nav ml-auto">
-    //           <li className="nav-item active">
-    //             <a className="nav-link" href="/">
-    //               {main[0]}
-    //               <span className="sr-only">(current)</span>
-    //             </a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link" href="/">
-    //               {main[1]}
-    //             </a>
-    //           </li>
-    //           <li className="nav-item">
-    //             <a className="nav-link" href="/">
-    //               {main[2]}
-    //             </a>
-    //           </li>
-    //           <li>
-    //             <div style={{ width: "250%" }}>
-    //               <Select
-    //                 className="bg-transparent"
-    //                 options={languages}
-    //                 onChange={refresh}
-    //                 defaultValue={languages[0]}
-    //                 styles={{ dropdownIndicator: dropdownIndicatorStyles }}
-    //                 isSearchable={false}
-    //               ></Select>
-    //             </div>
-    //           </li>
-    //         </ul>
-    //       </div>
-    //     </div>
-    //   </nav>
-    //   <section
-    //     id="home"
-    //     style={{
-    //       height: "400px",
-    //       backgroundAttachment: "fixed",
-    //       backgroundImage: `url(${Background})`
-    //     }}
-    //     data-section="home"
-    //   >
-    //     <div>
-    //       <div style={{ padding: "100px" }}>
-    //         <h1>InWeGe</h1>
-    //         <p>Gender Gaps in Wages and Wealth</p>
-    //       </div>
-    //     </div>
-    //   </section>
-
-    //   <section className="md-5" style={{ marginTop: "-100px" }}>
-    //     <div className="container">
-    //       <div id="graph">
-    //         <GraphComponent></GraphComponent>
-    //       </div>
-    //     </div>
-    //   </section>
-
-    //   <footer
-    //     className="py-5"
-    //     style={{
-    //       backgroundAttachment: "fixed",
-    //       backgroundImage: `url(${Background})`
-    //     }}
-    //   >
-    //     <div className="container">
-    //       <p className="m-0 text-center text-white">
-    //         Copyright &copy; InWeGe 2019
-    //       </p>
-    //     </div>
-    //   </footer>
-
-    //   <script src="vendor/jquery/jquery.min.js"></script>
-    //   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    //   <link
-    //     rel="stylesheet"
-    //     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    //   ></link>
-    // </div>
-
     <div>
       <div>
         <div className="site-mobile-menu site-navbar-target">
@@ -162,7 +65,6 @@ function App() {
           </div>
           <div className="site-mobile-menu-body"></div>
         </div>
-
         <header
           className="site-navbar js-sticky-header site-navbar-target"
           role="banner"
@@ -198,23 +100,21 @@ function App() {
                         {tabs[2]}
                       </a>
                     </li>
-
-                    <li className="has-children">
-                      <a href="blog.html" className="nav-link">
-                        User
+                    <li>
+                      <a href="#" className="nav-link">
+                        <div style={{ width: "250%" }}>
+                          <Select
+                            className="bg-transparent"
+                            options={languages}
+                            onChange={refresh}
+                            defaultValue={languages[0]}
+                            styles={{
+                              dropdownIndicator: dropdownIndicatorStyles
+                            }}
+                            isSearchable={false}
+                          ></Select>
+                        </div>
                       </a>
-                      <ul className="dropdown">
-                        <li>
-                          <a href="blog.html" className="nav-link">
-                            Feedbacks
-                          </a>
-                        </li>
-                        <li>
-                          <a href="blog-single.html" className="nav-link">
-                            Logout
-                          </a>
-                        </li>
-                      </ul>
                     </li>
                   </ul>
                 </nav>
@@ -233,7 +133,6 @@ function App() {
             </div>
           </div>
         </header>
-
         <main id="main">
           <div className="hero-section">
             <div className="wave">
@@ -259,7 +158,7 @@ function App() {
               </svg>
             </div>
             <div className="selector-style w-75 text-center mx-auto">
-              <GraphComponent></GraphComponent>
+              <GraphComponent id="graph"></GraphComponent>
               <br></br>
               <br></br>
               <br></br>
@@ -269,7 +168,6 @@ function App() {
             </div>
           </div>
         </main>
-
         <div className="site-section">
           <div className="container">
             <div className="row justify-content-center text-center mb-5">
@@ -284,7 +182,15 @@ function App() {
               <div className="col-md-4" data-aos="fade-up" data-aos-delay="">
                 <div className="feature-1 text-center">
                   <div className="wrap-icon icon-1">
-                    <span className="icon la la-users"></span>
+                    <div className="donut">
+                      {/* <PieChartComponent
+                        key="PieChart"
+                        mean={this.state.mean}
+                        menColor={menColor}
+                        womenColor={womenColor}
+                        averageLabel={averageLabel + this.state.occupation}
+                      /> */}
+                    </div>
                   </div>
                   <h3 className="mb-3">{averages[0]}</h3>
                   <p>
@@ -320,50 +226,14 @@ function App() {
             </div>
           </div>
         </div>
-
-        {/* <div className="site-section">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-4">
-                <div className="step">
-                  <span className="number">01</span>
-                  <h3>Sign Up</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Rem, optio.
-                  </p>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="step">
-                  <span className="number">02</span>
-                  <h3>Create Profile</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Rem, optio.
-                  </p>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="step">
-                  <span className="number">03</span>
-                  <h3>Enjoy the app</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Rem, optio.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
+        }
       </div>
       <footer className="footer" role="contentinfo">
         <div className="container">
           <div className="row">
             <div className="col-md-4 mb-4 mb-md-0">
               <h3>About {APP_NAME}</h3>
-              <p>
+              <p className="text-left">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
                 ea delectus pariatur, numquam aperiam dolore nam optio dolorem
                 facilis itaque voluptatum recusandae deleniti minus animi.

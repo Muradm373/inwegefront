@@ -15,6 +15,12 @@ import { fetchData } from "./entityFunc";
 import BarComponent from "./graph-representation/BarComponent";
 import { genderLabel, salary } from "../text";
 
+const display = (myWage, mean) => {
+  return Math.abs(parseInt(myWage) - parseInt(mean)) > 50
+    ? {}
+    : { display: "none" };
+};
+
 class EntityComponent extends Component {
   render() {
     let data = fetchData(this.props.entities);
@@ -110,14 +116,7 @@ class EntityComponent extends Component {
             strokeDasharray="7, 3"
           />
 
-          <Hint
-            value={{ x: mean, y: 0 }}
-            style={
-              parseInt(menMean) - parseInt(womenMean) !== 0
-                ? {}
-                : { display: "none" }
-            }
-          >
+          <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean)}>
             <p
               style={{ fontSize: "10pt", textAlign: "center", color: "black" }}
             >
@@ -129,14 +128,7 @@ class EntityComponent extends Component {
             </p>
           </Hint>
 
-          <Hint
-            value={{ x: myWage, y: 0 }}
-            style={
-              parseInt(menMean) - parseInt(womenMean) !== 0
-                ? {}
-                : { display: "none" }
-            }
-          >
+          <Hint value={{ x: myWage, y: 0 }} style={display(myWage, mean)}>
             <p
               style={{ fontSize: "10pt", textAlign: "center", color: "black" }}
             >
@@ -155,24 +147,10 @@ class EntityComponent extends Component {
             strokeDasharray="7, 3"
           />
 
-          <LineSeries
-            data={[
-              { x: myWage, y: 2 },
-              { x: mean, y: 2 }
-            ]}
-            strokeWidth="1"
-            stroke="black"
-            strokeDasharray="7, 3"
-          />
-
           <Hint
-            style={
-              parseInt(menMean) - parseInt(womenMean) !== 0
-                ? {}
-                : { display: "none" }
-            }
+            style={display(myWage, mean)}
             value={{
-              x: parseInt(menMean) / 8 + parseInt(womenMean) / 8,
+              x: parseInt(myWage) / 2 + parseInt(mean) / 2,
               y: 3
             }}
           >
