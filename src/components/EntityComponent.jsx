@@ -67,13 +67,21 @@ class EntityComponent extends Component {
         </div>
         <FlexibleWidthXYPlot height={400} animation="gentle">
           <VerticalGridLines
-            style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.5 }}
+            style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.5 }}
           />
           <HorizontalGridLines
-            style={{ stroke: "gray", strokeWidth: 0.5, opacity: 0.3 }}
+            style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.3 }}
           />
-          <XAxis tickTotal={10} tickFormat={v => `€${v}`} />
-          <YAxis tickTotal={4} tickFormat={v => `${v * 10}%`} />
+          <XAxis
+            tickTotal={10}
+            tickFormat={v => `€${v}`}
+            style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+          />
+          <YAxis
+            tickTotal={4}
+            style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+            tickFormat={v => `${v * 10}%`}
+          />
 
           <AreaSeries
             className="area-series-women"

@@ -17,7 +17,10 @@ class BarComponent extends Component {
       >
         <p> {averageBetweenMenAndWomen + this.props.occupation} </p>
         <FlexibleWidthXYPlot height={130} animation="gentle">
-          <XAxis tickTotal={10} />
+          <XAxis
+            tickTotal={10}
+            style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+          />
           <HorizontalBarSeries
             data={[{ y: 2, x: this.props.menMean }]}
             color={this.props.menColor}

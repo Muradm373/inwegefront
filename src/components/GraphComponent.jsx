@@ -236,7 +236,7 @@ class GraphComponent extends Component {
   render() {
     return (
       <div>
-        <Modal
+        {/* <Modal
           isOpen={this.state.showModal}
           onRequestClose={this.handleCloseModal}
           className="contentModal"
@@ -271,102 +271,72 @@ class GraphComponent extends Component {
             handleCloseModal={this.handleCloseFileUploadModal}
             userToken={this.state.userToken}
           ></FileUploadComponent>
-        </Modal>
+        </Modal> */}
 
-        <div>
-          <div className="col-xl mb-4">
-            <div className="card border-left-primary shadow h-100 py-2">
-              <div className="card-body">
-                <div className="row no-gutters align-items-center">
-                  <div className="col mr-2">
-                    <Select
-                      onChange={this.onRegionChange}
-                      options={this.state.regions}
-                      placeholder={selectRegion}
-                    ></Select>
-                    <Select
-                      onChange={this.onIscoChange}
-                      options={this.state.iscos}
-                      placeholder={selectOccupation}
-                    ></Select>
-                  </div>
-                </div>
-              </div>
+        <div className="graph-component">
+          <Select
+            onChange={this.onRegionChange}
+            options={this.state.regions}
+            placeholder={selectRegion}
+            className="region-select mb-md-1"
+          ></Select>
+          <Select
+            onChange={this.onIscoChange}
+            options={this.state.iscos}
+            placeholder={selectOccupation}
+            className="occupation-select  mb-md-1"
+          ></Select>
+
+          <div className="row">
+            <div className="col-10">
+              <input
+                name="salary"
+                className="form-control"
+                onChange={this.salaryChange}
+                type="number"
+                value={this.state.wage}
+              />
+            </div>
+            <div className="col-2">
+              <Select
+                onChange={this.genderChange}
+                className="gender-select"
+                defaultValue={{
+                  label: genderLabel[0],
+                  value: genderLabel[0]
+                }}
+                options={[
+                  { label: genderLabel[0], value: genderLabel[0] },
+                  { label: genderLabel[1], value: genderLabel[1] }
+                ]}
+              ></Select>
             </div>
           </div>
-          <div className="col-xl mb-4">
-            <div className="card border-left-primary shadow h-100 py-2">
-              <div className="card-body">
-                <div className="row no-gutters align-items-center">
-                  <div className="col mr-2">
-                    <div
-                      style={{
-                        display: "flex",
-                        justifyContent: "space-between"
-                      }}
-                    >
-                      <label
-                        style={{
-                          width: "10%",
-                          textAlign: "center",
-                          marginTop: "5px"
-                        }}
-                      >
-                        {salary[0] + " " + salary[1]}
-                      </label>
-                      <input
-                        name="salary"
-                        className="form-control"
-                        onChange={this.salaryChange}
-                        type="number"
-                        value={this.state.wage}
-                      />
-                    </div>
-                    <div>
-                      <Select
-                        onChange={this.genderChange}
-                        defaultValue={{
-                          label: genderLabel[0],
-                          value: genderLabel[0]
-                        }}
-                        options={[
-                          { label: genderLabel[0], value: genderLabel[0] },
-                          { label: genderLabel[1], value: genderLabel[1] }
-                        ]}
-                      ></Select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div></div>
         </div>
-        <div className="col-xl mb-4">
-          <div className="card border-left-primary shadow h-100 py-2">
-            <div className="card-body">
-              <div className="row no-gutters align-items-center">
-                <div className="col mr-2">
-                  <EntityComponent
-                    entities={this.state.entities}
-                    menColor={this.state.menColor}
-                    womenColor={this.state.womenColor}
-                    differenceLabel={differenceLabel}
-                    genderLabel={genderLabel}
-                    myWage={this.state.wage}
-                    myGender={this.state.gender}
-                    occupation={this.state.occupation}
-                  ></EntityComponent>
-                  <div className="donutHolder">
-                    <p
-                      style={{
-                        flex: 5,
-                        display: "flex",
-                        textAlign: "left"
-                      }}
-                    >
-                      {this.state.description}
-                    </p>
-                    <div
+
+        <div className="col-xl my-4">
+          <EntityComponent
+            entities={this.state.entities}
+            menColor={this.state.menColor}
+            womenColor={this.state.womenColor}
+            differenceLabel={differenceLabel}
+            genderLabel={genderLabel}
+            myWage={this.state.wage}
+            myGender={this.state.gender}
+            occupation={this.state.occupation}
+          ></EntityComponent>
+          <div className="donutHolder">
+            <p
+              style={{
+                flex: 5,
+                display: "flex",
+                textAlign: "left"
+              }}
+            >
+              {this.state.description}
+            </p>
+            {/* <div
                       className="donut"
                       style={{
                         visibility: this.state.iscoSelected
@@ -381,13 +351,11 @@ class GraphComponent extends Component {
                         womenColor={this.state.womenColor}
                         averageLabel={averageLabel + this.state.occupation}
                       />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    </div> */}
           </div>
         </div>
+
+        {/*
         <Container>
           {this.state.userToken != null ? (
             <div>
@@ -474,7 +442,7 @@ class GraphComponent extends Component {
               />
             </div>
           )}
-        </Container>
+        </Container> */}
       </div>
     );
   }

@@ -1,4 +1,5 @@
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
+export const APP_NAME = "InWeGe";
 const descrEng =
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.";
 const averageEng = "Average in Estonia for ";
@@ -14,13 +15,19 @@ const differenceEng = [
   " on average"
 ];
 const lngEng = "en";
-const tabsEng = ["Wages", "Pensions", "Wage forecast"];
+const tabsEng = ["Home", "Pensions", "Wage Calculator"];
+const averagesEng = [
+  "Average for Estonia",
+  "Average for Occupation",
+  "Average for Region"
+];
 const mainEng = ["Home", "About", "Contact"];
 const genderEng = ["Male", "Female"];
 const selectRegionEng = "Select region";
 const selectOccupationEng = "Select job title";
 const averageBetweenMenAndWomenEng = "Average salary for men and women in ";
 const leaveAFeedBackEng = "Leave a feedback!";
+const averageDataEng = "Average data over Estonia";
 
 const descrRus =
   "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.";
@@ -37,7 +44,7 @@ const differenceRus = [
 ];
 const salaryRus = ["Bаша", "зарплата"];
 const lngRus = "ru";
-const tabsRus = ["Заработная плата", "Пенсии", "Калькулятор зарплаты"];
+const tabsRus = ["Главная", "Пенсии", "Калькулятор зарплаты"];
 const mainRus = ["Главная", "О нас", "Контакты"];
 const genderRus = ["Мужчины", "Женщины"];
 const selectRegionRus = "Выберите регион";
@@ -92,6 +99,7 @@ let selectOccupation = selectOccupationEng;
 let selectRegion = selectRegionEng;
 let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
 let leaveAFeedBack = leaveAFeedBackEng;
+let averages = averagesEng;
 
 export {
   noDescr,
@@ -105,5 +113,7 @@ export {
   selectRegion,
   averageBetweenMenAndWomen,
   leaveAFeedBack,
-  salary
+  salary,
+  averageDataEng,
+  averages
 };
