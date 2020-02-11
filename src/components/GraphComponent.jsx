@@ -88,6 +88,7 @@ class GraphComponent extends Component {
     this.setState({ isco: isco, iscoSelected: true, code: code });
     this.getMean(region, isco, code);
 
+    this.props.onDataChange(this.state.region, isco, code, event.value.name);
     this.setState({ occupation: event.value.name });
   };
 
@@ -113,12 +114,6 @@ class GraphComponent extends Component {
           mean: mean
         });
       });
-
-    this.props.onDataChange(
-      this.state.mean,
-      this.state.occupation,
-      this.state.region
-    );
   }
 
   getSalaryEntities(data) {

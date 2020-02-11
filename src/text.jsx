@@ -19,9 +19,9 @@ const differenceEng = [
 const lngEng = "en";
 const tabsEng = ["Home", "Pensions", "Wage Calculator"];
 const averagesEng = [
-  "Average for Estonia",
+  "Average for ",
   "Average for Occupation",
-  "Average for Region"
+  "Average for Estonia"
 ];
 const mainEng = ["Home", "About", "Contact", "Navigation"];
 const genderEng = ["Male", "Female"];
