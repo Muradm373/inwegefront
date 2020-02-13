@@ -24,8 +24,6 @@ import {
 } from "../text";
 import Login from "./Modals/Login";
 import FeedbacksList from "./Modals/feedback/fetch/FeedbacksList";
-import { SVGMap } from "react-svg-map";
-import ee from "../usa.js";
 import "react-svg-map/lib/index.css";
 import { getLocationName } from "./utils";
 const lang = "&lang=";
@@ -220,15 +218,7 @@ class GraphComponent extends Component {
               ></Select>
             </div>
           </div>
-          <div className="row align-items-center text-center">
-            <MapChart></MapChart>
-            <div
-              className="examples__block__map__tooltip"
-              style={this.state.tooltipStyle}
-            >
-              {this.state.pointedLocation}
-            </div>
-          </div>
+          <MapChart />
         </div>
 
         <div className="col-xl my-4">

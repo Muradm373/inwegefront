@@ -5,22 +5,10 @@ import {
   Geographies,
   Geography
 } from "react-simple-maps";
-import ee from "./ee.json"
+import ee from "./ee.json";
 
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-
-const rounded = num => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
-
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = () => {
+  console.log(ee);
   return (
     <>
       <ComposableMap data-tip="" projectionConfig={{ scale: 150 }}>
@@ -33,11 +21,11 @@ const MapChart = ({ setTooltipContent }) => {
                   geography={geo}
                   onMouseEnter={() => {
                     const l = geo.properties.MNIMI;
-                    setTooltipContent(`${l}`);
-                    console.log(l)
+                    // setTooltipContent(`${l}`);
+                    console.log(l);
                   }}
                   onMouseLeave={() => {
-                    setTooltipContent("");
+                    // setTooltipContent("");
                   }}
                   style={{
                     default: {

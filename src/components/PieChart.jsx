@@ -126,7 +126,6 @@ class PieChartComponent extends Component {
   };
 
   render() {
-    let data = [];
     return (
       <div>
         <RadialChart

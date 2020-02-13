@@ -8,10 +8,7 @@ import changeLanguage, {
   APP_NAME,
   averageDataEng,
   main,
-  averages,
-  averageLabel,
-  menColor,
-  womenColor
+  averages
 } from "./text";
 import ReactDOM from "react-dom";
 import Feedback from "./components/Modals/feedback/send/Feedback";
