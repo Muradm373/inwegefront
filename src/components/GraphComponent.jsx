@@ -218,7 +218,9 @@ class GraphComponent extends Component {
               ></Select>
             </div>
           </div>
-          <MapChart />
+          <div className="w-5">
+            <MapChart />
+          </div>
         </div>
 
         <div className="col-xl my-4">
