@@ -28,33 +28,25 @@ class MapChart extends Component {
                     outline: "none"
                   },
                   hover: {
-                    fill: "#F53",
+                    fill: "#92c2e8",
                     outline: "none"
                   },
                   pressed: {
-                    fill: "#E42",
-                    outline: "none"
-                  },
-                  selected: {
-                    fill: "#E42",
+                    fill: "#FFF",
                     outline: "none"
                   }
                 },
      selectedStyle: {
                   default: {
-                    fill: "#E42",
+                    fill: "#FFF",
                     outline: "none"
                   },
                   hover: {
-                    fill: "#F53",
+                    fill: "#FFF",
                     outline: "none"
                   },
                   pressed: {
-                    fill: "#E42",
-                    outline: "none"
-                  },
-                  selected: {
-                    fill: "#E42",
+                    fill: "#FFF",
                     outline: "none"
                   }
                 }
@@ -131,7 +123,7 @@ class MapChart extends Component {
                   {
                     (true ? (
                       <Marker coordinates={centroid}>
-                        <text style={{fontSize: "8pt"}} y="2" fontSize={14} textAnchor="middle">
+                        <text style={{fontSize: "10pt",  fontFamily: "Verdana"}} y="2" fontSize={14} textAnchor="middle">
                           {replaceMaakond(geo.properties.MNIMI)}
                         </text>
                       </Marker>

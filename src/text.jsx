@@ -30,6 +30,9 @@ const selectOccupationEng = "Select job title";
 const averageBetweenMenAndWomenEng = "Average salary for men and women in ";
 const leaveAFeedBackEng = "Leave a feedback!";
 const averageDataEng = "Average data over Estonia";
+const aboutEng = "Palgakompass.ee is a web application that aimes to create more transparancy in the labor market in Estonia using Estonian wage data. Any person can use Palgakompass to compare wages accross different occupations, counties and genders. The application also features a pensions and a wage forecast section."
+
+
 
 const descrRus =
   "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.";
@@ -70,6 +73,7 @@ export default function changeLanguage(language) {
       averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
       leaveAFeedBack = leaveAFeedBackEng;
       salary = salaryEng;
+      about = aboutEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -102,6 +106,7 @@ let selectRegion = selectRegionEng;
 let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
 let leaveAFeedBack = leaveAFeedBackEng;
 let averages = averagesEng;
+let about = aboutEng;
 
 export {
   noDescr,
@@ -117,5 +122,6 @@ export {
   leaveAFeedBack,
   salary,
   averageDataEng,
-  averages
+  averages,
+  about
 };
