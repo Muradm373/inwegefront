@@ -24,8 +24,12 @@ import {
 } from "../text";
 import Login from "./Modals/Login";
 import FeedbacksList from "./Modals/feedback/fetch/FeedbacksList";
-
+import { SVGMap } from "react-svg-map";
+import ee from "../usa.js";
+import "react-svg-map/lib/index.css";
+import { getLocationName } from "./utils";
 const lang = "&lang=";
+import MapChart from "./MapChart";
 
 class GraphComponent extends Component {
   state = {
@@ -43,7 +47,11 @@ class GraphComponent extends Component {
     wage: 0,
     gender: genderLabel[0],
     userToken: null,
-    feedbacks: []
+    feedbacks: [],
+    pointedLocation: null,
+    tooltipStyle: {
+      display: "none"
+    }
   };
 
   constructor() {
@@ -212,7 +220,15 @@ class GraphComponent extends Component {
               ></Select>
             </div>
           </div>
-          <div></div>
+          <div className="row align-items-center text-center">
+            <MapChart></MapChart>
+            <div
+              className="examples__block__map__tooltip"
+              style={this.state.tooltipStyle}
+            >
+              {this.state.pointedLocation}
+            </div>
+          </div>
         </div>
 
         <div className="col-xl my-4">

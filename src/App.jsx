@@ -181,6 +181,7 @@ class App extends Component {
                   </g>
                 </svg>
               </div>
+
               <div
                 className="selector-style w-75 text-center mx-auto"
                 data-aos="fade-up"
