@@ -57,6 +57,7 @@ class GraphComponent extends Component {
 
     this.onSalaryChange = this.onSalaryChange.bind(this);
     this.onGenderChange = this.onGenderChange.bind(this);
+    this.getOccupations = this.getOccupations.bind(this)
   }
 
   componentDidMount() {
@@ -151,7 +152,8 @@ class GraphComponent extends Component {
     const url = `${API_URL}/`;
     axios
       .get(url + "jobs/names?region=" + region + lang + lng)
-      .then(response => response.data)
+      .then(response => {
+        return response.data})
       .then(data => {
         let names = [];
         data.payload.forEach(element => {
@@ -160,7 +162,13 @@ class GraphComponent extends Component {
             value: element
           });
         });
-        this.setState({ iscos: names });
+        this.setState({ iscos: names, region: region});
+        const isco = this.state.isco;
+        const code = this.state.code;
+        if (this.state.isco !== "") {
+          this.getMean(region, isco, code);
+        }
+        this.props.onDataChange(this.state.region, isco, code, this.state.occupation);
       });
   }
 
@@ -180,6 +188,9 @@ class GraphComponent extends Component {
     return (
       <div>
         <div className="graph-component">
+                  <div className="map_selector m-50">
+            <MapChart onRegionChange={this.getOccupations}/>
+          </div>
           <Select
             onChange={this.onRegionChange}
             options={this.state.regions}
@@ -218,12 +229,10 @@ class GraphComponent extends Component {
               ></Select>
             </div>
           </div>
-          <div className="w-5">
-            <MapChart />
-          </div>
         </div>
 
-        <div className="col-xl my-4">
+        <div className="col-xl my-4"                   data-aos="fade-up"
+                  data-aos-delay="200">
           <EntityComponent
             entities={this.state.entities}
             menColor={menColor}

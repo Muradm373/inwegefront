@@ -69,8 +69,6 @@ class App extends Component {
       code: code,
       occupation: occupation
     });
-
-    console.log(this.state);
   };
 
   render() {
@@ -247,7 +245,7 @@ class App extends Component {
                         type="region"
                       />
                     </div>
-                    <h3 className="mb-3">{averages[1]}</h3>
+                    <h3 className="mb-3">{averages[0] + this.state.region}</h3>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       Rem, optio.
