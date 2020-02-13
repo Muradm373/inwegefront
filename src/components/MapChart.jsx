@@ -8,16 +8,20 @@ import {
   Marker
 } from "react-simple-maps";
 import ee from "./ee.json";
+import axios from "axios"
 
 const replaceMaakond = (maakond) =>{
   return maakond.replace("maakond", "");
 }
 
+
+
+const getTooltipContent = (region) => {}
+
 class MapChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
+      state = { 
       selected: "",
+      averages: [],
       notSelectedStyle: {
                   default: {
                     fill: "#c7ddf3",
@@ -54,12 +58,47 @@ class MapChart extends Component {
                     outline: "none"
                   }
                 }
+              
     }
+  constructor() {
+    super();
+    this.getMeansForAllRegions();
+    this.getMeanForRegion("Harju maakond");
+
+
+    this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this)
+    this.getMeanForRegion = this.getMeanForRegion.bind(this)
   }
+
+  getMeansForAllRegions(){
+  const API_URL = "http://inwege-api.cloud.ut.ee/api" ;
+  const url = `${API_URL}/`;
+    axios
+      .get(url + "regions/average")
+      .then(response => response.data)
+      .then(data => {
+        this.setState({averages: data.payload})
+        console.log(this.state)
+      });
+      
+
+  }
+
+    getMeanForRegion(region){
+      let data = {};
+    this.state.averages.map((el)=>{
+        if(el.region===region){
+          data = "Men: €" + el.maleAverage+"\nWomen: €" + el.femaleAverage;
+        }
+    
+     })
+     return data;
+  }
+
   render() { 
      return (
     <>
-      <ComposableMap data-tip="" projectionConfig={{ scale: 350  }}>
+      <ComposableMap data-tip="" projectionConfig={{ scale: 340  }}>
         <Geographies geography={ee}>
           {({ geographies }) =>(
             <>
@@ -69,10 +108,13 @@ class MapChart extends Component {
                 geography={geo}
                 onMouseEnter={() => {
                   const l = geo.properties.MNIMI;
-                  // setTooltipContent(`${l}`);
+                  const data = this.getMeanForRegion(l);
+                  
+                  this.props.setTooltipContent(data.toString());
                 }}
+
                 onMouseLeave={() => {
-                  // setTooltipContent("");
+                  this.props.setTooltipContent("");
                 }}
                 onClick={()=>{
                   const selectedRegion = geo.properties.MNIMI;

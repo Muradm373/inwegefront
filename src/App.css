@@ -21,20 +21,20 @@
   color: #09d3ac;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .map_selector {
     visibility: hidden;
     display: none;
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .region-select {
     visibility: visible;
   }
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 700px){
 .region-select {
   visibility: hidden;
   display:none;

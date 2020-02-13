@@ -8,6 +8,7 @@ import Select from "react-select";
 import Modal from "react-modal";
 import Feedback from "./Modals/feedback/send/Feedback";
 import { Container, Button, Link } from "react-floating-action-button";
+import ReactTooltip from "react-tooltip";
 import {
   noDescr,
   averageLabel,
@@ -47,9 +48,7 @@ class GraphComponent extends Component {
     userToken: null,
     feedbacks: [],
     pointedLocation: null,
-    tooltipStyle: {
-      display: "none"
-    }
+    content: ''
   };
 
   constructor() {
@@ -58,8 +57,12 @@ class GraphComponent extends Component {
     this.onSalaryChange = this.onSalaryChange.bind(this);
     this.onGenderChange = this.onGenderChange.bind(this);
     this.getOccupations = this.getOccupations.bind(this)
+    this.setContent = this.setContent.bind(this);
   }
 
+setContent(content){
+  this.setState({content: content})
+}
   componentDidMount() {
     const url = `${API_URL}/`;
     axios
@@ -188,8 +191,9 @@ class GraphComponent extends Component {
     return (
       <div>
         <div className="graph-component">
-                  <div className="map_selector m-50">
-            <MapChart onRegionChange={this.getOccupations}/>
+                  <div className="map_selector p-3" style={{width: '65%', marginLeft: "10%", marginTop: "-10%"}}>
+            <MapChart onRegionChange={this.getOccupations} setTooltipContent={this.setContent}/>
+            <ReactTooltip>{this.state.content}</ReactTooltip>
           </div>
           <Select
             onChange={this.onRegionChange}
