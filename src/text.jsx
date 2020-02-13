@@ -1,4 +1,4 @@
-export const API_URL = "http://inwege-api.cloud.ut.ee/api";
+export const API_URL = "http://inwege.herokuapp.com/api";
 export const APP_NAME = "InWeGe";
 export const menColor = "#7db0ff";
 export const womenColor = "#f00044";

@@ -1,5 +1,7 @@
 import React, { memo, Component } from "react";
+import {API_URL} from "../text";
 import { geoCentroid } from "d3-geo";
+
 import {
   ComposableMap,
   Geographies,
@@ -7,7 +9,7 @@ import {
   Marker
 } from "react-simple-maps";
 import ee from "./ee.json";
-import axios from "axios"
+import axios from "axios";
 
 const replaceMaakond = (maakond) =>{
   return maakond.replace("maakond", "");
@@ -59,7 +61,6 @@ class MapChart extends Component {
   }
 
   getMeansForAllRegions(){
-  const API_URL = "http://inwege-api.cloud.ut.ee/api" ;
   const url = `${API_URL}/`;
     axios
       .get(url + "regions/average")
