@@ -1,7 +1,6 @@
 import React, { memo, Component } from "react";
 import { geoCentroid } from "d3-geo";
 import {
-  ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography,
@@ -14,9 +13,6 @@ const replaceMaakond = (maakond) =>{
   return maakond.replace("maakond", "");
 }
 
-
-
-const getTooltipContent = (region) => {}
 
 class MapChart extends Component {
       state = { 
@@ -70,7 +66,6 @@ class MapChart extends Component {
       .then(response => response.data)
       .then(data => {
         this.setState({averages: data.payload})
-        console.log(this.state)
       });
       
 
@@ -81,8 +76,9 @@ class MapChart extends Component {
     this.state.averages.map((el)=>{
         if(el.region===region){
           data = "Men: €" + el.maleAverage+"\nWomen: €" + el.femaleAverage;
+          return data
         }
-    
+
      })
      return data;
   }

@@ -111,17 +111,17 @@ class App extends Component {
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="nav-link">
+                        <a href="index.html" className="nav-link">
                           {tabs[1]}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="nav-link">
+                        <a href="index.html" className="nav-link">
                           {tabs[2]}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="nav-link">
+                        <a href="index.html" className="nav-link">
                           <div style={{ width: "250%" }}>
                             <Select
                               className="bg-transparent"
@@ -142,7 +142,7 @@ class App extends Component {
 
                 <div className="col-6 d-inline-block d-lg-none ml-md-0 py-3">
                   <a
-                    href="#"
+                    href="index.html"
                     className="burger site-menu-toggle js-menu-toggle"
                     data-toggle="collapse"
                     data-target="#main-navbar"
@@ -286,10 +286,10 @@ class App extends Component {
                   {about}
                 </p>
                 <p className="social">
-                  <a href="#">
+                  <a href="index.html">
                     <span className="icofont-twitter"></span>
                   </a>
-                  <a href="#">
+                  <a href="index.html">
                     <span className="icofont-facebook"></span>
                   </a>
                 </p>
@@ -300,16 +300,16 @@ class App extends Component {
                     <h3>Navigation</h3>
                     <ul className="list-unstyled">
                       <li>
-                        <a href="#">{tabs[0]}</a>
+                        <a href="index.html">{tabs[0]}</a>
                       </li>
                       <li>
-                        <a href="#">{tabs[1]}</a>
+                        <a href="index.html">{tabs[1]}</a>
                       </li>
                       <li>
-                        <a href="#">{tabs[2]}</a>
+                        <a href="index.html">{tabs[2]}</a>
                       </li>
                       <li>
-                        <a href="#">{tabs[3]}</a>
+                        <a href="index.html">{tabs[3]}</a>
                       </li>
                     </ul>
                   </div>
@@ -332,7 +332,7 @@ class App extends Component {
           </div>
         </footer>
 
-        <a href="#" className="back-to-top">
+        <a href="index.html" className="back-to-top">
           <i className="icofont-simple-up"></i>
         </a>
       </div>
