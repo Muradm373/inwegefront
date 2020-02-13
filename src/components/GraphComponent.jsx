@@ -209,7 +209,7 @@ setContent(content){
           ></Select>
 
           <div className="row">
-            <div className="col-10">
+            <div className="salary_select  mb-md-1">
               <input
                 name="salary"
                 className="form-control"
@@ -218,7 +218,7 @@ setContent(content){
                 value={this.state.wage}
               />
             </div>
-            <div className="col-2">
+            <div className="gender-selector ">
               <Select
                 onChange={this.onGenderChange}
                 className="gender-select"
