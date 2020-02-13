@@ -226,7 +226,7 @@ class App extends Component {
                       {averages[0] + this.state.occupation}
                     </h3>
                     <p>
-                      Average wages for the given occupation in the given countee.
+                      Average wages for the given occupation in the given county.
                     </p>
                   </div>
                 </div>
@@ -247,7 +247,7 @@ class App extends Component {
                     </div>
                     <h3 className="mb-3">{averages[0] + this.state.region}</h3>
                     <p>
-                      Average wages for all occupations in <br/>the given countee.
+                      Average wages for all occupations in <br/>the given county.
                     </p>
                   </div>
                 </div>
