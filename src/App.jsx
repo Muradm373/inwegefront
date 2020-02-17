@@ -151,7 +151,7 @@ colorChange(event){
                 <div className="col-6 col-lg-2">
                   <h1 className="mb-0 site-logo">
                     <span style={{cursor: "pointer"}} href={(e)=>e.preventDefault()} className="mb-0" onClick={this.scrollToBottom}>
-                      {APP_NAME}
+                      <p style={{color: "#FFFFFF"}}>{APP_NAME}</p>
                     </span>
                   </h1>
                 </div>
