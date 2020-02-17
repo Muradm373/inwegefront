@@ -1,78 +1,83 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { API_URL } from "../../../../text";
+import { API_URL, detailsLabel, descriptionLabel } from "../../../../text";
+import { useAlert } from "react-alert";
 
-class Feedback extends Component {
-  state = {
-    description: "",
-    details: "",
-    email: ""
-  };
 
-  constructor() {
-    super();
-    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
-    this.handleDetailsChange = this.handleDetailsChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.sendFeedback = this.sendFeedback.bind(this);
-  }
 
-  sendFeedback() {
+// const handleDescriptionChange = (event) =>{
+//     this.setState({ description: event.target.value });
+//   }
+
+// const handleEmailChange = (event) => {
+//     this.setState({ email: event.target.value });
+//   }
+
+
+// const handleDetailsChange = (event) => {
+//     this.setState({ details: event.target.value });
+//   }
+
+export function Feedback (props){
+
+  const [description, setDescription] = useState('');
+  const [details, setDetails] = useState('');
+  const [email, setEmail] = useState('');
+  const alert = useAlert();
+
+  const sendFeedback = (evt) => {
+    evt.preventDefault();
+    console.log(evt);
+    
     axios.post(`${API_URL}/feedback`, {
-      email: this.state.email,
-      details: this.state.details,
-      description: this.state.description
+      email: email,
+      details: details,
+      description: description
     });
+
+    setDetails('');
+    setEmail('');
+    setDescription('');
+
+    alert.show("Message Submitted")
   }
 
-  handleDescriptionChange(event) {
-    this.setState({ description: event.target.value });
-  }
-  handleEmailChange(event) {
-    this.setState({ email: event.target.value });
-  }
-
-  handleDetailsChange(event) {
-    this.setState({ details: event.target.value });
-  }
-
-  render() {
     return (
       <div>
+      <form onSubmit={sendFeedback}>
         <br></br>
         <input
           name="description"
-          placeholder="Description"
+          placeholder={descriptionLabel}
           className="form-control mb-md-2"
           type="text"
-          value={this.state.description}
-          onChange={this.handleDescriptionChange}
+          value={description}
+          onChange={(e)=>setDescription(e.target.value)}
         />
         <input
           name="email"
           placeholder="Email"
           className="form-control mb-md-2"
           type="email"
-          value={this.state.email}
-          onChange={this.handleEmailChange}
+          value={email}
+          onChange={(e)=>setEmail(e.target.value)}
         />
         <textarea
           name="details"
-          placeholder="Details"
+          placeholder={detailsLabel}
           className="form-control mb-md-2"
           type="text"
-          value={this.state.details}
-          onChange={this.handleDetailsChange}
+          value={details}
+          onChange={(e)=>setDetails(e.target.value)}
         />
-        <button
-          onClick={this.sendFeedback}
+        <input type="Submit"
           className="btn btn-primary mb-md-2 float-right"
         >
-          Submit
-        </button>
+        </input>
+        </form>
       </div>
+    
     );
-  }
 }
 
 export default Feedback;

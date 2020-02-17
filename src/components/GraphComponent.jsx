@@ -192,7 +192,7 @@ setContent(content){
       <div>
         <div className="graph-component">
                   <div className="map_selector p-3" style={{width: '65%', marginLeft: "10%", marginTop: "-10%"}}>
-            <MapChart onRegionChange={this.getOccupations} setTooltipContent={this.setContent}/>
+            <MapChart onRegionChange={this.getOccupations} setTooltipContent={this.setContent} mapElementColor={this.props.mapElementColor}/>
             <ReactTooltip>{this.state.content}</ReactTooltip>
           </div>
           <Select

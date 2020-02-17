@@ -17,16 +17,20 @@ const replaceMaakond = (maakond) =>{
 
 
 class MapChart extends Component {
-      state = { 
+      
+  constructor(props) {
+    super();
+
+    this.state = { 
       selected: "",
       averages: [],
       notSelectedStyle: {
                   default: {
-                    fill: "#c7ddf3",
+                    fill: props.mapElementColor,
                     outline: "none"
                   },
                   hover: {
-                    fill: "#92c2e8",
+                    fill: "#FFFFFF",
                     outline: "none"
                   },
                   pressed: {
@@ -50,8 +54,7 @@ class MapChart extends Component {
                 }
               
     }
-  constructor() {
-    super();
+
     this.getMeansForAllRegions();
     this.getMeanForRegion("Harju maakond");
 
@@ -59,6 +62,9 @@ class MapChart extends Component {
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this)
     this.getMeanForRegion = this.getMeanForRegion.bind(this)
   }
+
+
+
 
   getMeansForAllRegions(){
   const url = `${API_URL}/`;
@@ -70,6 +76,24 @@ class MapChart extends Component {
       });
       
 
+  }
+
+  componentWillReceiveProps(props){
+      this.setState(  {    notSelectedStyle: {
+                  default: {
+                    fill: props.mapElementColor,
+                    outline: "none"
+                  },
+                  hover: {
+                    fill: "#FFFFFF",
+                    outline: "none"
+                  },
+                  pressed: {
+                    fill: "#FFF",
+                    outline: "none"
+                  }
+                }
+      })
   }
 
     getMeanForRegion(region){

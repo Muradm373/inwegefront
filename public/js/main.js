@@ -20,6 +20,11 @@
     return false;
   });
 
+   $('.back-to-bottom').click(function(){
+	   console.log("meh");
+   window.scrollTo(0,document.body.scrollHeight);
+  });
+
   var siteMenuClone = function() {
 
 		$('.js-clone-nav').each(function() {

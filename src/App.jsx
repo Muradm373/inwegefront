@@ -6,10 +6,11 @@ import Select from "react-select";
 import changeLanguage, {
   tabs,
   APP_NAME,
-  averageDataEng,
+  averageData,
   main,
   averages,
-  about
+  about,
+  pieChartLabels
 } from "./text";
 import ReactDOM from "react-dom";
 import Feedback from "./components/Modals/feedback/send/Feedback";
@@ -35,11 +36,42 @@ const languages = [
   }
 ];
 
-function refresh(event) {
-  changeLanguage(event.value);
 
-  ReactDOM.render(<App />, document.getElementById("root"));
-}
+const colors = [
+  {
+    value: "0",
+    label: <div width="100px" style={{ display: "flex", justifyContent: "center",alignItems: "center"}} alt="1">Color 0</div>
+  },
+  {
+    value: "1",
+    label: <div width="100px" style={{ display: "flex", justifyContent: "center",alignItems: "center"}} alt="1">Color 1</div>
+  },
+  {
+    value: "2",
+    label: (
+      <div width="100px" style={{ display: "flex", justifyContent: "center",alignItems: "center"}} alt="2">Color 2</div>
+    )
+  },
+  {
+    value: "3",
+    label: (
+      <div width="100px" style={{ display: "flex", justifyContent: "center",alignItems: "center"}} alt="3">Color 3</div>
+    )
+  },
+  {
+    value: "4",
+    label: (
+      <div width="100px" style={{ display: "flex", justifyContent: "center",alignItems: "center"}}alt="4">Color 4</div>
+    )
+  },
+  {
+    value: "5",
+    label: (
+      <div width="100px" style={{ display: "flex", justifyContent: "center",alignItems: "center"}} alt="5">Color 5</div>
+    )
+  }
+];
+
 
 const dropdownIndicatorStyles = (base, state) => {
   let changes = {
@@ -57,10 +89,16 @@ class App extends Component {
       region: "Tallinn",
       occupation: "Actors",
       isco: 9629,
-      code: 9629
+      code: 9629,
+      lang: "en",
+      heroSectionStyle: "hero-section hero-section-color-0",
+      mapElementColor: "#92c2e8"
     };
 
     this.getData = this.getData.bind(this);
+    this.refresh = this.refresh.bind(this)
+    this.aboutSection = React.createRef();
+    this.colorChange = this.colorChange.bind(this)
   }
 
   getData = (region, isco, code, occupation) => {
@@ -71,6 +109,22 @@ class App extends Component {
       occupation: occupation
     });
   };
+
+refresh(event) {
+  changeLanguage(event.value);
+  this.setState({lang: event.value})
+
+  this.forceUpdate();
+
+}
+
+colorChange(event){
+   let colorArr = ["#92c2e8", "#73e8ff", "#ffa4a2", "#d7ffd9", "#82e9de", "#efefef"];
+   let color = colorArr[parseInt(event.value)];
+  this.setState({heroSectionStyle: "hero-section hero-section-color-"+event.value, mapElementColor: color});
+
+  
+}
 
   render() {
     AOS.init();
@@ -93,7 +147,7 @@ class App extends Component {
               <div className="row align-items-center">
                 <div className="col-6 col-lg-2">
                   <h1 className="mb-0 site-logo">
-                    <a href="index.html" className="mb-0">
+                    <a href="#" className="mb-0">
                       {APP_NAME}
                     </a>
                   </h1>
@@ -121,16 +175,29 @@ class App extends Component {
                         </a>
                       </li>
                       <li>
-                        <a href="index.html" className="nav-link">
+                        <a href="#" className="nav-link">
                           <div style={{ width: "250%" }}>
                             <Select
                               className="bg-transparent"
                               options={languages}
-                              onChange={refresh}
+                              onChange={this.refresh}
                               defaultValue={languages[0]}
                               styles={{
                                 dropdownIndicator: dropdownIndicatorStyles
                               }}
+                              isSearchable={false}
+                            ></Select>
+                          </div>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className="nav-link">
+                          <div style={{ width: "300%", alignText: "center" }}>
+                            <Select
+                              className="bg-transparent"
+                              options={colors}
+                              onChange={this.colorChange}
+                              defaultValue={colors[0]}
                               isSearchable={false}
                             ></Select>
                           </div>
@@ -154,7 +221,7 @@ class App extends Component {
             </div>
           </header>
           <main id="main">
-            <div className="hero-section">
+            <div className={this.state.heroSectionStyle}>
               <div className="wave">
                 <svg width="100%" viewBox="0 0 1920 355">
                   <g
@@ -186,6 +253,7 @@ class App extends Component {
                 <GraphComponent
                   id="graph"
                   onDataChange={this.getData}
+                  mapElementColor={this.state.mapElementColor}
                 ></GraphComponent>
                 <br></br>
                 <br></br>
@@ -200,8 +268,8 @@ class App extends Component {
             <div className="container">
               <div className="row justify-content-center text-center mb-5">
                 <div className="col-md-5">
-                  <h2 className="section-heading" data-aos="fade-right">
-                    {averageDataEng}
+                  <h2 className="section-heading" >
+                    {averageData}
                   </h2>
                 </div>
               </div>
@@ -226,7 +294,7 @@ class App extends Component {
                       {averages[0] + this.state.occupation}
                     </h3>
                     <p>
-                      Average wages for the given occupation in the given county.
+                      {pieChartLabels[0]}
                     </p>
                   </div>
                 </div>
@@ -247,7 +315,7 @@ class App extends Component {
                     </div>
                     <h3 className="mb-3">{averages[0] + this.state.region}</h3>
                     <p>
-                      Average wages for all occupations in <br/>the given county.
+                      {pieChartLabels[1]}
                     </p>
                   </div>
                 </div>
@@ -268,7 +336,7 @@ class App extends Component {
                     </div>
                     <h3 className="mb-3">{averages[2]}</h3>
                     <p>
-                      Average wages for all occupations <br/>for all counties.
+                      {pieChartLabels[2]}
                     </p>
                   </div>
                 </div>
@@ -282,7 +350,7 @@ class App extends Component {
             <div className="row">
               <div className="col-md-4 mb-4 mb-md-0">
                 <h3>About {APP_NAME}</h3>
-                <p className="text-left">
+                <p className="text-left" ref={this.aboutSection}>
                   {about}
                 </p>
                 <p className="social">
@@ -332,7 +400,7 @@ class App extends Component {
           </div>
         </footer>
 
-        <a href="index.html" className="back-to-top">
+        <a href="#" className="back-to-top">
           <i className="icofont-simple-up"></i>
         </a>
       </div>

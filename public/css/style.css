@@ -663,11 +663,51 @@ figure figcaption {
 # Header Section
 --------------------------------------------------------------*/
 
-.hero-section {
+.hero-section-color-0 {
   background: linear-gradient(
     to right,
     rgba(39, 70, 133, 0.8) 0%,
     rgba(61, 179, 197, 0.8) 100%
+  );
+  position: relative;
+}
+.hero-section-color-1 {
+  background: linear-gradient(
+    to right,
+    #29B6F6 0%,
+    #0086c3 100%
+  );
+  position: relative;
+}
+.hero-section-color-2 {
+  background: linear-gradient(
+    to right,
+    #E57373 0%,
+    #af4448 100%
+  );
+  position: relative;
+}
+.hero-section-color-3 {
+  background: linear-gradient(
+    to right,
+    #A5D6A7 0%,
+    #75a478 100%
+  );
+  position: relative;
+}
+.hero-section-color-4 {
+  background: linear-gradient(
+    to right,
+    #4DB6AC 0%,
+    #00867d 100%
+  );
+  position: relative;
+}
+.hero-section-color-5 {
+  background: linear-gradient(
+    to right,
+    #BDBDBD 0%,
+    #8d8d8d 100%
   );
   position: relative;
 }

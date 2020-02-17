@@ -31,6 +31,10 @@ const averageBetweenMenAndWomenEng = "Average salary for men and women in ";
 const leaveAFeedBackEng = "Leave a feedback!";
 const averageDataEng = "Average data over Estonia";
 const aboutEng = "Palgakompass.ee is a web application that aimes to create more transparancy in the labor market in Estonia using Estonian wage data. Any person can use Palgakompass to compare wages accross different occupations, counties and genders. The application also features a pensions and a wage forecast section."
+const pieChartLabelsEng = ["Average wages for the given occupation in the given county.",
+"Average wages for all occupations in \nthe given county.", "Average wages for all occupations \nfor all counties."]
+const detailsLabelEng = "Details"
+const descriptionLabelEng = "Description"
 
 
 
@@ -57,6 +61,45 @@ const selectOccupationRus = "Выберите должность";
 const averageBetweenMenAndWomenRus =
   "Средний показатель между женщинами и мужчинами";
 const leaveAFeedBackRus = "Оставьте отзыв!";
+const averageDataRus = "Среднее распределение по Эстонии";
+const aboutRus = "Palgakompass.ee это веб-приложение, целью которого является увеличение доступности информации на рынке труда в Эстонии с использованием данных о заработной плате в Эстонии. Любой человек может использовать Palgakompass для сравнения заработной платы по различным профессиям, округам и полам. В приложении также есть раздел о пенсиях и прогнозе заработной платы."
+const pieChartLabelsRus = ["Средняя зарплата для выбранных должности и региона.",
+"Средняя зарплата для выбранного региона относительно всех должностей.", "Средняя зарплата для выбранной должности относительно всех регионов."]
+const detailsLabelRus = "Описание"
+const descriptionLabelRus = "Тема"
+
+
+
+const descrEst =
+  "Selle ametikoha kohta selles maakonnas infot ei ole. Palun vali teine maakond või teine amet. Näidatud on keskmised palgad kogu Eestis.";
+const averageEst = "Keskmine palk Eestis ametialal";
+const differenceEst = [
+  "Mehed teenivad ",
+  " rohkem ",
+  " vähem",
+  "",
+  " kui naised",
+  " kui mehed",
+  "Sina teenid",
+  " keskmiselt"
+];
+const salaryEst = ["Sinu", "palk"];
+const lngEst = "es";
+const tabsEst = ["Kodu", "Pensionid", "Palgaprognoos"];
+const mainEst = ["Kodu", "Meist", "Kontaktid"];
+const genderEst = ["Mehed", "Naised"];
+const selectRegionEst = "Vali maakond";
+const selectOccupationEst = "Vali amet";
+const averageBetweenMenAndWomenEst =
+  "Keskmine palk meestel ja naistel ametialal";
+const leaveAFeedBackEst = "Saada tagasiside siit!";
+const averageDataEst = "Eesti keskmine jaotus";
+const aboutEst = "Palgakompass.ee on veebirakendus, mille eesmärk on suurendada palgaandmeid kasutades Eesti tööturul teabe kättesaadavust. Igaüks saab Palgakompassi kasutada erinevate ametite, maakondade ja sugude palkade võrdlemiseks. Lisas on ka rubriik pensionide ja palgaprognooside kohta."
+const pieChartLabelsEst = ["Keskmine palk valitud ametikohal ja piirkonnas.",
+"Valitud piirkonna keskmine palk kõigi ametikohtade suhtes.", "Valitud ametikoha keskmine palk kõigi piirkondade suhtes."]
+const detailsLabelEst = "Detailid"
+const descriptionLabelEst = "Kirjeldus"
+
 
 export default function changeLanguage(language) {
   switch (language) {
@@ -74,6 +117,10 @@ export default function changeLanguage(language) {
       leaveAFeedBack = leaveAFeedBackEng;
       salary = salaryEng;
       about = aboutEng;
+      averages = averagesEng;
+      pieChartLabels = pieChartLabelsEng;
+      detailsLabel = detailsLabelEng;
+      descriptionLabel = descriptionLabelEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -88,6 +135,33 @@ export default function changeLanguage(language) {
       averageBetweenMenAndWomen = averageBetweenMenAndWomenRus;
       leaveAFeedBack = leaveAFeedBackRus;
       salary = salaryRus;
+      about = aboutRus;
+      averages = averagesEng;
+      pieChartLabels = pieChartLabelsRus;
+      detailsLabel = detailsLabelRus;
+      descriptionLabel = descriptionLabelRus;
+      averageData = averageDataRus;
+      break;
+
+    case "es":
+      noDescr = descrEst;
+      averageLabel = averageEst;
+      differenceLabel = differenceEst;
+      genderLabel = genderEst;
+      lng = lngEst;
+      tabs = tabsEst;
+      main = mainEst;
+      selectOccupation = selectOccupationEst;
+      selectRegion = selectRegionEst;
+      averageBetweenMenAndWomen = averageBetweenMenAndWomenEst;
+      leaveAFeedBack = leaveAFeedBackEst;
+      salary = salaryEst;
+      about = aboutEst;
+      averages = averagesEng;
+      pieChartLabels = pieChartLabelsEst;
+      detailsLabel = detailsLabelEst;
+      descriptionLabel = descriptionLabelEst;
+      averageData = averageDataEst;
 
       break;
   }
@@ -107,6 +181,10 @@ let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng;
 let leaveAFeedBack = leaveAFeedBackEng;
 let averages = averagesEng;
 let about = aboutEng;
+let pieChartLabels = pieChartLabelsEng;
+let detailsLabel = detailsLabelEng;
+let descriptionLabel = descriptionLabelEng;
+let averageData = averageDataEng;
 
 export {
   noDescr,
@@ -121,7 +199,10 @@ export {
   averageBetweenMenAndWomen,
   leaveAFeedBack,
   salary,
-  averageDataEng,
+  averageData,
   averages,
-  about
+  about,
+  pieChartLabels,
+  descriptionLabel,
+  detailsLabel
 };
