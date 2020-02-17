@@ -97,10 +97,13 @@ class App extends Component {
 
     this.getData = this.getData.bind(this);
     this.refresh = this.refresh.bind(this)
-    this.aboutSection = React.createRef();
+    this.scrollToBottom = this.scrollToBottom.bind(this);
     this.colorChange = this.colorChange.bind(this)
   }
 
+scrollToBottom(){
+  this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+}
   getData = (region, isco, code, occupation) => {
     this.setState({
       region: region,
@@ -147,9 +150,9 @@ colorChange(event){
               <div className="row align-items-center">
                 <div className="col-6 col-lg-2">
                   <h1 className="mb-0 site-logo">
-                    <a href="#" className="mb-0">
+                    <span style={{cursor: "pointer"}} href={(e)=>e.preventDefault()} className="mb-0" onClick={this.scrollToBottom}>
                       {APP_NAME}
-                    </a>
+                    </span>
                   </h1>
                 </div>
 
@@ -350,7 +353,7 @@ colorChange(event){
             <div className="row">
               <div className="col-md-4 mb-4 mb-md-0">
                 <h3>About {APP_NAME}</h3>
-                <p className="text-left" ref={this.aboutSection}>
+                <p className="text-left" ref={(el) => { this.messagesEnd = el; }}>
                   {about}
                 </p>
                 <p className="social">
