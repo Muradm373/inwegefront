@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { menColor, womenColor, API_URL, lng } from "../text";
+import { menColor, womenColor, API_URL, lng } from "../../text";
 import axios from "axios";
 
 import { RadialChart } from "react-vis";

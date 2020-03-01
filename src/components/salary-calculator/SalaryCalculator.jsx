@@ -1,13 +1,8 @@
 /* eslint-disable */
 import React, { Component } from "react";
 import axios from "axios";
-import EntityComponent from "./EntityComponent";
-import PieChartComponent from "./PieChart";
-import FileUploadComponent from "./Modals/file-upload/FileUploadComponent";
+import Graph from "./Graph";
 import Select from "react-select";
-import Modal from "react-modal";
-import Feedback from "./Modals/feedback/send/Feedback";
-import { Container, Button, Link } from "react-floating-action-button";
 import ReactTooltip from "react-tooltip";
 import {
   noDescr,
@@ -22,15 +17,13 @@ import {
   salary,
   menColor,
   womenColor
-} from "../text";
-import Login from "./Modals/Login";
-import FeedbacksList from "./Modals/feedback/fetch/FeedbacksList";
+} from "../../text";
 import "react-svg-map/lib/index.css";
-import { getLocationName } from "./utils";
+import { getLocationName } from "../../utils/utils";
 const lang = "&lang=";
-import MapChart from "./MapChart";
+import MapSelector from "./MapSelector";
 
-class GraphComponent extends Component {
+class SalaryCalculator extends Component {
   state = {
     regions: [],
     entities: [],
@@ -48,7 +41,7 @@ class GraphComponent extends Component {
     userToken: null,
     feedbacks: [],
     pointedLocation: null,
-    content: ''
+    content: ""
   };
 
   constructor() {
@@ -56,13 +49,13 @@ class GraphComponent extends Component {
 
     this.onSalaryChange = this.onSalaryChange.bind(this);
     this.onGenderChange = this.onGenderChange.bind(this);
-    this.getOccupations = this.getOccupations.bind(this)
+    this.getOccupations = this.getOccupations.bind(this);
     this.setContent = this.setContent.bind(this);
   }
 
-setContent(content){
-  this.setState({content: content})
-}
+  setContent(content) {
+    this.setState({ content: content });
+  }
   componentDidMount() {
     const url = `${API_URL}/`;
     axios
@@ -156,7 +149,8 @@ setContent(content){
     axios
       .get(url + "jobs/names?region=" + region + lang + lng)
       .then(response => {
-        return response.data})
+        return response.data;
+      })
       .then(data => {
         let names = [];
         data.payload.forEach(element => {
@@ -165,13 +159,18 @@ setContent(content){
             value: element
           });
         });
-        this.setState({ iscos: names, region: region});
+        this.setState({ iscos: names, region: region });
         const isco = this.state.isco;
         const code = this.state.code;
         if (this.state.isco !== "") {
           this.getMean(region, isco, code);
         }
-        this.props.onDataChange(this.state.region, isco, code, this.state.occupation);
+        this.props.onDataChange(
+          this.state.region,
+          isco,
+          code,
+          this.state.occupation
+        );
       });
   }
 
@@ -191,8 +190,15 @@ setContent(content){
     return (
       <div>
         <div className="graph-component">
-                  <div className="map_selector p-3" style={{width: '65%', marginLeft: "10%", marginTop: "-10%"}}>
-            <MapChart onRegionChange={this.getOccupations} setTooltipContent={this.setContent} mapElementColor={this.props.mapElementColor}/>
+          <div
+            className="map_selector p-3"
+            style={{ width: "65%", marginLeft: "10%", marginTop: "-10%" }}
+          >
+            <MapSelector
+              onRegionChange={this.getOccupations}
+              setTooltipContent={this.setContent}
+              mapElementColor={this.props.mapElementColor}
+            />
             <ReactTooltip>{this.state.content}</ReactTooltip>
           </div>
           <Select
@@ -235,9 +241,8 @@ setContent(content){
           </div>
         </div>
 
-        <div className="col-xl my-4"                   data-aos="fade-up"
-                  data-aos-delay="200">
-          <EntityComponent
+        <div className="col-xl my-4" data-aos="fade-up" data-aos-delay="200">
+          <Graph
             entities={this.state.entities}
             menColor={menColor}
             womenColor={womenColor}
@@ -246,7 +251,7 @@ setContent(content){
             myWage={this.state.wage}
             myGender={this.state.gender}
             occupation={this.state.occupation}
-          ></EntityComponent>
+          ></Graph>
           <div className="donutHolder">
             <p
               style={{
@@ -264,4 +269,4 @@ setContent(content){
   }
 }
 
-export default GraphComponent;
+export default SalaryCalculator;

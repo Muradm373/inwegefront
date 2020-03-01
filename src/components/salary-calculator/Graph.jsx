@@ -11,9 +11,9 @@ import {
   LineSeries,
   Hint
 } from "react-vis";
-import { fetchData } from "./entityFunc";
-import BarComponent from "./graph-representation/BarComponent";
-import { genderLabel, salary } from "../text";
+import { fetchData } from "../entityFunc";
+import BarComponent from "./BarComponent";
+import { genderLabel, salary } from "../../text";
 
 const display = (myWage, mean) => {
   return Math.abs(parseInt(myWage) - parseInt(mean)) > 50
@@ -21,7 +21,7 @@ const display = (myWage, mean) => {
     : { display: "none" };
 };
 
-class EntityComponent extends Component {
+class Graph extends Component {
   render() {
     let data = fetchData(this.props.entities);
     let men = data.men;
@@ -178,4 +178,4 @@ class EntityComponent extends Component {
   }
 }
 
-export default EntityComponent;
+export default Graph;
