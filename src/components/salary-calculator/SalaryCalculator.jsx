@@ -22,25 +22,22 @@ import "react-svg-map/lib/index.css";
 import { getLocationName } from "../../utils/utils";
 const lang = "&lang=";
 import MapSelector from "./MapSelector";
+import GenderSelector from "./GenderSelector";
+import RegionSelector from "./RegionSelector";
+import OccupationSelector from "./OccupationSelector";
 
 class SalaryCalculator extends Component {
   state = {
-    regions: [],
     entities: [],
     iscos: [],
     isco: "",
     region: "",
-    regionSelected: false,
-    iscoSelected: false,
     description: noDescr,
     occupation: "",
     mean: [],
     code: "",
     wage: 0,
     gender: genderLabel[0],
-    userToken: null,
-    feedbacks: [],
-    pointedLocation: null,
     content: ""
   };
 
@@ -49,37 +46,21 @@ class SalaryCalculator extends Component {
 
     this.onSalaryChange = this.onSalaryChange.bind(this);
     this.onGenderChange = this.onGenderChange.bind(this);
-    this.getOccupations = this.getOccupations.bind(this);
     this.setContent = this.setContent.bind(this);
   }
 
   setContent(content) {
     this.setState({ content: content });
   }
-  componentDidMount() {
-    const url = `${API_URL}/`;
-    axios
-      .get(url + "regions/")
-      .then(response => response.data)
-      .then(data => {
-        let dict = [];
-        data.payload.forEach(element => {
-          dict.push({ label: element, value: element });
-        });
-        this.setState({ regions: dict });
-      });
-  }
 
   onRegionChange = event => {
     const region = event.value;
     const isco = this.state.isco;
     const code = this.state.code;
-
-    this.getOccupations(region);
     if (this.state.isco !== "") {
-      this.getMean(region, isco, code);
+      this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
     }
-    this.setState({ region: region, regionSelected: true });
+    this.setState({ region: region });
   };
 
   onIscoChange = event => {
@@ -88,14 +69,14 @@ class SalaryCalculator extends Component {
     let isco = event.value.iscoValid;
     let code = event.value.code;
 
-    this.setState({ isco: isco, iscoSelected: true, code: code });
-    this.getMean(region, isco, code);
+    this.setState({ isco: isco, code: code });
+    this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
 
     this.props.onDataChange(this.state.region, isco, code, event.value.name);
     this.setState({ occupation: event.value.name });
   };
 
-  getMean(region, isco, code) {
+  getSalaryEntitiesForRegionAndIsco(region, isco, code) {
     const url =
       `${API_URL}/jobs?region=` +
       region +
@@ -109,7 +90,7 @@ class SalaryCalculator extends Component {
     axios
       .get(url)
       .then(response => response.data)
-      .then(data => this.getSalaryEntities(data))
+      .then(data => this.parseSalaryEntities(data))
       .then(response => response.data)
       .then(data => {
         let mean = data.payload;
@@ -119,7 +100,7 @@ class SalaryCalculator extends Component {
       });
   }
 
-  getSalaryEntities(data) {
+  parseSalaryEntities(data) {
     let entities = data.payload.salaryEntities;
     let jobEntity = data.payload.jobEntity;
     if (jobEntity !== undefined && entities !== undefined) {
@@ -144,36 +125,6 @@ class SalaryCalculator extends Component {
     return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
   }
 
-  getOccupations(region) {
-    const url = `${API_URL}/`;
-    axios
-      .get(url + "jobs/names?region=" + region + lang + lng)
-      .then(response => {
-        return response.data;
-      })
-      .then(data => {
-        let names = [];
-        data.payload.forEach(element => {
-          names.push({
-            label: element.name,
-            value: element
-          });
-        });
-        this.setState({ iscos: names, region: region });
-        const isco = this.state.isco;
-        const code = this.state.code;
-        if (this.state.isco !== "") {
-          this.getMean(region, isco, code);
-        }
-        this.props.onDataChange(
-          this.state.region,
-          isco,
-          code,
-          this.state.occupation
-        );
-      });
-  }
-
   onSalaryChange(event) {
     if (
       event.target.value < 1000000 &&
@@ -195,24 +146,19 @@ class SalaryCalculator extends Component {
             style={{ width: "65%", marginLeft: "10%", marginTop: "-10%" }}
           >
             <MapSelector
-              onRegionChange={this.getOccupations}
+              onRegionChange={this.onRegionChange}
               setTooltipContent={this.setContent}
               mapElementColor={this.props.mapElementColor}
             />
             <ReactTooltip>{this.state.content}</ReactTooltip>
           </div>
-          <Select
-            onChange={this.onRegionChange}
-            options={this.state.regions}
-            placeholder={selectRegion}
-            className="region-select mb-md-1"
-          ></Select>
-          <Select
+
+          <RegionSelector onChange={this.onRegionChange} />
+
+          <OccupationSelector
             onChange={this.onIscoChange}
-            options={this.state.iscos}
-            placeholder={selectOccupation}
-            className="occupation-select  mb-md-1"
-          ></Select>
+            region={this.state.region}
+          />
 
           <div className="row">
             <div className="salary_select  mb-md-1">
@@ -224,20 +170,7 @@ class SalaryCalculator extends Component {
                 value={this.state.wage}
               />
             </div>
-            <div className="gender-selector ">
-              <Select
-                onChange={this.onGenderChange}
-                className="gender-select"
-                defaultValue={{
-                  label: genderLabel[0],
-                  value: genderLabel[0]
-                }}
-                options={[
-                  { label: genderLabel[0], value: genderLabel[0] },
-                  { label: genderLabel[1], value: genderLabel[1] }
-                ]}
-              ></Select>
-            </div>
+            <GenderSelector onGenderChange={this.onGenderChange} />
           </div>
         </div>
 

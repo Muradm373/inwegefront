@@ -8,7 +8,7 @@ import {
   Geography,
   Marker
 } from "react-simple-maps";
-import ee from "../ee.json";
+import ee from "../../ee.json";
 import axios from "axios";
 
 const replaceMaakond = maakond => {
@@ -122,7 +122,7 @@ class MapSelector extends Component {
                     onClick={() => {
                       const selectedRegion = geo.properties.MNIMI;
                       this.setState({ selected: selectedRegion });
-                      this.props.onRegionChange(selectedRegion);
+                      this.props.onRegionChange({ value: selectedRegion });
                     }}
                     style={
                       this.state.selected !== geo.properties.MNIMI

@@ -13,7 +13,7 @@ import {
 } from "react-vis";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
-import { genderLabel, salary } from "../../text";
+import { genderLabel, salary, menColor, womenColor } from "../../text";
 
 const display = (myWage, mean) => {
   return Math.abs(parseInt(myWage) - parseInt(mean)) > 50
@@ -21,161 +21,153 @@ const display = (myWage, mean) => {
     : { display: "none" };
 };
 
-class Graph extends Component {
-  render() {
-    let data = fetchData(this.props.entities);
-    let men = data.men;
-    let women = data.women;
-    let menMean = data.menMean;
-    let womenMean = data.womenMean;
-    let myWage = this.props.myWage;
-    let mean =
-      this.props.myGender === genderLabel[0]
-        ? parseInt(data.menMean)
-        : parseInt(data.womenMean);
-    this.menColor = this.props.menColor;
-    this.womenColor = this.props.womenColor;
+function Graph(props) {
+  let data = fetchData(props.entities);
+  let men = data.men;
+  let women = data.women;
+  let menMean = data.menMean;
+  let womenMean = data.womenMean;
+  let myWage = props.myWage;
+  let mean =
+    props.myGender === genderLabel[0]
+      ? parseInt(data.menMean)
+      : parseInt(data.womenMean);
 
-    return (
-      <div className="centered" id="entity">
-        <BarComponent
-          menMean={menMean}
-          womenMean={womenMean}
-          menColor={this.menColor}
-          womenColor={this.womenColor}
-          occupation={this.props.occupation}
-          label={
-            this.props.differenceLabel[0] +
-            " €" +
-            Math.abs(parseInt(menMean) - parseInt(womenMean)) +
-            (parseInt(menMean) - parseInt(womenMean) > 0
-              ? this.props.differenceLabel[1]
-              : this.props.differenceLabel[2]) +
-            this.props.differenceLabel[3] +
-            this.props.differenceLabel[4] +
-            this.props.differenceLabel[7]
-          }
-        />
+  return (
+    <div className="centered" id="entity">
+      <BarComponent
+        menMean={menMean}
+        womenMean={womenMean}
+        menColor={menColor}
+        womenColor={womenColor}
+        occupation={props.occupation}
+        label={
+          props.differenceLabel[0] +
+          " €" +
+          Math.abs(parseInt(menMean) - parseInt(womenMean)) +
+          (parseInt(menMean) - parseInt(womenMean) > 0
+            ? props.differenceLabel[1]
+            : props.differenceLabel[2]) +
+          props.differenceLabel[3] +
+          props.differenceLabel[4] +
+          props.differenceLabel[7]
+        }
+      />
 
-        <div className="genderTicks">
-          <div className="Column">
-            <div className="Row">
-              <div className="male"> </div>
-              <p className="Column">{this.props.genderLabel[0]}</p>
-            </div>
-          </div>
-          <div className="Column">
-            <div className="Row">
-              <div className="female"> </div>
-              <p className="Column">{this.props.genderLabel[1]}</p>
-            </div>
+      <div className="genderTicks">
+        <div className="Column">
+          <div className="Row">
+            <div className="male"> </div>
+            <p className="Column">{props.genderLabel[0]}</p>
           </div>
         </div>
-        <FlexibleWidthXYPlot height={400} animation="gentle">
-          <VerticalGridLines
-            style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.5 }}
-          />
-          <HorizontalGridLines
-            style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.3 }}
-          />
-          <XAxis
-            tickTotal={10}
-            tickFormat={v => `€${v}`}
-            style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
-          />
-          <YAxis
-            tickTotal={4}
-            style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
-            tickFormat={v => `${v * 10}%`}
-          />
-
-          <AreaSeries
-            className="area-series-women"
-            curve="curveBasis"
-            data={women}
-            style={{ opacity: 0.8 }}
-            fill={this.womenColor}
-            strokeWidth="0"
-          />
-
-          <AreaSeries
-            className="area-series-men"
-            curve="curveBasis"
-            data={men}
-            fill={this.menColor}
-            style={{ opacity: 0.8 }}
-            strokeWidth="0"
-          />
-          <LineSeries
-            data={[
-              { x: mean, y: 0 },
-              { x: mean, y: 5 }
-            ]}
-            strokeWidth="1"
-            stroke="black"
-            strokeDasharray="7, 3"
-          />
-
-          <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean)}>
-            <p
-              style={{ fontSize: "10pt", textAlign: "center", color: "black" }}
-            >
-              {this.props.myGender === genderLabel[0]
-                ? this.props.differenceLabel[5]
-                : this.props.differenceLabel[4]}
-              <br />
-              {this.props.differenceLabel[7]}
-            </p>
-          </Hint>
-
-          <Hint value={{ x: myWage, y: 0 }} style={display(myWage, mean)}>
-            <p
-              style={{ fontSize: "10pt", textAlign: "center", color: "black" }}
-            >
-              {salary[0]}
-              <br /> {salary[1]}
-            </p>
-          </Hint>
-
-          <LineSeries
-            data={[
-              { x: myWage, y: 0 },
-              { x: myWage, y: 5 }
-            ]}
-            strokeWidth="1"
-            stroke="black"
-            strokeDasharray="7, 3"
-          />
-
-          <Hint
-            style={display(myWage, mean)}
-            value={{
-              x: parseInt(myWage) / 2 + parseInt(mean) / 2,
-              y: 3
-            }}
-          >
-            <p className="differenceLabel">
-              {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
-                ? this.props.differenceLabel[6] +
-                  " €" +
-                  Math.abs(parseInt(myWage) - parseInt(mean)) +
-                  (parseInt(myWage) - parseInt(mean) > 0
-                    ? this.props.differenceLabel[1]
-                    : this.props.differenceLabel[2]) +
-                  this.props.differenceLabel[3] +
-                  " " +
-                  (this.props.myGender === genderLabel[0]
-                    ? this.props.differenceLabel[5]
-                    : this.props.differenceLabel[4]) +
-                  " " +
-                  this.props.differenceLabel[7]
-                : ""}
-            </p>
-          </Hint>
-        </FlexibleWidthXYPlot>
+        <div className="Column">
+          <div className="Row">
+            <div className="female"> </div>
+            <p className="Column">{props.genderLabel[1]}</p>
+          </div>
+        </div>
       </div>
-    );
-  }
+      <FlexibleWidthXYPlot height={400} animation="gentle">
+        <VerticalGridLines
+          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.5 }}
+        />
+        <HorizontalGridLines
+          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.3 }}
+        />
+        <XAxis
+          tickTotal={10}
+          tickFormat={v => `€${v}`}
+          style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+        />
+        <YAxis
+          tickTotal={4}
+          style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+          tickFormat={v => `${v * 10}%`}
+        />
+
+        <AreaSeries
+          className="area-series-women"
+          curve="curveBasis"
+          data={women}
+          style={{ opacity: 0.8 }}
+          fill={womenColor}
+          strokeWidth="0"
+        />
+
+        <AreaSeries
+          className="area-series-men"
+          curve="curveBasis"
+          data={men}
+          fill={menColor}
+          style={{ opacity: 0.8 }}
+          strokeWidth="0"
+        />
+        <LineSeries
+          data={[
+            { x: mean, y: 0 },
+            { x: mean, y: 5 }
+          ]}
+          strokeWidth="1"
+          stroke="black"
+          strokeDasharray="7, 3"
+        />
+
+        <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean)}>
+          <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
+            {props.myGender === genderLabel[0]
+              ? props.differenceLabel[5]
+              : props.differenceLabel[4]}
+            <br />
+            {props.differenceLabel[7]}
+          </p>
+        </Hint>
+
+        <Hint value={{ x: myWage, y: 0 }} style={display(myWage, mean)}>
+          <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
+            {salary[0]}
+            <br /> {salary[1]}
+          </p>
+        </Hint>
+
+        <LineSeries
+          data={[
+            { x: myWage, y: 0 },
+            { x: myWage, y: 5 }
+          ]}
+          strokeWidth="1"
+          stroke="black"
+          strokeDasharray="7, 3"
+        />
+
+        <Hint
+          style={display(myWage, mean)}
+          value={{
+            x: parseInt(myWage) / 2 + parseInt(mean) / 2,
+            y: 3
+          }}
+        >
+          <p className="differenceLabel">
+            {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
+              ? props.differenceLabel[6] +
+                " €" +
+                Math.abs(parseInt(myWage) - parseInt(mean)) +
+                (parseInt(myWage) - parseInt(mean) > 0
+                  ? props.differenceLabel[1]
+                  : props.differenceLabel[2]) +
+                props.differenceLabel[3] +
+                " " +
+                (props.myGender === genderLabel[0]
+                  ? props.differenceLabel[5]
+                  : props.differenceLabel[4]) +
+                " " +
+                props.differenceLabel[7]
+              : ""}
+          </p>
+        </Hint>
+      </FlexibleWidthXYPlot>
+    </div>
+  );
 }
 
 export default Graph;
