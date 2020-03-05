@@ -15,7 +15,7 @@ import changeLanguage, {
 import Feedback from "./components/salary-calculator/Feedback";
 import AOS from "aos";
 import PieChartComponent from "./components/salary-calculator/PieChart";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const languages = [
   {
@@ -443,7 +443,9 @@ class Main extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-4 mb-4 mb-md-0">
-                <h3>About {APP_NAME}</h3>
+                <h3>
+                  {main[1]} {APP_NAME}
+                </h3>
                 <p
                   className="text-left"
                   ref={el => {
@@ -464,7 +466,7 @@ class Main extends Component {
               <div className="col-md-7 ml-auto">
                 <div className="row site-section pt-0">
                   <div className="col-md-4 mb-4 mb-md-0">
-                    <h3>Navigation</h3>
+                    <h3>{main[2]}</h3>
                     <ul className="list-unstyled">
                       <li>
                         <a href="index.html">{tabs[0]}</a>

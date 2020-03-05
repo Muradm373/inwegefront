@@ -10,6 +10,8 @@ import {
 } from "react-simple-maps";
 import ee from "../../ee.json";
 import axios from "axios";
+import { genderLabel } from "../../text";
+import tinycolor from "tinycolor2";
 
 const replaceMaakond = maakond => {
   return maakond.replace("maakond", "");
@@ -88,11 +90,44 @@ class MapSelector extends Component {
     });
   }
 
+  styleForNotSelectedRegion(data) {
+    let diff = 0;
+    this.state.averages.map(el => {
+      if (el.region === data) {
+        diff = el.maleAverage - el.femaleAverage;
+      }
+    });
+
+    return {
+      default: {
+        fill: tinycolor(this.props.mapElementColor)
+          .darken((diff / 4000) * 100)
+          .toString(),
+        outline: "none"
+      },
+      hover: {
+        fill: "#FFFFFF",
+        outline: "none"
+      },
+      pressed: {
+        fill: "#FFF",
+        outline: "none"
+      }
+    };
+  }
+
   getMeanForRegion(region) {
     let data = {};
     this.state.averages.map(el => {
       if (el.region === region) {
-        data = "Men: €" + el.maleAverage + "\nWomen: €" + el.femaleAverage;
+        data =
+          genderLabel[0] +
+          ": €" +
+          el.maleAverage +
+          "\n" +
+          genderLabel[1] +
+          ": €" +
+          el.femaleAverage;
         return data;
       }
     });
@@ -126,7 +161,7 @@ class MapSelector extends Component {
                     }}
                     style={
                       this.state.selected !== geo.properties.MNIMI
-                        ? this.state.notSelectedStyle
+                        ? this.styleForNotSelectedRegion(geo.properties.MNIMI)
                         : this.state.selectedStyle
                     }
                   />

@@ -2,13 +2,9 @@ import "./App.css";
 import React, { Component } from "react";
 import Main from "./Main";
 import Admin from "./Admin";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Router>

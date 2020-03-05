@@ -26,7 +26,8 @@
     "react-tooltip": "^4.0.3",
     "react-vis": "1.11.7",
     "recharts": "1.8.5",
-    "sticky": "^0.8.0"
+    "sticky": "^0.8.0",
+    "tinycolor2": "^1.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

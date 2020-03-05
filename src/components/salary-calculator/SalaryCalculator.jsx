@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Graph from "./Graph";
-import Select from "react-select";
 import ReactTooltip from "react-tooltip";
 import {
   noDescr,
@@ -36,7 +35,7 @@ class SalaryCalculator extends Component {
     occupation: "",
     mean: [],
     code: "",
-    wage: 0,
+    wage: undefined,
     gender: genderLabel[0],
     content: ""
   };
@@ -167,6 +166,7 @@ class SalaryCalculator extends Component {
                 className="form-control"
                 onChange={this.onSalaryChange}
                 type="number"
+                placeholder={`${salary[0]} ${salary[1]}`}
                 value={this.state.wage}
               />
             </div>

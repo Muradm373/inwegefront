@@ -1,5 +1,5 @@
 import React from "react";
-import { genderLabel } from "../../text";
+import { genderLabel, defaultGender } from "../../text";
 import Select from "react-select";
 
 export function GenderSelector(props) {
@@ -8,10 +8,7 @@ export function GenderSelector(props) {
       <Select
         onChange={props.onGenderChange}
         className="gender-select"
-        defaultValue={{
-          label: genderLabel[0],
-          value: genderLabel[0]
-        }}
+        placeholder={defaultGender}
         options={[
           { label: genderLabel[0], value: genderLabel[0] },
           { label: genderLabel[1], value: genderLabel[1] }
