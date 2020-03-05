@@ -59,7 +59,7 @@ const genderRus = ["Мужчины", "Женщины"];
 const selectRegionRus = "Выберите регион";
 const selectOccupationRus = "Выберите должность";
 const averageBetweenMenAndWomenRus =
-  "Средний показатель между женщинами и мужчинами";
+  "Средний показатель между женщинами и мужчинами - ";
 const leaveAFeedBackRus = "Оставьте отзыв!";
 const averageDataRus = "Среднее распределение по Эстонии";
 const aboutRus =
@@ -99,7 +99,7 @@ const genderEst = ["Mees", "Naine"];
 const selectRegionEst = "Vali maakond";
 const selectOccupationEst = "Vali amet";
 const averageBetweenMenAndWomenEst =
-  "Keskmine palk meestel ja naistel ametialal";
+  "Keskmine palk meestel ja naistel ametialal - ";
 const leaveAFeedBackEst = "Saada tagasiside siit!";
 const averageDataEst = "Eesti keskmine jaotus";
 const aboutEst =

@@ -1,6 +1,11 @@
 /* eslint-disable */
 import React, { Component } from "react";
-import { HorizontalBarSeries, FlexibleWidthXYPlot, XAxis } from "react-vis";
+import {
+  HorizontalBarSeries,
+  FlexibleWidthXYPlot,
+  XAxis,
+  LabelSeries
+} from "react-vis";
 import { averageBetweenMenAndWomen } from "../../text";
 
 class BarComponent extends Component {
@@ -25,9 +30,34 @@ class BarComponent extends Component {
             data={[{ y: 2, x: this.props.menMean }]}
             color={this.props.menColor}
           />
+          <LabelSeries
+            style={{ fill: "white", fontSize: "15px", opacity: "0.8" }}
+            data={[
+              {
+                y: 2,
+                x: this.props.menMean * 0.5,
+                label: "€" + this.props.womenMean,
+                yOffset: -15
+              }
+            ]}
+            labelAnchorY="middleAlignment"
+          />
           <HorizontalBarSeries
             data={[{ y: 2, x: this.props.womenMean }]}
             color={this.props.womenColor}
+          />
+
+          <LabelSeries
+            style={{ fill: "white", fontSize: "15px", opacity: "0.8" }}
+            data={[
+              {
+                y: 2,
+                x: this.props.menMean * 0.5,
+                label: "€" + this.props.menMean,
+                yOffset: 20
+              }
+            ]}
+            labelAnchorY="middleAlignment"
           />
         </FlexibleWidthXYPlot>
         <p>{this.props.label}</p>
