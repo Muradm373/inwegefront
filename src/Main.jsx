@@ -466,7 +466,7 @@ class Main extends Component {
               <div className="col-md-7 ml-auto">
                 <div className="row site-section pt-0">
                   <div className="col-md-4 mb-4 mb-md-0">
-                    <h3>{main[2]}</h3>
+                    <h3>{main[3]}</h3>
                     <ul className="list-unstyled">
                       <li>
                         <a href="index.html">{tabs[0]}</a>
