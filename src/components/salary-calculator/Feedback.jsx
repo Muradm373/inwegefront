@@ -9,9 +9,8 @@ export function Feedback(props) {
   const [email, setEmail] = useState("");
   const alert = useAlert();
 
-  const sendFeedback = evt => {
-    evt.preventDefault();
-    console.log(evt);
+  const sendFeedback = event => {
+    event.preventDefault();
 
     axios.post(`${API_URL}/feedback`, {
       email: email,
