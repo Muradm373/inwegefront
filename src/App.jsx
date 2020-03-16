@@ -1,8 +1,8 @@
 import "./App.css";
 import React, { Component } from "react";
 import Main from "./Main";
-import Admin from "./Admin";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import AdminPanel from "./components/admin/AdminPanel";
 
 class App extends Component {
   render() {
@@ -12,7 +12,7 @@ class App extends Component {
           <Route exact path="/" render={() => <Main lang="en" />} />
           <Route exact path="/ru/" render={() => <Main lang="ru" />} />
           <Route exact path="/ee/" render={() => <Main lang="es" />} />
-          <Route path="/admin" component={Admin} />
+          <Route path="/admin" component={AdminPanel} />
         </Switch>
       </Router>
     );

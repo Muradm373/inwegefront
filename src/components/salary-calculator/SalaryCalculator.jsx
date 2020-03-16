@@ -46,6 +46,7 @@ class SalaryCalculator extends Component {
     this.onSalaryChange = this.onSalaryChange.bind(this);
     this.onGenderChange = this.onGenderChange.bind(this);
     this.setContent = this.setContent.bind(this);
+    this.changeWage = this.changeWage.bind(this);
   }
 
   setContent(content) {
@@ -136,6 +137,13 @@ class SalaryCalculator extends Component {
   onGenderChange(event) {
     this.setState({ gender: event.value });
   }
+
+  changeWage(d) {
+    console.log(d);
+    if (this.state.wage == d.left) this.setState({ wage: d.right });
+    else this.setState({ wage: d.left });
+  }
+
   render() {
     return (
       <div>
@@ -180,6 +188,7 @@ class SalaryCalculator extends Component {
             menColor={menColor}
             womenColor={womenColor}
             differenceLabel={differenceLabel}
+            changeWage={this.changeWage}
             genderLabel={genderLabel}
             myWage={this.state.wage}
             myGender={this.state.gender}

@@ -52,105 +52,6 @@ const languages = [
   }
 ];
 
-const colors = [
-  {
-    value: "0",
-    label: (
-      <div
-        width="100px"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        alt="1"
-      >
-        Color 0
-      </div>
-    )
-  },
-  {
-    value: "1",
-    label: (
-      <div
-        width="100px"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        alt="1"
-      >
-        Color 1
-      </div>
-    )
-  },
-  {
-    value: "2",
-    label: (
-      <div
-        width="100px"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        alt="2"
-      >
-        Color 2
-      </div>
-    )
-  },
-  {
-    value: "3",
-    label: (
-      <div
-        width="100px"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        alt="3"
-      >
-        Color 3
-      </div>
-    )
-  },
-  {
-    value: "4",
-    label: (
-      <div
-        width="100px"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        alt="4"
-      >
-        Color 4
-      </div>
-    )
-  },
-  {
-    value: "5",
-    label: (
-      <div
-        width="100px"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center"
-        }}
-        alt="5"
-      >
-        Color 5
-      </div>
-    )
-  }
-];
-
 const dropdownIndicatorStyles = (base, state) => {
   let changes = {
     // all your override styles
@@ -169,14 +70,13 @@ class Main extends Component {
       isco: 9629,
       code: 9629,
       lang: "en",
-      heroSectionStyle: "hero-section hero-section-color-0",
-      mapElementColor: "#92c2e8"
+      heroSectionStyle: "hero-section hero-section-color-1",
+      mapElementColor: "#73e8ff"
     };
 
     this.getData = this.getData.bind(this);
     this.refresh = this.refresh.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
-    this.colorChange = this.colorChange.bind(this);
   }
 
   defaultValue() {
@@ -204,22 +104,6 @@ class Main extends Component {
     changeLanguage(event.value);
     this.setState({ lang: event.value });
     window.location.reload();
-  }
-
-  colorChange(event) {
-    let colorArr = [
-      "#92c2e8",
-      "#73e8ff",
-      "#ffa4a2",
-      "#d7ffd9",
-      "#82e9de",
-      "#efefef"
-    ];
-    let color = colorArr[parseInt(event.value)];
-    this.setState({
-      heroSectionStyle: "hero-section hero-section-color-" + event.value,
-      mapElementColor: color
-    });
   }
 
   render() {
@@ -287,19 +171,6 @@ class Main extends Component {
                               styles={{
                                 dropdownIndicator: dropdownIndicatorStyles
                               }}
-                              isSearchable={false}
-                            ></Select>
-                          </div>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="nav-link">
-                          <div style={{ width: "300%", alignText: "center" }}>
-                            <Select
-                              className="bg-transparent"
-                              options={colors}
-                              onChange={this.colorChange}
-                              defaultValue={colors[0]}
                               isSearchable={false}
                             ></Select>
                           </div>

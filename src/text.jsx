@@ -36,6 +36,8 @@ const pieChartLabelsEng = [
 const detailsLabelEng = "Details";
 const descriptionLabelEng = "Description";
 const defaultGenderEng = "Gender";
+const occupationSelectorPlaceholderEng =
+  "First you need to select county on the map";
 
 const descrRus =
   "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.";
@@ -72,6 +74,8 @@ const pieChartLabelsRus = [
 const detailsLabelRus = "Описание";
 const descriptionLabelRus = "Тема";
 const defaultGenderRus = "Пол";
+const occupationSelectorPlaceholderRus =
+  "Сначала вам нужно выбрать округ на карте";
 
 const descrEst =
   "Selle ametikoha kohta selles maakonnas infot ei ole. Palun vali teine maakond või teine amet. Näidatud on keskmised palgad kogu Eestis.";
@@ -112,6 +116,7 @@ const pieChartLabelsEst = [
 const detailsLabelEst = "Detailid";
 const descriptionLabelEst = "Kirjeldus";
 const defaultGenderEst = "Sugu";
+const occupationSelectorPlaceholderEst = "Esmalt tuleb kaardilt valida maakond";
 
 export default function changeLanguage(language) {
   switch (language) {
@@ -134,6 +139,7 @@ export default function changeLanguage(language) {
       descriptionLabel = descriptionLabelEng;
       averages = averagesEng;
       defaultGender = defaultGenderEng;
+      occupationSelectorPlaceholder = occupationSelectorPlaceholderEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -155,6 +161,7 @@ export default function changeLanguage(language) {
       descriptionLabel = descriptionLabelRus;
       averageData = averageDataRus;
       defaultGender = defaultGenderRus;
+      occupationSelectorPlaceholder = occupationSelectorPlaceholderRus;
       break;
 
     case "es":
@@ -177,12 +184,14 @@ export default function changeLanguage(language) {
       descriptionLabel = descriptionLabelEst;
       averageData = averageDataEst;
       defaultGender = defaultGenderEst;
+      occupationSelectorPlaceholder = occupationSelectorPlaceholderEst;
 
       break;
   }
 }
 
 let noDescr = descrEng;
+let occupationSelectorPlaceholder = occupationSelectorPlaceholderEng;
 let salary = salaryEng;
 let averageLabel = averageEng;
 let differenceLabel = differenceEng;
@@ -221,5 +230,6 @@ export {
   pieChartLabels,
   descriptionLabel,
   detailsLabel,
-  defaultGender
+  defaultGender,
+  occupationSelectorPlaceholder
 };

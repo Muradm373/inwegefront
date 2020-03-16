@@ -9,7 +9,8 @@ import {
   HorizontalGridLines,
   AreaSeries,
   LineSeries,
-  Hint
+  Hint,
+  Highlight
 } from "react-vis";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
@@ -78,11 +79,11 @@ function Graph(props) {
         <XAxis
           tickTotal={10}
           tickFormat={v => `€${v}`}
-          style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.9 }}
         />
         <YAxis
           tickTotal={4}
-          style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.9 }}
           tickFormat={v => `${v * 10}%`}
         />
 
@@ -103,6 +104,7 @@ function Graph(props) {
           style={{ opacity: 0.8 }}
           strokeWidth="0"
         />
+
         <LineSeries
           data={[
             { x: mean, y: 0 },
@@ -110,6 +112,7 @@ function Graph(props) {
           ]}
           strokeWidth="1"
           stroke="black"
+          opacity="0.6"
           strokeDasharray="7, 3"
         />
 
@@ -132,8 +135,8 @@ function Graph(props) {
 
         <LineSeries
           data={[
-            { x: myWage, y: 0 },
-            { x: myWage, y: 5 }
+            { y: 0, x: myWage },
+            { y: 5, x: myWage }
           ]}
           strokeWidth="1"
           stroke="black"
@@ -165,6 +168,7 @@ function Graph(props) {
               : ""}
           </p>
         </Hint>
+        <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
       </FlexibleWidthXYPlot>
     </div>
   );

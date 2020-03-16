@@ -101,7 +101,7 @@ class MapSelector extends Component {
     return {
       default: {
         fill: tinycolor(this.props.mapElementColor)
-          .darken((diff / 4000) * 100)
+          .darken((diff / 1300) * 100)
           .toString(),
         outline: "none"
       },

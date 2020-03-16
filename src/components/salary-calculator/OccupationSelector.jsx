@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { selectOccupation, lng, API_URL } from "../../text";
+import {
+  selectOccupation,
+  lng,
+  API_URL,
+  occupationSelectorPlaceholder
+} from "../../text";
 import axios from "axios";
 import Select from "react-select";
 
@@ -37,6 +42,7 @@ class OccupationSelector extends Component {
     return (
       <Select
         onChange={this.props.onChange}
+        noOptionsMessage={() => occupationSelectorPlaceholder}
         options={this.state.occupations}
         placeholder={selectOccupation}
         className="occupation-select  mb-md-1"
