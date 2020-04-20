@@ -156,6 +156,11 @@ p {
   display: table-cell;
 }
 
+.carditem {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
 /*!
  * Start Bootstrap - SB Admin 2 v4.0.7 (https://startbootstrap.com/template-overviews/sb-admin-2)
  * Copyright 2013-2019 Start Bootstrap

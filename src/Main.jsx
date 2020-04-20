@@ -10,12 +10,13 @@ import changeLanguage, {
   main,
   averages,
   about,
-  pieChartLabels
+  pieChartLabels,
 } from "./text";
 import Feedback from "./components/salary-calculator/Feedback";
 import AOS from "aos";
 import PieChartComponent from "./components/salary-calculator/PieChart";
 import { Link } from "react-router-dom";
+import WageForecast from "./components/wage-forecast/WageForecast";
 
 const languages = [
   {
@@ -24,7 +25,7 @@ const languages = [
       <Link to="/">
         <img width="25px" src={require("./img/flags/us.png")} alt="EN"></img>
       </Link>
-    )
+    ),
   },
   {
     value: "ru",
@@ -36,7 +37,7 @@ const languages = [
           alt="RU"
         ></img>
       </Link>
-    )
+    ),
   },
   {
     value: "es",
@@ -48,14 +49,14 @@ const languages = [
           alt="EE"
         ></img>
       </Link>
-    )
-  }
+    ),
+  },
 ];
 
 const dropdownIndicatorStyles = (base, state) => {
   let changes = {
     // all your override styles
-    display: "none"
+    display: "none",
   };
 
   return Object.assign(base, changes);
@@ -71,12 +72,14 @@ class Main extends Component {
       code: 9629,
       lang: "en",
       heroSectionStyle: "hero-section hero-section-color-1",
-      mapElementColor: "#73e8ff"
+      mapElementColor: "#73e8ff",
+      menu: tabs[0],
     };
 
     this.getData = this.getData.bind(this);
     this.refresh = this.refresh.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
+    this.changeMenu = this.changeMenu.bind(this);
   }
 
   defaultValue() {
@@ -96,7 +99,7 @@ class Main extends Component {
       region: region,
       isco: isco,
       code: code,
-      occupation: occupation
+      occupation: occupation,
     });
   };
 
@@ -104,6 +107,40 @@ class Main extends Component {
     changeLanguage(event.value);
     this.setState({ lang: event.value });
     window.location.reload();
+  }
+
+  changeMenu(e) {
+    this.setState({ menu: e.target.textContent });
+  }
+
+  renderMenu() {
+    if (this.state.menu == tabs[0]) {
+      return (
+        <div>
+          {" "}
+          <SalaryCalculator
+            id="graph"
+            onDataChange={this.getData}
+            mapElementColor={this.state.mapElementColor}
+          ></SalaryCalculator>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <WageForecast
+            onDataChange={this.getData}
+            mapElementColor={this.state.mapElementColor}
+          />
+        </div>
+      );
+    }
   }
 
   render() {
@@ -130,7 +167,7 @@ class Main extends Component {
                   <h1 className="mb-0 site-logo">
                     <span
                       style={{ cursor: "pointer" }}
-                      href={e => e.preventDefault()}
+                      href={(e) => e.preventDefault()}
                       className="mb-0"
                       onClick={this.scrollToBottom}
                     >
@@ -146,17 +183,29 @@ class Main extends Component {
                   >
                     <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                       <li className="active">
-                        <a href="index.html" className="nav-link">
+                        <a
+                          href="#"
+                          className="nav-link"
+                          onClick={this.changeMenu}
+                        >
                           {tabs[0]}
                         </a>
                       </li>
                       <li>
-                        <a href="index.html" className="nav-link">
+                        <a
+                          href="#"
+                          className="nav-link"
+                          onClick={this.changeMenu}
+                        >
                           {tabs[1]}
                         </a>
                       </li>
                       <li>
-                        <a href="index.html" className="nav-link">
+                        <a
+                          href="#"
+                          className="nav-link"
+                          onClick={this.changeMenu}
+                        >
                           {tabs[2]}
                         </a>
                       </li>
@@ -169,7 +218,7 @@ class Main extends Component {
                               onChange={this.refresh}
                               defaultValue={languages[this.defaultValue()]}
                               styles={{
-                                dropdownIndicator: dropdownIndicatorStyles
+                                dropdownIndicator: dropdownIndicatorStyles,
                               }}
                               isSearchable={false}
                             ></Select>
@@ -195,45 +244,12 @@ class Main extends Component {
           </header>
           <main id="main">
             <div className={this.state.heroSectionStyle}>
-              <div className="wave">
-                <svg width="100%" viewBox="0 0 1920 355">
-                  <g
-                    id="Page-1"
-                    stroke="none"
-                    strokeWidth="1"
-                    fill="none"
-                    fillRule="evenodd"
-                  >
-                    <g
-                      id="Apple-TV"
-                      transform="translate(0.000000, -402.000000)"
-                      fill="#FFFFFF"
-                    >
-                      <path
-                        d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z"
-                        id="Path"
-                      ></path>
-                    </g>
-                  </g>
-                </svg>
-              </div>
-
               <div
                 className="selector-style w-75 text-center mx-auto"
                 data-aos="fade-up"
                 data-aos-delay=""
               >
-                <SalaryCalculator
-                  id="graph"
-                  onDataChange={this.getData}
-                  mapElementColor={this.state.mapElementColor}
-                ></SalaryCalculator>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
+                {this.renderMenu()}
               </div>
             </div>
           </main>
@@ -319,7 +335,7 @@ class Main extends Component {
                 </h3>
                 <p
                   className="text-left"
-                  ref={el => {
+                  ref={(el) => {
                     this.messagesEnd = el;
                   }}
                 >

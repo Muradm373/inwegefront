@@ -3,7 +3,7 @@ import {
   selectOccupation,
   lng,
   API_URL,
-  occupationSelectorPlaceholder
+  occupationSelectorPlaceholder,
 } from "../../text";
 import axios from "axios";
 import Select from "react-select";
@@ -19,19 +19,18 @@ class OccupationSelector extends Component {
   }
 
   getOccupations(region) {
-    console.log(region);
     const url = `${API_URL}/`;
     axios
       .get(url + "jobs/names?region=" + region + "&lang=" + lng)
-      .then(response => {
+      .then((response) => {
         return response.data;
       })
-      .then(data => {
+      .then((data) => {
         let names = [];
-        data.payload.forEach(element => {
+        data.payload.forEach((element) => {
           names.push({
             label: element.name,
-            value: element
+            value: element,
           });
         });
         this.setState({ occupations: names });
