@@ -51,7 +51,7 @@ class WageForecast extends Component {
             region={this.state.region}
           />
         </div>
-        <WageBars isco={this.state.isco} />
+        <WageBars isco={this.state.isco} setContent={this.setContent} />
       </div>
     );
   }
