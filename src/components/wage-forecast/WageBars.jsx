@@ -36,7 +36,6 @@ class WageBars extends Component {
         return response.data;
       })
       .then((data) => {
-        console.log(data.payload);
         this.setState({
           payload: data.payload,
           computerizationRisk: this.calculateComputerizationRisk(
@@ -133,7 +132,7 @@ class WageBars extends Component {
             <isindex />
           </p>
 
-          <div className="row">
+          <div className="row donutHolder`">
             {/* <!-- Wages distribution --> */}
 
             <div
@@ -159,7 +158,7 @@ class WageBars extends Component {
             {/* End of wages */}
             <div
               className="card m-3 col-sm rounded-0 p-0"
-              style={{ paddingBottom: "0%" }}
+              style={{ width: "15rem" }}
               // data-tip=""
               onMouseEnter={() =>
                 this.props.setContent(this.state.compiterizationDetails)

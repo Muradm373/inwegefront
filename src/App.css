@@ -129,7 +129,7 @@
   right: 10px;
   top: 5px;
 }
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1500px) {
   .donutHolder {
     display: flex;
     flex-direction: column;
@@ -996,7 +996,7 @@ pre code {
   margin-left: 91.66667%;
 }
 
-@media (min-width: 576px) {
+@media (min-width: 1000px) {
   .col-sm {
     flex-basis: 0;
     flex-grow: 1;
@@ -1138,7 +1138,7 @@ pre code {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1500px) {
   .col-md {
     flex-basis: 0;
     flex-grow: 1;

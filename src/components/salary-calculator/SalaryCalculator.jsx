@@ -15,7 +15,7 @@ import {
   API_URL,
   salary,
   menColor,
-  womenColor
+  womenColor,
 } from "../../text";
 import "react-svg-map/lib/index.css";
 import { getLocationName } from "../../utils/utils";
@@ -37,7 +37,7 @@ class SalaryCalculator extends Component {
     code: "",
     wage: undefined,
     gender: genderLabel[0],
-    content: ""
+    content: "",
   };
 
   constructor() {
@@ -53,7 +53,7 @@ class SalaryCalculator extends Component {
     this.setState({ content: content });
   }
 
-  onRegionChange = event => {
+  onRegionChange = (event) => {
     const region = event.value;
     const isco = this.state.isco;
     const code = this.state.code;
@@ -63,7 +63,7 @@ class SalaryCalculator extends Component {
     this.setState({ region: region });
   };
 
-  onIscoChange = event => {
+  onIscoChange = (event) => {
     const region = this.state.region;
 
     let isco = event.value.iscoValid;
@@ -89,13 +89,13 @@ class SalaryCalculator extends Component {
 
     axios
       .get(url)
-      .then(response => response.data)
-      .then(data => this.parseSalaryEntities(data))
-      .then(response => response.data)
-      .then(data => {
+      .then((response) => response.data)
+      .then((data) => this.parseSalaryEntities(data))
+      .then((response) => response.data)
+      .then((data) => {
         let mean = data.payload;
         this.setState({
-          mean: mean
+          mean: mean,
         });
       });
   }
@@ -108,18 +108,18 @@ class SalaryCalculator extends Component {
         let description = jobEntity.description;
         this.setState({
           entities: entities,
-          description: description
+          description: description,
         });
       } else {
         this.setState({
           entities: entities,
-          description: noDescr
+          description: noDescr,
         });
       }
     } else {
       this.setState({
         entities: [],
-        description: noDescr
+        description: noDescr,
       });
     }
     return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
@@ -139,7 +139,6 @@ class SalaryCalculator extends Component {
   }
 
   changeWage(d) {
-    console.log(d);
     if (this.state.wage == d.left) this.setState({ wage: d.right });
     else this.setState({ wage: d.left });
   }
@@ -199,7 +198,7 @@ class SalaryCalculator extends Component {
               style={{
                 flex: 5,
                 display: "flex",
-                textAlign: "left"
+                textAlign: "left",
               }}
             >
               {this.state.description}
