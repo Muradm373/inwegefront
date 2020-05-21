@@ -12,13 +12,13 @@ class PieChartComponent extends Component {
       data: [
         {
           angle: 1000,
-          radius: 5,
+          radius: 3,
           label: parseInt(1000),
           color: menColor,
         },
         {
           angle: 1000,
-          radius: 5,
+          radius: 3,
           label: parseInt(1000),
           color: womenColor,
         },
@@ -57,14 +57,14 @@ class PieChartComponent extends Component {
         data: [
           {
             angle: men,
-            radius: 5,
-            label: parseInt(men),
+            radius: 3,
+            label: parseInt(men / 1000) + " k",
             color: menColor,
           },
           {
             angle: women,
-            radius: 5,
-            label: parseInt(women),
+            radius: 3,
+            label: parseInt(women / 1000) + " k",
             color: womenColor,
           },
         ],
@@ -97,13 +97,13 @@ class PieChartComponent extends Component {
           {
             angle: men,
             radius: 5,
-            label: parseInt(men),
+            label: parseInt(men / 1000) + " k",
             color: menColor,
           },
           {
             angle: women,
             radius: 5,
-            label: parseInt(women),
+            label: parseInt(women / 1000) + " k",
             color: womenColor,
           },
         ];
@@ -118,8 +118,8 @@ class PieChartComponent extends Component {
         <RadialChart
           className={"donut-chart-example"}
           opacity={0.9}
-          innerRadius={50}
-          radius={55}
+          innerRadius={47}
+          radius={54}
           height={200}
           width={250}
           colorType="literal"

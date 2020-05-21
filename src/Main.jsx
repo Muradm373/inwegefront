@@ -68,7 +68,7 @@ class Main extends Component {
     super(props);
     this.state = {
       region: "Tallinn",
-      occupation: "Actors",
+      occupation: "",
       isco: "",
       code: 9629,
       lang: "en",
@@ -311,12 +311,19 @@ class Main extends Component {
                         type="region"
                       />
                     </div>
-                    <p className="mb-3">
-                      {"Total number of employees in occupation " +
-                        this.state.occupation +
-                        " in " +
-                        this.state.region}
-                    </p>
+                    {this.state.occupation !== "" && (
+                      <p className="mb-3">
+                        {"Total number of employees in occupation " +
+                          this.state.occupation +
+                          " in " +
+                          this.state.region}
+                      </p>
+                    )}
+                    {this.state.occupation === "" && (
+                      <p className="mb-3">
+                        {"Total number of employees in Estonia "}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div
