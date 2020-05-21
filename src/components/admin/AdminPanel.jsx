@@ -12,7 +12,7 @@ class AdminPanel extends Component {
     heroSectionStyle: "hero-section hero-section-color-1",
     loggedIn: false,
     userToken: "",
-    feedbacks: []
+    feedbacks: [],
   };
 
   constructor() {
@@ -32,12 +32,12 @@ class AdminPanel extends Component {
     axios
       .get(`${API_URL}/feedbacks`, {
         headers: {
-          Authorization: `Bearer ${this.state.userToken}`
-        }
+          Authorization: `Bearer ${this.state.userToken}`,
+        },
       })
-      .then(data => {
+      .then((data) => {
         this.setState({
-          feedbacks: data.data.payload
+          feedbacks: data.data.payload,
         });
       });
   }
@@ -83,7 +83,7 @@ class AdminPanel extends Component {
                 <h1 className="mb-0 site-logo">
                   <span
                     style={{ cursor: "pointer" }}
-                    href={e => e.preventDefault()}
+                    href={(e) => e.preventDefault()}
                     className="mb-0"
                     onClick={this.scrollToBottom}
                   >
@@ -115,11 +115,11 @@ class AdminPanel extends Component {
                     </li>
                     {this.state.loggedIn ? (
                       <li onClick={this.logout}>
-                        <a href="#">Log out</a>
+                        <a href="index.html">Log out</a>
                       </li>
                     ) : (
                       <li>
-                        <a href="#">Log in</a>
+                        <a href="index.html">Log in</a>
                       </li>
                     )}
                   </ul>
@@ -155,7 +155,7 @@ class AdminPanel extends Component {
                 </h3>
                 <p
                   className="text-left"
-                  ref={el => {
+                  ref={(el) => {
                     this.messagesEnd = el;
                   }}
                 >

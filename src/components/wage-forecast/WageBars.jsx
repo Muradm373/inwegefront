@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { API_URL } from "../../text";
 import axios from "axios";
-import ReactTooltip from "react-tooltip";
 
 class WageBars extends Component {
   constructor(props) {
@@ -68,7 +67,7 @@ class WageBars extends Component {
   }
 
   idToColor(itemId, id) {
-    if (id === itemId || (itemId > 9 && id == 9) || (itemId <= 0 && id == 1))
+    if (id === itemId || (itemId > 9 && id === 9) || (itemId <= 0 && id === 1))
       return { backgroundColor: "#6fff75" };
     return;
   }

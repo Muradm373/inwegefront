@@ -20,7 +20,7 @@ import {
 import "react-svg-map/lib/index.css";
 import { getLocationName } from "../../utils/utils";
 const lang = "&lang=";
-import MapSelector from "./MapSelector";
+import DynamicMapSelector from "./DynamicMapSelector";
 import GenderSelector from "./GenderSelector";
 import RegionSelector from "./RegionSelector";
 import OccupationSelector from "./OccupationSelector";
@@ -61,6 +61,7 @@ class SalaryCalculator extends Component {
       this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
     }
     this.setState({ region: region });
+    this.props.onDataChange(region, isco, code, "");
   };
 
   onIscoChange = (event) => {
@@ -151,10 +152,12 @@ class SalaryCalculator extends Component {
             className="map_selector p-3"
             style={{ width: "65%", marginLeft: "10%", marginTop: "-10%" }}
           >
-            <MapSelector
+            <DynamicMapSelector
+              isco={this.state.isco}
               onRegionChange={this.onRegionChange}
               setTooltipContent={this.setContent}
               mapElementColor={this.props.mapElementColor}
+              occupation={this.state.occupation}
             />
             <ReactTooltip>{this.state.content}</ReactTooltip>
           </div>
