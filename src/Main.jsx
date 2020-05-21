@@ -69,7 +69,7 @@ class Main extends Component {
     this.state = {
       region: "Tallinn",
       occupation: "Actors",
-      isco: 9629,
+      isco: "",
       code: 9629,
       lang: "en",
       heroSectionStyle: "hero-section hero-section-color-1",
@@ -311,29 +311,19 @@ class Main extends Component {
                         type="region"
                       />
                     </div>
-                    <h3 className="mb-3">{averages[0] + this.state.region}</h3>
-                    <p>{pieChartLabels[1]}</p>
+                    <p className="mb-3">
+                      {"Total number of employees in occupation " +
+                        this.state.occupation +
+                        " in " +
+                        this.state.region}
+                    </p>
                   </div>
                 </div>
                 <div
                   className="col-md-4"
                   data-aos="fade-up"
                   data-aos-delay="200"
-                >
-                  <div className="feature-1 text-center">
-                    <div className="row d-flex justify-content-center">
-                      <PieChartComponent
-                        key="PieChart"
-                        region={this.state.region}
-                        isco={this.state.isco}
-                        code={this.state.code}
-                        type="all"
-                      />
-                    </div>
-                    <h3 className="mb-3">{averages[2]}</h3>
-                    <p>{pieChartLabels[2]}</p>
-                  </div>
-                </div>
+                ></div>
               </div>
             </div>
           </div>

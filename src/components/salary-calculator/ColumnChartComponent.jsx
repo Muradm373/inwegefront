@@ -68,6 +68,7 @@ class ColumnChartComponent extends Component {
     };
 
     this.getAllMean = this.getAllMean.bind(this);
+    this.getAllMean();
   }
 
   setOccupationName(props) {

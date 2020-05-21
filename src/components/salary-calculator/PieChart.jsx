@@ -13,28 +13,24 @@ class PieChartComponent extends Component {
         {
           angle: 1000,
           radius: 5,
-          label: "€" + parseInt(1000),
-          color: menColor
+          label: parseInt(1000),
+          color: menColor,
         },
         {
           angle: 1000,
           radius: 5,
-          label: "€" + parseInt(1000),
-          color: womenColor
-        }
-      ]
+          label: parseInt(1000),
+          color: womenColor,
+        },
+      ],
     };
 
     this.getAllMean();
   }
 
   componentWillReceiveProps(props) {
-    if (
-      props.code !== undefined &&
-      props.code !== "" &&
-      props.type === "occupation"
-    ) {
-      this.getMean(props.region, props.isco, props.code);
+    if (props.isco != "") {
+      this.getMean(props.region, props.isco);
     } else if (
       props.code !== undefined &&
       props.code !== "" &&
@@ -43,87 +39,78 @@ class PieChartComponent extends Component {
       this.getAllMean();
     }
   }
-  updatePiechart(mean) {
-    let data = [];
-    if (mean[0] !== undefined) {
-      this.meanMen = mean[0].mean;
-      this.meanWomen = mean[1].mean;
-
-      data = [
-        {
-          angle: this.meanMen,
-          radius: 5,
-          label: "€" + parseInt(this.meanMen),
-          color: menColor
-        },
-        {
-          angle: this.meanWomen,
-          radius: 5,
-          label: "€" + parseInt(this.meanWomen),
-          color: womenColor
-        }
-      ];
-    }
-
-    this.setState({ data: data });
-  }
 
   getAllMean() {
-    let url = `${API_URL}/average?region=All`;
-    axios.get(url).then(data => {
+    let url = `${API_URL}/entities/count-worker`;
+    axios.get(url).then((data) => {
+      let men;
+      let women;
+
+      if (data.data.payload[0].female === 0) {
+        men = data.data.payload[0].count;
+        women = data.data.payload[1].count;
+      } else {
+        men = data.data.payload[1].count;
+        women = data.data.payload[0].count;
+      }
       this.setState({
         data: [
           {
-            angle: data.data.payload.maleAverage,
+            angle: men,
             radius: 5,
-            label: "€" + parseInt(data.data.payload.maleAverage),
-            color: menColor
+            label: parseInt(men),
+            color: menColor,
           },
           {
-            angle: data.data.payload.femaleAverage,
+            angle: women,
             radius: 5,
-            label: "€" + parseInt(data.data.payload.femaleAverage),
-            color: womenColor
-          }
-        ]
+            label: parseInt(women),
+            color: womenColor,
+          },
+        ],
       });
     });
   }
 
-  getMean(region, isco, code, type) {
+  getMean(region, isco) {
+    console.log(region + " " + isco);
     let url =
-      `${API_URL}/jobs?region=` +
-      region +
-      "&isco=" +
-      isco +
-      "&code=" +
-      code +
-      "&lang=" +
-      lng;
+      `${API_URL}/entities/count-worker?region` + region + "&isco=" + isco;
 
     axios
       .get(url)
-      .then(response => response.data)
-      .then(data => this.getSalaryEntities(data))
-      .then(data => data.data.payload)
-      .then(mean => {
-        this.updatePiechart(mean);
+      .then((response) => response.data)
+      .then((data) => data.payload)
+      .then((payload) => {
+        let men;
+        let women;
+
+        if (payload[0].female === 0) {
+          men = payload[0].count;
+          women = payload[1].count;
+        } else {
+          men = payload[1].count;
+          women = payload[0].count;
+        }
+
+        let data = [
+          {
+            angle: men,
+            radius: 5,
+            label: parseInt(men),
+            color: menColor,
+          },
+          {
+            angle: women,
+            radius: 5,
+            label: parseInt(women),
+            color: womenColor,
+          },
+        ];
+
+        this.setState({ data: data });
       });
   }
-
-  getSalaryEntities = data => {
-    let entities = data.payload.salaryEntities;
-    let jobEntity = data.payload.jobEntity;
-    let entitiesContainer = [];
-    if (jobEntity !== undefined && entities !== undefined) {
-      entitiesContainer = entities;
-    } else {
-      this.setState({
-        entities: []
-      });
-    }
-    return axios.get(`${API_URL}/jobs/${entitiesContainer[0].id}/average`);
-  };
 
   render() {
     return (

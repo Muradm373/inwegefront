@@ -58,6 +58,7 @@ class DynamicMapSelector extends Component {
 
       mapType: "Gender Wage Gap",
       isco: "",
+      mapAverageOrMean: "",
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -206,7 +207,15 @@ class DynamicMapSelector extends Component {
 
     return mapContentOccupation;
   }
+  getAverageOrMean() {
+    let mapAverageOrMean;
 
+    if (this.state.mapAverageOrMean !== "") {
+      mapAverageOrMean = this.state.mapAverageOrMean;
+    }
+
+    return mapAverageOrMean;
+  }
   render() {
     return (
       <>
@@ -294,6 +303,18 @@ class DynamicMapSelector extends Component {
               alignmentBaseline="start"
             >
               {this.getOccupation()}
+            </text>
+            <text
+              style={{
+                fontSize: "12pt",
+                fontFamily: "Roboto",
+              }}
+              x="-15"
+              y="50"
+              textAnchor="start"
+              alignmentBaseline="start"
+            >
+              {this.getAverageOrMean()}
             </text>
           </Annotation>
         </ComposableMap>
