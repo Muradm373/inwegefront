@@ -6,14 +6,14 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  Marker
+  Marker,
 } from "react-simple-maps";
 import ee from "../../ee.json";
 import axios from "axios";
 import { genderLabel } from "../../text";
 import tinycolor from "tinycolor2";
 
-const replaceMaakond = maakond => {
+const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
 };
 
@@ -27,31 +27,31 @@ class MapSelector extends Component {
       notSelectedStyle: {
         default: {
           fill: props.mapElementColor,
-          outline: "none"
+          outline: "none",
         },
         hover: {
           fill: "#FFFFFF",
-          outline: "none"
+          outline: "none",
         },
         pressed: {
           fill: "#FFF",
-          outline: "none"
-        }
+          outline: "none",
+        },
       },
       selectedStyle: {
         default: {
           fill: "#FFF",
-          outline: "none"
+          outline: "none",
         },
         hover: {
           fill: "#FFF",
-          outline: "none"
+          outline: "none",
         },
         pressed: {
           fill: "#FFF",
-          outline: "none"
-        }
-      }
+          outline: "none",
+        },
+      },
     };
 
     this.getMeansForAllRegions();
@@ -65,8 +65,8 @@ class MapSelector extends Component {
     const url = `${API_URL}/`;
     axios
       .get(url + "regions/average")
-      .then(response => response.data)
-      .then(data => {
+      .then((response) => response.data)
+      .then((data) => {
         this.setState({ averages: data.payload });
       });
   }
@@ -76,25 +76,27 @@ class MapSelector extends Component {
       notSelectedStyle: {
         default: {
           fill: props.mapElementColor,
-          outline: "none"
+          outline: "none",
         },
         hover: {
           fill: "#FFFFFF",
-          outline: "none"
+          outline: "none",
         },
         pressed: {
           fill: "#FFF",
-          outline: "none"
-        }
-      }
+          outline: "none",
+        },
+      },
     });
   }
 
   styleForNotSelectedRegion(data) {
     let diff = 0;
-    this.state.averages.map(el => {
+    this.state.averages.map((el) => {
       if (el.region === data) {
         diff = el.maleAverage - el.femaleAverage;
+
+        return diff;
       }
     });
 
@@ -103,22 +105,22 @@ class MapSelector extends Component {
         fill: tinycolor(this.props.mapElementColor)
           .darken((diff / 1300) * 100)
           .toString(),
-        outline: "none"
+        outline: "none",
       },
       hover: {
         fill: "#FFFFFF",
-        outline: "none"
+        outline: "none",
       },
       pressed: {
         fill: "#FFF",
-        outline: "none"
-      }
+        outline: "none",
+      },
     };
   }
 
   getMeanForRegion(region) {
     let data = {};
-    this.state.averages.map(el => {
+    this.state.averages.map((el) => {
       if (el.region === region) {
         data =
           genderLabel[0] +
@@ -141,7 +143,7 @@ class MapSelector extends Component {
           <Geographies geography={ee}>
             {({ geographies }) => (
               <>
-                {geographies.map(geo => (
+                {geographies.map((geo) => (
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
@@ -166,14 +168,17 @@ class MapSelector extends Component {
                     }
                   />
                 ))}
-                {geographies.map(geo => {
+                {geographies.map((geo) => {
                   const centroid = geoCentroid(geo);
                   return (
                     <g key={geo.rsmKey + "-name"}>
                       {true ? (
                         <Marker coordinates={centroid}>
                           <text
-                            style={{ fontSize: "10pt", fontFamily: "Verdana" }}
+                            style={{
+                              fontSize: "10pt",
+                              fontFamily: "Roboto",
+                            }}
                             y="2"
                             fontSize={14}
                             textAnchor="middle"

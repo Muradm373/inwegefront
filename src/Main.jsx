@@ -2,11 +2,12 @@ import React, { Component } from "react";
 
 import "react-tabs/style/react-tabs.css";
 import SalaryCalculator from "./components/salary-calculator/SalaryCalculator";
+import MethodologyComponent from "./components/methodology/MethodologyComponent";
+import WageForecast from "./components/wage-forecast/WageForecast";
 import Select from "react-select";
 import changeLanguage, {
   tabs,
   APP_NAME,
-  averageData,
   main,
   averages,
   about,
@@ -16,7 +17,7 @@ import Feedback from "./components/salary-calculator/Feedback";
 import AOS from "aos";
 import PieChartComponent from "./components/salary-calculator/PieChart";
 import { Link } from "react-router-dom";
-import WageForecast from "./components/wage-forecast/WageForecast";
+import ColumnChartComponent from "./components/salary-calculator/ColumnChartComponent";
 
 const languages = [
   {
@@ -114,7 +115,7 @@ class Main extends Component {
   }
 
   renderMenu() {
-    if (this.state.menu == tabs[0]) {
+    if (this.state.menu === tabs[0]) {
       return (
         <div>
           {" "}
@@ -123,6 +124,20 @@ class Main extends Component {
             onDataChange={this.getData}
             mapElementColor={this.state.mapElementColor}
           ></SalaryCalculator>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+        </div>
+      );
+    }
+    if (this.state.menu === tabs[3]) {
+      return (
+        <div>
+          {" "}
+          <MethodologyComponent></MethodologyComponent>
           <br></br>
           <br></br>
           <br></br>
@@ -210,6 +225,15 @@ class Main extends Component {
                         </a>
                       </li>
                       <li>
+                        <a
+                          href="#"
+                          className="nav-link"
+                          onClick={this.changeMenu}
+                        >
+                          {tabs[3]}
+                        </a>
+                      </li>
+                      <li>
                         <a href="#" className="nav-link">
                           <div style={{ width: "250%" }}>
                             <Select
@@ -255,12 +279,6 @@ class Main extends Component {
           </main>
           <div className="site-section">
             <div className="container">
-              <div className="row justify-content-center text-center mb-5">
-                <div className="col-md-5">
-                  <h2 className="section-heading">{averageData}</h2>
-                </div>
-              </div>
-
               <div className="row">
                 <div
                   className="col-md-4"
@@ -269,18 +287,13 @@ class Main extends Component {
                 >
                   <div className="feature-1 text-center">
                     <div className="row d-flex justify-content-center">
-                      <PieChartComponent
-                        key="PieChart"
+                      <ColumnChartComponent
                         region={this.state.region}
                         isco={this.state.isco}
                         code={this.state.code}
-                        type="occupation"
+                        occupation={this.state.occupation}
                       />
                     </div>
-                    <h3 className="mb-3">
-                      {averages[0] + this.state.occupation}
-                    </h3>
-                    <p>{pieChartLabels[0]}</p>
                   </div>
                 </div>
                 <div
@@ -366,6 +379,9 @@ class Main extends Component {
                       </li>
                       <li>
                         <a href="index.html">{tabs[3]}</a>
+                      </li>
+                      <li>
+                        <a href="index.html">{tabs[4]}</a>
                       </li>
                     </ul>
                   </div>

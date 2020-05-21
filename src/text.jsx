@@ -1,5 +1,5 @@
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
-export const APP_NAME = "Palgakompass";
+export const APP_NAME = "palgakompass.stat.ee";
 export const menColor = "#7db0ff";
 export const womenColor = "#f00044";
 const descrEng =
@@ -14,10 +14,10 @@ const differenceEng = [
   " women",
   " men",
   "You earn",
-  " on average"
+  " on average",
 ];
 const lngEng = "en";
-const tabsEng = ["Home", "Pensions", "Wage Calculator"];
+const tabsEng = ["Home", "Pensions", "Wage Calculator", "Methodology"];
 const averagesEng = ["Average for ", "Average for ", "Average for Estonia"];
 const mainEng = ["Home", "About", "Contact", "Navigation"];
 const genderEng = ["Male", "Female"];
@@ -31,7 +31,7 @@ const aboutEng =
 const pieChartLabelsEng = [
   "Average wages for the given occupation in the given county.",
   "Average wages for all occupations in \nthe given county.",
-  "Average wages for all occupations \nfor all counties."
+  "Average wages for all occupations \nfor all counties.",
 ];
 const detailsLabelEng = "Details";
 const descriptionLabelEng = "Description";
@@ -50,11 +50,11 @@ const differenceRus = [
   " женщин",
   " мужчин",
   "Вы зарабатываете на",
-  " в среднем"
+  " в среднем",
 ];
 const salaryRus = ["Bаша", "зарплата"];
 const lngRus = "ru";
-const tabsRus = ["Главная", "Пенсии", "Калькулятор зарплаты"];
+const tabsRus = ["Главная", "Пенсии", "Калькулятор зарплаты", "Mетодология"];
 const averagesRus = ["Среднее для ", "Среднее по  ", "Среднее по Эстонии"];
 const mainRus = ["Главная", "О ", "Контакты", "Навигация по сайту"];
 const genderRus = ["Мужчины", "Женщины"];
@@ -69,7 +69,7 @@ const aboutRus =
 const pieChartLabelsRus = [
   "Средняя зарплата для выбранных должности и региона.",
   "Средняя зарплата для выбранного региона относительно всех должностей.",
-  "Средняя зарплата для выбранной должности относительно всех регионов."
+  "Средняя зарплата для выбранной должности относительно всех регионов.",
 ];
 const detailsLabelRus = "Описание";
 const descriptionLabelRus = "Тема";
@@ -83,7 +83,7 @@ const averageEst = "Keskmine palk Eestis ametialal";
 const averagesEst = [
   "Keskmine ",
   "Keskmine ",
-  "Keskmine palk Eestis ametialal"
+  "Keskmine palk Eestis ametialal",
 ];
 const differenceEst = [
   "Mehed teenivad ",
@@ -93,11 +93,11 @@ const differenceEst = [
   " kui naised",
   " kui mehed",
   "Sina teenid",
-  " keskmiselt"
+  " keskmiselt",
 ];
 const salaryEst = ["Sinu", "palk"];
 const lngEst = "es";
-const tabsEst = ["Kodu", "Pensionid", "Palgaprognoos"];
+const tabsEst = ["Kodu", "Pensionid", "Palgaprognoos", "Metoodika"];
 const mainEst = ["Kodu", "Meist", "Kontaktid", "Navigeerimine"];
 const genderEst = ["Mees", "Naine"];
 const selectRegionEst = "Vali maakond";
@@ -111,7 +111,7 @@ const aboutEst =
 const pieChartLabelsEst = [
   "Keskmine palk valitud ametikohal ja piirkonnas.",
   "Valitud piirkonna keskmine palk kõigi ametikohtade suhtes.",
-  "Valitud ametikoha keskmine palk kõigi piirkondade suhtes."
+  "Valitud ametikoha keskmine palk kõigi piirkondade suhtes.",
 ];
 const detailsLabelEst = "Detailid";
 const descriptionLabelEst = "Kirjeldus";
@@ -231,5 +231,5 @@ export {
   descriptionLabel,
   detailsLabel,
   defaultGender,
-  occupationSelectorPlaceholder
+  occupationSelectorPlaceholder,
 };
