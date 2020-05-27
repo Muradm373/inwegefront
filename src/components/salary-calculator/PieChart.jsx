@@ -73,7 +73,6 @@ class PieChartComponent extends Component {
   }
 
   getMean(region, isco) {
-    console.log(region + " " + isco);
     let url =
       `${API_URL}/entities/count-worker?region` + region + "&isco=" + isco;
 
@@ -120,13 +119,13 @@ class PieChartComponent extends Component {
           opacity={0.9}
           innerRadius={50}
           radius={55}
-          height={200}
+          height={250}
           width={250}
           colorType="literal"
           data={this.state.data}
           padAngle={0.04}
           showLabels={true}
-          labelsRadiusMultiplier={2.2}
+          labelsRadiusMultiplier={2}
         ></RadialChart>
       </div>
     );

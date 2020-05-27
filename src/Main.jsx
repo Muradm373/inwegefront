@@ -334,7 +334,6 @@ class Main extends Component {
               </div>
             </div>
           </div>
-          }
         </div>
         <footer className="footer" role="contentinfo">
           <div className="container">

@@ -4,7 +4,7 @@ import {
   HorizontalBarSeries,
   FlexibleWidthXYPlot,
   XAxis,
-  LabelSeries
+  LabelSeries,
 } from "react-vis";
 import { averageBetweenMenAndWomen } from "../../text";
 
@@ -36,9 +36,9 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: "€" + this.props.womenMean,
-                yOffset: -15
-              }
+                label: "€" + this.props.menMean,
+                yOffset: -15,
+              },
             ]}
             labelAnchorY="middleAlignment"
           />
@@ -53,9 +53,9 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: "€" + this.props.menMean,
-                yOffset: 20
-              }
+                label: "€" + this.props.womenMean,
+                yOffset: 20,
+              },
             ]}
             labelAnchorY="middleAlignment"
           />
