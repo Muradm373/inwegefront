@@ -76,7 +76,16 @@ class ColumnChartComponent extends Component {
     let region = props.region;
 
     let options = this.state.options;
-    options.xaxis.categories[0] = "Average for " + occupationName;
+    let occupationArray = occupationName.split(" ");
+    if (occupationArray.length >= 3) {
+      options.xaxis.categories[0] = [
+        "Average for ",
+        occupationArray[0],
+        occupationArray[1] + " " + occupationArray[2],
+      ];
+    } else {
+      options.xaxis.categories[0] = ["Average for ", occupationName];
+    }
     options.xaxis.categories[2] = "Average for " + region;
     this.setState({ options: options });
   }

@@ -58,7 +58,9 @@ class DynamicMapSelector extends Component {
 
       mapType: "Gender Wage Gap",
       isco: "",
-      mapAverageOrMean: "",
+      median: "",
+      average: "",
+      genderGap: "",
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -112,6 +114,8 @@ class DynamicMapSelector extends Component {
         }
         if (flag !== true) this.setState({ averages: data.payload });
       });
+
+    this.getAverageMeanMedian();
   }
 
   styleForNotSelectedRegion(data) {
@@ -207,11 +211,35 @@ class DynamicMapSelector extends Component {
 
     return mapContentOccupation;
   }
+
+  getAverageMeanMedian() {
+    const url = `${API_URL}/`;
+    axios.get(url + "jobs/average?isco=" + this.state.isco).then((response) => {
+      console.log(response.data.payload);
+      let averagesPayload = response.data.payload;
+
+      this.setState({
+        median: averagesPayload.median,
+        average: averagesPayload.average,
+        genderGap: averagesPayload.genderGap,
+      });
+    });
+  }
   getAverageOrMean() {
     let mapAverageOrMean;
 
-    if (this.state.mapAverageOrMean !== "") {
-      mapAverageOrMean = this.state.mapAverageOrMean;
+    if (this.state.average !== 0) {
+      switch (this.state.mapType) {
+        case "Median Wage":
+          mapAverageOrMean = this.state.median;
+          break;
+        case "Average Wage":
+          mapAverageOrMean = this.state.average;
+          break;
+        default:
+          mapAverageOrMean = this.state.genderGap;
+          break;
+      }
     }
 
     return mapAverageOrMean;
