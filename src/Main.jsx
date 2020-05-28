@@ -351,10 +351,7 @@ class Main extends Component {
                   {about}
                 </p>
                 <p className="social">
-                  <a href="index.html">
-                    <span className="icofont-twitter"></span>
-                  </a>
-                  <a href="index.html">
+                  <a href="https://www.facebook.com/Inwege-projekt-539113286594122">
                     <span className="icofont-facebook"></span>
                   </a>
                 </p>
