@@ -32,8 +32,8 @@ class WageForecast extends Component {
 
   render() {
     return (
-      <div>
-        <div className="wageforecast-component">
+      <div className="selector-style w-75 text-center mx-auto">
+        <div className="wageforecast-component ">
           <div
             className="map_selector p-3"
             style={{ width: "65%", marginLeft: "10%", marginTop: "-10%" }}

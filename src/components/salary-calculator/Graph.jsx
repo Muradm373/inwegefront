@@ -10,7 +10,7 @@ import {
   AreaSeries,
   LineSeries,
   Hint,
-  Highlight
+  Highlight,
 } from "react-vis";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
@@ -35,7 +35,7 @@ function Graph(props) {
       : parseInt(data.womenMean);
 
   return (
-    <div className="centered" id="entity">
+    <div className="centered" id="entity" style={{ marginTop: "15px" }}>
       <BarComponent
         menMean={menMean}
         womenMean={womenMean}
@@ -78,13 +78,13 @@ function Graph(props) {
         />
         <XAxis
           tickTotal={10}
-          tickFormat={v => `€${v}`}
+          tickFormat={(v) => `€${v}`}
           style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.9 }}
         />
         <YAxis
           tickTotal={4}
           style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.9 }}
-          tickFormat={v => `${v * 10}%`}
+          tickFormat={(v) => `${v * 10}%`}
         />
 
         <AreaSeries
@@ -108,7 +108,7 @@ function Graph(props) {
         <LineSeries
           data={[
             { x: mean, y: 0 },
-            { x: mean, y: 5 }
+            { x: mean, y: 5 },
           ]}
           strokeWidth="1"
           stroke="black"
@@ -136,7 +136,7 @@ function Graph(props) {
         <LineSeries
           data={[
             { y: 0, x: myWage },
-            { y: 5, x: myWage }
+            { y: 5, x: myWage },
           ]}
           strokeWidth="1"
           stroke="black"
@@ -147,7 +147,7 @@ function Graph(props) {
           style={display(myWage, mean)}
           value={{
             x: parseInt(myWage) / 2 + parseInt(mean) / 2,
-            y: 3
+            y: 3,
           }}
         >
           <p className="differenceLabel">

@@ -35,7 +35,7 @@ h4,
 h5,
 h6,
 .font-heading {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #000;
 }
 
@@ -384,11 +384,11 @@ figure figcaption {
 }
 
 .sticky-wrapper.is-sticky .site-navbar .site-logo a {
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .sticky-wrapper.is-sticky .site-navbar .site-menu > li > a {
-  color: #000000 !important;
+  color: #ffffff !important;
 }
 
 .sticky-wrapper.is-sticky .site-navbar .site-menu > li > a:hover,
@@ -672,43 +672,23 @@ figure figcaption {
   position: relative;
 }
 .hero-section-color-1 {
-  background: linear-gradient(
-    to right,
-    #29B6F6 0%,
-    #0086c3 100%
-  );
+  background: linear-gradient(to right, #29b6f6 0%, #0086c3 100%);
   position: relative;
 }
 .hero-section-color-2 {
-  background: linear-gradient(
-    to right,
-    #E57373 0%,
-    #af4448 100%
-  );
+  background: linear-gradient(to right, #e57373 0%, #af4448 100%);
   position: relative;
 }
 .hero-section-color-3 {
-  background: linear-gradient(
-    to right,
-    #A5D6A7 0%,
-    #75a478 100%
-  );
+  background: linear-gradient(to right, #a5d6a7 0%, #75a478 100%);
   position: relative;
 }
 .hero-section-color-4 {
-  background: linear-gradient(
-    to right,
-    #4DB6AC 0%,
-    #00867d 100%
-  );
+  background: linear-gradient(to right, #4db6ac 0%, #00867d 100%);
   position: relative;
 }
 .hero-section-color-5 {
-  background: linear-gradient(
-    to right,
-    #BDBDBD 0%,
-    #8d8d8d 100%
-  );
+  background: linear-gradient(to right, #bdbdbd 0%, #8d8d8d 100%);
   position: relative;
 }
 
@@ -817,8 +797,8 @@ figure figcaption {
 }
 
 .site-navbar .site-navigation .site-menu > li > a {
-  padding: 30px 20px;
-  color: #000000;
+  padding: 5px 20px;
+  color: #ffffff;
   display: inline-block;
   text-decoration: none !important;
 }
@@ -899,7 +879,7 @@ figure figcaption {
   text-transform: none;
   letter-spacing: normal;
   transition: 0s all;
-  color: #000000;
+  color: #fff;
 }
 
 .site-navbar .site-navigation .site-menu .has-children .dropdown .active {
@@ -926,7 +906,7 @@ figure figcaption {
   > li
   > a:hover {
   background: #f2f4f6;
-  color: #000000;
+  color: #ffffff;
 }
 
 .site-navbar
@@ -1271,6 +1251,8 @@ figure figcaption {
 
 .footer {
   padding: 5rem 0 2.5rem 0;
+  background-color: #000;
+  color: #fff;
 }
 
 .footer h3 {
@@ -1280,10 +1262,15 @@ figure figcaption {
 
 .footer ul li {
   margin-bottom: 10px;
+  color: #fff;
 }
 
 .footer a {
-  color: #000;
+  color: #fff;
+}
+
+.footer a:hover {
+  color: #2d71a1;
 }
 
 .footer .copyright {
