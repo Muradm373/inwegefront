@@ -39,13 +39,15 @@ class OccupationSelector extends Component {
 
   render() {
     return (
-      <Select
-        onChange={this.props.onChange}
-        noOptionsMessage={() => occupationSelectorPlaceholder}
-        options={this.state.occupations}
-        placeholder={selectOccupation}
-        className="occupation-select  mb-md-1"
-      ></Select>
+      <div className="selector">
+        <Select
+          onChange={this.props.onChange}
+          noOptionsMessage={() => occupationSelectorPlaceholder}
+          options={this.state.occupations}
+          placeholder={selectOccupation}
+          className="occupation-select  mb-md-1"
+        ></Select>
+      </div>
     );
   }
 }

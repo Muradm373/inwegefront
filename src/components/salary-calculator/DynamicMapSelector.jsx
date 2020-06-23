@@ -35,24 +35,29 @@ class DynamicMapSelector extends Component {
         hover: {
           fill: "#FFFFFF",
           outline: "none",
+          stroke: "#dfdfdf",
         },
         pressed: {
           fill: "#FFF",
           outline: "none",
+          stroke: "#dfdfdf",
         },
       },
       selectedStyle: {
         default: {
           fill: "#FFF",
           outline: "none",
+          stroke: "#dfdfdf",
         },
         hover: {
           fill: "#FFF",
           outline: "none",
+          stroke: "#dfdfdf",
         },
         pressed: {
           fill: "#FFF",
           outline: "none",
+          stroke: "#dfdfdf",
         },
       },
 
@@ -142,10 +147,12 @@ class DynamicMapSelector extends Component {
       hover: {
         fill: "#FFFFFF",
         outline: "none",
+        stroke: "#dfdfdf",
       },
       pressed: {
         fill: "#FFF",
         outline: "none",
+        stroke: "#dfdfdf",
       },
     };
   }
@@ -349,63 +356,30 @@ class DynamicMapSelector extends Component {
 
         <div className="row" style={{ alignContent: "center" }}>
           <div
-            className="card m-1"
-            style={{ height: "3rem", cursor: "pointer" }}
+            className="button-style"
             onClick={() => {
               this.setColor("Gender Wage Gap");
               this.getMeansForAllRegions("Gender Wage Gap");
             }}
           >
-            <div className="carditem p-1">
-              <p
-                style={{
-                  color: "black",
-                  fontSize: "10pt",
-                  fontFamily: "Roboto",
-                }}
-              >
-                Gender Wage Gap
-              </p>
-            </div>
+            <p className="button-text-style">Gender Wage Gap</p>
           </div>
           <div
-            className="card m-1"
-            style={{ height: "3rem", cursor: "pointer" }}
+            className="button-style"
             onClick={() => {
               this.setColor("Median Wage");
               this.getMeansForAllRegions("Median Wage");
             }}
           >
-            <div className="carditem p-1">
-              <p
-                style={{
-                  color: "black",
-                  fontSize: "10pt",
-                  fontFamily: "Roboto",
-                }}
-              >
-                Median Wage
-              </p>
-            </div>
+            <p className="button-text-style">Median Wage</p>
           </div>
           <div
-            className="card m-1"
-            style={{ height: "3rem", cursor: "pointer" }}
+            className="button-style"
             onClick={() => {
               this.setColor("Average Wage");
             }}
           >
-            <div className="carditem p-1">
-              <p
-                style={{
-                  color: "black",
-                  fontSize: "10pt",
-                  fontFamily: "Roboto",
-                }}
-              >
-                Average Wage
-              </p>
-            </div>
+            <p className="button-text-style">Average Wage</p>
           </div>
         </div>
       </>

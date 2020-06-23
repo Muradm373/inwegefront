@@ -72,7 +72,6 @@ class Main extends Component {
       isco: "",
       code: 9629,
       lang: "en",
-      heroSectionStyle: "hero-section hero-section-color-1",
       mapElementColor: "#73e8ff",
       menu: tabs[0],
     };
@@ -124,12 +123,6 @@ class Main extends Component {
             onDataChange={this.getData}
             mapElementColor={this.state.mapElementColor}
           ></SalaryCalculator>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
         </div>
       );
     }
@@ -138,12 +131,6 @@ class Main extends Component {
         <div>
           {" "}
           <MethodologyComponent></MethodologyComponent>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
         </div>
       );
     } else {
@@ -175,20 +162,29 @@ class Main extends Component {
           <header
             className="site-navbar js-sticky-header site-navbar-target"
             role="banner"
+            style={{ backgroundColor: "black", color: "white" }}
           >
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-6 col-lg-2">
-                  <h1 className="mb-0 site-logo">
+                  <h3 className="mb-0 site-logo">
                     <span
                       style={{ cursor: "pointer" }}
                       href={(e) => e.preventDefault()}
                       className="mb-0"
                       onClick={this.scrollToBottom}
                     >
-                      <p style={{ color: "#FFFFFF" }}>{APP_NAME}</p>
+                      <p
+                        style={{
+                          fontSize: "15pt",
+                          paddingTop: "5px",
+                          fontStyle: "bold",
+                        }}
+                      >
+                        {APP_NAME}
+                      </p>
                     </span>
-                  </h1>
+                  </h3>
                 </div>
 
                 <div className="col-12 col-md-10 d-none d-lg-block">
@@ -197,7 +193,7 @@ class Main extends Component {
                     role="navigation"
                   >
                     <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                      <li className="active">
+                      <li>
                         <a
                           href="#"
                           className="nav-link"
@@ -267,9 +263,9 @@ class Main extends Component {
             </div>
           </header>
           <main id="main">
-            <div className={this.state.heroSectionStyle}>
+            <div>
               <div
-                className="selector-style w-75 text-center mx-auto"
+                className="selector-style text-center mx-auto"
                 data-aos="fade-up"
                 data-aos-delay=""
               >
@@ -278,61 +274,7 @@ class Main extends Component {
             </div>
           </main>
           <div className="site-section">
-            <div className="container">
-              <div className="row">
-                <div
-                  className="col-md-4"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  <div className="feature-1 text-center">
-                    <div className="row d-flex justify-content-center">
-                      <ColumnChartComponent
-                        region={this.state.region}
-                        isco={this.state.isco}
-                        code={this.state.code}
-                        occupation={this.state.occupation}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="col-md-4"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  <div className="feature-1 text-center">
-                    <div className="row d-flex justify-content-center">
-                      <PieChartComponent
-                        key="PieChart"
-                        region={this.state.region}
-                        isco={this.state.isco}
-                        code={this.state.code}
-                        type="region"
-                      />
-                    </div>
-                    {this.state.occupation !== "" && (
-                      <p className="mb-3">
-                        {"Total number of employees in occupation " +
-                          this.state.occupation +
-                          " in " +
-                          this.state.region}
-                      </p>
-                    )}
-                    {this.state.occupation === "" && (
-                      <p className="mb-3">
-                        {"Total number of employees in Estonia "}
-                      </p>
-                    )}
-                  </div>
-                </div>
-                <div
-                  className="col-md-4"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                ></div>
-              </div>
-            </div>
+            <div className="container"></div>
           </div>
         </div>
         <footer className="footer" role="contentinfo">

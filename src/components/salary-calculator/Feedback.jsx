@@ -9,13 +9,13 @@ export function Feedback(props) {
   const [email, setEmail] = useState("");
   const alert = useAlert();
 
-  const sendFeedback = event => {
+  const sendFeedback = (event) => {
     event.preventDefault();
 
     axios.post(`${API_URL}/feedback`, {
       email: email,
       details: details,
-      description: description
+      description: description,
     });
 
     setDetails("");
@@ -32,31 +32,32 @@ export function Feedback(props) {
         <input
           name="description"
           placeholder={descriptionLabel}
-          className="form-control mb-md-2"
+          className="input-stats description-input-stats"
           type="text"
           value={description}
-          onChange={e => setDescription(e.target.value)}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <input
           name="email"
           placeholder="Email"
-          className="form-control mb-md-2"
+          className="input-stats email-input-stats"
           type="email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <textarea
           name="details"
           placeholder={detailsLabel}
-          className="form-control mb-md-2"
+          className="input-stats"
+          style={{
+            background:
+              "url(images/comment-author.gif) no-repeat scroll 7px 7px",
+          }}
           type="text"
           value={details}
-          onChange={e => setDetails(e.target.value)}
+          onChange={(e) => setDetails(e.target.value)}
         />
-        <input
-          type="Submit"
-          className="btn btn-primary mb-md-2 float-right"
-        ></input>
+        <input type="Submit" className="black-button"></input>
       </form>
     </div>
   );

@@ -4,14 +4,13 @@ import Select from "react-select";
 
 export function GenderSelector(props) {
   return (
-    <div className="gender-selector ">
+    <div className="selector" style={{ width: "10rem" }}>
       <Select
         onChange={props.onGenderChange}
-        className="gender-select"
         placeholder={defaultGender}
         options={[
           { label: genderLabel[0], value: genderLabel[0] },
-          { label: genderLabel[1], value: genderLabel[1] }
+          { label: genderLabel[1], value: genderLabel[1] },
         ]}
       ></Select>
     </div>
