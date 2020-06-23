@@ -4,7 +4,7 @@ import Select from "react-select";
 
 export function GenderSelector(props) {
   return (
-    <div className="selector" style={{ width: "10rem" }}>
+    <div className="selector" style={{ width: "10rem", marginLeft: "5px" }}>
       <Select
         onChange={props.onGenderChange}
         placeholder={defaultGender}
