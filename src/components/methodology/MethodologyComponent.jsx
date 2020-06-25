@@ -9,7 +9,7 @@ class MethodologyComponent extends Component {
     return (
       <div>
         <div className="methodology-component">
-          <p>Some methodology details</p>
+          <p>Methodology details</p>
         </div>
       </div>
     );
