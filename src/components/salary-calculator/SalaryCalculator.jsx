@@ -176,8 +176,6 @@ class SalaryCalculator extends Component {
               </font>
               <div class="form-group shiny-input-container">
                 <div>
-                  <RegionSelector onChange={this.onRegionChange} />
-
                   <OccupationSelector
                     onChange={this.onIscoChange}
                     region={this.state.region}
