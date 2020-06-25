@@ -167,24 +167,7 @@ class Main extends Component {
             <div className="container">
               <div className="row align-items-center">
                 <div className="col-6 col-lg-2">
-                  <h3 className="mb-0 site-logo">
-                    <span
-                      style={{ cursor: "pointer" }}
-                      href={(e) => e.preventDefault()}
-                      className="mb-0"
-                      onClick={this.scrollToBottom}
-                    >
-                      <p
-                        style={{
-                          fontSize: "15pt",
-                          paddingTop: "5px",
-                          fontStyle: "bold",
-                        }}
-                      >
-                        {APP_NAME}
-                      </p>
-                    </span>
-                  </h3>
+                  <h3 className="mb-0 site-logo"></h3>
                 </div>
 
                 <div className="col-12 col-md-10 d-none d-lg-block">

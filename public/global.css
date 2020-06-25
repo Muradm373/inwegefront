@@ -6,7 +6,11 @@
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
+}
+
+.c-tabs-line {
   border-bottom: 1px solid #dddddd;
+  margin-top: -16px;
 }
 .c-tabs__nav ul {
   list-style: none;

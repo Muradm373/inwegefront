@@ -210,19 +210,15 @@ class DynamicMapSelector extends Component {
   }
 
   getOccupation() {
-    let mapContentOccupation;
-
-    if (this.props.occupation !== undefined) {
-      mapContentOccupation = this.props.occupation;
-    }
-
-    return mapContentOccupation;
+    console.log(this.props.occupation);
+    return this.props.occupation === "" || this.props.region === ""
+      ? ""
+      : this.props.occupation + ", " + this.props.region;
   }
 
   getAverageMeanMedian() {
     const url = `${API_URL}/`;
     axios.get(url + "jobs/average?isco=" + this.state.isco).then((response) => {
-      console.log(response.data.payload);
       let averagesPayload = response.data.payload;
 
       this.setState({
@@ -233,23 +229,23 @@ class DynamicMapSelector extends Component {
     });
   }
   getAverageOrMean() {
-    let mapAverageOrMean;
-
-    if (this.state.average !== 0) {
+    if (this.state.average === 0) {
+      return "";
+    } else {
       switch (this.state.mapType) {
         case "Median Wage":
-          mapAverageOrMean = this.state.median;
-          break;
+          return "€" + this.state.median;
+
         case "Average Wage":
-          mapAverageOrMean = this.state.average;
-          break;
+          return "€" + this.state.average;
+
+        case "Gender Wage Gap":
+          return this.state.genderGap + "%";
+
         default:
-          mapAverageOrMean = this.state.genderGap;
-          break;
+          return " ";
       }
     }
-
-    return mapAverageOrMean;
   }
   render() {
     return (
@@ -314,7 +310,7 @@ class DynamicMapSelector extends Component {
               </>
             )}
           </Geographies>
-          <Annotation subject={[-80, 30]} dx={0} dy={0}>
+          <Annotation subject={[-80, 40]} dx={0} dy={0}>
             <text
               style={{
                 fontSize: "12pt",
@@ -354,32 +350,66 @@ class DynamicMapSelector extends Component {
           </Annotation>
         </ComposableMap>
 
-        <div className="row" style={{ alignContent: "center" }}>
-          <div
-            className="button-style"
-            onClick={() => {
-              this.setColor("Gender Wage Gap");
-              this.getMeansForAllRegions("Gender Wage Gap");
-            }}
-          >
-            <p className="button-text-style">Gender Wage Gap</p>
-          </div>
-          <div
-            className="button-style"
-            onClick={() => {
-              this.setColor("Median Wage");
-              this.getMeansForAllRegions("Median Wage");
-            }}
-          >
-            <p className="button-text-style">Median Wage</p>
-          </div>
-          <div
-            className="button-style"
-            onClick={() => {
-              this.setColor("Average Wage");
-            }}
-          >
-            <p className="button-text-style">Average Wage</p>
+        <div class="c-tabs c-is-sticky" data-tabs="">
+          <div class="c-tabs__nav">
+            <ul>
+              <li
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.setColor("Gender Wage Gap");
+                  this.getMeansForAllRegions("Gender Wage Gap");
+                }}
+              >
+                <a
+                  class="c-btn c-btn--w-icon"
+                  role="tab"
+                  aria-controls="brand"
+                  aria-label="brand menu"
+                  aria-selected={
+                    this.state.mapType === "Gender Wage Gap" ? "true" : "false"
+                  }
+                >
+                  Gender Wage Gap
+                </a>
+              </li>
+              <li
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.setColor("Median Wage");
+                  this.getMeansForAllRegions("Median Wage");
+                }}
+              >
+                <a
+                  class="c-btn c-btn--w-icon"
+                  role="tab"
+                  aria-controls="ui-juhised"
+                  aria-label="ui-juhised menu"
+                  aria-selected={
+                    this.state.mapType === "Median Wage" ? "true" : "false"
+                  }
+                >
+                  Median Wage
+                </a>
+              </li>
+              <li
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.setColor("Average Wage");
+                }}
+              >
+                <a
+                  class="c-btn c-btn--w-icon"
+                  role="tab"
+                  aria-controls="ui-juhised"
+                  aria-label="ui-juhised menu"
+                  aria-selected={
+                    this.state.mapType === "Average Wage" ? "true" : "false"
+                  }
+                >
+                  Average Wage
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </>

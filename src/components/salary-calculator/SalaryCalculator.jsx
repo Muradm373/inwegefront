@@ -142,7 +142,6 @@ class SalaryCalculator extends Component {
     this.setState({ gender: event.value });
   }
   renderGraph() {
-    console.log(this.state);
     return (
       <Graph
         entities={this.state.entities}
@@ -167,11 +166,8 @@ class SalaryCalculator extends Component {
     return (
       <div>
         <div className="graph-component">
-          <div style={{ display: "flex", flexDirection: "row" }}>
-            <div
-              className="card-shadow"
-              style={{ width: "30%", marginLeft: "3%" }}
-            >
+          <div className="graph-component-cards">
+            <div className="card-shadow card-occupation-selector">
               <font>
                 <font>
                   After selecting county from the map, you can search for a job
@@ -226,10 +222,7 @@ class SalaryCalculator extends Component {
               </div>
             </div>
 
-            <div
-              className="card-shadow"
-              style={{ width: "60%", height: "50%" }}
-            >
+            <div className="card-shadow card-dynamic-map">
               <div class="c-tabs c-is-sticky" data-tabs="">
                 <div class="c-tabs__nav">
                   <ul role="tablist" data-tabs-nav="" marginTop="10px">
@@ -284,6 +277,7 @@ class SalaryCalculator extends Component {
                   </ul>
                 </div>
               </div>
+              <div className="c-tabs-line"></div>
               <div style={{ padding: "5%" }}>
                 {
                   <div
@@ -299,6 +293,7 @@ class SalaryCalculator extends Component {
                       setTooltipContent={this.setContent}
                       mapElementColor={this.props.mapElementColor}
                       occupation={this.state.occupation}
+                      region={this.state.region}
                     />
                     <ReactTooltip>{this.state.content}</ReactTooltip>
                   </div>

@@ -16,13 +16,24 @@ import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
 import { genderLabel, salary, menColor, womenColor } from "../../text";
 
-const display = (myWage, mean) => {
-  return Math.abs(parseInt(myWage) - parseInt(mean)) > 50
+const display = (myWage, mean, men) => {
+  return Math.abs(parseInt(myWage) - parseInt(mean)) > 50 && men.length !== 0
     ? {}
     : { display: "none" };
 };
 
+const displayMessage = (data) => {
+  return data.length === 0 ? {} : { display: "none" };
+};
+
+const displayMessageLocation = (myWage) => {
+  return myWage === undefined || myWage === "0"
+    ? { x: -0.65, y: 3 }
+    : { x: parseInt(myWage) / 2.75, y: 3 };
+};
+
 function Graph(props) {
+  console.log(props);
   let data = fetchData(props.entities);
   let men = data.men;
   let women = data.women;
@@ -105,6 +116,15 @@ function Graph(props) {
           strokeWidth="0"
         />
 
+        <Hint
+          value={displayMessageLocation(myWage)}
+          style={displayMessage(men)}
+        >
+          <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
+            No data for the selected occupation
+          </p>
+        </Hint>
+
         <LineSeries
           data={[
             { x: mean, y: 0 },
@@ -116,7 +136,7 @@ function Graph(props) {
           strokeDasharray="7, 3"
         />
 
-        <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean)}>
+        <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean, men)}>
           <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
             {props.myGender === genderLabel[0]
               ? props.differenceLabel[5]
@@ -126,7 +146,7 @@ function Graph(props) {
           </p>
         </Hint>
 
-        <Hint value={{ x: myWage, y: 0 }} style={display(myWage, mean)}>
+        <Hint value={{ x: myWage, y: 0 }} style={display(myWage, mean, men)}>
           <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
             {salary[0]}
             <br /> {salary[1]}
@@ -144,7 +164,7 @@ function Graph(props) {
         />
 
         <Hint
-          style={display(myWage, mean)}
+          style={display(myWage, mean, men)}
           value={{
             x: parseInt(myWage) / 2 + parseInt(mean) / 2,
             y: 3,
