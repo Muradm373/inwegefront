@@ -275,7 +275,7 @@ class SalaryCalculator extends Component {
                   </ul>
                 </div>
               </div>
-              <div className="c-tabs-line"></div>
+	      <div className="c-tabs-line"></div>
               <div style={{ padding: "5%" }}>
                 {
                   <div
