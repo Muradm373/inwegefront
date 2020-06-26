@@ -410,6 +410,13 @@ p {
 .Column {
   display: table-cell;
 }
+.inline {
+  display: table;
+}
+.inline-column {
+  display: table-cell;
+  padding: 0%;
+}
 
 .carditem {
   margin-top: 0.5rem;

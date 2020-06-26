@@ -303,21 +303,21 @@ class SalaryCalculator extends Component {
                       display: this.state.tab === 2 ? "inline" : "none",
                     }}
                   >
-                    <div className="row">
-                      <div className="feature-1 text-center">
-                        <div className="col-md-12">
-                          <ColumnChartComponent
-                            region={this.state.region}
-                            isco={this.state.isco}
-                            code={this.state.code}
-                            occupation={this.state.occupation}
-                          />
-                        </div>
+                    <div className="graph-component-cards">
+                      <div>
+                        <ColumnChartComponent
+                          region={this.state.region}
+                          isco={this.state.isco}
+                          code={this.state.code}
+                          occupation={this.state.occupation}
+                        />
                       </div>
-                      <div className="col-md-4">
+                      <div>
                         <div className="feature-1 text-center">
                           <div className="row d-flex justify-content-center">
+                            <div style={{ height: "5px" }}></div>
                             <PieChartComponent
+                              style={{ paddingTop: "-1000px" }}
                               key="PieChart"
                               region={this.state.region}
                               isco={this.state.isco}

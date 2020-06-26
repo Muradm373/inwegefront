@@ -224,7 +224,7 @@ class ColumnChartComponent extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={350}
+          height={330}
         />
       </div>
     );
