@@ -84,9 +84,15 @@ class ColumnChartComponent extends Component {
         occupationArray[1] + " " + occupationArray[2],
       ];
     } else {
-      options.xaxis.categories[0] = ["Average for ", occupationName];
+      options.xaxis.categories[0] = [
+        "Average for ",
+        occupationName === "" ? "occupation" : occupationName,
+      ];
     }
-    options.xaxis.categories[2] = "Average for " + region;
+    options.xaxis.categories[2] = [
+      "Average for ",
+      region === "" ? "county" : region,
+    ];
     this.setState({ options: options });
   }
 
@@ -224,7 +230,7 @@ class ColumnChartComponent extends Component {
           options={this.state.options}
           series={this.state.series}
           type="bar"
-          height={330}
+          height={400}
         />
       </div>
     );

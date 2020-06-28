@@ -38,6 +38,9 @@ const descriptionLabelEng = "Description";
 const defaultGenderEng = "Gender";
 const occupationSelectorPlaceholderEng =
   "First you need to select county on the map";
+const overallEng = "Overall in Estonia";
+
+//Russion
 
 const descrRus =
   "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.";
@@ -210,6 +213,7 @@ let detailsLabel = detailsLabelEng;
 let descriptionLabel = descriptionLabelEng;
 let averageData = averageDataEng;
 let defaultGender = defaultGenderEng;
+let overall = overallEng;
 
 export {
   noDescr,
@@ -232,4 +236,5 @@ export {
   detailsLabel,
   defaultGender,
   occupationSelectorPlaceholder,
+  overall,
 };

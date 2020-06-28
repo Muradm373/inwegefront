@@ -1,5 +1,5 @@
 import React, { memo, Component } from "react";
-import { API_URL } from "../../text";
+import { API_URL, overall } from "../../text";
 import { geoCentroid } from "d3-geo";
 
 import {
@@ -27,40 +27,6 @@ class DynamicMapSelector extends Component {
       averages: [],
       occupation: props.occupation,
       color: props.mapElementColor,
-      notSelectedStyle: {
-        default: {
-          fill: props.mapElementColor,
-          outline: "none",
-        },
-        hover: {
-          fill: "#FFFFFF",
-          outline: "none",
-          stroke: "#dfdfdf",
-        },
-        pressed: {
-          fill: "#FFF",
-          outline: "none",
-          stroke: "#dfdfdf",
-        },
-      },
-      selectedStyle: {
-        default: {
-          fill: "#FFF",
-          outline: "none",
-          stroke: "#dfdfdf",
-        },
-        hover: {
-          fill: "#FFF",
-          outline: "none",
-          stroke: "#dfdfdf",
-        },
-        pressed: {
-          fill: "#FFF",
-          outline: "none",
-          stroke: "#dfdfdf",
-        },
-      },
-
       mapType: "Gender Wage Gap",
       isco: "",
       median: "",
@@ -123,11 +89,52 @@ class DynamicMapSelector extends Component {
     this.getAverageMeanMedian();
   }
 
-  styleForNotSelectedRegion(data) {
-    return this.styleForNotSelectedRegionAverage(data);
+  getGradientMax() {
+    let diff = 0;
+    this.state.averages.map((el) => {
+      let diff_av = el.maleAverage - el.femaleAverage;
+      if (diff < diff_av) {
+        diff = diff_av;
+      }
+    });
+
+    return tinycolor(this.state.color)
+      .darken((diff / 1300) * 100)
+      .toString();
   }
 
-  styleForNotSelectedRegionAverage(data) {
+  styleForSelectedRegion(data) {
+    let diff = 0;
+    this.state.averages.map((el) => {
+      if (el.region === data) {
+        diff = el.maleAverage - el.femaleAverage;
+
+        return diff;
+      }
+    });
+    let color = tinycolor(this.state.color)
+      .darken((diff / 1300) * 100)
+      .toString();
+
+    return {
+      default: {
+        fill: color,
+        outline: "none",
+      },
+      hover: {
+        fill: color,
+        outline: "none",
+        stroke: "#6e6e6e",
+      },
+      pressed: {
+        fill: color,
+        outline: "none",
+        stroke: "#6e6e6e",
+      },
+    };
+  }
+
+  styleForNotSelectedRegion(data) {
     let diff = 0;
     this.state.averages.map((el) => {
       if (el.region === data) {
@@ -137,22 +144,24 @@ class DynamicMapSelector extends Component {
       }
     });
 
+    let color = tinycolor(this.state.color)
+      .darken((diff / 1300) * 100)
+      .toString();
+
     return {
       default: {
-        fill: tinycolor(this.state.color)
-          .darken((diff / 1300) * 100)
-          .toString(),
+        fill: color,
         outline: "none",
+        stroke: "#515152",
       },
       hover: {
-        fill: "#FFFFFF",
+        fill: color,
         outline: "none",
-        stroke: "#dfdfdf",
+        stroke: "#000",
       },
       pressed: {
-        fill: "#FFF",
+        fill: color,
         outline: "none",
-        stroke: "#dfdfdf",
       },
     };
   }
@@ -210,9 +219,8 @@ class DynamicMapSelector extends Component {
   }
 
   getOccupation() {
-    console.log(this.props.occupation);
     return this.props.occupation === "" || this.props.region === ""
-      ? ""
+      ? overall
       : this.props.occupation + ", " + this.props.region;
   }
 
@@ -278,8 +286,8 @@ class DynamicMapSelector extends Component {
                     }}
                     style={
                       this.state.selected !== geo.properties.MNIMI
-                        ? this.styleForNotSelectedRegion(geo.properties.MNIMI)
-                        : this.state.selectedStyle
+                        ? this.styleForSelectedRegion(geo.properties.MNIMI)
+                        : this.styleForNotSelectedRegion(geo.properties.MNIMI)
                     }
                   />
                 ))}
@@ -295,7 +303,6 @@ class DynamicMapSelector extends Component {
                               fontFamily: "Roboto",
                             }}
                             y="2"
-                            fontSize={14}
                             textAnchor="middle"
                           >
                             {replaceMaakond(geo.properties.MNIMI)}
@@ -349,6 +356,36 @@ class DynamicMapSelector extends Component {
             </text>
           </Annotation>
         </ComposableMap>
+
+        <div
+          style={{
+            width: "80%",
+            height: "20px",
+            borderRadius: "10px",
+            marginLeft: "10%",
+            marginTop: "-40px",
+            marginBottom: "80px",
+            background: `linear-gradient(to right, ${
+              this.state.color
+            },${this.getGradientMax()})`,
+          }}
+        >
+          <p
+            style={{
+              color: "#FFF",
+              textAlign: "left",
+              marginLeft: "15px",
+              float: "left",
+              width: "50%",
+            }}
+          >
+            Lower
+          </p>
+
+          <p style={{ color: "#FFF", textAlign: "right", marginRight: "15px" }}>
+            Higher
+          </p>
+        </div>
 
         <div class="c-tabs c-is-sticky" data-tabs="">
           <div class="c-tabs__nav">
