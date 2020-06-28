@@ -103,6 +103,65 @@ class DynamicMapSelector extends Component {
       .toString();
   }
 
+  getMax() {
+    let diff = 0;
+    let diff_str = "";
+    if (this.state.mapType === "Gender Wage Gap") {
+      this.state.averages.map((el) => {
+        let diff_av = 0;
+        if (el.maleAverage < el.femaleAverage)
+          diff_av = (el.maleAverage / el.femaleAverage) * 100;
+        else diff_av = (el.femaleAverage / el.maleAverage) * 100;
+        if (diff < diff_av) {
+          diff = diff_av;
+        }
+      });
+
+      diff_str = "(" + parseInt(diff) + "%)";
+    } else {
+      this.state.averages.map((el) => {
+        let diff_av = el.maleAverage - el.femaleAverage;
+        if (diff < diff_av) {
+          diff = diff_av;
+        }
+
+        diff_str = "(€" + diff + ")";
+      });
+    }
+
+    return this.state.mapType !== "Average Wage" ? diff_str : "";
+  }
+
+  getMin() {
+    let diff = 10000000000;
+    let diff_str = "";
+
+    if (this.state.mapType === "Gender Wage Gap") {
+      this.state.averages.map((el) => {
+        let diff_av = 0;
+        if (el.maleAverage < el.femaleAverage)
+          diff_av = (el.maleAverage / el.femaleAverage) * 100;
+        else diff_av = (el.femaleAverage / el.maleAverage) * 100;
+        if (diff > diff_av) {
+          diff = diff_av;
+        }
+      });
+
+      diff_str = "(" + parseInt(diff) + "%)";
+    } else {
+      this.state.averages.map((el) => {
+        let diff_av = el.maleAverage - el.femaleAverage;
+        if (diff > diff_av) {
+          diff = diff_av;
+        }
+
+        diff_str = "(€" + diff + ")";
+      });
+    }
+
+    return this.state.mapType !== "Average Wage" ? diff_str : "";
+  }
+
   styleForSelectedRegion(data) {
     let diff = 0;
     this.state.averages.map((el) => {
@@ -248,7 +307,7 @@ class DynamicMapSelector extends Component {
           return "€" + this.state.average;
 
         case "Gender Wage Gap":
-          return this.state.genderGap + "%";
+          return this.state.genderGap * 100 + "%";
 
         default:
           return " ";
@@ -359,10 +418,9 @@ class DynamicMapSelector extends Component {
 
         <div
           style={{
-            width: "80%",
+            width: "50%",
             height: "20px",
             borderRadius: "10px",
-            marginLeft: "10%",
             marginTop: "-40px",
             marginBottom: "80px",
             background: `linear-gradient(to right, ${
@@ -379,11 +437,11 @@ class DynamicMapSelector extends Component {
               width: "50%",
             }}
           >
-            Lower
+            Lowest {this.getMin()}
           </p>
 
           <p style={{ color: "#FFF", textAlign: "right", marginRight: "15px" }}>
-            Higher
+            Highest {this.getMax()}
           </p>
         </div>
 
