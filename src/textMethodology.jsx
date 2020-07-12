@@ -19,7 +19,7 @@ const methodologyEng = {
 };
 
 const methodologyEst = {
-  header: "METHODOLOGY",
+  header: "METOODIKA",
   description:
     "Rakenduses näidatakse Eestis registreeritud töötajate brutopalka valitud perioodil. Kasutatakse töötamise registri (TÖR) ja maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade 1 ja 2 andmeid. Registrite väljavõte on tehtud järgmistel tingimustel:",
   listItems: [

@@ -38,7 +38,8 @@ const pieChartLabelsEng = [
 const detailsLabelEng = "Details";
 const descriptionLabelEng = "Description";
 const defaultGenderEng = "Gender";
-const occupationSelectorPlaceholderEng = "First you need to select county";
+const occupationSelectorPlaceholderEng =
+  "First you need to select county from the map";
 const overallEng = "Overall in Estonia";
 
 //Russion

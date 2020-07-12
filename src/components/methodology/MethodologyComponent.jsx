@@ -9,7 +9,29 @@ class MethodologyComponent extends Component {
   render() {
     return (
       <div>
-        <div className="methodology-component">
+        <div
+          className="methodology-component"
+          style={{
+            textAlign: "left",
+            fontFamily: "Roboto",
+            fontSize: "16px",
+            lineHeight: "20px",
+            fontWeight: "normal",
+            color: "#595959",
+            padding: "5%",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "Roboto",
+              fontSize: "22px",
+              lineHeight: "28px",
+              fontWeight: "normal",
+              color: "#595959",
+            }}
+          >
+            {methodology.header}
+          </p>
           <p>{methodology.description}</p>
           <ul>
             {methodology.listItems.map((e) => {

@@ -135,7 +135,17 @@ class DynamicMapSelector extends Component {
                   background: this.state.colors[this.getGroupByItem(e[0])],
                 }}
               ></div>
-              <p style={{ marginTop: "-13px", fontSize: "9pt" }}>
+              <p
+                style={{
+                  marginTop: "-13px",
+                  marginLeft: "3px",
+                  fontSize: "9pt",
+                  fontFamily: "Roboto",
+                  fontSize: "14px",
+                  lineHeight: "18px",
+                  color: "#595959",
+                }}
+              >
                 {" "}
                 €{e[0]} - €{e[e.length - 1]}
               </p>
@@ -151,7 +161,20 @@ class DynamicMapSelector extends Component {
                   background: this.state.colors[this.getGroupByItem(e[0])],
                 }}
               ></div>
-              <p style={{ marginTop: "-13px", fontSize: "9pt" }}> €{e[0]}</p>
+              <p
+                style={{
+                  marginTop: "-13px",
+                  marginLeft: "3px",
+                  fontSize: "9pt",
+                  fontFamily: "Roboto",
+                  fontSize: "14px",
+                  lineHeight: "18px",
+                  color: "#595959",
+                }}
+              >
+                {" "}
+                €{e[0]}
+              </p>
             </div>
           );
       });
@@ -165,7 +188,20 @@ class DynamicMapSelector extends Component {
                 background: "#000000",
               }}
             ></div>
-            <p style={{ marginTop: "-13px", fontSize: "9pt" }}> No data </p>
+            <p
+              style={{
+                marginTop: "-13px",
+                marginLeft: "3px",
+                fontSize: "9pt",
+                fontFamily: "Roboto",
+                fontSize: "14px",
+                lineHeight: "18px",
+                color: "#595959",
+              }}
+            >
+              {" "}
+              No data{" "}
+            </p>
           </div>
         </div>
       );

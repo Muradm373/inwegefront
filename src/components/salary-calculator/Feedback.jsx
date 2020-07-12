@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { API_URL, detailsLabel, descriptionLabel } from "../../text";
 import { useAlert } from "react-alert";
+import "../subscription/style.css";
 
 export function Feedback(props) {
   const [description, setDescription] = useState("");
@@ -29,22 +30,34 @@ export function Feedback(props) {
     <div>
       <form onSubmit={sendFeedback}>
         <br></br>
-        <input
-          name="description"
-          placeholder={descriptionLabel}
-          className="input-stats description-input-stats"
-          type="text"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          name="email"
-          placeholder="Email"
-          className="input-stats email-input-stats"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
+          <input
+            id="input"
+            name="description"
+            type="text"
+            required
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+          />
+          <label
+            for="input"
+            alt={descriptionLabel}
+            placeholder={descriptionLabel}
+          ></label>
+        </p>
+
+        <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
+          <input
+            id="input"
+            name="email"
+            type="text"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+          />
+          <label for="input" alt="Email" placeholder="Email"></label>
+        </p>
+
         <textarea
           name="details"
           placeholder={detailsLabel}

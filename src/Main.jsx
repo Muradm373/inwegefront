@@ -18,6 +18,7 @@ import AOS from "aos";
 import PieChartComponent from "./components/salary-calculator/PieChart";
 import { Link } from "react-router-dom";
 import ColumnChartComponent from "./components/salary-calculator/ColumnChartComponent";
+import SubscriptionComponent from "./components/subscription/SubscriptionComponent";
 
 const languages = [
   {
@@ -311,7 +312,9 @@ class Main extends Component {
                 </div>
               </div>
             </div>
-
+            <div className="row justify-content-center text-center">
+              <SubscriptionComponent></SubscriptionComponent>
+            </div>
             <div className="row justify-content-center text-center">
               <div className="col-md-7">
                 <p className="copyright">

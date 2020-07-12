@@ -168,22 +168,50 @@ class SalaryCalculator extends Component {
         <div className="graph-component">
           <div className="graph-component-cards">
             <div className="card-shadow card-occupation-selector">
-              <font>
-                <font>
-                  After selecting county from the map, you can search for a job
-                  by job title.
-                </font>
-              </font>
+              <p
+                style={{
+                  fontFamily: "Roboto",
+                  fontSize: "18px",
+                  lineHeight: "22px",
+                }}
+              >
+                Search
+              </p>
+              <p
+                style={{
+                  textAlign: "left",
+                  fontFamily: "Roboto",
+                  fontSize: "16px",
+                  lineHeight: "20px",
+                  fontWeight: "normal",
+                  color: "#595959",
+                  flex: 5,
+                  display: "flex",
+                }}
+              >
+                After selecting county from the map, you can search for a job by
+                job title.
+              </p>
               <div class="form-group shiny-input-container">
                 <div>
                   <OccupationSelector
                     onChange={this.onIscoChange}
                     region={this.state.region}
                   />
-                  <font>
+                  <br></br>
+                  <p
+                    style={{
+                      textAlign: "left",
+                      fontFamily: "Roboto",
+                      fontSize: "16px",
+                      lineHeight: "20px",
+                      fontWeight: "normal",
+                      color: "#595959",
+                    }}
+                  >
                     To see the difference between your and average wages you can
                     fill the boxes below.
-                  </font>
+                  </p>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <div>
                       <input
@@ -195,33 +223,33 @@ class SalaryCalculator extends Component {
                         value={this.state.wage}
                       />
                     </div>
-                    <GenderSelector onGenderChange={this.onGenderChange} />
-                  </div>
-                  <label class="control-label" for="professionInput-selectized">
-                    <div
-                      className="col-xl my-4"
-                      data-aos="fade-up"
-                      data-aos-delay="200"
-                    >
-                      <div className="donutHolder">
-                        <p
-                          style={{
-                            flex: 5,
-                            display: "flex",
-                            textAlign: "left",
-                          }}
-                        >
-                          {this.state.description}
-                        </p>
-                      </div>
+                    <div style={{ marginLeft: "10px" }}>
+                      <GenderSelector onGenderChange={this.onGenderChange} />
                     </div>
-                  </label>
+                  </div>
+                  <br></br>
+                  <div>
+                    <p
+                      style={{
+                        flex: 5,
+                        display: "flex",
+                        textAlign: "left",
+                        fontFamily: "Roboto",
+                        fontSize: "16px",
+                        lineHeight: "20px",
+                        fontWeight: "normal",
+                        color: "#595959",
+                      }}
+                    >
+                      {this.state.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className="card-shadow card-dynamic-map">
-              <div style={{ padding: "5%" }}>
+              <div>
                 {
                   <div className="map_selector p-3 " style={{ width: "100%" }}>
                     <DynamicMapSelector
