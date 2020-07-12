@@ -238,7 +238,7 @@ function Graph(props) {
           </p>
         </Hint>
         <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
-        <div style={{ marginTop: "-370px", marginLeft: "750px" }}>
+        <div style={{ marginTop: "-370px", marginLeft: "90%" }}>
           {displayLegends(menColor, womenColor)}
         </div>
       </FlexibleWidthXYPlot>

@@ -60,3 +60,15 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+.subscription-box {
+  margin: 20px;
+  width: 30%;
+}
+
+@media screen and (max-width: 1000px) {
+  .subscription-box {
+    margin: 20px;
+    width: 100%;
+  }
+}

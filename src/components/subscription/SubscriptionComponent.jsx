@@ -27,7 +27,7 @@ export function SubscriptionComponent(props) {
   };
 
   return (
-    <div style={{ margin: "20px", width: "30%" }}>
+    <div className="subscription-box">
       <p
         style={{
           flex: 5,

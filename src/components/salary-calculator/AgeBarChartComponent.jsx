@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {
-  XYPlot,
+  FlexibleWidthXYPlot,
   XAxis,
   YAxis,
   VerticalGridLines,
@@ -73,13 +73,15 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div className="row justify-content-center text-center">
-        <XYPlot
+      <div
+        className="row justify-content-center text-center"
+        style={{ width: "70%" }}
+      >
+        <FlexibleWidthXYPlot
           xType="ordinal"
-          width={500}
           height={300}
           yDistance={100}
-          style={{ padding: "-100px" }}
+          margin={50}
           onMouseLeave={() => this.setState({ value: false })}
         >
           <VerticalGridLines />
@@ -103,7 +105,7 @@ class AgeBarChartComponent extends Component {
               </div>
             </Hint>
           ) : null}
-        </XYPlot>
+        </FlexibleWidthXYPlot>
       </div>
     );
   }

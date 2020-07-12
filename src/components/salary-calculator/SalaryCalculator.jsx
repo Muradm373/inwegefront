@@ -302,9 +302,11 @@ class SalaryCalculator extends Component {
                     </div>
                   </div>
                 }
-                <AgeBarChartComponent
-                  isco={this.state.isco}
-                ></AgeBarChartComponent>
+                <div className="row justify-content-center text-center">
+                  <AgeBarChartComponent
+                    isco={this.state.isco}
+                  ></AgeBarChartComponent>
+                </div>
                 {this.state.isco ? (
                   <p className="mb-3" style={{ color: "black" }}>
                     {"Age distribution of employees."}
