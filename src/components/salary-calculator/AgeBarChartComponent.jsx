@@ -18,9 +18,9 @@ class AgeBarChartComponent extends Component {
     this.state = {
       ageData: [],
       greenData: [
-        { x: "", y: 0 },
-        { x: "", y: 0 },
-        { x: "", y: 0 },
+        { x: "0", y: 0 },
+        { x: "0", y: 0 },
+        { x: "0", y: 0 },
       ],
       value: false,
     };
