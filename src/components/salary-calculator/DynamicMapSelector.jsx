@@ -34,6 +34,7 @@ class DynamicMapSelector extends Component {
       genderGap: "",
       groups: [],
       colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
+      legendColors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -132,7 +133,9 @@ class DynamicMapSelector extends Component {
               <div
                 className="circle-legend"
                 style={{
-                  background: this.state.colors[this.getGroupByItem(e[0])],
+                  background: this.state.legendColors[
+                    this.getGroupByItem(e[0])
+                  ],
                 }}
               ></div>
               <p
@@ -144,6 +147,10 @@ class DynamicMapSelector extends Component {
                   fontSize: "14px",
                   lineHeight: "18px",
                   color: "#595959",
+                  cursor: "pointer",
+                }}
+                onClick={() => {
+                  this.selectGroupColor(this.getGroupByItem(e[0]));
                 }}
               >
                 {" "}
@@ -159,6 +166,7 @@ class DynamicMapSelector extends Component {
                 className="circle-legend"
                 style={{
                   background: this.state.colors[this.getGroupByItem(e[0])],
+                  cursor: "pointer",
                 }}
               ></div>
               <p
@@ -170,6 +178,9 @@ class DynamicMapSelector extends Component {
                   fontSize: "14px",
                   lineHeight: "18px",
                   color: "#595959",
+                }}
+                onClick={() => {
+                  this.selectGroupColor(this.getGroupByItem(e[0]));
                 }}
               >
                 {" "}
@@ -208,6 +219,14 @@ class DynamicMapSelector extends Component {
 
       return div2;
     }
+  }
+
+  selectGroupColor(index) {
+    let colors = this.state.colors;
+
+    if (colors[index] !== "#A9A9A9") colors[index] = "#A9A9A9";
+    else colors[index] = this.state.legendColors[index];
+    this.setState({ colors: colors });
   }
 
   styleForSelectedRegion(data) {
@@ -294,16 +313,19 @@ class DynamicMapSelector extends Component {
       case "Median Wage":
         this.setState({
           colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
+          legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
         });
         break;
       case "Average Wage":
         this.setState({
           colors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
+          legendColors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
         });
         break;
       default:
         this.setState({
           colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
+          legendColors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
         });
         break;
     }

@@ -32,6 +32,56 @@ const displayMessageLocation = (myWage) => {
     : { x: parseInt(myWage) / 2.75, y: 3 };
 };
 
+const displayLegends = (menColor, womenColor) => {
+  return (
+    <div style={{ width: "100px" }}>
+      <div
+        className="circle-legend"
+        style={{
+          background: menColor,
+        }}
+      ></div>
+      <p
+        style={{
+          textAlign: "left",
+          marginTop: "-13px",
+          marginLeft: "13px",
+          fontSize: "9pt",
+          fontFamily: "Roboto",
+          fontSize: "14px",
+          lineHeight: "18px",
+          color: "#595959",
+        }}
+      >
+        {" "}
+        Men{" "}
+      </p>
+
+      <div
+        className="circle-legend"
+        style={{
+          background: womenColor,
+        }}
+      ></div>
+      <p
+        style={{
+          textAlign: "left",
+          marginTop: "-13px",
+          marginLeft: "13px",
+          fontSize: "9pt",
+          fontFamily: "Roboto",
+          fontSize: "14px",
+          lineHeight: "18px",
+          color: "#595959",
+        }}
+      >
+        {" "}
+        Women{" "}
+      </p>
+    </div>
+  );
+};
+
 function Graph(props) {
   let data = fetchData(props.entities);
   let men = data.men;
@@ -188,6 +238,9 @@ function Graph(props) {
           </p>
         </Hint>
         <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
+        <div style={{ marginTop: "-370px", marginLeft: "750px" }}>
+          {displayLegends(menColor, womenColor)}
+        </div>
       </FlexibleWidthXYPlot>
     </div>
   );
