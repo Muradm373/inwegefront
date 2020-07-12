@@ -33,7 +33,6 @@ const displayMessageLocation = (myWage) => {
 };
 
 function Graph(props) {
-  console.log(props);
   let data = fetchData(props.entities);
   let men = data.men;
   let women = data.women;

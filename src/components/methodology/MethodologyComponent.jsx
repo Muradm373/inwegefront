@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { methodology } from "../../text";
 
 class MethodologyComponent extends Component {
   constructor(props) {
@@ -9,7 +10,13 @@ class MethodologyComponent extends Component {
     return (
       <div>
         <div className="methodology-component">
-          <p>Methodology details</p>
+          <p>{methodology.description}</p>
+          <ul>
+            {methodology.listItems.map((e) => {
+              return <li>{e}</li>;
+            })}
+          </ul>
+          <p>{methodology.itemsDescription}</p>
         </div>
       </div>
     );

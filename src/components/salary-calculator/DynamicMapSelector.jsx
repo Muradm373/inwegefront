@@ -32,6 +32,8 @@ class DynamicMapSelector extends Component {
       median: "",
       average: "",
       genderGap: "",
+      groups: [],
+      colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -59,12 +61,12 @@ class DynamicMapSelector extends Component {
     if (data === "Median Wage") {
       url_dataType = "regions/median";
     }
-
-    if (isco !== "" && data === "Gender Wage Gap") {
-      url_dataType = "jobs/average/mean?isco=" + isco;
-    }
-    if (isco !== "" && data === "Gender Wage Gap") {
+    if (data === "Median Wage" && isco !== "") {
       url_dataType = "jobs/average/median?isco=" + isco;
+    }
+
+    if (isco !== "" && data !== "Median Wage") {
+      url_dataType = "jobs/average/mean?isco=" + isco;
     }
 
     const url = `${API_URL}/`;
@@ -72,108 +74,127 @@ class DynamicMapSelector extends Component {
       .get(url + url_dataType)
       .then((response) => response.data)
       .then((data) => {
-        let flag = false;
-        let element;
-
-        for (element in data.payload) {
-          if (parseInt(data.payload[element].femaleAverage) === 0) {
-            flag = true;
-          }
-          if (parseInt(data.payload[element].maleAverage) === 0) {
-            flag = true;
-          }
-        }
-        if (flag !== true) this.setState({ averages: data.payload });
+        this.setState({ averages: data.payload });
+        this.setGroups(data.payload);
       });
 
     this.getAverageMeanMedian();
   }
 
-  getGradientMax() {
-    let diff = 0;
-    this.state.averages.map((el) => {
-      let diff_av = el.maleAverage - el.femaleAverage;
-      if (diff < diff_av) {
-        diff = diff_av;
+  setGroups(data) {
+    let list = [];
+    let n = 5;
+    if (this.state.mapType !== "Average Wage") {
+      data.map((el) => {
+        list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
+      });
+    } else {
+      data.map((el) => {
+        list.push(Math.ceil((el.maleAverage + el.femaleAverage) / 2));
+      });
+    }
+
+    list.sort((a, b) => a - b);
+
+    const result = [[], [], [], [], []];
+
+    const wordsPerLine = Math.ceil(list.length / 5);
+
+    for (let line = 0; line < n; line++) {
+      for (let i = 0; i < wordsPerLine; i++) {
+        const value = list[i + line * wordsPerLine];
+        if (!value) continue;
+        result[line].push(value);
       }
-    });
-
-    return tinycolor(this.state.color)
-      .darken((diff / 1300) * 100)
-      .toString();
+    }
+    this.setState({ groups: result });
+    console.log("===========>");
+    console.log(result);
   }
 
-  getMax() {
-    let diff = 0;
-    let diff_str = "";
-    if (this.state.mapType === "Gender Wage Gap") {
-      this.state.averages.map((el) => {
-        let diff_av = 0;
-        if (el.maleAverage < el.femaleAverage)
-          diff_av = (el.maleAverage / el.femaleAverage) * 100;
-        else diff_av = (el.femaleAverage / el.maleAverage) * 100;
-        if (diff < diff_av) {
-          diff = diff_av;
+  getGroupByItem(item) {
+    for (let i = 0; i < this.state.groups.length; i++) {
+      for (let j = 0; j < this.state.groups[i].length; j++) {
+        if (this.state.groups[i][j] === Math.abs(item)) {
+          return i;
         }
-      });
-
-      diff_str = "(" + parseInt(diff) + "%)";
-    } else {
-      this.state.averages.map((el) => {
-        let diff_av = el.maleAverage - el.femaleAverage;
-        if (diff < diff_av) {
-          diff = diff_av;
-        }
-
-        diff_str = "(€" + diff + ")";
-      });
+      }
     }
-
-    return this.state.mapType !== "Average Wage" ? diff_str : "";
   }
 
-  getMin() {
-    let diff = 10000000000;
-    let diff_str = "";
+  getLegends() {
+    if (this.state.groups[0] !== undefined) {
+      let i = 0;
+      const div = this.state.groups.map((e) => {
+        if (e.length > 1)
+          return (
+            <div>
+              <div
+                className="circle-legend"
+                style={{
+                  background: this.state.colors[this.getGroupByItem(e[0])],
+                }}
+              ></div>
+              <p style={{ marginTop: "-13px", fontSize: "9pt" }}>
+                {" "}
+                €{e[0]} - €{e[e.length - 1]}
+              </p>
+            </div>
+          );
 
-    if (this.state.mapType === "Gender Wage Gap") {
-      this.state.averages.map((el) => {
-        let diff_av = 0;
-        if (el.maleAverage < el.femaleAverage)
-          diff_av = (el.maleAverage / el.femaleAverage) * 100;
-        else diff_av = (el.femaleAverage / el.maleAverage) * 100;
-        if (diff > diff_av) {
-          diff = diff_av;
-        }
+        if (e.length === 1)
+          return (
+            <div>
+              <div
+                className="circle-legend"
+                style={{
+                  background: this.state.colors[this.getGroupByItem(e[0])],
+                }}
+              ></div>
+              <p style={{ marginTop: "-13px", fontSize: "9pt" }}> €{e[0]}</p>
+            </div>
+          );
       });
+      let div2 = (
+        <div>
+          {div}
+          <div>
+            <div
+              className="circle-legend"
+              style={{
+                background: "#000000",
+              }}
+            ></div>
+            <p style={{ marginTop: "-13px", fontSize: "9pt" }}> No data </p>
+          </div>
+        </div>
+      );
 
-      diff_str = "(" + parseInt(diff) + "%)";
-    } else {
-      this.state.averages.map((el) => {
-        let diff_av = el.maleAverage - el.femaleAverage;
-        if (diff > diff_av) {
-          diff = diff_av;
-        }
-
-        diff_str = "(€" + diff + ")";
-      });
+      return div2;
     }
-
-    return this.state.mapType !== "Average Wage" ? diff_str : "";
   }
 
   styleForSelectedRegion(data) {
     let diff = 0;
-    this.state.averages.map((el) => {
-      if (el.region === data) {
-        diff = el.maleAverage - el.femaleAverage;
+    if (this.state.mapType !== "Average Wage") {
+      this.state.averages.map((el) => {
+        if (el.region === data) {
+          diff = el.maleAverage - el.femaleAverage;
 
-        return diff;
-      }
-    });
-    let color = tinycolor(this.state.color)
-      .darken((diff / 1300) * 100)
-      .toString();
+          return Math.abs(diff);
+        }
+      });
+    } else {
+      this.state.averages.map((el) => {
+        if (el.region === data) {
+          diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
+
+          return Math.abs(diff);
+        }
+      });
+    }
+
+    let color = this.state.colors[this.getGroupByItem(diff)];
 
     return {
       default: {
@@ -193,36 +214,12 @@ class DynamicMapSelector extends Component {
     };
   }
 
-  styleForNotSelectedRegion(data) {
-    let diff = 0;
-    this.state.averages.map((el) => {
-      if (el.region === data) {
-        diff = el.maleAverage - el.femaleAverage;
+  generateValueString(val) {
+    if (val !== 0) {
+      return ": €" + val;
+    }
 
-        return diff;
-      }
-    });
-
-    let color = tinycolor(this.state.color)
-      .darken((diff / 1300) * 100)
-      .toString();
-
-    return {
-      default: {
-        fill: color,
-        outline: "none",
-        stroke: "#515152",
-      },
-      hover: {
-        fill: color,
-        outline: "none",
-        stroke: "#000",
-      },
-      pressed: {
-        fill: color,
-        outline: "none",
-      },
-    };
+    return ": no data";
   }
 
   getMeanForRegion(region) {
@@ -231,12 +228,10 @@ class DynamicMapSelector extends Component {
       if (el.region === region) {
         data =
           genderLabel[0] +
-          ": €" +
-          el.maleAverage +
+          this.generateValueString(el.maleAverage) +
           "\n" +
           genderLabel[1] +
-          ": €" +
-          el.femaleAverage;
+          this.generateValueString(el.femaleAverage);
         return data;
       }
     });
@@ -247,7 +242,9 @@ class DynamicMapSelector extends Component {
     let data = {};
     this.state.averages.map((el) => {
       if (el.region === region) {
-        data = "€" + Math.ceil((el.maleAverage + el.femaleAverage) / 2);
+        let avg = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
+        if (avg !== 0) data = "€" + avg;
+        else data = "No data";
         return data;
       }
     });
@@ -259,13 +256,19 @@ class DynamicMapSelector extends Component {
 
     switch (mapType) {
       case "Median Wage":
-        color = "#AB75E7";
+        this.setState({
+          colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
+        });
         break;
       case "Average Wage":
-        color = "#43C7F6";
+        this.setState({
+          colors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
+        });
         break;
       default:
-        color = "#73e8ff";
+        this.setState({
+          colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
+        });
         break;
     }
     this.setState({ color: color, mapType: mapType });
@@ -295,6 +298,7 @@ class DynamicMapSelector extends Component {
       });
     });
   }
+
   getAverageOrMean() {
     if (this.state.average === 0) {
       return "";
@@ -317,6 +321,70 @@ class DynamicMapSelector extends Component {
   render() {
     return (
       <>
+        <div class="c-tabs c-is-sticky" data-tabs="">
+          <div class="c-tabs__nav">
+            <ul>
+              <li
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.setColor("Gender Wage Gap");
+                  this.getMeansForAllRegions("Gender Wage Gap");
+                }}
+              >
+                <a
+                  class="c-btn c-btn--w-icon"
+                  role="tab"
+                  aria-controls="brand"
+                  aria-label="brand menu"
+                  aria-selected={
+                    this.state.mapType === "Gender Wage Gap" ? "true" : "false"
+                  }
+                >
+                  Gender Wage Gap
+                </a>
+              </li>
+              <li
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.setColor("Median Wage");
+                  this.getMeansForAllRegions("Median Wage");
+                }}
+              >
+                <a
+                  class="c-btn c-btn--w-icon"
+                  role="tab"
+                  aria-controls="ui-juhised"
+                  aria-label="ui-juhised menu"
+                  aria-selected={
+                    this.state.mapType === "Median Wage" ? "true" : "false"
+                  }
+                >
+                  Median Wage
+                </a>
+              </li>
+              <li
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.setColor("Average Wage");
+                  this.getMeansForAllRegions("Average Wage");
+                }}
+              >
+                <a
+                  class="c-btn c-btn--w-icon"
+                  role="tab"
+                  aria-controls="ui-juhised"
+                  aria-label="ui-juhised menu"
+                  aria-selected={
+                    this.state.mapType === "Average Wage" ? "true" : "false"
+                  }
+                >
+                  Average Wage
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="c-tabs-line"></div>
+        </div>
         <ComposableMap data-tip="" projectionConfig={{ scale: 340 }}>
           <Geographies geography={ee}>
             {({ geographies }) => (
@@ -343,11 +411,7 @@ class DynamicMapSelector extends Component {
                       this.setState({ selected: selectedRegion });
                       this.props.onRegionChange({ value: selectedRegion });
                     }}
-                    style={
-                      this.state.selected !== geo.properties.MNIMI
-                        ? this.styleForSelectedRegion(geo.properties.MNIMI)
-                        : this.styleForNotSelectedRegion(geo.properties.MNIMI)
-                    }
+                    style={this.styleForSelectedRegion(geo.properties.MNIMI)}
                   />
                 ))}
                 {geographies.map((geo) => {
@@ -358,7 +422,8 @@ class DynamicMapSelector extends Component {
                         <Marker coordinates={centroid}>
                           <text
                             style={{
-                              fontSize: "10pt",
+                              fontSize: "9pt",
+                              fill: "#FFFFFF",
                               fontFamily: "Roboto",
                             }}
                             y="2"
@@ -415,97 +480,11 @@ class DynamicMapSelector extends Component {
             </text>
           </Annotation>
         </ComposableMap>
-
         <div
-          style={{
-            width: "50%",
-            height: "20px",
-            borderRadius: "10px",
-            marginTop: "-40px",
-            marginBottom: "80px",
-            background: `linear-gradient(to right, ${
-              this.state.color
-            },${this.getGradientMax()})`,
-          }}
+          className="legends"
+          style={{ width: "100px", marginTop: "-120px" }}
         >
-          <p
-            style={{
-              color: "#FFF",
-              textAlign: "left",
-              marginLeft: "15px",
-              float: "left",
-              width: "50%",
-            }}
-          >
-            Lowest {this.getMin()}
-          </p>
-
-          <p style={{ color: "#FFF", textAlign: "right", marginRight: "15px" }}>
-            Highest {this.getMax()}
-          </p>
-        </div>
-
-        <div class="c-tabs c-is-sticky" data-tabs="">
-          <div class="c-tabs__nav">
-            <ul>
-              <li
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  this.setColor("Gender Wage Gap");
-                  this.getMeansForAllRegions("Gender Wage Gap");
-                }}
-              >
-                <a
-                  class="c-btn c-btn--w-icon"
-                  role="tab"
-                  aria-controls="brand"
-                  aria-label="brand menu"
-                  aria-selected={
-                    this.state.mapType === "Gender Wage Gap" ? "true" : "false"
-                  }
-                >
-                  Gender Wage Gap
-                </a>
-              </li>
-              <li
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  this.setColor("Median Wage");
-                  this.getMeansForAllRegions("Median Wage");
-                }}
-              >
-                <a
-                  class="c-btn c-btn--w-icon"
-                  role="tab"
-                  aria-controls="ui-juhised"
-                  aria-label="ui-juhised menu"
-                  aria-selected={
-                    this.state.mapType === "Median Wage" ? "true" : "false"
-                  }
-                >
-                  Median Wage
-                </a>
-              </li>
-              <li
-                style={{ cursor: "pointer" }}
-                onClick={() => {
-                  this.setColor("Average Wage");
-                }}
-              >
-                <a
-                  class="c-btn c-btn--w-icon"
-                  role="tab"
-                  aria-controls="ui-juhised"
-                  aria-label="ui-juhised menu"
-                  aria-selected={
-                    this.state.mapType === "Average Wage" ? "true" : "false"
-                  }
-                >
-                  Average Wage
-                </a>
-              </li>
-            </ul>
-          </div>
+          {this.getLegends()}
         </div>
       </>
     );

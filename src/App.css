@@ -140,6 +140,13 @@ font {
   flex-direction: row;
 }
 
+.circle-legend {
+  background: lightblue;
+  border-radius: 50%;
+  width: 8px;
+  height: 8px;
+}
+
 .card-occupation-selector {
   width: 30%;
   margin-left: 3%;

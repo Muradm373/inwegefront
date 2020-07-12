@@ -221,70 +221,9 @@ class SalaryCalculator extends Component {
             </div>
 
             <div className="card-shadow card-dynamic-map">
-              <div class="c-tabs c-is-sticky" data-tabs="">
-                <div class="c-tabs__nav">
-                  <ul role="tablist" data-tabs-nav="" marginTop="10px">
-                    <li
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        this.setState({ tab: 0 });
-                      }}
-                    >
-                      <a
-                        class="c-btn c-btn--w-icon"
-                        role="tab"
-                        aria-controls="brand"
-                        aria-label="brand menu"
-                        aria-selected={this.state.tab === 0 ? "true" : "false"}
-                      >
-                        Median wage in counties
-                      </a>
-                    </li>
-                    <li
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        this.setState({ tab: 1 });
-                      }}
-                    >
-                      <a
-                        class="c-btn c-btn--w-icon"
-                        role="tab"
-                        aria-controls="ui-juhised"
-                        aria-label="ui-juhised menu"
-                        aria-selected={this.state.tab === 1 ? "true" : "false"}
-                      >
-                        Wage distribution
-                      </a>
-                    </li>
-                    <li
-                      style={{ cursor: "pointer" }}
-                      onClick={() => {
-                        this.setState({ tab: 2 });
-                      }}
-                    >
-                      <a
-                        class="c-btn c-btn--w-icon"
-                        role="tab"
-                        aria-controls="ui-juhised"
-                        aria-label="ui-juhised menu"
-                        aria-selected={this.state.tab === 2 ? "true" : "false"}
-                      >
-                        Occupational salaries
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-	      <div className="c-tabs-line"></div>
               <div style={{ padding: "5%" }}>
                 {
-                  <div
-                    className="map_selector p-3 "
-                    style={{ width: "70%", marginLeft: "10%" }}
-                    style={{
-                      display: this.state.tab === 0 ? "inline" : "none",
-                    }}
-                  >
+                  <div className="map_selector p-3 " style={{ width: "100%" }}>
                     <DynamicMapSelector
                       isco={this.state.isco}
                       onRegionChange={this.onRegionChange}
@@ -297,12 +236,9 @@ class SalaryCalculator extends Component {
                   </div>
                 }
 
+                {this.renderGraph()}
                 {
-                  <div
-                    style={{
-                      display: this.state.tab === 2 ? "inline" : "none",
-                    }}
-                  >
+                  <div>
                     <div className="graph-component-cards">
                       <div>
                         <ColumnChartComponent
@@ -343,7 +279,6 @@ class SalaryCalculator extends Component {
                     </div>
                   </div>
                 }
-                {this.state.tab === 1 && this.renderGraph()}
               </div>
             </div>
           </div>

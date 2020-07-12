@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import WageBars from "./WageBars";
 import OccupationSelector from "../salary-calculator/OccupationSelector";
-import MapSelector from "../salary-calculator/MapSelector";
+import RegionSelector from "../salary-calculator/RegionSelector";
 import ReactTooltip from "react-tooltip";
 
 class WageForecast extends Component {
@@ -32,20 +32,9 @@ class WageForecast extends Component {
 
   render() {
     return (
-      <div className="selector-style w-75 text-center mx-auto">
+      <div className="w-75 text-center mx-auto">
         <div className="wageforecast-component ">
-          <div
-            className="map_selector p-3"
-            style={{ width: "65%", marginLeft: "10%", marginTop: "-10%" }}
-          >
-            <MapSelector
-              onRegionChange={this.onRegionChange}
-              setTooltipContent={this.setContent}
-              mapElementColor={this.props.mapElementColor}
-            />
-            <ReactTooltip>{this.state.content}</ReactTooltip>
-          </div>
-
+          <RegionSelector onChange={this.onRegionChange} />
           <OccupationSelector
             onChange={this.onIscoChange}
             region={this.state.region}

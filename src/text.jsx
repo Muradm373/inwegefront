@@ -1,3 +1,5 @@
+import { methodologyEng, methodologyEst } from "./textMethodology";
+
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const APP_NAME = "palgakompass.stat.ee";
 export const menColor = "#7db0ff";
@@ -36,8 +38,7 @@ const pieChartLabelsEng = [
 const detailsLabelEng = "Details";
 const descriptionLabelEng = "Description";
 const defaultGenderEng = "Gender";
-const occupationSelectorPlaceholderEng =
-  "First you need to select county on the map";
+const occupationSelectorPlaceholderEng = "First you need to select county";
 const overallEng = "Overall in Estonia";
 
 //Russion
@@ -143,6 +144,7 @@ export default function changeLanguage(language) {
       averages = averagesEng;
       defaultGender = defaultGenderEng;
       occupationSelectorPlaceholder = occupationSelectorPlaceholderEng;
+      methodology = methodologyEng;
       break;
     case "ru":
       noDescr = descrRus;
@@ -165,6 +167,7 @@ export default function changeLanguage(language) {
       averageData = averageDataRus;
       defaultGender = defaultGenderRus;
       occupationSelectorPlaceholder = occupationSelectorPlaceholderRus;
+      methodology = methodologyEng;
       break;
 
     case "es":
@@ -188,6 +191,7 @@ export default function changeLanguage(language) {
       averageData = averageDataEst;
       defaultGender = defaultGenderEst;
       occupationSelectorPlaceholder = occupationSelectorPlaceholderEst;
+      methodology = methodologyEst;
 
       break;
   }
@@ -214,6 +218,7 @@ let descriptionLabel = descriptionLabelEng;
 let averageData = averageDataEng;
 let defaultGender = defaultGenderEng;
 let overall = overallEng;
+let methodology = methodologyEng;
 
 export {
   noDescr,
@@ -237,4 +242,5 @@ export {
   defaultGender,
   occupationSelectorPlaceholder,
   overall,
+  methodology,
 };
