@@ -109,8 +109,6 @@ class DynamicMapSelector extends Component {
       }
     }
     this.setState({ groups: result });
-    console.log("===========>");
-    console.log(result);
   }
 
   getGroupByItem(item) {

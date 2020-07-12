@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import ApexCharts from "apexcharts";
-import { menColor, womenColor, API_URL, lng } from "../../text";
+import { API_URL, lng } from "../../text";
 import axios from "axios";
 
 class ColumnChartComponent extends Component {

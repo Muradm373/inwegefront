@@ -5,27 +5,22 @@ import Graph from "./Graph";
 import ReactTooltip from "react-tooltip";
 import {
   noDescr,
-  averageLabel,
   differenceLabel,
   genderLabel,
   lng,
-  selectRegion,
-  selectOccupation,
-  leaveAFeedBack,
   API_URL,
   salary,
   menColor,
   womenColor,
 } from "../../text";
 import "react-svg-map/lib/index.css";
-import { getLocationName } from "../../utils/utils";
 const lang = "&lang=";
 import DynamicMapSelector from "./DynamicMapSelector";
 import GenderSelector from "./GenderSelector";
-import RegionSelector from "./RegionSelector";
 import OccupationSelector from "./OccupationSelector";
 import PieChartComponent from "./PieChart";
 import ColumnChartComponent from "./ColumnChartComponent";
+import AgeBarChartComponent from "./AgeBarChartComponent";
 
 class SalaryCalculator extends Component {
   state = {
@@ -192,7 +187,7 @@ class SalaryCalculator extends Component {
                 After selecting county from the map, you can search for a job by
                 job title.
               </p>
-              <div class="form-group shiny-input-container">
+              <div className="form-group shiny-input-container">
                 <div>
                   <OccupationSelector
                     onChange={this.onIscoChange}
@@ -307,6 +302,9 @@ class SalaryCalculator extends Component {
                     </div>
                   </div>
                 }
+                <AgeBarChartComponent
+                  isco={this.state.isco}
+                ></AgeBarChartComponent>
               </div>
             </div>
           </div>
