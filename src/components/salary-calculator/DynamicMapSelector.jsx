@@ -35,6 +35,7 @@ class DynamicMapSelector extends Component {
       groups: [],
       colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
       legendColors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
+      noDataColor: "#eeeeee",
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -85,13 +86,17 @@ class DynamicMapSelector extends Component {
   setGroups(data) {
     let list = [];
     let n = 5;
-    if (this.state.mapType !== "Average Wage") {
+    if (this.state.mapType === "Gender Wage Gap") {
       data.map((el) => {
         list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
       });
     } else {
       data.map((el) => {
-        list.push(Math.ceil((el.maleAverage + el.femaleAverage) / 2));
+        let diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
+        if (el.maleAverage === 0 || el.maleAverage === 0) {
+          diff = el.maleAverage + el.femaleAverage;
+        }
+        list.push(diff);
       });
     }
 
@@ -222,14 +227,14 @@ class DynamicMapSelector extends Component {
   selectGroupColor(index) {
     let colors = this.state.colors;
 
-    if (colors[index] !== "#A9A9A9") colors[index] = "#A9A9A9";
+    if (colors[index] !== "#3e3d3d") colors[index] = "#3e3d3d";
     else colors[index] = this.state.legendColors[index];
     this.setState({ colors: colors });
   }
 
   styleForSelectedRegion(data) {
     let diff = 0;
-    if (this.state.mapType !== "Average Wage") {
+    if (this.state.mapType === "Gender Wage Gap") {
       this.state.averages.map((el) => {
         if (el.region === data) {
           diff = el.maleAverage - el.femaleAverage;
@@ -242,6 +247,10 @@ class DynamicMapSelector extends Component {
         if (el.region === data) {
           diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
 
+          if (el.maleAverage === 0 || el.maleAverage === 0) {
+            diff = el.maleAverage + el.femaleAverage;
+          }
+
           return Math.abs(diff);
         }
       });
@@ -249,10 +258,15 @@ class DynamicMapSelector extends Component {
 
     let color = this.state.colors[this.getGroupByItem(diff)];
 
+    if (color === undefined) {
+      color = this.state.noDataColor;
+    }
+
     return {
       default: {
         fill: color,
         outline: "none",
+        stroke: this.state.selected === data ? "#6e6e6e" : "none",
       },
       hover: {
         fill: color,
@@ -296,6 +310,11 @@ class DynamicMapSelector extends Component {
     this.state.averages.map((el) => {
       if (el.region === region) {
         let avg = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
+
+        if (el.maleAverage === 0 || el.maleAverage === 0) {
+          avg = el.maleAverage + el.femaleAverage;
+        }
+
         if (avg !== 0) data = "€" + avg;
         else data = "No data";
         return data;
