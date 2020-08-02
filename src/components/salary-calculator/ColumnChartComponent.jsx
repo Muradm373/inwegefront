@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import { API_URL, lng } from "../../text";
+import { API_URL, lng, menColor, womenColor } from "../../text";
 import axios from "axios";
 
 class ColumnChartComponent extends Component {
@@ -11,10 +11,12 @@ class ColumnChartComponent extends Component {
         {
           name: "Men",
           data: [0, 0, 0],
+          color: menColor
         },
         {
           name: "Women",
           data: [0, 0, 0],
+          color: womenColor
         },
       ],
       options: {
@@ -25,13 +27,14 @@ class ColumnChartComponent extends Component {
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "55%",
-            endingShape: "rounded",
+            columnWidth: "80%",
           },
         },
         dataLabels: {
           enabled: false,
         },
+        colors: [menColor, womenColor],
+      
         stroke: {
           show: true,
           width: 2,
@@ -46,7 +49,7 @@ class ColumnChartComponent extends Component {
         },
         yaxis: {
           title: {
-            text: "Euros",
+            text: "EUR",
           },
         },
         fill: {

@@ -20,6 +20,64 @@
 .App-link {
   color: #09d3ac;
 }
+.wpml-ls-legacy-list-horizontal{border:1px solid transparent;padding:7px;clear:both}
+.wpml-ls-legacy-list-horizontal>ul{padding:0;margin:0 !important;list-style-type:none }
+.wpml-ls-legacy-list-horizontal .wpml-ls-item{padding:0;margin:0;list-style-type:none;display:inline-block; color: white}
+
+.wpml-ls-legacy-list-horizontal a{display:block;text-decoration:none;padding:5px 10px;line-height:1; color: white}
+.wpml-ls-legacy-list-horizontal a span{vertical-align:middle;  color: white}
+.wpml-ls-legacy-list-horizontal .wpml-ls-flag{display:inline;vertical-align:middle;width:18px;height:12px;  color: white}
+.wpml-ls-legacy-list-horizontal .wpml-ls-flag+span{margin-left:.4em;  color: white}
+.rtl .wpml-ls-legacy-list-horizontal .wpml-ls-flag+span{margin-left:0;margin-right:.4em;  color: white}
+.wpml-ls-legacy-list-horizontal.wpml-ls-statics-footer{margin-bottom:30px; }
+.wpml-ls-legacy-list-horizontal.wpml-ls-statics-footer>ul{text-align:center}
+
+
+
+.flex-list li {
+  flex-grow: 1;
+  flex-basis: auto;
+  padding: 0 1em;
+  text-align: center;
+  border-right: 1px solid #fff;
+  color: #fff;
+}
+
+.flex-list-lst {
+  flex-grow: 1;
+  flex-basis: auto;
+  padding: 0 1em;
+  text-align: center;
+  border-right: 0px solid #000;
+  color: #fff;
+}
+
+.flex-list span:hover {
+  text-decoration: underline;
+}
+
+.pns-active{
+  background-color: #000000;
+  height: 33.3%;
+}
+
+.pns-salary-active{
+  background-color: #000000;
+}
+
+.pns-salary-active p{
+  color: #FFF;
+}
+
+.pns-active p{
+  color: #FFF;
+}
+
+.pns{
+  background-color: #FFFFFF;
+  height: 33.3%;
+}
+
 .button-style {
   cursor: pointer;
   background-color: black;

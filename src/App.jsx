@@ -14,7 +14,6 @@ class App extends Component {
           <Route exact path="/ru/" render={() => <Main lang="ru" />} />
           <Route exact path="/ee/" render={() => <Main lang="es" />} />
           <Route path="/admin" component={AdminPanel} />
-          <Route path="/barchart" component={AgeBarChartComponent} />
         </Switch>
       </Router>
     );

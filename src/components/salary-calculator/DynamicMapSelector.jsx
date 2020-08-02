@@ -12,7 +12,6 @@ import {
 import ee from "../../ee.json";
 import axios from "axios";
 import { genderLabel } from "../../text";
-import tinycolor from "tinycolor2";
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
@@ -21,7 +20,7 @@ const replaceMaakond = (maakond) => {
 class DynamicMapSelector extends Component {
   constructor(props) {
     super();
-
+    console.log(props);
     this.state = {
       selected: "",
       averages: [],
@@ -33,8 +32,8 @@ class DynamicMapSelector extends Component {
       average: "",
       genderGap: "",
       groups: [],
-      colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
-      legendColors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
+      colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
+          legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       noDataColor: "#eeeeee",
     };
 
@@ -199,7 +198,7 @@ class DynamicMapSelector extends Component {
             <div
               className="circle-legend"
               style={{
-                background: "#000000",
+                background: this.state.noDataColor,
               }}
             ></div>
             <p
@@ -266,17 +265,20 @@ class DynamicMapSelector extends Component {
       default: {
         fill: color,
         outline: "none",
-        stroke: this.state.selected === data ? "#6e6e6e" : "none",
+        stroke: this.state.selected === data ? "#e6e6e6" : "none",
+        strokeWidth: 2,
       },
       hover: {
         fill: color,
         outline: "none",
-        stroke: "#6e6e6e",
+        stroke: "#e6e6e6",
+        strokeWidth: 2,
       },
       pressed: {
         fill: color,
         outline: "none",
-        stroke: "#6e6e6e",
+        stroke: "#e6e6e6",
+        strokeWidth: 2,
       },
     };
   }
@@ -329,20 +331,21 @@ class DynamicMapSelector extends Component {
     switch (mapType) {
       case "Median Wage":
         this.setState({
-          colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
-          legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
-        });
-        break;
-      case "Average Wage":
-        this.setState({
           colors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
           legendColors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
         });
         break;
-      default:
+      case "Average Wage":
         this.setState({
           colors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
           legendColors: ["#C0D2FF", "#648FF9", "#0F4FEF", "#0E3CB0", "#061D55"],
+        });
+        break;
+      default:
+
+        this.setState({
+          colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
+          legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
         });
         break;
     }

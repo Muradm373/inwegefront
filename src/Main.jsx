@@ -9,15 +9,11 @@ import changeLanguage, {
   tabs,
   APP_NAME,
   main,
-  averages,
   about,
-  pieChartLabels,
 } from "./text";
 import Feedback from "./components/salary-calculator/Feedback";
 import AOS from "aos";
-import PieChartComponent from "./components/salary-calculator/PieChart";
 import { Link } from "react-router-dom";
-import ColumnChartComponent from "./components/salary-calculator/ColumnChartComponent";
 import SubscriptionComponent from "./components/subscription/SubscriptionComponent";
 
 const languages = [
@@ -55,14 +51,6 @@ const languages = [
   },
 ];
 
-const dropdownIndicatorStyles = (base, state) => {
-  let changes = {
-    // all your override styles
-    display: "none",
-  };
-
-  return Object.assign(base, changes);
-};
 
 class Main extends Component {
   constructor(props) {
@@ -86,11 +74,10 @@ class Main extends Component {
   defaultValue() {
     let lang = this.props.lang;
 
-    if (lang === "en") return 0;
-    if (lang === "ru") return 1;
-
-    return 2;
+    return lang;
   }
+
+
 
   scrollToBottom() {
     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
@@ -105,8 +92,8 @@ class Main extends Component {
   };
 
   refresh(event) {
-    changeLanguage(event.value);
-    this.setState({ lang: event.value });
+    changeLanguage(event);
+    this.setState({ lang: event });
     window.location.reload();
   }
 
@@ -115,16 +102,15 @@ class Main extends Component {
   }
 
   renderMenu() {
-    if (this.state.menu === tabs[0]) {
+    if (this.state.menu === tabs[1]) {
       return (
         <div>
-          {" "}
-          <SalaryCalculator
-            id="graph"
-            onDataChange={this.getData}
-            mapElementColor={this.state.mapElementColor}
-          ></SalaryCalculator>
-        </div>
+        <WageForecast
+          onDataChange={this.getData}
+          mapElementColor={this.state.mapElementColor}
+        />
+      </div>
+      
       );
     }
     if (this.state.menu === tabs[3]) {
@@ -136,12 +122,13 @@ class Main extends Component {
       );
     } else {
       return (
-        <div>
-          <WageForecast
-            onDataChange={this.getData}
-            mapElementColor={this.state.mapElementColor}
-          />
-        </div>
+      <div>
+        <SalaryCalculator
+          id="graph"
+          onDataChange={this.getData}
+          mapElementColor={this.state.mapElementColor}
+        ></SalaryCalculator>
+      </div>
       );
     }
   }
@@ -182,6 +169,7 @@ class Main extends Component {
                           href="#"
                           className="nav-link"
                           onClick={this.changeMenu}
+                          style={{color: this.state.menu === tabs[0]? '#4e73df' : ''}}
                         >
                           {tabs[0]}
                         </a>
@@ -191,6 +179,7 @@ class Main extends Component {
                           href="#"
                           className="nav-link"
                           onClick={this.changeMenu}
+                          style={{color: this.state.menu === tabs[1]? '#4e73df' : ''}}
                         >
                           {tabs[1]}
                         </a>
@@ -200,6 +189,7 @@ class Main extends Component {
                           href="#"
                           className="nav-link"
                           onClick={this.changeMenu}
+                          style={{color: this.state.menu === tabs[2]? '#4e73df' : ''}}
                         >
                           {tabs[2]}
                         </a>
@@ -209,25 +199,33 @@ class Main extends Component {
                           href="#"
                           className="nav-link"
                           onClick={this.changeMenu}
+                          style={{color: this.state.menu === tabs[3]? '#4e73df' : ''}}
                         >
                           {tabs[3]}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="nav-link">
-                          <div style={{ width: "250%" }}>
-                            <Select
-                              className="bg-transparent"
-                              options={languages}
-                              onChange={this.refresh}
-                              defaultValue={languages[this.defaultValue()]}
-                              styles={{
-                                dropdownIndicator: dropdownIndicatorStyles,
-                              }}
-                              isSearchable={false}
-                            ></Select>
-                          </div>
-                        </a>
+                            
+                            <div class="flex-list wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
+                              <ul>
+                                <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-et wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
+                                    <a href="/ee" class="wpml-ls-link" onClick={()=>this.refresh("es")}>
+                                      <span class="wpml-ls-native"  style={{color: this.defaultValue() === "es"? '#4e73df' : ''}}>EE</span>
+                                    </a>
+                                  </li>
+                                  <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+                                    <a href="/" onClick={()=>this.refresh("en")} class="wpml-ls-link">
+                                      <span class="wpml-ls-native" style={{color: this.defaultValue() === "en"? '#4e73df' : ''}}>EN</span>
+                                    </a>
+                                  </li>
+                                  <li class="flex-list-lst wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+                                    <a href="/ru" onClick={()=>this.refresh("ru")} class="wpml-ls-link">
+                                      <span class="wpml-ls-native" style={{color: this.defaultValue() === "ru"? '#4e73df' : ''}}>RU</span>
+                                    </a>
+                                  </li>
+                              </ul>
+                            </div>
+
                       </li>
                     </ul>
                   </nav>

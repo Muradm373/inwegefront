@@ -3,11 +3,9 @@ import {
   FlexibleWidthXYPlot,
   XAxis,
   YAxis,
-  VerticalGridLines,
   HorizontalGridLines,
   VerticalBarSeries,
   Hint,
-  LabelSeries,
 } from "react-vis";
 import { API_URL } from "../../text";
 import axios from "axios";
@@ -84,11 +82,12 @@ class AgeBarChartComponent extends Component {
           margin={50}
           onMouseLeave={() => this.setState({ value: false })}
         >
-          <VerticalGridLines />
           <HorizontalGridLines />
-          <XAxis tickTotal={10} title="Ages" tickLabelAngle={-45} />
+          <XAxis tickTotal={10} title="Ages"  />
           <YAxis title="props" />
           <VerticalBarSeries
+          color="#3F1A84"
+          opacity="0.95"
             onValueMouseOver={(v) => this._rememberValue(v)}
             onValueMouseOut={this._forgetValue}
             data={this.state.greenData}

@@ -27,11 +27,15 @@ class OccupationSelector extends Component {
       })
       .then((data) => {
         let names = [];
+        names.push({label: "All occupations", value: "reset"});
+
         data.payload.forEach((element) => {
+          if(element.name != " "){
           names.push({
             label: element.name,
             value: element,
           });
+        }
         });
         this.setState({ occupations: names });
       });

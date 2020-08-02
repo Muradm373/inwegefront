@@ -62,46 +62,35 @@ class WageBars extends Component {
   }
 
   itemColor(self, grade) {
-    if (self === grade) return "#6fff75";
-    else return "#FFFFFF";
+    if (self === grade) return "pns-active";
+    else return "pns";
   }
 
   idToColor(itemId, id) {
     if (id === itemId || (itemId > 9 && id === 9) || (itemId <= 0 && id === 1))
-      return { backgroundColor: "#6fff75" };
+      return "pns-salary-active";
     return;
   }
 
   getColor(salary) {
     let id = Math.round(salary / 500);
+    let items = [];
+
+    for(let i = 2; i < 9; i++){
+      items.push(
+      <div className={"p-2 carditem " + this.idToColor(id, i)}>
+        <p>{1000+ (i-2)*500} EUR - {1499+(i-2)*(500)} EUR</p>
+      </div>
+    );
+    }
     let result = (
       <div>
-        <div className="p-2 carditem" style={this.idToColor(id, 9)}>
-          Higher than 4500 EUR
+        <div className={"p-2 carditem " + this.idToColor(id, 9)}>
+        <p>Higher than 4500 EUR</p>
         </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 8)}>
-          4000-4500 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 7)}>
-          3500-3999 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 6)}>
-          3000-3499 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 5)}>
-          2500-2999 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 4)}>
-          2000-2499 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 3)}>
-          1500-1999 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 2)}>
-          1000-1499 EUR
-        </div>
-        <div className="p-2 carditem" style={this.idToColor(id, 1)}>
-          Less than 1000 EUR
+        {items}
+    <div className={"p-2 carditem " + this.idToColor(id, 1)}>
+      <p>Less than 1000 EUR</p>
         </div>
       </div>
     );
@@ -138,7 +127,6 @@ class WageBars extends Component {
               onMouseEnter={() => this.props.setContent(this.state.wageDetails)}
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
-              // data-tip=""
             >
               <div className="p-2 carditem">2019</div>
               {this.getColor(this.state.payload.meanWageSep19)}
@@ -148,7 +136,6 @@ class WageBars extends Component {
             <div
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
-              // data-tip=""
               onMouseEnter={() => this.props.setContent(this.state.wageDetails)}
             >
               <div className="p-2 h-3 carditem">2030</div>
@@ -158,48 +145,39 @@ class WageBars extends Component {
             <div
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
-              // data-tip=""
               onMouseEnter={() =>
                 this.props.setContent(this.state.compiterizationDetails)
               }
             >
               <div
-                className="carditem p-5"
-                style={{
-                  backgroundColor: this.itemColor(
-                    "high",
-                    this.state.computerizationRisk
-                  ),
-                  height: "33.33%",
-                }}
-              >
+                className={"carditem p-5 " + this.itemColor(
+                  "high",
+                  this.state.computerizationRisk
+                )}
+              ><p>
                 high risk <br /> of computerization
+                </p>
               </div>
               <div
-                className="carditem p-5"
-                style={{
-                  backgroundColor: this.itemColor(
-                    "medium",
-                    this.state.computerizationRisk
-                  ),
-                  height: "33.33%",
-                }}
+                className={"carditem p-5 " + this.itemColor(
+                  "medium",
+                  this.state.computerizationRisk
+                )}
+                
               >
                 medium risk
                 <br /> of computerization
               </div>
               <div
-                className="carditem p-5"
-                style={{
-                  backgroundColor: this.itemColor(
-                    "low",
-                    this.state.computerizationRisk
-                  ),
-                  height: "33.33%",
-                }}
+               className={"carditem p-5 " + this.itemColor(
+                "low",
+                this.state.computerizationRisk
+              )}
               >
+                <p>
                 low risk of <br />
                 computerization
+                </p>
               </div>
             </div>
 
@@ -213,40 +191,34 @@ class WageBars extends Component {
               }
             >
               <div
-                className="p-5 carditem"
-                style={{
-                  backgroundColor: this.itemColor(
-                    "high",
-                    this.state.replacementsNeeds
-                  ),
-                  height: "33.33%",
-                }}
+                className={"carditem p-5 " + this.itemColor(
+                  "high",
+                  this.state.replacementsNeeds
+                )}
               >
+                <p>
                 high replacements needs due to retirement
+                </p>
               </div>
               <div
-                className="p-5 carditem"
-                style={{
-                  backgroundColor: this.itemColor(
-                    "medium",
-                    this.state.replacementsNeeds
-                  ),
-                  height: "33.33%",
-                }}
+               className={"carditem p-5 " + this.itemColor(
+                "medium",
+                this.state.replacementsNeeds
+              )}
               >
+                <p>
                 medium replacements needs due to retirement
+                </p>
               </div>
               <div
-                className="p-5 carditem"
-                style={{
-                  backgroundColor: this.itemColor(
-                    "low",
-                    this.state.replacementsNeeds
-                  ),
-                  height: "33.33%",
-                }}
+               className={"carditem p-5 " + this.itemColor(
+                "low",
+                this.state.replacementsNeeds
+              )}
               >
+                <p>
                 low replacements needs due to retirement
+                </p>
               </div>
             </div>
           </div>

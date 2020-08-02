@@ -63,16 +63,31 @@ class SalaryCalculator extends Component {
   };
 
   onIscoChange = (event) => {
-    const region = this.state.region;
+    if(event.value === "reset"){
+      this.setState({entities: [],
+        iscos: [],
+        isco: "",
+        region: "",
+        description: noDescr,
+        occupation: "",
+        mean: [],
+        code: "",
+        wage: undefined,
+        gender: genderLabel[0],
+        content: "",
+        tab: 0,});
+    }else{      
+      const region = this.state.region;
 
-    let isco = event.value.iscoValid;
-    let code = event.value.code;
+      let isco = event.value.iscoValid;
+      let code = event.value.code;
 
-    this.setState({ isco: isco, code: code });
-    this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
+      this.setState({ isco: isco, code: code });
+      this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
 
-    this.props.onDataChange(this.state.region, isco, code, event.value.name);
-    this.setState({ occupation: event.value.name });
+      this.props.onDataChange(this.state.region, isco, code, event.value.name);
+      this.setState({ occupation: event.value.name });
+    }
   };
 
   getSalaryEntitiesForRegionAndIsco(region, isco, code) {
