@@ -12,6 +12,11 @@ import {
   salary,
   menColor,
   womenColor,
+  searchLabel,
+  sideParagraph1,
+  sideParagraph2,
+  totalNumberOfEmployees,
+  totalNumberOfEmployeesOccupation
 } from "../../text";
 import "react-svg-map/lib/index.css";
 const lang = "&lang=";
@@ -185,7 +190,7 @@ class SalaryCalculator extends Component {
                   lineHeight: "22px",
                 }}
               >
-                Search
+                {searchLabel}
               </p>
               <p
                 style={{
@@ -199,8 +204,7 @@ class SalaryCalculator extends Component {
                   display: "flex",
                 }}
               >
-                After selecting county from the map, you can search for a job by
-                job title.
+                {sideParagraph2}
               </p>
               <div className="form-group shiny-input-container">
                 <div>
@@ -219,8 +223,7 @@ class SalaryCalculator extends Component {
                       color: "#595959",
                     }}
                   >
-                    To see the difference between your and average wages you can
-                    fill the boxes below.
+                    {sideParagraph1}
                   </p>
                   <div style={{ display: "flex", flexDirection: "row" }}>
                     <div>
@@ -301,15 +304,15 @@ class SalaryCalculator extends Component {
                           </div>
                           {this.state.occupation !== "" && (
                             <p className="mb-3" style={{ color: "black" }}>
-                              {"Total number of employees in occupation " +
+                              { totalNumberOfEmployeesOccupation[0] +
                                 this.state.occupation +
-                                " in " +
+                                totalNumberOfEmployeesOccupation[1] +
                                 this.state.region}
                             </p>
                           )}
                           {this.state.occupation === "" && (
                             <p className="mb-3" style={{ color: "black" }}>
-                              {"Total number of employees in Estonia "}
+                              {totalNumberOfEmployees}
                             </p>
                           )}
                         </div>

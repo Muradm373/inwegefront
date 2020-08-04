@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { API_URL } from "../../text";
+import { API_URL, retirement, computarization, pensionLabel, lessMoreLabel, levels} from "../../text";
 import axios from "axios";
+
 
 class WageBars extends Component {
   constructor(props) {
@@ -15,8 +16,8 @@ class WageBars extends Component {
         meanWageSep19: 0,
         meanWage30: 0,
         share: 0,
-        computerizationRisk: "low",
-        replacementsNeeds: "low",
+        computerizationRisk: levels[0],
+        replacementsNeeds: levels[0],
       },
       replacementDetails:
         "Replacement needs due to retirement correspond to the share of people aged 55+ in each occupation. Occupations were classified in three categories: with low (share of workers 55+ in occupation is less than 20%), medium  (share is in range 20% – 40%) and  high (higher than 40%) replacement needs.",
@@ -50,15 +51,15 @@ class WageBars extends Component {
   }
 
   calculateComputerizationRisk(value) {
-    if (value < 0.3) return "low";
-    if (value >= 0.3 && value <= 0.7) return "medium";
-    else return "high";
+    if (value < 0.3) return levels[0];
+    if (value >= 0.3 && value <= 0.7) return levels[1];
+    else return levels[2];
   }
 
   calculateReplacementRisk(value) {
-    if (value < 0.2) return "low";
-    if (value >= 0.2 && value <= 0.4) return "medium";
-    else return "high";
+    if (value < 0.2) return levels[0];
+    if (value >= 0.2 && value <= 0.4) return levels[1];
+    else return levels[2];
   }
 
   itemColor(self, grade) {
@@ -86,11 +87,11 @@ class WageBars extends Component {
     let result = (
       <div>
         <div className={"p-2 carditem " + this.idToColor(id, 9)}>
-        <p>Higher than 4500 EUR</p>
+        <p>{lessMoreLabel[0]} 4500 EUR</p>
         </div>
         {items}
     <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-      <p>Less than 1000 EUR</p>
+      <p>{lessMoreLabel[1]} 1000 EUR</p>
         </div>
       </div>
     );
@@ -104,6 +105,7 @@ class WageBars extends Component {
         <div>
           <br />
           <br />
+          {this.state.payload.wageCategory30_max !== this.state.payload.wageCategory30_min ? 
           <p
             style={{
               flex: 5,
@@ -111,14 +113,14 @@ class WageBars extends Component {
               textAlign: "center",
             }}
           >
-            Estimated wage in 2030 for occupation is between{" "}
-            {this.state.payload.wageCategory30_min} and{" "}
-            {this.state.payload.wageCategory30_max} EUR. The risk of
-            computerization for this occupation is{" "}
-            {this.state.computerizationRisk} and the replacements needs due to
-            retirement are {this.state.replacementsNeeds}.
+            {pensionLabel[0]}{" "}
+            {this.state.payload.wageCategory30_min} {pensionLabel[1]}{" "}
+            {this.state.payload.wageCategory30_max} EUR. {pensionLabel[2]}{" "}
+            {this.state.computerizationRisk} {pensionLabel[3]} {this.state.replacementsNeeds}.
             <isindex />
           </p>
+          : <></> 
+   } 
 
           <div className="row donutHolder`">
             {/* <!-- Wages distribution --> */}
@@ -151,32 +153,31 @@ class WageBars extends Component {
             >
               <div
                 className={"carditem p-5 " + this.itemColor(
-                  "high",
+                  levels[2],
                   this.state.computerizationRisk
                 )}
               ><p>
-                high risk <br /> of computerization
+                {computarization[0]}
                 </p>
               </div>
               <div
                 className={"carditem p-5 " + this.itemColor(
-                  "medium",
+                  levels[1],
                   this.state.computerizationRisk
                 )}
                 
-              >
-                medium risk
-                <br /> of computerization
+              ><p>
+                {computarization[1]}
+                </p>
               </div>
               <div
                className={"carditem p-5 " + this.itemColor(
-                "low",
+                levels[0],
                 this.state.computerizationRisk
               )}
               >
                 <p>
-                low risk of <br />
-                computerization
+                {computarization[2]}
                 </p>
               </div>
             </div>
@@ -184,7 +185,7 @@ class WageBars extends Component {
             <div
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
-              // data-tip=""
+               data-tip=""
               multiline="true"
               onMouseEnter={() =>
                 this.props.setContent(this.state.replacementDetails)
@@ -192,32 +193,32 @@ class WageBars extends Component {
             >
               <div
                 className={"carditem p-5 " + this.itemColor(
-                  "high",
+                  levels[2],
                   this.state.replacementsNeeds
                 )}
               >
                 <p>
-                high replacements needs due to retirement
+                {retirement[0]}
                 </p>
               </div>
               <div
                className={"carditem p-5 " + this.itemColor(
-                "medium",
+                levels[1],
                 this.state.replacementsNeeds
               )}
               >
                 <p>
-                medium replacements needs due to retirement
+                {retirement[1]}
                 </p>
               </div>
               <div
                className={"carditem p-5 " + this.itemColor(
-                "low",
+                levels[0],
                 this.state.replacementsNeeds
               )}
               >
                 <p>
-                low replacements needs due to retirement
+                {retirement[2]}
                 </p>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactApexChart from "react-apexcharts";
-import { API_URL, lng, menColor, womenColor } from "../../text";
+import { API_URL, lng, menColor, womenColor, genderLabel,averageData, averages, averageDataSpec } from "../../text";
 import axios from "axios";
 
 class ColumnChartComponent extends Component {
@@ -9,12 +9,12 @@ class ColumnChartComponent extends Component {
     this.state = {
       series: [
         {
-          name: "Men",
+          name: genderLabel[0],
           data: [0, 0, 0],
           color: menColor
         },
         {
-          name: "Women",
+          name: genderLabel[1],
           data: [0, 0, 0],
           color: womenColor
         },
@@ -42,9 +42,9 @@ class ColumnChartComponent extends Component {
         },
         xaxis: {
           categories: [
-            "Average for occupation",
-            "Average for Estonia",
-            "Average for county",
+            averageDataSpec[0],
+            averageData,
+            averageDataSpec[1],
           ],
         },
         yaxis: {
@@ -81,18 +81,18 @@ class ColumnChartComponent extends Component {
     let occupationArray = occupationName.split(" ");
     if (occupationArray.length >= 3) {
       options.xaxis.categories[0] = [
-        "Average for ",
+        averages[0],
         occupationArray[0],
         occupationArray[1] + " " + occupationArray[2],
       ];
     } else {
       options.xaxis.categories[0] = [
-        "Average for ",
+        averages[0],
         occupationName === "" ? "occupation" : occupationName,
       ];
     }
     options.xaxis.categories[2] = [
-      "Average for ",
+      averages[0],
       region === "" ? "county" : region,
     ];
     this.setState({ options: options });
@@ -115,7 +115,7 @@ class ColumnChartComponent extends Component {
       this.setState({
         series: [
           {
-            name: "Men",
+            name: genderLabel[0],
             data: [
               this.state.menMeanOccupation,
               menMean,
@@ -123,7 +123,7 @@ class ColumnChartComponent extends Component {
             ],
           },
           {
-            name: "Women",
+            name: genderLabel[1],
             data: [
               this.state.womenMeanOccupation,
               womenMean,
@@ -171,11 +171,11 @@ class ColumnChartComponent extends Component {
             this.setState({
               series: [
                 {
-                  name: "Men",
+                  name: genderLabel[0],
                   data: [menMean, this.state.menMean, this.state.menMeanRegion],
                 },
                 {
-                  name: "Women",
+                  name: genderLabel[1],
                   data: [
                     womenMean,
                     this.state.womenMean,
@@ -202,7 +202,7 @@ class ColumnChartComponent extends Component {
         this.setState({
           series: [
             {
-              name: "Men",
+              name: genderLabel[0],
               data: [
                 this.state.menMeanOccupation,
                 this.state.menMean,
@@ -210,7 +210,7 @@ class ColumnChartComponent extends Component {
               ],
             },
             {
-              name: "Women",
+              name: genderLabel[1],
               data: [
                 this.state.womenMeanOccupation,
                 this.state.womenMean,

@@ -14,7 +14,7 @@ import {
 } from "react-vis";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
-import { genderLabel, salary, menColor, womenColor } from "../../text";
+import { genderLabel, salary, menColor, womenColor, noDataLabel } from "../../text";
 
 const display = (myWage, mean, men) => {
   return Math.abs(parseInt(myWage) - parseInt(mean)) > 50 && men.length !== 0
@@ -53,8 +53,7 @@ const displayLegends = (menColor, womenColor) => {
           color: "#595959",
         }}
       >
-        {" "}
-        Men{" "}
+        {genderLabel[0]}
       </p>
 
       <div
@@ -75,8 +74,7 @@ const displayLegends = (menColor, womenColor) => {
           color: "#595959",
         }}
       >
-        {" "}
-        Women{" "}
+        {genderLabel[1]}
       </p>
     </div>
   );
@@ -170,7 +168,7 @@ function Graph(props) {
           style={displayMessage(men)}
         >
           <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
-            No data for the selected occupation
+            {noDataLabel}
           </p>
         </Hint>
 

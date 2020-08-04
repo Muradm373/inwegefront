@@ -1,4 +1,4 @@
-const methodologyEng = {
+const methodologyEng = [{
   header: "METHODOLOGY",
 
   description:
@@ -16,9 +16,23 @@ const methodologyEng = {
   ],
   itemsDescription:
     "The application shows the median gross wages and salaries for the respective occupation. Median wage is such that half of the employees in the occupation under consideration earn less and the other half earn more. For instance, a median wage of 1,000 euros means that half of those in the occupation earn less and half earn more than 1,000 euros per month. The wage distribution figures do not include the wages and salaries in the bottom and top 2.5%.",
-};
-
-const methodologyEst = {
+},{
+  header: "МЕТОДИКА",
+  description: "В приложении указана валовая заработная плата работников, зарегистрированных в Эстонии за выбранный период. Данные взяты из реестра занятости (TÖR) и приложений 1 и 2 эстонской налоговой декларации, формы TSD (декларация о доходах и социальном налоге, безработица). страховые взносы и взносы в обязательную накопительную пенсию). Данные регистра используются следующим образом:",
+  listItems: [
+    "работники, имеющие действительную запись о трудоустройстве в реестре занятости на конец периода;",
+    "только записи о профессии работника (обязательны с июля 2019 года) включены в регистр занятости;",
+    "исключены записи, которые приостановлены в конце периода или период занятости менее 1 месяца;",
+    "Приложение предоставляет информацию о наиболее распространенных группах занятий в Эстонии. Остальные профессии не показаны отдельно, а включены в раздел \" Все профессии \"",
+    "Среднемесячная начисленная заработная плата работника по профессии рассчитывается на основе выплат, заявленных работодателем за выбранный период в форме налоговой декларации в приложениях 1 и 2 ЦД;",
+    "При расчете заработной платы работников учитывается только доход от работы. Для этого используются виды выплат 10, 12 и 13 формы TSD приложения 1 и виды выплат 120, 121, 126, 127, 144, 145 приложения 2 используются;",
+    "для расчета численности работников включены все лица с одинаковой профессией, независимо от их рабочей нагрузки или типа контракта",
+    "для расчета средней заработной платы и распределения заработной платы учитываются работники, занятые полный рабочий день, которые получили доход от работы (то есть доход от работы больше 0);",
+    "для расчета средней заработной платы включены лица, чей вид работы в реестре занятости \" Трудовой договор \",\" Государственная служба \" или \" Высший государственный служащий \".",
+  ],
+  itemsDescription: "Приложение показывает среднюю заработную плату брутто и зарплаты для соответствующей профессии. Средняя заработная плата такова, что половина работников рассматриваемой профессии зарабатывает меньше, а другая половина зарабатывает больше. Например, средняя заработная плата в 1000 евро означает, что половина занятых зарабатывает меньше, а половина зарабатывает более 1000 евро в месяц. Данные о распределении заработной платы не включают заработную плату в нижней и верхней части 2,5%."
+},
+{
   header: "METOODIKA",
   description:
     "Rakenduses näidatakse Eestis registreeritud töötajate brutopalka valitud perioodil. Kasutatakse töötamise registri (TÖR) ja maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade 1 ja 2 andmeid. Registrite väljavõte on tehtud järgmistel tingimustel:",
@@ -42,6 +56,6 @@ const methodologyEst = {
   ],
   itemsDescription:
     "Rakenduses näidatakse vastava ametikoha mediaanpalka, s.t palka, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid palkasid.",
-};
+}]
 
-export { methodologyEng, methodologyEst };
+export { methodologyEng };

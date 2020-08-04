@@ -1,5 +1,5 @@
 import React, { memo, Component } from "react";
-import { API_URL, overall } from "../../text";
+import { API_URL, overall, noData } from "../../text";
 import { geoCentroid } from "d3-geo";
 
 import {
@@ -11,7 +11,7 @@ import {
 } from "react-simple-maps";
 import ee from "../../ee.json";
 import axios from "axios";
-import { genderLabel } from "../../text";
+import { genderLabel, genderWageGap, averageWage, medianWage} from "../../text";
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
@@ -212,8 +212,8 @@ class DynamicMapSelector extends Component {
                 color: "#595959",
               }}
             >
-              {" "}
-              No data{" "}
+              {noData}
+              
             </p>
           </div>
         </div>
@@ -353,7 +353,21 @@ class DynamicMapSelector extends Component {
   }
 
   getMapType() {
-    let mapContentType = this.state.mapType + ", 2020";
+    let mapContentType;
+    switch (this.state.mapType) {
+      case "Median Wage":
+        mapContentType = medianWage + ", 2020";
+        break;
+
+      case "Average Wage":
+        mapContentType = averageWage + ", 2020";
+        break;
+
+      default:
+        mapContentType = genderWageGap + ", 2020";
+        break;
+    }
+
 
     return mapContentType;
   }
@@ -418,7 +432,7 @@ class DynamicMapSelector extends Component {
                     this.state.mapType === "Gender Wage Gap" ? "true" : "false"
                   }
                 >
-                  Gender Wage Gap
+                  {genderWageGap}
                 </a>
               </li>
               <li
@@ -437,7 +451,7 @@ class DynamicMapSelector extends Component {
                     this.state.mapType === "Median Wage" ? "true" : "false"
                   }
                 >
-                  Median Wage
+                  {medianWage}
                 </a>
               </li>
               <li
@@ -456,7 +470,7 @@ class DynamicMapSelector extends Component {
                     this.state.mapType === "Average Wage" ? "true" : "false"
                   }
                 >
-                  Average Wage
+                  {averageWage}
                 </a>
               </li>
             </ul>
