@@ -8,14 +8,11 @@ import {
 } from "react-vis";
 import {
   genderLabel,
-
   menColor,
-
   noDataLabel, salary,
-
   womenColor
 } from "../../../dictionary/text";
-import { fetchData } from "../../entityFunc";
+import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
 
 

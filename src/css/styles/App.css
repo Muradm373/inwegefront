@@ -33,6 +33,23 @@
 .wpml-ls-legacy-list-horizontal.wpml-ls-statics-footer>ul{text-align:center}
 
 
+.feedback-list-container{
+  width: 65%;
+   margin-left: 15%;
+   padding-top: 15%;
+}
+
+.feedback-list{
+   margin-left: 10%;
+   margin-top: -10%;
+}
+
+.feedback-list-nav{
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 500px;
+}
+
 
 .flex-list li {
   flex-grow: 1;
