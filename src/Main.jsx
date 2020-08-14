@@ -1,55 +1,17 @@
-import React, { Component } from "react";
-
-import "react-tabs/style/react-tabs.css";
-import SalaryCalculator from "./components/salary-calculator/SalaryCalculator";
-import MethodologyComponent from "./components/methodology/MethodologyComponent";
-import WageForecast from "./components/wage-forecast/WageForecast";
-import Select from "react-select";
-import changeLanguage, {
-  tabs,
-  APP_NAME,
-  main,
-  about,
-} from "./text";
-import Feedback from "./components/salary-calculator/Feedback";
 import AOS from "aos";
-import { Link } from "react-router-dom";
-import SubscriptionComponent from "./components/subscription/SubscriptionComponent";
+import React, { Component } from "react";
+import "react-tabs/style/react-tabs.css";
+import MethodologyComponent from "./components/methodology-page/MethodologyComponent";
+import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculator";
+import Feedback from "./components/salary-calculator-page/selector-components/Feedback";
+import SubscriptionComponent from "./components/subscription-headline/SubscriptionComponent";
+import WageForecast from "./components/wage-forecast-page/WageForecast";
+import changeLanguage, {
+  about, APP_NAME,
+  main, tabs
+} from "./dictionary/text";
 
-const languages = [
-  {
-    value: "en",
-    label: (
-      <Link to="/">
-        <img width="25px" src={require("./img/flags/us.png")} alt="EN"></img>
-      </Link>
-    ),
-  },
-  {
-    value: "ru",
-    label: (
-      <Link to="/ru">
-        <img
-          width="25px"
-          src={require("./img/flags/russia.png")}
-          alt="RU"
-        ></img>
-      </Link>
-    ),
-  },
-  {
-    value: "es",
-    label: (
-      <Link to="/ee">
-        <img
-          width="25px"
-          src={require("./img/flags/estonia.png")}
-          alt="EE"
-        ></img>
-      </Link>
-    ),
-  },
-];
+
 
 
 class Main extends Component {
@@ -154,9 +116,6 @@ class Main extends Component {
           >
             <div className="container">
               <div className="row align-items-center">
-                <div className="col-6 col-lg-2">
-                  <h3 className="mb-0 site-logo"></h3>
-                </div>
 
                 <div className="col-12 col-md-10 d-none d-lg-block">
                   <nav
@@ -166,7 +125,7 @@ class Main extends Component {
                     <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
                       <li>
                         <a
-                          href="#"
+                          href="javascript:;"
                           className="nav-link"
                           onClick={this.changeMenu}
                           style={{color: this.state.menu === tabs[0]? '#4e73df' : ''}}
@@ -176,7 +135,7 @@ class Main extends Component {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="javascript:;"
                           className="nav-link"
                           onClick={this.changeMenu}
                           style={{color: this.state.menu === tabs[1]? '#4e73df' : ''}}
@@ -186,7 +145,7 @@ class Main extends Component {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/#"
                           className="nav-link"
                           onClick={this.changeMenu}
                           style={{color: this.state.menu === tabs[2]? '#4e73df' : ''}}
@@ -196,7 +155,7 @@ class Main extends Component {
                       </li>
                       <li>
                         <a
-                          href="#"
+                          href="/#"
                           className="nav-link"
                           onClick={this.changeMenu}
                           style={{color: this.state.menu === tabs[3]? '#4e73df' : ''}}
@@ -206,21 +165,21 @@ class Main extends Component {
                       </li>
                       <li>
                             
-                            <div class="flex-list wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
+                            <div className="flex-list wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
                               <ul>
-                                <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-et wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
-                                    <a href="/ee" class="wpml-ls-link" onClick={()=>this.refresh("es")}>
-                                      <span class="wpml-ls-native"  style={{color: this.defaultValue() === "es"? '#4e73df' : ''}}>EE</span>
+                                <li className="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-et wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
+                                    <a href="/ee" className="wpml-ls-link" onClick={()=>this.refresh("es")}>
+                                      <span className="wpml-ls-native"  style={{color: this.defaultValue() === "es"? '#4e73df' : ''}}>EE</span>
                                     </a>
                                   </li>
-                                  <li class="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
-                                    <a href="/" onClick={()=>this.refresh("en")} class="wpml-ls-link">
-                                      <span class="wpml-ls-native" style={{color: this.defaultValue() === "en"? '#4e73df' : ''}}>EN</span>
+                                  <li className="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+                                    <a href="/" onClick={()=>this.refresh("en")} className="wpml-ls-link">
+                                      <span className="wpml-ls-native" style={{color: this.defaultValue() === "en"? '#4e73df' : ''}}>EN</span>
                                     </a>
                                   </li>
-                                  <li class="flex-list-lst wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
-                                    <a href="/ru" onClick={()=>this.refresh("ru")} class="wpml-ls-link">
-                                      <span class="wpml-ls-native" style={{color: this.defaultValue() === "ru"? '#4e73df' : ''}}>RU</span>
+                                  <li className="flex-list-lst wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
+                                    <a href="/ru" onClick={()=>this.refresh("ru")} className="wpml-ls-link">
+                                      <span className="wpml-ls-native" style={{color: this.defaultValue() === "ru"? '#4e73df' : ''}}>RU</span>
                                     </a>
                                   </li>
                               </ul>
@@ -323,7 +282,7 @@ class Main extends Component {
           </div>
         </footer>
 
-        <a href="#" className="back-to-top">
+        <a href="/#" className="back-to-top">
           <i className="icofont-simple-up"></i>
         </a>
       </div>
