@@ -50,6 +50,15 @@
   height: 500px;
 }
 
+.map-legend{
+  margin-top: -13px;
+  margin-left: 3px;
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 18px;
+  color: #595959;
+  cursor: pointer;
+}
 
 .flex-list li {
   flex-grow: 1;
@@ -77,6 +86,37 @@
   background-color: #000000;
   height: 33.3%;
 }
+
+.pns-active-high{
+  background-color: #FF0000;
+  height: 33.3%;
+}
+
+.pns-active-medium{
+  background-color: yellow;
+  height: 33.3%;
+}
+
+.pns-active-low{
+  background-color: #00FF00;
+  height: 33.3%;
+}
+
+.pns-active-comp-high{
+  background-color: #00ff00;
+  height: 33.3%;
+}
+
+.pns-active-comp-medium{
+  background-color: yellow;
+  height: 33.3%;
+}
+
+.pns-active-comp-low{
+  background-color: #FF0000;
+  height: 33.3%;
+}
+
 
 .pns-salary-active{
   background-color: #000000;
@@ -120,6 +160,13 @@
 
 .card-shadow {
   width: 250px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.095);
+  background-color: #fff;
+  text-align: center;
+  padding: 35px;
+  margin: 10px;
+}
+.card-shadow-forecast {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.095);
   background-color: #fff;
   text-align: center;

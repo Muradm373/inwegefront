@@ -156,7 +156,7 @@ class ColumnChartComponent extends Component {
       .then((data) => {
         let entities = data.payload.salaryEntities;
         let jobEntity = data.payload.jobEntity;
-        if (jobEntity !== undefined && entities !== undefined) {
+        if (jobEntity !== undefined && entities[0] !== undefined) {
           if (entities[0].region !== "All") {
             let menMean = 0;
             let womenMean = 0;

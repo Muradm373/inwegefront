@@ -1,14 +1,16 @@
 import React, { Component } from "react";
 import OccupationSelector from "../salary-calculator-page/selector-components/OccupationSelector";
 import RegionSelector from "../salary-calculator-page/selector-components/RegionSelector";
+import MapSelector from "../salary-calculator-page/selector-components/map-components/MapSelector";
 import WageBars from "./WageBars";
+import ReactTooltip from "react-tooltip";
 
 class WageForecast extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isco: 1111,
-      region: "",
+      isco: -1,
+      region: "Harju maakond",
     };
 
     this.onIscoChange = this.onIscoChange.bind(this);
@@ -16,13 +18,15 @@ class WageForecast extends Component {
   }
 
   onIscoChange = (event) => {
-    this.setState({ isco: event.value.iscoValid });
-  };
+    if(event.value === "All occupations"){
 
-  onRegionChange = (event) => {
-    const region = event.value;
-
-    this.setState({ region: region });
+      this.setState({
+      region: "Harju maakond",
+      isco: -1
+      });
+    }else{
+      this.setState({ isco: event.value.iscoValid });
+    }
   };
 
   setContent(content) {
@@ -31,9 +35,14 @@ class WageForecast extends Component {
 
   render() {
     return (
-      <div className="w-75 text-center mx-auto">
+      <div className="w-75 text-center mx-auto card-shadow-forecast">
         <div className="wageforecast-component ">
-          <RegionSelector onChange={this.onRegionChange} />
+        <div className="map_selector p-3 " style={{ width: "60%", marginLeft:"20%", marginTop:"-4%" , marginBottom:"-5%"}}>
+                    <MapSelector
+                      setTooltipContent={this.setContent}
+                    />
+                    <ReactTooltip>{this.state.content}</ReactTooltip>
+                  </div>  
           <OccupationSelector
             onChange={this.onIscoChange}
             region={this.state.region}

@@ -84,7 +84,9 @@ class AgeBarChartComponent extends Component {
         >
           <HorizontalGridLines />
           <XAxis tickTotal={10} title="Ages" />
-          <YAxis title="props" />
+          <YAxis title="props" tickFormat={function tickFormat(d){
+    return d+"%";
+   }} />
           <VerticalBarSeries
             color="#3F1A84"
             opacity="0.95"
@@ -100,7 +102,7 @@ class AgeBarChartComponent extends Component {
               verticalAlign={Hint.ALIGN.BOTTOM}
             >
               <div className="custom-hint">
-                <p style={{ margin: "10px" }}>{this.state.value.y}</p>
+                <p style={{ margin: "10px" }}>{this.state.value.y}%</p>
               </div>
             </Hint>
           ) : null}

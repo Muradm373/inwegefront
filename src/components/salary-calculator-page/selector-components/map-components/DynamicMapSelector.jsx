@@ -133,40 +133,9 @@ class DynamicMapSelector extends Component {
 
   getLegends() {
     if (this.state.groups[0] !== undefined) {
-      const div = this.state.groups.map((e) => {
-        if (e.length > 1)
+      const div = this.state.groups.map((e) => {       
           return (
             <div>
-              <div
-                className="circle-legend"
-                style={{
-                  background: this.state.legendColors[
-                    this.getGroupByItem(e[0])
-                  ],
-                }}
-              ></div>
-              <p
-                style={{
-                  marginTop: "-13px",
-                  marginLeft: "3px",
-                  fontFamily: "Roboto",
-                  fontSize: "14px",
-                  lineHeight: "18px",
-                  color: "#595959",
-                  cursor: "pointer",
-                }}
-                onClick={() => {
-                  this.selectGroupColor(this.getGroupByItem(e[0]));
-                }}
-              >
-                {" "}
-                €{e[0]} - €{e[e.length - 1]}
-              </p>
-            </div>
-          );
-
-        if (e.length === 1)
-          return (
             <div>
               <div
                 className="circle-legend"
@@ -176,51 +145,19 @@ class DynamicMapSelector extends Component {
                 }}
               ></div>
               <p
-                style={{
-                  marginTop: "-13px",
-                  marginLeft: "3px",
-                  fontFamily: "Roboto",
-                  fontSize: "14px",
-                  lineHeight: "18px",
-                  color: "#595959",
-                }}
+                className="map-legend"
                 onClick={() => {
                   this.selectGroupColor(this.getGroupByItem(e[0]));
                 }}
               >
-                {" "}
-                €{e[0]}
+                {(e.length > 1)? "€"+e[0]+"-"+ "€"+ e[e.length - 1]:"€"+e[0]}
               </p>
+            </div>
             </div>
           );
       });
-      let div2 = (
-        <div>
-          {div}
-          <div>
-            <div
-              className="circle-legend"
-              style={{
-                background: this.state.noDataColor,
-              }}
-            ></div>
-            <p
-              style={{
-                marginTop: "-13px",
-                marginLeft: "3px",
-                fontFamily: "Roboto",
-                fontSize: "14px",
-                lineHeight: "18px",
-                color: "#595959",
-              }}
-            >
-              {noData}
-            </p>
-          </div>
-        </div>
-      );
 
-      return div2;
+      return div;
     }
   }
 
@@ -579,6 +516,17 @@ class DynamicMapSelector extends Component {
           style={{ width: "100px", marginTop: "-120px" }}
         >
           {this.getLegends()}
+          <div
+              className="circle-legend"
+              style={{
+                background: this.state.noDataColor,
+              }}
+            ></div>
+          <p
+              className="map-legend"
+            >
+              {noData}
+            </p>
         </div>
       </>
     );

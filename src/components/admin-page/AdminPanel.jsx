@@ -16,18 +16,18 @@ class AdminPanel extends Component {
 
   constructor() {
     super();
-    this.handleLogin = this.handleLogin.bind(this);
-    this.handleOpenFeedbacksModal = this.handleOpenFeedbacksModal.bind(this);
+    this.setUserToken = this.setUserToken.bind(this);
+    this.fetchFeedbacks = this.fetchFeedbacks.bind(this);
     this.logout = this.logout.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
   }
 
-  handleLogin(token) {
+  setUserToken(token) {
     this.setState({ userToken: token, loggedIn: true });
-    this.handleOpenFeedbacksModal();
+    this.fetchFeedbacks();
   }
 
-  handleOpenFeedbacksModal() {
+  fetchFeedbacks() {
     axios
       .get(`${API_URL}/feedbacks`, {
         headers: {
@@ -54,11 +54,11 @@ class AdminPanel extends Component {
       return (
         <FeedbacksList
           feedbacks={this.state.feedbacks}
-          refresh={this.handleOpenFeedbacksModal}
+          refresh={this.fetchFeedbacks}
         ></FeedbacksList>
       );
     }
-    return <Login handleCloseModal={this.handleLogin}></Login>;
+    return <Login handleCloseModal={this.setUserToken}></Login>;
   }
 
   render() {

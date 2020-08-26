@@ -47,7 +47,22 @@ class WageBars extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.getWageForecast(props.isco);
+    if(props.isco !== -1)
+      this.getWageForecast(props.isco);
+    else{
+      this.setState({payload: {
+        wageCategory19_min: 0,
+        wageCategory19_max: 0,
+        wageCategory30_min: 0,
+        wageCategory30_max: 0,
+        compProbability: 0.0,
+        meanWageSep19: 0,
+        meanWage30: 0,
+        share: 0,
+        computerizationRisk: levels[0],
+        replacementsNeeds: levels[0],
+      }})
+    }
   }
 
   calculateComputerizationRisk(value) {
@@ -62,8 +77,15 @@ class WageBars extends Component {
     else return levels[2];
   }
 
-  itemColor(self, grade) {
-    if (self === grade) return "pns-active";
+  itemColor(self, grade, type) {
+    console.log(grade);
+    if (self === grade && grade !== undefined){
+      if(type === "computerization")
+       return "pns-active-"+grade;
+      else{
+        return "pns-active-comp-"+grade;
+      }
+    }
     else return "pns";
   }
 
@@ -158,7 +180,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[2], this.state.computerizationRisk)
+                  this.itemColor(levels[2], this.state.computerizationRisk, "computerization")
                 }
               >
                 <p>{computarization[0]}</p>
@@ -166,7 +188,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[1], this.state.computerizationRisk)
+                  this.itemColor(levels[1], this.state.computerizationRisk, "computerization")
                 }
               >
                 <p>{computarization[1]}</p>
@@ -174,7 +196,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[0], this.state.computerizationRisk)
+                  this.itemColor(levels[0], this.state.computerizationRisk, "computerization")
                 }
               >
                 <p>{computarization[2]}</p>
@@ -193,15 +215,15 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[2], this.state.replacementsNeeds)
+                  this.itemColor(levels[0], this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p>{retirement[0]}</p>
+                <p>{retirement[2]}</p>
               </div>
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[1], this.state.replacementsNeeds)
+                  this.itemColor(levels[1], this.state.replacementsNeeds, "replacement")
                 }
               >
                 <p>{retirement[1]}</p>
@@ -209,10 +231,10 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[0], this.state.replacementsNeeds)
+                  this.itemColor(levels[2], this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p>{retirement[2]}</p>
+                <p>{retirement[0]}</p>
               </div>
             </div>
           </div>
