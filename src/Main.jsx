@@ -100,81 +100,7 @@ class Main extends Component {
             </div>
             <div className="site-mobile-menu-body"></div>
           </div>
-          {/* <header
-            className="site-navbar js-sticky-header site-navbar-target"
-            role="banner"
-            style={{ backgroundColor: "black", color: "white" }}
-          >
-            <div className="container">
-              <div className="row align-items-center">
-
-                <div className="col-12 col-md-10 d-none d-lg-block">
-                  <nav
-                    className="site-navigation position-relative text-right"
-                    role="navigation"
-                  >
-                    <ul className="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                      <li>
-                        <a
-                          href="javascript:;"
-                          className="nav-link"
-                          onClick={this.changeMenu}
-                          style={{color: this.state.menu === tabs[0]? '#4e73df' : ''}}
-                        >
-                          {tabs[0]}
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="javascript:;"
-                          className="nav-link"
-                          onClick={this.changeMenu}
-                          style={{color: this.state.menu === tabs[1]? '#4e73df' : ''}}
-                        >
-                          {tabs[1]}
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/#"
-                          className="nav-link"
-                          onClick={this.changeMenu}
-                          style={{color: this.state.menu === tabs[2]? '#4e73df' : ''}}
-                        >
-                          {tabs[2]}
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="/#"
-                          className="nav-link"
-                          onClick={this.changeMenu}
-                          style={{color: this.state.menu === tabs[3]? '#4e73df' : ''}}
-                        >
-                          {tabs[3]}
-                        </a>
-                      </li>
-                      <li>
-                            
-
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-
-                <div className="col-6 d-inline-block d-lg-none ml-md-0 py-3">
-                  <a
-                    href="index.html"
-                    className="burger site-menu-toggle js-menu-toggle"
-                    data-toggle="collapse"
-                    data-target="#main-navbar"
-                  >
-                    <span></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </header>*/}
+       
           <header class="layout__header">
             <div class="layout__header__top">
               <div class="content-link">
@@ -286,100 +212,24 @@ class Main extends Component {
                     </h2>
 
                     <ul class="menu menu-level-0">
-                      <li class="menu-item">
-                        <a
-                          href="https://et-ee.facebook.com/Statistikaamet"
-                          target="_blank"
-                          class="fa-facebook-f"
-                        >
-                          Facebook
-                        </a>
-
-                        <div class="menu_link_content menu-link-contentsocial-menu view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
-                          <div class="field field--name-field-tooltip field--type-string-long field--label-hidden field__items">
-                            <div class="field__item">Facebook</div>
-                          </div>
-                        </div>
+                      <li class="menu-item">    
+                            <span className="icofont-facebook" style={{cursor: "pointer"}} href="www.google.com"></span>
                       </li>
 
                       <li class="menu-item">
-                        <a
-                          href="https://twitter.com/eestistatistika"
-                          target="_blank"
-                          class="fa-twitter"
-                        >
-                          Twitter
-                        </a>
-
-                        <div class="menu_link_content menu-link-contentsocial-menu view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
-                          <div class="field field--name-field-tooltip field--type-string-long field--label-hidden field__items">
-                            <div class="field__item">Twitter</div>
-                          </div>
-                        </div>
+                      <span className="icofont-twitter" style={{cursor: "pointer"}}></span>
                       </li>
 
                       <li class="menu-item">
-                        <a
-                          href="https://www.linkedin.com/company/statistikaamet-statistics-estonia/"
-                          target="_blank"
-                          class="fa-linkedin"
-                        >
-                          LinkedIn
-                        </a>
-
-                        <div class="menu_link_content menu-link-contentsocial-menu view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
-                          <div class="field field--name-field-tooltip field--type-string-long field--label-hidden field__items">
-                            <div class="field__item">LinkedIn</div>
-                          </div>
-                        </div>
+                      <span className="icofont-linkedin" style={{cursor: "pointer"}}></span>
                       </li>
 
                       <li class="menu-item">
-                        <a
-                          href="https://www.slideshare.net/Statistikaamet"
-                          target="_blank"
-                          class="fa-slideshare"
-                        >
-                          Slideshare
-                        </a>
-
-                        <div class="menu_link_content menu-link-contentsocial-menu view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
-                          <div class="field field--name-field-tooltip field--type-string-long field--label-hidden field__items">
-                            <div class="field__item">Slideshare</div>
-                          </div>
-                        </div>
+                      <span className="icofont-youtube" style={{cursor: "pointer"}}></span>
                       </li>
 
                       <li class="menu-item">
-                        <a
-                          href="https://www.youtube.com/user/Statistikaamet/featured"
-                          target="_blank"
-                          class="fa-youtube"
-                        >
-                          Youtube
-                        </a>
-
-                        <div class="menu_link_content menu-link-contentsocial-menu view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
-                          <div class="field field--name-field-tooltip field--type-string-long field--label-hidden field__items">
-                            <div class="field__item">Youtube</div>
-                          </div>
-                        </div>
-                      </li>
-
-                      <li class="menu-item">
-                        <a
-                          href="https://www.instagram.com/eesti_statistika/"
-                          target="_blank"
-                          class="fa-instagram"
-                        >
-                          Instagram
-                        </a>
-
-                        <div class="menu_link_content menu-link-contentsocial-menu view-mode-default menu-dropdown menu-dropdown-0 menu-type-default">
-                          <div class="field field--name-field-tooltip field--type-string-long field--label-hidden field__items">
-                            <div class="field__item">Instagram</div>
-                          </div>
-                        </div>
+                      <span className="icofont-instagram" style={{cursor: "pointer"}}></span>
                       </li>
                     </ul>
                   </nav>
@@ -511,7 +361,7 @@ class Main extends Component {
               </div>
             </div>
           </header>
-          <main id="main">
+          <main id="main" style={{marginTop: "-120px"}}>
             <div>
               <div
                 className="selector-style text-center mx-auto"
