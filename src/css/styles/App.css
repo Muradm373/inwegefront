@@ -11950,6 +11950,10 @@ form.user .btn-user {
   }
 }
 
+.menuSpan a :hover {
+  color: #FFFFFF;
+}
+
 .error:before {
   content: attr(data-text);
   position: absolute;
