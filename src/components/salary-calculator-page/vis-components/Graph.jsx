@@ -112,7 +112,21 @@ function Graph(props) {
           props.differenceLabel[7]
         }
       />
-  
+
+      <div className="genderTicks">
+        <div className="Column">
+          <div className="Row">
+            <div className="male"> </div>
+            <p className="Column">{props.genderLabel[0]}</p>
+          </div>
+        </div>
+        <div className="Column">
+          <div className="Row">
+            <div className="female"> </div>
+            <p className="Column">{props.genderLabel[1]}</p>
+          </div>
+        </div>
+      </div>
       <FlexibleWidthXYPlot height={400} animation="gentle">
         <VerticalGridLines
           style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.5 }}
