@@ -384,6 +384,7 @@ class Main extends Component {
                 {this.renderMenu()}
               </div>
             </div>
+            
           </main>
           <div className="site-section">
             <div className="container"></div>
@@ -424,19 +425,20 @@ class Main extends Component {
                 <SubscriptionComponent></SubscriptionComponent>
               </div>
 
-              <div className="col-2">
-                
-                    <img
-                      src={require("./resources/ERDF_h_est.jpg")}
-                      style={{ width: "250px", marginLeft: "-100px" }}
-                    />
-                  </div>
-
-                  <div className="col-3">
+                  <div className="col-3" style={{marginLeft: "-100px"}}>
                     <h3>{main[2]}</h3>
                     <Feedback></Feedback>
                   </div>
+                  <div className="col-2">
+                
+                <img
+                  src={require("./resources/ERDF_h_est.jpg")}
+                  style={{ width: "200px", margin: "40px" }}
+                />
+              </div>
+
             </div>
+            
             
             <div className="row justify-content-center text-center mt-4">
               <div className="col-md-7">
