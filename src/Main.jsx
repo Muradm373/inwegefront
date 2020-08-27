@@ -100,7 +100,7 @@ class Main extends Component {
             </div>
             <div className="site-mobile-menu-body"></div>
           </div>
-       
+
           <header class="layout__header">
             <div class="layout__header__top">
               <div class="content-link">
@@ -108,9 +108,7 @@ class Main extends Component {
               </div>
               <div class="u-container">
                 <div class="layout__header__top__left">
-                  <nav
-                    class="navigation menu--app-menu"
-                  >
+                  <nav class="navigation menu--app-menu">
                     <span
                       id="block-rakendustemenuu-menu"
                       class="menu--app-menu__title"
@@ -209,24 +207,40 @@ class Main extends Component {
                     </h2>
 
                     <ul class="menu menu-level-0">
-                      <li class="menu-item">    
-                            <span className="icofont-facebook" style={{cursor: "pointer"}} href="www.google.com"></span>
+                      <li class="menu-item">
+                        <span
+                          className="icofont-facebook"
+                          style={{ cursor: "pointer" }}
+                          href="www.google.com"
+                        ></span>
                       </li>
 
                       <li class="menu-item">
-                      <span className="icofont-twitter" style={{cursor: "pointer"}}></span>
+                        <span
+                          className="icofont-twitter"
+                          style={{ cursor: "pointer" }}
+                        ></span>
                       </li>
 
                       <li class="menu-item">
-                      <span className="icofont-linkedin" style={{cursor: "pointer"}}></span>
+                        <span
+                          className="icofont-linkedin"
+                          style={{ cursor: "pointer" }}
+                        ></span>
                       </li>
 
                       <li class="menu-item">
-                      <span className="icofont-youtube" style={{cursor: "pointer"}}></span>
+                        <span
+                          className="icofont-youtube"
+                          style={{ cursor: "pointer" }}
+                        ></span>
                       </li>
 
                       <li class="menu-item">
-                      <span className="icofont-instagram" style={{cursor: "pointer"}}></span>
+                        <span
+                          className="icofont-instagram"
+                          style={{ cursor: "pointer" }}
+                        ></span>
                       </li>
                     </ul>
                   </nav>
@@ -251,10 +265,10 @@ class Main extends Component {
                               style={{
                                 color:
                                   this.defaultValue() === "es" ? "#4e73df" : "",
-                                  fontSize: "10pt"
+                                fontSize: "10pt",
                               }}
                             >
-                              EE
+                              EST
                             </span>
                           </a>
                         </li>
@@ -269,10 +283,10 @@ class Main extends Component {
                               style={{
                                 color:
                                   this.defaultValue() === "en" ? "#4e73df" : "",
-                                  fontSize: "10pt"
+                                fontSize: "10pt",
                               }}
                             >
-                              EN
+                              ENG
                             </span>
                           </a>
                         </li>
@@ -287,10 +301,10 @@ class Main extends Component {
                               style={{
                                 color:
                                   this.defaultValue() === "ru" ? "#4e73df" : "",
-                                  fontSize: "10pt"
+                                fontSize: "10pt",
                               }}
                             >
-                              RU
+                              RUS
                             </span>
                           </a>
                         </li>
@@ -357,11 +371,10 @@ class Main extends Component {
                     </li>
                   </ul>
                 </nav>
-
               </div>
             </div>
           </header>
-          <main id="main" style={{marginTop: "-120px"}}>
+          <main id="main" style={{ marginTop: "-120px" }}>
             <div>
               <div
                 className="selector-style text-center mx-auto"
@@ -377,24 +390,12 @@ class Main extends Component {
           </div>
         </div>
         <footer className="footer footer-dot" role="contentinfo">
-          <div className="container">
+          <div className="">
             <div className="row">
-              <div className="col-md-4 mb-4 mb-md-0">
-                <h3>
-                  {main[1]} {APP_NAME}
-                </h3>
-                <p
-                  className="text-left"
-                  ref={(el) => {
-                    this.messagesEnd = el;
-                  }}
-                >
-                  {about}
-                </p>  
-              </div>
-              <div className="col-md-7 ml-auto">
+
+              <div className="col-2 ml-5">
                 <div className="row site-section pt-0">
-                  <div className="col-md-4 mb-4 mb-md-0">
+                  <div className="col-md3 mb-md-0">
                     <h3>{main[3]}</h3>
                     <ul className="list-unstyled">
                       <li>
@@ -415,17 +416,29 @@ class Main extends Component {
                     </ul>
                   </div>
 
-                  <div className="col-md-7 mb-4 mb-md-0">
+          
+                </div>
+              </div>
+              <div className="col-4">
+                
+                <SubscriptionComponent></SubscriptionComponent>
+              </div>
+
+              <div className="col-2">
+                
+                    <img
+                      src={require("./resources/ERDF_h_est.jpg")}
+                      style={{ width: "250px", marginLeft: "-100px" }}
+                    />
+                  </div>
+
+                  <div className="col-3">
                     <h3>{main[2]}</h3>
                     <Feedback></Feedback>
                   </div>
-                </div>
-              </div>
             </div>
-            <div className="row justify-content-center text-center">
-              <SubscriptionComponent></SubscriptionComponent>
-            </div>
-            <div className="row justify-content-center text-center">
+            
+            <div className="row justify-content-center text-center mt-4">
               <div className="col-md-7">
                 <p className="copyright">
                   &copy; Copyright {APP_NAME}. All Rights Reserved

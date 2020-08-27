@@ -957,7 +957,7 @@ h6,
 .input-stats {
   box-sizing: border-box;
   font-family: Roboto;
-  margin: 5px;
+  margin: 5px 5px 5px 0px;
   width: 20rem;
   border: 1px solid #fff;
   padding: 10px;
@@ -974,15 +974,14 @@ h6,
 }
 
 .description-input-stats {
-  background: url(../../resources/envelope.png) no-repeat scroll 13px
-    13px;
+  background: url(../../resources/envelope.png) no-repeat scroll 13px 13px;
   padding-left: 38px;
 }
 
 .black-button {
   box-sizing: border-box;
   font-family: Roboto;
-  margin: 5px;
+  margin: 5px 5px 5px 0px;
   width: 10rem;
   border: 1px solid #fff;
   padding: 10px;

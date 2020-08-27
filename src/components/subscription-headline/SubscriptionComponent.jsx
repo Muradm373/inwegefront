@@ -37,10 +37,12 @@ export function SubscriptionComponent(props) {
           fontSize: "16px",
           lineHeight: "20px",
           fontWeight: "normal",
+          marginBottom: "10px",
           color: "#FFF",
+          
         }}
       >
-        Become a member and get the latest updates:
+        Subscribe to newsletter:
       </p>
       <form onSubmit={sendSubscription}>
         <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
