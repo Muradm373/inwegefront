@@ -341,7 +341,6 @@ font {
 
 .footer {
   padding: 5rem 0 2.5rem 0;
-  background-color: #000;
   color: #fff;
 }
 
@@ -612,10 +611,21 @@ body {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #000000;
   text-align: left;
-  background-color: #fff;
 }
+
+.body-dot {
+  background: hsla(0, 0%, 100%, 0.1);
+  background-image: radial-gradient(rgb(0, 0, 0) 5%, transparent 0);
+  background-size: 21px 21px;
+}
+
+.footer-dot {
+  background:  hsl(0, 0%, 100%);
+  background-image: radial-gradient(rgb(0, 0, 0) 100%, transparent 0);
+  background-size: 21px 21px;
+}
+
 
 [tabindex="-1"]:focus {
   outline: 0 !important;

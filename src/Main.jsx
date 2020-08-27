@@ -109,10 +109,7 @@ class Main extends Component {
               <div class="u-container">
                 <div class="layout__header__top__left">
                   <nav
-                    role="navigation"
-                    aria-labelledby="block-rakendustemenuu-menu"
-                    id="block-rakendustemenuu"
-                    class="block block-menu navigation menu--app-menu"
+                    class="navigation menu--app-menu"
                   >
                     <span
                       id="block-rakendustemenuu-menu"
@@ -122,8 +119,8 @@ class Main extends Component {
                     </span>
 
                     <ul data-region="header_top_left" class="menu">
-                      <li class="menu-item menu-item--expanded">
-                        <span tabindex="0">Webpage</span>
+                      <li class="menu-item">
+                        <a tabindex="0">Webpage</a>
                         <ul class="menu">
                           <li class="menu-item">
                             <a
@@ -310,7 +307,7 @@ class Main extends Component {
                     <img
                       src={require("./resources/icon.png")}
                       alt="Home"
-                      style={{ width: "120px" }}
+                      style={{ width: "130px", backgroundColor: "#FFFFFF" }}
                     />
                   </a>
                 </div>
@@ -376,7 +373,7 @@ class Main extends Component {
             <div className="container"></div>
           </div>
         </div>
-        <footer className="footer" role="contentinfo">
+        <footer className="footer footer-dot" role="contentinfo">
           <div className="container">
             <div className="row">
               <div className="col-md-4 mb-4 mb-md-0">
@@ -390,11 +387,6 @@ class Main extends Component {
                   }}
                 >
                   {about}
-                </p>
-                <p className="social">
-                  <a href="https://www.facebook.com/Inwege-projekt-539113286594122">
-                    <span className="icofont-facebook"></span>
-                  </a>
                 </p>
               </div>
               <div className="col-md-7 ml-auto">
