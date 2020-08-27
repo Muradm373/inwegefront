@@ -41,6 +41,7 @@ class PieChartComponent extends Component {
   }
 
   getAllMean() {
+    console.log("No");
     let url = `${API_URL}/entities/count-worker`;
     axios.get(url).then((data) => {
       let men;
@@ -73,8 +74,13 @@ class PieChartComponent extends Component {
   }
 
   getMean(region, isco) {
+
+    console.log(region + " " + isco);
     let url =
-      `${API_URL}/entities/count-worker?region` + region + "&isco=" + isco;
+      `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
+
+
+      console.log(url)
 
     axios
       .get(url)
@@ -91,6 +97,8 @@ class PieChartComponent extends Component {
           men = payload[1].count;
           women = payload[0].count;
         }
+
+        console.log(men + "  ---  " + women)
 
         let data = [
           {
