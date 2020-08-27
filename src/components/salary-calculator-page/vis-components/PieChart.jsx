@@ -74,7 +74,7 @@ class PieChartComponent extends Component {
 
   getMean(region, isco) {
     let url =
-      `${API_URL}/entities/count-worker?region` + region + "&isco=" + isco;
+      `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
 
     axios
       .get(url)
