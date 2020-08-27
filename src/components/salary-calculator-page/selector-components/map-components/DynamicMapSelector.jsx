@@ -203,8 +203,8 @@ class DynamicMapSelector extends Component {
       default: {
         fill: color,
         outline: "none",
-        stroke: this.state.selected === data ? "#e6e6e6" : "none",
-        strokeWidth: 2,
+        stroke: this.state.selected === data ? "#F58FA9" : "none",
+        strokeWidth: 3,
       },
       hover: {
         fill: color,
@@ -215,7 +215,7 @@ class DynamicMapSelector extends Component {
       pressed: {
         fill: color,
         outline: "none",
-        stroke: "#e6e6e6",
+        stroke: "#F58FA9",
         strokeWidth: 2,
       },
     };
