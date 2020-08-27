@@ -160,14 +160,14 @@
 
 .card-shadow {
   width: 250px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.095);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.098);
   background-color: #fff;
   text-align: center;
   padding: 35px;
   margin: 10px;
 }
 .card-shadow-forecast {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.095);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.098);
   background-color: #fff;
   text-align: center;
   padding: 35px;
@@ -621,8 +621,9 @@ body {
 }
 
 .footer-dot {
-  background:  hsl(0, 0%, 100%);
-  background-image: radial-gradient(rgb(0, 0, 0) 100%, transparent 0);
+  background: hsla(209, 100%, 47%, 0.1);
+  background-color: #000;
+  background-image: radial-gradient(hsla(0, 100%, 100%, 0.40) 5%, transparent 0);
   background-size: 21px 21px;
 }
 

@@ -251,6 +251,7 @@ class Main extends Component {
                               style={{
                                 color:
                                   this.defaultValue() === "es" ? "#4e73df" : "",
+                                  fontSize: "10pt"
                               }}
                             >
                               EE
@@ -268,6 +269,7 @@ class Main extends Component {
                               style={{
                                 color:
                                   this.defaultValue() === "en" ? "#4e73df" : "",
+                                  fontSize: "10pt"
                               }}
                             >
                               EN
@@ -285,6 +287,7 @@ class Main extends Component {
                               style={{
                                 color:
                                   this.defaultValue() === "ru" ? "#4e73df" : "",
+                                  fontSize: "10pt"
                               }}
                             >
                               RU
@@ -387,7 +390,7 @@ class Main extends Component {
                   }}
                 >
                   {about}
-                </p>
+                </p>  
               </div>
               <div className="col-md-7 ml-auto">
                 <div className="row site-section pt-0">
