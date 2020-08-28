@@ -2,8 +2,8 @@ import { methodologyEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const APP_NAME = "palgakompass.stat.ee";
-export const menColor = "#7db0ff";
-export const womenColor = "#f00044";
+export const menColor = "#3F1A84";
+export const womenColor = "#F58FA9";
 const descrEng =
   ["There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.", "Отсутствует информация данной позиции в этом регионе. Пожалуйста выберите другую позицию или регион.",
   "Selle ametikoha kohta selles maakonnas infot ei ole. Palun vali teine maakond või teine amet. Näidatud on keskmised palgad kogu Eestis."];
