@@ -92,6 +92,8 @@ class PieChartComponent extends Component {
           women = payload[0].count;
         }
 
+        console.log("test " + men + " " + women)
+
         let data = [
           {
             angle: men,
@@ -100,9 +102,9 @@ class PieChartComponent extends Component {
             color: menColor,
           },
           {
-            angle: women,
+            angle: parseInt(women),
             radius: 5,
-            label: parseInt(women),
+            label: parseInt(women) + "",
             color: womenColor,
           },
         ];
