@@ -95,8 +95,8 @@ function Graph(props) {
   return (
     <div className="centered" id="entity" style={{ marginTop: "15px" }}>
       <BarComponent
-        menMean={menMean}
-        womenMean={womenMean}
+        menMean={womenMean}
+        womenMean={menMean}
         menColor={menColor}
         womenColor={womenColor}
         occupation={props.occupation}
