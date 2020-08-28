@@ -133,7 +133,8 @@ class DynamicMapSelector extends Component {
 
   getLegends() {
     if (this.state.groups[0] !== undefined) {
-      const div = this.state.groups.map((e) => {       
+      const div = this.state.groups.map((e) => {    
+        if(e[0] !== undefined)   {
           return (
             <div>
             <div>
@@ -155,6 +156,7 @@ class DynamicMapSelector extends Component {
             </div>
             </div>
           );
+              }return(<></>);
       });
 
       return div;
@@ -427,7 +429,7 @@ class DynamicMapSelector extends Component {
                     onMouseEnter={() => {
                       const l = geo.properties.MNIMI;
                       const data = this.getMeanForRegion(l);
-                      if (this.state.mapType !== "Average Wage")
+                      if (this.state.mapType !== "Median Wage")
                         this.props.setTooltipContent(data.toString());
                       else
                         this.props.setTooltipContent(

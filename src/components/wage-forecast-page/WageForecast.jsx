@@ -37,10 +37,10 @@ class WageForecast extends Component {
     return (
       <div className="w-75 text-center mx-auto card-shadow-forecast">
         <div className="wageforecast-component ">
-        <div className="map_selector p-3 " style={{ width: "60%", marginLeft:"20%", marginTop:"-4%" , marginBottom:"-5%"}}>
-                    <MapSelector
+        <div className="map_selector p-3 " style={{ width: "60%", marginLeft:"20%" , marginBottom:"-5%"}}>
+                    {/* <MapSelector
                       setTooltipContent={this.setContent}
-                    />
+                    /> */}
                     <ReactTooltip>{this.state.content}</ReactTooltip>
                   </div>  
           <OccupationSelector
