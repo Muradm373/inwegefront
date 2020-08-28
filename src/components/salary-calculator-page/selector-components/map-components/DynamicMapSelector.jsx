@@ -429,7 +429,7 @@ class DynamicMapSelector extends Component {
                     onMouseEnter={() => {
                       const l = geo.properties.MNIMI;
                       const data = this.getMeanForRegion(l);
-                      if (this.state.mapType !== "Median Wage")
+                      if (this.state.mapType === "Gender Wage Gap")
                         this.props.setTooltipContent(data.toString());
                       else
                         this.props.setTooltipContent(
