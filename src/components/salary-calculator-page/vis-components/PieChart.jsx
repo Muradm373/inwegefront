@@ -98,7 +98,7 @@ class PieChartComponent extends Component {
           {
             angle: men,
             radius: 5,
-            label: parseInt(men),
+            label: parseInt(men) + "",
             color: menColor,
           },
           {
