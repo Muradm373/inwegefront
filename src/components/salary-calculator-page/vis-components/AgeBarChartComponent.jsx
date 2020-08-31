@@ -38,7 +38,7 @@ class AgeBarChartComponent extends Component {
       let max = e.ageMax;
       let result = "";
       result = min + "-" + max;
-      if (min == null) result = "<" + max;
+      if (min == null) result = max + "+";
       if (max == null) result = min + "<";
       categories.push({
         x: result,
