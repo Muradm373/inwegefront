@@ -229,7 +229,8 @@ class DynamicMapSelector extends Component {
       default: {
         fill: color,
         outline: "none",
-        stroke: this.state.selected === data ? "#000000" : "none",
+        stroke: this.state.mapType === "Median Wage" ? (this.state.selected === data ? "#000000" : "none") : (this.state.selected === data ? "#F58FA9" : "none"),
+
         strokeWidth: 3,
       },
       hover: {
