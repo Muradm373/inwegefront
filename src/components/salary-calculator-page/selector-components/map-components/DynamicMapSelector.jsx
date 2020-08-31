@@ -61,13 +61,15 @@ class DynamicMapSelector extends Component {
   getMeansForAllRegions(data) {
     var url_dataType = "";
     var isco = this.state.isco;
-    url_dataType = "regions/average";
+    url_dataType = "regions/wage-gap";
+
+
 
     if (data === "Median Wage") {
       url_dataType = "regions/median";
     }
     if (data === "Median Wage" && isco !== "") {
-      url_dataType = "jobs/average/median?isco=" + isco;
+      url_dataType = "regions/median?isco=" + isco;
     }
 
     if (isco !== "" && data !== "Median Wage") {
@@ -94,7 +96,17 @@ class DynamicMapSelector extends Component {
         list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
         return;
       });
-    } else {
+    } else if(this.state.mapType === "Median Wage") {
+      data.map((el) => {
+        let diff = parseInt(el.average);
+
+        console.log(diff);
+        list.push(diff);
+        return;
+      });
+    }
+    
+    else {
       data.map((el) => {
         let diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
         if (el.maleAverage === 0 || el.maleAverage === 0) {
@@ -118,6 +130,8 @@ class DynamicMapSelector extends Component {
         result[line].push(value);
       }
     }
+
+    console.log(result);
     this.setState({ groups: result });
   }
 
@@ -173,7 +187,17 @@ class DynamicMapSelector extends Component {
 
   styleForSelectedRegion(data) {
     let diff = 0;
-    if (this.state.mapType === "Gender Wage Gap") {
+
+    if (this.state.mapType === "Median Wage"){
+      this.state.averages.map((el) => {
+        if (el.region === data) {
+          diff = el.average;
+
+          return Math.abs(diff);
+        }
+      });
+    }
+    else if (this.state.mapType === "Gender Wage Gap") {
       this.state.averages.map((el) => {
         if (el.region === data) {
           diff = el.maleAverage - el.femaleAverage;
@@ -205,7 +229,7 @@ class DynamicMapSelector extends Component {
       default: {
         fill: color,
         outline: "none",
-        stroke: this.state.selected === data ? "#F58FA9" : "none",
+        stroke: this.state.selected === data ? "#000000" : "none",
         strokeWidth: 3,
       },
       hover: {
@@ -233,6 +257,16 @@ class DynamicMapSelector extends Component {
 
   getMeanForRegion(region) {
     let data = {};
+    if(this.state.mapType === "Median Wage"){
+     
+      this.state.averages.map((el) => {
+        if (el.region === region) {
+          data = ("€" + el.average)
+          console.log(data);
+          return data;
+        }
+      });
+    }else{
     this.state.averages.map((el) => {
       if (el.region === region) {
         data =
@@ -244,6 +278,7 @@ class DynamicMapSelector extends Component {
         return data;
       }
     });
+  }
     return data;
   }
 
@@ -429,7 +464,7 @@ class DynamicMapSelector extends Component {
                     onMouseEnter={() => {
                       const l = geo.properties.MNIMI;
                       const data = this.getMeanForRegion(l);
-                      if (this.state.mapType === "Gender Wage Gap")
+                      if (this.state.mapType === "Gender Wage Gap" || this.state.mapType === "Median Wage")
                         this.props.setTooltipContent(data.toString());
                       else
                         this.props.setTooltipContent(
