@@ -42,16 +42,7 @@ const displayLegends = (menColor, womenColor) => {
         }}
       ></div>
       <p
-        style={{
-          textAlign: "left",
-          marginTop: "-13px",
-          marginLeft: "13px",
-          fontSize: "9pt",
-          fontFamily: "Roboto",
-          fontSize: "14px",
-          lineHeight: "18px",
-          color: "#595959",
-        }}
+        className="graph-legend"
       >
         {genderLabel[0]}
       </p>
@@ -63,16 +54,7 @@ const displayLegends = (menColor, womenColor) => {
         }}
       ></div>
       <p
-        style={{
-          textAlign: "left",
-          marginTop: "-13px",
-          marginLeft: "13px",
-          fontSize: "9pt",
-          fontFamily: "Roboto",
-          fontSize: "14px",
-          lineHeight: "18px",
-          color: "#595959",
-        }}
+        className="graph-legend"
       >
         {genderLabel[1]}
       </p>
@@ -93,7 +75,7 @@ function Graph(props) {
       : parseInt(data.womenMean);
 
   return (
-    <div className="centered" id="entity" style={{ marginTop: "15px" }}>
+    <div className="centered" id="entity" className="graph">
       <BarComponent
         menMean={menMean}
         womenMean={womenMean}
@@ -114,21 +96,21 @@ function Graph(props) {
       />
 
       
-      <FlexibleWidthXYPlot height={400} animation="gentle">
+      <FlexibleWidthXYPlot height={350} animation="gentle">
         <VerticalGridLines
-          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.5 }}
+        className="grid-line-vertical"
         />
         <HorizontalGridLines
-          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.3 }}
+        className="grid-line-horizontal"
         />
         <XAxis
+        className="grid-axis"
           tickTotal={10}
           tickFormat={(v) => `€${v}`}
-          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.9 }}
         />
         <YAxis
+        className="grid-axis"
           tickTotal={4}
-          style={{ stroke: "black", strokeWidth: 0.5, opacity: 0.9 }}
           tickFormat={(v) => `${v * 10}%`}
         />
 
@@ -154,7 +136,7 @@ function Graph(props) {
           value={displayMessageLocation(myWage)}
           style={displayMessage(men)}
         >
-          <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
+          <p className="no-data-label">
             {noDataLabel}
           </p>
         </Hint>
@@ -171,7 +153,7 @@ function Graph(props) {
         />
 
         <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean, men)}>
-          <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
+          <p className="no-data-label">
             {props.myGender === genderLabel[0]
               ? props.differenceLabel[5]
               : props.differenceLabel[4]}
@@ -181,7 +163,7 @@ function Graph(props) {
         </Hint>
 
         <Hint value={{ x: myWage, y: 0 }} style={display(myWage, mean, men)}>
-          <p style={{ fontSize: "10pt", textAlign: "center", color: "black" }}>
+          <p className="no-data-label">
             {salary[0]}
             <br /> {salary[1]}
           </p>
@@ -223,7 +205,7 @@ function Graph(props) {
           </p>
         </Hint>
         <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
-        <div style={{ marginTop: "-370px", marginLeft: "90%" }}>
+        <div className="graph-legends">
           {displayLegends(menColor, womenColor)}
         </div>
       </FlexibleWidthXYPlot>

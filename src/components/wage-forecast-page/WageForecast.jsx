@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import OccupationSelector from "../salary-calculator-page/selector-components/OccupationSelector";
-import RegionSelector from "../salary-calculator-page/selector-components/RegionSelector";
-import MapSelector from "../salary-calculator-page/selector-components/map-components/MapSelector";
 import WageBars from "./WageBars";
 import ReactTooltip from "react-tooltip";
 

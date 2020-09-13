@@ -4,7 +4,7 @@ import { useAlert } from "react-alert";
 import "../../css/mnimi.css";
 import { API_URL } from "../../dictionary/text";
 
-export function SubscriptionComponent(props) {
+export function   SubscriptionComponent(props) {
   const [email, setEmail] = useState("");
   const alert = useAlert();
 

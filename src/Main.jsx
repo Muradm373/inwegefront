@@ -1,12 +1,12 @@
-import AOS from "aos";
 import React, { Component } from "react";
 import "react-tabs/style/react-tabs.css";
 import MethodologyComponent from "./components/methodology-page/MethodologyComponent";
+import PensionsComponent from "./components/pensions-page/PensionsComponent";
 import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculator";
 import Feedback from "./components/salary-calculator-page/selector-components/Feedback";
 import SubscriptionComponent from "./components/subscription-headline/SubscriptionComponent";
 import WageForecast from "./components/wage-forecast-page/WageForecast";
-import changeLanguage, { about, APP_NAME, main, tabs } from "./dictionary/text";
+import changeLanguage, { APP_NAME, main, tabs } from "./dictionary/text";
 
 class Main extends Component {
   constructor(props) {
@@ -73,7 +73,13 @@ class Main extends Component {
           <MethodologyComponent></MethodologyComponent>
         </div>
       );
-    } else {
+    } if (this.state.menu === tabs[2]){
+      return (<div>
+        <PensionsComponent></PensionsComponent>
+      </div>
+      );
+    }
+    else {
       return (
         <div>
           <SalaryCalculator
@@ -87,7 +93,6 @@ class Main extends Component {
   }
 
   render() {
-    AOS.init();
     changeLanguage(this.props.lang);
     return (
       <div>
@@ -101,92 +106,85 @@ class Main extends Component {
             <div className="site-mobile-menu-body"></div>
           </div>
 
-          <header class="layout__header">
-            <div class="layout__header__top">
-              <div class="content-link">
+          <header className="layout__header">
+            <div className="layout__header__top">
+              <div className="content-link">
                 <a href="#main">Navigate to content</a>
               </div>
-              <div class="u-container">
-                <div class="layout__header__top__left">
-                  <nav class="navigation menu--app-menu">
+              <div className="u-container">
+                <div className="layout__header__top__left">
+                  <nav className="navigation menu--app-menu">
                     <span
                       id="block-rakendustemenuu-menu"
-                      class="menu--app-menu__title"
+                      className="menu--app-menu__title"
                     >
                       Statistics Estonia:
                     </span>
 
-                    <ul data-region="header_top_left" class="menu">
-                      <li class="menu-item">
-                        <a tabindex="0">Webpage</a>
-                        <ul class="menu">
-                          <li class="menu-item">
+                    <ul data-region="header_top_left" className="menu">
+                      <li className="menu-item">
+                        <a tabIndex="0" href="/#">Webpage</a>
+                        <ul className="menu">
+                          <li className="menu-item">
                             <a
                               href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp"
-                              target="_blank"
                             >
                               Statistical database PxWeb
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="http://andmebaas.stat.ee/?lang=en&amp;SubSessionId=d6bed41d-cf9f-44f2-975b-4680e7060ae1&amp;themetreeid=-200"
-                              target="_blank"
+
                             >
                               Statistical database .Stat
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&amp;language=en"
-                              target="_blank"
                             >
                               eSTAT
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="https://juhtimislauad.stat.ee/"
-                              target="_blank"
                               title="https://juhtimislauad.stat.ee/"
                             >
                               Dashboards
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="https://tamm.stat.ee/?lang=en"
-                              target="_blank"
                             >
                               Tree of Truth
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="https://estat.stat.ee/StatistikaKaart/VKR"
-                              target="_blank"
                             >
                               Statistics map application
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="https://valiskaubandus.stat.ee/?locale=en"
-                              target="_blank"
                             >
                               Foreign trade application
                             </a>
                           </li>
-                          <li class="menu-item">
+                          <li className="menu-item">
                             <a
                               href="https://ametipalk.stat.ee/"
-                              target="_blank"
                             >
                               Wages and salaries application
                             </a>
                           </li>
-                          <li class="menu-item">
-                            <a href="/nimed/" target="_blank">
+                          <li className="menu-item">
+                            <a href="/nimed/" >
                               Name statistics application
                             </a>
                           </li>
@@ -195,19 +193,19 @@ class Main extends Component {
                     </ul>
                   </nav>
                 </div>
-                <div class="layout__header__top__center">
+                <div className="layout__header__top__center">
                   <nav
                     role="navigation"
                     aria-labelledby="block-sotsiaalmenuu-menu"
                     id="block-sotsiaalmenuu"
-                    class="block block-menu navigation menu--social-menu"
+                    className="block block-menu navigation menu--social-menu"
                   >
-                    <h2 class="visually-hidden" id="block-sotsiaalmenuu-menu">
+                    <h2 className="visually-hidden" id="block-sotsiaalmenuu-menu">
                       Sotsiaalmenüü{" "}
                     </h2>
 
-                    <ul class="menu menu-level-0">
-                      <li class="menu-item">
+                    <ul className="menu menu-level-0">
+                      <li className="menu-item">
                         <span
                           className="icofont-facebook"
                           style={{ cursor: "pointer" }}
@@ -215,28 +213,28 @@ class Main extends Component {
                         ></span>
                       </li>
 
-                      <li class="menu-item">
+                      <li className="menu-item">
                         <span
                           className="icofont-twitter"
                           style={{ cursor: "pointer" }}
                         ></span>
                       </li>
 
-                      <li class="menu-item">
+                      <li className="menu-item">
                         <span
                           className="icofont-linkedin"
                           style={{ cursor: "pointer" }}
                         ></span>
                       </li>
 
-                      <li class="menu-item">
+                      <li className="menu-item">
                         <span
                           className="icofont-youtube"
                           style={{ cursor: "pointer" }}
                         ></span>
                       </li>
 
-                      <li class="menu-item">
+                      <li className="menu-item">
                         <span
                           className="icofont-instagram"
                           style={{ cursor: "pointer" }}
@@ -245,12 +243,12 @@ class Main extends Component {
                     </ul>
                   </nav>
                 </div>
-                <div class="layout__header__top__right">
+                <div className="layout__header__top__right">
                   <nav
                     role="navigation"
                     aria-labelledby="block-paiseviited-menu"
                     id="block-paiseviited"
-                    class="block block-menu navigation menu--header-references"
+                    className="block block-menu navigation menu--header-references"
                   >
                     <div className="flex-list wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
                       <ul>
@@ -314,13 +312,13 @@ class Main extends Component {
                 </div>
               </div>
             </div>
-            <div class="layout__header__bottom">
-              <div class="u-container">
+            <div className="layout__header__bottom">
+              <div className="u-container">
                 <div
                   id="block-stat-branding"
-                  class="block block-system block-system-branding-block"
+                  className="block block-system block-system-branding-block"
                 >
-                  <a href="/" rel="home" class="site-logo">
+                  <a href="/" rel="home" className="site-logo">
                     <img
                       src={require("./resources/icon.png")}
                       alt="Home"
@@ -332,38 +330,41 @@ class Main extends Component {
                   role="navigation"
                   aria-labelledby="block-mainnavigationenglish-menu"
                   id="block-mainnavigationenglish"
-                  class="block block-menu navigation menu--main-en"
+                  className="block block-menu navigation menu--main-en"
                 >
-                  <ul data-region="header_bottom" class="menu">
-                    <li class="menu-item menu-item--expanded">
+                  <ul data-region="header_bottom" className="menu">
+                    <li className="menu-item menu-item--expanded">
                       <span
-                        tabindex="0"
+                        tabIndex="0"
                         onClick={this.changeMenu}
                         style={{
                           color: this.state.menu === tabs[1] ? "#4e73df" : "",
+                          cursor: "pointer"
                         }}
                       >
                         {tabs[1]}
                       </span>
                     </li>
-                    <li class="menu-item menu-item--expanded">
+                    <li className="menu-item menu-item--expanded">
                       <span
-                        tabindex="1"
+                        tabIndex="1"
                         onClick={this.changeMenu}
                         style={{
                           color: this.state.menu === tabs[2] ? "#4e73df" : "",
+                          cursor: "pointer"
                         }}
                       >
                         {tabs[2]}
                       </span>
                     </li>
-                    <li class="menu-item menu-item--expanded">
+                    <li className="menu-item menu-item--expanded">
                       <span
-                        tabindex="2"
+                        tabIndex="2"
                         className="menuSpan"
                         onClick={this.changeMenu}
                         style={{
                           color: this.state.menu === tabs[3] ? "#4e73df" : "",
+                          cursor: "pointer"
                         }}
                       >
                         {tabs[3]}
@@ -378,8 +379,6 @@ class Main extends Component {
             <div>
               <div
                 className="selector-style text-center mx-auto"
-                data-aos="fade-up"
-                data-aos-delay=""
               >
                 {this.renderMenu()}
               </div>
@@ -392,11 +391,11 @@ class Main extends Component {
         </div>
         <footer className="footer footer-dot" role="contentinfo">
           <div className="">
-            <div className="row">
+            <div className="row graph-component-cards" >
 
-              <div className="col-2 ml-5">
+              <div className="col-md-2 ml-5">
                 <div className="row site-section pt-0">
-                  <div className="col-md3 mb-md-0">
+                  <div className="col-md-3 mb-md-0">
                     <h3>{main[3]}</h3>
                     <ul className="list-unstyled">
                       <li>
@@ -420,20 +419,19 @@ class Main extends Component {
           
                 </div>
               </div>
-              <div className="col-4">
-                
+              <div className="col-md-4">
                 <SubscriptionComponent></SubscriptionComponent>
               </div>
-
-                  <div className="col-3" style={{marginLeft: "-100px"}}>
+                  <div className="col-md-3 m-3">
                     <h3>{main[2]}</h3>
                     <Feedback></Feedback>
                   </div>
-                  <div className="col-2">
+                  <div className="col-md-2">
                 
                 <img
                   src={require("./resources/ERDF_h_est.jpg")}
                   style={{ width: "200px", margin: "40px" }}
+                  alt=""
                 />
               </div>
 

@@ -17,6 +17,8 @@ import {
   averageWage,
   medianWage,
 } from "../../../../dictionary/text";
+import ReactTooltip from "react-tooltip";
+
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
@@ -39,6 +41,7 @@ class DynamicMapSelector extends Component {
       colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       noDataColor: "#eeeeee",
+      content: "",
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -53,9 +56,9 @@ class DynamicMapSelector extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.state.isco = props.isco;
+    this.setState({isco: props.isco});
 
-    this.getMeansForAllRegions(this.state.mapType);
+    //this.getMeansForAllRegions(this.state.mapType);
   }
 
   getMeansForAllRegions(data) {
@@ -92,28 +95,25 @@ class DynamicMapSelector extends Component {
     let list = [];
     let n = 5;
     if (this.state.mapType === "Gender Wage Gap") {
-      data.map((el) => {
+      data.forEach((el) => {
         list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
-        return;
       });
     } else if(this.state.mapType === "Median Wage") {
-      data.map((el) => {
+      data.forEach((el) => {
         let diff = parseInt(el.average);
 
         console.log(diff);
         list.push(diff);
-        return;
       });
     }
     
     else {
-      data.map((el) => {
+      data.forEach((el) => {
         let diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
         if (el.maleAverage === 0 || el.maleAverage === 0) {
           diff = el.maleAverage + el.femaleAverage;
         }
         list.push(diff);
-        return;
       });
     }
 
@@ -165,7 +165,7 @@ class DynamicMapSelector extends Component {
                   this.selectGroupColor(this.getGroupByItem(e[0]));
                 }}
               >
-                {(e.length > 1)? "€"+e[0]+"-"+ "€"+ e[e.length - 1]:"€"+e[0]}
+                {(e.length > 1)? `€${e[0]}-€${e[e.length - 1]}`:`€${e[0]}`}
               </p>
             </div>
             </div>
@@ -195,6 +195,8 @@ class DynamicMapSelector extends Component {
 
           return Math.abs(diff);
         }
+
+        return 0;
       });
     }
     else if (this.state.mapType === "Gender Wage Gap") {
@@ -204,6 +206,8 @@ class DynamicMapSelector extends Component {
 
           return Math.abs(diff);
         }
+
+        return 0;
       });
     } else {
       this.state.averages.map((el) => {
@@ -216,6 +220,8 @@ class DynamicMapSelector extends Component {
 
           return Math.abs(diff);
         }
+
+        return 0;
       });
     }
 
@@ -266,6 +272,8 @@ class DynamicMapSelector extends Component {
           console.log(data);
           return data;
         }
+
+        return 0;
       });
     }else{
     this.state.averages.map((el) => {
@@ -278,6 +286,7 @@ class DynamicMapSelector extends Component {
           this.generateValueString(el.femaleAverage);
         return data;
       }
+      return 0;
     });
   }
     return data;
@@ -297,6 +306,7 @@ class DynamicMapSelector extends Component {
         else data = "No data";
         return data;
       }
+      return 0;
     });
     return data;
   }
@@ -398,8 +408,8 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                href="/#"
                 className="c-btn c-btn--w-icon"
+                  href="/#"
                   role="tab"
                   aria-controls="brand"
                   aria-label="brand menu"
@@ -418,8 +428,8 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                href="/#"
                 className="c-btn c-btn--w-icon"
+                href="/#"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
@@ -438,8 +448,8 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                href="/#"
                 className="c-btn c-btn--w-icon"
+                href="/#"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
@@ -466,14 +476,13 @@ class DynamicMapSelector extends Component {
                       const l = geo.properties.MNIMI;
                       const data = this.getMeanForRegion(l);
                       if (this.state.mapType === "Gender Wage Gap" || this.state.mapType === "Median Wage")
-                        this.props.setTooltipContent(data.toString());
+                        this.setState({content: data.toString()});
                       else
-                        this.props.setTooltipContent(
-                          this.getMeanForRegionAverage(l).toString()
-                        );
+                          this.setState({content: this.getMeanForRegionAverage(l).toString()});
+                       
                     }}
                     onMouseLeave={() => {
-                      this.props.setTooltipContent("");
+                      this.setState({content: ""});
                     }}
                     onClick={() => {
                       const selectedRegion = geo.properties.MNIMI;
@@ -549,6 +558,7 @@ class DynamicMapSelector extends Component {
             </text>
           </Annotation>
         </ComposableMap>
+        <ReactTooltip>{this.state.content}</ReactTooltip>
         <div
           className="legends"
           style={{ width: "100px", marginTop: "-120px" }}

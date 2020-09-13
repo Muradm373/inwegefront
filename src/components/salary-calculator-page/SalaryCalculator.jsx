@@ -2,7 +2,6 @@
 import axios from "axios";
 import React, { Component } from "react";
 import "react-svg-map/lib/index.css";
-import ReactTooltip from "react-tooltip";
 import {
   API_URL, differenceLabel,
   genderLabel,
@@ -26,23 +25,24 @@ import PieChartComponent from "./vis-components/PieChart";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
-  state = {
-    entities: [],
-    iscos: [],
-    isco: "",
-    region: "",
-    description: noDescr,
-    occupation: "",
-    mean: [],
-    code: "",
-    wage: undefined,
-    gender: genderLabel[0],
-    content: "",
-    tab: 0,
-  };
 
   constructor() {
     super();
+    this.state = {
+      entities: [],
+      iscos: [],
+      isco: "",
+      region: "",
+      description: noDescr,
+      occupation: "",
+      mean: [],
+      code: "",
+      wage: undefined,
+      gender: genderLabel[0],
+      content: "",
+      tab: 0,
+    };
+  
 
     this.onSalaryChange = this.onSalaryChange.bind(this);
     this.onGenderChange = this.onGenderChange.bind(this);
@@ -106,6 +106,8 @@ class SalaryCalculator extends Component {
       lang +
       lng;
 
+      console.log(url);
+
     axios
       .get(url)
       .then((response) => response.data)
@@ -141,6 +143,7 @@ class SalaryCalculator extends Component {
         description: noDescr,
       });
     }
+    console.log(this.state.entities);
     return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
   }
 
@@ -273,7 +276,7 @@ class SalaryCalculator extends Component {
                       occupation={this.state.occupation}
                       region={this.state.region}
                     />
-                    <ReactTooltip>{this.state.content}</ReactTooltip>
+                    
                   </div>
                 }
 

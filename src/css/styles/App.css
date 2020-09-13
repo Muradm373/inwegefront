@@ -261,6 +261,12 @@ font {
   flex-direction: row;
 }
 
+
+.mobile-rows {
+  display: flex;
+  flex-direction: row;
+}
+
 .circle-legend {
   background: lightblue;
   border-radius: 50%;
@@ -297,6 +303,12 @@ font {
 @media screen and (max-width: 1000px) {
   .graph-component-cards {
     display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-rows {
+    display: flex;
+    margin: 5%;
     flex-direction: column;
   }
 
@@ -949,6 +961,51 @@ h6,
   color: inherit;
 }
 
+.grid-axis{
+  stroke: black;
+  stroke-width: 0.5;
+  opacity: 0.9;
+}
+
+.grid-line-vertical{
+  stroke: black;
+  stroke-width: 0.5;
+  opacity: 0.9;
+}
+
+.grid-line-horizontal{
+  stroke: black;
+  stroke-width: 0.5;
+  opacity: 0.9;
+} 
+
+.no-data-label{
+  font-size: 10pt; 
+  text-align: center;
+ color: black;
+}
+
+.graph{
+  margin-top: 15px;
+}
+
+.graph-legend{
+  
+    text-align: left;
+    margin-top: -13px;
+    margin-left: 13px;
+    font-size: 9pt;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 18px;
+    color: #595959;
+
+}
+.graph-legends{
+   margin-top: -300px;
+   margin-left: 90%;
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
@@ -957,8 +1014,7 @@ h6,
 .input-stats {
   box-sizing: border-box;
   font-family: Roboto;
-  margin: 5px 5px 5px 0px;
-  width: 20rem;
+  width: 100%;
   border: 1px solid #fff;
   padding: 10px;
   border-color: white;
@@ -980,9 +1036,8 @@ h6,
 
 .black-button {
   box-sizing: border-box;
-  font-family: Roboto;
-  margin: 5px 5px 5px 0px;
-  width: 10rem;
+  font-family: Roboto;  
+  width: 100%;
   border: 1px solid #fff;
   padding: 10px;
   border-color: white;
@@ -11532,6 +11587,10 @@ a:focus {
   position: relative;
   height: 10rem;
   width: 100%;
+}
+
+.area-series {
+  opacity: 0.8;
 }
 
 @media (min-width: 768px) {

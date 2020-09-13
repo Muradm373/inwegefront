@@ -45,7 +45,7 @@ class AgeBarChartComponent extends Component {
         y: e.prop,
         label: 5,
       });
-      return;
+      return null;
     });
 
     this.setState({ greenData: categories });

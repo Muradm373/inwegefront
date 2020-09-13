@@ -20,7 +20,9 @@ class BarComponent extends Component {
             : { display: "none" }
         }
       >
-        <p> {averageBetweenMenAndWomen + this.props.occupation} </p>
+        {this.props.occupation !== ""?
+        <p> {averageBetweenMenAndWomen + this.props.occupation} </p>:<></>
+      }
         <FlexibleWidthXYPlot height={130} animation="gentle">
           <XAxis
             tickTotal={10}
@@ -36,7 +38,7 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: "€" + this.props.menMean,
+                label: this.props.menMean,
                 yOffset: -15,
               },
             ]}
@@ -53,7 +55,7 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: "€" + this.props.womenMean,
+                label: this.props.womenMean,
                 yOffset: 20,
               },
             ]}

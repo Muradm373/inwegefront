@@ -58,4 +58,11 @@ const methodologyEng = [{
     "Rakenduses näidatakse vastava ametikoha mediaanpalka, s.t palka, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid palkasid.",
 }]
 
-export { methodologyEng };
+const pensionsDescription = [["It is assumed that:",
+ "1) the distribution of the gross wages includes all occupations and reflects the current wage distributions of men and women in Estonia",
+ "2) the date of birth of all employees is January 1, 2002; all the employees start working on January 1, 2020 and they all retire on November 1, 2071; no one has any interruptions in working and no one has children.",
+ "3) all employees have joined the second pillar from the moment they start working, but no money is transferred to the supplementary pension funds (e.g. III pillar)",
+ "4) the expected wage growth comes from prognoses of the Ministry of Finance, life expectancy in the future comes from the prognoses of Eurostat.",
+]]
+
+export { methodologyEng, pensionsDescription };

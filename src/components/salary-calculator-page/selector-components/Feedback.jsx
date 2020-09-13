@@ -32,7 +32,7 @@ export function Feedback(props) {
         <br></br>
         <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
           <input
-            id="input"
+            id="input-description"
             name="description"
             type="text"
             required
@@ -40,7 +40,7 @@ export function Feedback(props) {
             value={description}
           />
           <label
-            for="input"
+            for="input-description"
             alt={descriptionLabel}
             placeholder={descriptionLabel}
           ></label>
@@ -48,14 +48,14 @@ export function Feedback(props) {
 
         <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
           <input
-            id="input"
+            id="input-email"
             name="email"
             type="text"
             required
             onChange={(e) => setEmail(e.target.value)}
             value={email}
           />
-          <label for="input" alt="Email" placeholder="Email"></label>
+          <label for="input-email" alt="Email" placeholder="Email"></label>
         </p>
 
         <textarea

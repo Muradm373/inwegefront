@@ -38,7 +38,7 @@ const differenceEng = [[
   " keskmiselt",
 ]];
 const lngEng = ["en", "ru", "es"];
-const tabsEng = [["Home", "Wage Forecast", "Home", "Methodology"],  ["Главная", "Калькулятор зарплаты",  "Главная","Mетодология"], ["Kodu",  "Palgaprognoos","Kodu", "Metoodika"]];
+const tabsEng = [["Home", "Wage Forecast", "Pensions", "Methodology"],  ["Главная", "Калькулятор зарплаты",  "Пенсии","Mетодология"], ["Kodu",  "Palgaprognoos","Pensionid", "Metoodika"]];
 const averagesEng = [["Average for ", "Average for ", "Average for Estonia"], ["Среднее для ", "Среднее по  ", "Среднее по Эстонии"], [
   "Keskmine ",
   "Keskmine ",
