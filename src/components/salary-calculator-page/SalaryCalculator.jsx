@@ -60,6 +60,8 @@ class SalaryCalculator extends Component {
     const code = this.state.code;
     if (this.state.isco !== "") {
       this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
+    }else{
+      this.getSalaryEntitiesForRegionAndIsco(region, "averages", code);
     }
     this.setState({ region: region });
     this.props.onDataChange(region, isco, code, "");
@@ -96,22 +98,17 @@ class SalaryCalculator extends Component {
   };
 
   getSalaryEntitiesForRegionAndIsco(region, isco, code) {
-    const url =
-      `${API_URL}/jobs?region=` +
-      region +
-      "&isco=" +
-      isco +
-      "&code=" +
-      code +
-      lang +
-      lng;
-
-      console.log(url);
+    let url = "";
+    if(isco === "averages")
+    url = `${API_URL}/jobs?region=${region}&lang=${lng}`;
+    else
+      url = `${API_URL}/jobs?region=${region}&isco=${isco}&code=${code}&lang=${lng}`;
 
     axios
       .get(url)
       .then((response) => response.data)
-      .then((data) => this.parseSalaryEntities(data))
+      .then((data) => {
+        return this.parseSalaryEntities(data, isco)})
       .then((response) => response.data)
       .then((data) => {
         let mean = data.payload;
@@ -121,8 +118,14 @@ class SalaryCalculator extends Component {
       });
   }
 
-  parseSalaryEntities(data) {
-    let entities = data.payload.salaryEntities;
+  parseSalaryEntities(data, type) {
+    let entities;
+    if(type == "averages")
+      entities = data.payload.countyAverages;
+
+    else
+      entities = data.payload.salaryEntities;
+
     let jobEntity = data.payload.jobEntity;
     if (jobEntity !== undefined && entities !== undefined) {
       if (entities[0].region !== "All") {
@@ -143,7 +146,6 @@ class SalaryCalculator extends Component {
         description: noDescr,
       });
     }
-    console.log(this.state.entities);
     return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
   }
 
@@ -315,7 +317,7 @@ class SalaryCalculator extends Component {
                           )}
                           {this.state.occupation === "" && (
                             <p className="mb-3" style={{ color: "black" }}>
-                              {totalNumberOfEmployees}
+                              {totalNumberOfEmployees + " " + this.state.region}
                             </p>
                           )}
                         </div>

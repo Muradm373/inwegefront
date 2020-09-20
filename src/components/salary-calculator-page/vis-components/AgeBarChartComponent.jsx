@@ -53,10 +53,13 @@ class AgeBarChartComponent extends Component {
 
   getAgeData(isco) {
     const url = `${API_URL}/`;
+    if(isco !== "" && isco !== this.state.isco){
+    this.setState({isco: isco});
     axios.get(url + "age?isco=" + isco).then((response) => {
       this.setState({ ageData: response.data.payload });
       this.structurizeData();
     });
+  }
   }
 
   _forgetValue = () => {

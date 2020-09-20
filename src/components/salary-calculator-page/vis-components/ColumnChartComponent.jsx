@@ -102,7 +102,6 @@ class ColumnChartComponent extends Component {
 
   componentWillReceiveProps(props) {
     this.setOccupationName(props);
-    this.getAllMean();
 
     this.getMean(props.region, props.isco, props.code, props.type);
     this.getMeanForRegion(props.region);
@@ -150,6 +149,8 @@ class ColumnChartComponent extends Component {
       "&lang=" +
       lng;
 
+    if(isco !== ""){
+
     axios
       .get(url)
       .then((response) => response.data)
@@ -191,6 +192,7 @@ class ColumnChartComponent extends Component {
           }
         }
       });
+    }
   }
 
   getMeanForRegion(region) {

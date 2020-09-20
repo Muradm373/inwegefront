@@ -58,7 +58,7 @@ class DynamicMapSelector extends Component {
   componentWillReceiveProps(props) {
     this.setState({isco: props.isco});
 
-    //this.getMeansForAllRegions(this.state.mapType);
+    this.getMeansForAllRegions(this.state.mapType);
   }
 
   getMeansForAllRegions(data) {
@@ -85,6 +85,7 @@ class DynamicMapSelector extends Component {
       .then((response) => response.data)
       .then((data) => {
         this.setState({ averages: data.payload });
+        console.log(this.state.average)
         this.setGroups(data.payload);
       });
 

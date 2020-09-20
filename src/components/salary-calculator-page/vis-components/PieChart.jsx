@@ -29,7 +29,7 @@ class PieChartComponent extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.isco !== "") {
+    if (props.region !== "") {
       this.getMean(props.region, props.isco);
     } else if (
       props.code !== undefined &&
@@ -73,8 +73,13 @@ class PieChartComponent extends Component {
   }
 
   getMean(region, isco) {
-    let url =
-      `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
+    let url;
+
+
+    if(isco !== "")
+      url = `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
+    else
+      url = `${API_URL}/entities/count-worker?region=` + region;
 
     axios
       .get(url)
@@ -91,9 +96,6 @@ class PieChartComponent extends Component {
           men = payload[1].count;
           women = payload[0].count;
         }
-
-        console.log("test " + men + " " + women)
-
         let data = [
           {
             angle: men,
