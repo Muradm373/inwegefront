@@ -22,7 +22,7 @@ import Graph from "./vis-components/Graph";
 import OccupationSelector from "./selector-components/OccupationSelector";
 import PieChartComponent from "./vis-components/PieChart";
 import {connect} from "react-redux";
-import {getOccupations} from "../actions/actions";
+import {getOccupations, setGender, setWage, getSalaryEntities} from "../actions/actions";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
@@ -30,23 +30,15 @@ class SalaryCalculator extends Component {
   constructor() {
     super();
     this.state = {
-      entities: [],
-      iscos: [],
       isco: "",
       region: "",
-      description: noDescr,
       occupation: "",
-      mean: [],
       code: "",
-      wage: undefined,
-      gender: genderLabel[0],
       content: "",
       tab: 0,
     };
   
 
-    this.onSalaryChange = this.onSalaryChange.bind(this);
-    this.onGenderChange = this.onGenderChange.bind(this);
     this.setContent = this.setContent.bind(this);
     this.changeWage = this.changeWage.bind(this);
   }
@@ -60,9 +52,9 @@ class SalaryCalculator extends Component {
     const isco = this.state.isco;
     const code = this.state.code;
     if (this.state.isco !== "") {
-      this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
+      this.props.getSalaryEntities(region, isco, code);
     }else{
-      this.getSalaryEntitiesForRegionAndIsco(region, "averages", code);
+      this.props.getSalaryEntities(region, "averages", code);
     }
     this.setState({ region: region });
     this.props.onDataChange(region, isco, code, "");
@@ -94,96 +86,22 @@ class SalaryCalculator extends Component {
       let code = event.value.code;
 
       this.setState({ isco: isco, code: code });
-      this.getSalaryEntitiesForRegionAndIsco(region, isco, code);
+      this.props.getSalaryEntities(region, isco, code);
 
       this.props.onDataChange(this.state.region, isco, code, event.value.name);
       this.setState({ occupation: event.value.name });
     }
   };
 
-  getSalaryEntitiesForRegionAndIsco(region, isco, code) {
-    let url = "";
-    if(isco === "averages")
-    url = `${API_URL}/jobs?region=${region}&lang=${lng}`;
-    else
-      url = `${API_URL}/jobs?region=${region}&isco=${isco}&code=${code}&lang=${lng}`;
-
-    axios
-      .get(url)
-      .then((response) => response.data)
-      .then((data) => {
-        return this.parseSalaryEntities(data, isco)})
-      .then((response) => response.data)
-      .then((data) => {
-        let mean = data.payload;
-        this.setState({
-          mean: mean,
-        });
-      });
-  }
-
-  parseSalaryEntities(data, type) {
-    let entities;
-    if(type == "averages")
-      entities = data.payload.countyAverages;
-
-    else
-      entities = data.payload.salaryEntities;
-
-    let jobEntity = data.payload.jobEntity;
-    if (jobEntity !== undefined && entities !== undefined) {
-      if (entities[0].region !== "All") {
-        let description = jobEntity.description;
-        this.setState({
-          entities: entities,
-          description: description,
-        });
-      } else {
-        this.setState({
-          entities: entities,
-          description: noDescr,
-        });
-      }
-    } else {
-      this.setState({
-        entities: [],
-        description: noDescr,
-      });
-    }
-    return axios.get(`${API_URL}/jobs/${this.state.entities[0].id}/average`);
-  }
-
-  onSalaryChange(event) {
-    if (
-      event.target.value < 1000000 &&
-      event.target.value >= 0 &&
-      !isNaN(event.target.value)
-    )
-      this.setState({ wage: event.target.value });
-  }
-
-  onGenderChange(event) {
-    this.setState({ gender: event.value });
-  }
-  renderGraph() {
-    return (
-      <Graph
-        entities={this.state.entities}
-        menColor={menColor}
-        womenColor={womenColor}
-        differenceLabel={differenceLabel}
-        changeWage={this.changeWage}
-        genderLabel={genderLabel}
-        myWage={this.state.wage}
-        myGender={this.state.gender}
-        occupation={this.state.occupation}
-      ></Graph>
-    );
-  }
-
   changeWage(d) {
-    if (this.state.wage == d.left) this.setState({ wage: d.right });
-    else this.setState({ wage: d.left });
+    let event ={target: {value: 0}};
+
+    
+    if (this.props.wage == d.left) event.value = d.right;
+    else 
+    event.value = d.left;
+
+    this.props.setWage(event);
   }
 
  
@@ -241,14 +159,14 @@ class SalaryCalculator extends Component {
                       <input
                         name="salary"
                         className="form-control selector"
-                        onChange={this.onSalaryChange}
+                        onChange={this.props.setWage}
                         type="number"
                         placeholder={`${salary[0]} ${salary[1]}`}
-                        value={this.state.wage}
+                        value={this.props.wage}
                       />
                     </div>
                     <div style={{ marginLeft: "10px" }}>
-                      <GenderSelector onGenderChange={this.onGenderChange} />
+                      <GenderSelector onGenderChange={this.props.setGender} />
                     </div>
                   </div>
                   <br></br>
@@ -265,7 +183,7 @@ class SalaryCalculator extends Component {
                         color: "#595959",
                       }}
                     >
-                      {this.state.description}
+                      {this.props.description}
                     </p>
                   </div>
                 </div>
@@ -288,7 +206,17 @@ class SalaryCalculator extends Component {
                   </div>
                 }
 
-                {this.renderGraph()}
+          <Graph
+                  entities={this.props.entities}
+                  menColor={menColor}
+                  womenColor={womenColor}
+                  differenceLabel={differenceLabel}
+                  changeWage={this.changeWage}
+                  genderLabel={genderLabel}
+                  myWage={this.props.wage}
+                  myGender={this.props.gender}
+                  occupation={this.state.occupation}
+                ></Graph>
                 {
                   <div>
                     <div className="graph-component-cards">
@@ -350,14 +278,22 @@ class SalaryCalculator extends Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-      getOccupations: (region) => {(getOccupations(dispatch, region))}
+      getOccupations: (region) => {(getOccupations(dispatch, region))},
+      setGender: (gender) => {dispatch(setGender(gender.value))},
+      setWage: (wage) => {dispatch(setWage(wage.target.value))},
+      getSalaryEntities: (region, isco, code) => {(getSalaryEntities(region, isco, code, dispatch))}
     }
 }
 
 const mapStateToProps = (state) => {
   console.log(state)
   return {
-    occupations: state.occupations
+    occupations: state.occupations,
+    gender: state.gender,
+    wage: state.wage,
+    entities: state.entities,
+    description: state.description,
+    mean: state.mean
   }
 }
 
