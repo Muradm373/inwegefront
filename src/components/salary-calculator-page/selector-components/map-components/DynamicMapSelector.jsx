@@ -19,7 +19,6 @@ import {
 } from "../../../../dictionary/text";
 import ReactTooltip from "react-tooltip";
 
-
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
 };
@@ -56,7 +55,7 @@ class DynamicMapSelector extends Component {
   }
 
   componentWillReceiveProps(props) {
-    this.setState({isco: props.isco});
+    this.setState({ isco: props.isco });
 
     this.getMeansForAllRegions(this.state.mapType);
   }
@@ -65,8 +64,6 @@ class DynamicMapSelector extends Component {
     var url_dataType = "";
     var isco = this.state.isco;
     url_dataType = "regions/wage-gap";
-
-
 
     if (data === "Median Wage") {
       url_dataType = "regions/median";
@@ -85,7 +82,7 @@ class DynamicMapSelector extends Component {
       .then((response) => response.data)
       .then((data) => {
         this.setState({ averages: data.payload });
-        console.log(this.state.average)
+        console.log(this.state.average);
         this.setGroups(data.payload);
       });
 
@@ -99,16 +96,14 @@ class DynamicMapSelector extends Component {
       data.forEach((el) => {
         list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
       });
-    } else if(this.state.mapType === "Median Wage") {
+    } else if (this.state.mapType === "Median Wage") {
       data.forEach((el) => {
         let diff = parseInt(el.average);
 
         console.log(diff);
         list.push(diff);
       });
-    }
-    
-    else {
+    } else {
       data.forEach((el) => {
         let diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
         if (el.maleAverage === 0 || el.maleAverage === 0) {
@@ -148,30 +143,31 @@ class DynamicMapSelector extends Component {
 
   getLegends() {
     if (this.state.groups[0] !== undefined) {
-      const div = this.state.groups.map((e) => {    
-        if(e[0] !== undefined)   {
+      const div = this.state.groups.map((e) => {
+        if (e[0] !== undefined) {
           return (
             <div>
-            <div>
-              <div
-                className="circle-legend"
-                style={{
-                  background: this.state.colors[this.getGroupByItem(e[0])],
-                  cursor: "pointer",
-                }}
-              ></div>
-              <p
-                className="map-legend"
-                onClick={() => {
-                  this.selectGroupColor(this.getGroupByItem(e[0]));
-                }}
-              >
-                {(e.length > 1)? `€${e[0]}-€${e[e.length - 1]}`:`€${e[0]}`}
-              </p>
-            </div>
+              <div>
+                <div
+                  className="circle-legend"
+                  style={{
+                    background: this.state.colors[this.getGroupByItem(e[0])],
+                    cursor: "pointer",
+                  }}
+                ></div>
+                <p
+                  className="map-legend"
+                  onClick={() => {
+                    this.selectGroupColor(this.getGroupByItem(e[0]));
+                  }}
+                >
+                  {e.length > 1 ? `€${e[0]}-€${e[e.length - 1]}` : `€${e[0]}`}
+                </p>
+              </div>
             </div>
           );
-              }return(<></>);
+        }
+        return <></>;
       });
 
       return div;
@@ -189,7 +185,7 @@ class DynamicMapSelector extends Component {
   styleForSelectedRegion(data) {
     let diff = 0;
 
-    if (this.state.mapType === "Median Wage"){
+    if (this.state.mapType === "Median Wage") {
       this.state.averages.map((el) => {
         if (el.region === data) {
           diff = el.average;
@@ -199,8 +195,7 @@ class DynamicMapSelector extends Component {
 
         return 0;
       });
-    }
-    else if (this.state.mapType === "Gender Wage Gap") {
+    } else if (this.state.mapType === "Gender Wage Gap") {
       this.state.averages.map((el) => {
         if (el.region === data) {
           diff = el.maleAverage - el.femaleAverage;
@@ -236,7 +231,14 @@ class DynamicMapSelector extends Component {
       default: {
         fill: color,
         outline: "none",
-        stroke: this.state.mapType === "Median Wage" ? (this.state.selected === data ? "#000000" : "none") : (this.state.selected === data ? "#F58FA9" : "none"),
+        stroke:
+          this.state.mapType === "Median Wage"
+            ? this.state.selected === data
+              ? "#000000"
+              : "none"
+            : this.state.selected === data
+            ? "#F58FA9"
+            : "none",
 
         strokeWidth: 3,
       },
@@ -265,31 +267,30 @@ class DynamicMapSelector extends Component {
 
   getMeanForRegion(region) {
     let data = {};
-    if(this.state.mapType === "Median Wage"){
-     
+    if (this.state.mapType === "Median Wage") {
       this.state.averages.map((el) => {
         if (el.region === region) {
-          data = ("€" + el.average)
+          data = "€" + el.average;
           console.log(data);
           return data;
         }
 
         return 0;
       });
-    }else{
-    this.state.averages.map((el) => {
-      if (el.region === region) {
-        data =
-          genderLabel[0] +
-          this.generateValueString(el.maleAverage) +
-          "\n" +
-          genderLabel[1] +
-          this.generateValueString(el.femaleAverage);
-        return data;
-      }
-      return 0;
-    });
-  }
+    } else {
+      this.state.averages.map((el) => {
+        if (el.region === region) {
+          data =
+            genderLabel[0] +
+            this.generateValueString(el.maleAverage) +
+            "\n" +
+            genderLabel[1] +
+            this.generateValueString(el.femaleAverage);
+          return data;
+        }
+        return 0;
+      });
+    }
     return data;
   }
 
@@ -409,7 +410,7 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                className="c-btn c-btn--w-icon"
+                  className="c-btn c-btn--w-icon"
                   href="/#"
                   role="tab"
                   aria-controls="brand"
@@ -429,8 +430,8 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                className="c-btn c-btn--w-icon"
-                href="/#"
+                  className="c-btn c-btn--w-icon"
+                  href="/#"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
@@ -449,8 +450,8 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                className="c-btn c-btn--w-icon"
-                href="/#"
+                  className="c-btn c-btn--w-icon"
+                  href="/#"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
@@ -476,14 +477,18 @@ class DynamicMapSelector extends Component {
                     onMouseEnter={() => {
                       const l = geo.properties.MNIMI;
                       const data = this.getMeanForRegion(l);
-                      if (this.state.mapType === "Gender Wage Gap" || this.state.mapType === "Median Wage")
-                        this.setState({content: data.toString()});
+                      if (
+                        this.state.mapType === "Gender Wage Gap" ||
+                        this.state.mapType === "Median Wage"
+                      )
+                        this.setState({ content: data.toString() });
                       else
-                          this.setState({content: this.getMeanForRegionAverage(l).toString()});
-                       
+                        this.setState({
+                          content: this.getMeanForRegionAverage(l).toString(),
+                        });
                     }}
                     onMouseLeave={() => {
-                      this.setState({content: ""});
+                      this.setState({ content: "" });
                     }}
                     onClick={() => {
                       const selectedRegion = geo.properties.MNIMI;
@@ -566,16 +571,12 @@ class DynamicMapSelector extends Component {
         >
           {this.getLegends()}
           <div
-              className="circle-legend"
-              style={{
-                background: this.state.noDataColor,
-              }}
-            ></div>
-          <p
-              className="map-legend"
-            >
-              {noData}
-            </p>
+            className="circle-legend"
+            style={{
+              background: this.state.noDataColor,
+            }}
+          ></div>
+          <p className="map-legend">{noData}</p>
         </div>
       </>
     );

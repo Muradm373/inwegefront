@@ -14,15 +14,14 @@ class FeedbacksList extends Component {
 
   render() {
     return (
-      <div className="feedback-list-container">
-        <div className="map_selector p-3 feedback-list">
-          <div className="card border-left-primary shadow h-80 py-2">
-            <div className="card-body">
-              <div className="row no-gutters align-items-center">
-                <div className="col mr-2">
+      <div>
+        <div className="card-shadow-wide">
                   <nav className="feedback-list-nav">
-                    <ul className="feedbacks-list">
-                      {this.mapFeedbacksIntoList(this.props.feedbacks)}
+                    <ul className="">
+                      {this.props.feedback !== undefined ?
+                      this.mapFeedbacksIntoList(this.props.feedbacks) :
+                      <p>No feedbacks yet</p>
+  }
                     </ul>
                   </nav>
                   <div className="text-center">
@@ -33,10 +32,6 @@ class FeedbacksList extends Component {
                       Refresh
                     </button>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     );

@@ -5,14 +5,11 @@ import {
   menColor,
   womenColor,
   genderLabel,
-  differenceLabel
+  differenceLabel,
 } from "../../dictionary/text";
 import axios from "axios";
 
 class PensionsComponent extends Component {
-  constructor() {
-    super();
-  }
 
   render() {
     return (

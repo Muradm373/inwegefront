@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import OccupationSelector from "../salary-calculator-page/selector-components/OccupationSelector";
 import WageBars from "./WageBars";
 import ReactTooltip from "react-tooltip";
+import {API_URL, lng} from "../../dictionary/text";
+import axios from "axios";
 
 class WageForecast extends Component {
   constructor(props) {
@@ -13,6 +15,31 @@ class WageForecast extends Component {
 
     this.onIscoChange = this.onIscoChange.bind(this);
     this.setContent = this.setContent.bind(this);
+    this.getOccupations("Harju maakond");
+  }
+
+  getOccupations(region) {
+    const url = `${API_URL}/`;
+    axios
+      .get(url + "jobs/names?region=" + region + "&lang=" + lng)
+      .then((response) =>response.data)
+      .then((data) => {
+        let names = [];
+        names.push({ label: "All occupations", value: "reset" });
+
+        data.payload.forEach((element) => {
+          if (element.name !== " ") {
+            names.push({
+              label: element.name,
+              value: element,
+            });
+          }
+        });
+
+
+        return names;
+        //this.setState({ occupations: names });
+      });
   }
 
   onIscoChange = (event) => {
@@ -43,6 +70,7 @@ class WageForecast extends Component {
                   </div>  
           <OccupationSelector
             onChange={this.onIscoChange}
+            occupations={this.state.occupations}
             region={this.state.region}
           />
         </div>

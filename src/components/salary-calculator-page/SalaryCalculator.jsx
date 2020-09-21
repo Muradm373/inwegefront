@@ -21,7 +21,8 @@ import GenderSelector from "./selector-components/GenderSelector";
 import Graph from "./vis-components/Graph";
 import OccupationSelector from "./selector-components/OccupationSelector";
 import PieChartComponent from "./vis-components/PieChart";
-
+import {connect} from "react-redux";
+import {getOccupations} from "../actions/actions";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
@@ -65,7 +66,10 @@ class SalaryCalculator extends Component {
     }
     this.setState({ region: region });
     this.props.onDataChange(region, isco, code, "");
+    this.props.getOccupations(region);
   };
+
+
 
   onIscoChange = (event) => {
     if (event.value === "reset") {
@@ -182,11 +186,12 @@ class SalaryCalculator extends Component {
     else this.setState({ wage: d.left });
   }
 
+ 
+
   render() {
+    console.log(this.props);
     return (
-      <div>
-        <div className="graph-component">
-          <div className="graph-component-cards">
+        <div className="graph-component graph-component-cards">
             <div className="card-shadow card-occupation-selector">
               <p
                 style={{
@@ -216,6 +221,7 @@ class SalaryCalculator extends Component {
                   <OccupationSelector
                     onChange={this.onIscoChange}
                     region={this.state.region}
+                    occupations={this.props.occupations}
                   />
                   <br></br>
                   <p
@@ -337,11 +343,22 @@ class SalaryCalculator extends Component {
                 ) : null}
               </div>
             </div>
-          </div>
         </div>
-      </div>
     );
   }
 }
 
-export default SalaryCalculator;
+const mapDispatchToProps = (dispatch) => {
+    return {
+      getOccupations: (region) => {(getOccupations(dispatch, region))}
+    }
+}
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    occupations: state.occupations
+  }
+}
+
+export default connect( mapStateToProps,mapDispatchToProps)(SalaryCalculator);

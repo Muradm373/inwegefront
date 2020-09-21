@@ -13,7 +13,7 @@ class App extends Component {
           <Route exact path="/" render={() => <Main lang="en" />} />
           <Route exact path="/ru/" render={() => <Main lang="ru" />} />
           <Route exact path="/ee/" render={() => <Main lang="es" />} />
-          <Route path="/admin" component={AdminPanel} />
+          <Route path="/admin"  render={() => <Main type="admin" />}/>
         </Switch>
       </Router>
     );

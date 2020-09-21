@@ -39,10 +39,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div style={{ width: "65%", marginleft: "20%", paddingtop: "20%" }}>
+      <div>
         <div
           className="map_selector p-3"
-          style={{ width: "65%", marginleft: "10%", margintop: "-10%" }}
         >
           <div className="card border-left-primary shadow h-100 py-2">
             <div className="card-body">
@@ -54,7 +53,7 @@ class Login extends Component {
                   {this.state.incorrect ? (
                     <p className="incorrect-password">
                       {" "}
-                      Credentials you entered are not correct. Please try again.
+                      Credentials you've entered are not correct. Please try again.
                     </p>
                   ) : (
                     <br></br>

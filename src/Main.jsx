@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "react-tabs/style/react-tabs.css";
+import AdminPanel from "./components/admin-page/AdminPanel";
 import MethodologyComponent from "./components/methodology-page/MethodologyComponent";
 import PensionsComponent from "./components/pensions-page/PensionsComponent";
 import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculator";
@@ -78,7 +79,7 @@ class Main extends Component {
         <PensionsComponent></PensionsComponent>
       </div>
       );
-    }
+    } 
     else {
       return (
         <div>
@@ -380,7 +381,8 @@ class Main extends Component {
               <div
                 className="selector-style text-center mx-auto"
               >
-                {this.renderMenu()}
+                {this.props.type === "admin"?<AdminPanel></AdminPanel>:
+                this.renderMenu()}
               </div>
             </div>
             
@@ -399,19 +401,19 @@ class Main extends Component {
                     <h3>{main[3]}</h3>
                     <ul className="list-unstyled">
                       <li>
-                        <a href="index.html">{tabs[0]}</a>
+                        <a href="/#" onClick={this.changeMenu}>{tabs[0]}</a>
                       </li>
                       <li>
-                        <a href="index.html">{tabs[1]}</a>
+                        <a href="/#" onClick={this.changeMenu}>{tabs[1]}</a>
                       </li>
                       <li>
-                        <a href="index.html">{tabs[2]}</a>
+                        <a href="/#" onClick={this.changeMenu}>{tabs[2]}</a>
                       </li>
                       <li>
-                        <a href="index.html">{tabs[3]}</a>
+                        <a href="/#" onClick={this.changeMenu}>{tabs[3]}</a>
                       </li>
                       <li>
-                        <a href="index.html">{tabs[4]}</a>
+                        <a href="/#" onClick={this.changeMenu}>{tabs[4]}</a>
                       </li>
                     </ul>
                   </div>
