@@ -1,5 +1,5 @@
 import axios from "axios";
-import { lng, API_URL, genderLabel, noDescr } from "../../dictionary/text";
+import { lng, API_URL, genderLabel, noDescr } from "../dictionary/text";
 
 const initState = {
   occupations: [],

@@ -3,9 +3,9 @@ import axios from "axios";
 import React, { Component } from "react";
 import "react-svg-map/lib/index.css";
 import {
-  API_URL, differenceLabel,
+  differenceLabel,
   genderLabel,
-  lng,
+  ageLabel,
   menColor, noDescr,
   salary,
   searchLabel,
@@ -22,7 +22,7 @@ import Graph from "./vis-components/Graph";
 import OccupationSelector from "./selector-components/OccupationSelector";
 import PieChartComponent from "./vis-components/PieChart";
 import {connect} from "react-redux";
-import {getOccupations, setGender, setWage, getSalaryEntities} from "../actions/actions";
+import {getOccupations, setGender, setWage, getSalaryEntities} from "../../actions/actions";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
@@ -266,7 +266,7 @@ class SalaryCalculator extends Component {
                 </div>
                 {this.state.isco ? (
                   <p className="mb-3" style={{ color: "black" }}>
-                    {"Age distribution of employees."}
+                    {ageLabel}
                   </p>
                 ) : null}
               </div>

@@ -10,7 +10,6 @@ import {
 import axios from "axios";
 
 class PensionsComponent extends Component {
-
   render() {
     return (
       <div className="w-75 text-center mx-auto card-shadow-forecast">

@@ -104,7 +104,7 @@ const retirementEng = [["high replacements needs due to retirement","medium repl
 const pensionLabelEng = [["Estimated wage in 2030 for occupation is between","and","The risk of computerization for this occupation is", "and the replacements needs due to retirement are"],["Расчетная заработная плата в 2030 году для профессии между", "и", "Риск компьютеризации для этой профессии", "и потребности в заменах из-за выходa на пенсию"],["Eeldatav töötasu suurus 2030. aastal on okupatsiooni ajal vahemikus", "ja", "Selle okupatsiooni arvutistamise oht on", "ja asendajad vajavad pensionile jäämine on "]]
 const lessMoreLabelEng = [["Higher than","Less than"],["Выше чем", "Mеньше чем"],["Kõrgem kui", "vähem kui"]];
 const levelsEng = [["low","medium", "high"],["низкий", "средний", "высокий"],["madal", "keskmine", "kõrge"]];
-
+const ageLabelEng = ["Age distribution of employees.","Возрастное распределение работников" , "Töötajate vanuseline jaotus."]
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -120,6 +120,7 @@ export default function changeLanguage(language) {
   }
 
   
+  ageLabel = ageLabelEng[i];
   noDescr = descrEng[i];
   averageLabel = averageEng[i];
   differenceLabel = differenceEng[i];
@@ -200,6 +201,7 @@ let retirement = retirementEng[0];
 let pensionLabel = pensionLabelEng[0];
 let lessMoreLabel = lessMoreLabelEng[0];
 let levels = levelsEng[0];
+let ageLabel = ageLabelEng[0];
 
 export {
   noDescr,
@@ -239,5 +241,6 @@ export {
   retirement,
   pensionLabel,
   lessMoreLabel,
-  levels
+  levels,
+  ageLabel
 };

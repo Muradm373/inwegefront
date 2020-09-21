@@ -13,7 +13,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      region: "Tallinn",
+      region: "Harjumaa maakond",
       occupation: "",
       isco: "",
       code: 9629,
