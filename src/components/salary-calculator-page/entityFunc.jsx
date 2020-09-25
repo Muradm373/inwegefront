@@ -3,10 +3,22 @@ export function fetchData(prop) {
   let womenMean = [];
   let men = [];
   let women = [];
-  if (prop !== undefined) {
+  if (prop !== undefined ) {
     let entities = prop;
-    let menData = entities[1];
-    let womenData = entities[0];
+    let menData, womenData;
+
+    if(prop[0] !== undefined){
+    if(entities[0].female==="1"){
+      menData = entities[1];
+      womenData = entities[0];
+    }else{
+      menData = entities[0];
+      womenData = entities[1];
+    }
+  }
+
+
+    console.log(menData)
 
     if (menData !== undefined && womenData !== undefined) {
       menMean = menData.mean;

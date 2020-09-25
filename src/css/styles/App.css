@@ -87,33 +87,33 @@
   height: 33.3%;
 }
 
-.pns-active-high{
-  background-color: #FF0000;
+.pns-active-2{
+  background-color: #F58FA9;
   height: 33.3%;
 }
 
-.pns-active-medium{
-  background-color: yellow;
+.pns-active-1{
+  background-color: #FFBC45;
   height: 33.3%;
 }
 
-.pns-active-low{
-  background-color: #00FF00;
+.pns-active-0{
+  background-color: #3AD8CC;
   height: 33.3%;
 }
 
-.pns-active-comp-high{
-  background-color: #00ff00;
+.pns-active-comp-2{
+  background-color: #3AD8CC;
   height: 33.3%;
 }
 
-.pns-active-comp-medium{
-  background-color: yellow;
+.pns-active-comp-1{
+  background-color: #FFBC45;
   height: 33.3%;
 }
 
-.pns-active-comp-low{
-  background-color: #FF0000;
+.pns-active-comp-0{
+  background-color: #F58FA9;
   height: 33.3%;
 }
 

@@ -78,12 +78,12 @@ class WageBars extends Component {
   }
 
   itemColor(self, grade, type) {
-    console.log(grade);
-    if (self === grade && grade !== undefined){
+    console.log(grade+ " " + self);
+    if (levels[self] === grade && grade !== undefined){
       if(type === "computerization")
-       return "pns-active-"+grade;
+       return "pns-active-"+self;
       else{
-        return "pns-active-comp-"+grade;
+        return "pns-active-comp-"+self;
       }
     }
     else return "pns";
@@ -152,7 +152,6 @@ class WageBars extends Component {
             {/* <!-- Wages distribution --> */}
 
             <div
-              onMouseEnter={() => this.props.setContent(this.state.wageDetails)}
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
             >
@@ -164,7 +163,6 @@ class WageBars extends Component {
             <div
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
-              onMouseEnter={() => this.props.setContent(this.state.wageDetails)}
             >
               <div className="p-2 h-3 carditem">2030</div>
               {this.getColor(this.state.payload.meanWage30)}
@@ -173,14 +171,11 @@ class WageBars extends Component {
             <div
               className="card m-3 col-sm rounded-0 p-0"
               style={{ width: "15rem" }}
-              onMouseEnter={() =>
-                this.props.setContent(this.state.compiterizationDetails)
-              }
             >
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[2], this.state.computerizationRisk, "computerization")
+                  this.itemColor(2, this.state.computerizationRisk, "computerization")
                 }
               >
                 <p>{computarization[0]}</p>
@@ -188,7 +183,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[1], this.state.computerizationRisk, "computerization")
+                  this.itemColor(1, this.state.computerizationRisk, "computerization")
                 }
               >
                 <p>{computarization[1]}</p>
@@ -196,7 +191,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[0], this.state.computerizationRisk, "computerization")
+                  this.itemColor(0, this.state.computerizationRisk, "computerization")
                 }
               >
                 <p>{computarization[2]}</p>
@@ -208,14 +203,11 @@ class WageBars extends Component {
               style={{ width: "15rem" }}
               data-tip=""
               multiline="true"
-              onMouseEnter={() =>
-                this.props.setContent(this.state.replacementDetails)
-              }
             >
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[0], this.state.replacementsNeeds, "replacement")
+                  this.itemColor(0, this.state.replacementsNeeds, "replacement")
                 }
               >
                 <p>{retirement[2]}</p>
@@ -223,7 +215,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[1], this.state.replacementsNeeds, "replacement")
+                  this.itemColor(1, this.state.replacementsNeeds, "replacement")
                 }
               >
                 <p>{retirement[1]}</p>
@@ -231,7 +223,7 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(levels[2], this.state.replacementsNeeds, "replacement")
+                  this.itemColor(2, this.state.replacementsNeeds, "replacement")
                 }
               >
                 <p>{retirement[0]}</p>

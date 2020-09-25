@@ -32,7 +32,7 @@ class Login extends Component {
       .then((data) => {
         this.props.handleCloseModal(data.data.payload.token);
       })
-      .catch((data) => {
+      .catch(() => {
         this.setState({ incorrect: true });
       });
   }

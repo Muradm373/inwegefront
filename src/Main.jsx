@@ -124,7 +124,7 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a tabIndex="0" href="/#">Webpage</a>
+                        <a tabIndex="0" >Webpage</a>
                         <ul className="menu">
                           <li className="menu-item">
                             <a
@@ -319,7 +319,7 @@ class Main extends Component {
                   id="block-stat-branding"
                   className="block block-system block-system-branding-block"
                 >
-                  <a href="/" rel="home" className="site-logo">
+                  <a onClick={this.changeMenu} rel="home" className="site-logo">
                     <img
                       src={require("./resources/icon.png")}
                       alt="Home"
@@ -401,19 +401,19 @@ class Main extends Component {
                     <h3>{main[3]}</h3>
                     <ul className="list-unstyled">
                       <li>
-                        <a href="/#" onClick={this.changeMenu}>{tabs[0]}</a>
+                        <a  onClick={this.changeMenu}>{tabs[0]}</a>
                       </li>
                       <li>
-                        <a href="/#" onClick={this.changeMenu}>{tabs[1]}</a>
+                        <a  onClick={this.changeMenu}>{tabs[1]}</a>
                       </li>
                       <li>
-                        <a href="/#" onClick={this.changeMenu}>{tabs[2]}</a>
+                        <a  onClick={this.changeMenu}>{tabs[2]}</a>
                       </li>
                       <li>
-                        <a href="/#" onClick={this.changeMenu}>{tabs[3]}</a>
+                        <a  onClick={this.changeMenu}>{tabs[3]}</a>
                       </li>
                       <li>
-                        <a href="/#" onClick={this.changeMenu}>{tabs[4]}</a>
+                        <a  onClick={this.changeMenu}>{tabs[4]}</a>
                       </li>
                     </ul>
                   </div>
@@ -450,7 +450,7 @@ class Main extends Component {
           </div>
         </footer>
 
-        <a href="/#" className="back-to-top">
+        <a  className="back-to-top">
           <i className="icofont-simple-up"></i>
         </a>
       </div>

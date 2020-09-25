@@ -16,7 +16,6 @@ import {
 } from "../../dictionary/text";
 
 import axios from "axios";
-// import { fetchData } from "../salary-calculator-page/entityFunc";
 import BarComponent from "../salary-calculator-page/vis-components/BarComponent";
 
 class PensionGraph extends Component {
@@ -47,7 +46,6 @@ class PensionGraph extends Component {
   parseData(data) {
     let menClear = this.clearData(data[0]);
     let womenClear = this.clearData(data[1]);
-
     let menArray = [...new Map(Object.entries(menClear)).values()];
     let womenArray = [...new Map(Object.entries(womenClear)).values()];
 
@@ -74,8 +72,7 @@ class PensionGraph extends Component {
       }
     }
 
-    this.setState({ womenMean: parseFloat(women[5]).toFixed(2) });
-    this.setState({ menMean: parseFloat(men[5]).toFixed(2) });
+    this.setState({ menMean: parseFloat(men[5]).toFixed(2),  womenMean: parseFloat(women[5]).toFixed(2) });
 
     let dataGraph = this.state.data;
 
@@ -118,7 +115,7 @@ class PensionGraph extends Component {
 
   render() {
     return (
-      <div className="centered" id="entity" className="graph">
+      <div className="centered graph" id="bar-component">
         <BarComponent
           menMean={this.state.menMean}
           womenMean={this.state.womenMean}

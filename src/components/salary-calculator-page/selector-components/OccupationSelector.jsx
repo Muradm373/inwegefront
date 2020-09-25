@@ -1,8 +1,6 @@
-import axios from "axios";
 import React, { Component } from "react";
 import Select from "react-select";
 import {
-  API_URL, lng,
   occupationSelectorPlaceholder, selectOccupation
 } from "../../../dictionary/text";
 

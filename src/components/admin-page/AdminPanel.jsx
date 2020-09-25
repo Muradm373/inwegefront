@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { about, API_URL, APP_NAME, main, tabs } from "../../dictionary/text";
-import Feedback from "../salary-calculator-page/selector-components/Feedback";
+import {  API_URL } from "../../dictionary/text";
 import FeedbacksList from "./feedback/fetch/FeedbacksList";
 import Login from "./Login";
 

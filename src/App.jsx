@@ -2,7 +2,6 @@ import "./css/styles/App.css";
 import React, { Component } from "react";
 import Main from "./Main";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import AdminPanel from "./components/admin-page/AdminPanel";
 
 
 class App extends Component {

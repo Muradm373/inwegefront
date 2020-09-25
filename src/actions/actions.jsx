@@ -56,7 +56,7 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
 
 const parseSalaryEntities = (data, type, dispatch) => {
   let entities;
-  if (type == "averages") entities = data.payload.countyAverages;
+  if (type === "averages") entities = data.payload.countyAverages;
   else entities = data.payload.salaryEntities;
 
   let jobEntity = data.payload.jobEntity;

@@ -94,13 +94,12 @@ class DynamicMapSelector extends Component {
     let n = 5;
     if (this.state.mapType === "Gender Wage Gap") {
       data.forEach((el) => {
-        list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
+        if(el.maleAverage !== 0 && el.femaleAverage !== 0)
+          list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
       });
     } else if (this.state.mapType === "Median Wage") {
       data.forEach((el) => {
         let diff = parseInt(el.average);
-
-        console.log(diff);
         list.push(diff);
       });
     } else {
@@ -108,8 +107,8 @@ class DynamicMapSelector extends Component {
         let diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
         if (el.maleAverage === 0 || el.maleAverage === 0) {
           diff = el.maleAverage + el.femaleAverage;
-        }
-        list.push(diff);
+        }else
+          list.push(diff);
       });
     }
 
@@ -411,7 +410,6 @@ class DynamicMapSelector extends Component {
               >
                 <a
                   className="c-btn c-btn--w-icon"
-                  href="/#"
                   role="tab"
                   aria-controls="brand"
                   aria-label="brand menu"
@@ -431,7 +429,6 @@ class DynamicMapSelector extends Component {
               >
                 <a
                   className="c-btn c-btn--w-icon"
-                  href="/#"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
@@ -451,7 +448,6 @@ class DynamicMapSelector extends Component {
               >
                 <a
                   className="c-btn c-btn--w-icon"
-                  href="/#"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"

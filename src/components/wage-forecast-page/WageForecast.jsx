@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import OccupationSelector from "../salary-calculator-page/selector-components/OccupationSelector";
 import WageBars from "./WageBars";
-import ReactTooltip from "react-tooltip";
 import { getOccupations } from "../../actions/actions";
 import { connect } from "react-redux";
 
