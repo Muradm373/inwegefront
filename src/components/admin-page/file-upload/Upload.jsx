@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Dropzone from "./dropzone/Dropzone";
-import Progress from "./progress/Progress";
-import { API_URL } from "../../../text";
+import Dropzone from "./Dropzone";
+import Progress from "./Progress";
+import { API_URL } from "../../../dictionary/text";
 
 class Upload extends Component {
   constructor(props) {
@@ -124,27 +124,37 @@ class Upload extends Component {
 
   render() {
     return (
-      <div className="Upload">
-        <span className="Title">Upload {this.props.type} file</span>
-        <div className="Content">
-          <div>
-            <Dropzone
-              onFilesAdded={this.onFilesAdded}
-              disabled={this.state.uploading || this.state.successfullUploaded}
-            />
+      <div 
+      style={ {
+        display: "block",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}>
+        <span className="Title m-2">Upload {this.props.type} file</span>
+        <div className="Upload m-2">
+          <div className="Content">
+            <div>
+              <Dropzone
+                onFilesAdded={this.onFilesAdded}
+                disabled={
+                  this.state.uploading || this.state.successfullUploaded
+                }
+              />
+              <br></br>
+            </div>
+            <div className="Files">
+              {this.state.files.map((file) => {
+                return (
+                  <div key={file.name} className="row">
+                    <span className="Filename">{file.name}</span>
+                    {this.renderProgress(file)}
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="Files">
-            {this.state.files.map((file) => {
-              return (
-                <div key={file.name} className="Row">
-                  <span className="Filename">{file.name}</span>
-                  {this.renderProgress(file)}
-                </div>
-              );
-            })}
-          </div>
+          <div className="Actions">{this.renderActions()}</div>
         </div>
-        <div className="Actions">{this.renderActions()}</div>
       </div>
     );
   }

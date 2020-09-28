@@ -1,13 +1,13 @@
 import axios from "axios";
 import React, { Component } from "react";
-import {  API_URL } from "../../dictionary/text";
+import { API_URL } from "../../dictionary/text";
 import FeedbacksList from "./feedback/fetch/FeedbacksList";
+import FileUploadComponent from "./file-upload/FileUploadComponent";
 import Login from "./Login";
 
 class AdminPanel extends Component {
   state = {
     lang: "en",
-    heroSectionStyle: "hero-section hero-section-color-1",
     loggedIn: false,
     userToken: "",
     feedbacks: [],
@@ -46,23 +46,29 @@ class AdminPanel extends Component {
   render() {
     return (
       <div>
-        <main id="main" className="center">
-          <div className={this.state.heroSectionStyle}>
-            {this.state.loggedIn
-              ? (
-              <FeedbacksList
-                feedbacks={this.state.feedbacks}
-                refresh={this.fetchFeedbacks}
-              ></FeedbacksList>
+        <main>
+          <div>
+            {this.state.loggedIn ? (
+              <div className="row">
+                <div className="col-md-4 m-5">
+                  <FeedbacksList
+                    feedbacks={this.state.feedbacks}
+                    refresh={this.fetchFeedbacks}
+                  />
+                </div>
+                <div className="col-md-4">
+                  <FileUploadComponent userToken={this.state.userToken} />
+                </div>
+              </div>
             ) : (
-              <Login handleCloseModal={this.setUserToken}></Login>
+              <div className="w-50 m-auto">
+              <Login handleCloseModal={this.setUserToken}/>
+              </div>
             )}
           </div>
         </main>
-
-        <a href="/#" className="back-to-top">
-          <i className="icofont-simple-up"></i>
-        </a>
+        <br></br>
+        <br></br>
       </div>
     );
   }

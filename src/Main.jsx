@@ -59,7 +59,7 @@ class Main extends Component {
   renderMenu() {
     if (this.state.menu === tabs[1]) {
       return (
-        <div>
+        <div id="wage-forecast-component">
           <WageForecast
             onDataChange={this.getData}
             mapElementColor={this.state.mapElementColor}
@@ -69,22 +69,22 @@ class Main extends Component {
     }
     if (this.state.menu === tabs[3]) {
       return (
-        <div>
-          {" "}
+        <div id="methodology-component">
           <MethodologyComponent></MethodologyComponent>
         </div>
       );
-    } if (this.state.menu === tabs[2]){
-      return (<div>
-        <PensionsComponent></PensionsComponent>
-      </div>
+    }
+    if (this.state.menu === tabs[2]) {
+      return (
+        <div id="pension-component">
+          <PensionsComponent></PensionsComponent>
+        </div>
       );
-    } 
-    else {
+    } else {
       return (
         <div>
           <SalaryCalculator
-            id="graph"
+            id="salary-calculator-component"
             onDataChange={this.getData}
             mapElementColor={this.state.mapElementColor}
           ></SalaryCalculator>
@@ -124,27 +124,20 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a tabIndex="0" >Webpage</a>
+                        <a tabIndex="0">Webpage</a>
                         <ul className="menu">
                           <li className="menu-item">
-                            <a
-                              href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp"
-                            >
+                            <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
                               Statistical database PxWeb
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a
-                              href="http://andmebaas.stat.ee/?lang=en&amp;SubSessionId=d6bed41d-cf9f-44f2-975b-4680e7060ae1&amp;themetreeid=-200"
-
-                            >
+                            <a href="http://andmebaas.stat.ee/?lang=en&amp;SubSessionId=d6bed41d-cf9f-44f2-975b-4680e7060ae1&amp;themetreeid=-200">
                               Statistical database .Stat
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a
-                              href="https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&amp;language=en"
-                            >
+                            <a href="https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&amp;language=en">
                               eSTAT
                             </a>
                           </li>
@@ -157,37 +150,27 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a
-                              href="https://tamm.stat.ee/?lang=en"
-                            >
+                            <a href="https://tamm.stat.ee/?lang=en">
                               Tree of Truth
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a
-                              href="https://estat.stat.ee/StatistikaKaart/VKR"
-                            >
+                            <a href="https://estat.stat.ee/StatistikaKaart/VKR">
                               Statistics map application
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a
-                              href="https://valiskaubandus.stat.ee/?locale=en"
-                            >
+                            <a href="https://valiskaubandus.stat.ee/?locale=en">
                               Foreign trade application
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a
-                              href="https://ametipalk.stat.ee/"
-                            >
+                            <a href="https://ametipalk.stat.ee/">
                               Wages and salaries application
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href="/nimed/" >
-                              Name statistics application
-                            </a>
+                            <a href="/nimed/">Name statistics application</a>
                           </li>
                         </ul>
                       </li>
@@ -201,7 +184,10 @@ class Main extends Component {
                     id="block-sotsiaalmenuu"
                     className="block block-menu navigation menu--social-menu"
                   >
-                    <h2 className="visually-hidden" id="block-sotsiaalmenuu-menu">
+                    <h2
+                      className="visually-hidden"
+                      id="block-sotsiaalmenuu-menu"
+                    >
                       Sotsiaalmenüü{" "}
                     </h2>
 
@@ -340,7 +326,7 @@ class Main extends Component {
                         onClick={this.changeMenu}
                         style={{
                           color: this.state.menu === tabs[1] ? "#4e73df" : "",
-                          cursor: "pointer"
+                          cursor: "pointer",
                         }}
                       >
                         {tabs[1]}
@@ -352,7 +338,7 @@ class Main extends Component {
                         onClick={this.changeMenu}
                         style={{
                           color: this.state.menu === tabs[2] ? "#4e73df" : "",
-                          cursor: "pointer"
+                          cursor: "pointer",
                         }}
                       >
                         {tabs[2]}
@@ -365,7 +351,7 @@ class Main extends Component {
                         onClick={this.changeMenu}
                         style={{
                           color: this.state.menu === tabs[3] ? "#4e73df" : "",
-                          cursor: "pointer"
+                          cursor: "pointer",
                         }}
                       >
                         {tabs[3]}
@@ -378,76 +364,69 @@ class Main extends Component {
           </header>
           <main id="main" style={{ marginTop: "-120px" }}>
             <div>
-              <div
-                className="selector-style text-center mx-auto"
-              >
-                {this.props.type === "admin"?<AdminPanel></AdminPanel>:
-                this.renderMenu()}
+              <div className="selector-style text-center mx-auto">
+                {this.props.type === "admin" ? (
+                  <AdminPanel></AdminPanel>
+                ) : (
+                  this.renderMenu()
+                )}
               </div>
             </div>
-            
           </main>
           <div className="site-section">
             <div className="container"></div>
           </div>
         </div>
         <footer className="footer footer-dot" role="contentinfo">
-
-            <div className="row graph-component-cards" >
-
-              <div className="col-md-2 ml-5">
-                  <div className=" row site-section pt-0 col-md-3 mb-md-0">
-                    <h3>{main[3]}</h3>
-                    <ul className="list-unstyled">
-                      <li>
-                        <a  onClick={this.changeMenu}>{tabs[0]}</a>
-                      </li>
-                      <li>
-                        <a  onClick={this.changeMenu}>{tabs[1]}</a>
-                      </li>
-                      <li>
-                        <a  onClick={this.changeMenu}>{tabs[2]}</a>
-                      </li>
-                      <li>
-                        <a  onClick={this.changeMenu}>{tabs[3]}</a>
-                      </li>
-                      <li>
-                        <a  onClick={this.changeMenu}>{tabs[4]}</a>
-                      </li>
-                    </ul>
-                  </div>
-
-          
-              </div>
-              <div className="col-md-4">
-                <SubscriptionComponent></SubscriptionComponent>
-              </div>
-                  <div className="col-md-3 m-3">
-                    <h3>{main[2]}</h3>
-                    <Feedback></Feedback>
-                  </div>
-                  <div className="col-md-2">
-                
-                <img
-                  src={require("./resources/ERDF_h_est.jpg")}
-                  style={{ width: "140px", margin: "40px" }}
-                  alt=""
-                />
-              </div>
-
-            </div>
-            
-            
-            <div className="row justify-content-center text-center mt-4">
-              <div className="col-md-7">
-                <p className="copyright">
-                  &copy; Copyright {APP_NAME}. All Rights Reserved
-                </p>
+          <div className="row graph-component-cards">
+            <div className="col-md-2 ml-5">
+              <div className=" row site-section pt-0 col-md-3 mb-md-0">
+                <h3>{main[3]}</h3>
+                <ul className="list-unstyled">
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[0]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[1]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[2]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[3]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[4]}</a>
+                  </li>
+                </ul>
               </div>
             </div>
+            <div className="col-md-4">
+              <SubscriptionComponent></SubscriptionComponent>
+            </div>
+            <div className="col-md-3 m-3">
+              <h3>{main[2]}</h3>
+              <Feedback></Feedback>
+            </div>
+            <div className="col-md-2">
+              <img
+                src={require("./resources/ERDF_h_est.jpg")}
+                style={{ width: "140px", margin: "40px" }}
+                alt=""
+              />
+            </div>
+          </div>
+
+          <div className="row justify-content-center text-center mt-4">
+            <div className="col-md-7">
+              <p className="copyright">
+                &copy; Copyright {APP_NAME}. All Rights Reserved
+              </p>
+            </div>
+          </div>
         </footer>
 
-        <a  className="back-to-top">
+        <a className="back-to-top">
           <i className="icofont-simple-up"></i>
         </a>
       </div>
