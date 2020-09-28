@@ -95,12 +95,12 @@ class DynamicMapSelector extends Component {
     if (this.state.mapType === "Gender Wage Gap") {
       data.forEach((el) => {
         if(el.maleAverage !== 0 && el.femaleAverage !== 0)
-          list.push(parseInt(Math.abs(el.maleAverage - el.femaleAverage)));
+          list.push({item: parseInt(Math.abs(el.maleAverage - el.femaleAverage)), percentage: parseFloat(Math.abs(el.maleAverage - el.femaleAverage)/el.maleAverage)*100});
       });
     } else if (this.state.mapType === "Median Wage") {
       data.forEach((el) => {
         let diff = parseInt(el.average);
-        list.push(diff);
+        list.push({item: diff, percentage: 0});
       });
     } else {
       data.forEach((el) => {
@@ -108,11 +108,11 @@ class DynamicMapSelector extends Component {
         if (el.maleAverage === 0 || el.maleAverage === 0) {
           diff = el.maleAverage + el.femaleAverage;
         }else
-          list.push(diff);
+          list.push({item:diff, percentage: 0});
       });
     }
 
-    list.sort((a, b) => a - b);
+    list.sort((a, b) => a.item - b.item);
 
     const result = [[], [], [], [], []];
 
@@ -132,7 +132,7 @@ class DynamicMapSelector extends Component {
   getGroupByItem(item) {
     for (let i = 0; i < this.state.groups.length; i++) {
       for (let j = 0; j < this.state.groups[i].length; j++) {
-        if (this.state.groups[i][j] === Math.abs(item)) {
+        if (this.state.groups[i][j].item === Math.abs(item)) {
           return i;
         }
       }
@@ -142,24 +142,28 @@ class DynamicMapSelector extends Component {
   getLegends() {
     if (this.state.groups[0] !== undefined) {
       const div = this.state.groups.map((e) => {
-        if (e[0] !== undefined) {
+        if (e.[0]!== undefined) {
           return (
             <div>
               <div>
                 <div
-                  className="circle-legend"
+                  className="circle-legend m-1"
                   style={{
-                    background: this.state.colors[this.getGroupByItem(e[0])],
+                    background: this.state.colors[this.getGroupByItem(e[0].item)],
                     cursor: "pointer",
                   }}
                 ></div>
                 <p
                   className="map-legend"
                   onClick={() => {
-                    this.selectGroupColor(this.getGroupByItem(e[0]));
+                    this.selectGroupColor(this.getGroupByItem(e[0].item));
                   }}
                 >
-                  {e.length > 1 ? `€${e[0]}-€${e[e.length - 1]}` : `€${e[0]}`}
+                  {this.state.mapType!=="Gender Wage Gap"?
+                  e.length > 1 ? `€${e[0].item} - €${e[e.length - 1].item}` : `€${e[0].item}`:
+                  e.length > 1 ? `%${e[0].percentage.toFixed(2)} - %${e[e.length - 1].percentage.toFixed(2)}` : `%${e[0].percentage.toFixed(2)}`
+                }
+
                 </p>
               </div>
             </div>
@@ -567,11 +571,11 @@ class DynamicMapSelector extends Component {
         <ReactTooltip>{this.state.content}</ReactTooltip>
         <div
           className="legends"
-          style={{ width: "100px", marginTop: "-120px" }}
+          style={{ width: "200px", marginTop: "-120px" }}
         >
           {this.getLegends()}
           <div
-            className="circle-legend"
+            className="circle-legend m-1"
             style={{
               background: this.state.noDataColor,
             }}
