@@ -48,21 +48,22 @@ class DynamicMapSelector extends Component {
     this.setColor = this.setColor.bind(this);
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
 
-    this.state.isco = props.isco;
+    this.setState({isco: props.isco});
 
-    this.getMeansForAllRegions("");
+    this.getMeansForAllRegions("", props.isco);
     this.getMeanForRegion("Harju maakond");
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ isco: props.isco });
+    this.setState({ isco: props.isco});
 
-    this.getMeansForAllRegions(this.state.mapType);
+    this.getMeansForAllRegions(this.state.mapType, props.isco);
+
   }
 
-  getMeansForAllRegions(data) {
+  getMeansForAllRegions(data, isco_props) {
     var url_dataType = "";
-    var isco = this.state.isco;
+    var isco = isco_props;
     url_dataType = "regions/wage-gap";
 
     if (data === "Median Wage") {
@@ -82,7 +83,6 @@ class DynamicMapSelector extends Component {
       .then((response) => response.data)
       .then((data) => {
         this.setState({ averages: data.payload });
-        console.log(this.state.average);
         this.setGroups(data.payload);
       });
 
@@ -126,7 +126,6 @@ class DynamicMapSelector extends Component {
       }
     }
 
-    console.log(result);
     this.setState({ groups: result });
   }
 
@@ -270,7 +269,6 @@ class DynamicMapSelector extends Component {
       this.state.averages.map((el) => {
         if (el.region === region) {
           data = "€" + el.average;
-          console.log(data);
           return data;
         }
 
@@ -395,6 +393,24 @@ class DynamicMapSelector extends Component {
       }
     }
   }
+
+  onMapHover(geo) {
+      const l = geo.properties.MNIMI;
+      const data = this.getMeanForRegion(l);
+      if (
+        this.state.mapType === "Gender Wage Gap" ||
+        this.state.mapType === "Median Wage"
+      ){
+        let dataString =Object.keys(data).length === 0 ? "No data" : data.toString();
+        this.setState({ content: dataString });
+      }
+      else
+        this.setState({
+          content: this.getMeanForRegionAverage(l).toString(),
+        });
+    
+  }
+
   render() {
     return (
       <>
@@ -405,7 +421,7 @@ class DynamicMapSelector extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   this.setColor("Gender Wage Gap");
-                  this.getMeansForAllRegions("Gender Wage Gap");
+                  this.getMeansForAllRegions("Gender Wage Gap", this.state.isco);
                 }}
               >
                 <a
@@ -424,7 +440,7 @@ class DynamicMapSelector extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   this.setColor("Median Wage");
-                  this.getMeansForAllRegions("Median Wage");
+                  this.getMeansForAllRegions("Median Wage", this.state.isco);
                 }}
               >
                 <a
@@ -443,7 +459,7 @@ class DynamicMapSelector extends Component {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                   this.setColor("Average Wage");
-                  this.getMeansForAllRegions("Average Wage");
+                  this.getMeansForAllRegions("Average Wage", this.state.isco);
                 }}
               >
                 <a
@@ -470,19 +486,7 @@ class DynamicMapSelector extends Component {
                   <Geography
                     key={geo.rsmKey}
                     geography={geo}
-                    onMouseEnter={() => {
-                      const l = geo.properties.MNIMI;
-                      const data = this.getMeanForRegion(l);
-                      if (
-                        this.state.mapType === "Gender Wage Gap" ||
-                        this.state.mapType === "Median Wage"
-                      )
-                        this.setState({ content: data.toString() });
-                      else
-                        this.setState({
-                          content: this.getMeanForRegionAverage(l).toString(),
-                        });
-                    }}
+                    onMouseEnter={() => this.onMapHover(geo)}
                     onMouseLeave={() => {
                       this.setState({ content: "" });
                     }}

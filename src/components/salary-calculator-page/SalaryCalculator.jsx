@@ -85,9 +85,10 @@ class SalaryCalculator extends Component {
       let isco = event.value.iscoValid;
       let code = event.value.code;
 
+      this.setState({ isco: isco, code: code });
       this.props.getSalaryEntities(region, isco, code);
       this.props.onDataChange(this.state.region, isco, code, event.value.name);
-      this.setState({ isco: isco, code: code });
+      
       this.setState({ occupation: event.value.name });
     }
   };
@@ -106,7 +107,6 @@ class SalaryCalculator extends Component {
  
 
   render() {
-    console.log(this.props);
     return (
         <div className="graph-component graph-component-cards">
             <div className="card-shadow card-occupation-selector">
@@ -285,7 +285,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     occupations: state.occupations,
     gender: state.gender,

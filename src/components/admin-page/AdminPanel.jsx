@@ -48,8 +48,8 @@ class AdminPanel extends Component {
       <div>
         <main id="main" className="center">
           <div className={this.state.heroSectionStyle}>
-            {//this.state.loggedIn
-             true ? (
+            {this.state.loggedIn
+              ? (
               <FeedbacksList
                 feedbacks={this.state.feedbacks}
                 refresh={this.fetchFeedbacks}

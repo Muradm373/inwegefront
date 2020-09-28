@@ -18,8 +18,6 @@ export function fetchData(prop) {
   }
 
 
-    console.log(menData)
-
     if (menData !== undefined && womenData !== undefined) {
       menMean = menData.mean;
       womenMean = womenData.mean;

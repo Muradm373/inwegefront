@@ -45,7 +45,6 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
     .get(url)
     .then((response) => response.data)
     .then((data) => {
-      console.log(data);
       return parseSalaryEntities(data, isco, dispatch);
     })
     .then((response) => response.data)
