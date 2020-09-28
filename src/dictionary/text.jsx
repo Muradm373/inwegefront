@@ -163,84 +163,47 @@ export default function changeLanguage(language) {
 }
 
 
-let noDescr = descrEng[0];
-let occupationSelectorPlaceholder = occupationSelectorPlaceholderEng[0];
-let salary = salaryEng[0];
-let averageLabel = averageEng[0];
-let differenceLabel = differenceEng[0];
-let genderLabel = genderEng[0];
-let lng = lngEng[0];
-let tabs = tabsEng[0];
-let main = mainEng[0];
-let selectOccupation = selectOccupationEng[0];
-let selectRegion = selectRegionEng[0];
-let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng[0];
-let leaveAFeedBack = leaveAFeedBackEng[0];
-let averages = averagesEng[0];
-let about = aboutEng[0];
-let pieChartLabels = pieChartLabelsEng[0];
-let detailsLabel = detailsLabelEng[0];
-let descriptionLabel = descriptionLabelEng[0];
-let averageData = averageDataEng[0];
-let defaultGender = defaultGenderEng[0];
-let overall = overallEng[0];
-let methodology = methodologyEng[0];
-let searchLabel = searchLabelEng[0];
-let sideParagraph1 = sideParagraph1Eng[0];
-let sideParagraph2 = sideParagraph2Eng[0];
-let noDataLabel = noDataLabelEng[0];
-let noData = noDataEng[0];
-let averageWage = averageWageEng[0];
-let medianWage = medianWageEng[0];
-let genderWageGap = genderWageGapEng[0];
-let totalNumberOfEmployees = totalNumberOfEmployeesEng[0];
-let totalNumberOfEmployeesOccupation = totalNumberOfEmployeesOccupationEng[0];
-let averageDataSpec = averageDataSpecEng[0];
-let computarization = computarizationEng[0];
-let retirement = retirementEng[0];
-let pensionLabel = pensionLabelEng[0];
-let lessMoreLabel = lessMoreLabelEng[0];
-let levels = levelsEng[0];
-let ageLabel = ageLabelEng[0];
-
-export {
-  noDescr,
-  averageLabel,
-  differenceLabel,
-  genderLabel,
-  lng,
-  tabs,
-  main,
-  selectOccupation,
-  selectRegion,
-  averageBetweenMenAndWomen,
-  leaveAFeedBack,
-  salary,
-  averageData,
-  averages,
-  about,
-  pieChartLabels,
-  descriptionLabel,
-  detailsLabel,
-  defaultGender,
-  occupationSelectorPlaceholder,
-  overall,
-  methodology,
-  searchLabel,
-  sideParagraph1,
-  sideParagraph2,
-  noDataLabel,
-  averageWage,
-  medianWage,
-  genderWageGap,
-  noData,
-  totalNumberOfEmployees,
-  totalNumberOfEmployeesOccupation,
-  averageDataSpec,
-  computarization,
-  retirement,
-  pensionLabel,
-  lessMoreLabel,
-  levels,
-  ageLabel
-};
+export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
+export let facebook = "https://www.facebook.com/Vordsetevoimalustevolinik";
+export let instagram = "https://www.instagram.com/vordsetevoimalustevolinik/";
+export let linkedin = "https://www.linkedin.com/company/statistikaamet-statistics-estonia/";
+export let twitter = "https://twitter.com/eestistatistika";
+export let noDescr = descrEng[0];
+export let occupationSelectorPlaceholder = occupationSelectorPlaceholderEng[0];
+export let salary = salaryEng[0];
+export let averageLabel = averageEng[0];
+export let differenceLabel = differenceEng[0];
+export let genderLabel = genderEng[0];
+export let lng = lngEng[0];
+export let tabs = tabsEng[0];
+export let main = mainEng[0];
+export let selectOccupation = selectOccupationEng[0];
+export let selectRegion = selectRegionEng[0];
+export let averageBetweenMenAndWomen = averageBetweenMenAndWomenEng[0];
+export let leaveAFeedBack = leaveAFeedBackEng[0];
+export let averages = averagesEng[0];
+export let about = aboutEng[0];
+export let pieChartLabels = pieChartLabelsEng[0];
+export let detailsLabel = detailsLabelEng[0];
+export let descriptionLabel = descriptionLabelEng[0];
+export let averageData = averageDataEng[0];
+export let defaultGender = defaultGenderEng[0];
+export let overall = overallEng[0];
+export let methodology = methodologyEng[0];
+export let searchLabel = searchLabelEng[0];
+export let sideParagraph1 = sideParagraph1Eng[0];
+export let sideParagraph2 = sideParagraph2Eng[0];
+export let noDataLabel = noDataLabelEng[0];
+export let noData = noDataEng[0];
+export let averageWage = averageWageEng[0];
+export let medianWage = medianWageEng[0];
+export let genderWageGap = genderWageGapEng[0];
+export let totalNumberOfEmployees = totalNumberOfEmployeesEng[0];
+export let totalNumberOfEmployeesOccupation = totalNumberOfEmployeesOccupationEng[0];
+export let averageDataSpec = averageDataSpecEng[0];
+export let computarization = computarizationEng[0];
+export let retirement = retirementEng[0];
+export let pensionLabel = pensionLabelEng[0];
+export let lessMoreLabel = lessMoreLabelEng[0];
+export let levels = levelsEng[0];
+export let ageLabel = ageLabelEng[0];

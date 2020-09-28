@@ -36,6 +36,8 @@ class AdminPanel extends Component {
         this.setState({
           feedbacks: data.data.payload,
         });
+
+        console.log(data.data.payload)
       });
   }
 

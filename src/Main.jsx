@@ -7,7 +7,16 @@ import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculat
 import Feedback from "./components/salary-calculator-page/selector-components/Feedback";
 import SubscriptionComponent from "./components/subscription-headline/SubscriptionComponent";
 import WageForecast from "./components/wage-forecast-page/WageForecast";
-import changeLanguage, { APP_NAME, main, tabs } from "./dictionary/text";
+import changeLanguage, {
+  APP_NAME,
+  main,
+  tabs,
+  facebook,
+  instagram,
+  youtube,
+  twitter,
+  linkedin,
+} from "./dictionary/text";
 
 class Main extends Component {
   constructor(props) {
@@ -20,6 +29,7 @@ class Main extends Component {
       lang: "en",
       mapElementColor: "#73e8ff",
       menu: tabs[0],
+      isActive: false,
     };
 
     this.getData = this.getData.bind(this);
@@ -53,7 +63,7 @@ class Main extends Component {
   }
 
   changeMenu(e) {
-    this.setState({ menu: e.target.textContent });
+    this.setState({ menu: e.target.textContent, isActive: false });
   }
 
   renderMenu() {
@@ -97,6 +107,27 @@ class Main extends Component {
     changeLanguage(this.props.lang);
     return (
       <div>
+        <div id="sidenav" className="sidenav" style={{ width: this.state.isActive?"250px":"0px" }}>
+        <div className=" row site-section pt-0 col-md-3 mb-md-0">
+                <ul className="link-list">
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[0]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[1]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[2]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[3]}</a>
+                  </li>
+                  <li>
+                    <a onClick={this.changeMenu}>{tabs[4]}</a>
+                  </li>
+                </ul>
+              </div>
+        </div>
         <div>
           <div className="site-mobile-menu site-navbar-target">
             <div className="site-mobile-menu-header">
@@ -196,7 +227,9 @@ class Main extends Component {
                         <span
                           className="icofont-facebook"
                           style={{ cursor: "pointer" }}
-                          href="www.google.com"
+                          onClick={() => {
+                            window.open(facebook, "_blank");
+                          }}
                         ></span>
                       </li>
 
@@ -204,6 +237,9 @@ class Main extends Component {
                         <span
                           className="icofont-twitter"
                           style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            window.open(twitter, "_blank");
+                          }}
                         ></span>
                       </li>
 
@@ -211,6 +247,9 @@ class Main extends Component {
                         <span
                           className="icofont-linkedin"
                           style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            window.open(linkedin, "_blank");
+                          }}
                         ></span>
                       </li>
 
@@ -218,6 +257,9 @@ class Main extends Component {
                         <span
                           className="icofont-youtube"
                           style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            window.open(youtube, "_blank");
+                          }}
                         ></span>
                       </li>
 
@@ -225,6 +267,9 @@ class Main extends Component {
                         <span
                           className="icofont-instagram"
                           style={{ cursor: "pointer" }}
+                          onClick={() => {
+                            window.open(instagram, "_blank");
+                          }}
                         ></span>
                       </li>
                     </ul>
@@ -309,10 +354,37 @@ class Main extends Component {
                     <img
                       src={require("./resources/icon.png")}
                       alt="Home"
-                      style={{ width: "130px", backgroundColor: "#FFFFFF", cursor: "pointer" }}
+                      style={{
+                        width: "130px",
+                        backgroundColor: "#FFFFFF",
+                        cursor: "pointer",
+                      }}
                     />
                   </a>
                 </div>
+                <button
+                  className="menu-toggle hamburger"
+                  style={{
+                    position: "absolute",
+                    right: "0px",
+                    padding: "10px",
+                  }}
+                  onClick={() =>
+                    this.setState({
+                      isActive: !this.state.isActive,
+                    })
+                  }
+                >
+                  <span
+                    className={
+                      "si hamburger-box hamburger--spin " +
+                      (this.state.isActive ? "is-active" : "")
+                    }
+                  >
+                    <span className="hamburger-inner"></span>
+                  </span>
+                </button>
+
                 <nav
                   role="navigation"
                   aria-labelledby="block-mainnavigationenglish-menu"

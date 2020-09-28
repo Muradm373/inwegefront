@@ -148,7 +148,7 @@ class WageBars extends Component {
             <></>
           )}
 
-          <div className="row donutHolder`">
+          <div className="row">
             {/* <!-- Wages distribution --> */}
 
             <div

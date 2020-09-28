@@ -8,13 +8,11 @@ class FeedbacksList extends Component {
         <div className="card-shadow-wide">
           <nav className="feedback-list-nav">
             <ul className="">
-              {this.props.feedback !== undefined ? (
+             {
                 this.props.feedbacks.map((item) => (
                   <FeedbackListItem feedback={item} />
                 ))
-              ) : (
-                <p>No feedbacks yet</p>
-              )}
+            } 
             </ul>
           </nav>
           <div className="text-center">
