@@ -15,7 +15,7 @@ import changeLanguage, {
   instagram,
   youtube,
   twitter,
-  linkedin,
+  linkedin, treeOfTruthLabel, mapApplication, statisticalDbLabel, dashboardsLabel, foreignTrade, wageSalary, nameStatistics, statisticsEstonia, copyrightLabel
 } from "./dictionary/text";
 
 class Main extends Component {
@@ -150,7 +150,7 @@ class Main extends Component {
                       id="block-rakendustemenuu-menu"
                       className="menu--app-menu__title"
                     >
-                      Statistics Estonia:
+                      {statisticsEstonia}
                     </span>
 
                     <ul data-region="header_top_left" className="menu">
@@ -159,12 +159,12 @@ class Main extends Component {
                         <ul className="menu">
                           <li className="menu-item">
                             <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
-                              Statistical database PxWeb
+                              {statisticalDbLabel} PxWeb
                             </a>
                           </li>
                           <li className="menu-item">
                             <a href="http://andmebaas.stat.ee/?lang=en&amp;SubSessionId=d6bed41d-cf9f-44f2-975b-4680e7060ae1&amp;themetreeid=-200">
-                              Statistical database .Stat
+                            {statisticalDbLabel} .Stat
                             </a>
                           </li>
                           <li className="menu-item">
@@ -177,31 +177,31 @@ class Main extends Component {
                               href="https://juhtimislauad.stat.ee/"
                               title="https://juhtimislauad.stat.ee/"
                             >
-                              Dashboards
+                              {dashboardsLabel}
                             </a>
                           </li>
                           <li className="menu-item">
                             <a href="https://tamm.stat.ee/?lang=en">
-                              Tree of Truth
+                              {treeOfTruthLabel}
                             </a>
                           </li>
                           <li className="menu-item">
                             <a href="https://estat.stat.ee/StatistikaKaart/VKR">
-                              Statistics map application
+                              {mapApplication}
                             </a>
                           </li>
                           <li className="menu-item">
                             <a href="https://valiskaubandus.stat.ee/?locale=en">
-                              Foreign trade application
+                              {foreignTrade}
                             </a>
                           </li>
                           <li className="menu-item">
                             <a href="https://ametipalk.stat.ee/">
-                              Wages and salaries application
+                              {wageSalary}
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href="/nimed/">Name statistics application</a>
+                            <a href="/nimed/">{nameStatistics}</a>
                           </li>
                         </ul>
                       </li>
@@ -492,7 +492,7 @@ class Main extends Component {
           <div className="row justify-content-center text-center mt-4">
             <div className="col-md-7">
               <p className="copyright">
-                &copy; Copyright {APP_NAME}. All Rights Reserved
+                &copy; {copyrightLabel}
               </p>
             </div>
           </div>

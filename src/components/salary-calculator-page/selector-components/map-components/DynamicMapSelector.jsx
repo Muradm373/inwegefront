@@ -142,7 +142,7 @@ class DynamicMapSelector extends Component {
   getLegends() {
     if (this.state.groups[0] !== undefined) {
       const div = this.state.groups.map((e) => {
-        if (e.[0]!== undefined) {
+        if (e[0]!== undefined) {
           return (
             <div>
               <div>
@@ -264,7 +264,7 @@ class DynamicMapSelector extends Component {
       return ": €" + val;
     }
 
-    return ": no data";
+    return ": " + noData;
   }
 
   getMeanForRegion(region) {
@@ -306,7 +306,7 @@ class DynamicMapSelector extends Component {
         }
 
         if (avg !== 0) data = "€" + avg;
-        else data = "No data";
+        else data = noData;
         return data;
       }
       return 0;
@@ -405,7 +405,7 @@ class DynamicMapSelector extends Component {
         this.state.mapType === "Gender Wage Gap" ||
         this.state.mapType === "Median Wage"
       ){
-        let dataString =Object.keys(data).length === 0 ? "No data" : data.toString();
+        let dataString =Object.keys(data).length === 0 ? noData : data.toString();
         this.setState({ content: dataString });
       }
       else

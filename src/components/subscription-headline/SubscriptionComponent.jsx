@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAlert } from "react-alert";
 import "../../css/mnimi.css";
-import { API_URL } from "../../dictionary/text";
+import { API_URL, newsletter } from "../../dictionary/text";
 
 export function   SubscriptionComponent(props) {
   const [email, setEmail] = useState("");
@@ -42,7 +42,7 @@ export function   SubscriptionComponent(props) {
           
         }}
       >
-        Subscribe to newsletter:
+        {newsletter}
       </p>
       <form onSubmit={sendSubscription}>
         <p className="mnimi" style={{ textAlign: "left", color: "white" }}>

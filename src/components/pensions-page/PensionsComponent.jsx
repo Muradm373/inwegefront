@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { pensionsDescription } from "../../dictionary/textMethodology";
 import PensionGraph from "./PensionGraph";
 import {
   menColor,
   womenColor,
   genderLabel,
   differenceLabel,
+  pensionDescription,
+  replacementNeeds1,
+  replacementNeeds2,
+  gapsWageLabel,
+  gapsPensionLabel,
 } from "../../dictionary/text";
 
 class PensionsComponent extends Component {
@@ -14,12 +18,12 @@ class PensionsComponent extends Component {
       <div className="w-75 text-center mx-auto card-shadow-forecast">
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs">
-            <p >{pensionsDescription[0][0]}</p>
+            <p >{pensionDescription[0]}</p>
             <br></br>
-            <p >{pensionsDescription[0][1]}</p>
-            <p >{pensionsDescription[0][2]}</p>
-            <p >{pensionsDescription[0][3]}</p>
-            <p >{pensionsDescription[0][4]}</p>
+            <p >{pensionDescription[1]}</p>
+            <p >{pensionDescription[2]}</p>
+            <p >{pensionDescription[3]}</p>
+            <p >{pensionDescription[4]}</p>
           </div>
 
           <br></br>
@@ -35,7 +39,7 @@ class PensionsComponent extends Component {
                   lineHeight: "22px",
                 }}
               >
-                Wage gap
+                {gapsWageLabel}
               </p>
               <PensionGraph
                 menColor={menColor}
@@ -57,7 +61,7 @@ class PensionsComponent extends Component {
                   lineHeight: "22px",
                 }}
               >
-                Pension gap
+                {gapsPensionLabel}
               </p>
               <PensionGraph
                 menColor={menColor}
@@ -82,7 +86,7 @@ class PensionsComponent extends Component {
               lineHeight: "22px",
             }}
           >
-            Replacement rate in relation to the employee’s last wage
+            {replacementNeeds1}
           </p>
 
           <PensionGraph
@@ -105,8 +109,7 @@ class PensionsComponent extends Component {
               lineHeight: "22px",
             }}
           >
-            Replacement rate in relation to the average wage in Estonia at the
-            time of retirement
+            {replacementNeeds2}
           </p>
 
           <PensionGraph

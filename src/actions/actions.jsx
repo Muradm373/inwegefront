@@ -1,5 +1,5 @@
 import axios from "axios";
-import { lng, API_URL, noDescr } from "../dictionary/text";
+import { lng, API_URL, noInformationLabel, allOcupationsLabel } from "../dictionary/text";
 
 export const getOccupations = (dispatch, region) => {
   axios
@@ -7,7 +7,7 @@ export const getOccupations = (dispatch, region) => {
     .then((response) => response.data)
     .then((data) => {
       let names = [];
-      names.push({ label: "All occupations", value: "reset" });
+      names.push({ label: allOcupationsLabel, value: "reset" });
 
       data.payload.forEach((element) => {
         if (element.name !== " ") {
@@ -72,11 +72,11 @@ const parseSalaryEntities = (data, type, dispatch) => {
       dispatch({
         type: "SET_ENTITIES",
         entities: entities,
-        description: noDescr,
+        description: noInformationLabel,
       });
     }
   } else {
-    dispatch({ type: "SET_ENTITIES", entities: [], description: noDescr });
+    dispatch({ type: "SET_ENTITIES", entities: [], description: noInformationLabel });
   }
   return axios.get(`${API_URL}/jobs/${entities[0].id}/average`);
 };

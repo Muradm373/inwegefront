@@ -1,11 +1,11 @@
-import {genderLabel, noDescr } from "../dictionary/text";
+import {genderLabel, noInformationLabel } from "../dictionary/text";
 
 const initState = {
   occupations: [],
   gender: genderLabel[0],
   wage: undefined,
   entities: [],
-  description: noDescr
+  description: noInformationLabel
 };
 
 const rootReduce = (state = initState, action) => {
