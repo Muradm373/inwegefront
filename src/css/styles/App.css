@@ -762,7 +762,7 @@ body {
 .input-stats {
   box-sizing: border-box;
   font-family: Roboto;
-  width: 100%;
+  width: 90%;
   border: 1px solid #fff;
   padding: 10px;
   border-color: white;
@@ -785,7 +785,7 @@ body {
 .black-button {
   box-sizing: border-box;
   font-family: Roboto;  
-  width: 100%;
+  width: 90%;
   border: 1px solid #fff;
   padding: 10px;
   border-color: white;

@@ -43,8 +43,8 @@ class PensionsComponent extends Component {
                 differenceLabel={differenceLabel}
                 type={"palk"}
                 unit="€"
-                genderLabel={genderLabel}
                 tickTotal="8"
+                genderLabel={genderLabel}
                 occupation={""}
               ></PensionGraph>
             </div>
@@ -91,6 +91,7 @@ class PensionsComponent extends Component {
             differenceLabel={differenceLabel}
             type={"am_kesk"}
             unit=""
+            tickTotal="8"
             genderLabel={genderLabel}
             occupation={""}
           ></PensionGraph>
@@ -114,6 +115,7 @@ class PensionsComponent extends Component {
             differenceLabel={differenceLabel}
             type={"am_oma"}
             unit=""
+            tickTotal="8"
             genderLabel={genderLabel}
             occupation={""}
           ></PensionGraph>

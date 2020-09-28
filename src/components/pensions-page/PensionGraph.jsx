@@ -48,6 +48,7 @@ class PensionGraph extends Component {
     let menArray = [...new Map(Object.entries(menClear)).values()];
     let womenArray = [...new Map(Object.entries(womenClear)).values()];
 
+
     let men = menArray.sort(
       (a, b) => parseFloat(a).toFixed(2) - parseFloat(b).toFixed(2)
     );
@@ -60,22 +61,21 @@ class PensionGraph extends Component {
 
     for (let i = 0; i < 11; i++) {
       if (i <= 5) {
-        menGraphObject.push({ x: parseFloat(men[i]).toFixed(2), y: i });
-        womenGraphObject.push({ x: parseFloat(women[i]).toFixed(2), y: i });
+        menGraphObject.push({ x: parseInt(men[i]), y: i });
+        womenGraphObject.push({ x: parseInt(women[i]), y: i });
       } else {
-        menGraphObject.push({ x: parseFloat(men[i]).toFixed(2), y: 10 - i });
+        menGraphObject.push({ x: parseInt(men[i]), y: 10 - i });
         womenGraphObject.push({
-          x: parseFloat(women[i]).toFixed(2),
+          x: parseInt(women[i]),
           y: 10 - i,
         });
       }
+    
     }
 
     this.setState({ menMean: parseFloat(men[5]).toFixed(2),  womenMean: parseFloat(women[5]).toFixed(2) });
 
-    let dataGraph = this.state.data;
-
-    dataGraph = { men: menGraphObject, women: womenGraphObject };
+    let dataGraph = { men: menGraphObject, women: womenGraphObject };
 
     console.log(this.props.type);
     console.log(dataGraph);
@@ -86,7 +86,7 @@ class PensionGraph extends Component {
   clearData(data) {
     let { p1, p2, p3, p4, p5, mean, p6, p7, p8, p9 } = data;
 
-    return { p1, p2, p3, p4, p5, mean, p6, p7, p8, p9, p10: 0 };
+    return { p1, p2, p3, p4, p5, mean, p6, p7, p8, p9, p10: "0"};
   }
 
   componentDidMount() {
@@ -131,7 +131,7 @@ class PensionGraph extends Component {
           <HorizontalGridLines className="grid-line-horizontal" />
           <XAxis
             className="grid-axis"
-            tickTotal={this.props.tickTotal}
+            tickTotal={parseInt(this.props.tickTotal)}
             tickFormat={(v) => `${this.props.unit}${v}`}
           />
           <YAxis

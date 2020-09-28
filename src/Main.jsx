@@ -63,7 +63,7 @@ class Main extends Component {
   }
 
   changeMenu(e) {
-    this.setState({ menu: e.target.textContent, isActive: false });
+    this.setState({ menu: e.target.textContent, isActive: false  });
   }
 
   renderMenu() {
