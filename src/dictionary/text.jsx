@@ -48,7 +48,7 @@ const mainEng = [["Home", "About", "Contact", "Navigation"],["Главная", "
 const genderEng = [["Male", "Female"], ["Мужчины", "Женщины"], ["Mees", "Naine"]];
 const selectRegionEng = ["Select region", "Выберите регион", "Vali maakond"];
 const selectOccupationEng = ["Select job title", "Выберите должность","Vali amet" ] ;
-const averageBetweenMenAndWomenEng = ["Average salary for men and women in ", "Средний показатель между женщинами и мужчинами - ",  "Keskmine palk meestel ja naistel ametialal - "] ;
+const averageBetweenMenAndWomenEng = ["Average salary for men and women in ", "Средний показатель между женщинами и мужчинами - ",  "Keskmine palk täisajaga töötavatel meestel ja naistel - "] ;
 const leaveAFeedBackEng = ["Leave a feedback!", "Оставьте отзыв!", "Saada tagasiside siit!"] ;
 const averageDataEng = ["Average over Estonia", "Среднее по Эстонии",  "Eesti keskmine jaotus"] ;
 const aboutEng =
@@ -94,9 +94,9 @@ const noDataEng = ["No data",
 "Нет данных",
 "Valitud ameti"];
 const averageWageEng = ["Average Wage", "Средняя зарплата","Keskmine palk"];
-const medianWageEng =["Median Wage", "Средняя зарплата (Медиана)", "Mediaan palk"];
+const medianWageEng =["Median Wage", "Средняя зарплата (Медиана)", "Mediaanpalk"];
 const genderWageGapEng =["Gender Wage Gap", "Разница в заработной плате", "Palkade erinevus"];
-const totalNumberOfEmployeesEng = ["Total number of employees in Estonia ", "Общее количество сотрудников в Эстонии", "Eesti töötajate koguarv"];
+const totalNumberOfEmployeesEng = ["Total number of full-time employees in Estonia ", "Общее количество сотрудников в Эстонии", "Täisajaga töötavate töötajate koguarv Eestis"];
 const totalNumberOfEmployeesOccupationEng = [["Total number of employees in occupation ", " in "], ["Общее количество работников по роду занятий", ""], ["Tööga hõivatud töötajate koguarv: ", ""]];
 const averageDataSpecEng = [["Average for occupation","Average for county"], ["Средний по профессии","Средний по региону"], [ "Keskmine hõivatus", "Maakonna keskmine"]];
 const computarizationEng = [["high risk of computerization", "medium risk of computerization", "low risk of computerization"], ["высокий риск компьютеризации", "средний риск компьютеризации", "низкий риск компьютеризации"], ["suur arvutistamise oht", "keskmine arvutistamise oht", "madal arvutistamise oht"]];

@@ -135,6 +135,18 @@
   height: 33.3%;
 }
 
+.link-list li{
+  cursor: pointer;
+}
+
+.pns-graphs p{
+  text-align: left;
+}
+
+.pns-graphs {
+  text-align: left;
+}
+
 .button-style {
   cursor: pointer;
   background-color: black;

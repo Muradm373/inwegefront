@@ -38,7 +38,6 @@ class PensionGraph extends Component {
       .get(url)
       .then((response) => response.data)
       .then((data) => {
-        console.log(data.payload.pensionDistributionList);
         this.parseData(data.payload.pensionDistributionList);
       });
   }
@@ -77,6 +76,9 @@ class PensionGraph extends Component {
     let dataGraph = this.state.data;
 
     dataGraph = { men: menGraphObject, women: womenGraphObject };
+
+    console.log(this.props.type);
+    console.log(dataGraph);
 
     this.setState({ data: dataGraph });
   }

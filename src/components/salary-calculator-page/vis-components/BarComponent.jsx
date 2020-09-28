@@ -25,7 +25,7 @@ class BarComponent extends Component {
       }
         <FlexibleWidthXYPlot height={130} animation="gentle">
           <XAxis
-            tickTotal={10}
+            tickTotal={7}
             style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
           />
           <HorizontalBarSeries

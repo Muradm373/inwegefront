@@ -309,7 +309,7 @@ class Main extends Component {
                     <img
                       src={require("./resources/icon.png")}
                       alt="Home"
-                      style={{ width: "130px", backgroundColor: "#FFFFFF" }}
+                      style={{ width: "130px", backgroundColor: "#FFFFFF", cursor: "pointer" }}
                     />
                   </a>
                 </div>
@@ -382,7 +382,7 @@ class Main extends Component {
             <div className="col-md-2 ml-5">
               <div className=" row site-section pt-0 col-md-3 mb-md-0">
                 <h3>{main[3]}</h3>
-                <ul className="list-unstyled">
+                <ul className="link-list">
                   <li>
                     <a onClick={this.changeMenu}>{tabs[0]}</a>
                   </li>

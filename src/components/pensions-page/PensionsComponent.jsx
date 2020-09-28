@@ -13,13 +13,13 @@ class PensionsComponent extends Component {
     return (
       <div className="w-75 text-center mx-auto card-shadow-forecast">
         <div className="methodology-component" id="pensions-component">
-          <div style={{ textAlign: "left" }}>
-            <p style={{ textAlign: "left" }}>{pensionsDescription[0][0]}</p>
+          <div className="pns-graphs">
+            <p >{pensionsDescription[0][0]}</p>
             <br></br>
-            <p style={{ textAlign: "left" }}>{pensionsDescription[0][1]}</p>
-            <p style={{ textAlign: "left" }}>{pensionsDescription[0][2]}</p>
-            <p style={{ textAlign: "left" }}>{pensionsDescription[0][3]}</p>
-            <p style={{ textAlign: "left" }}>{pensionsDescription[0][4]}</p>
+            <p >{pensionsDescription[0][1]}</p>
+            <p >{pensionsDescription[0][2]}</p>
+            <p >{pensionsDescription[0][3]}</p>
+            <p >{pensionsDescription[0][4]}</p>
           </div>
 
           <br></br>
@@ -44,7 +44,7 @@ class PensionsComponent extends Component {
                 type={"palk"}
                 unit="€"
                 genderLabel={genderLabel}
-                tickTotal="10"
+                tickTotal="8"
                 occupation={""}
               ></PensionGraph>
             </div>
