@@ -392,12 +392,11 @@ class Main extends Component {
           </div>
         </div>
         <footer className="footer footer-dot" role="contentinfo">
-          <div className="">
+
             <div className="row graph-component-cards" >
 
               <div className="col-md-2 ml-5">
-                <div className="row site-section pt-0">
-                  <div className="col-md-3 mb-md-0">
+                  <div className=" row site-section pt-0 col-md-3 mb-md-0">
                     <h3>{main[3]}</h3>
                     <ul className="list-unstyled">
                       <li>
@@ -419,7 +418,6 @@ class Main extends Component {
                   </div>
 
           
-                </div>
               </div>
               <div className="col-md-4">
                 <SubscriptionComponent></SubscriptionComponent>
@@ -432,7 +430,7 @@ class Main extends Component {
                 
                 <img
                   src={require("./resources/ERDF_h_est.jpg")}
-                  style={{ width: "200px", margin: "40px" }}
+                  style={{ width: "140px", margin: "40px" }}
                   alt=""
                 />
               </div>
@@ -447,7 +445,6 @@ class Main extends Component {
                 </p>
               </div>
             </div>
-          </div>
         </footer>
 
         <a  className="back-to-top">

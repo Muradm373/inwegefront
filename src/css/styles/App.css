@@ -585,7 +585,6 @@ p {
 .Row {
   display: table;
   table-layout: fixed; /*Optional*/
-  border-spacing: 10px; /*Optional*/
 }
 .Column {
   display: table-cell;
