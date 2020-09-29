@@ -5,7 +5,7 @@ const initState = {
   gender: genderLabel[0],
   wage: undefined,
   entities: [],
-  description: noInformationLabel
+  description: ""
 };
 
 const rootReduce = (state = initState, action) => {

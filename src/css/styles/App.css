@@ -304,7 +304,7 @@ font {
   line-height: 26px;
 }
 .nav-card {
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: row;
 }
@@ -781,6 +781,13 @@ body {
   width: 70%;
 }
 
+.centered-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+  width: 40%;
+}
 
 @media only screen and (max-width: 600px) {
   .legends {
@@ -788,6 +795,24 @@ body {
     margin-top: 0px;
   }
   .age-bar {
+    width: 100%;
+  }
+
+  .black-bg {
+    background-color: #000;
+    width: 100%;
+    margin: auto;
+    
+  }
+  .nav-card {
+    width: 100%;
+  }
+
+  .footer-dot {
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
   }
 }
@@ -800,7 +825,7 @@ body {
 .input-stats {
   box-sizing: border-box;
   font-family: Roboto;
-  width: 90%;
+  width: 100%;
   border: 1px solid #fff;
   padding: 10px;
   border-color: white;

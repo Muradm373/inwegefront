@@ -332,6 +332,18 @@ const submitLabelEng = [
   "Saada"
 ]
 
+const ageTickLabelEng = [
+  "Age",
+  "Возраст",
+  "Vanus"
+]
+
+const propsLabelEng = [
+  "Prop",
+  "Реквизит",
+  "Rekvisiidid"
+]
+
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -404,6 +416,8 @@ export default function changeLanguage(language) {
   gapsPensionLabel = gapsPensionLabelEng[i];
   submittedLabel = submittedLabelEng[i];
   submitLabel = submitLabelEng[i];
+  ageTickLabel = ageTickLabelEng[i];
+  propsLabel = propsLabelEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -471,3 +485,5 @@ export let gapsWageLabel = gapsWageLabelEng[0];
 export let gapsPensionLabel = gapsPensionLabelEng[0];
 export let submittedLabel = submittedLabelEng[0];
 export let submitLabel = submitLabelEng[0];
+export let ageTickLabel = ageLabelEng[0];
+export let propsLabel = propsLabelEng[0];

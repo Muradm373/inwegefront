@@ -286,7 +286,7 @@ class Main extends Component {
                       <ul>
                         <li className="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-et wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
                           <a
-                            href="/ee"
+                            href="/"
                             className="wpml-ls-link"
                             onClick={() => this.refresh("es")}
                           >
@@ -304,7 +304,7 @@ class Main extends Component {
                         </li>
                         <li className="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-en wpml-ls-current-language wpml-ls-last-item wpml-ls-item-legacy-list-horizontal">
                           <a
-                            href="/"
+                            href="/en"
                             onClick={() => this.refresh("en")}
                             className="wpml-ls-link"
                           >
@@ -355,8 +355,10 @@ class Main extends Component {
                       src={require("./resources/logo.svg")}
                       alt="Home"
                       style={{
-                        width: "130px",
+                        width: "153px",
                         backgroundColor: "#FFFFFF",
+                        marginTop: "13px",
+                        marginLeft: "-7px",
                         cursor: "pointer",
                       }}
                     />
@@ -391,7 +393,7 @@ class Main extends Component {
                   id="block-mainnavigationenglish"
                   className="block block-menu navigation menu--main-en mt-0"
                 >
-                  <ul data-region="header_bottom" className="menu">
+                  <ul data-region="header_bottom" className="menu" style={{backgroundColor:"white", height: "50px"}}>
                     <li className="menu-item menu-item--expanded">
                       <span
                         tabIndex="0"
@@ -451,7 +453,8 @@ class Main extends Component {
         </div>
         <footer className="footer footer-dot" role="contentinfo">
           <div className="nav-card">
-            <div className="col-md-3 ml-5 black-bg h-50">
+            <div className="col-md-3 h-50">
+              <div className=" black-bg">
                 <h2 className="nav-header mb-1">{main[3]}</h2>
                 <ul className="link-list">
                   <li>
@@ -470,24 +473,26 @@ class Main extends Component {
                     <a onClick={this.changeMenu}>{tabs[4]}</a>
                   </li>
                 </ul>
+                </div>
             </div>
-            <div className="col-md-4 ml-5">
+            <div className="col-md-3">
               <SubscriptionComponent></SubscriptionComponent>
             </div>
-            <div className="col-md-3 m-3 ml-5 ">
+            <div className="col-md-3 ">
               <Feedback></Feedback>
             </div>
-            <div className="col-md-3 ml-5">
+            <div className="col-md-3">
               <img
                 src={require("./resources/ERDF_h_est.jpg")}
                 style={{ width: "200px" }}
+                className="centered-image"
                 alt=""
               />
             </div>
           </div>
 
-          <div className="justify-content-center text-center mt-4">
-              <p className="copyright">
+          <div className="justify-content-center text-center mt-5">
+              <p className="copyright black-bg w-25 p-1 m-auto">
                 &copy; {copyrightLabel}
               </p>
           </div>

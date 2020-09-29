@@ -106,11 +106,13 @@ function Graph(props) {
         <HorizontalGridLines
         className="grid-line-horizontal"
         />
+        {men.length !== 0 ?
         <XAxis
         className="grid-axis"
           tickTotal={isMobile?5:10}
           tickFormat={(v) => `€${v}`}
-        />
+        />:<></>
+        }
         <YAxis
         className="grid-axis"
           tickTotal={4}

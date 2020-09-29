@@ -7,7 +7,7 @@ import {
   VerticalBarSeries,
   Hint,
 } from "react-vis";
-import { API_URL } from "../../../dictionary/text";
+import { API_URL, ageTickLabel, propsLabel } from "../../../dictionary/text";
 import axios from "axios";
 
 class AgeBarChartComponent extends Component {
@@ -86,6 +86,7 @@ class AgeBarChartComponent extends Component {
   };
 
   render() {
+    console.log(this.state.greenData)
     return (
       <div
         className="row justify-content-center text-center"
@@ -99,10 +100,14 @@ class AgeBarChartComponent extends Component {
           onMouseLeave={() => this.setState({ value: false })}
         >
           <HorizontalGridLines />
-          <XAxis tickTotal={this.state.tickTotal} title="Ages" />
-          <YAxis title="props" tickFormat={function tickFormat(d){
+          <XAxis tickTotal={this.state.tickTotal} title={ageTickLabel} />
+
+          {this.state.greenData[0].x !== "0" ?
+          <YAxis title={propsLabel} tickFormat={function tickFormat(d){
     return d+"%";
-   }} />
+   }} /> : 
+   <></>
+  }
           <VerticalBarSeries
             color="#3F1A84"
             opacity="0.95"

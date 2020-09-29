@@ -9,9 +9,9 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={() => <Main lang="en" />} />
+          <Route exact path="/" render={() => <Main lang="es" />} />
           <Route exact path="/ru/" render={() => <Main lang="ru" />} />
-          <Route exact path="/ee/" render={() => <Main lang="es" />} />
+          <Route exact path="/en/" render={() => <Main lang="en" />} />
           <Route path="/admin"  render={() => <Main type="admin" />}/>
         </Switch>
       </Router>

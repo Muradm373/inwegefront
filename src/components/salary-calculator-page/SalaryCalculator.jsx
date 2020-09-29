@@ -6,7 +6,7 @@ import {
   differenceLabel,
   genderLabel,
   ageLabel,
-  menColor, noInformationLabel,
+  menColor,
   salary,
   searchLabel,
   sideParagraph1,
