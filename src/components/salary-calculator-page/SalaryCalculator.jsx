@@ -204,6 +204,7 @@ class SalaryCalculator extends Component {
                   </div>
                 }
 
+                
           <Graph
                   entities={this.props.entities}
                   menColor={menColor}

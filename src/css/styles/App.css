@@ -769,7 +769,7 @@ body {
 }
 .graph-legends{
    margin-top: -300px;
-   margin-left: 90%;
+   margin-left: 80%;
 }
 
 .legends {
@@ -777,11 +777,18 @@ body {
   margin-top: -120px;
 }
 
+.age-bar {
+  width: 70%;
+}
+
 
 @media only screen and (max-width: 600px) {
   .legends {
     width: 100%;
     margin-top: 0px;
+  }
+  .age-bar {
+    width: 100%;
   }
 }
 

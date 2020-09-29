@@ -451,7 +451,7 @@ class Main extends Component {
         </div>
         <footer className="footer footer-dot" role="contentinfo">
           <div className="nav-card">
-            <div className="col-md-4 ml-5 black-bg">
+            <div className="col-md-3 ml-5 black-bg h-50">
                 <h2 className="nav-header mb-1">{main[3]}</h2>
                 <ul className="link-list">
                   <li>

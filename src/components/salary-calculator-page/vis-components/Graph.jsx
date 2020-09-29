@@ -99,7 +99,7 @@ function Graph(props) {
       />
 
       
-      <FlexibleWidthXYPlot height={350} animation="gentle">
+      <FlexibleWidthXYPlot height={350}  margin={{right: 20}} animation="gentle">
         <VerticalGridLines
         className="grid-line-vertical"
         />

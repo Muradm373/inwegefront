@@ -89,7 +89,7 @@ class AgeBarChartComponent extends Component {
     return (
       <div
         className="row justify-content-center text-center"
-        style={{ width: "70%" }}
+        className="age-bar"
       >
         <FlexibleWidthXYPlot
           xType="ordinal"
