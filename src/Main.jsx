@@ -492,7 +492,7 @@ class Main extends Component {
           </div>
 
           <div className="justify-content-center text-center mt-5">
-              <p className="copyright black-bg w-25 p-1 m-auto">
+              <p className="copyright black-bg p-1 m-auto">
                 &copy; {copyrightLabel}
               </p>
           </div>

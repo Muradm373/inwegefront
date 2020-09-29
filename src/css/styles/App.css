@@ -429,6 +429,7 @@ font {
 
 .footer .copyright {
   margin-bottom: 0px;
+  width: 25%;
 }
 
 .footer .copyright,
@@ -814,6 +815,11 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+  }
+
+  .footer .copyright {
+    margin-bottom: 0px;
+    width: 50%;
   }
 }
 
