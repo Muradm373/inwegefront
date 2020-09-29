@@ -14,6 +14,7 @@ import {
 } from "../../../dictionary/text";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
+import { useMediaQuery } from 'react-responsive';
 
 
 const display = (myWage, mean, men) => {
@@ -74,6 +75,8 @@ function Graph(props) {
       ? parseInt(data.menMean)
       : parseInt(data.womenMean);
 
+  const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
+
   return (
     <div className="centered" id="entity" className="graph">
       <BarComponent
@@ -105,7 +108,7 @@ function Graph(props) {
         />
         <XAxis
         className="grid-axis"
-          tickTotal={10}
+          tickTotal={isMobile?5:10}
           tickFormat={(v) => `€${v}`}
         />
         <YAxis

@@ -350,9 +350,9 @@ class Main extends Component {
                   id="block-stat-branding"
                   className="block block-system block-system-branding-block"
                 >
-                  <a onClick={this.changeMenu} rel="home" className="site-logo">
+                  <a onClick={this.changeMenu} rel="home" className="site-logo m-3">
                     <img
-                      src={require("./resources/icon.png")}
+                      src={require("./resources/logo.svg")}
                       alt="Home"
                       style={{
                         width: "130px",
@@ -389,7 +389,7 @@ class Main extends Component {
                   role="navigation"
                   aria-labelledby="block-mainnavigationenglish-menu"
                   id="block-mainnavigationenglish"
-                  className="block block-menu navigation menu--main-en"
+                  className="block block-menu navigation menu--main-en mt-0"
                 >
                   <ul data-region="header_bottom" className="menu">
                     <li className="menu-item menu-item--expanded">
@@ -450,10 +450,9 @@ class Main extends Component {
           </div>
         </div>
         <footer className="footer footer-dot" role="contentinfo">
-          <div className="row graph-component-cards">
-            <div className="col-md-2 ml-5">
-              <div className=" row site-section pt-0 col-md-3 mb-md-0">
-                <h3>{main[3]}</h3>
+          <div className="nav-card">
+            <div className="col-md-4 ml-5 black-bg">
+                <h2 className="nav-header mb-1">{main[3]}</h2>
                 <ul className="link-list">
                   <li>
                     <a onClick={this.changeMenu}>{tabs[0]}</a>
@@ -471,30 +470,26 @@ class Main extends Component {
                     <a onClick={this.changeMenu}>{tabs[4]}</a>
                   </li>
                 </ul>
-              </div>
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 ml-5">
               <SubscriptionComponent></SubscriptionComponent>
             </div>
-            <div className="col-md-3 m-3">
-              <h3>{main[2]}</h3>
+            <div className="col-md-3 m-3 ml-5 ">
               <Feedback></Feedback>
             </div>
-            <div className="col-md-2">
+            <div className="col-md-3 ml-5">
               <img
                 src={require("./resources/ERDF_h_est.jpg")}
-                style={{ width: "140px", margin: "40px" }}
+                style={{ width: "200px" }}
                 alt=""
               />
             </div>
           </div>
 
-          <div className="row justify-content-center text-center mt-4">
-            <div className="col-md-7">
+          <div className="justify-content-center text-center mt-4">
               <p className="copyright">
                 &copy; {copyrightLabel}
               </p>
-            </div>
           </div>
         </footer>
 

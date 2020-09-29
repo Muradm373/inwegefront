@@ -21,6 +21,7 @@ class AgeBarChartComponent extends Component {
         { x: "0", y: 0 },
       ],
       value: false,
+      tickTotal: 10
     };
 
     this.getAgeData = this.getAgeData.bind(this);
@@ -29,7 +30,19 @@ class AgeBarChartComponent extends Component {
 
   componentWillReceiveProps(props) {
     this.getAgeData(props.isco);
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
   }
+
+  resize() {
+    this.setState({tickTotal: window.innerWidth <= 760?3:10});
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize.bind(this));
+  }
+
+
 
   structurizeData() {
     let categories = [];
@@ -86,7 +99,7 @@ class AgeBarChartComponent extends Component {
           onMouseLeave={() => this.setState({ value: false })}
         >
           <HorizontalGridLines />
-          <XAxis tickTotal={10} title="Ages" />
+          <XAxis tickTotal={this.state.tickTotal} title="Ages" />
           <YAxis title="props" tickFormat={function tickFormat(d){
     return d+"%";
    }} />

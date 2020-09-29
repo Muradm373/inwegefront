@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { API_URL, detailsLabel, descriptionLabel } from "../../../dictionary/text";
+import { API_URL, detailsLabel, descriptionLabel, submittedLabel, submitLabel, main } from "../../../dictionary/text";
 import { useAlert } from "react-alert";
 import "../../../css/mnimi.css";
 
@@ -23,11 +23,12 @@ export function Feedback(props) {
     setEmail("");
     setDescription("");
 
-    alert.show("Message Submitted");
+    alert.show({submittedLabel});
   };
 
   return (
-    <div>
+    <div className="black-bg">
+      <p className="nav-header">{main[2]}</p>
       <form onSubmit={sendFeedback}>
         <br></br>
         <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
@@ -54,6 +55,7 @@ export function Feedback(props) {
             required
             onChange={(e) => setEmail(e.target.value)}
             value={email}
+            
           />
           <label for="input-email" alt="Email" placeholder="Email"></label>
         </p>
@@ -70,7 +72,7 @@ export function Feedback(props) {
           value={details}
           onChange={(e) => setDetails(e.target.value)}
         />
-        <input type="Submit" className="black-button"></input>
+        <input type="Submit" className="button btn-01 btn--white js-form-submit form-submit mt-2" value={submitLabel}></input>
       </form>
     </div>
   );

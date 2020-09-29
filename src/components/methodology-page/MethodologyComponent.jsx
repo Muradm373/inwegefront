@@ -5,7 +5,7 @@ class MethodologyComponent extends Component {
 
   render() {
     return (
-      <div className="w-75 text-center mx-auto card-shadow-forecast">
+      <div className="w-75 text-center mx-auto card-shadow-forecast m-3">
         <div className="methodology-component">
           <p className="methodology-header">{methodology.header}</p>
           <br></br>

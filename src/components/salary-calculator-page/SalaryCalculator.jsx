@@ -70,7 +70,6 @@ class SalaryCalculator extends Component {
         iscos: [],
         isco: "",
         region: "",
-        description: noInformationLabel,
         occupation: "",
         mean: [],
         code: "",
@@ -109,7 +108,7 @@ class SalaryCalculator extends Component {
   render() {
     return (
         <div className="graph-component graph-component-cards">
-            <div className="card-shadow card-occupation-selector">
+            <div className="card-shadow card-occupation-selector m-3">
               <p
                 style={{
                   fontFamily: "Roboto",
@@ -189,7 +188,7 @@ class SalaryCalculator extends Component {
               </div>
             </div>
 
-            <div className="card-shadow card-dynamic-map">
+            <div className="card-shadow card-dynamic-map m-3">
               <div>
                 {
                   <div className="map_selector p-3 " style={{ width: "100%" }}>

@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAlert } from "react-alert";
 import "../../css/mnimi.css";
-import { API_URL, newsletter } from "../../dictionary/text";
+import { API_URL, newsletter, submitLabel} from "../../dictionary/text";
 
-export function   SubscriptionComponent(props) {
+export function SubscriptionComponent(props) {
   const [email, setEmail] = useState("");
   const alert = useAlert();
 
@@ -27,23 +27,12 @@ export function   SubscriptionComponent(props) {
   };
 
   return (
-    <div className="subscription-box">
-      <p
-        style={{
-          flex: 5,
-          display: "flex",
-          textAlign: "left",
-          fontFamily: "Roboto",
-          fontSize: "16px",
-          lineHeight: "20px",
-          fontWeight: "normal",
-          marginBottom: "10px",
-          color: "#FFF",
-          
-        }}
+    <div className="subscription-box black-bg">
+      <p className="nav-header"
       >
         {newsletter}
       </p>
+      <br></br>
       <form onSubmit={sendSubscription}>
         <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
           <input
@@ -54,7 +43,7 @@ export function   SubscriptionComponent(props) {
           />
           <label for="input" alt="Email" placeholder="Email"></label>
         </p>
-        <input type="Submit" className="black-button"></input>
+        <input type="Submit" className="button btn-01 btn--white use-ajax js-form-submit form-submit" value={submitLabel}></input>
       </form>
     </div>
   );

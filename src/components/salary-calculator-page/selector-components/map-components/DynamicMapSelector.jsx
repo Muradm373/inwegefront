@@ -161,7 +161,7 @@ class DynamicMapSelector extends Component {
                 >
                   {this.state.mapType!=="Gender Wage Gap"?
                   e.length > 1 ? `€${e[0].item} - €${e[e.length - 1].item}` : `€${e[0].item}`:
-                  e.length > 1 ? `%${e[0].percentage.toFixed(2)} - %${e[e.length - 1].percentage.toFixed(2)}` : `%${e[0].percentage.toFixed(2)}`
+                  e.length > 1 ? `${e[0].percentage.toFixed(2)}% - ${e[e.length - 1].percentage.toFixed(2)}%` : `${e[0].percentage.toFixed(2)}%`
                 }
 
                 </p>
@@ -571,7 +571,6 @@ class DynamicMapSelector extends Component {
         <ReactTooltip>{this.state.content}</ReactTooltip>
         <div
           className="legends"
-          style={{ width: "200px", marginTop: "-120px" }}
         >
           {this.getLegends()}
           <div

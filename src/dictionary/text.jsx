@@ -318,8 +318,19 @@ const gapsWageLabelEng =
 
 
 const gapsPensionLabelEng = 
-  ["Pension Gap","Пенсионная разница","Pensionilõhe"];
+  ["Pension Gap","Разница в пенсии","Pensionilõhe"];
 
+const submittedLabelEng = [
+  "Message Submitted",
+  "Сообщение отправлено",
+  "Sõnum on esitatud"
+]
+
+const submitLabelEng = [
+  "Submit",
+  "Отправить",
+  "Saada"
+]
 
 export default function changeLanguage(language) {
   let i;
@@ -391,6 +402,8 @@ export default function changeLanguage(language) {
   replacementNeeds2 = replacementNeeds2Eng[i];
   gapsWageLabel = gapsWageLabelEng[i];
   gapsPensionLabel = gapsPensionLabelEng[i];
+  submittedLabel = submittedLabelEng[i];
+  submitLabel = submitLabelEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -456,3 +469,5 @@ export let replacementNeeds1 = replacementNeeds1Eng[0];
 export let replacementNeeds2 = replacementNeeds2Eng[0];
 export let gapsWageLabel = gapsWageLabelEng[0];
 export let gapsPensionLabel = gapsPensionLabelEng[0];
+export let submittedLabel = submittedLabelEng[0];
+export let submitLabel = submitLabelEng[0];

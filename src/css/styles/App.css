@@ -171,19 +171,17 @@
 }
 
 .card-shadow {
-  width: 250px;
+  width: 25%;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.098);
   background-color: #fff;
   text-align: center;
   padding: 35px;
-  margin: 10px;
 }
 .card-shadow-forecast {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.098);
   background-color: #fff;
   text-align: center;
   padding: 35px;
-  margin: 10px;
 }
 
 .card-shadow p,
@@ -298,6 +296,18 @@ font {
   flex-direction: row;
 }
 
+.nav-header {
+  text-align: left;
+  display: block;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 26px;
+}
+.nav-card {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+}
 
 .mobile-rows {
   display: flex;
@@ -339,6 +349,12 @@ font {
 
 @media screen and (max-width: 1000px) {
   .graph-component-cards {
+    width: 93%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-card {
     display: flex;
     flex-direction: column;
   }
@@ -447,6 +463,8 @@ font {
 }
 
 @media screen and (max-width: 992px) {
+
+
   .hero-section .wave {
     bottom: -180px;
   }
@@ -499,12 +517,6 @@ font {
   }
 }
 
-@media screen and (min-width: 700px) {
-  .region-select {
-    visibility: hidden;
-    display: none;
-  }
-}
 
 @media screen and (max-width: 2000px) {
   .gender-selector {
@@ -523,6 +535,8 @@ font {
     padding-right: 12px;
     padding-left: 12px;
   }
+
+
 }
 
 .male {
@@ -651,15 +665,19 @@ body {
 
 .body-dot {
   background: hsla(0, 0%, 100%, 0.1);
-  background-image: radial-gradient(rgb(0, 0, 0) 5%, transparent 0);
-  background-size: 1% 2%;
+  background-image: url('../pattern.svg');
+
 }
 
 .footer-dot {
   background: hsla(209, 100%, 47%, 0.1);
   background-color: #000;
-  background-image: radial-gradient(hsla(0, 100%, 100%, 0.40) 5%, transparent 0);
-  background-size: 1% 2%;
+  background-image: url('../pattern-white.svg');
+
+}
+
+.black-bg {
+  background-color: #000;
 }
 
 .sidenav {
@@ -752,6 +770,19 @@ body {
 .graph-legends{
    margin-top: -300px;
    margin-left: 90%;
+}
+
+.legends {
+  width: 200px;
+  margin-top: -120px;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .legends {
+    width: 100%;
+    margin-top: 0px;
+  }
 }
 
 .lead {
