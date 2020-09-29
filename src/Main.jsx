@@ -452,7 +452,7 @@ class Main extends Component {
           </div>
         </div>
         <footer className="footer footer-dot" role="contentinfo">
-          <div className="nav-card">
+          <div className="nav-card p-2">
             <div className="col-md-3 h-50">
               <div className=" black-bg">
                 <h2 className="nav-header mb-1">{main[3]}</h2>
@@ -475,17 +475,17 @@ class Main extends Component {
                 </ul>
                 </div>
             </div>
-            <div className="col-md-3">
+            <div className="col-md-3 p-2">
               <SubscriptionComponent></SubscriptionComponent>
             </div>
-            <div className="col-md-3 ">
+            <div className="col-md-3 p-2">
               <Feedback></Feedback>
             </div>
             <div className="col-md-3">
               <img
                 src={require("./resources/ERDF_h_est.jpg")}
-                style={{ width: "200px" }}
-                className="centered-image"
+                style={{width: "100%"}}
+                className="centered-image p-3"
                 alt=""
               />
             </div>

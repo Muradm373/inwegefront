@@ -107,7 +107,7 @@ class SalaryCalculator extends Component {
 
   render() {
     return (
-        <div className="graph-component graph-component-cards">
+        <div className="graph-component graph-component-cards mb-5">
             <div className="card-shadow card-occupation-selector m-3">
               <p
                 style={{

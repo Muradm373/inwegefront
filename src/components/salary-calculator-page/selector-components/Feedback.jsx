@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { API_URL, detailsLabel, descriptionLabel, submittedLabel, submitLabel, main } from "../../../dictionary/text";
+import { API_URL, detailsLabel, descriptionLabel, submittedLabel, submitLabel, main,emailLabel } from "../../../dictionary/text";
 import { useAlert } from "react-alert";
 import "../../../css/mnimi.css";
 
@@ -57,7 +57,7 @@ export function Feedback(props) {
             value={email}
             
           />
-          <label for="input-email" alt="Email" placeholder="Email"></label>
+          <label for="input-email" alt={emailLabel} placeholder={emailLabel}></label>
         </p>
 
         <textarea
@@ -72,7 +72,7 @@ export function Feedback(props) {
           value={details}
           onChange={(e) => setDetails(e.target.value)}
         />
-        <input type="Submit" className="button btn-01 btn--white js-form-submit form-submit mt-2" value={submitLabel}></input>
+        <input type="Submit" className="button btn-01 btn--white js-form-submit form-submit mt-2 w-100" value={submitLabel}></input>
       </form>
     </div>
   );

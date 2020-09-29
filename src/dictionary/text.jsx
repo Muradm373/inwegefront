@@ -344,6 +344,12 @@ const propsLabelEng = [
   "Rekvisiidid"
 ]
 
+const emailLabelEng = [
+  "Email",
+  "Электронная почта",
+  "E-post"
+]
+
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -418,6 +424,7 @@ export default function changeLanguage(language) {
   submitLabel = submitLabelEng[i];
   ageTickLabel = ageTickLabelEng[i];
   propsLabel = propsLabelEng[i];
+  emailLabel = emailLabelEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -487,3 +494,4 @@ export let submittedLabel = submittedLabelEng[0];
 export let submitLabel = submitLabelEng[0];
 export let ageTickLabel = ageLabelEng[0];
 export let propsLabel = propsLabelEng[0];
+export let emailLabel = emailLabelEng[0];

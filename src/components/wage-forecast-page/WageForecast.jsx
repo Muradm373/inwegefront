@@ -34,7 +34,7 @@ class WageForecast extends Component {
 
   render() {
     return (
-      <div className="w-75 text-center mx-auto card-shadow-forecast">
+      <div className="w-75 text-center mx-auto card-shadow-forecast mb-5">
         <div className="wageforecast-component ">
           <OccupationSelector
             onChange={this.onIscoChange}

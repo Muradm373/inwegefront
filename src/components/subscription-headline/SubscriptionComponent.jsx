@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAlert } from "react-alert";
 import "../../css/mnimi.css";
-import { API_URL, newsletter, submitLabel} from "../../dictionary/text";
+import { API_URL, emailLabel, newsletter, submitLabel} from "../../dictionary/text";
 
 export function SubscriptionComponent(props) {
   const [email, setEmail] = useState("");
@@ -41,9 +41,9 @@ export function SubscriptionComponent(props) {
             required
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label for="input" alt="Email" placeholder="Email"></label>
+          <label for="input" alt={emailLabel} placeholder={emailLabel}></label>
         </p>
-        <input type="Submit" className="button btn-01 btn--white use-ajax js-form-submit form-submit" value={submitLabel}></input>
+        <input type="Submit" className="button btn-01 btn--white use-ajax js-form-submit form-submit w-100" value={submitLabel}></input>
       </form>
     </div>
   );
