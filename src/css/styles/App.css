@@ -755,6 +755,10 @@ body {
  color: black;
 }
 
+.methodology-paper {
+  width: 50%;
+}
+
 .graph{
   margin-top: 15px;
 }
@@ -819,6 +823,10 @@ body {
   .age-bar {
     width: 100%;
   }
+  .methodology-paper {
+    width: 95%;
+    padding: 0%;
+  }  
 
   .black-bg {
     background-color: #000;
@@ -826,6 +834,7 @@ body {
     margin: auto;
     
   }
+
   .nav-card {
     width: 100%;
     display: block;
