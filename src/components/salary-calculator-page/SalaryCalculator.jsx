@@ -107,15 +107,11 @@ class SalaryCalculator extends Component {
     return (
       <div className="graph-component graph-component-cards mb-5">
         <div className="card-shadow card-occupation-selector m-3">
-          <p
-            style={{
-              fontFamily: "Roboto",
-              fontSize: "18px",
-              lineHeight: "22px",
-            }}
+          <h2
           >
             {searchLabel}
-          </p>
+          </h2>
+          <br></br>
           <p
             style={{
               textAlign: "left",

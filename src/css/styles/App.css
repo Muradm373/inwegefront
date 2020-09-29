@@ -810,6 +810,13 @@ body {
   line-height: 37px;
   color: #000;
 }
+
+.card-occupation-selector h2 {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  margin: 6px;
+}
 .block-page-title-block p {
   text-align: justify;
   font-size: 14px;
