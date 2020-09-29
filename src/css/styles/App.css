@@ -172,13 +172,13 @@
 
 .card-shadow {
   width: 25%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.098);
+  box-shadow: 0 4px 80px 0px rgba(0, 0, 0, 0.03), 0 3px 5px 0 rgba(0, 0, 0, 0.096);
   background-color: #fff;
   text-align: center;
   padding: 35px;
 }
 .card-shadow-forecast {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.098);
+  box-shadow: 0 4px 80px 0px rgba(0, 0, 0, 0.03), 0 3px 5px 0 rgba(0, 0, 0, 0.096);
   background-color: #fff;
   text-align: center;
   padding: 35px;
@@ -190,7 +190,7 @@ font {
 }
 
 .card-shadow-wide {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.095);
+  box-shadow: 0 4px 80px 0px rgba(0, 0, 0, 0.03), 0 3px 5px 0 rgba(0, 0, 0, 0.96);
   background-color: #fff;
   text-align: center;
   padding: 35px;
@@ -656,6 +656,7 @@ section {
 }
 
 body {
+  background-color: white;
   margin: 0;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
@@ -665,9 +666,11 @@ body {
 }
 
 .body-dot {
+  position: relative;
+  height: 80%;
   background: hsla(0, 0%, 100%, 0.1);
   background-image: url('../pattern.svg');
-
+  
 }
 
 .footer-dot {
@@ -789,6 +792,25 @@ body {
   width: 40%;
 }
 
+.eu-fund {
+  text-align: center;
+  display: block;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.block-page-title-block h2 {
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 37px;
+  color: #000;
+}
+.block-page-title-block p {
+  text-align: justify;
+  font-size: 14px;
+  line-height: 18px;
+}
 @media only screen and (max-width: 600px) {
   .legends {
     width: 100%;

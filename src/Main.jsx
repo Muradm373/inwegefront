@@ -140,9 +140,7 @@ class Main extends Component {
 
           <header className="layout__header">
             <div className="layout__header__top">
-              <div className="content-link">
-                <a href="#main">Navigate to content</a>
-              </div>
+            
               <div className="u-container">
                 <div className="layout__header__top__left">
                   <nav className="navigation menu--app-menu">
@@ -451,6 +449,7 @@ class Main extends Component {
             <div className="container"></div>
           </div>
         </div>
+        
         <footer className="footer footer-dot" role="contentinfo">
           <div className="nav-card p-2">
             <div className="col-md-3 h-50">
@@ -483,11 +482,13 @@ class Main extends Component {
             </div>
             <div className="col-md-3">
               <img
-                src={require("./resources/ERDF_h_est.jpg")}
+                src={require("./resources/eu.jpg")}
                 style={{width: "100%"}}
                 className="centered-image p-3"
                 alt=""
               />
+              <p className="black-bg eu-fund"> This project was funded by the European Union’s Rights, Equality and Citizenship
+Program (2014-2020).</p>
             </div>
           </div>
 
