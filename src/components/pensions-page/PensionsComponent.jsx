@@ -15,7 +15,7 @@ import {
 class PensionsComponent extends Component {
   render() {
     return (
-      <div className="w-75 text-center mx-auto card-shadow-forecast m-3 mb-5">
+      <div className="text-center mx-auto card-shadow-forecast mb-5 pension-component">
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs">
             <p >{pensionDescription[0]}</p>

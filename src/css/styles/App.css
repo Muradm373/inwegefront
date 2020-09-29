@@ -296,6 +296,19 @@ font {
   flex-direction: row;
 }
 
+.graph-component {
+  margin-left: 4.2%;
+  margin-right: -1.4%;
+}
+
+.pension-component {
+  width: 74%;
+}
+
+.wage-forecast {
+  width: 74%;
+}
+
 .nav-header {
   text-align: left;
   display: block;
@@ -367,8 +380,6 @@ font {
 
   .card-occupation-selector {
     width: 100%;
-    margin-left: 3%;
-    margin-right: 3%;
   }
 
   .card-dynamic-map {
@@ -759,6 +770,9 @@ body {
   width: 50%;
 }
 
+.bar{
+  margin: 2%;
+}
 .graph{
   margin-top: 15px;
 }
@@ -834,6 +848,27 @@ body {
     width: 95%;
     padding: 0%;
   }  
+
+  .graph-component {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  
+  .pension-component {
+    width: 95%;
+  }
+  
+  .wage-forecast {
+    width: 95%;
+  }
+
+  .bar-holder{
+    padding: auto ;
+  }
+
+  .bar{
+    margin: auto;
+  }
 
   .black-bg {
     background-color: #000;

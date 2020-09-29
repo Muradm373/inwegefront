@@ -126,7 +126,7 @@ class WageBars extends Component {
   render() {
     return (
       <div>
-        <div>
+        <div className="bar-holders">
           <br />
           <br />
           {this.state.payload.wageCategory30_max !==
@@ -152,7 +152,7 @@ class WageBars extends Component {
             {/* <!-- Wages distribution --> */}
 
             <div
-              className="card m-3 col-sm rounded-0 p-0"
+              className="card  col-sm rounded-0 p-0 bar"
               style={{ width: "15rem" }}
             >
               <div className="p-2 carditem">2019</div>
@@ -161,7 +161,7 @@ class WageBars extends Component {
 
             {/* 2030 */}
             <div
-              className="card m-3 col-sm rounded-0 p-0"
+              className="card  col-sm rounded-0 p-0 bar"
               style={{ width: "15rem" }}
             >
               <div className="p-2 h-3 carditem">2030</div>
@@ -169,7 +169,7 @@ class WageBars extends Component {
             </div>
             {/* End of wages */}
             <div
-              className="card m-3 col-sm rounded-0 p-0"
+              className="card  col-sm rounded-0 p-0 bar"
               style={{ width: "15rem" }}
             >
               <div
@@ -199,7 +199,7 @@ class WageBars extends Component {
             </div>
 
             <div
-              className="card m-3 col-sm rounded-0 p-0"
+              className="card col-sm rounded-0 p-0 bar"
               style={{ width: "15rem" }}
               data-tip=""
               multiline="true"
