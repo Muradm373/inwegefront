@@ -348,15 +348,15 @@ class Main extends Component {
                   id="block-stat-branding"
                   className="block block-system block-system-branding-block"
                 >
-                  <a onClick={this.changeMenu} rel="home" className="site-logo m-3">
+                  <a onClick={this.changeMenu} rel="home" className="site-logo">
                     <img
                       src={require("./resources/logo.svg")}
                       alt="Home"
                       style={{
-                        width: "153px",
+                        width: "160px",
                         backgroundColor: "#FFFFFF",
-                        marginTop: "13px",
-                        marginLeft: "-7px",
+                        marginTop: "17px",
+                        marginLeft: "-12px",
                         cursor: "pointer",
                       }}
                     />
