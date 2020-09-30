@@ -353,10 +353,10 @@ class Main extends Component {
                       src={require("./resources/logo.svg")}
                       alt="Home"
                       style={{
-                        width: "160px",
+                        width: "147px",
                         backgroundColor: "#FFFFFF",
                         marginTop: "17px",
-                        marginLeft: "-12px",
+                        marginLeft: "8px",
                         cursor: "pointer",
                       }}
                     />
