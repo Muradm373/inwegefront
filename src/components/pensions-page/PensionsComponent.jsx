@@ -11,7 +11,8 @@ import {
   gapsWageLabel,
   gapsPensionLabel,
   checkMyPlanLabel,
-  pensionLink
+  pensionLink,
+  pensionHeader,
 } from "../../dictionary/text";
 
 class PensionsComponent extends Component {
@@ -20,12 +21,21 @@ class PensionsComponent extends Component {
       <div className="text-center mx-auto card-shadow-forecast mb-5 pension-component">
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs">
-            <p >{pensionDescription[0]}</p>
+            <p class="font-weight-bold text-center">
+              {" "}
+              {pensionHeader[0] +
+                "18.4%" +
+                pensionHeader[1] +
+                "10.2% " +
+                pensionHeader[2]}
+            </p>
             <br></br>
-            <p >{pensionDescription[1]}</p>
-            <p >{pensionDescription[2]}</p>
-            <p >{pensionDescription[3]}</p>
-            <p >{pensionDescription[4]}</p>
+            <p>{pensionDescription[0]}</p>
+            <br></br>
+            <p>{pensionDescription[1]}</p>
+            <p>{pensionDescription[2]}</p>
+            <p>{pensionDescription[3]}</p>
+            <p>{pensionDescription[4]}</p>
           </div>
 
           <br></br>
@@ -128,8 +138,13 @@ class PensionsComponent extends Component {
           ></PensionGraph>
         </div>
 
-        <input type="Submit" className="button btn-01" value={checkMyPlanLabel} onClick={()=> window.open(pensionLink, "_blank")}></input>
-       </div>
+        <input
+          type="Submit"
+          className="button btn-01"
+          value={checkMyPlanLabel}
+          onClick={() => window.open(pensionLink, "_blank")}
+        ></input>
+      </div>
     );
   }
 }

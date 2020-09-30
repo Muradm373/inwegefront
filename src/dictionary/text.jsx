@@ -380,6 +380,11 @@ const pensionFractionLabelEng = [
   ["Meeste pensioni osakaal viimase kuupalgagast on keskmiselt  ", "Meeste pensioni osakaal keskmisest palgast pensionile minemise aastal on keskmiselt ", " protsendipunkti ", "võrra suurem ", "võrra vähem ", "kui naistel."]
 ]
 
+const pensionHeaderEng = [
+  ["The current ", " gender wage gap decreases to ", " gender pension gap, but the gap does not disappear."],
+  ["Нынешний ", "-ый ", "гендерный разрыв в заработной плате уменьшается до ", "-ого гендерного разрыва в пенсиях, но разрыв не исчезает."],
+  ["Meeste ja naiste ", "-line kuupalkade erinevus ", "-liseks pensionide erinevuseks, aga ära ei kao. "]]
+
 const columnchartLabelEng = ['Average Wages', ' Средняя зар. плата', 'Keskmised Palgad'];
 
 export default function changeLanguage(language) {
@@ -463,6 +468,7 @@ export default function changeLanguage(language) {
   pensionDifferenceLabel2020 = pensionDifferenceLabel2020Eng[i];
   pensionFractionLabel = pensionFractionLabelEng[i];
   columnchartLabel = columnchartLabelEng[i];
+  pensionHeader = pensionHeaderEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -540,3 +546,5 @@ export let checkMyPlanLabel = checkMyPlanLabelEng[0];
 export let pensionDifferenceLabel2020 = pensionDifferenceLabel2020Eng[0];
 export let pensionFractionLabel = pensionFractionLabelEng[0];
 export let columnchartLabel = columnchartLabelEng[0];
+export let pensionHeader = pensionHeaderEng[0];
+
