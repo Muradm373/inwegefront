@@ -38,10 +38,10 @@ const differenceEng = [
   [
     "Mehed teenivad ",
     " rohkem ",
-    " vähem",
+    " vähem kui ",
     "",
-    " kui naised",
-    " kui mehed",
+    " naised",
+    " mehed",
     "Sina teenid",
     " keskmiselt",
   ],
@@ -84,9 +84,9 @@ const leaveAFeedBackEng = [
   "Saada tagasiside siit!",
 ];
 const averageDataEng = [
-  "Average over Estonia",
-  "Среднее по Эстонии",
-  "Eesti keskmine jaotus",
+  "Over Estonia",
+  "По Эстонии",
+  "Kogu Eesti",
 ];
 const aboutEng = [
   "Palgakompass.ee is a web application that aimes to create more transparancy in the labor market in Estonia using Estonian wage data. Any person can use Palgakompass to compare wages accross different occupations, counties and genders. The application also features a pensions and a wage forecast section.",
@@ -122,14 +122,14 @@ const overallEng = ["Overall in Estonia", "B Эстонии", "Üldiselt Eestis"
 
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
-  "To see the difference between your and average wages you can fill the boxes below.",
+  "Filling the boxes below allows you to compare your own wage to the average wage.",
   "Чтобы увидеть разницу между вашей и средней заработной платой, заполнитe поля ниже",
-  "Oma ja keskmise palga erinevuse nägemiseks võite täita järgmised lahtrid.",
+  "Oma brutopalga võrdlemiseks keskmise brutopalgaga võite täita järgmised lahtrid.  ",
 ];
 const sideParagraph2Eng = [
   "After selecting county from the map, you can search for a job by job title.",
   "После выбора региона на карте, вы можете выбрать профессию",
-  "Pärast kaardil piirkonna valimist saate valida töö",
+  "Kõigepealt valige kaardil maakond, seejärel valige amet.",
 ];
 const noDataLabelEng = [
   "No data for the selected occupation",
@@ -146,7 +146,7 @@ const medianWageEng = [
 const genderWageGapEng = [
   "Gender Wage Gap",
   "Разница в заработной плате",
-  "Palkade erinevus",
+  "Meeste ja naiste kuupalkade erinevus",
 ];
 const totalNumberOfEmployeesEng = [
   "Total number of full-time employees in Estonia ",
@@ -154,14 +154,14 @@ const totalNumberOfEmployeesEng = [
   "Täisajaga töötavate töötajate koguarv Eestis",
 ];
 const totalNumberOfEmployeesOccupationEng = [
-  ["Total number of employees in occupation ", " in "],
-  ["Общее количество работников по профессии ", ""],
-  ["Tööga hõivatud töötajate koguarv ", ""],
+  ["Total number of full-time employees in occupation ", " in "],
+  ["Общее количество работников по профессии ", ", "],
+  ["Täisajaga hõivatud töötajate koguarv ", ", "],
 ];
 const averageDataSpecEng = [
-  ["Average for occupation", "Average for county"],
-  ["Средний по профессии", "Средний по региону"],
-  ["Keskmine hõivatus", "Maakonna keskmine"],
+  ["Occupation", "County"],
+  ["По профессии", "Региону"],
+  ["Ametiala", "Maakond"],
 ];
 const computarizationEng = [
   [
@@ -199,10 +199,10 @@ const retirementEng = [
 ];
 const pensionLabelEng = [
   [
-    "Estimated wage in 2030 for occupation is between",
+    "In 2030 the estimated wage for this occupation is between",
     "and",
     "The risk of computerization for this occupation is",
-    "and the replacements needs due to retirement are",
+    "and the replacement needs due to retirement are ",
   ],
   [
     "Расчетная заработная плата в 2030 году для профессии между",
@@ -211,10 +211,10 @@ const pensionLabelEng = [
     "и потребности в заменах из-за выходa на пенсию",
   ],
   [
-    "Eeldatav töötasu suurus 2030. aastal on okupatsiooni ajal vahemikus",
-    "ja",
-    "Selle okupatsiooni arvutistamise oht on",
-    "ja asendajad vajavad pensionile jäämine on ",
+    "2030. aastal on sellele ametialal prognoositav brutotöötasu suurus vahemikus ",
+    "-",
+    "Selle on",
+    "oht, et inimese asendab arvuti ning vanusest tingitud asendusvajadus on  ",
   ],
 ];
 const lessMoreLabelEng = [
@@ -339,15 +339,27 @@ const ageTickLabelEng = [
 ]
 
 const propsLabelEng = [
-  "Prop",
-  "Реквизит",
-  "Rekvisiidid"
+  "",
+  "",
+  ""
 ]
 
 const emailLabelEng = [
   "Email",
   "Электронная почта",
   "E-post"
+]
+
+const occupationLabelEng = [
+  "Occupation",
+  "По профессии",
+  "Ametiala"
+]
+
+const countyLabelEng = [
+  "County",
+  "Pегион",
+  "Maakond"
 ]
 
 export default function changeLanguage(language) {
@@ -424,6 +436,8 @@ export default function changeLanguage(language) {
   submitLabel = submitLabelEng[i];
   ageTickLabel = ageTickLabelEng[i];
   propsLabel = propsLabelEng[i];
+  occupationLabel = occupationLabelEng[i];
+  countyLabel = countyLabelEng[i];
   emailLabel = emailLabelEng[i];
 }
 
@@ -495,3 +509,5 @@ export let submitLabel = submitLabelEng[0];
 export let ageTickLabel = ageLabelEng[0];
 export let propsLabel = propsLabelEng[0];
 export let emailLabel = emailLabelEng[0];
+export let occupationLabel = occupationLabelEng[0];
+export let countyLabel = countyLabelEng[0];

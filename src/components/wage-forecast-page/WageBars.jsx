@@ -25,6 +25,7 @@ class WageBars extends Component {
         computerizationRisk: levels[0],
         replacementsNeeds: levels[0],
       },
+      row: true
     };
   }
 
@@ -47,23 +48,38 @@ class WageBars extends Component {
   }
 
   componentWillReceiveProps(props) {
-    if(props.isco !== -1)
-      this.getWageForecast(props.isco);
-    else{
-      this.setState({payload: {
-        wageCategory19_min: 0,
-        wageCategory19_max: 0,
-        wageCategory30_min: 0,
-        wageCategory30_max: 0,
-        compProbability: 0.0,
-        meanWageSep19: 0,
-        meanWage30: 0,
-        share: 0,
-        computerizationRisk: levels[0],
-        replacementsNeeds: levels[0],
-      }})
+    if (props.isco !== -1) this.getWageForecast(props.isco);
+    else {
+      this.setState({
+        payload: {
+          wageCategory19_min: 0,
+          wageCategory19_max: 0,
+          wageCategory30_min: 0,
+          wageCategory30_max: 0,
+          compProbability: 0.0,
+          meanWageSep19: 0,
+          meanWage30: 0,
+          share: 0,
+          computerizationRisk: levels[0],
+          replacementsNeeds: levels[0],
+        },
+      });
     }
+
+
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
   }
+
+
+  resize() {
+    this.setState({row: window.innerWidth <= 1100?false:true});
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.resize.bind(this));
+  }
+
 
   calculateComputerizationRisk(value) {
     if (value < 0.3) return levels[0];
@@ -78,15 +94,13 @@ class WageBars extends Component {
   }
 
   itemColor(self, grade, type) {
-    console.log(grade+ " " + self);
-    if (levels[self] === grade && grade !== undefined){
-      if(type === "computerization")
-       return "pns-active-"+self;
-      else{
-        return "pns-active-comp-"+self;
+    console.log(grade + " " + self);
+    if (levels[self] === grade && grade !== undefined) {
+      if (type === "computerization") return "pns-active-" + self;
+      else {
+        return "pns-active-comp-" + self;
       }
-    }
-    else return "pns";
+    } else return "pns";
   }
 
   idToColor(itemId, id) {
@@ -103,19 +117,19 @@ class WageBars extends Component {
       items.push(
         <div className={"p-2 carditem " + this.idToColor(id, i)}>
           <p>
-            {1000 + (i - 2) * 500} EUR - {1499 + (i - 2) * 500} EUR
+            €{1000 + (i - 2) * 500} - €{1499 + (i - 2) * 500}
           </p>
         </div>
       );
     }
     let result = (
       <div>
-        <div className={"p-2 carditem " + this.idToColor(id, 9)}>
-          <p>{lessMoreLabel[0]} 4500 EUR</p>
+        <div className={"p-2 carditem " + this.idToColor(id, 1)}>
+          <p>{lessMoreLabel[1]} €1000 </p>
         </div>
         {items}
-        <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-          <p>{lessMoreLabel[1]} 1000 EUR</p>
+        <div className={"p-2 carditem " + this.idToColor(id, 9)}>
+          <p>{lessMoreLabel[0]} €4500 </p>
         </div>
       </div>
     );
@@ -138,8 +152,8 @@ class WageBars extends Component {
                 textAlign: "center",
               }}
             >
-              {pensionLabel[0]} {this.state.payload.wageCategory30_min}{" "}
-              {pensionLabel[1]} {this.state.payload.wageCategory30_max} EUR.{" "}
+              {pensionLabel[0]} €{this.state.payload.wageCategory30_min}{" "}
+              {pensionLabel[1]} €{this.state.payload.wageCategory30_max} .{" "}
               {pensionLabel[2]} {this.state.computerizationRisk}{" "}
               {pensionLabel[3]} {this.state.replacementsNeeds}.
               <isindex />
@@ -148,14 +162,16 @@ class WageBars extends Component {
             <></>
           )}
 
-          <div className="row">
+          <div className={this.state.row?"row":""}>
             {/* <!-- Wages distribution --> */}
 
             <div
               className="card  col-sm rounded-0 p-0 bar"
               style={{ width: "15rem" }}
             >
-              <div className="p-2 carditem">2019</div>
+              <div className="p-2 carditem">
+                2019 <br></br>(€1404)
+              </div>
               {this.getColor(this.state.payload.meanWageSep19)}
             </div>
 
@@ -164,7 +180,9 @@ class WageBars extends Component {
               className="card  col-sm rounded-0 p-0 bar"
               style={{ width: "15rem" }}
             >
-              <div className="p-2 h-3 carditem">2030</div>
+              <div className="p-2 h-3 carditem">
+                2030<br></br> (€2315)
+              </div>
               {this.getColor(this.state.payload.meanWage30)}
             </div>
             {/* End of wages */}
@@ -175,7 +193,11 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(2, this.state.computerizationRisk, "computerization")
+                  this.itemColor(
+                    2,
+                    this.state.computerizationRisk,
+                    "computerization"
+                  )
                 }
               >
                 <p>{computarization[0]}</p>
@@ -183,7 +205,11 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(1, this.state.computerizationRisk, "computerization")
+                  this.itemColor(
+                    1,
+                    this.state.computerizationRisk,
+                    "computerization"
+                  )
                 }
               >
                 <p>{computarization[1]}</p>
@@ -191,7 +217,11 @@ class WageBars extends Component {
               <div
                 className={
                   "carditem p-5 " +
-                  this.itemColor(0, this.state.computerizationRisk, "computerization")
+                  this.itemColor(
+                    0,
+                    this.state.computerizationRisk,
+                    "computerization"
+                  )
                 }
               >
                 <p>{computarization[2]}</p>

@@ -4,9 +4,11 @@ import ReactApexChart from "react-apexcharts";
 import {
   API_URL,
   averageData,
-  averageDataSpec, averages, genderLabel, lng,
+  averageDataSpec, genderLabel, lng,
   menColor,
-  womenColor
+  womenColor,
+  occupationLabel,
+  countyLabel
 } from "../../../dictionary/text";
 
 class ColumnChartComponent extends Component {
@@ -76,26 +78,14 @@ class ColumnChartComponent extends Component {
   }
 
   setOccupationName(props) {
-    let occupationName = props.occupation;
-    let region = props.region;
 
     let options = this.state.options;
-    let occupationArray = occupationName.split(" ");
-    if (occupationArray.length >= 3) {
-      options.xaxis.categories[0] = [
-        averages[0],
-        occupationArray[0],
-        occupationArray[1] + " " + occupationArray[2],
+   
+    options.xaxis.categories[0] = [ 
+        occupationLabel,
       ];
-    } else {
-      options.xaxis.categories[0] = [
-        averages[0],
-        occupationName === "" ? "occupation" : occupationName,
-      ];
-    }
     options.xaxis.categories[2] = [
-      averages[0],
-      region === "" ? "county" : region,
+      countyLabel,
     ];
     this.setState({ options: options });
   }
