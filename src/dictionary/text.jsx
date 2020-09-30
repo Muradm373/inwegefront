@@ -165,36 +165,36 @@ const averageDataSpecEng = [
 ];
 const computarizationEng = [
   [
-    "high risk of computerization",
-    "medium risk of computerization",
-    "low risk of computerization",
+    "High risk of computerization",
+    "Medium risk of computerization",
+    "Low risk of computerization",
   ],
   [
-    "высокий риск компьютеризации",
-    "средний риск компьютеризации",
-    "низкий риск компьютеризации",
+    "Высокий риск компьютеризации",
+    "Средний риск компьютеризации",
+    "Низкий риск компьютеризации",
   ],
   [
-    "suur arvutistamise oht",
-    "keskmine arvutistamise oht",
-    "madal arvutistamise oht",
+    "Suur oht, et inimese asendab arvuti",
+    "Keskmine oht, et inimese asendab arvuti",
+    "Väike oht, et inimese asendab arvuti",
   ],
 ];
 const retirementEng = [
   [
-    "high replacements needs due to retirement",
-    "medium replacements needs due to retirement",
-    "low replacements needs due to retirement",
+    "High replacements needs due to retirement",
+    "Medium replacements needs due to retirement",
+    "Low replacements needs due to retirement",
   ],
   [
-    "высокая потребность в замене из-за выхода на пенсию",
-    "средняя потребность в замене из-за выхода на пенсию",
-    "низкая потребность в замене из-за выхода на пенсию",
+    "Высокая потребность в замене из-за выхода на пенсию",
+    "Средняя потребность в замене из-за выхода на пенсию",
+    "Низкая потребность в замене из-за выхода на пенсию",
   ],
   [
-    "pensionist tingitud suured asendamisvajadused",
-    "pensionist tulenevad keskmised asendamisvajadused",
-    "pensionile jäämise tõttu madalad asendamisvajadused",
+    "Suur vanusest tingitud asendusvajadus",
+    "Suur vanusest tingitud asendusvajadus",
+    "Väike vanusest tingitud asendusvajadus",
   ],
 ];
 const pensionLabelEng = [
@@ -314,11 +314,11 @@ const pensionDescriptionEng =  [["It is assumed that:",
 
 
 const gapsWageLabelEng = 
-  ["Wage Gap","Разница в заработной плате","Palgalõhe"];
+  ["Pension Gap (2020)","Разница в заработной плате (2020)","Meeste ja naiste kuupalkade erinevus (2020)"];
 
 
 const gapsPensionLabelEng = 
-  ["Pension Gap","Разница в пенсии","Pensionilõhe"];
+  ["Pension Gap (in Euros of 2071)","Разница в пенсии (в евро 2071 года)","Pensionide erinevus (2071. aasta eurodes)"];
 
 const submittedLabelEng = [
   "Message Submitted",
@@ -361,6 +361,26 @@ const countyLabelEng = [
   "Pегион",
   "Maakond"
 ]
+
+const checkMyPlanLabelEng = [
+  "Check my personal pension",
+  "Проверить мою личную пенсию",
+  "Vaatan oma pensioni"
+]
+
+const pensionDifferenceLabel2020Eng = [
+  ["In 2020 ","In 2071 ", "the average wage of men is ", "the average pension of men is ", " higher ", " lower ", "than the wage of women.", "than the pension of women."],
+  ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин ", "средняя пенсия мужчин ", " выше ", " ниже ", "чем у женщин.", "чем пенсия у женщин."],
+  ["2020. ", "2071. ", "aastal on meeste kuupalk keskmiselt ", "aastal on meeste pension keskmiselt ", " võrra suurem ", " võrra vähem ", "kui naiste kuupalk.", "kui naiste pension."]
+]
+
+const pensionFractionLabelEng = [
+  ["The percentage of pension of the last wage of an employee is on average ", "The percentage of pension of the average gross wage in the year of retirement for men is on average ", " percentage points ", "higher ", "lower ", "than the average wage of women.  "],
+  ["В 2020 году "," В 2071 году "," средняя заработная плата мужчин "," средняя пенсия мужчин "," выше "," ниже "," чем заработная плата женщин."," чем пенсия женщин."],
+  ["Meeste pensioni osakaal viimase kuupalgagast on keskmiselt  ", "Meeste pensioni osakaal keskmisest palgast pensionile minemise aastal on keskmiselt ", " protsendipunkti ", "võrra suurem ", "võrra vähem ", "kui naistel."]
+]
+
+const columnchartLabelEng = ['Average Wages', ' Средняя зар. плата', 'Keskmised Palgad'];
 
 export default function changeLanguage(language) {
   let i;
@@ -439,6 +459,10 @@ export default function changeLanguage(language) {
   occupationLabel = occupationLabelEng[i];
   countyLabel = countyLabelEng[i];
   emailLabel = emailLabelEng[i];
+  checkMyPlanLabel = checkMyPlanLabelEng[i];
+  pensionDifferenceLabel2020 = pensionDifferenceLabel2020Eng[i];
+  pensionFractionLabel = pensionFractionLabelEng[i];
+  columnchartLabel = columnchartLabelEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -447,6 +471,7 @@ export let instagram = "https://www.instagram.com/vordsetevoimalustevolinik/";
 export let linkedin =
   "https://www.linkedin.com/company/statistikaamet-statistics-estonia/";
 export let twitter = "https://twitter.com/eestistatistika";
+export let pensionLink = "https://pension.sotsiaalkindlustusamet.ee/kalkulaator";
 export let occupationSelectorPlaceholder = occupationSelectorPlaceholderEng[0];
 export let salary = salaryEng[0];
 export let averageLabel = averageEng[0];
@@ -511,3 +536,7 @@ export let propsLabel = propsLabelEng[0];
 export let emailLabel = emailLabelEng[0];
 export let occupationLabel = occupationLabelEng[0];
 export let countyLabel = countyLabelEng[0];
+export let checkMyPlanLabel = checkMyPlanLabelEng[0];
+export let pensionDifferenceLabel2020 = pensionDifferenceLabel2020Eng[0];
+export let pensionFractionLabel = pensionFractionLabelEng[0];
+export let columnchartLabel = columnchartLabelEng[0];

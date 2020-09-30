@@ -10,6 +10,8 @@ import {
   replacementNeeds2,
   gapsWageLabel,
   gapsPensionLabel,
+  checkMyPlanLabel,
+  pensionLink
 } from "../../dictionary/text";
 
 class PensionsComponent extends Component {
@@ -46,8 +48,9 @@ class PensionsComponent extends Component {
                 womenColor={womenColor}
                 differenceLabel={differenceLabel}
                 type={"palk"}
+                year={"2020"}
                 unit="€"
-                tickTotal="8"
+                tickTotal="7"
                 genderLabel={genderLabel}
                 occupation={""}
               ></PensionGraph>
@@ -68,6 +71,7 @@ class PensionsComponent extends Component {
                 womenColor={womenColor}
                 differenceLabel={differenceLabel}
                 type={"pension"}
+                year="2071"
                 unit="€"
                 genderLabel={genderLabel}
                 tickTotal="8"
@@ -86,7 +90,7 @@ class PensionsComponent extends Component {
               lineHeight: "22px",
             }}
           >
-            {replacementNeeds1}
+            {replacementNeeds2}
           </p>
 
           <PensionGraph
@@ -109,7 +113,7 @@ class PensionsComponent extends Component {
               lineHeight: "22px",
             }}
           >
-            {replacementNeeds2}
+            {replacementNeeds1}
           </p>
 
           <PensionGraph
@@ -123,7 +127,9 @@ class PensionsComponent extends Component {
             occupation={""}
           ></PensionGraph>
         </div>
-      </div>
+
+        <input type="Submit" className="button btn-01" value={checkMyPlanLabel} onClick={()=> window.open(pensionLink, "_blank")}></input>
+       </div>
     );
   }
 }

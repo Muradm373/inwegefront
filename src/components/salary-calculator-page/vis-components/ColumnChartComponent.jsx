@@ -8,7 +8,8 @@ import {
   menColor,
   womenColor,
   occupationLabel,
-  countyLabel
+  countyLabel,
+  columnchartLabel
 } from "../../../dictionary/text";
 
 class ColumnChartComponent extends Component {
@@ -66,6 +67,17 @@ class ColumnChartComponent extends Component {
             },
           },
         },
+        title: {
+          text: columnchartLabel,
+          floating: true,
+          offsetY: 0,
+          align: 'center',
+          style: {
+            color: '#444',
+            fontSize: '14px',
+            fontWeight: '200'
+          }
+        }
       },
       menMean: 0,
       womenMean: 0,
