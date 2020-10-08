@@ -1,18 +1,12 @@
 import React, { Component } from "react";
-import {
-  FlexibleWidthXYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  VerticalBarSeries,
-  Hint,
-} from "react-vis";
 import { API_URL, ageTickLabel, propsLabel } from "../../../dictionary/text";
 import axios from "axios";
+import ReactApexChart from "react-apexcharts";
 
 class AgeBarChartComponent extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       ageData: [],
       greenData: [
@@ -21,7 +15,64 @@ class AgeBarChartComponent extends Component {
         { x: "0", y: 0 },
       ],
       value: false,
-      tickTotal: 10
+      tickTotal: 10,
+      series: [
+        {
+          name: "Props",
+          data: [],
+        },
+      ],
+      options: {
+        chart: {
+          type: "bar",
+          height: 350,
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: "80%",
+          },
+        },
+        dataLabels: {
+          enabled: false,
+        },
+        colors: ["#0F4FEF"],
+
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ["transparent"],
+        },
+        xaxis: {
+          categories: [],
+        },
+        yaxis: {
+          title: {
+            text: propsLabel,
+          },
+        },
+        fill: {
+          opacity: 1,
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "%";
+            },
+          },
+        },
+        title: {
+          text: this.props.label,
+          floating: true,
+          offsetY: -5,
+          align: "center",
+          style: {
+            color: "#444",
+            fontSize: "14px",
+            fontWeight: "200",
+          },
+        },
+      },
     };
 
     this.getAgeData = this.getAgeData.bind(this);
@@ -35,17 +86,16 @@ class AgeBarChartComponent extends Component {
   }
 
   resize() {
-    this.setState({tickTotal: window.innerWidth <= 760?3:10});
+    this.setState({ tickTotal: window.innerWidth <= 760 ? 3 : 10 });
   }
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.resize.bind(this));
   }
 
-
-
   structurizeData() {
     let categories = [];
+    let data = [];
     this.state.ageData.map((e) => {
       let min = e.ageMin;
       let max = e.ageMax;
@@ -53,81 +103,49 @@ class AgeBarChartComponent extends Component {
       result = min + "-" + max;
       if (min == null) result = "<" + max;
       if (max == null) result = min + "+";
-      categories.push({
-        x: result,
-        y: e.prop,
-        label: 5,
-      });
+      categories.push(result);
+      data.push(e.prop);
       return null;
     });
 
-    this.setState({ greenData: categories });
+    let series = this.state.series;
+    series[0].data = data;
+
+    console.log(categories);
+    this.setState({
+      series: series,
+      options: {
+        ...this.state.options,
+        xaxis: { ...this.state.options.xaxis, categories: categories },
+      },
+    });
   }
 
   getAgeData(isco) {
     const url = `${API_URL}/`;
-    if(isco !== "" && isco !== this.state.isco){
-    this.setState({isco: isco});
-    axios.get(url + "age?isco=" + isco).then((response) => {
-      this.setState({ ageData: response.data.payload });
-      this.structurizeData();
-    });
+    if (isco !== "" && isco !== this.state.isco) {
+      this.setState({ isco: isco });
+      axios.get(url + "age?isco=" + isco).then((response) => {
+        this.setState({ ageData: response.data.payload });
+        this.structurizeData();
+      });
+    }
   }
-  }
-
-  _forgetValue = () => {
-    this.setState({
-      value: null,
-    });
-  };
-
-  _rememberValue = (value) => {
-    this.setState({ value });
-  };
 
   render() {
-    console.log(this.state.greenData)
     return (
-      <div
-        className="row justify-content-center text-center"
-        className="age-bar"
-      >
-        <FlexibleWidthXYPlot
-          xType="ordinal"
-          height={300}
-          yDistance={100}
-          margin={50}
-          onMouseLeave={() => this.setState({ value: false })}
-        >
-          <HorizontalGridLines />
-          <XAxis tickTotal={this.state.tickTotal} title={ageTickLabel} />
-
-          {this.state.greenData[0].x !== "0" ?
-          <YAxis title={propsLabel} tickFormat={function tickFormat(d){
-    return d+"%";
-   }} /> : 
-   <></>
-  }
-          <VerticalBarSeries
-            color="#3F1A84"
-            opacity="0.95"
-            onValueMouseOver={(v) => this._rememberValue(v)}
-            onValueMouseOut={this._forgetValue}
-            data={this.state.greenData}
-            style={{ marginTop: "10px" }}
-          ></VerticalBarSeries>
-          {this.state.value ? (
-            <Hint
-              value={this.state.value}
-              horizontalAlign={Hint.ALIGN.RIGHT}
-              verticalAlign={Hint.ALIGN.BOTTOM}
-            >
-              <div className="custom-hint">
-                <p style={{ margin: "10px" }}>{this.state.value.y}%</p>
-              </div>
-            </Hint>
-          ) : null}
-        </FlexibleWidthXYPlot>
+      <div className="row text-center w-100" className="age-bar">
+        <div id="chart">
+          <ReactApexChart
+          id="apexchart"
+            options={this.state.options}
+            series={this.state.series}
+            type="bar"
+            height={300}
+            width = {360}
+          />
+        </div>
+    
       </div>
     );
   }

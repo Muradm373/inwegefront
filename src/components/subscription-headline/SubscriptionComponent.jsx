@@ -2,7 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useAlert } from "react-alert";
 import "../../css/mnimi.css";
-import { API_URL, emailLabel, newsletter, submitLabel} from "../../dictionary/text";
+import {
+  API_URL,
+  emailLabel,
+  join,
+  newsletter,
+  submitLabel,
+} from "../../dictionary/text";
 
 export function SubscriptionComponent(props) {
   const [email, setEmail] = useState("");
@@ -27,23 +33,48 @@ export function SubscriptionComponent(props) {
   };
 
   return (
-    <div className="subscription-box black-bg">
-      <p className="nav-header"
+    <div className="">
+
+      <form
+        class="footer-form"
+        id="footer-form"
+        accept-charset="UTF-8"
+        onSubmit={sendSubscription}
+        
       >
-        {newsletter}
-      </p>
-      <br></br>
-      <form onSubmit={sendSubscription}>
-        <p className="mnimi" style={{ textAlign: "left", color: "white" }}>
+        <div class="js-form-item form-item js-form-type-email form-type-email js-form-item-email form-item-email">
+          <div class="form-item__wrap">
+
+            <p
+              className="mnimi ml-2"
+              style={{ textAlign: "left", color: "white" }}
+            >
+              <input
+                id="input"
+                type="text"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <label
+                for="input"
+                alt={emailLabel}
+                placeholder={emailLabel}
+              ></label>
+            </p>
+          </div>
+        </div>
+        <div
+          data-drupal-selector="edit-actions"
+          class="form-actions js-form-wrapper form-wrapper"
+          id="edit-actions"
+        >
           <input
-            id="input"
-            type="text"
-            required
-            onChange={(e) => setEmail(e.target.value)}
+            class="button btn-01 btn--white use-ajax js-form-submit form-submit"
+            type="submit"
+            id="edit-submit"
+            value={join}
           />
-          <label for="input" alt={emailLabel} placeholder={emailLabel}></label>
-        </p>
-        <input type="Submit" className="button btn-01 btn--white use-ajax js-form-submit form-submit w-100" value={submitLabel}></input>
+        </div>
       </form>
     </div>
   );

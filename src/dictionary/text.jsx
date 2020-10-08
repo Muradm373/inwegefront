@@ -58,7 +58,7 @@ const averagesEng = [
   ["Keskmine ", "Keskmine ", "Keskmine palk Eestis ametialal"],
 ];
 const mainEng = [
-  ["Home", "About", "Contact", "Navigation"],
+  ["Home", "About", "Contacts", "Navigation"],
   ["Главная", "О ", "Контакты", "Навигация по сайту"],
   ["Kodu", "Meist", "Kontaktid", "Navigeerimine"],
 ];
@@ -339,15 +339,15 @@ const ageTickLabelEng = [
 ]
 
 const propsLabelEng = [
-  "",
-  "",
-  ""
+  "Props",
+  "Props",
+  "Props"
 ]
 
 const emailLabelEng = [
   "Email",
   "Электронная почта",
-  "E-post"
+  "E-POSTI AADRESS"
 ]
 
 const occupationLabelEng = [
@@ -387,6 +387,13 @@ const pensionHeaderEng = [
 
 const columnchartLabelEng = ['Average Wages', ' Средняя зар. плата', 'Keskmised Palgad'];
 
+const workingWomenEng = ["working women", "женщины", "töötavaid naisi"];
+const workingMenEng = ["working men", "мужчины", "töötavaid naisi"];
+const joinEng = ["Join", "Присоединиться", "Liitu"];
+
+const joinBodyEng = ["By subscribing you agree to the terms and conditions and privacy policy.","Подписываясь, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
+
+const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"];
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -469,6 +476,11 @@ export default function changeLanguage(language) {
   pensionFractionLabel = pensionFractionLabelEng[i];
   columnchartLabel = columnchartLabelEng[i];
   pensionHeader = pensionHeaderEng[i];
+  join = joinEng[i];
+  joinBody = joinBodyEng[i];
+  joinLink = joinLinkEng[i];
+  workingWomen = workingWomenEng[i];
+  workingMen = workingMenEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -547,4 +559,9 @@ export let pensionDifferenceLabel2020 = pensionDifferenceLabel2020Eng[0];
 export let pensionFractionLabel = pensionFractionLabelEng[0];
 export let columnchartLabel = columnchartLabelEng[0];
 export let pensionHeader = pensionHeaderEng[0];
+export let join = joinEng[0];
+export let joinBody = joinBodyEng[0];
+export let joinLink = joinLinkEng[0];
+export let workingWomen = workingWomenEng[0];
+export let workingMen = workingMenEng[0];
 

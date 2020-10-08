@@ -107,10 +107,6 @@ class SalaryCalculator extends Component {
     return (
       <div className="graph-component graph-component-cards mb-5">
         <div className="card-shadow card-occupation-selector m-3">
-          <h2
-          >
-            {searchLabel}
-          </h2>
           <br></br>
           <p
             style={{
@@ -184,7 +180,7 @@ class SalaryCalculator extends Component {
 
         <div className="card-shadow card-dynamic-map m-3">
           <div>
-            {
+            
               <div className="map_selector p-3 " style={{ width: "100%" }}>
                 <DynamicMapSelector
                   isco={this.state.isco}
@@ -195,7 +191,7 @@ class SalaryCalculator extends Component {
                   region={this.state.region}
                 />
               </div>
-            }
+              <div className="c-tabs-line my-3"></div>
 
             <Graph
               entities={this.props.entities}
@@ -220,49 +216,47 @@ class SalaryCalculator extends Component {
                     />
                   </div>
                   <div>
-                    <div className="feature-1 text-center">
-                      <div className="row d-flex justify-content-center">
-                        <div style={{ height: "5px" }}></div>
-                        <PieChartComponent
-                          style={{ paddingTop: "-1000px" }}
-                          key="PieChart"
-                          region={this.state.region}
-                          isco={this.state.isco}
-                          code={this.state.code}
-                          type="region"
-                        />
+                    {this.state.isco ? (
+                      <div>
+                        <div className="row justify-content-center text-center">
+                          <AgeBarChartComponent
+                            isco={this.state.isco}
+                            label={[`${ageLabel}`, `${this.state.region}`]}
+                          ></AgeBarChartComponent>
+                        </div>
                       </div>
-                      {this.state.occupation !== "" && (
-                        <p className="mb-3" style={{ color: "black" }}>
-                          {totalNumberOfEmployeesOccupation[0] +
-                            this.state.occupation +
-                            totalNumberOfEmployeesOccupation[1] +
-                            this.state.region}
-                        </p>
-                      )}
-                      {this.state.occupation === "" && (
-                        <p className="mb-3" style={{ color: "black" }}>
-                          {totalNumberOfEmployees + " " + this.state.region}
-                        </p>
-                      )}
-                    </div>
+                    ) : null}
                   </div>
                 </div>
               </div>
             }
-            {this.state.isco ? (
-              <div>
-                <div className="row justify-content-center text-center">
-                  <AgeBarChartComponent
-                    isco={this.state.isco}
-                  ></AgeBarChartComponent>
-                </div>
 
-                <p className="mb-3" style={{ color: "black" }}>
-                  {ageLabel}
-                </p>
+            <div className="feature-1 text-center">
+              <div className="row d-flex justify-content-center">
+                <div style={{ height: "5px" }}></div>
+                <PieChartComponent
+                  style={{ paddingTop: "-1000px" }}
+                  key="PieChart"
+                  region={this.state.region}
+                  isco={this.state.isco}
+                  code={this.state.code}
+                  type="region"
+                />
               </div>
-            ) : null}
+              {this.state.occupation !== "" && (
+                <p className="mb-3" style={{ color: "black" }}>
+                  {totalNumberOfEmployeesOccupation[0] +
+                    this.state.occupation +
+                    totalNumberOfEmployeesOccupation[1] +
+                    this.state.region}
+                </p>
+              )}
+              {this.state.occupation === "" && (
+                <p className="mb-3" style={{ color: "black" }}>
+                  {totalNumberOfEmployees + " " + this.state.region}
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </div>

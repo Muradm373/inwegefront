@@ -1,0 +1,12 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" width="54.96" height="60.08" viewBox="0 0 54.96 60.08">
+  <title>mees</title>
+  <g>
+    <path d="M31.59,1H6.91A1.64,1.64,0,0,0,5.27,2.6V4.25a6.55,6.55,0,0,0,.88,3.29H5.27A1.65,1.65,0,0,0,3.62,9.19,11.53,11.53,0,0,0,15.14,20.7H48.05a1.64,1.64,0,0,0,1.64-1.64A18.12,18.12,0,0,0,31.59,1Z" transform="translate(-2.62 0.04)" style="fill: #fff;stroke: #231f20;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <path d="M10.47,27.56l-1.93.22c-3.41.52-4.92,3.13-4.92,6.56,0,3,1.32,6.51,6.25,6.7l.71-.1" transform="translate(-2.62 0.04)" style="fill: none;stroke: #231f20;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <path d="M10.2,19.54V36.12l.33,4.24c0,.59.19,2.07.29,2.65A19.46,19.46,0,0,0,30,59a20,20,0,0,0,3.42-.3,19.74,19.74,0,0,0,16-18.16L49.69,36V19.54" transform="translate(-2.62 0.04)" style="fill: none;stroke: #231f20;stroke-miterlimit: 10;stroke-width: 2px"/>
+    <path d="M49.73,27.56l1.93.22c3.42.52,4.92,3.13,4.92,6.56,0,3-1.32,6.51-6.25,6.7l-.71-.1" transform="translate(-2.62 0.04)" style="fill: none;stroke: #231f20;stroke-miterlimit: 10;stroke-width: 2px"/>
+  </g>
+  <circle cx="35.71" cy="31.24" r="2.5"/>
+  <circle cx="17.68" cy="31.24" r="2.5"/>
+  <path d="M27.74,49.44s4.13.51,6.83-2" transform="translate(-2.62 0.04)" style="fill: none;stroke: #231f20;stroke-linecap: round;stroke-miterlimit: 10;stroke-width: 2px"/>
+</svg>

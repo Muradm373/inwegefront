@@ -1,28 +1,15 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { RadialChart } from "react-vis";
-import { API_URL, menColor, womenColor } from "../../../dictionary/text";
-
+import { API_URL, workingWomen, workingMen } from "../../../dictionary/text";
 
 class PieChartComponent extends Component {
   constructor() {
     super();
 
     this.state = {
-      data: [
-        {
-          angle: 1000,
-          radius: 5,
-          label: parseInt(1000),
-          color: menColor,
-        },
-        {
-          angle: 1000,
-          radius: 5,
-          label: parseInt(1000),
-          color: womenColor,
-        },
-      ],
+      men: 0,
+      women: 0,
     };
 
     this.getAllMean();
@@ -54,20 +41,8 @@ class PieChartComponent extends Component {
         women = data.data.payload[0].count;
       }
       this.setState({
-        data: [
-          {
-            angle: men,
-            radius: 5,
-            label: parseInt(men),
-            color: menColor,
-          },
-          {
-            angle: women,
-            radius: 5,
-            label: parseInt(women),
-            color: womenColor,
-          },
-        ],
+        men: parseInt(men),
+        women: parseInt(women),
       });
     });
   }
@@ -75,11 +50,10 @@ class PieChartComponent extends Component {
   getMean(region, isco) {
     let url;
 
-
-    if(isco !== "")
-      url = `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
-    else
-      url = `${API_URL}/entities/count-worker?region=` + region;
+    if (isco !== "")
+      url =
+        `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
+    else url = `${API_URL}/entities/count-worker?region=` + region;
 
     axios
       .get(url)
@@ -96,41 +70,55 @@ class PieChartComponent extends Component {
           men = payload[1].count;
           women = payload[0].count;
         }
-        let data = [
-          {
-            angle: men,
-            radius: 5,
-            label: parseInt(men) + "",
-            color: menColor,
-          },
-          {
-            angle: parseInt(women),
-            radius: 5,
-            label: parseInt(women) + "",
-            color: womenColor,
-          },
-        ];
 
-        this.setState({ data: data });
+        this.setState({
+          men: parseInt(men),
+          women: parseInt(women),
+        });
       });
   }
 
   render() {
     return (
       <div>
-        <RadialChart
-          className={"donut-chart-example"}
-          opacity={0.9}
-          innerRadius={50}
-          radius={55}
-          height={250}
-          width={250}
-          colorType="literal"
-          data={this.state.data}
-          padAngle={0.04}
-          showLabels={true}
-          labelsRadiusMultiplier={2}
-        ></RadialChart>
+        <div class="row">
+          <div class="row m-3">
+            <img
+              className="col"
+              src={require("../../../resources/male.svg")}
+              height="60"
+              width="60"
+            />
+            <div>
+              <p className="mb-2">{workingMen}</p>
+              <p
+                class="shiny-html"
+                id="maleAmount"
+                style={{ fontSize: "18pt" }}
+              >
+                {this.state.men}
+              </p>
+            </div>
+          </div>
+          <div class="row m-3">
+            <img
+              className="col"
+              src={require("../../../resources/female.svg")}
+              height="60"
+              width="60"
+            />
+            <div>
+              <p className="mb-2">{workingWomen}</p>
+              <p
+                class="shiny-html"
+                id="femaleAmount"
+                style={{ fontSize: "18pt" }}
+              >
+                {this.state.women}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

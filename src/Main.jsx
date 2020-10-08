@@ -4,7 +4,6 @@ import AdminPanel from "./components/admin-page/AdminPanel";
 import MethodologyComponent from "./components/methodology-page/MethodologyComponent";
 import PensionsComponent from "./components/pensions-page/PensionsComponent";
 import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculator";
-import Feedback from "./components/salary-calculator-page/selector-components/Feedback";
 import SubscriptionComponent from "./components/subscription-headline/SubscriptionComponent";
 import WageForecast from "./components/wage-forecast-page/WageForecast";
 import changeLanguage, {
@@ -15,7 +14,20 @@ import changeLanguage, {
   instagram,
   youtube,
   twitter,
-  linkedin, treeOfTruthLabel, mapApplication, statisticalDbLabel, dashboardsLabel, foreignTrade, wageSalary, nameStatistics, statisticsEstonia, copyrightLabel
+  linkedin,
+  treeOfTruthLabel,
+  mapApplication,
+  statisticalDbLabel,
+  dashboardsLabel,
+  foreignTrade,
+  wageSalary,
+  nameStatistics,
+  statisticsEstonia,
+  newsletter,
+  emailLabel,
+  join,
+  joinBody,
+  joinLink
 } from "./dictionary/text";
 
 class Main extends Component {
@@ -63,7 +75,7 @@ class Main extends Component {
   }
 
   changeMenu(e) {
-    this.setState({ menu: e.target.textContent, isActive: false  });
+    this.setState({ menu: e.target.textContent, isActive: false });
   }
 
   renderMenu() {
@@ -107,26 +119,30 @@ class Main extends Component {
     changeLanguage(this.props.lang);
     return (
       <div>
-        <div id="sidenav" className="sidenav" style={{ width: this.state.isActive?"250px":"0px" }}>
-        <div className=" row site-section pt-0 col-md-3 mb-md-0">
-                <ul className="link-list">
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[0]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[1]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[2]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[3]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[4]}</a>
-                  </li>
-                </ul>
-              </div>
+        <div
+          id="sidenav"
+          className="sidenav"
+          style={{ width: this.state.isActive ? "250px" : "0px" }}
+        >
+          <div className=" row site-section pt-0 col-md-3 mb-md-0">
+            <ul className="link-list">
+              <li>
+                <a onClick={this.changeMenu}>{tabs[0]}</a>
+              </li>
+              <li>
+                <a onClick={this.changeMenu}>{tabs[1]}</a>
+              </li>
+              <li>
+                <a onClick={this.changeMenu}>{tabs[2]}</a>
+              </li>
+              <li>
+                <a onClick={this.changeMenu}>{tabs[3]}</a>
+              </li>
+              <li>
+                <a onClick={this.changeMenu}>{tabs[4]}</a>
+              </li>
+            </ul>
+          </div>
         </div>
         <div>
           <div className="site-mobile-menu site-navbar-target">
@@ -140,7 +156,6 @@ class Main extends Component {
 
           <header className="layout__header">
             <div className="layout__header__top">
-            
               <div className="u-container">
                 <div className="layout__header__top__left">
                   <nav className="navigation menu--app-menu">
@@ -162,7 +177,7 @@ class Main extends Component {
                           </li>
                           <li className="menu-item">
                             <a href="http://andmebaas.stat.ee/?lang=en&amp;SubSessionId=d6bed41d-cf9f-44f2-975b-4680e7060ae1&amp;themetreeid=-200">
-                            {statisticalDbLabel} .Stat
+                              {statisticalDbLabel} .Stat
                             </a>
                           </li>
                           <li className="menu-item">
@@ -391,7 +406,11 @@ class Main extends Component {
                   id="block-mainnavigationenglish"
                   className="block block-menu navigation menu--main-en mt-0"
                 >
-                  <ul data-region="header_bottom" className="menu" style={{backgroundColor:"white", height: "50px"}}>
+                  <ul
+                    data-region="header_bottom"
+                    className="menu"
+                    style={{ backgroundColor: "white", height: "50px" }}
+                  >
                     <li className="menu-item menu-item--expanded">
                       <span
                         tabIndex="0"
@@ -449,8 +468,72 @@ class Main extends Component {
             <div className="container"></div>
           </div>
         </div>
-        
-        <footer className="footer footer-dot" role="contentinfo">
+        <footer class="layout__footer footer-dot">
+          <div class="u-container u-container--small">
+            <div
+              id="block-jalusekontaktid"
+              class="block--contacts block block-fixed-block-content block-fixed-block-contentfooter-contacts"
+            >
+              <h2>{main[2]}</h2>
+
+              <div class="field field--name-field-phone field--type-telephone field--label-hidden field__items">
+                <div class="field__item">
+                  <a href="tel:%2B3726259300">+372 625 9300</a>
+                </div>
+              </div>
+              <div class="field field--name-field-email field--type-email field--label-hidden field__items">
+                <div class="field__item">
+                  <a href="mailto:stat@stat.ee" class="spamspan">
+                    stat@stat.ee
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div
+              id="block-newsletterblock"
+              class="block block-we-smaily block-newsletter-block"
+            >
+              <h2>{newsletter}</h2>
+
+              <div class="block__form">
+                <SubscriptionComponent></SubscriptionComponent>
+              </div>
+
+              <div class="block__text">
+                <p>
+                {joinBody}{" "}
+                  <a
+                    href="https://saextwebtest.stat.ee/et/statistikaamet/andmekaitse"
+                    target="_self"
+                  >
+                    {joinLink}
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div
+              id="block-jaluselogo"
+              class="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo"
+            >
+              <a href="https://www.stat.ee/" target="_blank">
+                <div class="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                  <div class="field__item">
+                    <img
+                      src={require("./resources/eu.jpg")}
+                      width="200"
+                      height="116"
+                      alt="SF logo"
+                      typeof="foaf:Image"
+                    />
+                  </div>
+                  
+                </div>
+              </a>
+            </div>
+          </div>
+        </footer>
+
+        {/* <footer className="footer footer-dot" role="contentinfo">
           <div className="nav-card p-2">
             <div className="col-md-3 h-50">
               <div className=" black-bg">
@@ -497,7 +580,7 @@ Program (2014-2020).</p>
                 &copy; {copyrightLabel}
               </p>
           </div>
-        </footer>
+        </footer> */}
 
         <a className="back-to-top">
           <i className="icofont-simple-up"></i>

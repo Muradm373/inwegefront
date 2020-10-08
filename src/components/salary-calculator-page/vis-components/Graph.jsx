@@ -149,7 +149,7 @@ function Graph(props) {
         <LineSeries
           data={[
             { x: mean, y: 0 },
-            { x: mean, y: 5 },
+            { x: mean, y: 6 },
           ]}
           strokeWidth="1"
           stroke="black"

@@ -1,5 +1,5 @@
 import React, { memo, Component } from "react";
-import { API_URL, overall, noData } from "../../../../dictionary/text";
+import { API_URL, overall, noData, averageData } from "../../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 
 import {
@@ -112,7 +112,11 @@ class DynamicMapSelector extends Component {
       });
     }
 
-    list.sort((a, b) => a.item - b.item);
+    if(this.state.mapType !== "Gender Wage Gap")
+      list.sort((a, b) => a.item - b.item);
+    else
+      list.sort((a, b) => a.percentage - b.percentage);
+
 
     const result = [[], [], [], [], []];
 
@@ -143,6 +147,7 @@ class DynamicMapSelector extends Component {
     if (this.state.groups[0] !== undefined) {
       const div = this.state.groups.map((e) => {
         if (e[0]!== undefined) {
+         
           return (
             <div>
               <div>
@@ -320,8 +325,8 @@ class DynamicMapSelector extends Component {
     switch (mapType) {
       case "Median Wage":
         this.setState({
-          colors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
-          legendColors: ["#820525", "#BA1E46", "#E24A71", "#F58FA9", "#FFBFCF"],
+          colors: ["#FFBFCF", "#F58FA9", "#E24A71", "#BA1E46", "#820525"],
+          legendColors: ["#FFBFCF", "#F58FA9", "#E24A71", "#BA1E46", "#820525"],
         });
         break;
       case "Average Wage":
@@ -362,7 +367,7 @@ class DynamicMapSelector extends Component {
   getOccupation() {
     return this.props.occupation === "" || this.props.region === ""
       ? overall
-      : this.props.occupation + ", " + this.props.region;
+      : this.props.occupation + ", " + averageData;
   }
 
   getAverageMeanMedian() {
@@ -482,7 +487,7 @@ class DynamicMapSelector extends Component {
           </div>
           <div className="c-tabs-line"></div>
         </div>
-        <ComposableMap data-tip="" projectionConfig={{ scale: 340 }}>
+        <ComposableMap data-tip="" projectionConfig={{ scale: 350,}}>
           <Geographies geography={ee}>
             {({ geographies }) => (
               <>
@@ -529,7 +534,7 @@ class DynamicMapSelector extends Component {
               </>
             )}
           </Geographies>
-          <Annotation subject={[-80, 40]} dx={0} dy={0}>
+          <Annotation subject={[-75, 35]} dx={0} dy={0}>
             <text
               style={{
                 fontSize: "12pt",
