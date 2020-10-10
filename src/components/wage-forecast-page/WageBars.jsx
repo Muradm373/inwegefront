@@ -117,7 +117,7 @@ class WageBars extends Component {
       items.push(
         <div className={"p-2 carditem " + this.idToColor(id, i)}>
           <p>
-            €{1000 + (i - 2) * 500} - €{1499 + (i - 2) * 500}
+            {1000 + (i - 2) * 500} - {1499 + (i - 2) * 500}€
           </p>
         </div>
       );
@@ -125,11 +125,11 @@ class WageBars extends Component {
     let result = (
       <div>
         <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-          <p>{lessMoreLabel[1]} €1000 </p>
+          <p>{lessMoreLabel[1]} 1000€ </p>
         </div>
         {items}
         <div className={"p-2 carditem " + this.idToColor(id, 9)}>
-          <p>{lessMoreLabel[0]} €4500 </p>
+          <p>{lessMoreLabel[0]} 4500€ </p>
         </div>
       </div>
     );
@@ -152,8 +152,8 @@ class WageBars extends Component {
                 textAlign: "center",
               }}
             >
-              {pensionLabel[0]} €{this.state.payload.wageCategory30_min}{" "}
-              {pensionLabel[1]} €{this.state.payload.wageCategory30_max} .{" "}
+              {pensionLabel[0]} {this.state.payload.wageCategory30_min}€{" "}
+              {pensionLabel[1]} {this.state.payload.wageCategory30_max}€ .{" "}
               {pensionLabel[2]} {this.state.computerizationRisk}{" "}
               {pensionLabel[3]} {this.state.replacementsNeeds}.
               <isindex />
@@ -170,7 +170,7 @@ class WageBars extends Component {
               style={{ width: "15rem" }}
             >
               <div className="p-2 carditem">
-                2019 <br></br>(€1404)
+                2019 <br></br>(1404€)
               </div>
               {this.getColor(this.state.payload.meanWageSep19)}
             </div>
@@ -181,7 +181,7 @@ class WageBars extends Component {
               style={{ width: "15rem" }}
             >
               <div className="p-2 h-3 carditem">
-                2030<br></br> (€2315)
+                2030<br></br> (2315€)
               </div>
               {this.getColor(this.state.payload.meanWage30)}
             </div>

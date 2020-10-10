@@ -27,7 +27,7 @@ import changeLanguage, {
   emailLabel,
   join,
   joinBody,
-  joinLink
+  joinLink,
 } from "./dictionary/text";
 
 class Main extends Component {
@@ -399,18 +399,34 @@ class Main extends Component {
                     <span className="hamburger-inner"></span>
                   </span>
                 </button>
-
-                <nav
+                <div style={{ backgroundColor: "white"}} className="layout__header__top__center block-page-title-block p-2">
+                  <h2 >{APP_NAME}</h2>
+                </div>
+              </div>
+            </div>
+            <nav
                   role="navigation"
                   aria-labelledby="block-mainnavigationenglish-menu"
                   id="block-mainnavigationenglish"
-                  className="block block-menu navigation menu--main-en mt-0"
+                  className="block block-menu menu--main-en layout__nav__top__center"
                 >
                   <ul
                     data-region="header_bottom"
                     className="menu"
                     style={{ backgroundColor: "white", height: "50px" }}
                   >
+                    <li className="menu-item menu-item--expanded">
+                      <span
+                        tabIndex="0"
+                        onClick={this.changeMenu}
+                        style={{
+                          color: this.state.menu === tabs[0] ? "#4e73df" : "",
+                          cursor: "pointer",
+                        }}
+                      >
+                        {tabs[0]}
+                      </span>
+                    </li>
                     <li className="menu-item menu-item--expanded">
                       <span
                         tabIndex="0"
@@ -450,10 +466,8 @@ class Main extends Component {
                     </li>
                   </ul>
                 </nav>
-              </div>
-            </div>
           </header>
-          <main id="main" style={{ marginTop: "-120px" }}>
+          <main id="main" style={{ marginTop: "-90px" }}>
             <div>
               <div className="selector-style text-center mx-auto">
                 {this.props.type === "admin" ? (
@@ -501,7 +515,7 @@ class Main extends Component {
 
               <div class="block__text">
                 <p>
-                {joinBody}{" "}
+                  {joinBody}{" "}
                   <a
                     href="https://saextwebtest.stat.ee/et/statistikaamet/andmekaitse"
                     target="_self"
@@ -526,7 +540,6 @@ class Main extends Component {
                       typeof="foaf:Image"
                     />
                   </div>
-                  
                 </div>
               </a>
             </div>

@@ -120,7 +120,7 @@ class PensionGraph extends Component {
     let label;
     if(type==="pension"){
         label =  (year + pensionDifferenceLabel2020[3] + 
-        "€" + Math.abs(difference) +
+       Math.abs(difference) + "€" +
         (difference >= 0 ? pensionDifferenceLabel2020[4]
         : pensionDifferenceLabel2020[5]) +
         " " +
@@ -128,7 +128,7 @@ class PensionGraph extends Component {
     }
     if(type==="palk"){
       label = year + pensionDifferenceLabel2020[2] + 
-      "€" + difference +
+       difference +"€" +
       (difference >= 0 ? pensionDifferenceLabel2020[4]
       : pensionDifferenceLabel2020[5]) +
       " " +

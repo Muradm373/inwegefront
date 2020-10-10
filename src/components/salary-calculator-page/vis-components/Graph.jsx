@@ -77,6 +77,8 @@ function Graph(props) {
 
   const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
+  console.log(myWage)
+
   return (
     <div className="centered" id="entity" className="graph">
       <BarComponent
@@ -87,8 +89,8 @@ function Graph(props) {
         occupation={props.occupation}
         label={
           props.differenceLabel[0] +
-          " €" +
-          Math.abs(parseInt(menMean) - parseInt(womenMean)) +
+          " " +
+          Math.abs(parseInt(menMean) - parseInt(womenMean))+"€" +
           (parseInt(menMean) - parseInt(womenMean) > 0
             ? props.differenceLabel[1]
             : props.differenceLabel[2]) +
@@ -110,7 +112,7 @@ function Graph(props) {
         <XAxis
         className="grid-axis"
           tickTotal={isMobile?5:10}
-          tickFormat={(v) => `€${v}`}
+          tickFormat={(v) => `${v}€`}
         />:<></>
         }
         <YAxis
@@ -173,16 +175,19 @@ function Graph(props) {
             <br /> {salary[1]}
           </p>
         </Hint>
-
-        <LineSeries
+        
+        {(myWage !== 0 && myWage !== undefined && myWage !== "") ? (<LineSeries
           data={[
             { y: 0, x: myWage },
-            { y: 5, x: myWage },
+            { y: 6, x: myWage },
           ]}
           strokeWidth="1"
           stroke="black"
           strokeDasharray="7, 3"
         />
+        )
+        :
+        <></>}
 
         <Hint
           style={display(myWage, mean, men)}
@@ -194,8 +199,8 @@ function Graph(props) {
           <p className="differenceLabel">
             {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
               ? props.differenceLabel[6] +
-                " €" +
-                Math.abs(parseInt(myWage) - parseInt(mean)) +
+                " " +
+                Math.abs(parseInt(myWage) - parseInt(mean)) +"€" +
                 (parseInt(myWage) - parseInt(mean) > 0
                   ? props.differenceLabel[1]
                   : props.differenceLabel[2]) +

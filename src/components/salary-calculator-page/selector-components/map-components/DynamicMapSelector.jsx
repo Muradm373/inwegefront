@@ -165,7 +165,7 @@ class DynamicMapSelector extends Component {
                   }}
                 >
                   {this.state.mapType!=="Gender Wage Gap"?
-                  e.length > 1 ? `€${e[0].item} - €${e[e.length - 1].item}` : `€${e[0].item}`:
+                  e.length > 1 ? `${e[0].item}€ - ${e[e.length - 1].item}€` : `${e[0].item}€`:
                   e.length > 1 ? `${e[0].percentage.toFixed(2)}% - ${e[e.length - 1].percentage.toFixed(2)}%` : `${e[0].percentage.toFixed(2)}%`
                 }
 
@@ -247,7 +247,7 @@ class DynamicMapSelector extends Component {
             ? "#F58FA9"
             : "none",
 
-        strokeWidth: 3,
+        strokeWidth: 2,
       },
       hover: {
         fill: color,
@@ -266,7 +266,7 @@ class DynamicMapSelector extends Component {
 
   generateValueString(val) {
     if (val !== 0) {
-      return ": €" + val;
+      return ": " + val+"€";
     }
 
     return ": " + noData;
@@ -277,7 +277,7 @@ class DynamicMapSelector extends Component {
     if (this.state.mapType === "Median Wage") {
       this.state.averages.map((el) => {
         if (el.region === region) {
-          data = "€" + el.average;
+          data = el.average + "€";
           return data;
         }
 
@@ -310,7 +310,7 @@ class DynamicMapSelector extends Component {
           avg = el.maleAverage + el.femaleAverage;
         }
 
-        if (avg !== 0) data = "€" + avg;
+        if (avg !== 0) data = avg + "€";
         else data = noData;
         return data;
       }
@@ -389,10 +389,10 @@ class DynamicMapSelector extends Component {
     } else {
       switch (this.state.mapType) {
         case "Median Wage":
-          return "€" + this.state.median;
+          return this.state.median + "€";
 
         case "Average Wage":
-          return "€" + this.state.average;
+          return this.state.average + "€";
 
         case "Gender Wage Gap":
           return Math.abs(parseInt(this.state.genderGap * 100)) + "%";

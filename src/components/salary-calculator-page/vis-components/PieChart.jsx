@@ -96,7 +96,7 @@ class PieChartComponent extends Component {
                 id="maleAmount"
                 style={{ fontSize: "18pt" }}
               >
-                {this.state.men}
+                {this.state.men === 0 ? "<20 " : this.state.men}
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ class PieChartComponent extends Component {
                 id="femaleAmount"
                 style={{ fontSize: "18pt" }}
               >
-                {this.state.women}
+                {this.state.women === 0 ? "<20 " : this.state.women}
               </p>
             </div>
           </div>

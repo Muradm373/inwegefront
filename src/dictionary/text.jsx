@@ -1,7 +1,7 @@
 import { methodologyEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
-export const APP_NAME = "palgakompass.stat.ee";
+export const APP_NAME = "PALGAKOMPASS";
 export const menColor = "#3F1A84";
 export const womenColor = "#F58FA9";
 const averageEng = [
@@ -48,9 +48,9 @@ const differenceEng = [
 ];
 const lngEng = ["en", "ru", "es"];
 const tabsEng = [
-  ["Home", "Wage Forecast", "Pensions", "Methodology"],
-  ["Главная", "Калькулятор зарплаты", "Пенсии", "Mетодология"],
-  ["Kodu", "Palgaprognoos", "Pensionid", "Metoodika"],
+  ["Wage differences", "Wage Forecast", "Pensions", "Methodology"],
+  ["Разница в заработной плате", "Калькулятор зарплаты", "Пенсии", "Mетодология"],
+  ["Palgaerinevused", "Palgaprognoos", "Pensionid", "Metoodika"],
 ];
 const averagesEng = [
   ["Average for ", "Average for ", "Average for Estonia"],
