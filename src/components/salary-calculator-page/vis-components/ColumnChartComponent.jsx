@@ -97,7 +97,7 @@ class ColumnChartComponent extends Component {
         occupationLabel,
       ];
     options.xaxis.categories[2] = [
-      countyLabel,
+      props.region.split(' ')[0],
     ];
     this.setState({ options: options });
   }
