@@ -56,7 +56,12 @@ const methodologyEng = [{
   ],
   itemsDescription:
     "Rakenduses näidatakse vastava ametikoha mediaanpalka, s.t palka, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid palkasid.",
-}]
+}];
+
+
+export const wageDifferencesTextEng = ["Average monthly salaries vary by county, occupation and gender. Investigate the application and find out how these factors affect the wages of Estonian people.","Средняя месячная зарплата зависит от округа, специальности и пола. Изучите приложение и узнайте, как эти факторы влияют на заработную плату жителей Эстонии.","Keskmised kuupalgad erinevad maakondade, erialade ja sugude lõikes. Uuri rakendust ja saa teada, kuidas need tegurid Eesti inimeste palku mõjutavad."];
+export const wageForecastTextEng = ["The nature and form of the work has always been and will continue to change. Future work will also have a negative impact: for example, some jobs will most likely have automation. Find out more and find out what the future holds for your profession.","Характер и форма работы всегда менялись и будут меняться. Дальнейшая работа также окажет негативное влияние: например, некоторые рабочие места, скорее всего, будут автоматизированы. Узнайте больше и узнайте, что ждет вашу профессию в будущем.","Töö iseloom ja vorm on alati olnud pidevas muutmises ja on seda ka edaspidi. Tulevikutööga kaasneb ka negatiivne mõju: näiteks teatud osa töökohti ootab suure tõenäosusega automatiseerimine. Uuri lisa ja saa teada, mis tulevikku sinu ametile ennustatakse."];
+export const PensionsTextEng = ["Today's salary will also affect a person's livelihood in the future: the amount of our old-age pension depends in part on the salary earned during working life. The 18.4% difference in monthly salaries between men and women will change to a 10.2% pension gap over time, but will not disappear.","Сегодняшняя заработная плата также повлияет на уровень жизни человека в будущем: размер нашей пенсии по старости частично зависит от заработной платы, полученной в течение трудовой жизни. Разница в 18,4% в ежемесячной заработной плате мужчин и женщин со временем изменится на 10,2%, но не исчезнет.","Tänane palk mõjutab inimese toimetulekut ka tulevikus: meie vanaduspensioni suurus osaliselt sõltub tööeas teenitud palgast. Meeste ja naiste 18,4%-line kuupalkade erinevus muutub ajapikku 10,2%-liseks pensionide erinevuseks, aga ära ei kao."];
 
 
 export { methodologyEng };

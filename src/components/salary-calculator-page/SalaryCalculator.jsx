@@ -8,7 +8,7 @@ import {
   ageLabel,
   menColor,
   salary,
-  searchLabel,
+  wageDifferencesText,
   sideParagraph1,
   sideParagraph2,
   totalNumberOfEmployees,
@@ -178,20 +178,28 @@ class SalaryCalculator extends Component {
           </div>
         </div>
 
-        <div className="card-shadow card-dynamic-map m-3">
+        <div className="card-shadow card-dynamic-map mt -3">
           <div>
-            
-              <div className="map_selector p-3 " style={{ width: "100%" }}>
-                <DynamicMapSelector
-                  isco={this.state.isco}
-                  onRegionChange={this.onRegionChange}
-                  setTooltipContent={this.setContent}
-                  mapElementColor={this.props.mapElementColor}
-                  occupation={this.state.occupation}
-                  region={this.state.region}
-                />
+            <div className="methodology-component">
+              <div className="pns-graphs">
+                <p>
+                  {wageDifferencesText}
+                </p>
+                <br></br>
               </div>
-              <div className="c-tabs-line my-3"></div>
+            </div>
+
+            <div className="map_selector " style={{ width: "100%" }}>
+              <DynamicMapSelector
+                isco={this.state.isco}
+                onRegionChange={this.onRegionChange}
+                setTooltipContent={this.setContent}
+                mapElementColor={this.props.mapElementColor}
+                occupation={this.state.occupation}
+                region={this.state.region}
+              />
+            </div>
+            <div className="c-tabs-line my-3"></div>
 
             <Graph
               entities={this.props.entities}

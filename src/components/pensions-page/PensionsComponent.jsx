@@ -12,24 +12,22 @@ import {
   gapsPensionLabel,
   checkMyPlanLabel,
   pensionLink,
-  pensionHeader,
+  PensionsText,
 } from "../../dictionary/text";
 
 class PensionsComponent extends Component {
   render() {
     return (
-      <div className="text-center mx-auto card-shadow-forecast mb-5 pension-component">
+      <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 pension-component">
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs">
-            <p class="font-weight-bold text-center">
-              {" "}
-              {pensionHeader[0] +
-                "18.4%" +
-                pensionHeader[1] +
-                "10.2% " +
-                pensionHeader[2]}
+            <p className="text-justify">
+              {PensionsText}
             </p>
             <br></br>
+            <br></br>
+            <br></br>
+
             <p>{pensionDescription[0]}</p>
             <br></br>
             <p>{pensionDescription[1]}</p>

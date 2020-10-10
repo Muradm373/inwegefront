@@ -1,4 +1,4 @@
-import { methodologyEng } from "./textMethodology";
+import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const APP_NAME = "PALGAKOMPASS";
@@ -488,6 +488,9 @@ export default function changeLanguage(language) {
   workingWomen = workingWomenEng[i];
   workingMen = workingMenEng[i];
   webpageLabel = webpageLabelEng[i];
+  PensionsText = PensionsTextEng[i];
+  wageForecastText = wageForecastTextEng[i];
+  wageDifferencesText = wageDifferencesTextEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -572,4 +575,7 @@ export let joinLink = joinLinkEng[0];
 export let workingWomen = workingWomenEng[0];
 export let workingMen = workingMenEng[0];
 export let webpageLabel = webpageLabelEng[0];
+export let PensionsText = PensionsTextEng[0];
+export let wageForecastText = wageForecastTextEng[0];
+export let wageDifferencesText = wageDifferencesTextEng[0];
 
