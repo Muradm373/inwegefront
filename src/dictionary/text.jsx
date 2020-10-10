@@ -294,6 +294,12 @@ const replacementNeeds1Eng = [
   "Ставка замещения по отношению к последней заработной плате работника",
   "Asendusmäär töötaja viimase palga suhtes"];
 
+const webpageLabelEng = [
+  "Webpage",
+  "Домашняя страница",
+  "Koduleht"
+]
+
 const replacementNeeds2Eng =  ["Replacement rate in relation to the average wage in Estonia at the time of retirement","Коэффициент замещения по отношению к средней заработной плате в Эстонии при выходе на пенсию","Asendusmäär Eesti keskmise palga suhtes pensionile minemise hetkel"];
 
 
@@ -481,6 +487,7 @@ export default function changeLanguage(language) {
   joinLink = joinLinkEng[i];
   workingWomen = workingWomenEng[i];
   workingMen = workingMenEng[i];
+  webpageLabel = webpageLabelEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -564,4 +571,5 @@ export let joinBody = joinBodyEng[0];
 export let joinLink = joinLinkEng[0];
 export let workingWomen = workingWomenEng[0];
 export let workingMen = workingMenEng[0];
+export let webpageLabel = webpageLabelEng[0];
 

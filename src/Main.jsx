@@ -24,7 +24,7 @@ import changeLanguage, {
   nameStatistics,
   statisticsEstonia,
   newsletter,
-  emailLabel,
+  webpageLabel,
   join,
   joinBody,
   joinLink,
@@ -168,7 +168,7 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a tabIndex="0">Webpage</a>
+                        <a tabIndex="0">{webpageLabel}</a>
                         <ul className="menu">
                           <li className="menu-item">
                             <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
@@ -399,73 +399,76 @@ class Main extends Component {
                     <span className="hamburger-inner"></span>
                   </span>
                 </button>
-                <div style={{ backgroundColor: "white"}} className="layout__header__top__center block-page-title-block p-2">
-                  <h2 >{APP_NAME}</h2>
+                <div
+                  style={{ backgroundColor: "white" }}
+                  className="layout__header__top__center block-page-title-block p-2"
+                >
+                  <h2>{APP_NAME}</h2>
                 </div>
               </div>
             </div>
             <nav
-                  role="navigation"
-                  aria-labelledby="block-mainnavigationenglish-menu"
-                  id="block-mainnavigationenglish"
-                  className="block block-menu menu--main-en layout__nav__top__center"
-                >
-                  <ul
-                    data-region="header_bottom"
-                    className="menu"
-                    style={{ backgroundColor: "white", height: "50px" }}
+              role="navigation"
+              aria-labelledby="block-mainnavigationenglish-menu"
+              id="block-mainnavigationenglish"
+              className="block block-menu menu--main-en layout__nav__top__center"
+            >
+              <ul
+                data-region="header_bottom"
+                className="menu"
+                style={{ backgroundColor: "white", height: "50px" }}
+              >
+                <li className="menu-item menu-item--expanded">
+                  <span
+                    tabIndex="0"
+                    onClick={this.changeMenu}
+                    style={{
+                      color: this.state.menu === tabs[0] ? "#4e73df" : "",
+                      cursor: "pointer",
+                    }}
                   >
-                    <li className="menu-item menu-item--expanded">
-                      <span
-                        tabIndex="0"
-                        onClick={this.changeMenu}
-                        style={{
-                          color: this.state.menu === tabs[0] ? "#4e73df" : "",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {tabs[0]}
-                      </span>
-                    </li>
-                    <li className="menu-item menu-item--expanded">
-                      <span
-                        tabIndex="0"
-                        onClick={this.changeMenu}
-                        style={{
-                          color: this.state.menu === tabs[1] ? "#4e73df" : "",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {tabs[1]}
-                      </span>
-                    </li>
-                    <li className="menu-item menu-item--expanded">
-                      <span
-                        tabIndex="1"
-                        onClick={this.changeMenu}
-                        style={{
-                          color: this.state.menu === tabs[2] ? "#4e73df" : "",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {tabs[2]}
-                      </span>
-                    </li>
-                    <li className="menu-item menu-item--expanded">
-                      <span
-                        tabIndex="2"
-                        className="menuSpan"
-                        onClick={this.changeMenu}
-                        style={{
-                          color: this.state.menu === tabs[3] ? "#4e73df" : "",
-                          cursor: "pointer",
-                        }}
-                      >
-                        {tabs[3]}
-                      </span>
-                    </li>
-                  </ul>
-                </nav>
+                    {tabs[0]}
+                  </span>
+                </li>
+                <li className="menu-item menu-item--expanded">
+                  <span
+                    tabIndex="0"
+                    onClick={this.changeMenu}
+                    style={{
+                      color: this.state.menu === tabs[1] ? "#4e73df" : "",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {tabs[1]}
+                  </span>
+                </li>
+                <li className="menu-item menu-item--expanded">
+                  <span
+                    tabIndex="1"
+                    onClick={this.changeMenu}
+                    style={{
+                      color: this.state.menu === tabs[2] ? "#4e73df" : "",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {tabs[2]}
+                  </span>
+                </li>
+                <li className="menu-item menu-item--expanded">
+                  <span
+                    tabIndex="2"
+                    className="menuSpan"
+                    onClick={this.changeMenu}
+                    style={{
+                      color: this.state.menu === tabs[3] ? "#4e73df" : "",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {tabs[3]}
+                  </span>
+                </li>
+              </ul>
+            </nav>
           </header>
           <main id="main" style={{ marginTop: "-90px" }}>
             <div>
@@ -492,17 +495,13 @@ class Main extends Component {
 
               <div class="field field--label-hidden field__items">
                 <div class="field__item">
-                <span
-                          className="icofont-phone"
-                        ></span>
+                  <span className="icofont-phone"></span>
                   <a href="tel:%2B3726259300">+372 625 9300</a>
                 </div>
               </div>
               <div class="field field--label-hidden field__items">
                 <div class="field__item">
-                <span
-                          className="icofont-email"
-                        ></span>
+                  <span className="icofont-email"></span>
                   <a href="mailto:stat@stat.ee" class="spamspan">
                     stat@stat.ee
                   </a>
