@@ -178,7 +178,7 @@ class SalaryCalculator extends Component {
           </div>
         </div>
 
-        <div className="card-shadow card-dynamic-map mt -3">
+        <div className="card-shadow card-dynamic-map my-3">
           <div>
             <div className="methodology-component">
               <div className="pns-graphs">
