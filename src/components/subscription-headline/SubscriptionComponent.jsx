@@ -59,7 +59,8 @@ export function SubscriptionComponent(props) {
                 for="input"
                 alt={emailLabel}
                 placeholder={emailLabel}
-              ></label>
+              >
+              </label>
             </p>
           </div>
         </div>

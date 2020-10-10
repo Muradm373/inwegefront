@@ -490,13 +490,19 @@ class Main extends Component {
             >
               <h2>{main[2]}</h2>
 
-              <div class="field field--name-field-phone field--type-telephone field--label-hidden field__items">
+              <div class="field field--label-hidden field__items">
                 <div class="field__item">
+                <span
+                          className="icofont-phone"
+                        ></span>
                   <a href="tel:%2B3726259300">+372 625 9300</a>
                 </div>
               </div>
-              <div class="field field--name-field-email field--type-email field--label-hidden field__items">
+              <div class="field field--label-hidden field__items">
                 <div class="field__item">
+                <span
+                          className="icofont-email"
+                        ></span>
                   <a href="mailto:stat@stat.ee" class="spamspan">
                     stat@stat.ee
                   </a>
@@ -529,7 +535,7 @@ class Main extends Component {
               id="block-jaluselogo"
               class="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo"
             >
-              <a href="https://www.stat.ee/" target="_blank">
+              <a href="http://inwege.cloud.ut.ee/" target="_blank">
                 <div class="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                   <div class="field__item">
                     <img
@@ -545,55 +551,6 @@ class Main extends Component {
             </div>
           </div>
         </footer>
-
-        {/* <footer className="footer footer-dot" role="contentinfo">
-          <div className="nav-card p-2">
-            <div className="col-md-3 h-50">
-              <div className=" black-bg">
-                <h2 className="nav-header mb-1">{main[3]}</h2>
-                <ul className="link-list">
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[0]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[1]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[2]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[3]}</a>
-                  </li>
-                  <li>
-                    <a onClick={this.changeMenu}>{tabs[4]}</a>
-                  </li>
-                </ul>
-                </div>
-            </div>
-            <div className="col-md-3 p-2">
-              <SubscriptionComponent></SubscriptionComponent>
-            </div>
-            <div className="col-md-3 p-2">
-              <Feedback></Feedback>
-            </div>
-            <div className="col-md-3">
-              <img
-                src={require("./resources/eu.jpg")}
-                style={{width: "100%"}}
-                className="centered-image p-3"
-                alt=""
-              />
-              <p className="black-bg eu-fund"> This project was funded by the European Union’s Rights, Equality and Citizenship
-Program (2014-2020).</p>
-            </div>
-          </div>
-
-          <div className="justify-content-center text-center mt-5">
-              <p className="copyright black-bg p-1 m-auto">
-                &copy; {copyrightLabel}
-              </p>
-          </div>
-        </footer> */}
 
         <a className="back-to-top">
           <i className="icofont-simple-up"></i>
