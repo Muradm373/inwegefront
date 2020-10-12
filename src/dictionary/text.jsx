@@ -48,9 +48,9 @@ const differenceEng = [
 ];
 const lngEng = ["en", "ru", "es"];
 const tabsEng = [
-  ["Wage differences", "Wage Forecast", "Pensions", "Methodology"],
-  ["Разница в заработной плате", "Калькулятор зарплаты", "Пенсии", "Mетодология"],
-  ["Palgaerinevused", "Palgaprognoos", "Pensionid", "Metoodika"],
+  ["Wage differences", "Wage Forecast", "Pensions", "Background"],
+  ["Разница в заработной плате", "Калькулятор зарплаты", "Пенсии", "Пояснения"],
+  ["Palgaerinevused", "Palgaprognoos", "Pensionid", "Selgitused"],
 ];
 const averagesEng = [
   ["Average for ", "Average for ", "Average for Estonia"],

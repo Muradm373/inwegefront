@@ -25,7 +25,6 @@ import changeLanguage, {
   statisticsEstonia,
   newsletter,
   webpageLabel,
-  join,
   joinBody,
   joinLink,
 } from "./dictionary/text";
@@ -104,7 +103,7 @@ class Main extends Component {
       );
     } else {
       return (
-        <div>
+        <div id="salary-component">
           <SalaryCalculator
             id="salary-calculator-component"
             onDataChange={this.getData}
@@ -547,6 +546,11 @@ class Main extends Component {
                   </div>
                 </div>
               </a>
+              <p style={{color: "#FFF", fontSize: "14px"}}>
+                      This project was funded by Horizon 2020, the European
+                      Union’s Rights, Equality and Citizenship Program
+                      (2014-2020).
+                    </p>
             </div>
           </div>
         </footer>
