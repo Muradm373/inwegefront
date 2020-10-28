@@ -62,17 +62,18 @@ const parseSalaryEntities = (data, type, dispatch) => {
   if (jobEntity !== undefined && entities !== undefined) {
     if (entities[0].region !== "All") {
       let description = jobEntity.description;
-
       dispatch({
         type: "SET_ENTITIES",
         entities: entities,
         description: description,
+        generalName: jobEntity.name
       });
     } else {
       dispatch({
         type: "SET_ENTITIES",
         entities: entities,
         description: noInformationLabel,
+        generalName: jobEntity.name
       });
     }
   } else {

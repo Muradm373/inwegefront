@@ -111,7 +111,6 @@ class AgeBarChartComponent extends Component {
     let series = this.state.series;
     series[0].data = data;
 
-    console.log(categories);
     this.setState({
       series: series,
       options: {

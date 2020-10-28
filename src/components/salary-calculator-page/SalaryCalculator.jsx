@@ -14,6 +14,8 @@ import {
   totalNumberOfEmployees,
   totalNumberOfEmployeesOccupation,
   womenColor,
+  wageChangeInfo,
+  noDataLabel
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
@@ -159,6 +161,11 @@ class SalaryCalculator extends Component {
               </div>
               <br></br>
               <div>
+                {this.props.wage !== undefined ?
+                <p className="mb-1">{wageChangeInfo}</p>
+                :
+                <></>
+              }
                 <p
                   style={{
                     flex: 5,
@@ -172,6 +179,7 @@ class SalaryCalculator extends Component {
                   }}
                 >
                   {this.props.description}
+                  
                 </p>
               </div>
             </div>

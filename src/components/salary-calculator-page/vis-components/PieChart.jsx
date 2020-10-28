@@ -10,14 +10,16 @@ class PieChartComponent extends Component {
     this.state = {
       men: 0,
       women: 0,
+      region: ""
     };
 
     this.getAllMean();
   }
 
   componentWillReceiveProps(props) {
-    if (props.region !== "") {
+    if (props.region !== "" && props.region !== this.state.region) {
       this.getMean(props.region, props.isco);
+      this.setState({region: props.region})
     } else if (
       props.code !== undefined &&
       props.code !== "" &&

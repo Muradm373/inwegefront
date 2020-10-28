@@ -5,7 +5,8 @@ const initState = {
   gender: genderLabel[0],
   wage: undefined,
   entities: [],
-  description: ""
+  description: "",
+  generalName: null
 };
 
 const rootReduce = (state = initState, action) => {
@@ -24,6 +25,7 @@ const rootReduce = (state = initState, action) => {
       ...state,
       entities: action.entities,
       description: action.description,
+      generalName: action.generalName
     };
   }
   if (action.type === "SET_MEAN") {

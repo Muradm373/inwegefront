@@ -4,6 +4,8 @@ import {
   overall,
   noData,
   averageData,
+  noDataLabel,
+  noDataInfo
 } from "../../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import htmlToImage from "html-to-image";
@@ -25,6 +27,7 @@ import {
   medianWage,
 } from "../../../../dictionary/text";
 import ReactTooltip from "react-tooltip";
+import { connect } from "react-redux";
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
@@ -49,6 +52,7 @@ class DynamicMapSelector extends Component {
       noDataColor: "#eeeeee",
       content: "",
       mapDownloadMenu: false,
+      noDataModal: false,
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -139,6 +143,8 @@ class DynamicMapSelector extends Component {
         result[line].push(value);
       }
     }
+
+    if (result[0].length === 0) this.setState({ noDataModal: true });
 
     this.setState({ groups: result });
   }
@@ -380,9 +386,9 @@ class DynamicMapSelector extends Component {
   }
 
   getOccupation() {
-    return this.props.occupation === "" || this.props.region === ""
+    return this.props.generalName === null || this.props.region === ""
       ? overall
-      : this.props.occupation + ", " + averageData;
+      : this.props.generalName + ", " + averageData + "   🛈";
   }
 
   getAverageMeanMedian() {
@@ -431,6 +437,13 @@ class DynamicMapSelector extends Component {
     } else
       this.setState({
         content: this.getMeanForRegionAverage(l).toString(),
+      });
+  }
+
+  onOccupationHover() {
+    if (this.props.generalName !== null)
+      this.setState({
+        content: this.props.occupation,
       });
   }
 
@@ -506,6 +519,10 @@ class DynamicMapSelector extends Component {
               y="25"
               textAnchor="start"
               alignmentBaseline="start"
+              onMouseEnter={() => this.onOccupationHover()}
+              onMouseLeave={() => {
+                this.setState({ content: "" });
+              }}
             >
               {this.getOccupation()}
             </text>
@@ -609,11 +626,11 @@ class DynamicMapSelector extends Component {
           <div className="c-tabs-line"></div>
           <div
             class="apexcharts-toolbar"
-            style={{marginLeft:"50%", marginTop: "10px"}}
+            style={{ marginLeft: "50%", marginTop: "10px" }}
           >
             <div
               class="apexcharts-menu-icon"
-              style={{  }}
+              style={{}}
               title="Menu"
               onClick={() => {
                 this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
@@ -653,7 +670,10 @@ class DynamicMapSelector extends Component {
                 title="Download JPEG"
                 onClick={() => {
                   htmlToImage
-                    .toJpeg(document.getElementById("composable-map"), {quality: 0.95, backgroundColor: "#FFF"})
+                    .toJpeg(document.getElementById("composable-map"), {
+                      quality: 0.95,
+                      backgroundColor: "#FFF",
+                    })
                     .then(function (dataUrl) {
                       downloadjs(dataUrl, "map.jpg");
                     });
@@ -666,9 +686,54 @@ class DynamicMapSelector extends Component {
         </div>
 
         {this.getComposableMap()}
+
+        <div
+          class="modal in"
+          id="exampleModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+          style={
+            this.state.noDataModal
+              ? { display: "block", paddingRight: "16px" }
+              : { display: "none" }
+          }
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">
+                  {noDataLabel}
+                </h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                  onClick={()=> this.setState({noDataModal: false})}
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">{noDataInfo}</div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onClick={()=> this.setState({noDataModal: false})}>
+                  OK
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }
 }
 
-export default memo(DynamicMapSelector);
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+
+export default memo(connect(mapStateToProps)(DynamicMapSelector));

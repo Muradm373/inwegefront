@@ -1,7 +1,7 @@
 import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
-export const APP_NAME = "PALGAKOMPASS";
+export const APP_NAME = "Palgarakendus";
 export const menColor = "#3F1A84";
 export const womenColor = "#F58FA9";
 const averageEng = [
@@ -300,6 +300,19 @@ const webpageLabelEng = [
   "Koduleht"
 ]
 
+
+const wageChangeInfoEng = [
+  "To see the difference, please check the graph",
+  "Чтобы увидеть разницу, посмотрите график",
+  "Erinevuse nägemiseks kontrollige palun graafikut"
+]
+
+const noDataInfoEng = [
+  "There is no information about gender wage differences of monthly wages for this occupation, check median wage or average wage.",
+  "Чтобы увидеть результаты по этой профессии, проверьте среднюю заработную плату или среднюю заработную плату.",
+  "Sellel ametialal ei ole infot meeste ja naiste palkade erinevuse kohta, vaata mediaanpalka või keskmist palka."
+]
+
 const replacementNeeds2Eng =  ["Replacement rate in relation to the average wage in Estonia at the time of retirement","Коэффициент замещения по отношению к средней заработной плате в Эстонии при выходе на пенсию","Asendusmäär Eesti keskmise palga suhtes pensionile minemise hetkel"];
 
 
@@ -491,6 +504,8 @@ export default function changeLanguage(language) {
   PensionsText = PensionsTextEng[i];
   wageForecastText = wageForecastTextEng[i];
   wageDifferencesText = wageDifferencesTextEng[i];
+  wageChangeInfo = wageChangeInfoEng[i];
+  noDataInfo = noDataInfoEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -578,4 +593,6 @@ export let webpageLabel = webpageLabelEng[0];
 export let PensionsText = PensionsTextEng[0];
 export let wageForecastText = wageForecastTextEng[0];
 export let wageDifferencesText = wageDifferencesTextEng[0];
+export let wageChangeInfo = wageChangeInfoEng[0];
+export let noDataInfo = noDataInfoEng[0];
 

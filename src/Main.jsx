@@ -108,7 +108,7 @@ class Main extends Component {
             id="salary-calculator-component"
             onDataChange={this.getData}
             mapElementColor={this.state.mapElementColor}
-          ></SalaryCalculator>
+          ></SalaryCalculator>      
         </div>
       );
     }

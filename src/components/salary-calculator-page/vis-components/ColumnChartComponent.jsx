@@ -4,12 +4,14 @@ import ReactApexChart from "react-apexcharts";
 import {
   API_URL,
   averageData,
-  averageDataSpec, genderLabel, lng,
+  averageDataSpec,
+  genderLabel,
+  lng,
   menColor,
   womenColor,
   occupationLabel,
   countyLabel,
-  columnchartLabel
+  columnchartLabel,
 } from "../../../dictionary/text";
 
 class ColumnChartComponent extends Component {
@@ -53,9 +55,11 @@ class ColumnChartComponent extends Component {
           categories: [averageDataSpec[0], averageData, averageDataSpec[1]],
         },
         yaxis: {
-          title: {
-            text: "EUR",
-          },
+          labels: {
+            formatter: function (val) {
+              return val + "€";
+            },
+          }
         },
         fill: {
           opacity: 1,
@@ -71,18 +75,21 @@ class ColumnChartComponent extends Component {
           text: columnchartLabel,
           floating: true,
           offsetY: 0,
-          align: 'center',
+          align: "center",
           style: {
-            color: '#444',
-            fontSize: '14px',
-            fontWeight: '200'
-          }
-        }
+            color: "#444",
+            fontSize: "14px",
+            fontWeight: "200",
+          },
+        },
       },
       menMean: 0,
       womenMean: 0,
       menMeanOccupation: 0,
       womenMeanOccupation: 0,
+      region: undefined,
+      isco: undefined,
+      code: undefined,
     };
 
     this.getAllMean = this.getAllMean.bind(this);
@@ -90,15 +97,10 @@ class ColumnChartComponent extends Component {
   }
 
   setOccupationName(props) {
-
     let options = this.state.options;
-   
-    options.xaxis.categories[0] = [ 
-        occupationLabel,
-      ];
-    options.xaxis.categories[2] = [
-      props.region.split(' ')[0],
-    ];
+
+    options.xaxis.categories[0] = [occupationLabel];
+    options.xaxis.categories[2] = [props.region.split(" ")[0]];
     this.setState({ options: options });
   }
 
@@ -136,6 +138,7 @@ class ColumnChartComponent extends Component {
         ],
         menMean: menMean,
         womenMean: womenMean,
+        region: "",
       });
     });
   }
@@ -151,83 +154,96 @@ class ColumnChartComponent extends Component {
       "&lang=" +
       lng;
 
-    if(isco !== ""){
+    if (
+      isco !== "" &&
+      !(isco === this.state.isco &&
+      region === this.state.region)
+    ) {
+      this.setState({                code: code,
+        isco: isco,
+        region: region})
+      axios
+        .get(url)
+        .then((response) => response.data)
+        .then((data) => {
+          let entities = data.payload.salaryEntities;
+          let jobEntity = data.payload.jobEntity;
+          if (jobEntity !== undefined && entities[0] !== undefined) {
+            if (entities[0].region !== "All") {
+              let menMean = 0;
+              let womenMean = 0;
 
-    axios
-      .get(url)
-      .then((response) => response.data)
-      .then((data) => {
-        let entities = data.payload.salaryEntities;
-        let jobEntity = data.payload.jobEntity;
-        if (jobEntity !== undefined && entities[0] !== undefined) {
-          if (entities[0].region !== "All") {
-            let menMean = 0;
-            let womenMean = 0;
+              if (entities[0] !== undefined) {
+                if (entities[0].female === "1") womenMean = entities[0].mean;
+                else menMean = entities[0].mean;
+              }
+              if (entities[1] !== undefined) {
+                if (entities[1].female === "1") womenMean = entities[1].mean;
+                else menMean = entities[1].mean;
+              }
 
-            if (entities[0] !== undefined) {
-              if (entities[0].female === "1") womenMean = entities[0].mean;
-              else menMean = entities[0].mean;
+              this.setState({
+                series: [
+                  {
+                    name: genderLabel[0],
+                    data: [
+                      menMean,
+                      this.state.menMean,
+                      this.state.menMeanRegion,
+                    ],
+                  },
+                  {
+                    name: genderLabel[1],
+                    data: [
+                      womenMean,
+                      this.state.womenMean,
+                      this.state.womenMeanRegion,
+                    ],
+                  },
+                ],
+                menMeanOccupation: menMean,
+                womenMeanOccupation: womenMean,
+              });
             }
-            if (entities[1] !== undefined) {
-              if (entities[1].female === "1") womenMean = entities[1].mean;
-              else menMean = entities[1].mean;
-            }
-
-            this.setState({
-              series: [
-                {
-                  name: genderLabel[0],
-                  data: [menMean, this.state.menMean, this.state.menMeanRegion],
-                },
-                {
-                  name: genderLabel[1],
-                  data: [
-                    womenMean,
-                    this.state.womenMean,
-                    this.state.womenMeanRegion,
-                  ],
-                },
-              ],
-              menMeanOccupation: menMean,
-              womenMeanOccupation: womenMean,
-            });
           }
-        }
-      });
+        });
     }
   }
 
   getMeanForRegion(region) {
-    let url = `${API_URL}/average?region=${region}`;
+    if (region !== this.state.region) {
+      this.setState({ region: region });
+      let url = `${API_URL}/average?region=${region}`;
 
-    axios
-      .get(url)
-      .then((response) => response.data)
-      .then((data) => {
-        let averages = data.payload;
-        this.setState({
-          series: [
-            {
-              name: genderLabel[0],
-              data: [
-                this.state.menMeanOccupation,
-                this.state.menMean,
-                averages.maleAverage,
-              ],
-            },
-            {
-              name: genderLabel[1],
-              data: [
-                this.state.womenMeanOccupation,
-                this.state.womenMean,
-                averages.femaleAverage,
-              ],
-            },
-          ],
-          menMeanRegion: averages.maleAverage,
-          womenMeanRegion: averages.femaleAverage,
+      axios
+        .get(url)
+        .then((response) => response.data)
+        .then((data) => {
+          let averages = data.payload;
+          this.setState({
+            series: [
+              {
+                name: genderLabel[0],
+                data: [
+                  this.state.menMeanOccupation,
+                  this.state.menMean,
+                  averages.maleAverage,
+                ],
+              },
+              {
+                name: genderLabel[1],
+                data: [
+                  this.state.womenMeanOccupation,
+                  this.state.womenMean,
+                  averages.femaleAverage,
+                ],
+              },
+            ],
+            menMeanRegion: averages.maleAverage,
+            womenMeanRegion: averages.femaleAverage,
+          });
         });
-      });
+    }
   }
 
   render() {
