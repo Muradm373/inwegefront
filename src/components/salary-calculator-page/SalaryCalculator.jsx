@@ -19,7 +19,7 @@ import {
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
-import DynamicMapSelector from "./selector-components/map-components/DynamicMapSelector";
+import DynamicMapSelector from "./selector-components/DynamicMapSelector";
 import GenderSelector from "./selector-components/GenderSelector";
 import Graph from "./vis-components/Graph";
 import OccupationSelector from "./selector-components/OccupationSelector";
@@ -237,7 +237,7 @@ class SalaryCalculator extends Component {
                         <div className="row justify-content-center text-center">
                           <AgeBarChartComponent
                             isco={this.state.isco}
-                            label={[`${ageLabel}`, `${this.state.region}`]}
+                            label={[`${ageLabel} `, `${this.state.region}`]}
                           ></AgeBarChartComponent>
                         </div>
                       </div>

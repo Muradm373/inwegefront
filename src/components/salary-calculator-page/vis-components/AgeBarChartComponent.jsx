@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { API_URL, ageTickLabel, propsLabel } from "../../../dictionary/text";
+import { API_URL, propsLabel } from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
+import {connect} from "react-redux";
 
 class AgeBarChartComponent extends Component {
   constructor(props) {
@@ -62,7 +63,8 @@ class AgeBarChartComponent extends Component {
           },
         },
         title: {
-          text: this.props.label,
+          text: this.props.label +
+          (this.props.dates.ageDate ?  " " + this.props.dates.ageDate : ""),
           floating: true,
           offsetY: -5,
           align: "center",
@@ -150,4 +152,11 @@ class AgeBarChartComponent extends Component {
   }
 }
 
-export default AgeBarChartComponent;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+
+
+export default connect(mapStateToProps) (AgeBarChartComponent);

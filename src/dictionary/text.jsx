@@ -37,7 +37,7 @@ const differenceEng = [
   ],
   [
     "Mehed teenivad ",
-    " rohkem ",
+    " rohkem kui ",
     " vähem kui ",
     "",
     " naised",
@@ -106,8 +106,8 @@ const pieChartLabelsEng = [
   ],
   [
     "Keskmine palk valitud ametikohal ja piirkonnas.",
-    "Valitud piirkonna keskmine palk kõigi ametikohtade suhtes.",
-    "Valitud ametikoha keskmine palk kõigi piirkondade suhtes.",
+      "Valitud piirkonna keskmine palk kõigi ametikohtade suhtes.",
+      "Valitud ametikoha keskmine palk kõigi piirkondade suhtes.",
   ],
 ];
 const detailsLabelEng = ["Details", "Описание", "Detailid"];
@@ -118,13 +118,13 @@ const occupationSelectorPlaceholderEng = [
   "Сначала вам нужно выбрать округ на карте",
   "Esmalt tuleb kaardilt valida maakond",
 ];
-const overallEng = ["Overall in Estonia", "B Эстонии", "Üldiselt Eestis"];
+const overallEng = ["Overall in Estonia", "B Эстонии", "Kogu Eesti"];
 
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
   "Filling the boxes below allows you to compare your own wage to the average wage.",
   "Чтобы увидеть разницу между вашей и средней заработной платой, заполнитe поля ниже",
-  "Oma brutopalga võrdlemiseks keskmise brutopalgaga võite täita järgmised lahtrid.  ",
+  "Oma brutopalga võrdlemiseks keskmise brutopalgaga võite täita järgmised lahtrid.   ",
 ];
 const sideParagraph2Eng = [
   "After selecting county from the map, you can search for a job by job title.",
@@ -175,9 +175,9 @@ const computarizationEng = [
     "Низкий риск компьютеризации",
   ],
   [
-    "Suur oht, et inimese asendab arvuti",
-    "Keskmine oht, et inimese asendab arvuti",
-    "Väike oht, et inimese asendab arvuti",
+    "Suur risk, et inimese asendab arvuti",
+    "Keskmine risk, et inimese asendab arvuti",
+    "Väike risk, et inimese asendab arvuti",
   ],
 ];
 const retirementEng = [
@@ -193,7 +193,7 @@ const retirementEng = [
   ],
   [
     "Suur vanusest tingitud asendusvajadus",
-    "Suur vanusest tingitud asendusvajadus",
+    "Keskmine vanusest tingitud asendusvajadus",
     "Väike vanusest tingitud asendusvajadus",
   ],
 ];
@@ -211,16 +211,16 @@ const pensionLabelEng = [
     "и потребности в заменах из-за выходa на пенсию",
   ],
   [
-    "2030. aastal on sellele ametialal prognoositav brutotöötasu suurus vahemikus ",
+    "2030. aastal on sellel ametialal prognoositav brutotöötasu suurus vahemikus ",
     "-",
-    "Selle on",
-    "oht, et inimese asendab arvuti ning vanusest tingitud asendusvajadus on  ",
+    "Sellel ametialal on",
+    "risk, et inimese asendab arvuti ning vanusest tingitud asendusvajadus on  ",
   ],
 ];
 const lessMoreLabelEng = [
   ["Higher than", "Less than"],
   ["Выше чем", "Mеньше чем"],
-  ["Kõrgem kui", "vähem kui"],
+  ["Kõrgem kui", "Vähem kui"],
 ];
 const levelsEng = [
   ["low", "medium", "high"],
@@ -228,9 +228,9 @@ const levelsEng = [
   ["madal", "keskmine", "kõrge"],
 ];
 const ageLabelEng = [
-  "Age distribution of employees.",
+  "Age distribution of employees",
   "Возрастное распределение работников",
-  "Töötajate vanuseline jaotus.",
+  "Töötajate vanuseline jaotus",
 ];
 const noInformationLabelEng = [
   "There is no information available for this occupation in this region. Please choose another county or another occupation. Average for Estonia is shown.",
@@ -327,14 +327,14 @@ const pensionDescriptionEng =  [["It is assumed that:",
 "3) Все сотрудники присоединились ко второй ступени с момента начала работы, но деньги в дополнительные пенсионные фонды не поступают (например, III ступень)",
 "4) Ожидаемый рост заработной платы исходит из прогнозов Минфина, продолжительность жизни в будущем исходит из прогнозов Евростата."],
 ["Eeldame, et", "1) Brutopalkade jaotus hõlmab kõiki ametialasid ning vastab kogu Eesti naiste ja meeste palkade jaotusele.",
-"2) Kõik inimesed on sündinud 01. jaanuaril 2002. aastal, alustavad töötamist 1. jaanuaril 2020. aastal ja jäävad pensionile 1. novembril 2071. aastal. Mitte kellelgi ei ole töötamises katkestusi, kellelgi pole ka lapsi.",
-"3) Kõik inimesed on liitunud II sambaga töötamise alustamise hetkel, mitte keegi pole liitunud III sambaga.",
-"4) Eeldatav palgakasv on võetud Rahandusministeeriumi prognoosist, eeldatav eluiga pensionile minemise hetkel  ja eeldatav eluiga pensionile minemisel on võetud Eurostati prognoosist."]]
-
+  "2) Kõik inimesed on sündinud 01. jaanuaril 2002. aastal, alustavad töötamist 1. jaanuaril 2020. aastal ja jäävad pensionile 1. novembril 2071. aastal. Mitte kellelgi ei ole töötamises katkestusi, kellelgi pole ka lapsi.",
+  "3) Kõik inimesed on liitunud II sambaga töötamise alustamise hetkel, mitte keegi pole liitunud III sambaga.",
+  "4) Eeldatav palgakasv on võetud Rahandusministeeriumi prognoosist, eeldatav eluiga pensionile minemise hetkel on võetud Eurostati prognoosist."]];
+  
 
 const gapsWageLabelEng = 
-  ["Pension Gap (2020)","Разница в заработной плате (2020)","Meeste ja naiste kuupalkade erinevus (2020)"];
-
+["Pension Gap (in Euros of 2020)","Разница в заработной плате (в евро 2020 года)","Meeste ja naiste kuupalkade erinevus (2020. aasta eurodes)"];
+  
 
 const gapsPensionLabelEng = 
   ["Pension Gap (in Euros of 2071)","Разница в пенсии (в евро 2071 года)","Pensionide erinevus (2071. aasta eurodes)"];
@@ -358,15 +358,15 @@ const ageTickLabelEng = [
 ]
 
 const propsLabelEng = [
-  "Props",
-  "Props",
-  "Props"
+  "%",
+  "%",
+  "%"
 ]
 
 const emailLabelEng = [
   "Email",
   "Электронная почта",
-  "E-POSTI AADRESS"
+  "E-posti aadress"
 ]
 
 const occupationLabelEng = [
@@ -402,8 +402,8 @@ const pensionFractionLabelEng = [
 const pensionHeaderEng = [
   ["The current ", " gender wage gap decreases to ", " gender pension gap, but the gap does not disappear."],
   ["Нынешний ", "-ый ", "гендерный разрыв в заработной плате уменьшается до ", "-ого гендерного разрыва в пенсиях, но разрыв не исчезает."],
-  ["Meeste ja naiste ", "-line kuupalkade erinevus ", "-liseks pensionide erinevuseks, aga ära ei kao. "]]
-
+  ["Meeste ja naiste ", "-line kuupalkade erinevus väheneb ", "-liseks pensionide erinevuseks, aga ära ei kao. "]]
+    
 const columnchartLabelEng = ['Average Wages', ' Средняя зар. плата', 'Keskmised Palgad'];
 
 const workingWomenEng = ["working women", "женщины", "töötavaid naisi"];
@@ -411,8 +411,9 @@ const workingMenEng = ["working men", "мужчины", "töötavaid naisi"];
 const joinEng = ["Join", "Присоединиться", "Liitu"];
 
 const joinBodyEng = ["By subscribing you agree to the terms and conditions and privacy policy.","Подписываясь, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
+  
+const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
 
-const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"];
 export default function changeLanguage(language) {
   let i;
   switch (language) {

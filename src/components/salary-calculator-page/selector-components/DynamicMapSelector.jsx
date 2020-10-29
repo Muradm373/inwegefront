@@ -6,7 +6,7 @@ import {
   averageData,
   noDataLabel,
   noDataInfo
-} from "../../../../dictionary/text";
+} from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import htmlToImage from "html-to-image";
 import downloadjs from "downloadjs";
@@ -18,14 +18,14 @@ import {
   Marker,
   Annotation,
 } from "react-simple-maps";
-import ee from "../../../../resources/ee.json";
+import ee from "../../../resources/ee.json";
 import axios from "axios";
 import {
   genderLabel,
   genderWageGap,
   averageWage,
   medianWage,
-} from "../../../../dictionary/text";
+} from "../../../dictionary/text";
 import ReactTooltip from "react-tooltip";
 import { connect } from "react-redux";
 
@@ -370,15 +370,15 @@ class DynamicMapSelector extends Component {
     let mapContentType;
     switch (this.state.mapType) {
       case "Median Wage":
-        mapContentType = medianWage + ", 2020";
+        mapContentType = medianWage + ", " + this.props.dates.occupationEntityDate;
         break;
 
       case "Average Wage":
-        mapContentType = averageWage + ", 2020";
+        mapContentType = averageWage + ", " + this.props.dates.occupationEntityDate;
         break;
 
       default:
-        mapContentType = genderWageGap + ", 2020";
+        mapContentType = genderWageGap + ", " + this.props.dates.occupationEntityDate ;
         break;
     }
 
