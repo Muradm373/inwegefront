@@ -414,6 +414,7 @@ const joinBodyEng = ["By subscribing you agree to the terms and conditions and p
   
 const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
 const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
+const monthLabelEng = ["month", "месяц","kuus"]
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -508,6 +509,7 @@ export default function changeLanguage(language) {
   wageChangeInfo = wageChangeInfoEng[i];
   noDataInfo = noDataInfoEng[i];
   source = sourceEng[i];
+  monthLabel = monthLabelEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -598,4 +600,5 @@ export let wageDifferencesText = wageDifferencesTextEng[0];
 export let wageChangeInfo = wageChangeInfoEng[0];
 export let noDataInfo = noDataInfoEng[0];
 export let source = sourceEng[0];
+export let monthLabel = monthLabelEng[0];
 

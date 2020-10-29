@@ -10,7 +10,7 @@ import {
   menColor,
   womenColor,
   occupationLabel,
-  countyLabel,
+  monthLabel,
   columnchartLabel,
 } from "../../../dictionary/text";
 
@@ -52,12 +52,12 @@ class ColumnChartComponent extends Component {
           colors: ["transparent"],
         },
         xaxis: {
-          categories: [averageDataSpec[0], averageData, averageDataSpec[1]],
+          categories: [averageDataSpec[0],  averageDataSpec[1], averageData,],
         },
         yaxis: {
           labels: {
             formatter: function (val) {
-              return val + "€";
+              return val + "€/" + monthLabel;
             },
           }
         },
@@ -100,7 +100,7 @@ class ColumnChartComponent extends Component {
     let options = this.state.options;
 
     options.xaxis.categories[0] = [occupationLabel];
-    options.xaxis.categories[2] = [props.region.split(" ")[0]];
+    options.xaxis.categories[1] = [props.region.split(" ")[0]];
     this.setState({ options: options });
   }
 
@@ -123,16 +123,16 @@ class ColumnChartComponent extends Component {
             name: genderLabel[0],
             data: [
               this.state.menMeanOccupation,
-              menMean,
               this.state.menMeanRegion,
+              menMean,
             ],
           },
           {
             name: genderLabel[1],
             data: [
               this.state.womenMeanOccupation,
-              womenMean,
               this.state.womenMeanRegion,
+              womenMean,
             ],
           },
         ],
@@ -188,16 +188,16 @@ class ColumnChartComponent extends Component {
                     name: genderLabel[0],
                     data: [
                       menMean,
-                      this.state.menMean,
                       this.state.menMeanRegion,
+                      this.state.menMean,
                     ],
                   },
                   {
                     name: genderLabel[1],
                     data: [
                       womenMean,
-                      this.state.womenMean,
                       this.state.womenMeanRegion,
+                      this.state.womenMean,
                     ],
                   },
                 ],
@@ -226,16 +226,18 @@ class ColumnChartComponent extends Component {
                 name: genderLabel[0],
                 data: [
                   this.state.menMeanOccupation,
-                  this.state.menMean,
                   averages.maleAverage,
+                  this.state.menMean,
+                 
                 ],
               },
               {
                 name: genderLabel[1],
                 data: [
                   this.state.womenMeanOccupation,
-                  this.state.womenMean,
                   averages.femaleAverage,
+                  this.state.womenMean,
+                  
                 ],
               },
             ],
