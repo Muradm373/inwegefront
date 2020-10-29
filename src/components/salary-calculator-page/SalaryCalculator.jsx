@@ -15,7 +15,7 @@ import {
   totalNumberOfEmployeesOccupation,
   womenColor,
   wageChangeInfo,
-  noDataLabel
+  noDataLabel,
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
@@ -161,11 +161,11 @@ class SalaryCalculator extends Component {
               </div>
               <br></br>
               <div>
-                {this.props.wage !== undefined ?
-                <p className="mb-1">{wageChangeInfo}</p>
-                :
-                <></>
-              }
+                {this.props.wage !== undefined ? (
+                  <p className="mb-1">{wageChangeInfo}</p>
+                ) : (
+                  <></>
+                )}
                 <p
                   style={{
                     flex: 5,
@@ -179,7 +179,6 @@ class SalaryCalculator extends Component {
                   }}
                 >
                   {this.props.description}
-                  
                 </p>
               </div>
             </div>
@@ -190,9 +189,7 @@ class SalaryCalculator extends Component {
           <div>
             <div className="methodology-component">
               <div className="pns-graphs">
-                <p>
-                  {wageDifferencesText}
-                </p>
+                <p>{wageDifferencesText}</p>
                 <br></br>
               </div>
             </div>
@@ -221,34 +218,8 @@ class SalaryCalculator extends Component {
               occupation={this.state.occupation}
               region={this.state.region}
             ></Graph>
-            {
-              <div>
-                <div className="graph-component-cards">
-                  <div>
-                    <ColumnChartComponent
-                      region={this.state.region}
-                      isco={this.state.isco}
-                      code={this.state.code}
-                      occupation={this.state.occupation}
-                    />
-                  </div>
-                  <div>
-                    {this.state.isco ? (
-                      <div>
-                        <div className="row justify-content-center text-center">
-                          <AgeBarChartComponent
-                            isco={this.state.isco}
-                            label={[`${ageLabel} `]}
-                          ></AgeBarChartComponent>
-                        </div>
-                      </div>
-                    ) : null}
-                  </div>
-                </div>
-              </div>
-            }
 
-            <div className="feature-1 text-center">
+            <div className="feature-1 text-center my-3">
               <div className="row d-flex justify-content-center">
                 <div style={{ height: "5px" }}></div>
                 <PieChartComponent
@@ -260,6 +231,33 @@ class SalaryCalculator extends Component {
                   type="region"
                 />
               </div>
+
+              {
+                <div>
+                  <div className="graph-component-cards mt-3">
+                    <div>
+                      <ColumnChartComponent
+                        region={this.state.region}
+                        isco={this.state.isco}
+                        code={this.state.code}
+                        occupation={this.state.occupation}
+                      />
+                    </div>
+                    <div>
+                      {this.state.isco ? (
+                        <div>
+                          <div className="row justify-content-center text-center">
+                            <AgeBarChartComponent
+                              isco={this.state.isco}
+                              label={[`${ageLabel} `]}
+                            ></AgeBarChartComponent>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                </div>
+              }
               {this.state.occupation !== "" && (
                 <p className="mb-3" style={{ color: "black" }}>
                   {totalNumberOfEmployeesOccupation[0] +
