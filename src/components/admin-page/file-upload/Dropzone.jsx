@@ -59,28 +59,26 @@ class Dropzone extends Component {
 
   render() {
     return (
-      <div
-        className={`Dropzone ${this.state.hightlight ? "Highlight" : ""}`}
-        onDragOver={this.onDragOver}
-        onDragLeave={this.onDragLeave}
-        onDrop={this.onDrop}
-        onClick={this.openFileDialog}
-        style={{ cursor: this.props.disabled ? "default" : "pointer" }}
-      >
-        <input
-          ref={this.fileInputRef}
-          className="FileInput"
-          type="file"
-          multiple
-          onChange={this.onFilesAdded}
-        />
-         <span
-            className="icofont-upload icofont-4x"
-            style={{ cursor: "pointer" }}
-            href="www.google.com"
-          ></span>
-        <span>Upload Files</span>
-      </div>
+      <>
+        
+        <div class="input-group-sm">
+          <div class="input-group-prepend">
+          </div>
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="inputGroupFile01"
+              ref={this.fileInputRef}
+              onChange={this.onFilesAdded}
+              aria-describedby="inputGroupFileAddon01"
+            />
+            <label class="custom-file-label" for="inputGroupFile01" id="inputGroup-sizing-sm">
+              Choose file
+            </label>
+          </div>
+        </div>
+      </>
     );
   }
 }

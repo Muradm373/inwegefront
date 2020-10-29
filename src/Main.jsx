@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "react-tabs/style/react-tabs.css";
+import { getDates } from "./actions/actions";
 import AdminPanel from "./components/admin-page/AdminPanel";
 import MethodologyComponent from "./components/methodology-page/MethodologyComponent";
 import PensionsComponent from "./components/pensions-page/PensionsComponent";
@@ -28,6 +29,7 @@ import changeLanguage, {
   joinBody,
   joinLink,
 } from "./dictionary/text";
+import {connect} from "react-redux";
 
 class Main extends Component {
   constructor(props) {
@@ -47,6 +49,7 @@ class Main extends Component {
     this.refresh = this.refresh.bind(this);
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.changeMenu = this.changeMenu.bind(this);
+    this.props.getDates();
   }
 
   defaultValue() {
@@ -563,4 +566,18 @@ class Main extends Component {
   }
 }
 
-export default Main;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getDates: () => {
+      getDates(dispatch);
+    },
+  };
+};
+
+const mapStateToProps = (state) => {
+  return {
+    dates: state.dates,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

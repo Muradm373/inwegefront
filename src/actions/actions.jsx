@@ -22,6 +22,22 @@ export const getOccupations = (dispatch, region) => {
     });
 };
 
+export const getDates = (dispatch) => {
+  axios
+    .get(`${API_URL}/file/date/info`)
+    .then((data) => {
+      return dispatch({ type: "SET_DATES", dates: data.data.payload });
+    });
+};
+
+export const updateDates = (dates, userToken, dispatch) => {
+  axios
+    .put(`${API_URL}/api/file/date/update`,{headers:{Authorization: `Bearer ${userToken}`},...dates})
+    .then((data) => {
+      return dispatch({ type: "SET_DATES", dates: dates });
+    });
+};
+
 export const setGender = (gender) => {
   return { type: "SET_GENDER", gender: gender };
 };

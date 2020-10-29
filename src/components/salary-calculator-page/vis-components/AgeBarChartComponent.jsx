@@ -36,7 +36,7 @@ class AgeBarChartComponent extends Component {
         dataLabels: {
           enabled: false,
         },
-        colors: ["#0F4FEF"],
+        colors: ["#FFBC45"],
 
         stroke: {
           show: true,

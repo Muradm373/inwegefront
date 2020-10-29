@@ -45,9 +45,8 @@
 }
 
 .feedback-list-nav{
-  overflow: scroll;
   overflow-x: hidden;
-  height: 500px;
+  height: 400px;
 }
 
 .map-legend{

@@ -16,29 +16,12 @@ class AdminPanel extends Component {
   constructor() {
     super();
     this.setUserToken = this.setUserToken.bind(this);
-    this.fetchFeedbacks = this.fetchFeedbacks.bind(this);
     this.logout = this.logout.bind(this);
   }
 
   setUserToken(token) {
     this.setState({ userToken: token, loggedIn: true });
     this.fetchFeedbacks();
-  }
-
-  fetchFeedbacks() {
-    axios
-      .get(`${API_URL}/feedbacks`, {
-        headers: {
-          Authorization: `Bearer ${this.state.userToken}`,
-        },
-      })
-      .then((data) => {
-        this.setState({
-          feedbacks: data.data.payload,
-        });
-
-        console.log(data.data.payload)
-      });
   }
 
   logout() {
@@ -50,12 +33,13 @@ class AdminPanel extends Component {
       <div>
         <main>
           <div>
-            {this.state.loggedIn ? (
+            {/* {this.state.loggedIn  */}
+            {true
+            ? (
               <div className="row">
                 <div className="col-md-4 m-5">
                   <FeedbacksList
-                    feedbacks={this.state.feedbacks}
-                    refresh={this.fetchFeedbacks}
+                    userToken={this.setState.userToken}
                   />
                 </div>
                 <div className="col-md-4">

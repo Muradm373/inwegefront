@@ -1,4 +1,4 @@
-import {genderLabel, noInformationLabel } from "../dictionary/text";
+import { genderLabel, noInformationLabel } from "../dictionary/text";
 
 const initState = {
   occupations: [],
@@ -6,7 +6,15 @@ const initState = {
   wage: undefined,
   entities: [],
   description: "",
-  generalName: null
+  generalName: null,
+  dates: {
+    ageDate: null,
+    pensionDate: null,
+    salaryEntityDate: null,
+    occupationEntityDate: 2020,
+    wageForecasetDate: null,
+    quarter: "I quarter"
+  },
 };
 
 const rootReduce = (state = initState, action) => {
@@ -25,11 +33,14 @@ const rootReduce = (state = initState, action) => {
       ...state,
       entities: action.entities,
       description: action.description,
-      generalName: action.generalName
+      generalName: action.generalName,
     };
   }
   if (action.type === "SET_MEAN") {
     return { ...state, mean: action.mean };
+  }
+  if (action.type === "SET_DATES") {
+    return { ...state, dates: action.dates}
   }
 
   return { ...state };

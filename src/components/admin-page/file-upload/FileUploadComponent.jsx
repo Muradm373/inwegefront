@@ -10,27 +10,27 @@ class FileUploadModal extends Component {
         <div className="">
           <div
           >
-            <div className="row card-shadow-wide" style={{width: "180%"}}>
-              <div className="col-md-4">
+            <div className="row card-shadow-forecast " style={{width: "180%"}}>
+              <div className="col-md-6">
                 <Upload userToken={this.props.userToken} type={"job"}></Upload>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <Upload
                   userToken={this.props.userToken}
                   type={"salary"}
                 ></Upload>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <Upload
                   userToken={this.props.userToken}
                   type={"wage-forecast"}
                 ></Upload>
               </div>
               <br></br>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <Upload userToken={this.props.userToken} type={"age"}></Upload>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-6">
                 <Upload
                   userToken={this.props.userToken}
                   type={"pension"}

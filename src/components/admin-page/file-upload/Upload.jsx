@@ -103,6 +103,8 @@ class Upload extends Component {
     if (this.state.successfullUploaded) {
       return (
         <button
+          type="button"
+          class="btn btn-danger"
           onClick={() =>
             this.setState({ files: [], successfullUploaded: false })
           }
@@ -113,6 +115,8 @@ class Upload extends Component {
     } else {
       return (
         <button
+          type="button"
+          class="btn btn-success"
           disabled={this.state.files.length < 0 || this.state.uploading}
           onClick={this.uploadFiles}
         >
@@ -124,36 +128,43 @@ class Upload extends Component {
 
   render() {
     return (
-      <div 
-      style={ {
-        display: "block",
-        marginLeft: "auto",
-        marginRight: "auto",
-      }}>
-        <span className="Title m-2">Upload {this.props.type} file</span>
-        <div className="Upload m-2">
-          <div className="Content">
-            <div>
-              <Dropzone
-                onFilesAdded={this.onFilesAdded}
-                disabled={
-                  this.state.uploading || this.state.successfullUploaded
-                }
-              />
-              <br></br>
-            </div>
-            <div className="Files">
-              {this.state.files.map((file) => {
-                return (
-                  <div key={file.name} className="row">
-                    <span className="Filename">{file.name}</span>
-                    {this.renderProgress(file)}
-                  </div>
-                );
-              })}
+      <div
+        style={{
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+      >
+        <div class="card mb-2">
+          <div class="card-header">
+            <span className="Title m-2">Upload {this.props.type} file</span>
+          </div>
+          <div class="card-body">
+            <div className="Upload m-2">
+              <div className="Content">
+                <div>
+                  <Dropzone
+                    onFilesAdded={this.onFilesAdded}
+                    disabled={
+                      this.state.uploading || this.state.successfullUploaded
+                    }
+                  />
+                  <br></br>
+                </div>
+                <div className="Files">
+                  {this.state.files.map((file) => {
+                    return (
+                      <div key={file.name} className="row">
+                        <span className="Filename">{file.name}</span>
+                        {this.renderProgress(file)}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="Actions">{this.renderActions()}</div>
             </div>
           </div>
-          <div className="Actions">{this.renderActions()}</div>
         </div>
       </div>
     );

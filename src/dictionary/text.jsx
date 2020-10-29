@@ -1,7 +1,7 @@
 import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
-export const APP_NAME = "Palgarakendus";
+export const APP_NAME = "PALGARAKENDUS";
 export const menColor = "#3F1A84";
 export const womenColor = "#F58FA9";
 const averageEng = [
@@ -50,7 +50,7 @@ const lngEng = ["en", "ru", "es"];
 const tabsEng = [
   ["Wage differences", "Wage Forecast", "Pensions", "Background"],
   ["Разница в заработной плате", "Калькулятор зарплаты", "Пенсии", "Пояснения"],
-  ["Palgaerinevused", "Palgaprognoos", "Pensionid", "Selgitused"],
+  ["Palgavõrdlus", "Palgaprognoos", "Pensioniprognoos", "Selgitused"],
 ];
 const averagesEng = [
   ["Average for ", "Average for ", "Average for Estonia"],
