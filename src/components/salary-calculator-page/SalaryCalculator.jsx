@@ -219,6 +219,7 @@ class SalaryCalculator extends Component {
               myWage={this.props.wage}
               myGender={this.props.gender}
               occupation={this.state.occupation}
+              region={this.state.region}
             ></Graph>
             {
               <div>
@@ -237,7 +238,7 @@ class SalaryCalculator extends Component {
                         <div className="row justify-content-center text-center">
                           <AgeBarChartComponent
                             isco={this.state.isco}
-                            label={[`${ageLabel} `, `${this.state.region}`]}
+                            label={[`${ageLabel} `]}
                           ></AgeBarChartComponent>
                         </div>
                       </div>

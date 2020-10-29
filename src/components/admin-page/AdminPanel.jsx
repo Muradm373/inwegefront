@@ -33,8 +33,7 @@ class AdminPanel extends Component {
       <div>
         <main>
           <div>
-            {/* {this.state.loggedIn  */}
-            {true
+            {this.state.loggedIn 
             ? (
               <div className="row">
                 <div className="col-md-4 m-5">

@@ -249,9 +249,9 @@ const newsletterEng = [
   "Telli uudiskiri",
 ];
 const copyrightLabelEng = [
-  "Copyright palgakompass.stat.ee. All Rights Reserved",
-  "Авторские права palgakompass.stat.ee. Все права защищены",
-  "Autoriõigus palgakompass.stat.ee. Kõik õigused kaitstud.",
+  "Copyright palk.stat.ee. All Rights Reserved",
+  "Авторские права palk.stat.ee. Все права защищены",
+  "Autoriõigus palk.stat.ee. Kõik õigused kaitstud.",
 ];
 const statisticalDbLabelEng = [
   "Statistical database",
@@ -413,7 +413,7 @@ const joinEng = ["Join", "Присоединиться", "Liitu"];
 const joinBodyEng = ["By subscribing you agree to the terms and conditions and privacy policy.","Подписываясь, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
   
 const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
-
+const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -507,6 +507,7 @@ export default function changeLanguage(language) {
   wageDifferencesText = wageDifferencesTextEng[i];
   wageChangeInfo = wageChangeInfoEng[i];
   noDataInfo = noDataInfoEng[i];
+  source = sourceEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -596,4 +597,5 @@ export let wageForecastText = wageForecastTextEng[0];
 export let wageDifferencesText = wageDifferencesTextEng[0];
 export let wageChangeInfo = wageChangeInfoEng[0];
 export let noDataInfo = noDataInfoEng[0];
+export let source = sourceEng[0];
 

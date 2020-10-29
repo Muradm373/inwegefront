@@ -1,4 +1,5 @@
 import axios from "axios";
+import { sha256 } from 'js-sha256';
 import React, { Component } from "react";
 import { API_URL } from "../../dictionary/text";
 
@@ -8,6 +9,7 @@ class Login extends Component {
     password: "",
     userToken: "",
     incorrect: false,
+    seed: "UserPassword"
   };
   constructor() {
     super();
@@ -24,10 +26,12 @@ class Login extends Component {
   }
 
   login() {
+    let password = sha256(this.state.password + this.state.seed);
+    console.log(password.toUpperCase())
     axios
       .post(`${API_URL}/auth/signin`, {
         name: this.state.username,
-        password: this.state.password,
+        password: password.toUpperCase(),
       })
       .then((data) => {
         this.props.handleCloseModal(data.data.payload.token);

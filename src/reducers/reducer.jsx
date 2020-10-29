@@ -40,7 +40,7 @@ const rootReduce = (state = initState, action) => {
     return { ...state, mean: action.mean };
   }
   if (action.type === "SET_DATES") {
-    return { ...state, dates: action.dates}
+    return { ...state, dates: {...state.dates, ...action.dates}}
   }
 
   return { ...state };

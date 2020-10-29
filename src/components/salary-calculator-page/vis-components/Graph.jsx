@@ -85,6 +85,7 @@ function Graph(props) {
         menColor={menColor}
         womenColor={womenColor}
         occupation={props.occupation}
+        region={props.region}
         label={
           props.differenceLabel[0] +
           " " +

@@ -5,7 +5,8 @@ import {
   noData,
   averageData,
   noDataLabel,
-  noDataInfo
+  noDataInfo,
+  source
 } from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import htmlToImage from "html-to-image";
@@ -370,19 +371,19 @@ class DynamicMapSelector extends Component {
     let mapContentType;
     switch (this.state.mapType) {
       case "Median Wage":
-        mapContentType = medianWage + ", " + this.props.dates.occupationEntityDate;
+        mapContentType = medianWage;
         break;
 
       case "Average Wage":
-        mapContentType = averageWage + ", " + this.props.dates.occupationEntityDate;
+        mapContentType = averageWage;
         break;
 
       default:
-        mapContentType = genderWageGap + ", " + this.props.dates.occupationEntityDate ;
+        mapContentType = genderWageGap;
         break;
     }
 
-    return mapContentType;
+    return mapContentType +  `, ${this.props.dates.occupationEntityDate} (${this.props.dates.quarter})`;
   }
 
   getOccupation() {
@@ -450,7 +451,7 @@ class DynamicMapSelector extends Component {
   getComposableMap() {
     return (
       <div id="composable-map">
-        <ComposableMap data-tip="" projectionConfig={{ scale: 350 }}>
+        <ComposableMap data-tip="" projectionConfig={{ scale: 300 }}>
           <Geographies geography={ee}>
             {({ geographies }) => (
               <>
@@ -537,6 +538,18 @@ class DynamicMapSelector extends Component {
               alignmentBaseline="start"
             >
               {this.getAverageOrMean()}
+            </text>
+            <text
+              style={{
+                fontSize: "10pt",
+                fontFamily: "Roboto",
+                fontColor: "#8B8B8B"
+              }}
+              x="500"
+              textAnchor="start"
+              alignmentBaseline="start"
+            >
+             {source}
             </text>
           </Annotation>
         </ComposableMap>

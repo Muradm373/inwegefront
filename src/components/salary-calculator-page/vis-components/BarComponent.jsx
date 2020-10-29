@@ -21,7 +21,7 @@ class BarComponent extends Component {
         }
       >
         {this.props.occupation !== ""?
-        <p> {averageBetweenMenAndWomen + this.props.occupation} </p>:<></>
+        <p> {averageBetweenMenAndWomen + this.props.occupation + ". " + this.props.region} </p>:<></>
       }
         <FlexibleWidthXYPlot height={130} animation="gentle">
           <XAxis
