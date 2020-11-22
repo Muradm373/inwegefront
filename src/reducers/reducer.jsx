@@ -8,12 +8,16 @@ const initState = {
   description: "",
   generalName: null,
   dates: {
-    ageDate: null,
-    pensionDate: null,
-    salaryEntityDate: null,
-    occupationEntityDate: 2020,
-    wageForecasetDate: null,
-    quarter: "I quarter"
+    ageDataQuarter: "I",
+    ageDate: "2020",
+    occupationEntityDate: "2020",
+    occupationEntityDateQuarter: "I",
+    pensionDate: "2020",
+    pensionDateQuarter: "I",
+    salaryEntityDate: "2020",
+    salaryEntityDateQuarter: "I",
+    wageForecastDate: "2020",
+    wageForecastDateQuarter: "I"
   },
 };
 

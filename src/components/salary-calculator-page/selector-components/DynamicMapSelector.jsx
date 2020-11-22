@@ -3,8 +3,8 @@ import {
   API_URL,
   overall,
   noData,
-  averageData,
-  noDataLabel,
+  smallAverageData,
+  quarter,
   noDataInfo,
   source
 } from "../../../dictionary/text";
@@ -47,7 +47,7 @@ class DynamicMapSelector extends Component {
       median: "",
       average: "",
       genderGap: "",
-      groups: [],
+      groups: [[],[],[]],
       colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       noDataColor: "#eeeeee",
@@ -85,15 +85,25 @@ class DynamicMapSelector extends Component {
       url_dataType = "regions/median?isco=" + isco;
     }
 
-    if (isco !== "" && data !== "Median Wage") {
+    if (isco !== "" && data !== "Median Wage" && data !== "Avwer") {
       url_dataType = "jobs/average/mean?isco=" + isco;
     }
+
+    if (data === "Average Wage") {
+      url_dataType = "regions/average";
+    }
+    if (data === "Average Wage" && isco !== "") {
+      url_dataType = "regions/average?isco=" + isco;
+    }
+
 
     const url = `${API_URL}/`;
     axios
       .get(url + url_dataType)
       .then((response) => response.data)
       .then((data) => {
+        console.log(isco_props)
+        console.log(data.payload)
         this.setState({ averages: data.payload });
         this.setGroups(data.payload);
       });
@@ -115,17 +125,10 @@ class DynamicMapSelector extends Component {
               ) * 100,
           });
       });
-    } else if (this.state.mapType === "Median Wage") {
+    } else {
       data.forEach((el) => {
         let diff = parseInt(el.average);
         list.push({ item: diff, percentage: 0 });
-      });
-    } else {
-      data.forEach((el) => {
-        let diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
-        if (el.maleAverage === 0 || el.maleAverage === 0) {
-          diff = el.maleAverage + el.femaleAverage;
-        } else list.push({ item: diff, percentage: 0 });
       });
     }
 
@@ -145,7 +148,6 @@ class DynamicMapSelector extends Component {
       }
     }
 
-    if (result[0].length === 0) this.setState({ noDataModal: true });
 
     this.setState({ groups: result });
   }
@@ -237,13 +239,11 @@ class DynamicMapSelector extends Component {
     } else {
       this.state.averages.map((el) => {
         if (el.region === data) {
-          diff = Math.ceil((el.maleAverage + el.femaleAverage) / 2);
+          if (el.region === data) {
+            diff = el.average;
 
-          if (el.maleAverage === 0 || el.maleAverage === 0) {
-            diff = el.maleAverage + el.femaleAverage;
+            return Math.abs(diff);
           }
-
-          return Math.abs(diff);
         }
 
         return 0;
@@ -296,7 +296,7 @@ class DynamicMapSelector extends Component {
 
   getMeanForRegion(region) {
     let data = {};
-    if (this.state.mapType === "Median Wage") {
+    if (this.state.mapType === "Median Wage" || this.state.mapType==="Average Wage") {
       this.state.averages.map((el) => {
         if (el.region === region) {
           data = el.average + "€";
@@ -383,13 +383,13 @@ class DynamicMapSelector extends Component {
         break;
     }
 
-    return mapContentType +  `, ${this.props.dates.occupationEntityDate} (${this.props.dates.quarter})`;
+    return mapContentType +  `, ${this.props.dates.occupationEntityDate} (${this.props.dates.occupationEntityDateQuarter} ${quarter})`;
   }
 
   getOccupation() {
     return this.props.generalName === null || this.props.region === ""
       ? overall
-      : this.props.generalName + ", " + averageData + "   🛈";
+      : this.props.generalName + ", " + smallAverageData + "   🛈";
   }
 
   getAverageMeanMedian() {
@@ -428,17 +428,10 @@ class DynamicMapSelector extends Component {
   onMapHover(geo) {
     const l = geo.properties.MNIMI;
     const data = this.getMeanForRegion(l);
-    if (
-      this.state.mapType === "Gender Wage Gap" ||
-      this.state.mapType === "Median Wage"
-    ) {
+
       let dataString =
         Object.keys(data).length === 0 ? noData : data.toString();
       this.setState({ content: dataString });
-    } else
-      this.setState({
-        content: this.getMeanForRegionAverage(l).toString(),
-      });
   }
 
   onOccupationHover() {
@@ -450,7 +443,9 @@ class DynamicMapSelector extends Component {
 
   getComposableMap() {
     return (
-      <div id="composable-map">
+      <div id="composable-map p-1 pb-2" style={{
+        backgroundColor: this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)"
+      }}>
         <ComposableMap data-tip="" projectionConfig={{ scale: 300 }}>
           <Geographies geography={ee}>
             {({ geographies }) => (
@@ -483,8 +478,9 @@ class DynamicMapSelector extends Component {
                               fill: "#FFFFFF",
                               fontFamily: "Roboto",
                             }}
+                            x={geo.properties.MNIMI.includes("Lääne maakond")?"-5": "0"}
                             y="2"
-                            textAnchor="middle"
+                            textAnchor={geo.properties.MNIMI.includes("Lääne maakond")?"":"middle"}
                           >
                             {replaceMaakond(geo.properties.MNIMI)}
                           </text>
@@ -520,7 +516,7 @@ class DynamicMapSelector extends Component {
               y="25"
               textAnchor="start"
               alignmentBaseline="start"
-              onMouseEnter={() => this.onOccupationHover()}
+              onClick={() => this.onOccupationHover()}
               onMouseLeave={() => {
                 this.setState({ content: "" });
               }}
@@ -552,18 +548,24 @@ class DynamicMapSelector extends Component {
              {source}
             </text>
           </Annotation>
+
         </ComposableMap>
         <ReactTooltip>{this.state.content}</ReactTooltip>
-        <div className="legends">
-          {this.getLegends()}
-          <div
-            className="circle-legend m-1"
-            style={{
-              background: this.state.noDataColor,
-            }}
-          ></div>
-          <p className="map-legend">{noData}</p>
-        </div>
+        {this.state.groups[0].length !== 0 ?
+            <div className="legends">
+              {this.getLegends()}
+              <div
+                  className="circle-legend m-1"
+                  style={{
+                    background: this.state.noDataColor,
+                  }}
+              ></div>
+              <p className="map-legend text-left pl-5">{noData}</p>
+            </div> :
+            <div className="legends-info text-left ml-2 mb-5" >
+            <p className={"text-left ml-5"}>{noDataInfo}</p>
+            </div>
+        }
       </div>
     );
   }
@@ -700,44 +702,7 @@ class DynamicMapSelector extends Component {
 
         {this.getComposableMap()}
 
-        <div
-          class="modal in"
-          id="exampleModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-          style={
-            this.state.noDataModal
-              ? { display: "block", paddingRight: "16px" }
-              : { display: "none" }
-          }
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">
-                  {noDataLabel}
-                </h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                  onClick={()=> this.setState({noDataModal: false})}
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">{noDataInfo}</div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onClick={()=> this.setState({noDataModal: false})}>
-                  OK
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </>
     );
   }

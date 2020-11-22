@@ -15,7 +15,7 @@ import {
   totalNumberOfEmployeesOccupation,
   womenColor,
   wageChangeInfo,
-  noDataLabel,
+  noDataLabel, emailLabel,
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
@@ -122,10 +122,14 @@ class SalaryCalculator extends Component {
               display: "flex",
             }}
           >
-            {sideParagraph2}
+            {sideParagraph2[0]}
+            <br></br>
+            <br></br>
+            {sideParagraph2[1]}
+            <br></br>
           </p>
           <div className="form-group shiny-input-container">
-            <div>
+            <div id="occupation-selector" className={"mt-3"}>
               <OccupationSelector
                 onChange={this.onIscoChange}
                 region={this.state.region}
@@ -144,18 +148,33 @@ class SalaryCalculator extends Component {
               >
                 {sideParagraph1}
               </p>
-              <div style={{ display: "flex", flexDirection: "row" }}>
+              <div className={"mt-3"} style={{ display: "flex", flexDirection: "row" }}>
                 <div>
-                  <input
-                    name="salary"
-                    className="form-control selector"
-                    onChange={this.props.setWage}
-                    type="number"
-                    placeholder={`${salary[0]} ${salary[1]}`}
-                    value={this.props.wage}
-                  />
+                  <div >
+                    <div id={"salary-selector"}>
+                      <p
+                          className="mnimi-w"
+                      >
+                        <input
+                            id="input"
+                            type="text"
+                            required
+                            onChange={this.props.setWage}
+                            value={this.props.wage}
+                        />
+                        <label
+                            for="input"
+                            alt={`${salary[0]} ${salary[1]}`}
+                            placeholder={`${salary[0]} ${salary[1]}`}
+                        >
+                        </label>
+                      </p>
+                    </div>
+                  </div>
+
+
                 </div>
-                <div style={{ marginLeft: "10px" }}>
+                <div style={{ marginLeft: "10px" }} id={"gender-selector"}>
                   <GenderSelector onGenderChange={this.props.setGender} />
                 </div>
               </div>
@@ -231,6 +250,22 @@ class SalaryCalculator extends Component {
                   type="region"
                 />
               </div>
+              {this.state.occupation === "" && (
+                  <p className="mb-3" style={{ color: "black" }}>
+                    {totalNumberOfEmployees + " " + this.state.region}
+                  </p>
+              )}
+
+              {this.state.occupation !== "" && (
+                  <p className="mb-3" style={{ color: "black" }}>
+                    {totalNumberOfEmployeesOccupation[0] +
+                    this.state.occupation +
+                    totalNumberOfEmployeesOccupation[1] +
+                    this.state.region}
+                  </p>
+              )}
+
+              <br/>
 
               {
                 <div>
@@ -258,19 +293,6 @@ class SalaryCalculator extends Component {
                   </div>
                 </div>
               }
-              {this.state.occupation !== "" && (
-                <p className="mb-3" style={{ color: "black" }}>
-                  {totalNumberOfEmployeesOccupation[0] +
-                    this.state.occupation +
-                    totalNumberOfEmployeesOccupation[1] +
-                    this.state.region}
-                </p>
-              )}
-              {this.state.occupation === "" && (
-                <p className="mb-3" style={{ color: "black" }}>
-                  {totalNumberOfEmployees + " " + this.state.region}
-                </p>
-              )}
             </div>
           </div>
         </div>

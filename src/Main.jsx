@@ -28,6 +28,7 @@ import changeLanguage, {
   webpageLabel,
   joinBody,
   joinLink,
+  foundationLabel
 } from "./dictionary/text";
 import {connect} from "react-redux";
 
@@ -401,12 +402,6 @@ class Main extends Component {
                     <span className="hamburger-inner"></span>
                   </span>
                 </button>
-                <div
-                  style={{ backgroundColor: "white" }}
-                  className="layout__header__top__center block-page-title-block p-2"
-                >
-                  <h2>{APP_NAME}</h2>
-                </div>
               </div>
             </div>
             <nav
@@ -425,7 +420,6 @@ class Main extends Component {
                     tabIndex="0"
                     onClick={this.changeMenu}
                     style={{
-                      color: this.state.menu === tabs[0] ? "#4e73df" : "",
                       cursor: "pointer",
                     }}
                   >
@@ -437,7 +431,6 @@ class Main extends Component {
                     tabIndex="0"
                     onClick={this.changeMenu}
                     style={{
-                      color: this.state.menu === tabs[1] ? "#4e73df" : "",
                       cursor: "pointer",
                     }}
                   >
@@ -449,7 +442,6 @@ class Main extends Component {
                     tabIndex="1"
                     onClick={this.changeMenu}
                     style={{
-                      color: this.state.menu === tabs[2] ? "#4e73df" : "",
                       cursor: "pointer",
                     }}
                   >
@@ -462,7 +454,6 @@ class Main extends Component {
                     className="menuSpan"
                     onClick={this.changeMenu}
                     style={{
-                      color: this.state.menu === tabs[3] ? "#4e73df" : "",
                       cursor: "pointer",
                     }}
                   >
@@ -550,9 +541,7 @@ class Main extends Component {
                 </div>
               </a>
               <p style={{color: "#FFF", fontSize: "14px"}}>
-                      This project was funded by Horizon 2020, the European
-                      Union’s Rights, Equality and Citizenship Program
-                      (2014-2020).
+                {foundationLabel}
                     </p>
             </div>
           </div>

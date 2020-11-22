@@ -1,6 +1,8 @@
 import React from "react";
 import { genderLabel, defaultGender } from "../../../dictionary/text";
 import Select from "react-select";
+import {colourStyles} from "./OccupationSelector";
+
 
 export function GenderSelector(props) {
   return (
@@ -12,6 +14,18 @@ export function GenderSelector(props) {
           { label: genderLabel[0], value: genderLabel[0] },
           { label: genderLabel[1], value: genderLabel[1] },
         ]}
+        theme={theme => ({
+            ...theme,
+            colors: {
+                ...theme.colors,
+                primary: 'black',
+            },
+            borderRadius: "0px",
+
+
+        })}
+
+        styles={colourStyles}
       ></Select>
     </div>
   );

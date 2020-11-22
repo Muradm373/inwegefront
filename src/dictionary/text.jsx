@@ -71,7 +71,7 @@ const selectRegionEng = ["Select region", "Выберите регион", "Vali
 const selectOccupationEng = [
   "Select job title",
   "Выберите должность",
-  "Vali amet",
+  "Otsi",
 ];
 const averageBetweenMenAndWomenEng = [
   "Average salary for men and women in ",
@@ -87,6 +87,12 @@ const averageDataEng = [
   "Over Estonia",
   "По Эстонии",
   "Kogu Eesti",
+];
+
+const smallAverageDataEng = [
+  "over Estonia",
+  "по Эстонии",
+  "kogu Eesti",
 ];
 const aboutEng = [
   "Palgakompass.ee is a web application that aimes to create more transparancy in the labor market in Estonia using Estonian wage data. Any person can use Palgakompass to compare wages accross different occupations, counties and genders. The application also features a pensions and a wage forecast section.",
@@ -122,14 +128,14 @@ const overallEng = ["Overall in Estonia", "B Эстонии", "Kogu Eesti"];
 
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
-  "Filling the boxes below allows you to compare your own wage to the average wage.",
-  "Чтобы увидеть разницу между вашей и средней заработной платой, заполнитe поля ниже",
-  "Oma brutopalga võrdlemiseks keskmise brutopalgaga võite täita järgmised lahtrid.   ",
+  "3) Fill the boxes below to compare your own wage to the average wage.",
+  "3) Чтобы увидеть разницу между вашей и средней заработной платой, заполнитe поля ниже",
+  "3) Täida lahtrid, et võrrelda oma palka keskmise brutopalgaga jaotuste joonisel.   ",
 ];
 const sideParagraph2Eng = [
-  "After selecting county from the map, you can search for a job by job title.",
-  "После выбора региона на карте, вы можете выбрать профессию",
-  "Kõigepealt valige kaardil maakond, seejärel valige amet.",
+  ["1) Select county from the map", "2) Select job title"],
+  ["1) Выбрать регион на карте", "2) Выберите должность"],
+  ["1) Vali kaardil maakond", "2) Vali amet"],
 ];
 const noDataLabelEng = [
   "No data for the selected occupation",
@@ -297,7 +303,16 @@ const replacementNeeds1Eng = [
 const webpageLabelEng = [
   "Webpage",
   "Домашняя страница",
-  "Koduleht"
+  "Palgarakendus"
+]
+
+const foundationLabelEng = [
+  "This project was funded by Horizon 2020, the European " +
+  "Union’s Rights, Equality and Citizenship Program " +
+  "(2014-2020).",
+  "Данный проект финансируется в рамках программы Европейского союза по правам, равноправию и гражданству (2014-2020)",
+  "Projekti on rahastatud ELi õiguste, võrdõiguslikkuse ja kodakondsuse programmist (2014-2020)",
+
 ]
 
 
@@ -312,6 +327,13 @@ const noDataInfoEng = [
   "Чтобы увидеть результаты по этой профессии, проверьте среднюю заработную плату или среднюю заработную плату.",
   "Sellel ametialal ei ole infot meeste ja naiste palkade erinevuse kohta, vaata mediaanpalka või keskmist palka."
 ]
+
+const quarterEng = [
+  "quarter",
+  "квартал",
+  "veerand"
+]
+
 
 const replacementNeeds2Eng =  ["Replacement rate in relation to the average wage in Estonia at the time of retirement","Коэффициент замещения по отношению к средней заработной плате в Эстонии при выходе на пенсию","Asendusmäär Eesti keskmise palga suhtes pensionile minemise hetkel"];
 
@@ -358,9 +380,9 @@ const ageTickLabelEng = [
 ]
 
 const propsLabelEng = [
-  "%",
-  "%",
-  "%"
+  "Proportion, %",
+  "Пропорции, %",
+  "Osatähtsus, %"
 ]
 
 const emailLabelEng = [
@@ -379,6 +401,12 @@ const countyLabelEng = [
   "County",
   "Pегион",
   "Maakond"
+]
+
+const decileLabelEng = [
+  "Decile-based estimation of frequency ",
+  "Частота на основе децилей",
+  "Detsiilide põhjal hinnatud sagedus"
 ]
 
 const checkMyPlanLabelEng = [
@@ -510,6 +538,10 @@ export default function changeLanguage(language) {
   noDataInfo = noDataInfoEng[i];
   source = sourceEng[i];
   monthLabel = monthLabelEng[i];
+  foundationLabel = foundationLabelEng[i];
+  smallAverageData = smallAverageDataEng[i];
+  decileLabel = decileLabelEng[i];
+  quarter = quarterEng[i];
 }
 
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
@@ -537,6 +569,7 @@ export let pieChartLabels = pieChartLabelsEng[0];
 export let detailsLabel = detailsLabelEng[0];
 export let descriptionLabel = descriptionLabelEng[0];
 export let averageData = averageDataEng[0];
+export let smallAverageData = smallAverageDataEng[0];
 export let defaultGender = defaultGenderEng[0];
 export let overall = overallEng[0];
 export let methodology = methodologyEng[0];
@@ -601,4 +634,7 @@ export let wageChangeInfo = wageChangeInfoEng[0];
 export let noDataInfo = noDataInfoEng[0];
 export let source = sourceEng[0];
 export let monthLabel = monthLabelEng[0];
+export let foundationLabel = foundationLabelEng[0];
+export let decileLabel = decileLabelEng[0];
+export let quarter = quarterEng[0];
 

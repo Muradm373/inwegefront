@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { API_URL, propsLabel } from "../../../dictionary/text";
+import {API_URL, propsLabel, quarter} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
@@ -27,11 +27,12 @@ class AgeBarChartComponent extends Component {
         chart: {
           type: "bar",
           height: 350,
+          width: "100%"
         },
         plotOptions: {
           bar: {
             horizontal: false,
-            columnWidth: "80%",
+            columnWidth: "70%",
           },
         },
         dataLabels: {
@@ -64,7 +65,7 @@ class AgeBarChartComponent extends Component {
         },
         title: {
           text: this.props.label +
-          (this.props.dates.ageDate ?  " " + this.props.dates.ageDate : ""),
+              `${this.props.dates.ageDate} (${this.props.dates.ageDataQuarter} ${quarter})`,
           floating: true,
           offsetY: -5,
           align: "center",
@@ -135,7 +136,7 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div className="row text-center w-100" className="age-bar">
+      <div className="row text-center w-100" className="age-bar" >
         <div id="chart">
           <ReactApexChart
           id="apexchart"

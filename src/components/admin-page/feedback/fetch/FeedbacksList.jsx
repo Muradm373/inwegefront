@@ -6,13 +6,21 @@ class FeedbacksList extends Component {
   constructor(props){
     super();
 
+    console.log(props)
+
     this.state = {
       ageDate: props.dates.ageDate,
       pensionDate: props.dates.pensionDate,
       salaryEntityDate: props.dates.salaryEntityDate,
       occupationEntityDate: props.dates.occupationEntityDate,
       wageForecasetDate: props.dates.wageForecasetDate,
-      quarter: props.dates.quarter
+
+      ageDateQuarter: props.dates.ageDataQuarter,
+      pensionDateQuarter: props.dates.pensionDateQuarter,
+      salaryEntityDateQuarter: props.dates.salaryEntityDateQuarter,
+      occupationEntityDateQuarter: props.dates.occupationEntityDateQuarter,
+      wageForecasetDateQuarter: props.dates.wageForecasetDateQuarter,
+
     }
   }
   render() {
@@ -99,16 +107,77 @@ class FeedbacksList extends Component {
               <div class="input-group mb-3">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">
-                     Quarter
+                     Age Data Quarter
                   </span>
                 </div>
                 <input
                   type="text"
                   class="form-control"
                   aria-label="Default"
-                  value={this.state.quarter}
-                  onChange={(e)=>this.setState({quarter: e.target.value})}
+                  value={this.state.ageDateQuarter}
+                  onChange={(e)=>this.setState({ageDateQuarter: e.target.value})}
                   aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">
+                     Pension Data Quarter
+                  </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    value={this.state.pensionDateQuarter}
+                    onChange={(e) => this.setState({pensionDateQuarter: e.target.value})}
+                    aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">
+                     Salary Data Quarter
+                  </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    value={this.state.salaryEntityDateQuarter}
+                    onChange={(e) => this.setState({salaryEntityDateQuarter: e.target.value})}
+                    aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">
+                     Occupation Data Quarter
+                  </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    value={this.state.occupationEntityDateQuarter}
+                    onChange={(e) => this.setState({occupationEntityDateQuarter: e.target.value})}
+                    aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">
+                     Wage Forecast Data Quarter
+                  </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    value={this.state.wageForecasetDateQuarter}
+                    onChange={(e) => this.setState({wageForecasetDateQuarter: e.target.value})}
+                    aria-describedby="inputGroup-sizing-default"
                 />
               </div>
             </div>

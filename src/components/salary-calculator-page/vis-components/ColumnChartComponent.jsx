@@ -11,8 +11,9 @@ import {
   womenColor,
   occupationLabel,
   monthLabel,
-  columnchartLabel,
+  columnchartLabel, quarter,
 } from "../../../dictionary/text";
+import {connect} from "react-redux";
 
 class ColumnChartComponent extends Component {
   constructor(props) {
@@ -45,7 +46,14 @@ class ColumnChartComponent extends Component {
           enabled: false,
         },
         colors: [menColor, womenColor],
-
+        legend: {
+          position: "top",
+          floating: true,
+          itemMargin: {
+            horizontal: 5,
+            vertical: 27
+          },
+        },
         stroke: {
           show: true,
           width: 2,
@@ -72,7 +80,7 @@ class ColumnChartComponent extends Component {
           },
         },
         title: {
-          text: columnchartLabel,
+          text: columnchartLabel + `, ${this.props.dates.salaryEntityDate} (${this.props.dates.salaryEntityDateQuarter} ${quarter})`,
           floating: true,
           offsetY: 0,
           align: "center",
@@ -263,4 +271,10 @@ class ColumnChartComponent extends Component {
   }
 }
 
-export default ColumnChartComponent;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+
+export default  connect(mapStateToProps) (ColumnChartComponent);

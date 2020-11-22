@@ -10,7 +10,8 @@ import {
   genderLabel,
   menColor,
   noDataLabel, salary,
-  womenColor
+  womenColor,
+    decileLabel
 } from "../../../dictionary/text";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
@@ -116,6 +117,7 @@ function Graph(props) {
         }
         <YAxis
         className="grid-axis"
+        title={decileLabel}
           tickTotal={4}
           tickFormat={(v) => `${v * 10}%`}
         />

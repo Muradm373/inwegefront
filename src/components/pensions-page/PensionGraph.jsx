@@ -14,7 +14,7 @@ import {
   womenColor,
   API_URL,
   pensionDifferenceLabel2020,
-  pensionFractionLabel
+  pensionFractionLabel, decileLabel
 } from "../../dictionary/text";
 
 import axios from "axios";
@@ -186,6 +186,7 @@ class PensionGraph extends Component {
           />
           <YAxis
             className="grid-axis"
+            title={decileLabel}
             tickTotal={4}
             tickFormat={(v) => `${v * 10}%`}
           />
