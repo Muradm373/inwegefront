@@ -13,9 +13,9 @@ class FeedbacksList extends Component {
       pensionDate: props.dates.pensionDate,
       salaryEntityDate: props.dates.salaryEntityDate,
       occupationEntityDate: props.dates.occupationEntityDate,
-      wageForecasetDate: props.dates.wageForecasetDate,
+      wageForecastDate: props.dates.wageForecastDate,
 
-      ageDateQuarter: props.dates.ageDataQuarter,
+      ageDataQuarter: props.dates.ageDataQuarter,
       pensionDateQuarter: props.dates.pensionDateQuarter,
       salaryEntityDateQuarter: props.dates.salaryEntityDateQuarter,
       occupationEntityDateQuarter: props.dates.occupationEntityDateQuarter,
@@ -99,8 +99,8 @@ class FeedbacksList extends Component {
                   type="text"
                   class="form-control"
                   aria-label="Default"
-                  value={this.state.wageForecasetDate}
-                  onChange={(e)=>this.setState({wageForecasetDate: e.target.value})}
+                  value={this.state.wageForecastDate}
+                  onChange={(e)=>this.setState({wageForecastDate: e.target.value})}
                   aria-describedby="inputGroup-sizing-default"
                 />
               </div>
@@ -114,8 +114,8 @@ class FeedbacksList extends Component {
                   type="text"
                   class="form-control"
                   aria-label="Default"
-                  value={this.state.ageDateQuarter}
-                  onChange={(e)=>this.setState({ageDateQuarter: e.target.value})}
+                  value={this.state.ageDataQuarter}
+                  onChange={(e)=>this.setState({ageDataQuarter: e.target.value})}
                   aria-describedby="inputGroup-sizing-default"
                 />
               </div>
