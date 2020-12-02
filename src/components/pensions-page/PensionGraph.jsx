@@ -66,14 +66,11 @@ class PensionGraph extends Component {
         menGraphObject.push({ x: parseInt(men[i]), y: i });
         womenGraphObject.push({ x: parseInt(women[i]), y: i });
       }else if(i===5){
-        menGraphObject.push({ x: parseInt(men[i]), y: 10 - i });
-        menGraphObject.push({ x: parseInt(men[i]), y: 10 - i });
+        menGraphObject.push({ x: parseInt(men[i]), y: i+0.5 });
+
         womenGraphObject.push({
           x: parseInt(women[i]),
-          y: 10 - i,
-        });womenGraphObject.push({
-          x: parseInt(women[i]),
-          y: 10 - i,
+          y: i+0.5,
         });
       }
       else {

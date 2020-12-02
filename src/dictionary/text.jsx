@@ -331,7 +331,7 @@ const noDataInfoEng = [
 const quarterEng = [
   "quarter",
   "квартал",
-  "veerand"
+  "kvartal"
 ]
 
 

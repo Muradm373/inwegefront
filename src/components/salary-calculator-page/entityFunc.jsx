@@ -56,19 +56,19 @@ function distributeData(dataMen, dataWomen) {
 
 
   for (let i = 0; i < 11; i++) {
-    if (i <= 5) {
+    if (i < 5) {
       menObject.push({ x: parseInt(men[i]), y: i });
       womenObject.push({ x: parseInt(women[i]), y: i });
+    }else if(i===5) {
+      menObject.push({ x: parseInt(men[i]), y: i+0.5 });
+      womenObject.push({ x: parseInt(women[i]), y: i+0.5 });
     }
     else {
       menObject.push({ x: parseInt(men[i]), y: 10 - i });
       womenObject.push({ x: parseInt(women[i]), y: 10 - i });
     }
 
-    if(i===5) {
-      menObject.push({ x: parseInt(men[i]), y: i });
-      womenObject.push({ x: parseInt(women[i]), y: i });
-    }
+
   }
 
   return { menObject, womenObject };

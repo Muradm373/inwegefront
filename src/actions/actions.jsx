@@ -32,7 +32,7 @@ export const getDates = (dispatch) => {
 
 export const updateDates = (dates, userToken, dispatch) => {
   axios
-    .put(`${API_URL}/api/file/date/update`,{headers:{Authorization: `Bearer ${userToken}`},...dates})
+    .put(`${API_URL}/file/date/update`,{headers:{Authorization: `Bearer ${userToken}`},...dates})
     .then((data) => {
       return dispatch({ type: "SET_DATES", dates: dates });
     });
