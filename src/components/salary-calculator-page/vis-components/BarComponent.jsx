@@ -20,16 +20,19 @@ class BarComponent extends Component {
             : { display: "none" }
         }
       >
-        {this.props.occupation !== ""?
-        <p> {averageBetweenMenAndWomen + this.props.occupation + ". " + this.props.region} </p>:<></>
+        {this.props.occupation !== ""
+            ?
+        <p> {averageBetweenMenAndWomen + " - "+ this.props.occupation + ". " + this.props.region} </p>
+            :
+            <p> {averageBetweenMenAndWomen + ". " + this.props.region} </p>
       }
         <FlexibleWidthXYPlot height={130} animation="gentle">
           <XAxis
-            tickTotal={7}
             style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
+            tickTotal={7}
           />
           <HorizontalBarSeries
-            data={[{ y: 2, x: this.props.menMean }]}
+            data={[{ y: 2, x: parseInt(this.props.menMean) }]}
             color={this.props.menColor}
           />
           <LabelSeries
@@ -45,7 +48,7 @@ class BarComponent extends Component {
             labelAnchorY="middleAlignment"
           />
           <HorizontalBarSeries
-            data={[{ y: 2, x: this.props.womenMean }]}
+            data={[{ y: 2, x: parseInt(this.props.womenMean) }]}
             color={this.props.womenColor}
           />
 
