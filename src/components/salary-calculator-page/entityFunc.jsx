@@ -44,7 +44,7 @@ export function fetchData(prop) {
 function clearData(data) {
   let { mean, p1, p2, p3, p4, p6, p7, p8, p9, minVal, maxVal } = data;
 
-  return { p1, p2, p3, p4, mean, p6, p7, p8, p9, maxVal};
+  return { minVal, p1, p2, p3, p4, mean, p6, p7, p8, p9, maxVal};
 }
 
 function distributeData(dataMen, dataWomen) {
@@ -54,13 +54,14 @@ function distributeData(dataMen, dataWomen) {
   let menObject = [];
   let womenObject = [];
 
-  for (let i = 0; i < 10; i++) {
+
+  for (let i = 0; i < 11; i++) {
     if (i <= 5) {
-      menObject.push({ x: parseInt(men[i]), y: i+1 });
-      womenObject.push({ x: parseInt(women[i]), y: i+1 });
+      menObject.push({ x: parseInt(men[i]), y: i });
+      womenObject.push({ x: parseInt(women[i]), y: i });
     } else {
-      menObject.push({ x: parseInt(men[i]), y: 10 - i+1 });
-      womenObject.push({ x: parseInt(women[i]), y: 10 - i+1 });
+      menObject.push({ x: parseInt(men[i]), y: 10 - i });
+      womenObject.push({ x: parseInt(women[i]), y: 10 - i });
     }
   }
 

@@ -78,6 +78,8 @@ function Graph(props) {
 
   const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
+  console.log(men)
+  console.log(women)
   return (
     <div className="centered" id="entity" className="graph">
       <BarComponent
