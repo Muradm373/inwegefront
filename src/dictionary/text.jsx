@@ -435,7 +435,7 @@ const pensionHeaderEng = [
 const columnchartLabelEng = ['Average Wages', ' Средняя зар. плата', 'Keskmised Palgad'];
 
 const workingWomenEng = ["working women", "женщины", "töötavaid naisi"];
-const workingMenEng = ["working men", "мужчины", "töötavaid naisi"];
+const workingMenEng = ["working men", "мужчины", "töötavaid mehi "];
 const joinEng = ["Join", "Присоединиться", "Liitu"];
 
 const joinBodyEng = ["By subscribing you agree to the terms and conditions and privacy policy.","Подписываясь, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
