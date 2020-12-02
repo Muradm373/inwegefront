@@ -74,7 +74,7 @@ const selectOccupationEng = [
   "Otsi",
 ];
 const averageBetweenMenAndWomenEng = [
-  "Average salary for men and women in",
+  "Average salary for men and women",
   "Средний показатель между женщинами и мужчинами",
   "Keskmine palk täisajaga töötavatel meestel ja naistel",
 ];
