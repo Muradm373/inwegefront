@@ -102,8 +102,6 @@ class DynamicMapSelector extends Component {
       .get(url + url_dataType)
       .then((response) => response.data)
       .then((data) => {
-        console.log(isco_props)
-        console.log(data.payload)
         this.setState({ averages: data.payload });
         this.setGroups(data.payload);
       });

@@ -62,17 +62,28 @@ class PensionGraph extends Component {
     let womenGraphObject = [];
 
     for (let i = 0; i < 11; i++) {
-      if (i <= 5) {
+      if (i < 5) {
         menGraphObject.push({ x: parseInt(men[i]), y: i });
         womenGraphObject.push({ x: parseInt(women[i]), y: i });
-      } else {
+      }else if(i===5){
+        menGraphObject.push({ x: parseInt(men[i]), y: 10 - i });
+        menGraphObject.push({ x: parseInt(men[i]), y: 10 - i });
+        womenGraphObject.push({
+          x: parseInt(women[i]),
+          y: 10 - i,
+        });womenGraphObject.push({
+          x: parseInt(women[i]),
+          y: 10 - i,
+        });
+      }
+      else {
         menGraphObject.push({ x: parseInt(men[i]), y: 10 - i });
         womenGraphObject.push({
           x: parseInt(women[i]),
           y: 10 - i,
         });
       }
-    
+
     }
 
     this.setState({ menMean: parseFloat(men[5]).toFixed(2),  womenMean: parseFloat(women[5]).toFixed(2) });
@@ -80,6 +91,7 @@ class PensionGraph extends Component {
     let dataGraph = { men: menGraphObject, women: womenGraphObject };
 
     this.setState({ data: dataGraph });
+    console.log(dataGraph)
   }
 
   clearData(data) {

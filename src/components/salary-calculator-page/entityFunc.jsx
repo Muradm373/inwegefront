@@ -59,9 +59,15 @@ function distributeData(dataMen, dataWomen) {
     if (i <= 5) {
       menObject.push({ x: parseInt(men[i]), y: i });
       womenObject.push({ x: parseInt(women[i]), y: i });
-    } else {
+    }
+    else {
       menObject.push({ x: parseInt(men[i]), y: 10 - i });
       womenObject.push({ x: parseInt(women[i]), y: 10 - i });
+    }
+
+    if(i===5) {
+      menObject.push({ x: parseInt(men[i]), y: i });
+      womenObject.push({ x: parseInt(women[i]), y: i });
     }
   }
 
