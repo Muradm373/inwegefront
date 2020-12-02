@@ -27,7 +27,6 @@ class Login extends Component {
 
   login() {
     let password = sha256(this.state.password + this.state.seed);
-    console.log(password.toUpperCase())
     axios
       .post(`${API_URL}/auth/signin`, {
         name: this.state.username,

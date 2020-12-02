@@ -19,7 +19,7 @@ class FeedbacksList extends Component {
       pensionDateQuarter: props.dates.pensionDateQuarter,
       salaryEntityDateQuarter: props.dates.salaryEntityDateQuarter,
       occupationEntityDateQuarter: props.dates.occupationEntityDateQuarter,
-      wageForecasetDateQuarter: props.dates.wageForecasetDateQuarter,
+      wageForecastDateQuarter: props.dates.wageForecastDateQuarter,
 
     }
   }
@@ -175,15 +175,15 @@ class FeedbacksList extends Component {
                     type="text"
                     className="form-control"
                     aria-label="Default"
-                    value={this.state.wageForecasetDateQuarter}
-                    onChange={(e) => this.setState({wageForecasetDateQuarter: e.target.value})}
+                    value={this.state.wageForecastDateQuarter}
+                    onChange={(e) => this.setState({wageForecastDateQuarter: e.target.value})}
                     aria-describedby="inputGroup-sizing-default"
                 />
               </div>
             </div>
           </div>
           <div className="text-center">
-            <button onClick={this.props.updateDates(this.state, this.props.userToken)} className="btn btn-primary">
+            <button onClick={()=>this.props.updateDates(this.state, this.props.userToken)} className="btn btn-primary">
               Update
             </button>
           </div>

@@ -31,9 +31,11 @@ export const getDates = (dispatch) => {
 };
 
 export const updateDates = (dates, userToken, dispatch) => {
+  console.log(userToken)
   axios
-    .put(`${API_URL}/file/date/update`,{headers:{Authorization: `Bearer ${userToken}`},...dates})
+    .put(`${API_URL}/file/date/update`, dates,{headers:{Authorization: `Bearer ${userToken}`, 'Content-Type': 'application/json'}})
     .then((data) => {
+      console.log(data)
       return dispatch({ type: "SET_DATES", dates: dates });
     });
 };

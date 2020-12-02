@@ -38,7 +38,7 @@ class AdminPanel extends Component {
               <div className="row">
                 <div className="col-md-4 m-5">
                   <FeedbacksList
-                    userToken={this.setState.userToken}
+                    userToken={this.state.userToken}
                   />
                 </div>
                 <div className="col-md-4">
