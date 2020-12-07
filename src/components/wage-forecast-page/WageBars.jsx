@@ -37,6 +37,7 @@ class WageBars extends Component {
         return response.data;
       })
       .then((data) => {
+        console.log(data)
         this.setState({
           payload: data.payload,
           computerizationRisk: this.calculateComputerizationRisk(
@@ -110,7 +111,8 @@ class WageBars extends Component {
   }
 
   getColor(salary) {
-    let id = Math.round(salary / 500);
+    console.log(salary)
+    let id = Math.round(salary / 500 );
     let items = [];
 
     for (let i = 2; i < 9; i++) {
@@ -172,7 +174,7 @@ class WageBars extends Component {
               <div className="p-2 carditem">
                 2019 <br></br>(1404€)
               </div>
-              {this.getColor(this.state.payload.meanWageSep19)}
+              {this.getColor(this.state.payload.wageCategory19_min)}
             </div>
 
             {/* 2030 */}
@@ -183,7 +185,7 @@ class WageBars extends Component {
               <div className="p-2 h-3 carditem">
                 2030<br></br> (2315€)
               </div>
-              {this.getColor(this.state.payload.meanWage30)}
+              {this.getColor(this.state.payload.wageCategory30_min)}
             </div>
             {/* End of wages */}
             <div

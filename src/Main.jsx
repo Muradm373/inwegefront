@@ -527,7 +527,7 @@ class Main extends Component {
               id="block-jaluselogo"
               class="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo"
             >
-              <a href="http://inwege.cloud.ut.ee/" target="_blank">
+              <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
                 <div class="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                   <div class="field__item">
                     <img
@@ -545,7 +545,68 @@ class Main extends Component {
                     </p>
             </div>
           </div>
-        </footer>
+
+          <div className={"container"}>
+          <div className="mt-3  logos-container">
+            <div
+                id="block-jalusekontaktid"
+                className="block block-fixed-block-content block-fixed-block-contentfooter-contacts row align-left partners"
+            >
+              <p className={"col-3 my-auto partners-text"}>KOOSTÖÖPARTNERID</p>
+
+              <div className="field field--label-hidden field__items col-8 row" >
+                <div className="field__item col-sm my-auto">
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
+                    <div
+                        className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                      <div className="field__item">
+                        <img
+                            src={require("./resources/stat_logo.jpg")}
+                            width="400"
+                            height="116"
+                            alt="SF logo"
+                            typeof="foaf:Image"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div className="field__item col-sm my-auto">
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
+                    <div
+                        className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                      <div className="field__item">
+                        <img
+                            src={require("./resources/ut_logo.png")}
+                            width="400"
+                            alt="SF logo"
+                            typeof="foaf:Image"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+                <div className="field__item">
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
+                    <div
+                        className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                      <div className="field__item">
+                        <img
+                            src={require("./resources/taltech_logo.png")}
+                            width="120"
+                            height="116"
+                            alt="SF logo"
+                            typeof="foaf:Image"
+                        />
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+            </footer>
 
         <a className="back-to-top">
           <i className="icofont-simple-up"></i>

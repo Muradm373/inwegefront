@@ -139,8 +139,9 @@
 }
 
 .pns-active-2 {
-    background-color: #F58FA9;
+    background-color: #AD240F ;
     height: 33.3%;
+    color: #000;
 }
 
 .pns-active-1 {
@@ -149,12 +150,12 @@
 }
 
 .pns-active-0 {
-    background-color: #3AD8CC;
+    background-color: #4DC14D ;
     height: 33.3%;
 }
 
 .pns-active-comp-2 {
-    background-color: #3AD8CC;
+    background-color: #4DC14D ;
     height: 33.3%;
 }
 
@@ -164,8 +165,9 @@
 }
 
 .pns-active-comp-0 {
-    background-color: #F58FA9;
+    background-color: #AD240F ;
     height: 33.3%;
+    color: #000;
 }
 
 
@@ -1143,4 +1145,18 @@ body {
     background-position: center;
 }
 
+.eu-logo {
+    padding-top: 5% !important;
+}
+
+.logos-container {
+    margin-left: -2%;
+}
+.partners{
+    padding-left: 0px !important;
+}
+
+.partners-text{
+    margin-left: -5%;
+}
 
