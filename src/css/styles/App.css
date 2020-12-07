@@ -257,6 +257,23 @@ font {
     line-height: 22px;
 }
 
+.description-text {
+    flex: 5;
+    display: flex;
+    text-align: left;
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: normal;
+    color: #595959;
+
+}
+
+.description-label {
+    text-align: left;
+    font-weight: bold;
+}
+
 .paragraph {
     text-align: left;
     font-family: Roboto;

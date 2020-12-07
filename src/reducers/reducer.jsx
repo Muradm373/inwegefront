@@ -7,6 +7,7 @@ const initState = {
   entities: [],
   description: "",
   generalName: null,
+  occupationCode: undefined,
   dates: {
     ageDataQuarter: "I",
     ageDate: "2020",
@@ -38,6 +39,7 @@ const rootReduce = (state = initState, action) => {
       entities: action.entities,
       description: action.description,
       generalName: action.generalName,
+      occupationCode: action.code
     };
   }
   if (action.type === "SET_MEAN") {

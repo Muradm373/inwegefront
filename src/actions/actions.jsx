@@ -71,11 +71,17 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
 };
 
 const parseSalaryEntities = (data, type, dispatch) => {
+  console.log(data)
   let entities;
-  if (type === "averages") entities = data.payload.countyAverages;
+  let code = "";
+  if (type === "averages") {
+    entities = data.payload.countyAverages;
+
+  }
   else entities = data.payload.salaryEntities;
 
   let jobEntity = data.payload.jobEntity;
+  code = data.payload.jobEntity.code;
   if (jobEntity !== undefined && entities !== undefined) {
     if (entities[0].region !== "All") {
       let description = jobEntity.description;
@@ -83,14 +89,16 @@ const parseSalaryEntities = (data, type, dispatch) => {
         type: "SET_ENTITIES",
         entities: entities,
         description: description,
-        generalName: jobEntity.name
+        generalName: jobEntity.name,
+        code: code
       });
     } else {
       dispatch({
         type: "SET_ENTITIES",
         entities: entities,
         description: noInformationLabel,
-        generalName: jobEntity.name
+        generalName: jobEntity.name,
+        code: code
       });
     }
   } else {

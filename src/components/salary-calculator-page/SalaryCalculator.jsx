@@ -15,7 +15,7 @@ import {
   totalNumberOfEmployeesOccupation,
   womenColor,
   wageChangeInfo,
-  noDataLabel, emailLabel,
+  noDataLabel, emailLabel, occupationLabel,
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
@@ -85,6 +85,8 @@ class SalaryCalculator extends Component {
     } else {
       const region = this.state.region;
 
+      console.log(event.value)
+
       let isco = event.value.iscoValid;
       let code = event.value.code;
 
@@ -92,7 +94,7 @@ class SalaryCalculator extends Component {
       this.props.getSalaryEntities(region, isco, code);
       this.props.onDataChange(this.state.region, isco, code, event.value.name);
 
-      this.setState({ occupation: event.value.name });
+      this.setState({ occupation: event.value.name + " ("+code.substring(0,4)+")"});
     }
   };
 
@@ -185,17 +187,21 @@ class SalaryCalculator extends Component {
                 ) : (
                   <></>
                 )}
-                <p
-                  style={{
-                    flex: 5,
-                    display: "flex",
-                    textAlign: "left",
-                    fontFamily: "Roboto",
-                    fontSize: "16px",
-                    lineHeight: "20px",
-                    fontWeight: "normal",
-                    color: "#595959",
-                  }}
+                {this.props.description !== "" && this.props.description !== null ?
+                    <>
+                      <p className={"description-text"}
+                      >
+                        Valitud ametinimetus kuulub ametirühma {this.props.generalName} ({this.props.occupationCode}, tase {this.props.occupationCode.length} ametite klassifikaatoris).
+                      </p>
+                      <br/>
+                      <br/>
+                    <p className={"description-label"}>Ametikirjeldus </p>
+                    </>
+                    :
+                    <></>
+                }
+                <br/>
+                <p className={"description-text"}
                 >
                   {this.props.description}
                 </p>
@@ -219,7 +225,7 @@ class SalaryCalculator extends Component {
                 onRegionChange={this.onRegionChange}
                 setTooltipContent={this.setContent}
                 mapElementColor={this.props.mapElementColor}
-                occupation={this.state.occupation}
+                occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
                 region={this.state.region}
               />
             </div>
@@ -234,7 +240,7 @@ class SalaryCalculator extends Component {
               genderLabel={genderLabel}
               myWage={this.props.wage}
               myGender={this.props.gender}
-              occupation={this.state.occupation}
+              occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
               region={this.state.region}
             ></Graph>
 
@@ -259,7 +265,7 @@ class SalaryCalculator extends Component {
               {this.state.occupation !== "" && (
                   <p className="mb-3" style={{ color: "black" }}>
                     {totalNumberOfEmployeesOccupation[0] +
-                    this.state.occupation +
+                    this.props.generalName + " ("+this.props.occupationCode + ")" +
                     totalNumberOfEmployeesOccupation[1] +
                     this.state.region}
                   </p>
@@ -275,7 +281,7 @@ class SalaryCalculator extends Component {
                         region={this.state.region}
                         isco={this.state.isco}
                         code={this.state.code}
-                        occupation={this.state.occupation}
+                        occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
                       />
                     </div>
                     <div>
@@ -326,6 +332,8 @@ const mapStateToProps = (state) => {
     entities: state.entities,
     description: state.description,
     mean: state.mean,
+    generalName: state.generalName,
+    occupationCode: state.occupationCode
   };
 };
 

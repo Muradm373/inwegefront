@@ -20,7 +20,7 @@ class BarComponent extends Component {
             : { display: "none" }
         }
       >
-        {this.props.occupation !== ""
+        {this.props.occupation !== "null (null)" && this.props.occupation !== ""
             ?
         <p> {averageBetweenMenAndWomen + " - "+ this.props.occupation + ". " + this.props.region} </p>
             :
