@@ -129,19 +129,19 @@ class Main extends Component {
           <div className=" row site-section pt-0 col-md-3 mb-md-0">
             <ul className="link-list">
               <li>
-                <a href={"/#"} onClick={this.changeMenu}>{tabs[0]}</a>
+                <a href={"/"} onClick={this.changeMenu}>{tabs[0]}</a>
               </li>
               <li>
-                <a href={"/#"} onClick={this.changeMenu}>{tabs[1]}</a>
+                <a href={"/"} onClick={this.changeMenu}>{tabs[1]}</a>
               </li>
               <li>
-                <a href={"/#"} onClick={this.changeMenu}>{tabs[2]}</a>
+                <a href={"/"} onClick={this.changeMenu}>{tabs[2]}</a>
               </li>
               <li>
-                <a href={"/#"} onClick={this.changeMenu}>{tabs[3]}</a>
+                <a href={"/"} onClick={this.changeMenu}>{tabs[3]}</a>
               </li>
               <li>
-                <a href={"/#"} onClick={this.changeMenu}>{tabs[4]}</a>
+                <a href={"/"} onClick={this.changeMenu}>{tabs[4]}</a>
               </li>
             </ul>
           </div>
@@ -170,7 +170,7 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a href={"/#"} tabIndex="0">{webpageLabel}</a>
+                        <a href={"/"} tabIndex="0">{webpageLabel}</a>
                         <ul className="menu">
                           <li className="menu-item">
                             <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
@@ -365,7 +365,7 @@ class Main extends Component {
                   id="block-stat-branding"
                   className="block block-system block-system-branding-block"
                 >
-                  <a onClick={this.changeMenu} href={"/#"} rel="home" className="site-logo">
+                  <a onClick={this.changeMenu} href={"/"} rel="home" className="site-logo">
                     <img
                       src={require("./resources/logo.svg")}
                       alt="Home"
