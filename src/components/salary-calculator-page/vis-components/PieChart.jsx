@@ -35,17 +35,20 @@ class PieChartComponent extends Component {
       let men;
       let women;
 
-      if (data.data.payload[0].female === 0) {
-        men = data.data.payload[0].count;
-        women = data.data.payload[1].count;
-      } else {
-        men = data.data.payload[1].count;
-        women = data.data.payload[0].count;
+      if(data.data.payload[0].female !== undefined) {
+
+        if (data.data.payload[0].female === 0) {
+          men = data.data.payload[0].count;
+          women = data.data.payload[1].count;
+        } else {
+          men = data.data.payload[1].count;
+          women = data.data.payload[0].count;
+        }
+        this.setState({
+          men: parseInt(men),
+          women: parseInt(women),
+        });
       }
-      this.setState({
-        men: parseInt(men),
-        women: parseInt(women),
-      });
     });
   }
 
@@ -65,18 +68,21 @@ class PieChartComponent extends Component {
         let men;
         let women;
 
-        if (payload[0].female === 0) {
-          men = payload[0].count;
-          women = payload[1].count;
-        } else {
-          men = payload[1].count;
-          women = payload[0].count;
-        }
+        if(payload[0] !== undefined) {
 
-        this.setState({
-          men: parseInt(men),
-          women: parseInt(women),
-        });
+          if (payload[0].female === 0) {
+            men = payload[0].count;
+            women = payload[1].count;
+          } else {
+            men = payload[1].count;
+            women = payload[0].count;
+          }
+
+          this.setState({
+            men: parseInt(men),
+            women: parseInt(women),
+          });
+        }
       });
   }
 

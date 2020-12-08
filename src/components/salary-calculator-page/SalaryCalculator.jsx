@@ -168,7 +168,7 @@ class SalaryCalculator extends Component {
                           className="mnimi-w"
                       >
                         <input
-                            id="input"
+                            id="inputWage"
                             type="text"
                             required
                             onChange={this.props.setWage}
