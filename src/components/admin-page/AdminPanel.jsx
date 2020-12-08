@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { Component } from "react";
-import { API_URL } from "../../dictionary/text";
 import FeedbacksList from "./feedback/fetch/FeedbacksList";
 import FileUploadComponent from "./file-upload/FileUploadComponent";
 import Login from "./Login";

@@ -41,7 +41,7 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: this.props.menMean,
+                label: this.props.menMean.toString(),
                 yOffset: -15,
               },
             ]}
@@ -58,7 +58,7 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: this.props.womenMean,
+                label: this.props.womenMean.toString(),
                 yOffset: 20,
               },
             ]}

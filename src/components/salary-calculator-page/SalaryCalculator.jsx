@@ -67,6 +67,18 @@ class SalaryCalculator extends Component {
     this.props.getOccupations(region);
   };
 
+  onOverallDataForMapSelected=(event)=>{
+    const region = event.value;
+    const isco = this.state.isco;
+    const code = this.state.code;
+
+    if (this.state.isco !== "") {
+      this.props.getSalaryEntities(region, isco, code);
+    } else {
+      this.props.getSalaryEntities(region, "averages", 0);
+    }
+  }
+
   onIscoChange = (event) => {
     if (event.value === "reset") {
       this.setState({
@@ -84,8 +96,6 @@ class SalaryCalculator extends Component {
       });
     } else {
       const region = this.state.region;
-
-      console.log(event.value)
 
       let isco = event.value.iscoValid;
       let code = event.value.code;
@@ -165,7 +175,7 @@ class SalaryCalculator extends Component {
                             value={this.props.wage}
                         />
                         <label
-                            for="input"
+                            htmlFor={"input"}
                             alt={`${salary[0]} ${salary[1]}`}
                             placeholder={`${salary[0]} ${salary[1]}`}
                         >
@@ -223,6 +233,7 @@ class SalaryCalculator extends Component {
               <DynamicMapSelector
                 isco={this.state.isco}
                 onRegionChange={this.onRegionChange}
+                onOverallDataForMapSelected={this.onOverallDataForMapSelected}
                 setTooltipContent={this.setContent}
                 mapElementColor={this.props.mapElementColor}
                 occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}

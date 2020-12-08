@@ -310,7 +310,6 @@ font {
 
 .c-tabs__nav ul {
     list-style: none;
-    display: -webkit-inline-box;
     display: inline-flex;
 }
 
@@ -722,7 +721,7 @@ p {
 
 .inline-column {
     display: table-cell;
-    padding: 0%;
+    padding: 0;
 }
 
 .carditem {
@@ -887,8 +886,9 @@ body {
 }
 
 .graph-legends {
+    position: absolute;
     margin-top: -300px;
-    margin-left: 80%;
+    margin-left: 45%;
 }
 
 .legends {
@@ -975,7 +975,7 @@ body {
     }
 
     .bar-holder {
-        padding: auto;
+
     }
 
     .bar {
@@ -1076,17 +1076,17 @@ body {
 }
 
 .css-2b097c-container{
-    border: "1px solid #000" !important;
+
 }
 
 .css-yk16xz-control{
     border-radius: 0 !important;
-    border-color: hsl(0deg 0% 0%) !important;
+    border-color: hsl(0, 0%, 0%) !important;
 }
 
 .css-1wa3eu0-placeholder{
     color: black !important;
-    font-weight: regular !important;
+    font-weight: initial !important;
     font-size: 14px !important;
     line-height: 16px !important;
 }
@@ -1105,12 +1105,10 @@ body {
 
 
 .mnimi-w input[type="text"]:focus {
-    border-color: #000;
     border: 1px solid #000;
 }
 
 .mnimi-w input[type="text"]:hover {
-    border-color: #000;
     border: 2px solid #000;
 }
 
@@ -1121,8 +1119,8 @@ body {
 .mnimi-w input[type="text"]:focus + label[placeholder]:before,
 .mnimi-w input[type="text"]:valid + label[placeholder]:before {
     transition-duration: 0.2s;
-    transform: translate(-0.9em, -1.4em) scale(0.8, 0.8);
-    font-weight: regular;
+    transform: translate(0em, -1.4em) scale(0.8, 0.8);
+    font-weight: initial;
     font-size: 13px;
     line-height: 16px;
 }
@@ -1145,7 +1143,7 @@ body {
     line-height: 1.25em;
     margin-top: calc(-3em - 0px);
     margin-bottom: calc((3em - 1em) + 2px);
-    margin-left: -20%;
+    margin-left: -10%;
 }
 
 .mnimi-w input[type="text"] + label[placeholder]:before {

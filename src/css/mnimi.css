@@ -10993,8 +10993,6 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
     font-style: normal;
     font-weight: normal;
     font-display: auto;
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-brands-400.eot);
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-brands-400.eot#iefix) format("embedded-opentype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-brands-400.woff2) format("woff2"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-brands-400.woff) format("woff"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-brands-400.ttf) format("truetype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-brands-400.svg#fontawesome) format("svg")
 }
 
 .fab {

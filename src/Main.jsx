@@ -8,7 +8,6 @@ import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculat
 import SubscriptionComponent from "./components/subscription-headline/SubscriptionComponent";
 import WageForecast from "./components/wage-forecast-page/WageForecast";
 import changeLanguage, {
-  APP_NAME,
   main,
   tabs,
   facebook,
@@ -130,19 +129,19 @@ class Main extends Component {
           <div className=" row site-section pt-0 col-md-3 mb-md-0">
             <ul className="link-list">
               <li>
-                <a onClick={this.changeMenu}>{tabs[0]}</a>
+                <a href={"/#"} onClick={this.changeMenu}>{tabs[0]}</a>
               </li>
               <li>
-                <a onClick={this.changeMenu}>{tabs[1]}</a>
+                <a href={"/#"} onClick={this.changeMenu}>{tabs[1]}</a>
               </li>
               <li>
-                <a onClick={this.changeMenu}>{tabs[2]}</a>
+                <a href={"/#"} onClick={this.changeMenu}>{tabs[2]}</a>
               </li>
               <li>
-                <a onClick={this.changeMenu}>{tabs[3]}</a>
+                <a href={"/#"} onClick={this.changeMenu}>{tabs[3]}</a>
               </li>
               <li>
-                <a onClick={this.changeMenu}>{tabs[4]}</a>
+                <a href={"/#"} onClick={this.changeMenu}>{tabs[4]}</a>
               </li>
             </ul>
           </div>
@@ -171,7 +170,7 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a tabIndex="0">{webpageLabel}</a>
+                        <a href={"/#"} tabIndex="0">{webpageLabel}</a>
                         <ul className="menu">
                           <li className="menu-item">
                             <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
@@ -366,7 +365,7 @@ class Main extends Component {
                   id="block-stat-branding"
                   className="block block-system block-system-branding-block"
                 >
-                  <a onClick={this.changeMenu} rel="home" className="site-logo">
+                  <a onClick={this.changeMenu} href={"/#"} rel="home" className="site-logo">
                     <img
                       src={require("./resources/logo.svg")}
                       alt="Home"
@@ -478,24 +477,24 @@ class Main extends Component {
             <div className="container"></div>
           </div>
         </div>
-        <footer class="layout__footer footer-dot">
-          <div class="u-container u-container--small">
+        <footer className="layout__footer footer-dot">
+          <div className="u-container u-container--small">
             <div
               id="block-jalusekontaktid"
-              class="block--contacts block block-fixed-block-content block-fixed-block-contentfooter-contacts"
+              className="block--contacts block block-fixed-block-content block-fixed-block-contentfooter-contacts"
             >
               <h2>{main[2]}</h2>
 
-              <div class="field field--label-hidden field__items">
-                <div class="field__item">
+              <div className="field field--label-hidden field__items">
+                <div className="field__item">
                   <span className="icofont-phone"></span>
                   <a href="tel:%2B3726259300">+372 625 9300</a>
                 </div>
               </div>
-              <div class="field field--label-hidden field__items">
-                <div class="field__item">
+              <div className="field field--label-hidden field__items">
+                <div className="field__item">
                   <span className="icofont-email"></span>
-                  <a href="mailto:stat@stat.ee" class="spamspan">
+                  <a href="mailto:stat@stat.ee" className="spamspan">
                     stat@stat.ee
                   </a>
                 </div>
@@ -503,15 +502,15 @@ class Main extends Component {
             </div>
             <div
               id="block-newsletterblock"
-              class="block block-we-smaily block-newsletter-block"
+              className="block block-we-smaily block-newsletter-block"
             >
               <h2>{newsletter}</h2>
 
-              <div class="block__form">
+              <div className="block__form">
                 <SubscriptionComponent></SubscriptionComponent>
               </div>
 
-              <div class="block__text">
+              <div className="block__text">
                 <p>
                   {joinBody}{" "}
                   <a
@@ -525,11 +524,11 @@ class Main extends Component {
             </div>
             <div
               id="block-jaluselogo"
-              class="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo"
+              className="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo"
             >
-              <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
-                <div class="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
-                  <div class="field__item">
+              <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
+                <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                  <div className="field__item">
                     <img
                       src={require("./resources/eu.jpg")}
                       width="200"
@@ -556,7 +555,7 @@ class Main extends Component {
 
               <div className="field field--label-hidden field__items col-8 row" >
                 <div className="field__item col-sm my-auto">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">
@@ -572,7 +571,7 @@ class Main extends Component {
                   </a>
                 </div>
                 <div className="field__item col-sm my-auto">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">
@@ -587,7 +586,7 @@ class Main extends Component {
                   </a>
                 </div>
                 <div className="field__item">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" className={"eu-logo"}>
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">
@@ -608,9 +607,6 @@ class Main extends Component {
           </div>
             </footer>
 
-        <a className="back-to-top">
-          <i className="icofont-simple-up"></i>
-        </a>
       </div>
     );
   }

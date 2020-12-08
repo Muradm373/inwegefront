@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { RadialChart } from "react-vis";
 import { API_URL, workingWomen, workingMen } from "../../../dictionary/text";
 
 class PieChartComponent extends Component {
@@ -84,10 +83,11 @@ class PieChartComponent extends Component {
   render() {
     return (
       <div>
-        <div class="row">
-          <div class="row m-3">
+        <div className="row">
+          <div className="row m-3">
             <img
               className="col"
+              alt={""}
               src={require("../../../resources/male.svg")}
               height="60"
               width="60"
@@ -95,7 +95,7 @@ class PieChartComponent extends Component {
             <div>
               <p className="mb-2">{workingMen}</p>
               <p
-                class="shiny-html"
+                className="shiny-html"
                 id="maleAmount"
                 style={{ fontSize: "18pt" }}
               >
@@ -103,17 +103,18 @@ class PieChartComponent extends Component {
               </p>
             </div>
           </div>
-          <div class="row m-3">
+          <div className="row m-3">
             <img
               className="col"
               src={require("../../../resources/female.svg")}
+              alt={""}
               height="60"
               width="60"
             />
             <div>
               <p className="mb-2">{workingWomen}</p>
               <p
-                class="shiny-html"
+                className="shiny-html"
                 id="femaleAmount"
                 style={{ fontSize: "18pt" }}
               >

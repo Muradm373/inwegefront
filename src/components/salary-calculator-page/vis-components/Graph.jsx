@@ -170,7 +170,7 @@ function Graph(props) {
           </p>
         </Hint>
 
-        <Hint value={{ x: myWage, y: 1 }} style={display(myWage, mean, men)}>
+        <Hint value={{ x: parseInt(myWage), y: 1 }} style={display(myWage, mean, men)}>
           <p className="no-data-label">
             {salary[0]}
             <br /> {salary[1]}
@@ -215,11 +215,12 @@ function Graph(props) {
               : ""}
           </p>
         </Hint>
-        <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
-        <div className="graph-legends">
-          {displayLegends(menColor, womenColor)}
-        </div>
+        <Highlight highlightY="false" highlightX="false" />
+
       </FlexibleWidthXYPlot>
+        <div className="graph-legends">
+            {displayLegends(menColor, womenColor)}
+        </div>
     </div>
   );
 }

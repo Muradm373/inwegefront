@@ -1,4 +1,4 @@
-import { genderLabel, noInformationLabel } from "../dictionary/text";
+import { genderLabel } from "../dictionary/text";
 
 const initState = {
   occupations: [],

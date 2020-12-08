@@ -31,7 +31,6 @@ export const getDates = (dispatch) => {
 };
 
 export const updateDates = (dates, userToken, dispatch) => {
-  console.log(dates)
   axios
     .put(`${API_URL}/file/date/update`, dates,{headers:{Authorization: `Bearer ${userToken}`, 'Content-Type': 'application/json'}})
     .then((data) => {
@@ -53,6 +52,16 @@ export const setWage = (wage) => {
 };
 
 export const getSalaryEntities = (region, isco, code, dispatch) => {
+  if(region==="all" && isco === "averages"){
+    dispatch({
+      type: "SET_ENTITIES",
+      entities: [],
+      description: "",
+      generalName: null,
+      code: undefined
+    });
+    return;
+  }
   let url;
   if (isco === "averages") url = `${API_URL}/jobs?region=${region}&lang=${lng}`;
   else
@@ -71,7 +80,6 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
 };
 
 const parseSalaryEntities = (data, type, dispatch) => {
-  console.log(data)
   let entities;
   let code = "";
   if (type === "averages") {

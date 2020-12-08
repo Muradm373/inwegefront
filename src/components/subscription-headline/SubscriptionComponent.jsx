@@ -6,8 +6,6 @@ import {
   API_URL,
   emailLabel,
   join,
-  newsletter,
-  submitLabel,
 } from "../../dictionary/text";
 
 export function SubscriptionComponent(props) {
@@ -36,14 +34,14 @@ export function SubscriptionComponent(props) {
     <div className="">
 
       <form
-        class="footer-form"
+          className="footer-form"
         id="footer-form"
-        accept-charset="UTF-8"
+        acceptCharset="UTF-8"
         onSubmit={sendSubscription}
         
       >
-        <div class="js-form-item form-item js-form-type-email form-type-email js-form-item-email form-item-email">
-          <div class="form-item__wrap">
+        <div className="js-form-item form-item js-form-type-email form-type-email js-form-item-email form-item-email">
+          <div className="form-item__wrap">
 
             <p
               className="mnimi ml-2"
@@ -56,7 +54,7 @@ export function SubscriptionComponent(props) {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <label
-                for="input"
+                htmlFor="input"
                 alt={emailLabel}
                 placeholder={emailLabel}
               >
@@ -66,11 +64,11 @@ export function SubscriptionComponent(props) {
         </div>
         <div
           data-drupal-selector="edit-actions"
-          class="form-actions js-form-wrapper form-wrapper"
+          className="form-actions js-form-wrapper form-wrapper"
           id="edit-actions"
         >
           <input
-            class="button btn-01 btn--white use-ajax js-form-submit form-submit"
+              className="button btn-01 btn--white use-ajax js-form-submit form-submit"
             type="submit"
             id="edit-submit"
             value={join}

@@ -3,7 +3,6 @@ import {
   API_URL,
   overall,
   noData,
-  smallAverageData,
   quarter,
   noDataInfo,
   source
@@ -43,7 +42,7 @@ class DynamicMapSelector extends Component {
       occupation: props.occupation,
       color: props.mapElementColor,
       mapType: "Gender Wage Gap",
-      isco: "",
+      isco: props.isco,
       median: "",
       average: "",
       genderGap: "",
@@ -60,8 +59,6 @@ class DynamicMapSelector extends Component {
     this.getMeanForRegion = this.getMeanForRegion.bind(this);
     this.setColor = this.setColor.bind(this);
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
-
-    this.setState({ isco: props.isco });
 
     this.getMeansForAllRegions("", props.isco);
     this.getMeanForRegion("Harju maakond");
@@ -162,10 +159,10 @@ class DynamicMapSelector extends Component {
 
   getLegends() {
     if (this.state.groups[0] !== undefined) {
-      const div = this.state.groups.map((e) => {
+      const div = this.state.groups.map((e, index) => {
         if (e[0] !== undefined) {
           return (
-            <div>
+            <div key={index}>
               <div>
                 <div
                   className="circle-legend m-1"
@@ -386,8 +383,8 @@ class DynamicMapSelector extends Component {
 
   getOccupation() {
     return this.props.generalName === null || this.props.region === ""
-      ? overall
-      : this.props.generalName + ", " + smallAverageData + "   🛈";
+      ? ""
+      : this.props.generalName;
   }
 
   getAverageMeanMedian() {
@@ -475,6 +472,12 @@ class DynamicMapSelector extends Component {
                               fontSize: "9pt",
                               fill: "#FFFFFF",
                               fontFamily: "Roboto",
+                              cursor: "default"
+                            }}
+                            onClick={() => {
+                              const selectedRegion = geo.properties.MNIMI;
+                              this.setState({ selected: selectedRegion });
+                              this.props.onRegionChange({ value: selectedRegion });
                             }}
                             x={geo.properties.MNIMI.includes("Lääne maakond")?"-5": "0"}
                             y="2"
@@ -514,20 +517,40 @@ class DynamicMapSelector extends Component {
               y="25"
               textAnchor="start"
               alignmentBaseline="start"
-              onClick={() => this.onOccupationHover()}
               onMouseLeave={() => {
                 this.setState({ content: "" });
               }}
             >
               {this.getOccupation()}
             </text>
+          <text
+              style={{
+                fontSize: "12pt",
+                fontFamily: "Roboto",
+                fontWeight: this.state.selected === "all" ? "bold": "",
+                textDecoration: "underline",
+                cursor:"pointer"
+              }}
+              x="-15"
+              y= {this.props.generalName === null || this.props.region === "" ? "25" : "50"}
+              textAnchor="start"
+              alignmentBaseline="start"
+
+              onClick={()=>{
+                this.setState({ selected: "all" });
+                this.props.onOverallDataForMapSelected({ value: "all" });
+              }}
+          >
+            {overall}
+          </text>
+
             <text
               style={{
                 fontSize: "12pt",
                 fontFamily: "Roboto",
               }}
               x="-15"
-              y="50"
+              y="75"
               textAnchor="start"
               alignmentBaseline="start"
             >
@@ -589,6 +612,7 @@ class DynamicMapSelector extends Component {
                   role="tab"
                   aria-controls="brand"
                   aria-label="brand menu"
+                  href={"/#"}
                   aria-selected={
                     this.state.mapType === "Gender Wage Gap" ? "true" : "false"
                   }
@@ -608,6 +632,7 @@ class DynamicMapSelector extends Component {
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
+                  href={"/#"}
                   aria-selected={
                     this.state.mapType === "Median Wage" ? "true" : "false"
                   }
@@ -627,6 +652,7 @@ class DynamicMapSelector extends Component {
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
+                  href={"/#"}
                   aria-selected={
                     this.state.mapType === "Average Wage" ? "true" : "false"
                   }
@@ -638,11 +664,11 @@ class DynamicMapSelector extends Component {
           </div>
           <div className="c-tabs-line"></div>
           <div
-            class="apexcharts-toolbar"
+            className="apexcharts-toolbar"
             style={{ marginLeft: "50%", marginTop: "10px" }}
           >
             <div
-              class="apexcharts-menu-icon"
+              className="apexcharts-menu-icon"
               style={{}}
               title="Menu"
               onClick={() => {
@@ -660,13 +686,13 @@ class DynamicMapSelector extends Component {
               </svg>
             </div>
             <div
-              class={
+              className={
                 "apexcharts-menu " +
                 (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
               }
             >
               <div
-                class="apexcharts-menu-item exportPNG"
+                className="apexcharts-menu-item exportPNG"
                 onClick={() => {
                   htmlToImage
                     .toPng(document.getElementById("composable-map"))
@@ -679,7 +705,7 @@ class DynamicMapSelector extends Component {
                 Download PNG
               </div>
               <div
-                class="apexcharts-menu-item exportPDF"
+                className="apexcharts-menu-item exportPDF"
                 title="Download JPEG"
                 onClick={() => {
                   htmlToImage

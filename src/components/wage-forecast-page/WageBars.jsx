@@ -37,7 +37,6 @@ class WageBars extends Component {
         return response.data;
       })
       .then((data) => {
-        console.log(data)
         this.setState({
           payload: data.payload,
           computerizationRisk: this.calculateComputerizationRisk(
@@ -95,7 +94,6 @@ class WageBars extends Component {
   }
 
   itemColor(self, grade, type) {
-    console.log(grade + " " + self);
     if (levels[self] === grade && grade !== undefined) {
       if (type === "computerization") return "pns-active-" + self;
       else {
@@ -111,7 +109,6 @@ class WageBars extends Component {
   }
 
   getColor(salary) {
-    console.log(salary)
     let id = Math.round(salary / 500 );
     let items = [];
 

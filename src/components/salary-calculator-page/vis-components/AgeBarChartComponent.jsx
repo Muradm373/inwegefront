@@ -136,7 +136,7 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div className="row text-center w-100" className="age-bar" >
+      <div className="row text-center w-100 age-bar" >
         <div id="chart">
           <ReactApexChart
           id="apexchart"
