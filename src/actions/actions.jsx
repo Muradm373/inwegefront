@@ -79,6 +79,11 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
     });
 };
 
+export const setLanguage = (lang) =>{
+  console.log(lang)
+  return ({ type: "SET_LANGUAGE", lang:lang });
+}
+
 const parseSalaryEntities = (data, type, dispatch) => {
   let entities;
   let code = "";

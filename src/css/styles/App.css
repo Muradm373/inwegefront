@@ -906,7 +906,7 @@ body {
 }
 
 .graph-legends {
-    margin-left: 45%;
+    margin-left: 5%;
 }
 
 .legends {
@@ -1263,6 +1263,14 @@ body {
     color: #000000 ;
 }
 
+.h6-stat-white {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    color: #FFFFFF ;
+}
+
 .h6-stat-gray {
     font-family: Roboto !important;
     font-weight: normal !important;
@@ -1286,6 +1294,15 @@ body {
     line-height: 20px !important;
     text-align: left;
     color: #595959 ;
+}
+
+.body-stat-black {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    text-align: left;
+    color: #000000 ;
 }
 
 .ol-stat {
@@ -1371,4 +1388,28 @@ body {
     word-break: break-word;
     width: auto;
     text-align: left;
+}
+
+.graph-salary-label {
+    position: absolute;
+    width: 150px;
+    margin-top: -300px;
+    padding: 15px;
+    right: 150px;
+    color: #FFF;
+    background-color: #000;
+}
+
+.y-axis-label {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 40px;
+}
+
+.wage-change-label {
+    margin-top: -15px;
+}
+
+.bar-series-label{
+    margin-left: 40px;
 }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "react-tabs/style/react-tabs.css";
-import { getDates } from "./actions/actions";
+import { getDates, setLanguage } from "./actions/actions";
 import AdminPanel from "./components/admin-page/AdminPanel";
 import MethodologyComponent from "./components/methodology-page/MethodologyComponent";
 import PensionsComponent from "./components/pensions-page/PensionsComponent";
@@ -50,6 +50,7 @@ class Main extends Component {
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.changeMenu = this.changeMenu.bind(this);
     this.props.getDates();
+    this.props.setLang(props.lang);
   }
 
   defaultValue() {
@@ -618,6 +619,9 @@ const mapDispatchToProps = (dispatch) => {
     getDates: () => {
       getDates(dispatch);
     },
+    setLang: (lang) =>{
+      dispatch(setLanguage(lang));
+    }
   };
 };
 

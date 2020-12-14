@@ -60,6 +60,7 @@ class AgeBarChartComponent extends Component {
           title: {
             text: propsLabel,
           },
+          tickAmount: 5
         },
         fill: {
           opacity: 1,

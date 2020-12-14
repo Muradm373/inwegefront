@@ -178,7 +178,7 @@ class SalaryCalculator extends Component {
               <br></br>
               <div>
                 {this.props.wage !== undefined ? (
-                  <p className="mb-1">{wageChangeInfo}</p>
+                  <p className="mb-2 body-stat wage-change-label">{wageChangeInfo}</p>
                 ) : (
                   <></>
                 )}
@@ -188,7 +188,6 @@ class SalaryCalculator extends Component {
                       >
                         Valitud ametinimetus kuulub ametirühma {this.props.generalName} ({this.props.occupationCode}, tase {this.props.occupationCode.length} ametite klassifikaatoris).
                       </p>
-                      <br/>
                       <br/>
                     <p className={"description-label"}>Ametikirjeldus </p>
                     </>

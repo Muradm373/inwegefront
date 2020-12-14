@@ -184,10 +184,16 @@ class DynamicMapSelector extends Component {
                       ? `${e[0].item}€ - ${e[e.length - 1].item}€`
                       : `${e[0].item}€`
                     : e.length > 1
-                    ? `${e[0].percentage.toFixed(2).replace(".", ',') }% - ${e[
-                        e.length - 1
-                      ].percentage.toFixed(2).replace(".", ',') }%`
-                    : `${e[0].percentage.toFixed(2).replace(".", ',') }%`}
+                    ? this.props.language==="en" ?
+                          `${e[0].percentage.toFixed(2)}% - ${e[
+                        e.length - 1].percentage.toFixed(2)}%`
+                              :
+                              `${e[0].percentage.toFixed(2).replace(".", ',') }% - ${e[
+                              e.length - 1].percentage.toFixed(2).replace(".", ',') }%`
+                    : this.props.language==="en" ?
+                          `${e[0].percentage.toFixed(2) }%` :
+                              `${e[0].percentage.toFixed(2).replace(".", ',') }%`
+                  }
                 </p>
               </div>
             </div>
@@ -607,9 +613,10 @@ class DynamicMapSelector extends Component {
       <>
         <div className="c-tabs c-is-sticky" data-tabs="">
           <div className="c-tabs__nav">
-            <ul>
+            <ul className={"w-100 row"}>
               <li
                 style={{ cursor: "pointer" }}
+                className={"col-sm p-1"}
                 onClick={() => {
                   this.setColor("Gender Wage Gap");
                   this.getMeansForAllRegions(
@@ -633,6 +640,7 @@ class DynamicMapSelector extends Component {
               </li>
               <li
                 style={{ cursor: "pointer" }}
+                className={"col-sm p-1"}
                 onClick={() => {
                   this.setColor("Median Wage");
                   this.getMeansForAllRegions("Median Wage", this.state.isco);
@@ -653,6 +661,7 @@ class DynamicMapSelector extends Component {
               </li>
               <li
                 style={{ cursor: "pointer" }}
+                className={"col-sm p-1"}
                 onClick={() => {
                   this.setColor("Average Wage");
                   this.getMeansForAllRegions("Average Wage", this.state.isco);

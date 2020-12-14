@@ -69,7 +69,8 @@ class ColumnChartComponent extends Component {
             formatter: function (val) {
               return val + "€/" + monthLabel;
             },
-          }
+          },
+          tickAmount: 5
         },
         fill: {
           opacity: 1,
@@ -294,13 +295,14 @@ class ColumnChartComponent extends Component {
 
   render() {
     return (
-      <div id="chart" style={{width: "80%"}} className={"mx-auto"}>
+      <div id="chart" className={"row text-center age-bar mx-auto"}>
         <ReactApexChart
           id="apexchart"
           options={this.state.options}
           series={this.state.series}
           type="bar"
           height={300}
+          width = {360}
         />
         <div className="graph-legends">
           {displayLegends(menColor, womenColor)}

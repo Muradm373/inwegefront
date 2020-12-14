@@ -80,6 +80,7 @@ function Graph(props) {
 
   return (
     <div className="centered" id="entity" className="graph">
+
       <BarComponent
         menMean={menMean}
         womenMean={womenMean}
@@ -100,7 +101,11 @@ function Graph(props) {
         }
       />
 
-      
+      <br/>
+      <br/>
+      <div className={"y-axis-label h6-stat-gray"}>
+          {decileLabel}
+      </div>
       <FlexibleWidthXYPlot height={350}  margin={{right: 20}} animation="gentle">
         <VerticalGridLines
         className="grid-line-vertical"
@@ -117,19 +122,8 @@ function Graph(props) {
         }
         <YAxis
         className="grid-axis"
-        title={decileLabel}
           tickTotal={4}
           tickFormat={(v) => `${v * 10}%`}
-        />
-
-        <AreaSeries
-          className="area-series-women"
-          curve="curveBasis"
-          data={women}
-          style={{ opacity: 0.8 }}
-          fill={womenColor}
-          strokeWidth="0"
-          stroke={"transparent"}
         />
 
         <AreaSeries
@@ -141,12 +135,21 @@ function Graph(props) {
           strokeWidth="0"
           stroke={"transparent"}
         />
+          <AreaSeries
+              className="area-series-women"
+              curve="curveBasis"
+              data={women}
+              style={{ opacity: 0.8 }}
+              fill={womenColor}
+              strokeWidth="0"
+              stroke={"transparent"}
+          />
 
         <Hint
           value={displayMessageLocation(myWage)}
           style={displayMessage(men)}
         >
-          <p className="no-data-label">
+          <p className="no-data-label ">
             {noDataLabel}
           </p>
         </Hint>
@@ -159,11 +162,10 @@ function Graph(props) {
           strokeWidth="1"
           stroke="black"
           opacity="0.6"
-          strokeDasharray="7, 3"
         />
 
-        <Hint value={{ x: mean, y: 0 }} style={display(myWage, mean, men)}>
-          <p className="no-data-label">
+        <Hint value={{ x: mean, y: 0 }} >
+          <p className="no-data-label text-left h6-stat ml-1">
             {props.myGender === genderLabel[0]
               ? props.differenceLabel[5]
               : props.differenceLabel[4]}
@@ -173,13 +175,14 @@ function Graph(props) {
         </Hint>
 
         <Hint value={{ x: parseInt(myWage), y: 1 }} style={display(myWage, mean, men)}>
-          <p className="no-data-label">
+          <p className="no-data-label text-left h6-stat ml-1">
             {salary[0]}
             <br /> {salary[1]}
           </p>
         </Hint>
         
-        {(myWage !== 0 && myWage !== undefined && myWage !== "") ? (<LineSeries
+        {(myWage !== 0 && myWage !== undefined && myWage !== "") ? (
+            <LineSeries
           data={[
             { y: 0, x: myWage },
             { y: 6, x: myWage },
@@ -192,34 +195,37 @@ function Graph(props) {
         :
         <></>}
 
-        <Hint
-          style={display(myWage, mean, men)}
-          value={{
-            x: parseInt(myWage) / 2 + parseInt(mean) / 2,
-            y: 3,
-          }}
-        >
-          <p className="differenceLabel">
-            {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
-              ? props.differenceLabel[6] +
-                " " +
-                Math.abs(parseInt(myWage) - parseInt(mean)) +"€" +
-                (parseInt(myWage) - parseInt(mean) > 0
-                  ? props.differenceLabel[1]
-                  : props.differenceLabel[2]) +
-                props.differenceLabel[3] +
-                " " +
-                (props.myGender === genderLabel[0]
-                  ? props.differenceLabel[5]
-                  : props.differenceLabel[4]) +
-                " " +
-                props.differenceLabel[7]
-              : ""}
-          </p>
-        </Hint>
+        {/*<Hint*/}
+        {/*  style={display(myWage, mean, men)}*/}
+        {/*  value={{*/}
+        {/*    x: parseInt(myWage)/2 + parseInt(mean)/ 2,*/}
+        {/*    y: 3,*/}
+        {/*  }}*/}
+        {/*>*/}
+
+        {/*</Hint>*/}
         <Highlight highlightY="false" highlightX="false" />
 
       </FlexibleWidthXYPlot>
+        <div style={display(myWage, mean, men)}>
+            <p className="differenceLabel text-left h6-stat graph-salary-label">
+                {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
+                    ? props.differenceLabel[6] +
+                    " " +
+                    Math.abs(parseInt(myWage) - parseInt(mean)) +"€" +
+                    (parseInt(myWage) - parseInt(mean) > 0
+                        ? props.differenceLabel[1]
+                        : props.differenceLabel[2]) +
+                    props.differenceLabel[3] +
+                    " " +
+                    (props.myGender === genderLabel[0]
+                        ? props.differenceLabel[5]
+                        : props.differenceLabel[4]) +
+                    " " +
+                    props.differenceLabel[7]
+                    : ""}
+            </p>
+        </div>
         <div className="graph-legends">
             {displayLegends(menColor, womenColor)}
         </div>

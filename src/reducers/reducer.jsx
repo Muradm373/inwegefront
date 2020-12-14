@@ -3,6 +3,7 @@ import { genderLabel } from "../dictionary/text";
 const initState = {
   occupations: [],
   gender: genderLabel[0],
+  lang: "",
   wage: undefined,
   entities: [],
   description: "",
@@ -47,6 +48,9 @@ const rootReduce = (state = initState, action) => {
   }
   if (action.type === "SET_DATES") {
     return { ...state, dates: {...state.dates, ...action.dates}}
+  }
+  if (action.type === "SET_LANGUAGE") {
+    return { ...state, language: action.lang}
   }
 
   return { ...state };
