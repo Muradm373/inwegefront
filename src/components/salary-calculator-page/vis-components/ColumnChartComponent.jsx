@@ -297,7 +297,7 @@ class ColumnChartComponent extends Component {
     return (
       <div id="chart" className={"text-center age-bar mx-auto"}>
         <p className="graph-legends mx-auto pl-5 h4-stat text-left w-100" style={{height: "40px"}}>
-          {columnchartLabel + `, ${this.props.dates.salaryEntityDate} (${this.props.dates.salaryEntityDateQuarter} ${quarter})`}
+          {columnchartLabel + ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
         </p>
         <ReactApexChart
           id="apexchart"
