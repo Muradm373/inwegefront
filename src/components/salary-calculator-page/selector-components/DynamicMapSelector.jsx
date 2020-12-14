@@ -28,11 +28,21 @@ import {
   medianWage,
 } from "../../../dictionary/text";
 import ReactTooltip from "react-tooltip";
+import styled from 'styled-components';
 import { connect } from "react-redux";
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
 };
+
+const StyledTooltip = styled(ReactTooltip)`
+  opacity: 1 !important;
+  color: white !important;
+  width: 190px ;
+  white-space: normal;
+  font-size: 18px;
+  padding: 15px;
+`
 
 class DynamicMapSelector extends Component {
   constructor(props) {
@@ -428,12 +438,13 @@ class DynamicMapSelector extends Component {
   }
 
   onMapHover(geo) {
+
     const l = geo.properties.MNIMI;
     const data = this.getMeanForRegion(l);
-
       let dataString =
         Object.keys(data).length === 0 ? noData : data.toString();
-      this.setState({ content: dataString });
+      let percentage = 0;
+      this.setState({ content: `<p class="h6-stat-white-bold text-left">${l}:</p> <br/> <p class="h6-stat-white text-left">${dataString}</p> `});
   }
 
   onOccupationHover() {
@@ -590,7 +601,7 @@ class DynamicMapSelector extends Component {
           </Annotation>
 
         </ComposableMap>
-        <ReactTooltip>{this.state.content}</ReactTooltip>
+        <StyledTooltip html={true}>{this.state.content}</StyledTooltip>
         {this.state.groups[0].length !== 0 ?
             <div className="legends">
               {this.getLegends()}
