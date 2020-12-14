@@ -34,7 +34,7 @@ const displayMessageLocation = (myWage) => {
     : { x: parseInt(myWage) / 2.75, y: 3 };
 };
 
-const displayLegends = (menColor, womenColor) => {
+export const displayLegends = (menColor, womenColor) => {
   return (
     <div className={"row"}>
       <div

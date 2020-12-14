@@ -85,7 +85,6 @@ class SalaryCalculator extends Component {
         entities: [],
         iscos: [],
         isco: "",
-        region: "",
         occupation: "",
         mean: [],
         code: "",

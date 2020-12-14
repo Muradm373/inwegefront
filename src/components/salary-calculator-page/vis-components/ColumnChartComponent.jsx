@@ -14,6 +14,7 @@ import {
   columnchartLabel, quarter,
 } from "../../../dictionary/text";
 import {connect} from "react-redux";
+import {displayLegends} from "./Graph";
 
 class ColumnChartComponent extends Component {
   constructor(props) {
@@ -47,6 +48,7 @@ class ColumnChartComponent extends Component {
         },
         colors: [menColor, womenColor],
         legend: {
+          show: false,
           position: "top",
           floating: true,
           itemMargin: {
@@ -300,7 +302,11 @@ class ColumnChartComponent extends Component {
           type="bar"
           height={300}
         />
+        <div className="graph-legends">
+          {displayLegends(menColor, womenColor)}
+        </div>
       </div>
+
     );
   }
 }

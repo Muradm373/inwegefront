@@ -1,3 +1,7 @@
+li :focus {
+    outline: 1px solid;
+}
+
 .App {
     text-align: center;
 }
