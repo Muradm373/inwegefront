@@ -8,13 +8,13 @@ import {
 } from "react-vis";
 import { averageBetweenMenAndWomen, quarter } from "../../../dictionary/text";
 import {connect} from "react-redux";
-import {getDates, setLanguage} from "../../../actions/actions";
 
 class BarComponent extends Component {
+
   render() {
     return (
         <div>
-          <div className={"bar-series-label"}>
+          <div className={"bar-series-label"} style={{display: this.props.pension ? "none" : "block"}}>
             <p className={"h4-stat text-left"}> {`${averageBetweenMenAndWomen} | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate}`} </p>
           </div>
       <div

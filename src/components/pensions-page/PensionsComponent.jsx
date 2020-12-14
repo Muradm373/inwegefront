@@ -44,12 +44,7 @@ class PensionsComponent extends Component {
 
           <div className="row">
             <div className="col-md-6">
-              <p
-                style={{
-                  fontFamily: "Roboto",
-                  fontSize: "18px",
-                  lineHeight: "22px",
-                }}
+              <p className={"h4-stat text-left ml-4 pl-2"}
               >
                 {gapsWageLabel}
               </p>
@@ -68,11 +63,7 @@ class PensionsComponent extends Component {
 
             <div className="col-md-6">
               <p
-                style={{
-                  fontFamily: "Roboto",
-                  fontSize: "18px",
-                  lineHeight: "22px",
-                }}
+               className={"h4-stat text-left ml-4 pl-2"}
               >
                 {gapsPensionLabel}
               </p>
@@ -94,11 +85,7 @@ class PensionsComponent extends Component {
           <br></br>
 
           <p
-            style={{
-              fontFamily: "Roboto",
-              fontSize: "18px",
-              lineHeight: "22px",
-            }}
+            className={"h4-stat text-left ml-4 pl-2"}
           >
             {replacementNeeds2}
           </p>
@@ -117,11 +104,7 @@ class PensionsComponent extends Component {
 
           <br></br>
           <p
-            style={{
-              fontFamily: "Roboto",
-              fontSize: "18px",
-              lineHeight: "22px",
-            }}
+            className={"h4-stat text-left ml-4 pl-2"}
           >
             {replacementNeeds1}
           </p>

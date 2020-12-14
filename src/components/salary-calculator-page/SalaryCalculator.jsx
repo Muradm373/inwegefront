@@ -126,7 +126,7 @@ class SalaryCalculator extends Component {
             <li className={"body-stat"}>
              {sideParagraph2[0]}
             </li>
-            <li className={"body-stat"}s>
+            <li className={"body-stat"}>
               {sideParagraph2[1]}
             </li>
           </ol>

@@ -5,7 +5,8 @@ import {
   noData,
   quarter,
   noDataInfo,
-  source
+  source,
+  counties
 } from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import htmlToImage from "html-to-image";
@@ -477,7 +478,7 @@ class DynamicMapSelector extends Component {
                             style={{
                               fontFamily: "Roboto",
                               fontWeight: "normal",
-                              fontSize: "13px",
+                              fontSize: this.props.language === "ru"?"10px" : "13px",
                               lineHeight: "16px",
                               fill: "#FFFFFF",
                               cursor: "default"
@@ -491,7 +492,8 @@ class DynamicMapSelector extends Component {
                             y="2"
                             textAnchor={geo.properties.MNIMI.includes("Lääne maakond")?"":"middle"}
                           >
-                            {replaceMaakond(geo.properties.MNIMI)}
+
+                            {this.props.language === "ru"? counties[geo.properties.MNIMI] : replaceMaakond(geo.properties.MNIMI)}
                           </text>
                         </Marker>
                       ) : (

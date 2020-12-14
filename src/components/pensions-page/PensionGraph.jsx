@@ -18,7 +18,7 @@ import {
 } from "../../dictionary/text";
 
 import axios from "axios";
-import BarComponent from "../salary-calculator-page/vis-components/BarComponent";
+import PensionBarComponent from "./PensionBarComponent";
 
 class PensionGraph extends Component {
   constructor() {
@@ -174,7 +174,8 @@ class PensionGraph extends Component {
   render() {
     return (
       <div className="centered graph mb-5" id="bar-component">
-        <BarComponent
+        <PensionBarComponent
+            pension={true}
           menMean={this.state.menMean}
           womenMean={this.state.womenMean}
           menColor={menColor}
@@ -184,6 +185,14 @@ class PensionGraph extends Component {
           this.getLabel(this.props.type, parseInt(this.state.menMean) - parseInt(this.state.womenMean), this.props.year)
           }
         />
+
+
+        <br/>
+        <br/>
+
+        <div className={"y-axis-label h6-stat-gray"}>
+          {decileLabel}
+        </div>
 
         <FlexibleWidthXYPlot height={350} animation="gentle">
           <VerticalGridLines className="grid-line-vertical" />
@@ -195,9 +204,18 @@ class PensionGraph extends Component {
           />
           <YAxis
             className="grid-axis"
-            title={decileLabel}
             tickTotal={4}
             tickFormat={(v) => `${v * 10}%`}
+          />
+
+          <AreaSeries
+              className="area-series-men"
+              curve="curveBasis"
+              data={this.state.data.men}
+              fill={menColor}
+              style={{ opacity: 0.8 }}
+              strokeWidth="0"
+              stroke="transparent"
           />
 
           <AreaSeries
@@ -210,21 +228,28 @@ class PensionGraph extends Component {
             stroke="transparent"
           />
 
-          <AreaSeries
-            className="area-series-men"
-            curve="curveBasis"
-            data={this.state.data.men}
-            fill={menColor}
-            style={{ opacity: 0.8 }}
-            strokeWidth="0"
-            stroke="transparent"
-          />
-
           <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
-          <div className="graph-legends">
-            {this.displayLegends(menColor, womenColor)}
-          </div>
+
         </FlexibleWidthXYPlot>
+        <div className="graph-legends row">
+          <div className={"row"}>
+            <div
+                className="circle-legend"
+                style={{
+                  background: menColor,
+                }}
+            ></div>
+            <p className="graph-legend">{genderLabel[0]}</p>
+
+            <div
+                className="circle-legend ml-3"
+                style={{
+                  background: womenColor,
+                }}
+            ></div>
+            <p className="graph-legend">{genderLabel[1]}</p>
+          </div>
+        </div>
       </div>
     );
   }

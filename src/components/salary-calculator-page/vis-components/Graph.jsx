@@ -174,7 +174,7 @@ function Graph(props) {
           </p>
         </Hint>
 
-        <Hint value={{ x: parseInt(myWage), y: 1 }} style={display(myWage, mean, men)}>
+        <Hint value={{ x: parseInt(myWage === undefined ? 0: myWage), y: 1 }} style={display(myWage, mean, men)}>
           <p className="no-data-label text-left h6-stat ml-1">
             {salary[0]}
             <br /> {salary[1]}

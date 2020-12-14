@@ -355,11 +355,11 @@ const pensionDescriptionEng =  [["It is assumed that:",
   
 
 const gapsWageLabelEng = 
-["Pension Gap (in Euros of 2020)","Разница в заработной плате (в евро 2020 года)","Meeste ja naiste kuupalkade erinevus (2020. aasta eurodes)"];
+["Pension Gap | in Euros of 2020","Разница в заработной плате | в евро 2020 года","Meeste ja naiste kuupalkade erinevus | 2020 aasta eurodes"];
   
 
 const gapsPensionLabelEng = 
-  ["Pension Gap (in Euros of 2071)","Разница в пенсии (в евро 2071 года)","Pensionide erinevus (2071. aasta eurodes)"];
+  ["Pension Gap | in Euros of 2071","Разница в пенсии | в евро 2071 года","Pensionide erinevus | 2071. aasta eurodes"];
 
 const submittedLabelEng = [
   "Message Submitted",
@@ -637,4 +637,21 @@ export let monthLabel = monthLabelEng[0];
 export let foundationLabel = foundationLabelEng[0];
 export let decileLabel = decileLabelEng[0];
 export let quarter = quarterEng[0];
+
+export let counties = {"Valga maakond": "Валгамаа",
+  "Viljandi maakond": "Вильяндимаа",
+  "Võru maakond": "Вырумаа",
+  "Ida-Viru maakond":"Ида-Вирумаа",
+  "Jõgeva maakond": "Йыгевамаа",
+  "Lääne-Viru maakond":"Ляэне-Вирумаа",
+  "Lääne maakond": "Ляэнемаа",
+  "Põlva maakond" :"Пылвамаа",
+  "Pärnu maakond" :"Пярнумаа",
+  "Rapla maakond": "Рапламаа",
+  "Saare maakond": "Сааремаа",
+  "Tartu maakond": "Тартумаа",
+  "Harju maakond" :"Харьюмаа",
+  "Hiiu maakond" :"Хийумаа",
+  "Järva maakond":"Ярвамаа"}
+
 

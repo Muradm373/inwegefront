@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import {API_URL, genderLabel, menColor, propsLabel, quarter, womenColor} from "../../../dictionary/text";
+import {API_URL, propsLabel, quarter} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
-import {displayLegends} from "./Graph";
 
 
 
