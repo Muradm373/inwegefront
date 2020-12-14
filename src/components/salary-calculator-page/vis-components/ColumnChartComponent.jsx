@@ -92,7 +92,7 @@ class ColumnChartComponent extends Component {
           }
         },
         title: {
-          text: columnchartLabel + `, ${this.props.dates.salaryEntityDate} (${this.props.dates.salaryEntityDateQuarter} ${quarter})`,
+          text: ``,
           floating: true,
           offsetY: 0,
           align: "center",
@@ -295,16 +295,20 @@ class ColumnChartComponent extends Component {
 
   render() {
     return (
-      <div id="chart" className={"row text-center age-bar mx-auto"}>
+      <div id="chart" className={"text-center age-bar mx-auto"}>
+        <p className="graph-legends mx-auto pl-5 h4-stat text-left w-100" style={{height: "40px"}}>
+          {columnchartLabel + `, ${this.props.dates.salaryEntityDate} (${this.props.dates.salaryEntityDateQuarter} ${quarter})`}
+        </p>
         <ReactApexChart
           id="apexchart"
+          className={"ml-2"}
           options={this.state.options}
           series={this.state.series}
           type="bar"
           height={300}
           width = {360}
         />
-        <div className="graph-legends">
+        <div className="graph-legends mx-auto pl-5">
           {displayLegends(menColor, womenColor)}
         </div>
       </div>

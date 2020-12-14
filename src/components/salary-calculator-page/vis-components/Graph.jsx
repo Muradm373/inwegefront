@@ -44,7 +44,7 @@ export const displayLegends = (menColor, womenColor) => {
         }}
       ></div>
       <p
-        className="graph-legend"
+        className="graph-legend  h6-stat-gray py-auto"
       >
         {genderLabel[0]}
       </p>
@@ -56,7 +56,7 @@ export const displayLegends = (menColor, womenColor) => {
         }}
       ></div>
       <p
-        className="graph-legend"
+        className="graph-legend  h6-stat-gray py-auto"
       >
         {genderLabel[1]}
       </p>

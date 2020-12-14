@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import {API_URL, propsLabel, quarter} from "../../../dictionary/text";
+import {API_URL, genderLabel, menColor, propsLabel, quarter, womenColor} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
+import {displayLegends} from "./Graph";
 
 
 
@@ -60,6 +61,11 @@ class AgeBarChartComponent extends Component {
           title: {
             text: propsLabel,
           },
+          labels: {
+            formatter: function (val) {
+              return val;
+            }
+          },
           tickAmount: 5
         },
         fill: {
@@ -88,12 +94,11 @@ class AgeBarChartComponent extends Component {
           }
         },
         title: {
-          text: this.props.label +
-              `${this.props.dates.ageDate} (${this.props.dates.ageDataQuarter} ${quarter})`,
+          text: "",
           floating: true,
-          offsetY: -5,
           align: "center",
           style: {
+            fontFamily: "Roboto",
             color: "#444",
             fontSize: "14px",
             fontWeight: "200",
@@ -197,10 +202,15 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div className="row text-center age-bar mx-auto" >
-        <div id="chart">
+      <div className="text-center age-bar mx-auto" >
+        <p className="graph-legends mx-auto pl-5 h4-stat text-left px-auto" style={{height: "40px"}}>
+          {this.props.label +
+          ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
+        </p>
+        <div id="chart" className={"mb-0 mt-1"}>
           <ReactApexChart
           id="apexchart"
+            className={"mx-auto"}
             options={this.state.options}
             series={this.state.series}
             type="bar"
@@ -208,7 +218,22 @@ class AgeBarChartComponent extends Component {
             width = {360}
           />
         </div>
-    
+        <div className="graph-legends mx-auto pl-5">
+          <div className={"row"}>
+            <div
+                className="circle-legend"
+                style={{
+                  background: "#FFBC45",
+                }}
+            ></div>
+            <p
+                className="graph-legend-age h6-stat-gray"
+            >
+              {`Kokku ametialal - ${this.props.occupation}`}
+            </p>
+
+          </div>
+        </div>
       </div>
     );
   }

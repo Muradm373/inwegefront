@@ -426,9 +426,10 @@ font {
 
 .circle-legend {
     background: lightblue;
-    border-radius: 50%;
+    border-radius: 100%;
     width: 8px;
     height: 8px;
+    margin-top: -2px;
 }
 
 .card-occupation-selector {
@@ -893,7 +894,17 @@ body {
 }
 
 .graph-legend {
-
+    text-align: left;
+    margin-top: -5px;
+    margin-left: 5px;
+    font-size: 9pt;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 18px;
+    color: #595959;
+}
+.graph-legend-age {
+    width: 300px;
     text-align: left;
     margin-top: -5px;
     margin-left: 5px;
@@ -1380,7 +1391,6 @@ body {
 }
 
 #chart {
-    margin: 35px auto;
     opacity: 0.9;
 }
 
