@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import Select from "react-select";
+import Select, {components } from "react-select";
 import {
   occupationSelectorPlaceholder, selectOccupation
 } from "../../../dictionary/text";
+import searchIcon from "../../../resources/search.svg";
 
 
 export const colourStyles = {
@@ -33,12 +34,25 @@ export const colourStyles = {
     },
 };
 
+const DropdownIndicator = props => {
+    return (
+        components.DropdownIndicator && (
+            <components.DropdownIndicator {...props}>
+                <img src={searchIcon} alt="" />
+            </components.DropdownIndicator>
+
+        )
+    );
+};
+
 class OccupationSelector extends Component {
+
   render() {
     return (
-      <div className="selector">
+      <div className="select">
         <Select
           onChange={this.props.onChange}
+          components={{ DropdownIndicator }}
           noOptionsMessage={() => occupationSelectorPlaceholder}
           options={this.props.occupations}
           placeholder={selectOccupation}

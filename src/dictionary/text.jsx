@@ -69,9 +69,9 @@ const genderEng = [
 ];
 const selectRegionEng = ["Select region", "Выберите регион", "Vali maakond"];
 const selectOccupationEng = [
-  "Select job title",
-  "Выберите должность",
-  "Otsi",
+  "SELECT JOB TITLE",
+  "ВЫБЕРИТЕ ДОЛЖНОСТЬ",
+  "OTSI",
 ];
 const averageBetweenMenAndWomenEng = [
   "Average salary for men and women",
@@ -118,7 +118,7 @@ const pieChartLabelsEng = [
 ];
 const detailsLabelEng = ["Details", "Описание", "Detailid"];
 const descriptionLabelEng = ["Description", "Тема", "Kirjeldus"];
-const defaultGenderEng = ["Gender", "Пол", "Sugu"];
+const defaultGenderEng = ["GENDER", "ПОЛ", "SUGU"];
 const occupationSelectorPlaceholderEng = [
   "First you need to select county from the map",
   "Сначала вам нужно выбрать округ на карте",
@@ -128,14 +128,14 @@ const overallEng = ["Overall in Estonia", "B Эстонии", "Kogu Eesti"];
 
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
-  "3) Fill the boxes below to compare your own wage to the average wage.",
-  "3) Чтобы увидеть разницу между вашей и средней заработной платой, заполнитe поля ниже",
-  "3) Täida lahtrid, et võrrelda oma palka keskmise brutopalgaga jaotuste joonisel.   ",
+  "Fill the boxes below to compare your own wage to the average wage.",
+  "Чтобы увидеть разницу между вашей и средней заработной платой, заполнитe поля ниже",
+  "Täida lahtrid, et võrrelda oma palka keskmise brutopalgaga jaotuste joonisel.   ",
 ];
 const sideParagraph2Eng = [
-  ["1) Select county from the map", "2) Select job title"],
-  ["1) Выбрать регион на карте", "2) Выберите должность"],
-  ["1) Vali kaardil maakond", "2) Vali amet"],
+  ["Select county from the map", "Select job title"],
+  ["Выбрать регион на карте", "Выберите должность"],
+  ["Vali kaardil maakond", "Vali amet"],
 ];
 const noDataLabelEng = [
   "No data for the selected occupation",
@@ -339,19 +339,19 @@ const replacementNeeds2Eng =  ["Replacement rate in relation to the average wage
 
 
 const pensionDescriptionEng =  [["It is assumed that:",
- "1) The distribution of the gross wages includes all occupations and reflects the current wage distributions of men and women in Estonia",
- "2) The date of birth of all employees is January 1, 2002; all the employees start working on January 1, 2020 and they all retire on November 1, 2071; no one has any interruptions in working and no one has children.",
- "3) All employees have joined the second pillar from the moment they start working, but no money is transferred to the supplementary pension funds (e.g. III pillar)",
- "4) The expected wage growth comes from prognoses of the Ministry of Finance, life expectancy in the future comes from the prognoses of Eurostat.",
+ "The distribution of the gross wages includes all occupations and reflects the current wage distributions of men and women in Estonia",
+ "The date of birth of all employees is January 1, 2002; all the employees start working on January 1, 2020 and they all retire on November 1, 2071; no one has any interruptions in working and no one has children.",
+ "All employees have joined the second pillar from the moment they start working, but no money is transferred to the supplementary pension funds (e.g. III pillar)",
+ "The expected wage growth comes from prognoses of the Ministry of Finance, life expectancy in the future comes from the prognoses of Eurostat.",
 ],["Предполагается, что:",
-"1) Распределение валовой заработной платы включает все профессии и отражает текущее распределение заработной платы мужчин и женщин в Эстонии.",
-"2) Дата рождения всех работников - 1 января 2002 года; все сотрудники приступают к работе с 1 января 2020 года и все выходят на пенсию с 1 ноября 2071 года; ни у кого нет перерывов в работе и ни у кого нет детей.",
-"3) Все сотрудники присоединились ко второй ступени с момента начала работы, но деньги в дополнительные пенсионные фонды не поступают (например, III ступень)",
-"4) Ожидаемый рост заработной платы исходит из прогнозов Минфина, продолжительность жизни в будущем исходит из прогнозов Евростата."],
-["Eeldame, et", "1) Brutopalkade jaotus hõlmab kõiki ametialasid ning vastab kogu Eesti naiste ja meeste palkade jaotusele.",
-  "2) Kõik inimesed on sündinud 01. jaanuaril 2002. aastal, alustavad töötamist 1. jaanuaril 2020. aastal ja jäävad pensionile 1. novembril 2071. aastal. Mitte kellelgi ei ole töötamises katkestusi, kellelgi pole ka lapsi.",
-  "3) Kõik inimesed on liitunud II sambaga töötamise alustamise hetkel, mitte keegi pole liitunud III sambaga.",
-  "4) Eeldatav palgakasv on võetud Rahandusministeeriumi prognoosist, eeldatav eluiga pensionile minemise hetkel on võetud Eurostati prognoosist."]];
+"Распределение валовой заработной платы включает все профессии и отражает текущее распределение заработной платы мужчин и женщин в Эстонии.",
+"Дата рождения всех работников - 1 января 2002 года; все сотрудники приступают к работе с 1 января 2020 года и все выходят на пенсию с 1 ноября 2071 года; ни у кого нет перерывов в работе и ни у кого нет детей.",
+"Все сотрудники присоединились ко второй ступени с момента начала работы, но деньги в дополнительные пенсионные фонды не поступают (например, III ступень)",
+"Ожидаемый рост заработной платы исходит из прогнозов Минфина, продолжительность жизни в будущем исходит из прогнозов Евростата."],
+["Eeldame, et", "Brutopalkade jaotus hõlmab kõiki ametialasid ning vastab kogu Eesti naiste ja meeste palkade jaotusele.",
+  "Kõik inimesed on sündinud 01. jaanuaril 2002. aastal, alustavad töötamist 1. jaanuaril 2020. aastal ja jäävad pensionile 1. novembril 2071. aastal. Mitte kellelgi ei ole töötamises katkestusi, kellelgi pole ka lapsi.",
+  "Kõik inimesed on liitunud II sambaga töötamise alustamise hetkel, mitte keegi pole liitunud III sambaga.",
+  "Eeldatav palgakasv on võetud Rahandusministeeriumi prognoosist, eeldatav eluiga pensionile minemise hetkel on võetud Eurostati prognoosist."]];
   
 
 const gapsWageLabelEng = 

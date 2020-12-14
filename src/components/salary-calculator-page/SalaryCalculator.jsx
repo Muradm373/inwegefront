@@ -120,26 +120,17 @@ class SalaryCalculator extends Component {
   render() {
     return (
       <div className="graph-component graph-component-cards mb-5">
-        <div className="card-shadow card-occupation-selector m-3">
+        <div className="card-shadow card-occupation-selector mt-3 mx-auto">
           <br></br>
-          <p
-            style={{
-              textAlign: "left",
-              fontFamily: "Roboto",
-              fontSize: "16px",
-              lineHeight: "20px",
-              fontWeight: "normal",
-              color: "#595959",
-              flex: 5,
-              display: "flex",
-            }}
-          >
-            {sideParagraph2[0]}
-            <br></br>
-            <br></br>
-            {sideParagraph2[1]}
-            <br></br>
-          </p>
+
+          <ol className={"ol-stat"}>
+            <li className={"body-stat"}>
+             {sideParagraph2[0]}
+            </li>
+            <li className={"body-stat"}s>
+              {sideParagraph2[1]}
+            </li>
+          </ol>
           <div className="form-group shiny-input-container">
             <div id="occupation-selector" className={"mt-3"}>
               <OccupationSelector
@@ -147,19 +138,14 @@ class SalaryCalculator extends Component {
                 region={this.state.region}
                 occupations={this.props.occupations}
               />
-              <br></br>
-              <p
-                style={{
-                  textAlign: "left",
-                  fontFamily: "Roboto",
-                  fontSize: "16px",
-                  lineHeight: "20px",
-                  fontWeight: "normal",
-                  color: "#595959",
-                }}
-              >
-                {sideParagraph1}
-              </p>
+
+              <ol className={"ol-stat"}>
+                <li className={"body-stat"}>
+                  {sideParagraph1}
+                </li>
+              </ol>
+
+
               <div className={"mt-3"} style={{ display: "flex", flexDirection: "row" }}>
                 <div>
                   <div >
@@ -199,7 +185,7 @@ class SalaryCalculator extends Component {
                 )}
                 {this.props.description !== "" && this.props.description !== null ?
                     <>
-                      <p className={"description-text"}
+                      <p className={"body-stat"}
                       >
                         Valitud ametinimetus kuulub ametirühma {this.props.generalName} ({this.props.occupationCode}, tase {this.props.occupationCode.length} ametite klassifikaatoris).
                       </p>
@@ -211,7 +197,7 @@ class SalaryCalculator extends Component {
                     <></>
                 }
                 <br/>
-                <p className={"description-text"}
+                <p className={"body-stat"}
                 >
                   {this.props.description}
                 </p>
@@ -220,11 +206,11 @@ class SalaryCalculator extends Component {
           </div>
         </div>
 
-        <div className="card-shadow card-dynamic-map my-3">
+        <div className="card-shadow card-dynamic-map my-3 mx-auto">
           <div>
             <div className="methodology-component">
               <div className="pns-graphs">
-                <p>{wageDifferencesText}</p>
+                <p className={"body-stat"}>{wageDifferencesText}</p>
                 <br></br>
               </div>
             </div>
@@ -255,9 +241,24 @@ class SalaryCalculator extends Component {
               region={this.state.region}
             ></Graph>
 
-            <div className="feature-1 text-center my-3">
+            <div className={"my-5"} style={{ height: "20px" }}></div>
+
+            <div className="feature-1 text-center my-3 h4-stat">
+              {this.state.occupation === "" && (
+                  <p className="mb-3" style={{ color: "black" }}>
+                    {totalNumberOfEmployees + " " + this.state.region}
+                  </p>
+              )}
+
+              {this.state.occupation !== "" && (
+                  <p className="mb-3 h4-stat" style={{ color: "black" }}>
+                    {totalNumberOfEmployeesOccupation[0] +
+                    this.props.generalName + " ("+this.props.occupationCode + ")" +
+                    totalNumberOfEmployeesOccupation[1] +
+                    this.state.region}
+                  </p>
+              )}
               <div className="row d-flex justify-content-center">
-                <div style={{ height: "5px" }}></div>
                 <PieChartComponent
                   style={{ paddingTop: "-1000px" }}
                   key="PieChart"
@@ -267,27 +268,14 @@ class SalaryCalculator extends Component {
                   type="region"
                 />
               </div>
-              {this.state.occupation === "" && (
-                  <p className="mb-3" style={{ color: "black" }}>
-                    {totalNumberOfEmployees + " " + this.state.region}
-                  </p>
-              )}
 
-              {this.state.occupation !== "" && (
-                  <p className="mb-3" style={{ color: "black" }}>
-                    {totalNumberOfEmployeesOccupation[0] +
-                    this.props.generalName + " ("+this.props.occupationCode + ")" +
-                    totalNumberOfEmployeesOccupation[1] +
-                    this.state.region}
-                  </p>
-              )}
 
               <br/>
 
               {
                 <div>
-                  <div className="graph-component-cards mt-3">
-                    <div>
+                  <div className="graph-component-cards mt-3 row">
+                    <div className={"col-sm"}>
                       <ColumnChartComponent
                         region={this.state.region}
                         isco={this.state.isco}
@@ -295,13 +283,14 @@ class SalaryCalculator extends Component {
                         occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
                       />
                     </div>
-                    <div>
+                    <div className={"col-sm"}>
                       {this.state.isco ? (
                         <div>
                           <div className="row justify-content-center text-center">
                             <AgeBarChartComponent
                               isco={this.state.isco}
                               label={[`${ageLabel} `]}
+                              occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
                             ></AgeBarChartComponent>
                           </div>
                         </div>

@@ -636,7 +636,7 @@ td, th {
 .select2-dropdown {
     background-color: white;
     border: 1px solid #aaa;
-    border-radius: 4px;
+    border-radius: 0px;
     box-sizing: border-box;
     display: block;
     position: absolute;
@@ -734,7 +734,7 @@ td, th {
 .select2-container--default .select2-selection--single {
     background-color: #fff;
     border: 1px solid #aaa;
-    border-radius: 4px
+    border-radius: 0px
 }
 
 .select2-container--default .select2-selection--single .select2-selection__rendered {
@@ -18543,7 +18543,7 @@ fad.fa-sensor-alert:after {
 }
 
 .u-container {
-    width: 1340px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 40px;
     max-width: 100%
@@ -18940,7 +18940,6 @@ pre code {
 .layout__nav__top__center {
     position: absolute;
     left: 50%;
-    top: 100%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%)
 }
@@ -18950,7 +18949,7 @@ pre code {
 }
 
 .layout__header__top .u-container {
-    width: 1440px;
+    width: 100%;
     padding: 0 30px;
     display: -webkit-box;
     display: flex;
@@ -18998,8 +18997,8 @@ pre code {
     display: flex;
     -webkit-box-align: end;
     align-items: flex-end;
-    width: 1440px;
-    padding: 0 20px;
+    width: 100%;
+    padding: 0 0px;
     position: relative
 }
 
@@ -19270,7 +19269,7 @@ body:not(.search-open):not(.nav-open) .layout__header {
 }
 
 .menu--main, .menu--main-en {
-    background: #fff; margin-top: -4%;
+    background: #fff; margin-top: -60px;
 }
 
 .menu--main-en > ul, .menu--main > ul {
@@ -23522,7 +23521,7 @@ body:not(.search-open):not(.nav-open) .layout__header {
     background-image: -webkit-gradient(linear, left top, right top, from(#b1150d), to(#e1261c));
     background-image: linear-gradient(90deg, #b1150d, #e1261c);
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2), inset 0 -2px 0 0 rgba(0, 0, 0, .2);
-    border-radius: 6px;
+    border-radius: 0px;
     padding: 15px 20px;
     font-size: 16px;
     font-weight: 700;
@@ -25207,7 +25206,8 @@ body:not(.search-open):not(.nav-open) .layout__header {
 }
 
 .block-system-branding-block {
-    margin-right: 40px
+    margin-right: 40px;
+    margin-top: 2px;
 }
 
 .block-system-branding-block a, .block-system-branding-block a img {
@@ -26838,7 +26838,7 @@ body:not(.search-open):not(.nav-open) .layout__header {
 }
 
 .block--intro_block .u-container {
-    width: 1440px;
+    width: 100%;
     padding: 0 30px
 }
 

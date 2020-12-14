@@ -270,7 +270,7 @@ class Main extends Component {
 
                       <li className="menu-item">
                         <span
-                          className="icofont-youtube"
+                          className="icofont-youtube-play"
                           style={{ cursor: "pointer" }}
                           onClick={() => {
                             window.open(youtube, "_blank");
@@ -309,7 +309,7 @@ class Main extends Component {
                               className="wpml-ls-native"
                               style={{
                                 color:
-                                  this.defaultValue() === "es" ? "#4e73df" : "",
+                                  this.defaultValue() === "es" ? "#FFF" : "#929292",
                                 fontSize: "10pt",
                               }}
                             >
@@ -327,7 +327,7 @@ class Main extends Component {
                               className="wpml-ls-native"
                               style={{
                                 color:
-                                  this.defaultValue() === "en" ? "#4e73df" : "",
+                                  this.defaultValue() === "en" ? "#FFF" : "#929292",
                                 fontSize: "10pt",
                               }}
                             >
@@ -345,7 +345,7 @@ class Main extends Component {
                               className="wpml-ls-native"
                               style={{
                                 color:
-                                  this.defaultValue() === "ru" ? "#4e73df" : "",
+                                  this.defaultValue() === "ru" ? "#FFF" : "#929292",
                                 fontSize: "10pt",
                               }}
                             >
@@ -368,13 +368,13 @@ class Main extends Component {
                   <a onClick={this.changeMenu} href={"/"} rel="home" className="site-logo">
                     <img
                       src={require("./resources/logo.svg")}
-                      alt="Home"
+                      alt="Home" className={"ml-5"}
                       style={{
-                        width: "160px",
+                        display: "block",
+                        width: "150px",
                         backgroundColor: "#FFFFFF",
-                        marginTop: "17px",
-                        marginLeft: "-12px",
                         cursor: "pointer",
+                        marginTop: "-5px"
                       }}
                     />
                   </a>
@@ -408,13 +408,14 @@ class Main extends Component {
               aria-labelledby="block-mainnavigationenglish-menu"
               id="block-mainnavigationenglish"
               className="block block-menu menu--main-en layout__nav__top__center"
+              style={{ marginTop: "-54px"}}
             >
               <ul
                 data-region="header_bottom"
                 className="menu"
-                style={{ backgroundColor: "white", height: "50px" }}
+                style={{ backgroundColor: "white", height: "50px"}}
               >
-                <li className="menu-item menu-item--expanded">
+                <li className="menu-item menu-item--expanded h4-stat">
                   <span
                     tabIndex="0"
                     onClick={this.changeMenu}
@@ -425,7 +426,7 @@ class Main extends Component {
                     {tabs[0]}
                   </span>
                 </li>
-                <li className="menu-item menu-item--expanded">
+                <li className="menu-item menu-item--expanded h4-stat">
                   <span
                     tabIndex="0"
                     onClick={this.changeMenu}
@@ -436,7 +437,7 @@ class Main extends Component {
                     {tabs[1]}
                   </span>
                 </li>
-                <li className="menu-item menu-item--expanded">
+                <li className="menu-item menu-item--expanded h4-stat">
                   <span
                     tabIndex="1"
                     onClick={this.changeMenu}
@@ -447,7 +448,7 @@ class Main extends Component {
                     {tabs[2]}
                   </span>
                 </li>
-                <li className="menu-item menu-item--expanded">
+                <li className="menu-item menu-item--expanded h4-stat">
                   <span
                     tabIndex="2"
                     className="menuSpan"
@@ -462,7 +463,7 @@ class Main extends Component {
               </ul>
             </nav>
           </header>
-          <main id="main" style={{ marginTop: "-90px" }}>
+          <main id="main" className={"px-5"} style={{ marginTop: "-90px" }}>
             <div>
               <div className="selector-style text-center mx-auto">
                 {this.props.type === "admin" ? (

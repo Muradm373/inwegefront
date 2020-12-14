@@ -21,6 +21,18 @@
     color: #09d3ac;
 }
 
+label::-webkit-input-placeholder { /* Edge */
+    text-transform: uppercase;
+}
+
+label::-ms-input-placeholder { /* Internet Explorer 10-11 */
+    text-transform: uppercase;
+}
+
+label::placeholder {
+    text-transform: uppercase;
+}
+
 .layout__header{
     margin-bottom: -8%;
 }
@@ -378,7 +390,7 @@ font {
 }
 
 .graph-component {
-    margin-left: 4.2%;
+    /*margin-left: 4.2%;*/
 }
 
 .pension-component {
@@ -416,8 +428,12 @@ font {
 }
 
 .card-occupation-selector {
-    width: 30%;
-    margin-left: 3%;
+    width: 35%;
+    counter-reset: bullet-counter;
+}
+
+.description-page {
+    counter-reset: bullet-counter;
 }
 
 .card-dynamic-map {
@@ -875,8 +891,8 @@ body {
 .graph-legend {
 
     text-align: left;
-    margin-top: -13px;
-    margin-left: 13px;
+    margin-top: -5px;
+    margin-left: 5px;
     font-size: 9pt;
     font-family: Roboto;
     font-size: 14px;
@@ -886,8 +902,6 @@ body {
 }
 
 .graph-legends {
-    position: absolute;
-    margin-top: -300px;
     margin-left: 45%;
 }
 
@@ -903,7 +917,7 @@ body {
 }
 
 .age-bar {
-    width: 70%;
+    width: 80%;
 }
 
 .centered-image {
@@ -1114,10 +1128,13 @@ body {
 
 .mnimi-w input[type="text"]:focus + label[placeholder]:before {
     color: #000;
+    text-transform: uppercase;
 }
 
 .mnimi-w input[type="text"]:focus + label[placeholder]:before,
 .mnimi-w input[type="text"]:valid + label[placeholder]:before {
+    text-align: left;
+    text-transform: uppercase;
     transition-duration: 0.2s;
     transform: translate(0em, -1.4em) scale(0.8, 0.8);
     font-weight: initial;
@@ -1135,6 +1152,7 @@ body {
 
 .mnimi-w input[type="text"]:invalid + label[placeholder][alt]:before {
     content: attr(alt);
+    text-transform: uppercase;
 }
 
 .mnimi-w input[type="text"] + label[placeholder] {
@@ -1143,13 +1161,13 @@ body {
     line-height: 1.25em;
     margin-top: calc(-3em - 0px);
     margin-bottom: calc((3em - 1em) + 2px);
-    margin-left: -10%;
+    text-align: left;
 }
 
 .mnimi-w input[type="text"] + label[placeholder]:before {
     content: attr(placeholder);
     display: inline-block;
-    margin: 0 calc(0.5em + 2px);
+    margin: 0 calc(2px);
     padding: 0 8px;
     color: #000;
     white-space: nowrap;
@@ -1158,6 +1176,7 @@ body {
     background-size: 100% 5px;
     background-repeat: no-repeat;
     background-position: center;
+
 }
 
 .eu-logo {
@@ -1175,3 +1194,177 @@ body {
     margin-left: -5%;
 }
 
+.display-stat{
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 60px !important;
+    line-height: 70px !important;
+    color: #000000;
+}
+
+.h1-stat {
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 40px !important;
+    line-height: 45px !important;
+    color: #000000 ;
+}
+
+.h2-stat {
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 30px !important;
+    line-height: 35px !important;
+    color: #000000 ;
+}
+
+.h3-stat {
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 22px !important;
+    line-height: 28px !important;
+    color: #000000 ;
+}
+
+.h4-stat {
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #000000 ;
+}
+
+.h4-stat-gray {
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+    line-height: 22px !important;
+    color: #595959 ;
+}
+
+.h5-stat {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    text-transform: uppercase;
+    color: #000000 ;
+}
+
+.h6-stat {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    color: #000000 ;
+}
+
+.h6-stat-gray {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    color: #595959 ;
+}
+
+.h6-stat-white {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 13px !important;
+    line-height: 16px !important;
+    color: #FFFFFF ;
+}
+
+.body-stat {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    text-align: left;
+    color: #595959 ;
+}
+
+.ol-stat {
+    text-align: left;
+    display: block;
+
+}
+
+.ol-stat li{
+    display: list-item;
+    text-align: -webkit-match-parent;
+    counter-increment: bullet-counter;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    position: relative;
+    padding: 2.5px 0 2.5px 40px;
+
+}
+
+.ol-stat li::before {
+    content: "0" counter(bullet-counter);
+    width: 25px;
+    height: 25px;
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    left: 0;
+
+}
+
+.p-stat {
+    text-align: left;
+    font-family: Roboto;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: normal;
+    color: #595959;
+    flex: 5;
+    display: flex;
+}
+
+.css-10qsew5-menu{
+    margin-top: 1px !important;
+    text-align: left !important;
+}
+
+.arrow_box {
+    position: relative;
+    background: #000000;
+    border: 0px solid #000000;
+    height: 100px;
+    width: 240px;
+    padding: 10px;
+    margin-top: -105px;
+    word-wrap: break-word !important;
+}
+
+.arrow-box-small {
+    position: relative;
+    background: #000000;
+    border: 0px solid #000000;
+    height: 80px;
+    width: 150px;
+    padding: 10px;
+    margin-top: -85px;
+    word-wrap: break-word !important;
+}
+
+#chart .apexcharts-tooltip {
+    color: #fff;
+    overflow: visible !important;
+}
+
+#chart {
+    margin: 35px auto;
+    opacity: 0.9;
+}
+
+.arrow-box-p{
+    word-break: break-word;
+    width: auto;
+    text-align: left;
+}

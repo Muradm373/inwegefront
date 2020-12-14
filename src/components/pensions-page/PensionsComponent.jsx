@@ -20,7 +20,7 @@ class PensionsComponent extends Component {
     return (
       <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 pension-component">
         <div className="methodology-component" id="pensions-component">
-          <div className="pns-graphs">
+          <div className="pns-graphs description-page">
             <p className="text-justify">
               {PensionsText}
             </p>
@@ -28,12 +28,14 @@ class PensionsComponent extends Component {
             <br></br>
             <br></br>
 
-            <p>{pensionDescription[0]}</p>
-            <br></br>
-            <p>{pensionDescription[1]}</p>
-            <p>{pensionDescription[2]}</p>
-            <p>{pensionDescription[3]}</p>
-            <p>{pensionDescription[4]}</p>
+            <ol className={"ol-stat"}>
+              {pensionDescription[0]}
+              <br></br>
+              <li>{pensionDescription[1]}</li>
+              <li>{pensionDescription[2]}</li>
+              <li>{pensionDescription[3]}</li>
+              <li>{pensionDescription[4]}</li>
+            </ol>
           </div>
 
           <br></br>

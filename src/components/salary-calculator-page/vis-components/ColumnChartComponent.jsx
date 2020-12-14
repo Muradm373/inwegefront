@@ -72,12 +72,21 @@ class ColumnChartComponent extends Component {
         fill: {
           opacity: 1,
         },
+
         tooltip: {
           y: {
             formatter: function (val) {
               return val + "€";
             },
           },
+          custom: function({ series, seriesIndex, dataPointIndex, w }) {
+            return (
+                `<div class="arrow-box-small text-left wrap-stat">
+                ${w.globals.labels[dataPointIndex]}: 
+                <br/>
+                ${w.globals.seriesNames[seriesIndex]}: ${series[seriesIndex][dataPointIndex]} 
+                </div>`            );
+          }
         },
         title: {
           text: columnchartLabel + `, ${this.props.dates.salaryEntityDate} (${this.props.dates.salaryEntityDateQuarter} ${quarter})`,
@@ -101,6 +110,7 @@ class ColumnChartComponent extends Component {
     };
 
     this.getAllMean = this.getAllMean.bind(this);
+    this.getRegion = this.getRegion.bind(this);
     this.getAllMean();
   }
 
@@ -114,9 +124,33 @@ class ColumnChartComponent extends Component {
 
   componentWillReceiveProps(props) {
     this.setOccupationName(props);
-
     this.getMean(props.region, props.isco, props.code, props.type);
     this.getMeanForRegion(props.region);
+
+    this.setState({ occupation:props.occupation,options: {
+        ...this.state.options, tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "%";
+            },
+          },
+          custom: this.getOccupation
+        },
+      }
+    })
+  }
+
+  getRegion(data){
+    return (
+        `<div class="arrow_box text-left"> 
+                  <p class="arrow-box-p">
+                    ${data.w.globals.labels[data.dataPointIndex]}: <br/>
+                    
+                    ${this.splitWords(this.state.occupation, 30)} : 
+                        ${data.series[data.seriesIndex][data.dataPointIndex]}%
+                  </p>
+                </div>`
+    );
   }
 
   getAllMean() {
@@ -258,7 +292,7 @@ class ColumnChartComponent extends Component {
 
   render() {
     return (
-      <div id="chart">
+      <div id="chart" style={{width: "80%"}} className={"mx-auto"}>
         <ReactApexChart
           id="apexchart"
           options={this.state.options}

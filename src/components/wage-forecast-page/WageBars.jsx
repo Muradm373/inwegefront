@@ -145,11 +145,7 @@ class WageBars extends Component {
           {this.state.payload.wageCategory30_max !==
           this.state.payload.wageCategory30_min ? (
             <p
-              style={{
-                flex: 5,
-                display: "flex",
-                textAlign: "center",
-              }}
+              className={"h4-stat text-left"}
             >
               {pensionLabel[0]} {this.state.payload.wageCategory30_min}€{" "}
               {pensionLabel[1]} {this.state.payload.wageCategory30_max}€ .{" "}

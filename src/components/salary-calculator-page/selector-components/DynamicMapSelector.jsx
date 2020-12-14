@@ -174,7 +174,7 @@ class DynamicMapSelector extends Component {
                   }}
                 ></div>
                 <p
-                  className="map-legend"
+                  className="map-legend h6-stat-gray"
                   onClick={() => {
                     this.selectGroupColor(this.getGroupByItem(e[0].item));
                   }}
@@ -184,10 +184,10 @@ class DynamicMapSelector extends Component {
                       ? `${e[0].item}€ - ${e[e.length - 1].item}€`
                       : `${e[0].item}€`
                     : e.length > 1
-                    ? `${e[0].percentage.toFixed(2)}% - ${e[
+                    ? `${e[0].percentage.toFixed(2).replace(".", ',') }% - ${e[
                         e.length - 1
-                      ].percentage.toFixed(2)}%`
-                    : `${e[0].percentage.toFixed(2)}%`}
+                      ].percentage.toFixed(2).replace(".", ',') }%`
+                    : `${e[0].percentage.toFixed(2).replace(".", ',') }%`}
                 </p>
               </div>
             </div>
@@ -469,9 +469,11 @@ class DynamicMapSelector extends Component {
                         <Marker coordinates={centroid}>
                           <text
                             style={{
-                              fontSize: "9pt",
-                              fill: "#FFFFFF",
                               fontFamily: "Roboto",
+                              fontWeight: "normal",
+                              fontSize: "13px",
+                              lineHeight: "16px",
+                              fill: "#FFFFFF",
                               cursor: "default"
                             }}
                             onClick={() => {
@@ -498,9 +500,11 @@ class DynamicMapSelector extends Component {
           <Annotation subject={[-75, 35]} dx={0} dy={0}>
             <text
               style={{
-                fontSize: "12pt",
                 fontFamily: "Roboto",
                 fontWeight: "bold",
+                fontSize: "18px",
+                lineHeight: "22px",
+                fill: "#000000"
               }}
               x="-15"
               textAnchor="start"
@@ -510,23 +514,25 @@ class DynamicMapSelector extends Component {
             </text>
             <text
               style={{
-                fontSize: "12pt",
                 fontFamily: "Roboto",
+                fontWeight: "normal",
+                fontSize: "13px",
+                lineHeight: "16px",
+                fill: "#595959"
               }}
               x="-15"
               y="25"
               textAnchor="start"
               alignmentBaseline="start"
-              onMouseLeave={() => {
-                this.setState({ content: "" });
-              }}
             >
               {this.getOccupation()}
             </text>
           <text
               style={{
-                fontSize: "12pt",
                 fontFamily: "Roboto",
+                fontSize: "13px",
+                lineHeight: "16px",
+                fill: "#595959",
                 fontWeight: this.state.selected === "all" ? "bold": "",
                 textDecoration: "underline",
                 cursor:"pointer"
@@ -546,11 +552,14 @@ class DynamicMapSelector extends Component {
 
             <text
               style={{
-                fontSize: "12pt",
                 fontFamily: "Roboto",
+                fontWeight: "normal",
+                fontSize: "13px",
+                lineHeight: "16px",
+                fill: "#595959"
               }}
               x="-15"
-              y="75"
+              y= {this.props.generalName === null || this.props.region === "" ? "55":"75"}
               textAnchor="start"
               alignmentBaseline="start"
             >
@@ -558,9 +567,11 @@ class DynamicMapSelector extends Component {
             </text>
             <text
               style={{
-                fontSize: "10pt",
                 fontFamily: "Roboto",
-                fontColor: "#8B8B8B"
+                fontWeight: "normal",
+                fontSize: "13px",
+                lineHeight: "16px",
+                fill: "#595959"
               }}
               x="500"
               textAnchor="start"
@@ -581,7 +592,7 @@ class DynamicMapSelector extends Component {
                     background: this.state.noDataColor,
                   }}
               ></div>
-              <p className="map-legend text-left pl-5">{noData}</p>
+              <p className="map-legend text-left pl-5 h6-stat-gray">{noData}</p>
             </div> :
             <div className="legends-info text-left ml-2 mb-5" >
             <p className={"text-left ml-5"}>{noDataInfo}</p>

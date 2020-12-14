@@ -207,6 +207,7 @@ class PensionGraph extends Component {
             style={{ opacity: 0.8 }}
             fill={womenColor}
             strokeWidth="0"
+            stroke="transparent"
           />
 
           <AreaSeries
@@ -216,6 +217,7 @@ class PensionGraph extends Component {
             fill={menColor}
             style={{ opacity: 0.8 }}
             strokeWidth="0"
+            stroke="transparent"
           />
 
           <Highlight onBrushEnd="" highlightY="false" highlightX="false" />

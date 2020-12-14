@@ -12,7 +12,7 @@ class BarComponent extends Component {
   render() {
     return (
       <div
-        className="barseries"
+        className="barseries h4-stat"
         style={{ width: "80%", marginLeft: "10%" }}
         style={
           parseInt(this.props.menMean) - parseInt(this.props.womenMean) !== 0
@@ -30,6 +30,9 @@ class BarComponent extends Component {
           <XAxis
             style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
             tickTotal={7}
+            tickFormat={d => {
+              return d;
+            }}
           />
           <HorizontalBarSeries
             data={[{ y: 2, x: parseInt(this.props.menMean) }]}
@@ -65,7 +68,7 @@ class BarComponent extends Component {
             labelAnchorY="middleAlignment"
           />
         </FlexibleWidthXYPlot>
-        <p>{this.props.label}</p>
+        <p className={"body-stat text-center"}>{this.props.label}</p>
       </div>
     );
   }

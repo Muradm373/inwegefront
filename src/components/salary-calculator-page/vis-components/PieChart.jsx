@@ -99,9 +99,9 @@ class PieChartComponent extends Component {
               width="60"
             />
             <div>
-              <p className="mb-2">{workingMen}</p>
+              <p className="mb-2 h6-stat-gray">{workingMen}</p>
               <p
-                className="shiny-html"
+                className="shiny-html body-stat text-center"
                 id="maleAmount"
                 style={{ fontSize: "18pt" }}
               >
@@ -118,9 +118,9 @@ class PieChartComponent extends Component {
               width="60"
             />
             <div>
-              <p className="mb-2">{workingWomen}</p>
+              <p className="mb-2 h6-stat-gray">{workingWomen}</p>
               <p
-                className="shiny-html"
+                className="shiny-html body-stat text-center"
                 id="femaleAmount"
                 style={{ fontSize: "18pt" }}
               >

@@ -4,11 +4,14 @@ import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
 
+
+
 class AgeBarChartComponent extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      occupation: props.occupation,
       ageData: [],
       greenData: [
         { x: "0", y: 0 },
@@ -47,6 +50,11 @@ class AgeBarChartComponent extends Component {
         },
         xaxis: {
           categories: [],
+          axisTicks: {
+            show: true,
+            color: '#78909C',
+            height: 6,
+          },
         },
         yaxis: {
           title: {
@@ -56,12 +64,27 @@ class AgeBarChartComponent extends Component {
         fill: {
           opacity: 1,
         },
+
         tooltip: {
           y: {
-            formatter: function (val) {
-              return val + "%";
+              formatter: function (val) {
+               return val + "%";
+               },
             },
-          },
+          custom: function({ series, seriesIndex, dataPointIndex, w }) {
+            return (
+                '<div class="arrow_box text-left wrap-stat">' +
+                   '<span >' +
+                      w.globals.labels[dataPointIndex] +
+                      `: Kokku ametialal - } : ` +
+                    "</span>"+
+                    "<div>" +
+                                     +
+                      series[seriesIndex][dataPointIndex] +
+                    "</div>"+
+                "</div>"
+            );
+          }
         },
         title: {
           text: this.props.label +
@@ -79,13 +102,50 @@ class AgeBarChartComponent extends Component {
     };
 
     this.getAgeData = this.getAgeData.bind(this);
+    this.getOccupation = this.getOccupation.bind(this);
     this.getAgeData();
   }
+
 
   componentWillReceiveProps(props) {
     this.getAgeData(props.isco);
     window.addEventListener("resize", this.resize.bind(this));
+
+    this.setState({ occupation:props.occupation,options: {
+        ...this.state.options, tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "%";
+            },
+          },
+          custom: this.getOccupation
+        },
+      }
+    })
     this.resize();
+  }
+
+  getOccupation(data){
+      return (
+          `<div class="arrow_box text-left"> 
+                  <p class="arrow-box-p">
+                    ${data.w.globals.labels[data.dataPointIndex]}: <br/>
+                    ${this.splitWords(this.state.occupation, 30)} : 
+                        ${data.series[data.seriesIndex][data.dataPointIndex]}%
+                  </p>
+                </div>`
+      );
+  }
+
+  splitWords(text, limit){
+    let splitText = "";
+    for(let i = 0; i < text.length; i++){
+      splitText += text[i];
+      if(i !== 0 && i % limit === 0)
+        splitText += '<br/>'
+    }
+
+    return splitText;
   }
 
   resize() {
@@ -136,7 +196,7 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div className="row text-center w-100 age-bar" >
+      <div className="row text-center age-bar mx-auto" >
         <div id="chart">
           <ReactApexChart
           id="apexchart"

@@ -36,7 +36,7 @@ const displayMessageLocation = (myWage) => {
 
 const displayLegends = (menColor, womenColor) => {
   return (
-    <div style={{ width: "100px" }}>
+    <div className={"row"}>
       <div
         className="circle-legend"
         style={{
@@ -50,7 +50,7 @@ const displayLegends = (menColor, womenColor) => {
       </p>
 
       <div
-        className="circle-legend"
+        className="circle-legend ml-4"
         style={{
           background: womenColor,
         }}
@@ -129,6 +129,7 @@ function Graph(props) {
           style={{ opacity: 0.8 }}
           fill={womenColor}
           strokeWidth="0"
+          stroke={"transparent"}
         />
 
         <AreaSeries
@@ -138,6 +139,7 @@ function Graph(props) {
           fill={menColor}
           style={{ opacity: 0.8 }}
           strokeWidth="0"
+          stroke={"transparent"}
         />
 
         <Hint
