@@ -90,11 +90,14 @@ class ColumnChartComponent extends Component {
           },
           custom: function({ series, seriesIndex, dataPointIndex, w }) {
             return (
-                `<div class="arrow-box-small text-left wrap-stat">
-                ${w.globals.labels[dataPointIndex]}: 
-                <br/>
-                ${w.globals.seriesNames[seriesIndex]}: ${series[seriesIndex][dataPointIndex]} 
-                </div>`            );
+                `<div class="arrow-box-small text-left"> 
+                  <p class="arrow-box-p">
+                    ${w.globals.labels[dataPointIndex]}: <br/>
+                    <br/>
+                  ${w.globals.labels[dataPointIndex]} : 
+                        ${series[seriesIndex][dataPointIndex]}%
+                  </p>
+                </div>`);
           }
         },
         title: {
@@ -141,7 +144,7 @@ class ColumnChartComponent extends Component {
         ...this.state.options, tooltip: {
           y: {
             formatter: function (val) {
-              return val + "%";
+              return val + "€";
             },
           },
           custom: this.getOccupation
@@ -152,12 +155,12 @@ class ColumnChartComponent extends Component {
 
   getRegion(data){
     return (
-        `<div class="arrow_box text-left"> 
+        `<div class="arrow-box-small text-left"> 
                   <p class="arrow-box-p">
                     ${data.w.globals.labels[data.dataPointIndex]}: <br/>
-                    
-                    ${this.splitWords(this.state.occupation, 30)} : 
-                        ${data.series[data.seriesIndex][data.dataPointIndex]}%
+                    <br/>
+                    ${this.state.occupation} : 
+                        ${data.series[data.seriesIndex][data.dataPointIndex]}€
                   </p>
                 </div>`
     );

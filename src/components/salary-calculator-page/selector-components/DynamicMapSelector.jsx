@@ -10,7 +10,6 @@ import {
 } from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import downloadjs from "downloadjs";
 
 import {
