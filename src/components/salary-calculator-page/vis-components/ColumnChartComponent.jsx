@@ -15,11 +15,14 @@ import {
 } from "../../../dictionary/text";
 import {connect} from "react-redux";
 import {displayLegends} from "./Graph";
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+
 
 class ColumnChartComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      mapDownloadMenu: false,
       series: [
         {
           name: genderLabel[0],
@@ -34,6 +37,9 @@ class ColumnChartComponent extends Component {
       ],
       options: {
         chart: {
+            toolbar: {
+              show: false
+            },
           type: "bar",
           height: 350,
         },
@@ -114,6 +120,7 @@ class ColumnChartComponent extends Component {
 
     this.getAllMean = this.getAllMean.bind(this);
     this.getRegion = this.getRegion.bind(this);
+    this.componentRef = React.createRef();
     this.getAllMean();
   }
 
@@ -293,12 +300,19 @@ class ColumnChartComponent extends Component {
     }
   }
 
+  async promiseState() {
+    new Promise(resolve => this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu }, resolve));
+  }
+
   render() {
     return (
-      <div id="chart" className={"text-center age-bar mx-auto"}>
-        <p className="graph-legends mx-auto pl-5 h4-stat text-left w-100" style={{height: "40px"}}>
+      <div id="chart-column" className={"text-center mx-auto"} ref={this.componentRef}>
+        <p className="graph-legends mx-auto pl-5 h4-stat text-left w-100" style={{height: "40px", position: "absolute"}}>
           {columnchartLabel + ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
         </p>
+        <br/>
+        <br/>
+        <div id="agebar-chart" className={"mb-0 mt-3"}>
         <ReactApexChart
           id="apexchart"
           className={"ml-2"}
@@ -308,11 +322,64 @@ class ColumnChartComponent extends Component {
           height={300}
           width = {360}
         />
+        <div className={"source-tip"}>
+          <p className={"source-label-style"}>
+            Allikas: statistikaamet
+          </p>
+        </div>
         <div className="graph-legends mx-auto pl-5">
           {displayLegends(menColor, womenColor)}
         </div>
-      </div>
 
+        <div
+            className="apexcharts-toolbar apexcharts-toolbar-holder"
+        >
+          <div
+              className="apexcharts-menu-icon"
+              style={{}}
+              title="Menu"
+              onClick={() => {
+                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
+              }}
+          >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z"></path>
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </div>
+          <div
+              className={
+                "apexcharts-menu " +
+                (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
+              }
+          >
+            <div
+                className="apexcharts-menu-item exportPNG"
+                onClick={() => {
+                  this.promiseState().then(()=>exportComponentAsPNG(this.componentRef))
+                }}
+                title="Download PNG"
+            >
+              Download PNG
+            </div>
+            <div
+                className="apexcharts-menu-item exportPDF"
+                title="Download JPEG"
+                onClick={() => {
+                  this.promiseState().then(()=>exportComponentAsJPEG(this.componentRef))
+                }}
+            >
+              Download JPEG
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
     );
   }
 }

@@ -1306,6 +1306,29 @@ body {
     color: #FFFFFF ;
 }
 
+.source-label-style{
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 11px !important;
+    line-height: 13px !important;
+    text-align: right;
+    color: #000000 ;
+}
+
+.source-tip{
+    width: 360px;
+    position: absolute;
+    margin-top: -300px;
+    float: right;
+}
+
+.source-tip-agebar{
+    width: 360px;
+    position: absolute;
+    margin-top: -325px;
+    float: right;
+}
+
 .body-stat {
     font-family: Roboto !important;
     font-weight: normal !important;
@@ -1508,4 +1531,17 @@ body {
 .customtooltip.e-tooltip-wrap .e-arrow-tip-inner.e-tip-bottom {
     color: #fff;
     font-size: 25.9px;
+}
+.apexcharts-toolbar-holder{
+    position: absolute;
+    margin-top: -340px;
+    margin-left: 330px;
+    float: right;
+}
+
+.apexcharts-toolbar-holder-agebar{
+    position: absolute;
+    margin-top: -355px;
+    margin-left: 330px;
+    float: right;
 }

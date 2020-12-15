@@ -284,7 +284,7 @@ class SalaryCalculator extends Component {
                     <div className={"col-sm"}>
                       {this.state.isco ? (
                         <div>
-                          <div className="row justify-content-center text-center">
+                          <div className="">
                             <AgeBarChartComponent
                               isco={this.state.isco}
                               label={[`${ageLabel} `]}

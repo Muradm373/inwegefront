@@ -3,7 +3,7 @@ import {API_URL, propsLabel, quarter} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
-
+import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 
 
 class AgeBarChartComponent extends Component {
@@ -28,6 +28,9 @@ class AgeBarChartComponent extends Component {
       ],
       options: {
         chart: {
+          toolbar: {
+            show: false
+          },
           type: "bar",
           height: 350,
           width: "100%"
@@ -104,13 +107,18 @@ class AgeBarChartComponent extends Component {
           },
         },
       },
+      mapDownloadMenu: false,
     };
 
     this.getAgeData = this.getAgeData.bind(this);
+    this.componentRef = React.createRef();
     this.getOccupation = this.getOccupation.bind(this);
     this.getAgeData();
   }
 
+  async promiseState() {
+    new Promise(resolve => this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu }, resolve));
+  }
 
   componentWillReceiveProps(props) {
     this.getAgeData(props.isco);
@@ -201,12 +209,14 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div className="text-center age-bar mx-auto" >
-        <p className="graph-legends mx-auto pl-5 h4-stat text-left px-auto" style={{height: "40px"}}>
+      <div ref={this.componentRef} >
+        <p className="graph-legends mx-auto pl-5 h4-stat text-left px-auto" style={{height: "40px", position: "absolute"}}>
           {this.props.label +
           ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
         </p>
-        <div id="chart" className={"mb-0 mt-1"}>
+        <br/>
+        <br/>
+        <div id="chart" className={"mb-0 mt-4"}>
           <ReactApexChart
           id="apexchart"
             className={"mx-auto"}
@@ -233,6 +243,62 @@ class AgeBarChartComponent extends Component {
 
           </div>
         </div>
+
+        <div className={"source-tip-agebar"}>
+          <p className={"source-label-style"}>
+            Allikas: statistikaamet
+          </p>
+        </div>
+
+        <div
+            className="apexcharts-toolbar apexcharts-toolbar-holder-agebar"
+        >
+          <div
+              className="apexcharts-menu-icon"
+              style={{}}
+              title="Menu"
+              onClick={() => {
+                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
+              }}
+          >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z"></path>
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </div>
+
+          <div
+              className={
+                "apexcharts-menu " +
+                (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
+              }
+          >
+            <div
+                className="apexcharts-menu-item exportPNG"
+                onClick={() => {
+                  this.promiseState().then(()=>exportComponentAsPNG(this.componentRef))
+                }}
+                title="Download PNG"
+            >
+              Download PNG
+            </div>
+            <div
+                className="apexcharts-menu-item exportPDF"
+                title="Download JPEG"
+                onClick={() => {
+                  this.promiseState().then(()=>exportComponentAsJPEG(this.componentRef))
+                }}
+            >
+              Download JPEG
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }

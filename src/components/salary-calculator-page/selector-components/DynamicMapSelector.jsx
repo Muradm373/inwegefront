@@ -9,7 +9,8 @@ import {
   counties
 } from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
-import htmlToImage from "html-to-image";
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import downloadjs from "downloadjs";
 
 import {
@@ -456,7 +457,7 @@ class DynamicMapSelector extends Component {
 
   getComposableMap() {
     return (
-      <div id="composable-map p-1 pb-2" style={{
+      <div id="composable-map" style={{
         backgroundColor: this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)"
       }}>
         <ComposableMap data-tip="" projectionConfig={{ scale: 300 }}>
@@ -730,7 +731,7 @@ class DynamicMapSelector extends Component {
                   htmlToImage
                     .toPng(document.getElementById("composable-map"))
                     .then(function (dataUrl) {
-                      downloadjs(dataUrl, "map.png");
+                       downloadjs(dataUrl, "map.png");
                     });
                 }}
                 title="Download PNG"
@@ -741,8 +742,7 @@ class DynamicMapSelector extends Component {
                 className="apexcharts-menu-item exportPDF"
                 title="Download JPEG"
                 onClick={() => {
-                  htmlToImage
-                    .toJpeg(document.getElementById("composable-map"), {
+                  htmlToImage.toJpeg(document.getElementById("composable-map"), {
                       quality: 0.95,
                       backgroundColor: "#FFF",
                     })
