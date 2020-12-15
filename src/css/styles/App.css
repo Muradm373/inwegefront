@@ -1325,7 +1325,7 @@ body {
 .source-tip-agebar{
     width: 360px;
     position: absolute;
-    margin-top: -325px;
+    margin-top: -310px;
     float: right;
 }
 
@@ -1541,7 +1541,7 @@ body {
 
 .apexcharts-toolbar-holder-agebar{
     position: absolute;
-    margin-top: -355px;
+    margin-top: -340px;
     margin-left: 330px;
     float: right;
 }
