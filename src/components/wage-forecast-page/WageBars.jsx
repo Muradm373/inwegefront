@@ -14,10 +14,10 @@ class WageBars extends Component {
     super(props);
     this.state = {
       payload: {
-        wageCategory19_min: 0,
-        wageCategory19_max: 0,
-        wageCategory30_min: 0,
-        wageCategory30_max: 0,
+        wageCategory19Min: 0,
+        wageCategory19Max: 0,
+        wageCategory30Min: 0,
+        wageCategory30Max: 0,
         compProbability: 0.0,
         meanWageSep19: 0,
         meanWage30: 0,
@@ -52,10 +52,10 @@ class WageBars extends Component {
     else {
       this.setState({
         payload: {
-          wageCategory19_min: 0,
-          wageCategory19_max: 0,
-          wageCategory30_min: 0,
-          wageCategory30_max: 0,
+          wageCategory19Min: 0,
+          wageCategory19Max: 0,
+          wageCategory30Min: 0,
+          wageCategory30Max: 0,
           compProbability: 0.0,
           meanWageSep19: 0,
           meanWage30: 0,
@@ -167,7 +167,7 @@ class WageBars extends Component {
               <div className="p-2 carditem">
                 2019 <br></br>(1404€)
               </div>
-              {this.getColor(this.state.payload.wageCategory19_min)}
+              {this.getColor(this.state.payload.wageCategory19Min)}
             </div>
 
             {/* 2030 */}
@@ -178,7 +178,7 @@ class WageBars extends Component {
               <div className="p-2 h-3 carditem">
                 2030<br></br> (2315€)
               </div>
-              {this.getColor(this.state.payload.wageCategory30_min)}
+              {this.getColor(this.state.payload.wageCategory30Min)}
             </div>
             {/* End of wages */}
             <div

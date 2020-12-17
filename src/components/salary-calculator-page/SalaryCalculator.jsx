@@ -1,5 +1,4 @@
 /* eslint-disable */
-import axios from "axios";
 import React, { Component } from "react";
 import "react-svg-map/lib/index.css";
 import {
