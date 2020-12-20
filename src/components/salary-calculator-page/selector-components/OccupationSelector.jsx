@@ -3,7 +3,7 @@ import Select, {components } from "react-select";
 import {
   occupationSelectorPlaceholder, selectOccupation
 } from "../../../dictionary/text";
-import searchIcon from "../../../resources/search.svg";
+import arrowDown from "../../../resources/arrow-down.svg"
 
 
 export const colourStyles = {
@@ -20,7 +20,7 @@ export const colourStyles = {
                         : null,
 
             fontWeight: isSelected
-                    ? "800": null
+                    ? "900": isFocused ? "900" : null
                     ,
 
             color: 'black',
@@ -35,14 +35,14 @@ export const colourStyles = {
 };
 
 const DropdownIndicator = props => {
-    return (
-        components.DropdownIndicator && (
-            <components.DropdownIndicator {...props}>
-                <img src={searchIcon} alt="" />
-            </components.DropdownIndicator>
+        return (
+            components.DropdownIndicator && (
+                <components.DropdownIndicator {...props}>
+                    <img src={arrowDown} className={props.selectProps.menuIsOpen ? "rotate-180" : ""} alt=""/>
+                </components.DropdownIndicator>
 
-        )
-    );
+            )
+        );
 };
 
 class OccupationSelector extends Component {

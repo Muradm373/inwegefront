@@ -176,17 +176,17 @@ class SalaryCalculator extends Component {
               </div>
               <br></br>
               <div>
-                {this.props.wage !== undefined ? (
-                  <p className="mb-2 body-stat wage-change-label">{wageChangeInfo}</p>
-                ) : (
-                  <></>
-                )}
                 {this.props.description !== "" && this.props.description !== null ?
                     <>
-                      <p className={"body-stat"}
+                      <div className={"body-stat ml-1 row"}
                       >
-                        Valitud ametinimetus kuulub ametirühma {this.props.generalName} ({this.props.occupationCode}, tase {this.props.occupationCode.length} ametite klassifikaatoris).
-                      </p>
+                        <p>
+                        Valitud ametinimetus kuulub ametirühma&nbsp;
+                        </p>
+                        <p className={"text-lowercase font-weight-bold"}>{this.props.generalName}
+                        </p>
+                        <p>({this.props.occupationCode}, tase {this.props.occupationCode.length} ametite klassifikaatoris).</p>
+                      </div>
                       <br/>
                     <p className={"description-label"}>Ametikirjeldus </p>
                     </>
@@ -242,13 +242,13 @@ class SalaryCalculator extends Component {
 
             <div className="feature-1 text-center my-3 h4-stat">
               {this.state.occupation === "" && (
-                  <p className="mb-3" style={{ color: "black" }}>
+                  <p className="mb-3 text-left ml-3" style={{ color: "black" }}>
                     {totalNumberOfEmployees + " " + this.state.region}
                   </p>
               )}
 
               {this.state.occupation !== "" && (
-                  <p className="mb-3 h4-stat" style={{ color: "black" }}>
+                  <p className="mb-3 h4-stat text-left ml-3" style={{ color: "black" }}>
                     {totalNumberOfEmployeesOccupation[0] +
                     this.props.generalName + " ("+this.props.occupationCode + ")" +
                     totalNumberOfEmployeesOccupation[1] +

@@ -15,7 +15,7 @@ import {
 } from "../../../dictionary/text";
 import {connect} from "react-redux";
 import {displayLegends} from "./Graph";
-import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image';
 
 
 class ColumnChartComponent extends Component {
@@ -72,9 +72,6 @@ class ColumnChartComponent extends Component {
         },
         yaxis: {
           labels: {
-            formatter: function (val) {
-              return val + "€/" + monthLabel;
-            },
           },
           tickAmount: 5
         },
@@ -85,18 +82,22 @@ class ColumnChartComponent extends Component {
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + "€";
+              return val + " €";
             },
           },
           custom: function({ series, seriesIndex, dataPointIndex, w }) {
             return (
                 `<div class="arrow-box-small text-left"> 
                   <p class="arrow-box-p">
-                    ${w.globals.labels[dataPointIndex]}: <br/>
+                    ${w.globals.labels[dataPointIndex]} </p><br/>
                     <br/>
-                  ${w.globals.labels[dataPointIndex]} : 
-                        ${series[seriesIndex][dataPointIndex]}%
+                  <div class="row ml-3 " style="margin-top: -35px">
+                  <div class="circle-legend mt-2" style="background-color: ${seriesIndex === 0? menColor : womenColor}"></div>
+                  <p class="ml-1">
+                  ${w.globals.seriesNames[seriesIndex]} 
+                        ${series[seriesIndex][dataPointIndex]} €
                   </p>
+                  </div>
                 </div>`);
           }
         },
@@ -144,7 +145,7 @@ class ColumnChartComponent extends Component {
         ...this.state.options, tooltip: {
           y: {
             formatter: function (val) {
-              return val + "€";
+              return val + " €";
             },
           },
           custom: this.getOccupation
@@ -160,7 +161,7 @@ class ColumnChartComponent extends Component {
                     ${data.w.globals.labels[data.dataPointIndex]}: <br/>
                     <br/>
                     ${this.state.occupation} : 
-                        ${data.series[data.seriesIndex][data.dataPointIndex]}€
+                        ${data.series[data.seriesIndex][data.dataPointIndex]} €
                   </p>
                 </div>`
     );
@@ -325,6 +326,9 @@ class ColumnChartComponent extends Component {
           height={300}
           width = {360}
         />
+          <div className="columnchart-xaxis-label h6-stat-gray">
+            <p>{`€/${monthLabel}`}</p>
+          </div>
         <div className={"source-tip"}>
           <p className={"source-label-style"}>
             Allikas: statistikaamet
@@ -333,7 +337,17 @@ class ColumnChartComponent extends Component {
         <div className="graph-legends mx-auto pl-5">
           {displayLegends(menColor, womenColor)}
         </div>
+        <br/>
 
+          {this.props.generalName !== null ?
+              <p className="graph-legends mx-auto pl-4 body-stat text-left ">
+                {`* ${this.props.generalName} (${this.props.occupationCode})`}
+              </p>
+              :
+              <></>
+          }
+
+          <br/>
         <div
             className="apexcharts-toolbar apexcharts-toolbar-holder"
         >

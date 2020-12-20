@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import { API_URL, workingWomen, workingMen } from "../../../dictionary/text";
+import {connect} from "react-redux";
 
 class PieChartComponent extends Component {
   constructor() {
@@ -86,6 +87,25 @@ class PieChartComponent extends Component {
       });
   }
 
+  formatNumber(number){
+    let formattedNumber = "";
+    if(number.length >= 5){
+      for(let i = 1; i <= number.length; i++){
+        formattedNumber = number[number.length - i] + formattedNumber;
+        if(i !== number.length && i%3 === 0){
+          if(this.props.language === "en")
+            formattedNumber = "," + formattedNumber;
+          else
+            formattedNumber = " " + formattedNumber;
+        }
+      }
+    }else{
+      formattedNumber = number;
+    }
+
+    return formattedNumber;
+  }
+
   render() {
     return (
       <div>
@@ -105,7 +125,7 @@ class PieChartComponent extends Component {
                 id="maleAmount"
                 style={{ fontSize: "18pt" }}
               >
-                {this.state.men === 0 ? "<20 " : this.state.men}
+                {this.state.men === 0 ? "<20 " : this.formatNumber(this.state.men.toString())}
               </p>
             </div>
           </div>
@@ -124,7 +144,7 @@ class PieChartComponent extends Component {
                 id="femaleAmount"
                 style={{ fontSize: "18pt" }}
               >
-                {this.state.women === 0 ? "<20 " : this.state.women}
+                {this.state.women === 0 ? "<20 " : this.formatNumber(this.state.women.toString())}
               </p>
             </div>
           </div>
@@ -134,4 +154,10 @@ class PieChartComponent extends Component {
   }
 }
 
-export default PieChartComponent;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+
+export default connect(mapStateToProps) (PieChartComponent);

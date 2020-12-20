@@ -513,7 +513,7 @@ class Main extends Component {
               </div>
 
               <div className="block__text">
-                <p>
+                <p className={"text-left ml-2 subscription-label"}>
                   {joinBody}{" "}
                   <a
                     href="https://saextwebtest.stat.ee/et/statistikaamet/andmekaitse"
@@ -526,22 +526,21 @@ class Main extends Component {
             </div>
             <div
               id="block-jaluselogo"
-              className="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo"
+              className="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo  eu-logo-holder"
             >
-              <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
+              <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo eu-logo-picture"}>
                 <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                   <div className="field__item">
                     <img
                       src={require("./resources/eu.jpg")}
-                      width="200"
-                      height="116"
+                      width="180"
                       alt="SF logo"
                       typeof="foaf:Image"
                     />
                   </div>
                 </div>
               </a>
-              <p style={{color: "#FFF", fontSize: "14px"}}>
+              <p className={"h6-stat eu-logo-label"}>
                 {foundationLabel}
                     </p>
             </div>
@@ -557,7 +556,7 @@ class Main extends Component {
 
               <div className="field field--label-hidden field__items col-8 row" >
                 <div className="field__item col-sm my-auto">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo sf-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">
@@ -573,7 +572,7 @@ class Main extends Component {
                   </a>
                 </div>
                 <div className="field__item col-sm my-auto">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
+                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo ut-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">

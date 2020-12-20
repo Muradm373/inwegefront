@@ -77,6 +77,7 @@ function Graph(props) {
       : parseInt(data.womenMean);
 
   const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
+  console.log(men)
 
   return (
     <div className="centered" id="entity" className="graph">
@@ -91,7 +92,7 @@ function Graph(props) {
         label={
           props.differenceLabel[0] +
           " " +
-          Math.abs(parseInt(menMean) - parseInt(womenMean))+"€" +
+          Math.abs(parseInt(menMean) - parseInt(womenMean))+" €" +
           (parseInt(menMean) - parseInt(womenMean) > 0
             ? props.differenceLabel[1]
             : props.differenceLabel[2]) +
@@ -117,13 +118,13 @@ function Graph(props) {
         <XAxis
         className="grid-axis"
           tickTotal={isMobile?5:10}
-          tickFormat={(v) => `${v}€`}
+          tickFormat={(v) => `${v}`}
         />:<></>
         }
         <YAxis
         className="grid-axis"
           tickTotal={4}
-          tickFormat={(v) => `${v * 10}%`}
+          tickFormat={(v) => `${v * 10}`}
         />
 
         <AreaSeries
@@ -212,7 +213,7 @@ function Graph(props) {
                 {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
                     ? props.differenceLabel[6] +
                     " " +
-                    Math.abs(parseInt(myWage) - parseInt(mean)) +"€" +
+                    Math.abs(parseInt(myWage) - parseInt(mean)) +" €" +
                     (parseInt(myWage) - parseInt(mean) > 0
                         ? props.differenceLabel[1]
                         : props.differenceLabel[2]) +
@@ -226,11 +227,17 @@ function Graph(props) {
                     : ""}
             </p>
         </div>
+
+            <div className="graph-xaxis-label" style={men.length === 0 ? { display: "none" }: {}}>
+                <p>€</p>
+            </div>
+
         <div className="graph-legends">
             {displayLegends(menColor, womenColor)}
         </div>
     </div>
   );
 }
+
 
 export default Graph;

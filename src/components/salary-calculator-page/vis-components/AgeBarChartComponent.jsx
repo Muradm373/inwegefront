@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import {API_URL, propsLabel, quarter} from "../../../dictionary/text";
+import {API_URL, menColor, propsLabel, quarter, womenColor} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
-import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
+import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image';
 
 
 class AgeBarChartComponent extends Component {
@@ -82,16 +82,18 @@ class AgeBarChartComponent extends Component {
             },
           custom: function({ series, seriesIndex, dataPointIndex, w }) {
             return (
-                '<div class="arrow_box text-left wrap-stat">' +
-                   '<span >' +
-                      w.globals.labels[dataPointIndex] +
-                      `: Kokku ametialal - } : ` +
-                    "</span>"+
-                    "<div>" +
-                                     +
-                      series[seriesIndex][dataPointIndex] +
-                    "</div>"+
-                "</div>"
+                `<div class="arrow_box text-left wrap-stat">
+                <p class="arrow-box-p">
+                </p>
+                <div className="row ml-3 " style="margin-top: -35px">
+                  <div className="circle-legend mt-2"
+                       style="background-color: #FFBC45"></div>
+                  <p className="ml-1">
+                     ${w.globals.labels[dataPointIndex]}: Kokku ametialal - } :
+                      ${series[seriesIndex][dataPointIndex]}aaaaaa
+                  </p>
+                  </div>
+                </div>`
             );
           }
         },
@@ -142,10 +144,17 @@ class AgeBarChartComponent extends Component {
       return (
           `<div class="arrow_box text-left"> 
                   <p class="arrow-box-p">
-                    ${data.w.globals.labels[data.dataPointIndex]}: <br/>
-                    ${this.splitWords(this.state.occupation, 30)} : 
-                        ${data.series[data.seriesIndex][data.dataPointIndex]}%
+                    ${data.w.globals.labels[data.dataPointIndex]}:
+                     </p>
+                     <br/>
+                     <div class="row ml-3" >
+                  <div class="circle-legend mt-2" style="background-color: ${"#FFBC45"}"></div>
+                  <p class="ml-1 text-left">
+                    ${this.splitWords(`Kokku ametialal - ${this.state.occupation.toLowerCase()}`, 25)} 
+                        ${this.props.language==="en" ? data.series[data.seriesIndex][data.dataPointIndex].toString():
+              data.series[data.seriesIndex][data.dataPointIndex].toString().replace('.', ",")}%
                   </p>
+                  </div>
                 </div>`
       );
   }

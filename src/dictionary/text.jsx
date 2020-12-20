@@ -404,9 +404,9 @@ const countyLabelEng = [
 ]
 
 const decileLabelEng = [
-  "Decile-based estimation of frequency ",
-  "Частота на основе децилей",
-  "Detsiilide põhjal hinnatud sagedus"
+  "Decile-based estimation of frequency (%)",
+  "Частота на основе децилей (%)",
+  "Detsiilide põhjal hinnatud sagedus (%)"
 ]
 
 const checkMyPlanLabelEng = [
@@ -443,6 +443,16 @@ const joinBodyEng = ["By subscribing you agree to the terms and conditions and p
 const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
 const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
 const monthLabelEng = ["month", "месяц","kuus"]
+
+
+const wageGapTabInfoEng= ["","",
+"Meeste ja naiste keskmise palga vahe, mis on jagatud meeste keskmise palgaga. Täistööajaga töötajad, mõlema soo kõige madalamatest ja kõige kõrgematest palkadest 2,5% on välja jäetud."]
+
+const medianTabInfoEng = ["","",
+"Väljamakse, millest teenitakse võrdselt rohkem ja vähem. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
+
+const averageTabInfoEng = ["","",
+"Aritmeetiline keskmine ehk kõigi palkade summa, mis on jagatud palgasaajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -542,8 +552,14 @@ export default function changeLanguage(language) {
   smallAverageData = smallAverageDataEng[i];
   decileLabel = decileLabelEng[i];
   quarter = quarterEng[i];
+  wageGapInfoTab = wageGapTabInfoEng[i];
+  averageTabInfo = averageTabInfoEng[i];
+  medianTabInfo = medianTabInfoEng[i];
 }
 
+export let wageGapInfoTab = wageGapTabInfoEng[0];
+export let averageTabInfo = averageTabInfoEng[0];
+export let medianTabInfo = medianTabInfoEng[0];
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
 export let facebook = "https://www.facebook.com/Vordsetevoimalustevolinik";
 export let instagram = "https://www.instagram.com/vordsetevoimalustevolinik/";

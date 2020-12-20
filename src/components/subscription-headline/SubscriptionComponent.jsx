@@ -38,10 +38,9 @@ export function SubscriptionComponent(props) {
         id="footer-form"
         acceptCharset="UTF-8"
         onSubmit={sendSubscription}
-        
       >
         <div className="js-form-item form-item js-form-type-email form-type-email js-form-item-email form-item-email">
-          <div className="form-item__wrap">
+          <div className="form-item__wrap" style={{textTransform: "uppercase"}}>
 
             <p
               className="mnimi ml-2"
@@ -67,8 +66,7 @@ export function SubscriptionComponent(props) {
           className="form-actions js-form-wrapper form-wrapper"
           id="edit-actions"
         >
-          <input
-              className="button btn-01 btn--white use-ajax js-form-submit form-submit"
+          <input className="button btn-01 btn--white use-ajax js-form-submit form-submit"
             type="submit"
             id="edit-submit"
             value={join}

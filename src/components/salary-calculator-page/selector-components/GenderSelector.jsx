@@ -21,6 +21,7 @@ export function GenderSelector(props) {
                 primary: 'black',
             },
             borderRadius: "0px",
+            fontSize: "30px"
 
 
         })}

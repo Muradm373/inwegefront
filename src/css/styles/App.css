@@ -1400,8 +1400,8 @@ body {
     position: relative;
     background: #000000;
     border: 0px solid #000000;
-    height: 100px;
-    width: 240px;
+    height: 150px;
+    width: 260px;
     padding: 10px;
     margin-top: -105px;
     word-wrap: break-word !important;
@@ -1415,7 +1415,7 @@ body {
     background: #000000;
     border: 0px solid #000000 !important;
     color: #FFFFFF;
-    height: 100px;
+    height: 80px;
     width: 240px;
     padding: 10px;
     word-wrap: break-word !important;
@@ -1457,9 +1457,23 @@ body {
 }
 
 .bar-series-label{
-    margin-left: 40px;
 }
 
+.graph-xaxis-label {
+    position: absolute;
+    margin-top: -60px;
+    margin-left: 45%;
+    text-align: right;
+    z-index: 1000;
+    float:right;
+}
+
+.columnchart-xaxis-label{
+    position: absolute;
+    margin-top: -305px;
+    margin-left: 60px;
+    float: left;
+}
 
 
 .customtooltip.e-tooltip-wrap .e-tip-content {
@@ -1549,4 +1563,32 @@ body {
     margin-top: -340px;
     margin-left: 330px;
     float: right;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.sf-logo {
+    margin-top: -12px;
+}
+
+.ut-logo {
+    margin-top: -12px;
+}
+
+.eu-logo-holder {
+    margin-right: 20px;
+    background: #FFFFFF !important;
+}
+.eu-logo-picture {
+    background: #FFFFFF !important;
+}
+
+.eu-logo-label {
+    margin-top: -40px;
+    padding: 15px;
+}
+.subscription-label {
+    margin-top: -20px;
 }

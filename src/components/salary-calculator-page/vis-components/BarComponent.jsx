@@ -15,7 +15,7 @@ class BarComponent extends Component {
     return (
         <div>
           <div className={"bar-series-label"} style={{display: this.props.pension ? "none" : "block"}}>
-            <p className={"h4-stat text-left"}> {`${averageBetweenMenAndWomen} | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate}`} </p>
+            <p className={"h4-stat text-left ml-3"}> {`${averageBetweenMenAndWomen} | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate}`} </p>
           </div>
       <div
         className="barseries h4-stat"
@@ -30,12 +30,12 @@ class BarComponent extends Component {
             ?
         <div className={"bar-series-label"}>
 
-        <p className={"body-stat"}>{`${this.props.occupation }. ${this.props.region}`}</p></div>
+        <p className={"body-stat ml-3"}>{`${this.props.occupation }. ${this.props.region}`}</p></div>
             :
           <div className={"bar-series-label"}>
-          <p className={"body-stat"}>{this.props.region}</p></div>
+          <p className={"body-stat ml-3"}>{this.props.region}</p></div>
       }
-        <FlexibleWidthXYPlot height={130} animation="gentle">
+        <FlexibleWidthXYPlot height={130} animation="gentle" style={{marginLeft: "-22px"}}>
           {this.props.language === "en" ? <XAxis
               style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
               tickTotal={7}
@@ -54,7 +54,7 @@ class BarComponent extends Component {
                     return d;
                   }
                   }
-                  title={"eurot"}
+                  title={"€"}
 
               />
           }
@@ -93,7 +93,7 @@ class BarComponent extends Component {
             labelAnchorY="middleAlignment"
           />
         </FlexibleWidthXYPlot>
-        <p className={"body-stat text-center"}>{this.props.label}</p>
+        <p className={"body-stat ml-3"}>{this.props.label}</p>
       </div>
         </div>
     );

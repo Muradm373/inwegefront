@@ -6,11 +6,11 @@ import {
   quarter,
   noDataInfo,
   source,
-  counties
-} from "../../../dictionary/text";
+  counties, averageTabInfo,medianTabInfo,wageGapInfoTab} from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import * as htmlToImage from 'html-to-image';
 import downloadjs from "downloadjs";
+import infoIcon from "../../../resources/info.svg"
 
 import {
   ComposableMap,
@@ -192,14 +192,14 @@ class DynamicMapSelector extends Component {
                 >
                   {this.state.mapType !== "Gender Wage Gap"
                     ? e.length > 1
-                      ? `${e[0].item}€ - ${e[e.length - 1].item}€`
-                      : `${e[0].item}€`
+                      ? `${e[0].item} € - ${e[e.length - 1].item} €`
+                      : `${e[0].item} €`
                     : e.length > 1
                     ? this.props.language==="en" ?
-                          `${e[0].percentage.toFixed(2)}% - ${e[
+                          `${e[0].percentage.toFixed(2)}–${e[
                         e.length - 1].percentage.toFixed(2)}%`
                               :
-                              `${e[0].percentage.toFixed(2).replace(".", ',') }% - ${e[
+                              `${e[0].percentage.toFixed(2).replace(".", ',') }–${e[
                               e.length - 1].percentage.toFixed(2).replace(".", ',') }%`
                     : this.props.language==="en" ?
                           `${e[0].percentage.toFixed(2) }%` :
@@ -300,7 +300,7 @@ class DynamicMapSelector extends Component {
 
   generateValueString(val) {
     if (val !== 0) {
-      return ": " + val + "€";
+      return ": " + val + " €";
     }
 
     return ": " + noData;
@@ -311,7 +311,7 @@ class DynamicMapSelector extends Component {
     if (this.state.mapType === "Median Wage" || this.state.mapType==="Average Wage") {
       this.state.averages.map((el) => {
         if (el.region === region) {
-          data = el.average + "€";
+          data = el.average + " €";
           return data;
         }
 
@@ -323,7 +323,7 @@ class DynamicMapSelector extends Component {
           data =
             genderLabel[0] +
             this.generateValueString(el.maleAverage) +
-            "\n" +
+            "<br/>" +
             genderLabel[1] +
             this.generateValueString(el.femaleAverage);
           return data;
@@ -344,7 +344,7 @@ class DynamicMapSelector extends Component {
           avg = el.maleAverage + el.femaleAverage;
         }
 
-        if (avg !== 0) data = avg + "€";
+        if (avg !== 0) data = avg + " €";
         else data = noData;
         return data;
       }
@@ -401,7 +401,7 @@ class DynamicMapSelector extends Component {
   getOccupation() {
     return this.props.generalName === null || this.props.region === ""
       ? ""
-      : this.props.generalName;
+      : `${this.props.generalName} (${this.props.occupationCode})`;
   }
 
   getAverageMeanMedian() {
@@ -423,10 +423,10 @@ class DynamicMapSelector extends Component {
     } else {
       switch (this.state.mapType) {
         case "Median Wage":
-          return this.state.median + "€";
+          return this.state.median + " €";
 
         case "Average Wage":
-          return this.state.average + "€";
+          return this.state.average + " €";
 
         case "Gender Wage Gap":
           return Math.abs(parseInt(this.state.genderGap * 100)) + "%";
@@ -443,7 +443,6 @@ class DynamicMapSelector extends Component {
     const data = this.getMeanForRegion(l);
       let dataString =
         Object.keys(data).length === 0 ? noData : data.toString();
-      let percentage = 0;
       this.setState({ content: `<p class="h6-stat-white-bold text-left">${l}:</p> <br/> <p class="h6-stat-white text-left">${dataString}</p> `});
   }
 
@@ -459,6 +458,7 @@ class DynamicMapSelector extends Component {
       <div id="composable-map" style={{
         backgroundColor: this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)"
       }}>
+
         <ComposableMap data-tip="" projectionConfig={{ scale: 300 }}>
           <Geographies geography={ee}>
             {({ geographies }) => (
@@ -517,6 +517,7 @@ class DynamicMapSelector extends Component {
             )}
           </Geographies>
           <Annotation subject={[-75, 35]} dx={0} dy={0}>
+
             <text
               style={{
                 fontFamily: "Roboto",
@@ -525,12 +526,40 @@ class DynamicMapSelector extends Component {
                 lineHeight: "22px",
                 fill: "#000000"
               }}
-              x="-15"
+              x="10"
               textAnchor="start"
               alignmentBaseline="start"
             >
               {this.getMapType()}
+
             </text>
+            <image x="-15"
+                   y={"-17"}
+                   alignmentBaseline="bottom" href={infoIcon} width={21} height={21}
+                   onMouseEnter={() => {
+                     let content = "";
+
+                     switch (this.state.mapType) {
+                       case "Median Wage":
+                         content = medianTabInfo;
+                         break;
+
+                       case "Average Wage":
+                         content = averageTabInfo;
+                         break;
+
+                       default:
+                         content = wageGapInfoTab;
+                         break;
+                     }
+                     console.log(content)
+                     this.setState({ content: `<p>${content} </p>`});
+
+                   }}
+                   onMouseLeave={() => {
+                     this.setState({ content: "" });
+                   }}/>
+
             <text
               style={{
                 fontFamily: "Roboto",
@@ -601,7 +630,7 @@ class DynamicMapSelector extends Component {
           </Annotation>
 
         </ComposableMap>
-        <StyledTooltip html={true}>{this.state.content}</StyledTooltip>
+        <StyledTooltip multiline={true} html={true}>{this.state.content}</StyledTooltip>
         {this.state.groups[0].length !== 0 ?
             <div className="legends">
               {this.getLegends()}
@@ -643,7 +672,7 @@ class DynamicMapSelector extends Component {
                   role="tab"
                   aria-controls="brand"
                   aria-label="brand menu"
-                  href={"/#"}
+                  href={"#"}
                   aria-selected={
                     this.state.mapType === "Gender Wage Gap" ? "true" : "false"
                   }
@@ -664,7 +693,7 @@ class DynamicMapSelector extends Component {
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
-                  href={"/#"}
+                  href={"#"}
                   aria-selected={
                     this.state.mapType === "Median Wage" ? "true" : "false"
                   }
@@ -685,7 +714,7 @@ class DynamicMapSelector extends Component {
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
-                  href={"/#"}
+                  href={"#"}
                   aria-selected={
                     this.state.mapType === "Average Wage" ? "true" : "false"
                   }
@@ -755,7 +784,6 @@ class DynamicMapSelector extends Component {
             </div>
           </div>
         </div>
-
         {this.getComposableMap()}
 
 

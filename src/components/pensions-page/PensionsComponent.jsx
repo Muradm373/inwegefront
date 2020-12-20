@@ -54,7 +54,7 @@ class PensionsComponent extends Component {
                 differenceLabel={differenceLabel}
                 type={"palk"}
                 year={"2020"}
-                unit="€"
+                unit=" €"
                 tickTotal="7"
                 genderLabel={genderLabel}
                 occupation={""}
@@ -73,7 +73,7 @@ class PensionsComponent extends Component {
                 differenceLabel={differenceLabel}
                 type={"pension"}
                 year="2071"
-                unit="€"
+                unit=" €"
                 genderLabel={genderLabel}
                 tickTotal="8"
                 occupation={""}
