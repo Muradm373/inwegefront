@@ -1018,6 +1018,13 @@ body {
 }
 
 @media only screen and (max-width: 1000px) {
+    .subscription-label{
+        margin-top: 10px !important;
+    }
+    .footer-logo{
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
     .legends {
         width: 100%;
         margin-top: 0px;

@@ -534,7 +534,6 @@ class Main extends Component {
                   <div className="field__item">
                     <img
                       src={require("./resources/eu.jpg")}
-                      width="180"
                       alt="SF logo"
                       typeof="foaf:Image"
                     />
@@ -553,10 +552,10 @@ class Main extends Component {
                 id="block-jalusekontaktid"
                 className="block block-fixed-block-content block-fixed-block-contentfooter-contacts row align-left partners"
             >
-              <p className={"col-3 my-auto partners-text"}>KOOSTÖÖPARTNERID</p>
+              <p className={"col-md-3 col-sm-6 my-auto partners-text"}>KOOSTÖÖPARTNERID</p>
 
-              <div className="field field--label-hidden field__items col-8 row" >
-                <div className="field__item col-sm my-auto">
+              <div className="field field--label-hidden field__items col-md-8 row" >
+                <div className="field__item col-md my-auto">
                   <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo sf-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
@@ -572,8 +571,8 @@ class Main extends Component {
                     </div>
                   </a>
                 </div>
-                <div className="field__item col-sm my-auto">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo ut-logo"}>
+                <div className="field__item col-md my-auto">
+                  <a href="https://www.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo ut-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">
@@ -588,12 +587,13 @@ class Main extends Component {
                   </a>
                 </div>
                 <div className="field__item">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
+                  <a href="https://taltech.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
                     <div
                         className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                       <div className="field__item">
                         <img
                             src={require("./resources/taltech_logo.png")}
+                            className={"footer-logo"}
                             width="120"
                             height="116"
                             alt="SF logo"
