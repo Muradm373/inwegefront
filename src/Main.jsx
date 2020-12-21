@@ -122,27 +122,49 @@ class Main extends Component {
     changeLanguage(this.props.lang);
     return (
       <div>
+        <div className={"blur"} style={{ display: this.state.isActive ? "block" : "none" }}></div>
+
+        <button
+            className="menu-toggle hamburger"
+            style={{
+              position: "absolute",
+              top: "50px",
+              right: "15px",
+              padding: "10px",
+            }}
+            onClick={() =>
+                this.setState({
+                  isActive: !this.state.isActive,
+                })
+            }
+        >
+                  <span
+                      className={
+                        "si hamburger-box hamburger--boring " +
+                        (this.state.isActive ? "is-active" : "" )
+                      }
+                  >
+                    <span className="hamburger-inner"></span>
+                  </span>
+        </button>
         <div
           id="sidenav"
           className="sidenav"
-          style={{ width: this.state.isActive ? "250px" : "0px" }}
+          style={{ display: this.state.isActive ? "block" : "none" }}
         >
-          <div className=" row site-section pt-0 col-md-3 mb-md-0">
+          <div className=" row ">
             <ul className="link-list">
               <li>
-                <a href={"/"} onClick={this.changeMenu}>{tabs[0]}</a>
+                <a href={"#"} onClick={this.changeMenu}>{tabs[0]}</a>
               </li>
               <li>
-                <a href={"/"} onClick={this.changeMenu}>{tabs[1]}</a>
+                <a href={"#"} onClick={this.changeMenu}>{tabs[1]}</a>
               </li>
               <li>
-                <a href={"/"} onClick={this.changeMenu}>{tabs[2]}</a>
+                <a href={"#"} onClick={this.changeMenu}>{tabs[2]}</a>
               </li>
               <li>
-                <a href={"/"} onClick={this.changeMenu}>{tabs[3]}</a>
-              </li>
-              <li>
-                <a href={"/"} onClick={this.changeMenu}>{tabs[4]}</a>
+                <a href={"#"} onClick={this.changeMenu}>{tabs[3]}</a>
               </li>
             </ul>
           </div>
@@ -380,28 +402,7 @@ class Main extends Component {
                     />
                   </a>
                 </div>
-                <button
-                  className="menu-toggle hamburger"
-                  style={{
-                    position: "absolute",
-                    right: "0px",
-                    padding: "10px",
-                  }}
-                  onClick={() =>
-                    this.setState({
-                      isActive: !this.state.isActive,
-                    })
-                  }
-                >
-                  <span
-                    className={
-                      "si hamburger-box hamburger--spin " +
-                      (this.state.isActive ? "is-active" : "")
-                    }
-                  >
-                    <span className="hamburger-inner"></span>
-                  </span>
-                </button>
+
               </div>
             </div>
             <nav
@@ -464,7 +465,7 @@ class Main extends Component {
               </ul>
             </nav>
           </header>
-          <main id="main" className={"px-5"} style={{ marginTop: "-90px" }}>
+          <main id="main" className={"px-5 main-padding"} style={{ marginTop: "-90px" }}>
             <div>
               <div className="selector-style text-center mx-auto">
                 {this.props.type === "admin" ? (

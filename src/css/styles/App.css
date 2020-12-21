@@ -204,8 +204,25 @@ label::placeholder {
     height: 33.3%;
 }
 
+.link-list {
+    width: 100%
+}
+
 .link-list li {
     cursor: pointer;
+    width: 100%;
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ddd;
+}
+
+.link-list li a{
+    -webkit-box-flex: 1;
+    flex: 1;
+    padding: 15px 45px 14px 15px;
+    line-height: 20px;
+    color: #000;
 }
 
 .pns-graphs p {
@@ -463,8 +480,11 @@ font {
 }
 
 @media screen and (max-width: 1000px) {
+    .main-padding {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
     .graph-component-cards {
-        width: 93%;
         display: flex;
         flex-direction: column;
     }
@@ -806,30 +826,34 @@ body {
 }
 
 .sidenav {
-    height: 100%;
+    width: 100%;
     position: fixed;
     z-index: 1000;
-    top: 0;
-    left: 0;
-    background-color: #000;
+    background-color: #FFF;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    top: 105px;
+    filter: drop-shadow(0 0 0.2rem rgba(128, 128, 128, 0.13));
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-family: Roboto;
+    font-size: 18px;
     color: #FFF;
     display: block;
     transition: 0.3s;
 }
 
+.link-list li a:hover{
+    color: #000000;
+}
+
 .sidenav li {
-    padding: 8px 8px 8px 32px;
+    padding-left: 8px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #FFF;
     display: block;
     transition: 0.3s;
@@ -846,6 +870,29 @@ body {
     font-size: 36px;
     margin-left: 50px;
 }
+
+.blur{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #eeeeee;
+    opacity: 0.5;
+    display: block;
+    z-index: 201;
+    cursor: pointer;
+}
+
+.menu-toggle {
+    position: fixed;
+    display: block;
+    z-index: 1000;
+}
+
 
 @media screen and (max-height: 450px) {
     .sidenav {
@@ -970,7 +1017,7 @@ body {
     line-height: 18px;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
     .legends {
         width: 100%;
         margin-top: 0px;
@@ -997,6 +1044,12 @@ body {
 
     .pension-component {
         width: 95%;
+    }
+
+    #salary-component {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .wage-forecast {

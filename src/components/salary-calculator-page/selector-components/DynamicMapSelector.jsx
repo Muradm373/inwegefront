@@ -668,7 +668,7 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                  className="c-btn c-btn--w-icon"
+                  className="c-btn c-btn--w-icon h-100"
                   role="tab"
                   aria-controls="brand"
                   aria-label="brand menu"
@@ -689,7 +689,7 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                  className="c-btn c-btn--w-icon"
+                  className="c-btn c-btn--w-icon h-100"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
@@ -710,7 +710,7 @@ class DynamicMapSelector extends Component {
                 }}
               >
                 <a
-                  className="c-btn c-btn--w-icon"
+                  className="c-btn c-btn--w-icon h-100"
                   role="tab"
                   aria-controls="ui-juhised"
                   aria-label="ui-juhised menu"
