@@ -93,7 +93,7 @@ class ColumnChartComponent extends Component {
                     <br/>
                   <div class="row ml-3 " style="margin-top: -35px">
                   <div class="circle-legend mt-2" style="background-color: ${seriesIndex === 0? menColor : womenColor}"></div>
-                  <p class="ml-1">
+                  <p class="ml-1 h6-stat-white mt-1">
                   ${w.globals.seriesNames[seriesIndex]} 
                         ${series[seriesIndex][dataPointIndex]} €
                   </p>
@@ -311,7 +311,7 @@ class ColumnChartComponent extends Component {
   render() {
     return (
       <div id="chart-column" className={"text-center mx-auto"} ref={this.componentRef}>
-        <p className="graph-legends mx-auto pl-5 h4-stat text-left w-100" style={{height: "40px", position: "absolute"}}>
+        <p className="graph-legends mx-auto pl-4 h4-stat text-left w-100" style={{height: "40px", position: "absolute"}}>
           {columnchartLabel + ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
         </p>
         <br/>
@@ -326,28 +326,19 @@ class ColumnChartComponent extends Component {
           height={300}
           width = {360}
         />
-          <div className="columnchart-xaxis-label h6-stat-gray">
-            <p>{`€/${monthLabel}`}</p>
-          </div>
+        </div>
+        <div className="columnchart-xaxis-label h6-stat-gray">
+          <p>{`€/${monthLabel}`}</p>
+        </div>
         <div className={"source-tip"}>
-          <p className={"source-label-style"}>
+          <p className={"source-label-style h6-stat font-weight-bold"}>
             Allikas: statistikaamet
           </p>
         </div>
         <div className="graph-legends mx-auto pl-5">
           {displayLegends(menColor, womenColor)}
         </div>
-        <br/>
 
-          {this.props.generalName !== null ?
-              <p className="graph-legends mx-auto pl-4 body-stat text-left ">
-                {`* ${this.props.generalName} (${this.props.occupationCode})`}
-              </p>
-              :
-              <></>
-          }
-
-          <br/>
         <div
             className="apexcharts-toolbar apexcharts-toolbar-holder"
         >
@@ -395,7 +386,16 @@ class ColumnChartComponent extends Component {
             </div>
           </div>
         </div>
-        </div>
+
+        {this.props.generalName !== null ?
+            <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
+              {`* ${this.props.generalName} (${this.props.occupationCode})`}
+            </p>
+            :
+            <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
+              {` `}
+            </p>
+        }
       </div>
     );
   }

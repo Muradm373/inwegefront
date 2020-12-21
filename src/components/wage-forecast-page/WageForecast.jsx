@@ -3,7 +3,7 @@ import OccupationSelector from "../salary-calculator-page/selector-components/Oc
 import WageBars from "./WageBars";
 import { getOccupations } from "../../actions/actions";
 import { connect } from "react-redux";
-import {wageForecastText} from "../../dictionary/text"
+import {wageForecastText, wageForecastOccupationSelectorPlaceholder} from "../../dictionary/text"
 
 class WageForecast extends Component {
   constructor(props) {
@@ -49,6 +49,7 @@ class WageForecast extends Component {
           <OccupationSelector
             onChange={this.onIscoChange}
             occupations={this.props.occupations}
+            placeholder={wageForecastOccupationSelectorPlaceholder}
           />
         </div>
         <WageBars isco={this.state.isco} setContent={this.setContent} />

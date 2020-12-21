@@ -429,7 +429,7 @@ class DynamicMapSelector extends Component {
           return this.state.average + " €";
 
         case "Gender Wage Gap":
-          return Math.abs(parseInt(this.state.genderGap * 100)) + "%";
+          return parseInt(this.state.genderGap * 100) + "%";
 
         default:
           return " ";

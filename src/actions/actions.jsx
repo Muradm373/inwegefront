@@ -73,10 +73,6 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
     .then((data) => {
       return parseSalaryEntities(data, isco, dispatch);
     })
-    .then((response) => response.data)
-    .then((data) => {
-      dispatch({ type: "SET_MEAN", mean: data.payload });
-    });
 };
 
 export const setLanguage = (lang) =>{
@@ -96,7 +92,7 @@ const parseSalaryEntities = (data, type, dispatch) => {
   let jobEntity = data.payload.jobEntity;
   code = data.payload.jobEntity.code;
   if (jobEntity !== undefined && entities !== undefined) {
-    if (entities[0].region !== "All") {
+    if ( entities[0] !== undefined && entities[0].region !== "All") {
       let description = jobEntity.description;
       dispatch({
         type: "SET_ENTITIES",
@@ -117,5 +113,12 @@ const parseSalaryEntities = (data, type, dispatch) => {
   } else {
     dispatch({ type: "SET_ENTITIES", entities: [], description: noInformationLabel });
   }
-  return axios.get(`${API_URL}/jobs/${entities[0].id}/average`);
+  if(entities[0] !== undefined)
+    return axios.get(`${API_URL}/jobs/${entities[0].id}/average`)
+        .then((response) => response.data)
+        .then((data) => {
+          dispatch({ type: "SET_MEAN", mean: data.payload });
+        });
+  else
+    dispatch({ type: "SET_MEAN", mean: [] })
 };

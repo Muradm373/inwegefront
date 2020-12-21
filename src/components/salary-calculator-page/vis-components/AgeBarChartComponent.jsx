@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {API_URL, menColor, propsLabel, quarter, womenColor} from "../../../dictionary/text";
+import {API_URL, menColor, monthLabel, propsLabel, quarter, womenColor} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
@@ -60,9 +60,6 @@ class AgeBarChartComponent extends Component {
           },
         },
         yaxis: {
-          title: {
-            text: propsLabel,
-          },
           labels: {
             formatter: function (val) {
               return val;
@@ -149,7 +146,7 @@ class AgeBarChartComponent extends Component {
                      <br/>
                      <div class="row ml-3" >
                   <div class="circle-legend mt-2" style="background-color: ${"#FFBC45"}"></div>
-                  <p class="ml-1 text-left">
+                  <p class="ml-1 text-left h6-stat-white mt-1">
                     ${this.splitWords(`Kokku ametialal - ${this.state.occupation.toLowerCase()}`, 25)} 
                         ${this.props.language==="en" ? data.series[data.seriesIndex][data.dataPointIndex].toString():
               data.series[data.seriesIndex][data.dataPointIndex].toString().replace('.', ",")}%
@@ -219,7 +216,7 @@ class AgeBarChartComponent extends Component {
   render() {
     return (
       <div ref={this.componentRef} >
-        <p className="graph-legends mx-auto pl-5 h4-stat text-left px-auto" style={{height: "40px", position: "absolute"}}>
+        <p className="graph-legends mx-auto pl-4 h4-stat text-left px-auto" style={{height: "40px", position: "absolute"}}>
           {this.props.label +
           ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
         </p>
@@ -236,21 +233,8 @@ class AgeBarChartComponent extends Component {
             width = {360}
           />
         </div>
-        <div className="graph-legends mx-auto pl-5">
-          <div className={"row"}>
-            <div
-                className="circle-legend"
-                style={{
-                  background: "#FFBC45",
-                }}
-            ></div>
-            <p
-                className="graph-legend-age h6-stat-gray"
-            >
-              {`Kokku ametialal - ${this.props.occupation}`}
-            </p>
-
-          </div>
+        <div className="agebar-xaxis-label h6-stat-gray">
+          <p>{`${propsLabel}`}</p>
         </div>
 
         <div className={"source-tip-agebar"}>
@@ -305,6 +289,23 @@ class AgeBarChartComponent extends Component {
             >
               Download JPEG
             </div>
+          </div>
+
+        </div>
+        <div className="graph-legends mx-auto pl-5">
+          <div className={"row"}>
+            <div
+                className="circle-legend"
+                style={{
+                  background: "#FFBC45",
+                }}
+            ></div>
+            <p
+                className="graph-legend-age h6-stat-gray"
+            >
+              {`Kokku ametialal - ${this.props.occupation}`}
+            </p>
+
           </div>
         </div>
 

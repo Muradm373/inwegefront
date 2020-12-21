@@ -55,7 +55,7 @@ class OccupationSelector extends Component {
           components={{ DropdownIndicator }}
           noOptionsMessage={() => occupationSelectorPlaceholder}
           options={this.props.occupations}
-          placeholder={selectOccupation}
+          placeholder={this.props.placeholder ? this.props.placeholder: selectOccupation}
           className="occupation-select  mb-md-1"
           theme={theme => ({
                   ...theme,

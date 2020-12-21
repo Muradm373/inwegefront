@@ -11,6 +11,7 @@ import {
   menColor,
   noDataLabel, salary,
   womenColor,
+    noOccupationSelectedLabel,
     decileLabel
 } from "../../../dictionary/text";
 import { fetchData } from "../entityFunc";
@@ -77,7 +78,6 @@ function Graph(props) {
       : parseInt(data.womenMean);
 
   const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
-  console.log(men)
 
   return (
     <div className="centered" id="entity" className="graph">
@@ -150,9 +150,13 @@ function Graph(props) {
           value={displayMessageLocation(myWage)}
           style={displayMessage(men)}
         >
-          <p className="no-data-label ">
-            {noDataLabel}
-          </p>
+            {props.occupation !== "null (undefined)" ?
+              <p className="no-data-label ">
+                {noDataLabel}
+              </p> :
+            <p className={"no-data-label"}>
+                {noOccupationSelectedLabel}
+            </p>}
         </Hint>
 
         <LineSeries

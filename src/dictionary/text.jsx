@@ -437,22 +437,18 @@ const columnchartLabelEng = ['Average Wages', ' Средняя зар. плат�
 const workingWomenEng = ["working women", "женщины", "töötavaid naisi"];
 const workingMenEng = ["working men", "мужчины", "töötavaid mehi "];
 const joinEng = ["Join", "Присоединиться", "Liitu"];
-
 const joinBodyEng = ["By subscribing you agree to the terms and conditions and privacy policy.","Подписываясь, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
-  
 const joinLinkEng = ["Read about our privacy policy", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
 const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
 const monthLabelEng = ["month", "месяц","kuus"]
-
-
 const wageGapTabInfoEng= ["","",
 "Meeste ja naiste keskmise palga vahe, mis on jagatud meeste keskmise palgaga. Täistööajaga töötajad, mõlema soo kõige madalamatest ja kõige kõrgematest palkadest 2,5% on välja jäetud."]
-
 const medianTabInfoEng = ["","",
 "Väljamakse, millest teenitakse võrdselt rohkem ja vähem. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
-
 const averageTabInfoEng = ["","",
 "Aritmeetiline keskmine ehk kõigi palkade summa, mis on jagatud palgasaajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
+const noOccupationSelectedLabelEng = ["No county or profession selected", "Округ или профессия не выбраны", "Pole valitud maakonda ega ametiala"]
+const wageForecastOccupationSelectorPlaceholderEng = ["SELECT JOB TITLE","ВЫБЕРИТЕ ПРОФЕССИЮ","VALI AMETIALA"]
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -555,6 +551,8 @@ export default function changeLanguage(language) {
   wageGapInfoTab = wageGapTabInfoEng[i];
   averageTabInfo = averageTabInfoEng[i];
   medianTabInfo = medianTabInfoEng[i];
+  noOccupationSelectedLabel = noOccupationSelectedLabelEng[i];
+  wageForecastOccupationSelectorPlaceholder = wageForecastOccupationSelectorPlaceholderEng[i];
 }
 
 export let wageGapInfoTab = wageGapTabInfoEng[0];
@@ -653,6 +651,8 @@ export let monthLabel = monthLabelEng[0];
 export let foundationLabel = foundationLabelEng[0];
 export let decileLabel = decileLabelEng[0];
 export let quarter = quarterEng[0];
+export let noOccupationSelectedLabel = noOccupationSelectedLabelEng[0];
+export let wageForecastOccupationSelectorPlaceholder = wageForecastOccupationSelectorPlaceholderEng[0];
 
 export let counties = {"Valga maakond": "Валгамаа",
   "Viljandi maakond": "Вильяндимаа",
