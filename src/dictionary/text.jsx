@@ -155,9 +155,9 @@ const genderWageGapEng = [
   "Meeste ja naiste kuupalkade erinevus",
 ];
 const totalNumberOfEmployeesEng = [
-  "Total number of full-time employees in Estonia ",
-  "Общее количество сотрудников в Эстонии",
-  "Täisajaga töötavate töötajate koguarv Eestis",
+  "Total number of full-time employees ",
+  "Общее количество сотрудников",
+  "Täisajaga töötavate töötajate koguarv",
 ];
 const totalNumberOfEmployeesOccupationEng = [
   ["Total number of full-time employees in occupation ", " in "],

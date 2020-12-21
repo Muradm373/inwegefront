@@ -222,7 +222,7 @@ class AgeBarChartComponent extends Component {
         </p>
         <br/>
         <br/>
-        <div id="chart" className={"mb-0 mt-4"}>
+        <div id="chart" className={"mb-0 mt-3"}>
           <ReactApexChart
           id="apexchart"
             className={"mx-auto"}
