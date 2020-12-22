@@ -2,7 +2,7 @@ const methodologyEng = [{
   header: "METHODOLOGY",
 
   description:
-    "The application shows the gross wages and salaries of employees registered in Estonia in the selected period. Data are taken from the employment register (TÖR) and annexes 1 and 2 of the Estonian tax declaration form TSD (declaration of income and social tax, unemployment insurance premiums and contributions to mandatory funded pension). The register data are used as follows: ",
+      "The application shows the gross wages and salaries of employees registered in Estonia in the selected period. Data are taken from the employment register (TÖR) and annexes 1 and 2 of the Estonian tax declaration form TSD (declaration of income and social tax, unemployment insurance premiums and contributions to mandatory funded pension). The register data are used as follows: ",
   listItems: [
     " employees with a valid employment entry in the employment register at the end of the period;",
     "only entries stating the occupation of the employee (mandatory since July 2019) are included from the employment register;",
@@ -15,7 +15,7 @@ const methodologyEng = [{
     "for calculating the median wage, persons whose type of employment in the employment register is “Contract of employment”, “Civil service” or “Higher civil servant” are included.",
   ],
   itemsDescription:
-    "The application shows the median gross wages and salaries for the respective occupation. Median wage is such that half of the employees in the occupation under consideration earn less and the other half earn more. For instance, a median wage of 1,000 euros means that half of those in the occupation earn less and half earn more than 1,000 euros per month. The wage distribution figures do not include the wages and salaries in the bottom and top 2.5%.",
+      "The application shows the median gross wages and salaries for the respective occupation. Median wage is such that half of the employees in the occupation under consideration earn less and the other half earn more. For instance, a median wage of 1,000 euros means that half of those in the occupation earn less and half earn more than 1,000 euros per month. The wage distribution figures do not include the wages and salaries in the bottom and top 2.5%.",
 },{
   header: "МЕТОДИКА",
   description: "В приложении указана валовая заработная плата работников, зарегистрированных в Эстонии за выбранный период. Данные взяты из реестра занятости (TÖR) и приложений 1 и 2 эстонской налоговой декларации, формы TSD (декларация о доходах и социальном налоге, безработица). страховые взносы и взносы в обязательную накопительную пенсию). Данные регистра используются следующим образом:",
@@ -32,36 +32,38 @@ const methodologyEng = [{
   ],
   itemsDescription: "Приложение показывает среднюю заработную плату брутто и зарплаты для соответствующей профессии. Средняя заработная плата такова, что половина работников рассматриваемой профессии зарабатывает меньше, а другая половина зарабатывает больше. Например, средняя заработная плата в 1000 евро означает, что половина занятых зарабатывает меньше, а половина зарабатывает более 1000 евро в месяц. Данные о распределении заработной платы не включают заработную плату в нижней и верхней части 2,5%."
 },
-{
-  header: "METOODIKA",
-  description:
-    "Rakenduses näidatakse Eestis registreeritud töötajate brutopalka valitud perioodil. Kasutatakse töötamise registri (TÖR) ja maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade 1 ja 2 andmeid. Registrite väljavõte on tehtud järgmistel tingimustel:",
-  listItems: [
-    "töötajad, kellel oli töötamise registris kehtiv töötamise kirje perioodi lõpu seisuga;",
-    "arvesse võetakse vaid need TÖR-i kirjed, kus on märgitud töötaja ametinimetus (kohustuslik alates juulist 2019);",
+  {
+    header: "METOODIKA",
+    description:
+        "Rakenduses näidatakse Eestis registreeritud töötajate brutopalka valitud perioodil. Kasutatakse töötamise registri (TÖR) ja maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade 1 ja 2 andmeid. Registrite väljavõte on tehtud järgmistel tingimustel:",
+    listItems: [
+      "töötajad, kellel oli töötamise registris kehtiv töötamise kirje perioodi lõpu seisuga;",
+      "arvesse võetakse vaid need TÖR-i kirjed, kus on märgitud töötaja ametinimetus (kohustuslik alates juulist 2019);",
 
-    "välja on jäetud kirjed, mis on perioodi lõpu seisuga peatatud või kus töötamise aeg on lühem kui 1 kuu;",
+      "välja on jäetud kirjed, mis on perioodi lõpu seisuga peatatud või kus töötamise aeg on lühem kui 1 kuu;",
 
-    "rakenduses esitatakse info Eestis enam levinud ametirühmade kohta. Ülejäänud ameteid eraldi ei esitata, kuid need on arvesse võetud vaates „Kõik ametid“;",
+      "rakenduses esitatakse info Eestis enam levinud ametirühmade kohta. Ülejäänud ameteid eraldi ei esitata, kuid need on arvesse võetud vaates „Kõik ametid“;",
 
-    "töötaja kuine keskmine brutopalk ametikohal arvutatakse välja valitud perioodi jooksul tööandja deklareeritud maksudeklaratsiooni TSD lisade 1 ja 2 väljamakse summade põhjal;",
+      "töötaja kuine keskmine brutopalk ametikohal arvutatakse välja valitud perioodi jooksul tööandja deklareeritud maksudeklaratsiooni TSD lisade 1 ja 2 väljamakse summade põhjal;",
 
-    "töötajate palga arvutamisel võetakse arvesse vaid töine tulu. Selleks kasutatakse TSD lisa 1 väljamakse liike 10, 12 ja 13 ning lisa 2 väljamakse liike 120, 121, 126, 127, 144, 145;",
+      "töötajate palga arvutamisel võetakse arvesse vaid töine tulu. Selleks kasutatakse TSD lisa 1 väljamakse liike 10, 12 ja 13 ning lisa 2 väljamakse liike 120, 121, 126, 127, 144, 145;",
 
-    "töötajate arvu leidmisel võetakse arvesse kõik sellel ametikohal töötavad inimesed olenemata nende töökoormusest ja lepingu liigist;",
+      "töötajate arvu leidmisel võetakse arvesse kõik sellel ametikohal töötavad inimesed olenemata nende töökoormusest ja lepingu liigist;",
 
-    "mediaanpalga ja palgajaotuse leidmisel võetakse arvesse töötajad, kes töötavad täiskohaga ning kes on saanud töist tulu (s.t töine tulu on nullist suurem);",
+      "mediaanpalga ja palgajaotuse leidmisel võetakse arvesse töötajad, kes töötavad täiskohaga ning kes on saanud töist tulu (s.t töine tulu on nullist suurem);",
 
-    "mediaanpalga leidmisel võetakse arvesse inimesed, kelle töötamise liigiks on TÖR-is märgitud „Tööleping“, „Avalik teenistus“ või „Kõrgem riigiteenija“.",
-  ],
-  itemsDescription:
-    "Rakenduses näidatakse vastava ametikoha mediaanpalka, s.t palka, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid palkasid.",
-}];
+      "mediaanpalga leidmisel võetakse arvesse inimesed, kelle töötamise liigiks on TÖR-is märgitud „Tööleping“, „Avalik teenistus“ või „Kõrgem riigiteenija“.",
+    ],
+    itemsDescription:
+        "Rakenduses näidatakse vastava ametikoha mediaanpalka, s.t palka, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid palkasid.",
+  }];
 
 
-export const wageDifferencesTextEng = ["Average monthly salaries vary by county, occupation and gender. Investigate the application and find out how these factors affect the wages of Estonian people.","Средняя месячная зарплата зависит от округа, специальности и пола. Изучите приложение и узнайте, как эти факторы влияют на заработную плату жителей Эстонии.","Keskmised kuupalgad erinevad maakondade, erialade ja sugude lõikes. Uuri rakendust ja saa teada, kuidas need tegurid Eesti inimeste palku mõjutavad."];
-export const wageForecastTextEng = ["The nature and form of the work has always been and will continue to change. Future work will also have a negative impact: for example, some jobs will most likely have automation. Find out more and find out what the future holds for your profession.","Характер и форма работы всегда менялись и будут меняться. Дальнейшая работа также окажет негативное влияние: например, некоторые рабочие места, скорее всего, будут автоматизированы. Узнайте больше и узнайте, что ждет вашу профессию в будущем.","Töö iseloom ja vorm on alati olnud pidevas muutmises ja on seda ka edaspidi. Tulevikutööga kaasneb ka negatiivne mõju: näiteks teatud osa töökohti ootab suure tõenäosusega automatiseerimine. Uuri lisa ja saa teada, mis tulevikku sinu ametile ennustatakse."];
-export const PensionsTextEng = ["Today's salary will also affect a person's livelihood in the future: the amount of our old-age pension depends in part on the salary earned during working life. The 18.4% difference in monthly salaries between men and women will change to a 10.2% pension gap over time, but will not disappear.","Сегодняшняя заработная плата также повлияет на уровень жизни человека в будущем: размер нашей пенсии по старости частично зависит от заработной платы, полученной в течение трудовой жизни. Разница в 18,4% в ежемесячной заработной плате мужчин и женщин со временем изменится на 10,2%, но не исчезнет.","Tänane palk mõjutab inimese toimetulekut ka tulevikus: meie vanaduspensioni suurus osaliselt sõltub tööeas teenitud palgast. Meeste ja naiste 18,4%-line kuupalkade erinevus muutub ajapikku 10,2%-liseks pensionide erinevuseks, aga ära ei kao."];
+
+
+export const wageDifferencesTextEng = ["Wage equality is a prerequisite for equal opportunities in a society. The wages and salaries application shows the situation in Estonia. Based on the data in the employment register, the application displays the difference in the average monthly wages of men and women working full-time by county and by occupation. The median wage and average wage are also shown. The information is displayed at the lowest level of the Classification of Occupations that is available for the county and occupation selected on the particular map of Estonia. For example, information about wage differences may be available only at the major group level, while information about the median wage and average wage of an occupation may be available at the minor group level. The selection of an occupation refreshes all three maps of Estonia simultaneously. Information about the occupation in Estonia as a whole is displayed when you click “Overall in Estonia” below the title of the map.","Средняя месячная зарпла
+export const wageForecastTextEng = ["If the wages and salaries of each occupation were to grow at the same pace as before 2019 and if the total wage growth of all occupations followed the long-term projections of the Ministry of Finance, the wages in 2030 would be at the level shown in the table below. In any given occupation, the more there are people in these jobs who retire, the easier it is to find work in that occupation. In the more distant future, robots and computers may replace humans in several occupations.","Характер и форма работы всегда менялись и будут меняться. Дальнейшая работа также окажет негативное влияние: например, некоторые рабочие места, скорее всего, будут автоматизированы. Узнайте больше и узнайте, что ждет вашу профессию в будущем.","Kui ametialade palgad kasvaksid sama tempoga nagu enne 2019. aastat ning kõigi ametialade palgakasv kokku oleks kooskõlas  rahandusministeeriumi pikaajalise prognoosiga, siis oleks palgad 2030. aastal nii suured, nagu on märgitud alljärgnevas tabelis. Ametialal on
+export const PensionsTextEng = ["The size of a person’s pension is linked to his or her working-age wage through the pension insurance component, joint component and payments into the second pillar. One year of employment is added in the case of persons who earn at least the minimum wage for a whole year. This means that the current gender differences in wages would extend into the future even if the duration of employment is the same.","Сегодняшняя заработная плата также повлияет на уровень жизни человека в будущем: размер нашей пенсии по старости частично зависит от заработной платы, полученной в течение трудовой жизни. Разница в 18,4% в ежемесячной заработной плате мужчин и женщин со временем изменится на 10,2%, но не исчезнет.","Pensioni suurus on seotud tööea palgaga pensioni kindlustusosa, ühendosa ja teise samba sissemaksete kaudu. Üks aasta tööstaaži lisandub neile, kes teenivad terve aasta jooksul vähemalt miinimumpalka. See tähendab, et praegused soolised palgaerinevused kanduksid tulevikku üle isegi võrdse tööstaaži korral."];
 
 
 export { methodologyEng };
