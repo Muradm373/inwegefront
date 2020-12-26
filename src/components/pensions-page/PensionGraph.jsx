@@ -16,6 +16,7 @@ import {
   pensionDifferenceLabel2020,
   pensionFractionLabel, decileLabel
 } from "../../dictionary/text";
+import { connect } from "react-redux";
 
 import axios from "axios";
 import PensionBarComponent from "./PensionBarComponent";
@@ -88,7 +89,6 @@ class PensionGraph extends Component {
     let dataGraph = { men: menGraphObject, women: womenGraphObject };
 
     this.setState({ data: dataGraph });
-    console.log(dataGraph)
   }
 
   clearData(data) {
@@ -124,11 +124,11 @@ class PensionGraph extends Component {
   }
 
   getLabel(type, difference, yearProp){
-    let year = yearProp === "2020" ? pensionDifferenceLabel2020[0] : pensionDifferenceLabel2020[1];
+    let year = yearProp === "2020" ? pensionDifferenceLabel2020[0] : pensionDifferenceLabel2020[1] ;
 
     let label;
     if(type==="pension"){
-        label =  (year + pensionDifferenceLabel2020[3] + 
+        label =  (year + pensionDifferenceLabel2020[3] +
        Math.abs(difference) + " €" +
         (difference >= 0 ? pensionDifferenceLabel2020[4]
         : pensionDifferenceLabel2020[5]) +
@@ -167,7 +167,7 @@ class PensionGraph extends Component {
     }
 
 
-  return label;
+  return label.replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate);
 
   }
 
@@ -255,4 +255,10 @@ class PensionGraph extends Component {
   }
 }
 
-export default PensionGraph;
+const mapStateToProps = (state) => {
+  return {
+    dates: state.dates,
+  };
+};
+
+export default connect(mapStateToProps)(PensionGraph);

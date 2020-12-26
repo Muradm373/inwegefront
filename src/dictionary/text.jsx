@@ -1,7 +1,6 @@
 import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
-export const APP_NAME = "PALGARAKENDUS";
 export const menColor = "#3F1A84";
 export const womenColor = "#F58FA9";
 const averageEng = [
@@ -168,9 +167,14 @@ const  totalNumberOfEmployeesOccupationEng = [
   ["Täisajaga töötajate koguarv ", ", "],
 ];
 const averageDataSpecEng = [
-  ["Occupation", "County"],
+  ["Occupation", "Over County"],
   ["По профессии", "Региону"],
-  ["Ametiala", "Maakond"],
+  ["Kogu ametiala*", "Maakond"],
+];
+const columnChartOccupationLabelEng = [
+  ["", "County"],
+  ["По", ""],
+  ["Kogu", "maakond"],
 ];
 const computarizationEng = [
   [
@@ -227,9 +231,9 @@ const pensionLabelEng = [
   ],
 ];
 const lessMoreLabelEng = [
-  ["At least", "Less than"],
-  ["Выше", "Ниже"],
-  ["Vähemalt", "Alla"],
+  ["", "Less than", "or more"],
+  ["Выше", "Ниже", ""],
+  ["Vähemalt", "Alla", ""],
 ];
 const levelsEng = [
   ["low", "medium", "high"],
@@ -340,7 +344,7 @@ const quarterEng = [
 const replacementNeeds2Eng =  ["Replacement rate in relation to average wage in Estonia at the time of retirement","Коэффициент замещения по отношению к средней заработной плате по Эстонии при выходе на пенсию","Asendusmäär Eesti keskmise palga alusel pensionile minemise hetkel"];
 
 
-const pensionDescriptionEng =  [["The above applies when the following simple assumptions are used in the calculations:",
+let pensionDescriptionEng =  [["The above applies when the following simple assumptions are used in the calculations:",
   "The distribution of gross wages includes all occupations and reflects the wage distributions of men and women in Estonia.",
   "The date of birth of all employees is 1 January 2002. They all start working on 1 January 2020 and retire on 1 November 2071. No one has any interruptions in working or any children.",
   "All employees have joined the second pillar from the moment they start working, but no one has joined the third pillar.",
@@ -356,11 +360,11 @@ const pensionDescriptionEng =  [["The above applies when the following simple as
     "eeldatav palgakasv on võetud rahandusministeeriumi prognoosist, eeldatav eluiga pensionile minemise ajal on võetud Eurostati prognoosist."]];
 
 
-const gapsWageLabelEng = 
+const gapsWageLabelEng =
 ["Difference in males’ and females’ monthly wages | in Euros of 2020","Разница в заработной плате у мужчин и женщин | в евро 2020 года","Meeste ja naiste kuupalga erinevus | 2020 aasta eurodes"];
-  
 
-const gapsPensionLabelEng = 
+
+let gapsPensionLabelEng =
   ["Difference in males’ and female’s pensions | in Euros of 2071","Разница в пенсии у мужчин и женщин  | в евро 2071 года","Meeste ja naiste pensioni erinevus | 2071. aasta eurodes"];
 
 const submittedLabelEng = [
@@ -396,7 +400,7 @@ const emailLabelEng = [
 const occupationLabelEng = [
   "Occupation",
   "По профессии",
-  "Ametiala"
+  "Kogu ametiala*"
 ]
 
 const countyLabelEng = [
@@ -417,13 +421,13 @@ const  checkMyPlanLabelEng = [
   "Pensionikalkulaator"
 ]
 
-const pensionDifferenceLabel2020Eng = [
+let pensionDifferenceLabel2020Eng = [
   ["In 2020, ","In 2071, ", "the average monthly wages of men are ", "the average pension of men is ", " higher ", " lower ", "than the average wages of women.", "than the average pension of women."],
   ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин ", "средняя пенсия мужчин ", " выше ", " ниже ", "чем у женщин.", "чем пенсия у женщин."],
   ["Aastal 2020 ", "Aastal 2071 ", "on meeste kuupalk keskmiselt ", "on meeste pension keskmiselt ", " suurem ", " väiksem ", "kui naiste kuupalk.", "kui naiste pension."]
 ]
 
-const pensionFractionLabelEng = [
+let pensionFractionLabelEng = [
   ["The ratio of pension to the last monthly wage for men is on average ", "The ratio of pension to average gross wages in the year of retirement for men is on average ", " percentage points ", "higher ", "lower ", "than for women.  "],
   ["В 2020 году "," В 2071 году "," средняя заработная плата мужчин "," средняя пенсия мужчин "," выше "," ниже "," чем заработная плата женщин."," чем пенсия женщин."],
   ["Meeste pensioni osatähtsus viimasest kuupalgast on keskmiselt  ", "Meeste pensioni osatähtsus keskmisest palgast pensionile minemise aastal on keskmiselt ", " protsendipunkti ", "suurem ", "väiksem ", "kui naistel."]
@@ -449,7 +453,13 @@ const medianTabInfoEng = ["","",
 "Väljamakse, millest teenitakse võrdselt rohkem ja vähem. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
 const averageTabInfoEng = ["","",
 "Aritmeetiline keskmine ehk kõigi palkade summa, mis on jagatud palgasaajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
-const noOccupationSelectedLabelEng = ["No county or profession selected", "Округ или профессия не выбраны", "Pole valitud maakonda ega ametiala"]
+const noOccupationSelectedLabelEng = ["No county or profession selected.", "Не выбраны уезд или профессия.", "Maakonda ega ametiala ei ole valitud."]
+const yearLabelEng = ["Year", "", "Aasta"]
+const occupationDescriptionLabelEng = ["Occupation description", "Описание профессии", "Ametikirjeldus"]
+const averageWageLabelEng = ["Average wages", "Средняя зарплата", "Keskmine palk"]
+const levelLabelEng = [["The selected occupation belongs to the group of occupations","level ", " in the Classification of Occupations"],
+  ["Выбранная профессия относится к группе","", "уровень по классификатору профессий"],
+  ["Valitud ametinimetus kuulub ametirühma", "tase", "ametite klassifikaatoris"]]
 const wageForecastOccupationSelectorPlaceholderEng = ["SELECT JOB TITLE","ВЫБЕРИТЕ ПРОФЕССИЮ","VALI AMETIALA"]
 export default function changeLanguage(language) {
   let i;
@@ -555,11 +565,17 @@ export default function changeLanguage(language) {
   medianTabInfo = medianTabInfoEng[i];
   noOccupationSelectedLabel = noOccupationSelectedLabelEng[i];
   wageForecastOccupationSelectorPlaceholder = wageForecastOccupationSelectorPlaceholderEng[i];
+  columnChartOccupationLabel = columnChartOccupationLabelEng[i];
+  averageWageLabel = averageWageLabelEng[i];
+  yearLabel = yearLabelEng[i];
+  levelLabel = levelLabelEng[i];
+  occupationDescriptionLabel = occupationDescriptionLabelEng[i];
 }
 
 export let wageGapInfoTab = wageGapTabInfoEng[0];
 export let averageTabInfo = averageTabInfoEng[0];
 export let medianTabInfo = medianTabInfoEng[0];
+export let levelLabel = levelLabelEng[0];
 export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
 export let facebook = "https://www.facebook.com/Vordsetevoimalustevolinik";
 export let instagram = "https://www.instagram.com/vordsetevoimalustevolinik/";
@@ -654,7 +670,11 @@ export let foundationLabel = foundationLabelEng[0];
 export let decileLabel = decileLabelEng[0];
 export let quarter = quarterEng[0];
 export let noOccupationSelectedLabel = noOccupationSelectedLabelEng[0];
+export let columnChartOccupationLabel = columnChartOccupationLabelEng[0];
 export let wageForecastOccupationSelectorPlaceholder = wageForecastOccupationSelectorPlaceholderEng[0];
+export let yearLabel = yearLabelEng[0];
+export let averageWageLabel = averageWageLabelEng[0];
+export let occupationDescriptionLabel = occupationDescriptionLabelEng[0];
 
 export let counties = {"Valga maakond": "Валгамаа",
   "Viljandi maakond": "Вильяндимаа",
@@ -671,5 +691,6 @@ export let counties = {"Valga maakond": "Валгамаа",
   "Harju maakond" :"Харьюмаа",
   "Hiiu maakond" :"Хийумаа",
   "Järva maakond":"Ярвамаа"}
+
 
 

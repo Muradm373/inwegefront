@@ -12,6 +12,7 @@ import {
   occupationLabel,
   monthLabel,
   columnchartLabel, quarter,
+  columnChartOccupationLabel, counties, source, overall
 } from "../../../dictionary/text";
 import {connect} from "react-redux";
 import {displayLegends} from "./Graph";
@@ -132,8 +133,24 @@ class ColumnChartComponent extends Component {
     let options = this.state.options;
 
     options.xaxis.categories[0] = [occupationLabel];
-    options.xaxis.categories[1] = [props.region.split(" ")[0]];
+    options.xaxis.categories[1] = [`${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,`${columnChartOccupationLabel[1]}`];
     this.setState({ options: options });
+  }
+
+  translateCounty(countySelected){
+    if(countySelected === overall)
+      return "";
+    let county = countySelected.replace("maakond", "");
+    switch(this.props.language){
+      case "es":
+        return county;
+      case "ru":
+        return counties[countySelected] === undefined ?
+            averageDataSpec[2] :
+            counties[countySelected]
+      case "en":
+        return county
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -332,7 +349,7 @@ class ColumnChartComponent extends Component {
         </div>
         <div className={"source-tip"}>
           <p className={"source-label-style h6-stat font-weight-bold"}>
-            Allikas: statistikaamet
+            {source}
           </p>
         </div>
         <div className="graph-legends mx-auto pl-5">

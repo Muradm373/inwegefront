@@ -19,7 +19,9 @@ const initState = {
     salaryEntityDate: "2020",
     salaryEntityDateQuarter: "I",
     wageForecastDate: "2020",
-    wageForecastDateQuarter: "I"
+    wageForecastDateQuarter: "I",
+    pensionStartDate: "2030",
+    pensionEndDate: "2071"
   },
 };
 

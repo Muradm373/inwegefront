@@ -11,6 +11,7 @@ import { geoCentroid } from "d3-geo";
 import * as htmlToImage from 'html-to-image';
 import downloadjs from "downloadjs";
 import infoIcon from "../../../resources/info.svg"
+import {translateCounty} from "../entityFunc";
 
 import {
   ComposableMap,
@@ -42,13 +43,14 @@ const StyledTooltip = styled(ReactTooltip)`
   white-space: normal;
   font-size: 18px;
   padding: 15px;
+  border-radius: 0% !important;
 `
 
 class DynamicMapSelector extends Component {
   constructor(props) {
     super();
     this.state = {
-      selected: "",
+      selected: "all",
       averages: [],
       occupation: props.occupation,
       color: props.mapElementColor,
@@ -127,7 +129,7 @@ class DynamicMapSelector extends Component {
             item: parseInt(Math.abs(el.maleAverage - el.femaleAverage)),
             percentage:
               parseFloat(
-                Math.abs(el.maleAverage - el.femaleAverage) / el.maleAverage
+                (el.maleAverage - el.femaleAverage) / el.maleAverage
               ) * 100,
           });
       });
@@ -395,7 +397,7 @@ class DynamicMapSelector extends Component {
         break;
     }
 
-    return mapContentType +  `, ${this.props.dates.occupationEntityDate} (${this.props.dates.occupationEntityDateQuarter} ${quarter})`;
+    return  `${mapContentType} | ${this.props.dates.occupationEntityDateQuarter} ${quarter} ${this.props.dates.occupationEntityDate}`;
   }
 
   getOccupation() {
@@ -443,8 +445,9 @@ class DynamicMapSelector extends Component {
     const data = this.getMeanForRegion(l);
       let dataString =
         Object.keys(data).length === 0 ? noData : data.toString();
-      this.setState({ content: `<p class="h6-stat-white-bold text-left">${l}:</p> <br/> <p class="h6-stat-white text-left">${dataString}</p> `});
+      this.setState({ content: `<p class="h6-stat-white-bold text-left">${translateCounty(l, this.props.language)}:</p> <br/> <p class="h6-stat-white text-left">${dataString}</p> `});
   }
+
 
   onOccupationHover() {
     if (this.props.generalName !== null)
@@ -552,7 +555,6 @@ class DynamicMapSelector extends Component {
                          content = wageGapInfoTab;
                          break;
                      }
-                     console.log(content)
                      this.setState({ content: `<p>${content} </p>`});
 
                    }}
@@ -617,11 +619,12 @@ class DynamicMapSelector extends Component {
               style={{
                 fontFamily: "Roboto",
                 fontWeight: "normal",
-                fontSize: "13px",
+                fontSize: "11px",
                 lineHeight: "16px",
                 fill: "#595959"
               }}
               x="500"
+              y={"30"}
               textAnchor="start"
               alignmentBaseline="start"
             >

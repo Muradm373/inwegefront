@@ -13,8 +13,8 @@ import {
   totalNumberOfEmployees,
   totalNumberOfEmployeesOccupation,
   womenColor,
-  wageChangeInfo,
-  noDataLabel, emailLabel, occupationLabel,
+  occupationDescriptionLabel,
+  noDataLabel, emailLabel, occupationLabel, overall, levelLabel, descriptionLabel,
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
@@ -30,6 +30,7 @@ import {
   setWage,
   getSalaryEntities,
 } from "../../actions/actions";
+import {translateCounty} from "./entityFunc";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
@@ -46,8 +47,9 @@ class SalaryCalculator extends Component {
 
     this.setContent = this.setContent.bind(this);
     this.changeWage = this.changeWage.bind(this);
+    
   }
-
+  
   setContent(content) {
     this.setState({ content: content });
   }
@@ -76,6 +78,7 @@ class SalaryCalculator extends Component {
     } else {
       this.props.getSalaryEntities(region, "averages", 0);
     }
+    this.setState({ region: overall});
   }
 
   onIscoChange = (event) => {
@@ -181,19 +184,18 @@ class SalaryCalculator extends Component {
                       <div className={"body-stat ml-1 row"}
                       >
                         <p>
-                        Valitud ametinimetus kuulub ametirühma&nbsp;
+                          {levelLabel[0]}
                         </p>
                         <p className={"text-lowercase font-weight-bold"}>{this.props.generalName}
                         </p>
-                        <p>({this.props.occupationCode}, tase {this.props.occupationCode.length} ametite klassifikaatoris).</p>
+                        <p>{`(${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
                       </div>
                       <br/>
-                    <p className={"description-label"}>Ametikirjeldus </p>
+                    <p className={"description-label"}>{`${occupationDescriptionLabel}`} </p>
                     </>
                     :
                     <></>
                 }
-                <br/>
                 <p className={"body-stat"}
                 >
                   {this.props.description}
@@ -247,7 +249,7 @@ class SalaryCalculator extends Component {
                     {totalNumberOfEmployees}
                   </p>
                   <p className={"body-stat ml-3"}>
-                  {this.state.region}
+                  {translateCounty(this.state.region, this.props.language)}
                   </p>
                   </>
               )}
@@ -259,7 +261,7 @@ class SalaryCalculator extends Component {
                    <p className={"body-stat ml-3"}>
                      {this.props.generalName + " ("+this.props.occupationCode + ")" +
                     totalNumberOfEmployeesOccupation[1] +
-                    this.state.region}
+                     translateCounty(this.state.region, this.props.language)}
                   </p>
                   </>
               )}
@@ -338,7 +340,8 @@ const mapStateToProps = (state) => {
     description: state.description,
     mean: state.mean,
     generalName: state.generalName,
-    occupationCode: state.occupationCode
+    occupationCode: state.occupationCode,
+    language: state.language
   };
 };
 

@@ -12,11 +12,11 @@ class MethodologyComponent extends Component {
           <p>{methodology.description}</p>
           <br></br>
           <br></br>
-          <ul>
+          <ol className={"ol-stat"}>
             {methodology.listItems.map((e, index) => {
-              return <li><p className="ml-4">{index+1}) {e}</p></li>;
+              return <li><p className="ml-4">{e}</p></li>;
             })}
-          </ul>
+          </ol>
           <br></br>
           <p>{methodology.itemsDescription}</p>
         </div>

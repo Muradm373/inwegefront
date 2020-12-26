@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { API_URL, workingWomen, workingMen } from "../../../dictionary/text";
+import { API_URL, workingWomen, workingMen, overall } from "../../../dictionary/text";
 import {connect} from "react-redux";
 
 class PieChartComponent extends Component {
@@ -17,7 +17,6 @@ class PieChartComponent extends Component {
   }
 
   componentWillReceiveProps(props) {
-
     if (
       props.code !== undefined &&
       props.code !== "" &&
@@ -56,10 +55,15 @@ class PieChartComponent extends Component {
   getMean(region, isco) {
     let url;
 
+
     if (isco !== "")
       url =
         `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
     else url = `${API_URL}/entities/count-worker?region=` + region;
+
+    if(region === overall){
+     url = `${API_URL}/entities/count-worker?region=all` + "&isco=" + isco;
+    }
 
     axios
       .get(url)

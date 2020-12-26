@@ -5,8 +5,9 @@ import {
   computarization,
   pensionLabel,
   lessMoreLabel,
-  levels,
+  levels, yearLabel, averageWageLabel,
 } from "../../dictionary/text";
+import {connect} from "react-redux"
 import axios from "axios";
 
 class WageBars extends Component {
@@ -108,6 +109,24 @@ class WageBars extends Component {
     return;
   }
 
+  formatNumber(numberInt){
+    let number = numberInt.toString();
+
+    console.log(number + " " + this.props.language)
+    let formattedNumber = "";
+      for(let i = 1; i <= number.length; i++) {
+        formattedNumber = number[number.length - i] + formattedNumber;
+        if (i !== number.length && i % 3 === 0) {
+          if (this.props.language === "en")
+            formattedNumber = "," + formattedNumber;
+          else
+            formattedNumber = " " + formattedNumber;
+        }
+      }
+
+    return formattedNumber;
+  }
+
   getColor(salary) {
     let id = Math.round(salary / 500 );
     let items = [];
@@ -116,7 +135,7 @@ class WageBars extends Component {
       items.push(
         <div className={"p-2 carditem " + this.idToColor(id, i)}>
           <p>
-            {1000 + (i - 2) * 500} - {1499 + (i - 2) * 500}€
+            {this.formatNumber(1000 + (i - 2) * 500)}–{this.formatNumber(1499 + (i - 2) * 500)} €
           </p>
         </div>
       );
@@ -124,11 +143,11 @@ class WageBars extends Component {
     let result = (
       <div>
         <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-          <p>{lessMoreLabel[1]} 1000€ </p>
+          <p>{lessMoreLabel[1]} {this.formatNumber(1000)} € </p>
         </div>
         {items}
         <div className={"p-2 carditem " + this.idToColor(id, 9)}>
-          <p>{lessMoreLabel[0]} 4500€ </p>
+          <p>{lessMoreLabel[0]} {this.formatNumber(4500)} € {lessMoreLabel[2]}</p>
         </div>
       </div>
     );
@@ -160,12 +179,12 @@ class WageBars extends Component {
           <div className={this.state.row?"row":""}>
             {/* <!-- Wages distribution --> */}
 
-            <div
-              className="card  col-sm rounded-0 p-0 bar"
-              style={{ width: "15rem" }}
+              <div
+                className="card  col-sm rounded-0 p-0 bar"
+                style={{ width: "15rem" }}
             >
               <div className="p-2 carditem">
-                2019 <br></br>(1404€)
+                <p className={"h4-stat"}>{`${yearLabel} 2019`}</p><p>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
               </div>
               {this.getColor(this.state.payload.wageCategory19Min)}
             </div>
@@ -176,7 +195,7 @@ class WageBars extends Component {
               style={{ width: "15rem" }}
             >
               <div className="p-2 h-3 carditem">
-                2030<br></br> (2315€)
+                <p className={"h4-stat"}>{`${yearLabel} 2030`}</p><p>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
               </div>
               {this.getColor(this.state.payload.wageCategory30Min)}
             </div>
@@ -261,4 +280,10 @@ class WageBars extends Component {
   }
 }
 
-export default WageBars;
+const mapStateToProps = (state) => {
+  return {
+    ...state,
+  };
+};
+
+export default connect(mapStateToProps) (WageBars);

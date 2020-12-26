@@ -5,15 +5,14 @@ class FeedbacksList extends Component {
 
   constructor(props){
     super();
-
-    console.log(props)
-
     this.state = {
       ageDate: props.dates.ageDate,
       pensionDate: props.dates.pensionDate,
       salaryEntityDate: props.dates.salaryEntityDate,
       occupationEntityDate: props.dates.occupationEntityDate,
       wageForecastDate: props.dates.wageForecastDate,
+      pensionStartDate: props.dates.pensionStartDate,
+      pensionEndDate: props.dates.pensionEndDate,
 
       ageDataQuarter: props.dates.ageDataQuarter,
       pensionDateQuarter: props.dates.pensionDateQuarter,
@@ -177,6 +176,38 @@ class FeedbacksList extends Component {
                     aria-label="Default"
                     value={this.state.wageForecastDateQuarter}
                     onChange={(e) => this.setState({wageForecastDateQuarter: e.target.value})}
+                    aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">
+                     Pension Start Date
+                  </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    value={this.state.pensionStartDate}
+                    onChange={(e) => this.setState({pensionStartDate: e.target.value})}
+                    aria-describedby="inputGroup-sizing-default"
+                />
+              </div>
+
+              <div className="input-group mb-3">
+                <div className="input-group-prepend">
+                  <span className="input-group-text" id="inputGroup-sizing-default">
+                     Pension End Date
+                  </span>
+                </div>
+                <input
+                    type="text"
+                    className="form-control"
+                    aria-label="Default"
+                    value={this.state.pensionEndDate}
+                    onChange={(e) => this.setState({pensionEndDate: e.target.value})}
                     aria-describedby="inputGroup-sizing-default"
                 />
               </div>

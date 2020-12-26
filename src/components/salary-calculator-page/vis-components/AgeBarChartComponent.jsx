@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {API_URL, menColor, monthLabel, propsLabel, quarter, womenColor} from "../../../dictionary/text";
+import {API_URL, menColor, monthLabel, propsLabel, quarter, source, womenColor} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
@@ -87,7 +87,7 @@ class AgeBarChartComponent extends Component {
                        style="background-color: #FFBC45"></div>
                   <p className="ml-1">
                      ${w.globals.labels[dataPointIndex]}: Kokku ametialal - } :
-                      ${series[seriesIndex][dataPointIndex]}aaaaaa
+                      ${series[seriesIndex][dataPointIndex]}
                   </p>
                   </div>
                 </div>`
@@ -141,7 +141,7 @@ class AgeBarChartComponent extends Component {
       return (
           `<div class="arrow_box text-left"> 
                   <p class="arrow-box-p">
-                    ${data.w.globals.labels[data.dataPointIndex]}:
+                    ${data.w.globals.labels[data.dataPointIndex].replace("-", "–")}:
                      </p>
                      <br/>
                      <div class="row ml-3" >
@@ -239,7 +239,7 @@ class AgeBarChartComponent extends Component {
 
         <div className={"source-tip-agebar"}>
           <p className={"source-label-style"}>
-            Allikas: statistikaamet
+            {source}
           </p>
         </div>
 

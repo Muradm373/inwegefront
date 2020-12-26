@@ -14,8 +14,10 @@ import {
   pensionLink,
   PensionsText,
 } from "../../dictionary/text";
+import {connect} from "react-redux";
 
 class PensionsComponent extends Component {
+
   render() {
     return (
       <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 pension-component">
@@ -32,7 +34,7 @@ class PensionsComponent extends Component {
               {pensionDescription[0]}
               <br></br>
               <li>{pensionDescription[1]}</li>
-              <li>{pensionDescription[2]}</li>
+              <li>{pensionDescription[2].replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}}</li>
               <li>{pensionDescription[3]}</li>
               <li>{pensionDescription[4]}</li>
             </ol>
@@ -46,7 +48,7 @@ class PensionsComponent extends Component {
             <div className="col-md-6">
               <p className={"h4-stat text-left ml-4 pl-2"}
               >
-                {gapsWageLabel}
+                {gapsWageLabel.replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}
               </p>
               <PensionGraph
                 menColor={menColor}
@@ -65,7 +67,7 @@ class PensionsComponent extends Component {
               <p
                className={"h4-stat text-left ml-4 pl-2"}
               >
-                {gapsPensionLabel}
+                {gapsPensionLabel.replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}
               </p>
               <PensionGraph
                 menColor={menColor}
@@ -131,5 +133,10 @@ class PensionsComponent extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    dates: state.dates,
+  };
+};
 
-export default PensionsComponent;
+export default connect(mapStateToProps)(PensionsComponent);

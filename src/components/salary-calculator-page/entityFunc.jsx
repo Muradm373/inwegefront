@@ -1,3 +1,5 @@
+import {counties} from "../../dictionary/text";
+
 export function fetchData(prop) {
   let menMean = [];
   let womenMean = [];
@@ -72,4 +74,15 @@ function distributeData(dataMen, dataWomen) {
   }
 
   return { menObject, womenObject };
+}
+
+export function translateCounty(county, language){
+  switch(language){
+    case "es":
+      return county;
+    case "ru":
+      return counties[county]
+    case "en":
+      return county.replace("maakond", "county")
+  }
 }

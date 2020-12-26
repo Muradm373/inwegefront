@@ -1,7 +1,11 @@
 import axios from "axios";
-import { lng, API_URL, noInformationLabel, allOcupationsLabel } from "../dictionary/text";
+import { lng, API_URL, noInformationLabel, allOcupationsLabel, overall } from "../dictionary/text";
 
-export const getOccupations = (dispatch, region) => {
+export const getOccupations = (dispatch, regionSelected) => {
+  console.log(regionSelected)
+  let region =  regionSelected;
+  if(region === overall || region === "")
+    region = "Harju maakond"
   axios
     .get(`${API_URL}/jobs/names?region=${region}&lang=${lng}`)
     .then((response) => response.data)
@@ -76,7 +80,6 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
 };
 
 export const setLanguage = (lang) =>{
-  console.log(lang)
   return ({ type: "SET_LANGUAGE", lang:lang });
 }
 

@@ -8,6 +8,7 @@ import {
 } from "react-vis";
 import { averageBetweenMenAndWomen, quarter } from "../../../dictionary/text";
 import {connect} from "react-redux";
+import {translateCounty} from "../entityFunc";
 
 class BarComponent extends Component {
 
@@ -30,10 +31,10 @@ class BarComponent extends Component {
             ?
         <div className={"bar-series-label"}>
 
-        <p className={"body-stat ml-3"}>{`${this.props.occupation }. ${this.props.region}`}</p></div>
+        <p className={"body-stat ml-3"}>{`${this.props.occupation }. ${translateCounty(this.props.region, this.props.language)}`}</p></div>
             :
           <div className={"bar-series-label"}>
-          <p className={"body-stat ml-3"}>{this.props.region}</p></div>
+          <p className={"body-stat ml-3"}>{translateCounty(this.props.region, this.props.language)}</p></div>
       }
         <FlexibleWidthXYPlot height={130} animation="gentle" style={{marginLeft: "-22px"}}>
           {this.props.language === "en" ? <XAxis
