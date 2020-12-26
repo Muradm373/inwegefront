@@ -112,7 +112,6 @@ class WageBars extends Component {
   formatNumber(numberInt){
     let number = numberInt.toString();
 
-    console.log(number + " " + this.props.language)
     let formattedNumber = "";
       for(let i = 1; i <= number.length; i++) {
         formattedNumber = number[number.length - i] + formattedNumber;
@@ -160,14 +159,13 @@ class WageBars extends Component {
       <div>
         <div className="bar-holders">
           <br />
-          <br />
-          {this.state.payload.wageCategory30_max !==
-          this.state.payload.wageCategory30_min ? (
+          {this.state.payload.wageCategory30Max !==
+          this.state.payload.wageCategory30Min ? (
             <p
               className={"h4-stat text-left"}
             >
-              {pensionLabel[0]} {this.state.payload.wageCategory30_min}€{" "}
-              {pensionLabel[1]} {this.state.payload.wageCategory30_max}€ .{" "}
+              {pensionLabel[0]} {this.state.payload.wageCategory30Min} €{" "}
+              {pensionLabel[1]} {this.state.payload.wageCategory30Max} € .{" "}
               {pensionLabel[2]} {this.state.computerizationRisk}{" "}
               {pensionLabel[3]} {this.state.replacementsNeeds}.
               <isindex />
