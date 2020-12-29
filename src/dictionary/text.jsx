@@ -1,4 +1,4 @@
-import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng } from "./textMethodology";
+import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng,LivelihoodEng } from "./textMethodology";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const menColor = "#3F1A84";
@@ -53,8 +53,8 @@ const tabsEng = [
 ];
 const averagesEng = [
   ["Occupation ", " county", "Overall in Estonia"],
-  [" По профессии*", "По ", "Среднее по Эстонии"],
-  ["Kogu ametiala*", "Kogu maakond", "Kogu Eesti"],
+  [" По профессии", "По ", "Среднее по Эстонии"],
+  ["Kogu ametiala", "Kogu maakond", "Kogu Eesti"],
 ];
 const mainEng = [
   ["Home", "About", "Contacts", "Navigation"],
@@ -169,7 +169,7 @@ const  totalNumberOfEmployeesOccupationEng = [
 const averageDataSpecEng = [
   ["Occupation", "Over County"],
   ["По профессии", "Региону"],
-  ["Kogu ametiala*", "Maakond"],
+  ["Kogu ametiala", "Maakond"],
 ];
 const columnChartOccupationLabelEng = [
   ["", "County"],
@@ -213,19 +213,19 @@ const retirementEng = [
 const pensionLabelEng = [
   [
     "In 2030, the projected wage for this occupation is between",
-    "and",
+    "–",
     "The risk of computerisation for this occupation is",
     "and the age-related replacement need is ",
   ],
   [
     "В 2030 году прогнозируемая брутто-зарплата по этой профессии составит ",
-    "и",
+    "–",
     "Риск компьютеризации для этой профессии",
     "и потребность в замене из-за выходa на пенсию",
   ],
   [
     "Aastal 2030 on sellel ametialal prognoositav brutotöötasu ",
-    "-",
+    "–",
     "Sellel ametialal on",
     "risk, et inimese asendab arvuti ja vanusest tingitud asendusvajadus on ",
   ],
@@ -398,9 +398,9 @@ const emailLabelEng = [
 ]
 
 const occupationLabelEng = [
-  "Occupation",
-  "По профессии",
-  "Kogu ametiala*"
+  "Occupation *",
+  "По профессии *",
+  "Kogu ametiala *"
 ]
 
 const countyLabelEng = [
@@ -437,6 +437,8 @@ const pensionHeaderEng = [
   ["Over time, the ", " difference in men's and women's monthly wages becomes a ", " difference in pensions, not disappearing."],
   ["Разница в ", "в ежемесячной заработной плате мужчин и женщин со временем станет разницей в ", " в размере пенсий, но не исчезнет."],
   ["Meeste ja naiste kuupalkade erinevus on ", "mis ajapikku muutub pensionide erinevuseks ", ", aga ei kao. "]]
+
+const euroUnitsEng = ["euro", "евро", "eurot"];
 
 const columnchartLabelEng = ['Average gross wages', ' Средняя месячная брутто-зарплата', 'Keskmine brutokuupalk'];
 
@@ -570,6 +572,9 @@ export default function changeLanguage(language) {
   yearLabel = yearLabelEng[i];
   levelLabel = levelLabelEng[i];
   occupationDescriptionLabel = occupationDescriptionLabelEng[i];
+  euroUnits = euroUnitsEng[i];
+  Livelihood =  LivelihoodEng[i];
+
 }
 
 export let wageGapInfoTab = wageGapTabInfoEng[0];
@@ -675,6 +680,8 @@ export let wageForecastOccupationSelectorPlaceholder = wageForecastOccupationSel
 export let yearLabel = yearLabelEng[0];
 export let averageWageLabel = averageWageLabelEng[0];
 export let occupationDescriptionLabel = occupationDescriptionLabelEng[0];
+export let euroUnits = euroUnitsEng[0];
+export let Livelihood = LivelihoodEng[0];
 
 export let counties = {"Valga maakond": "Валгамаа",
   "Viljandi maakond": "Вильяндимаа",

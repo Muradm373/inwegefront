@@ -12,7 +12,8 @@ import {
   gapsPensionLabel,
   checkMyPlanLabel,
   pensionLink,
-  PensionsText,
+  PensionsText, Livelihood
+
 } from "../../dictionary/text";
 import {connect} from "react-redux";
 
@@ -28,7 +29,9 @@ class PensionsComponent extends Component {
             </p>
             <br></br>
             <br></br>
+            <p className={"h4-stat"}>{Livelihood}</p>
             <br></br>
+
 
             <ol className={"ol-stat"}>
               {pensionDescription[0]}
@@ -92,16 +95,19 @@ class PensionsComponent extends Component {
             {replacementNeeds2}
           </p>
 
+          <div>
+            <div className={"col-md-12"}>
           <PensionGraph
             menColor={menColor}
             womenColor={womenColor}
             differenceLabel={differenceLabel}
             type={"am_kesk"}
-            unit=""
+            unit="%"
             tickTotal="8"
             genderLabel={genderLabel}
             occupation={""}
           ></PensionGraph>
+            </div>
           <br></br>
 
           <br></br>
@@ -111,16 +117,19 @@ class PensionsComponent extends Component {
             {replacementNeeds1}
           </p>
 
+            <div className={"col-md-12"}>
           <PensionGraph
             menColor={menColor}
             womenColor={womenColor}
             differenceLabel={differenceLabel}
             type={"am_oma"}
-            unit=""
+            unit="%"
             tickTotal="8"
             genderLabel={genderLabel}
             occupation={""}
           ></PensionGraph>
+            </div>
+          </div>
         </div>
 
         <input

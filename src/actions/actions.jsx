@@ -55,7 +55,8 @@ export const setWage = (wage) => {
   else return { type: "SET_WAGE", wage: 0 };
 };
 
-export const getSalaryEntities = (region, isco, code, dispatch) => {
+export const getSalaryEntities = (regionSelected, isco, code, dispatch) => {
+  let region = regionSelected;
   if(region==="all" && isco === "averages"){
     dispatch({
       type: "SET_ENTITIES",
@@ -67,6 +68,7 @@ export const getSalaryEntities = (region, isco, code, dispatch) => {
     return;
   }
   let url;
+  region === "" ? region = "all" : region = regionSelected;
   if (isco === "averages") url = `${API_URL}/jobs?region=${region}&lang=${lng}`;
   else
     url = `${API_URL}/jobs?region=${region}&isco=${isco}&code=${code}&lang=${lng}`;

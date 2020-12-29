@@ -1520,9 +1520,19 @@ body {
 }
 
 .graph-xaxis-label {
+    mix-blend-mode: difference;
     position: absolute;
-    margin-top: -60px;
-    margin-left: 45%;
+    margin-top: -65px;
+    margin-left: 48%;
+    text-align: right;
+    z-index: 1000;
+    float:right;
+}
+.pension-graph-xaxis-label {
+    mix-blend-mode: difference;
+    position: absolute;
+    margin-top: -65px;
+    right: 50px;
     text-align: right;
     z-index: 1000;
     float:right;

@@ -5,7 +5,7 @@ import {
   computarization,
   pensionLabel,
   lessMoreLabel,
-  levels, yearLabel, averageWageLabel,
+  levels, yearLabel, averageWageLabel, euroUnits,
 } from "../../dictionary/text";
 import {connect} from "react-redux"
 import axios from "axios";
@@ -119,7 +119,7 @@ class WageBars extends Component {
           if (this.props.language === "en")
             formattedNumber = "," + formattedNumber;
           else
-            formattedNumber = " " + formattedNumber;
+            formattedNumber = "" + formattedNumber;
         }
       }
 
@@ -134,7 +134,7 @@ class WageBars extends Component {
       items.push(
         <div className={"p-2 carditem " + this.idToColor(id, i)}>
           <p>
-            {this.formatNumber(1000 + (i - 2) * 500)}–{this.formatNumber(1499 + (i - 2) * 500)} €
+            {this.formatNumber(1000 + (i - 2) * 500)}–{this.formatNumber(1499 + (i - 2) * 500)} {euroUnits}
           </p>
         </div>
       );
@@ -142,11 +142,11 @@ class WageBars extends Component {
     let result = (
       <div>
         <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-          <p>{lessMoreLabel[1]} {this.formatNumber(1000)} € </p>
+          <p>{lessMoreLabel[1]} {this.formatNumber(1000)} {euroUnits} </p>
         </div>
         {items}
         <div className={"p-2 carditem " + this.idToColor(id, 9)}>
-          <p>{lessMoreLabel[0]} {this.formatNumber(4500)} € {lessMoreLabel[2]}</p>
+          <p>{lessMoreLabel[0]} {this.formatNumber(4500)} {euroUnits} {lessMoreLabel[2]}</p>
         </div>
       </div>
     );
@@ -164,8 +164,8 @@ class WageBars extends Component {
             <p
               className={"h4-stat text-left"}
             >
-              {pensionLabel[0]} {this.state.payload.wageCategory30Min} €{" "}
-              {pensionLabel[1]} {this.state.payload.wageCategory30Max} € .{" "}
+              {pensionLabel[0]} {this.formatNumber(this.state.payload.wageCategory30Min)}
+              {pensionLabel[1]}{this.formatNumber(this.state.payload.wageCategory30Max)} {euroUnits} .{" "}
               {pensionLabel[2]} {this.state.computerizationRisk}{" "}
               {pensionLabel[3]} {this.state.replacementsNeeds}.
               <isindex />

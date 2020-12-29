@@ -34,7 +34,7 @@ import {translateCounty} from "./entityFunc";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       isco: "",
@@ -47,6 +47,7 @@ class SalaryCalculator extends Component {
 
     this.setContent = this.setContent.bind(this);
     this.changeWage = this.changeWage.bind(this);
+    props.getOccupations("Harju maakond");
     
   }
   
@@ -186,7 +187,7 @@ class SalaryCalculator extends Component {
                         <p>
                           {levelLabel[0]}
                         </p>
-                        <p className={"text-lowercase font-weight-bold"}>{this.props.generalName}
+                        <p className={"text-lowercase font-weight-bold"}>{` ${this.props.generalName} `}
                         </p>
                         <p>{`(${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
                       </div>
@@ -344,5 +345,7 @@ const mapStateToProps = (state) => {
     language: state.language
   };
 };
+
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalaryCalculator);

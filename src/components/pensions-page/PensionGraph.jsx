@@ -200,12 +200,12 @@ class PensionGraph extends Component {
           <XAxis
             className="grid-axis"
             tickTotal={parseInt(this.props.tickTotal)}
-            tickFormat={(v) => `${this.props.unit}${v}`}
+            tickFormat={(v) => `${v}`}
           />
           <YAxis
             className="grid-axis"
             tickTotal={4}
-            tickFormat={(v) => `${v * 10}%`}
+            tickFormat={(v) => `${v * 10}`}
           />
 
           <AreaSeries
@@ -231,6 +231,9 @@ class PensionGraph extends Component {
           <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
 
         </FlexibleWidthXYPlot>
+        <div className="pension-graph-xaxis-label">
+          <p>{this.props.unit}</p>
+        </div>
         <div className="graph-legends row">
           <div className={"row"}>
             <div

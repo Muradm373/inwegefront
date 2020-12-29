@@ -194,8 +194,8 @@ class DynamicMapSelector extends Component {
                 >
                   {this.state.mapType !== "Gender Wage Gap"
                     ? e.length > 1
-                      ? `${e[0].item} € - ${e[e.length - 1].item} €`
-                      : `${e[0].item} €`
+                      ? `${e[0].item}–${e[e.length - 1].item} €`
+                      : `${e[0].item}€`
                     : e.length > 1
                     ? this.props.language==="en" ?
                           `${e[0].percentage.toFixed(2)}–${e[
