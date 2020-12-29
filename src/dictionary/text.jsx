@@ -42,7 +42,7 @@ const differenceEng = [
     " naised",
     " mehed",
     "Sina teenid",
-    " keskmiselt.",
+    " keskmiselt",
   ],
 ];
 const lngEng = ["en", "ru", "es"];
