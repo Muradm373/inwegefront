@@ -14,9 +14,11 @@ import {
     noOccupationSelectedLabel,
     decileLabel
 } from "../../../dictionary/text";
+import {formatNumber} from "../../../actions/actions";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
 import { useMediaQuery } from 'react-responsive';
+import {connect} from "react-redux";
 
 
 const display = (myWage, mean, men) => {
@@ -64,6 +66,13 @@ export const displayLegends = (menColor, womenColor) => {
     </div>
   );
 };
+const getAmountFormatBasedOnLanguage=(label, language)=>{
+    if(language === "en")
+        return  "€" + label;
+    else
+        return label +  " €";
+}
+
 
 function Graph(props) {
   let data = fetchData(props.entities);
@@ -92,7 +101,7 @@ function Graph(props) {
         label={
           props.differenceLabel[0] +
           " " +
-          Math.abs(parseInt(menMean) - parseInt(womenMean))+" €" +
+          getAmountFormatBasedOnLanguage(formatNumber(Math.abs(parseInt(menMean) - parseInt(womenMean)), props.language), props.language) +
           (parseInt(menMean) - parseInt(womenMean) > 0
             ? props.differenceLabel[1]
             : props.differenceLabel[2]) +
@@ -118,7 +127,7 @@ function Graph(props) {
         <XAxis
         className="grid-axis"
           tickTotal={isMobile?5:10}
-          tickFormat={(v) => `${v}`}
+          tickFormat={(v) => `${formatNumber(v, props.language)}`}
         />:<></>
         }
         <YAxis
@@ -217,7 +226,7 @@ function Graph(props) {
                 {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
                     ? props.differenceLabel[6] +
                     " " +
-                    Math.abs(parseInt(myWage) - parseInt(mean)) +" €" +
+                    formatNumber(Math.abs(parseInt(myWage) - parseInt(mean)), props.language) +" €" +
                     (parseInt(myWage) - parseInt(mean) > 0
                         ? props.differenceLabel[1]
                         : props.differenceLabel[2]) +
@@ -244,4 +253,12 @@ function Graph(props) {
 }
 
 
-export default Graph;
+const mapStateToProps = (state) => {
+    return {
+        language: state.language
+    };
+};
+
+
+
+export default connect(mapStateToProps)(Graph);

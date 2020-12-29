@@ -37,7 +37,7 @@ class PensionsComponent extends Component {
               {pensionDescription[0]}
               <br></br>
               <li>{pensionDescription[1]}</li>
-              <li>{pensionDescription[2].replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}}</li>
+              <li>{pensionDescription[2].replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}</li>
               <li>{pensionDescription[3]}</li>
               <li>{pensionDescription[4]}</li>
             </ol>

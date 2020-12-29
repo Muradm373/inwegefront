@@ -20,6 +20,7 @@ import { connect } from "react-redux";
 
 import axios from "axios";
 import PensionBarComponent from "./PensionBarComponent";
+import {formatNumber} from "../../actions/actions";
 
 class PensionGraph extends Component {
   constructor() {
@@ -123,13 +124,20 @@ class PensionGraph extends Component {
     );
   }
 
+  getAmountFormatBasedOnLanguage(label, language){
+    if(language === "en")
+      return  "€" + label;
+    else
+      return label +  " €";
+  }
+
   getLabel(type, difference, yearProp){
     let year = yearProp === "2020" ? pensionDifferenceLabel2020[0] : pensionDifferenceLabel2020[1] ;
 
     let label;
     if(type==="pension"){
         label =  (year + pensionDifferenceLabel2020[3] +
-       Math.abs(difference) + " €" +
+       this.getAmountFormatBasedOnLanguage(Math.abs(difference), this.props.language) +
         (difference >= 0 ? pensionDifferenceLabel2020[4]
         : pensionDifferenceLabel2020[5]) +
         " " +
@@ -137,7 +145,7 @@ class PensionGraph extends Component {
     }
     if(type==="palk"){
       label = year + pensionDifferenceLabel2020[2] + 
-       difference +" €" +
+       this.getAmountFormatBasedOnLanguage(difference, this.props.language) +
       (difference >= 0 ? pensionDifferenceLabel2020[4]
       : pensionDifferenceLabel2020[5]) +
       " " +
@@ -200,7 +208,7 @@ class PensionGraph extends Component {
           <XAxis
             className="grid-axis"
             tickTotal={parseInt(this.props.tickTotal)}
-            tickFormat={(v) => `${v}`}
+            tickFormat={(v) => `${formatNumber(v, this.props.language)}`}
           />
           <YAxis
             className="grid-axis"
@@ -261,6 +269,7 @@ class PensionGraph extends Component {
 const mapStateToProps = (state) => {
   return {
     dates: state.dates,
+    language: state.language
   };
 };
 

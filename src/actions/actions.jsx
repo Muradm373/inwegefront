@@ -127,3 +127,23 @@ const parseSalaryEntities = (data, type, dispatch) => {
   else
     dispatch({ type: "SET_MEAN", mean: [] })
 };
+
+export const formatNumber=(numberInt, language)=>{
+  if(numberInt !== undefined) {
+    let number = numberInt.toString();
+
+    let formattedNumber = "";
+    for (let i = 1; i <= number.length; i++) {
+      formattedNumber = number[number.length - i] + formattedNumber;
+      if (i !== number.length && i % 3 === 0) {
+        if (language === "en")
+          formattedNumber = "," + formattedNumber;
+        else
+          formattedNumber = "" + formattedNumber;
+      }
+    }
+
+    return formattedNumber;
+  }else
+    return numberInt
+}

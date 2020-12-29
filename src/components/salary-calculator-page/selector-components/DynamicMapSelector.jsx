@@ -6,7 +6,10 @@ import {
   quarter,
   noDataInfo,
   source,
-  counties, averageTabInfo,medianTabInfo,wageGapInfoTab} from "../../../dictionary/text";
+  counties, averageTabInfo,medianTabInfo,wageGapInfoTab, genderLabel,
+  genderWageGap,
+  averageWage,
+  medianWage,} from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import * as htmlToImage from 'html-to-image';
 import downloadjs from "downloadjs";
@@ -22,15 +25,10 @@ import {
 } from "react-simple-maps";
 import ee from "../../../resources/ee.json";
 import axios from "axios";
-import {
-  genderLabel,
-  genderWageGap,
-  averageWage,
-  medianWage,
-} from "../../../dictionary/text";
 import ReactTooltip from "react-tooltip";
 import styled from 'styled-components';
 import { connect } from "react-redux";
+import {formatNumber} from "../../../actions/actions";
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
@@ -313,7 +311,7 @@ class DynamicMapSelector extends Component {
     if (this.state.mapType === "Median Wage" || this.state.mapType==="Average Wage") {
       this.state.averages.map((el) => {
         if (el.region === region) {
-          data = el.average + " €";
+          data = formatNumber(el.average, this.props.language) + " €";
           return data;
         }
 
@@ -324,10 +322,10 @@ class DynamicMapSelector extends Component {
         if (el.region === region) {
           data =
             genderLabel[0] +
-            this.generateValueString(el.maleAverage) +
+            this.generateValueString(formatNumber(el.maleAverage, this.props.language)) +
             "<br/>" +
             genderLabel[1] +
-            this.generateValueString(el.femaleAverage);
+            this.generateValueString(formatNumber(el.femaleAverage, this.props.language));
           return data;
         }
         return 0;
@@ -425,10 +423,10 @@ class DynamicMapSelector extends Component {
     } else {
       switch (this.state.mapType) {
         case "Median Wage":
-          return this.state.median + " €";
+          return formatNumber(this.state.median, this.props.language) + " €";
 
         case "Average Wage":
-          return this.state.average + " €";
+          return formatNumber(this.state.average, this.props.language) + " €";
 
         case "Gender Wage Gap":
           return parseInt(this.state.genderGap * 100) + "%";

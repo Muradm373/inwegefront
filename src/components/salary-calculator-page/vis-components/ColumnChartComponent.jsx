@@ -17,6 +17,7 @@ import {
 import {connect} from "react-redux";
 import {displayLegends} from "./Graph";
 import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image';
+import {formatNumber} from "../../../actions/actions";
 
 
 class ColumnChartComponent extends Component {
@@ -96,7 +97,7 @@ class ColumnChartComponent extends Component {
                   <div class="circle-legend mt-2" style="background-color: ${seriesIndex === 0? menColor : womenColor}"></div>
                   <p class="ml-1 h6-stat-white mt-1">
                   ${w.globals.seriesNames[seriesIndex]} 
-                        ${series[seriesIndex][dataPointIndex]} €
+                        ${formatNumber(series[seriesIndex][dataPointIndex], props.language)} €
                   </p>
                   </div>
                 </div>`);
@@ -178,7 +179,7 @@ class ColumnChartComponent extends Component {
                     ${data.w.globals.labels[data.dataPointIndex]}: <br/>
                     <br/>
                     ${this.state.occupation} : 
-                        ${data.series[data.seriesIndex][data.dataPointIndex]} €
+                        ${formatNumber(data.series[data.seriesIndex][data.dataPointIndex], this.props.language)} €
                   </p>
                 </div>`
     );
