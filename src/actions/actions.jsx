@@ -68,7 +68,7 @@ export const getSalaryEntities = (regionSelected, isco, code, dispatch) => {
     return;
   }
   let url;
-  region === "" ? region = "all" : region = regionSelected;
+  region === "" || region===overall ? region = "all" : region = regionSelected;
   if (isco === "averages") url = `${API_URL}/jobs?region=${region}&lang=${lng}`;
   else
     url = `${API_URL}/jobs?region=${region}&isco=${isco}&code=${code}&lang=${lng}`;
