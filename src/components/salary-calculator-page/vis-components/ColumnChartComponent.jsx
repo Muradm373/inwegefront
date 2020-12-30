@@ -233,7 +233,7 @@ class ColumnChartComponent extends Component {
       !(isco === this.state.isco &&
       region === this.state.region)
     ) {
-      this.setState({                code: code,
+      this.setState({code: code,
         isco: isco,
         region: region})
       axios

@@ -1,13 +1,19 @@
 import axios from "axios";
 import { lng, API_URL, noInformationLabel, allOcupationsLabel, overall } from "../dictionary/text";
 
-export const getOccupations = (dispatch, regionSelected) => {
-  console.log(regionSelected)
+export const getOccupations = (dispatch, regionSelected, tab) => {
   let region =  regionSelected;
+  let selectedTab = "";
+
+  if(tab === "Median Wage")
+    selectedTab = "median";
+  if(tab === "Average Wage")
+    selectedTab = "mean";
+
   if(region === overall || region === "")
     region = "Harju maakond"
   axios
-    .get(`${API_URL}/jobs/names?region=${region}&lang=${lng}`)
+    .get(`${API_URL}/jobs/names?region=${region}&lang=${lng}&tab=${selectedTab}`)
     .then((response) => response.data)
     .then((data) => {
       let names = [];

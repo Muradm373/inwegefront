@@ -57,6 +57,7 @@ class SalaryCalculator extends Component {
 
   onRegionChange = (event) => {
     const region = event.value;
+    const tab = event.tab;
     const isco = this.state.isco;
     const code = this.state.code;
     if (this.state.isco !== "") {
@@ -66,7 +67,7 @@ class SalaryCalculator extends Component {
     }
     this.setState({ region: region });
     this.props.onDataChange(region, isco, code, "");
-    this.props.getOccupations(region);
+    this.props.getOccupations(region, tab);
   };
 
   onOverallDataForMapSelected=(event)=>{
@@ -317,8 +318,8 @@ class SalaryCalculator extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getOccupations: (region) => {
-      getOccupations(dispatch, region);
+    getOccupations: (region, tab) => {
+      getOccupations(dispatch, region, tab);
     },
     setGender: (gender) => {
       dispatch(setGender(gender.value));

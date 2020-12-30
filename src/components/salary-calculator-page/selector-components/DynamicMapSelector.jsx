@@ -475,7 +475,7 @@ class DynamicMapSelector extends Component {
                     onClick={() => {
                       const selectedRegion = geo.properties.MNIMI;
                       this.setState({ selected: selectedRegion });
-                      this.props.onRegionChange({ value: selectedRegion });
+                      this.props.onRegionChange({ value: selectedRegion, tab: this.state.mapType });
                     }}
                     style={this.styleForSelectedRegion(geo.properties.MNIMI)}
                   />
@@ -498,7 +498,7 @@ class DynamicMapSelector extends Component {
                             onClick={() => {
                               const selectedRegion = geo.properties.MNIMI;
                               this.setState({ selected: selectedRegion });
-                              this.props.onRegionChange({ value: selectedRegion });
+                              this.props.onRegionChange({ value: selectedRegion, tab: this.state.mapType });
                             }}
                             x={geo.properties.MNIMI.includes("Lääne maakond")?"-5": "0"}
                             y="2"
