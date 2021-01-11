@@ -452,6 +452,7 @@ const pensionHeaderEng = [
   ["Meeste ja naiste kuupalkade erinevus on ", "mis ajapikku muutub pensionide erinevuseks ", ", aga ei kao. "]]
 
 const euroUnitsEng = ["euros", "евро", "eurot"];
+const euroUnitsThousandEng = ["euros", "евро", "euro"];
 
 const columnchartLabelEng = ['Average gross wages', ' Средняя месячная брутто-зарплата', 'Keskmine brutokuupalk'];
 
@@ -589,6 +590,7 @@ export default function changeLanguage(language) {
   levelLabel = levelLabelEng[i];
   occupationDescriptionLabel = occupationDescriptionLabelEng[i];
   euroUnits = euroUnitsEng[i];
+  euroUnitsThousand = euroUnitsThousandEng[i];
   Livelihood =  LivelihoodEng[i];
   downloadJpeg = downloadJpegEng[i];
   downloadPng = downloadPngEng[i];
@@ -698,6 +700,7 @@ export let yearLabel = yearLabelEng[0];
 export let averageWageLabel = averageWageLabelEng[0];
 export let occupationDescriptionLabel = occupationDescriptionLabelEng[0];
 export let euroUnits = euroUnitsEng[0];
+export let euroUnitsThousand = euroUnitsThousandEng[0];
 export let Livelihood = LivelihoodEng[0];
 export let downloadJpeg = downloadJpegEng[0];
 export let downloadPng = downloadPngEng[0];

@@ -95,7 +95,7 @@ class AgeBarChartComponent extends Component {
                   <div className="circle-legend mt-2"
                        style="background-color: #FFBC45"></div>
                   <p className="ml-1">
-                     ${w.globals.labels[dataPointIndex]}: Kokku ametialal - } :
+                      ${w.globals.labels[dataPointIndex]}: } :
                       ${series[seriesIndex][dataPointIndex]}
                   </p>
                   </div>
@@ -156,7 +156,7 @@ class AgeBarChartComponent extends Component {
                      <div class="row ml-3" >
                   <div class="circle-legend mt-2" style="background-color: ${"#FFBC45"}"></div>
                   <p class="ml-1 text-left h6-stat-white mt-1">
-                    ${this.splitWords(`Kokku ametialal - ${this.state.occupation.toLowerCase()}`, 25)} 
+                    ${this.splitWords(` ${this.state.occupation}`, 25)} 
                         ${this.props.language==="en" ? data.series[data.seriesIndex][data.dataPointIndex].toString():
               data.series[data.seriesIndex][data.dataPointIndex].toString().replace('.', ",")}%
                   </p>
@@ -312,7 +312,7 @@ class AgeBarChartComponent extends Component {
             <p
                 className="graph-legend-age h6-stat-gray"
             >
-              {`Kokku ametialal - ${this.props.occupation}`}
+              {this.props.language === "en" || this.props.language==="ru" ? `${this.props.occupation}`: `Kokku ametialal - ${this.props.occupation}`}
             </p>
 
           </div>

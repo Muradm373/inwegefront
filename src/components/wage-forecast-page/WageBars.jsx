@@ -5,7 +5,7 @@ import {
   computarization,
   pensionLabel,
   lessMoreLabel,
-  levels, yearLabel, averageWageLabel, euroUnits,
+  levels, yearLabel, averageWageLabel, euroUnits, euroUnitsThousand,
 } from "../../dictionary/text";
 import {connect} from "react-redux"
 import axios from "axios";
@@ -142,7 +142,7 @@ class WageBars extends Component {
     let result = (
       <div>
         <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-          <p>{lessMoreLabel[1]} {this.formatNumber(1000)} {euroUnits} </p>
+          <p>{lessMoreLabel[1]} {this.formatNumber(1000)} {euroUnitsThousand} </p>
         </div>
         {items}
         <div className={"p-2 carditem " + this.idToColor(id, 9)}>
@@ -185,7 +185,7 @@ class WageBars extends Component {
                 <p className={"h4-stat"}>{`${yearLabel} 2019`}</p>
                 {this.props.language === "en" ?
                     <p>{`${averageWageLabel} (€${this.formatNumber(1404)})`}</p> :
-                  <p>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
+                  <p>{`${averageWageLabel} (${this.formatNumber(1404)}€)`}</p>
                 }
 
               </div>
@@ -201,7 +201,7 @@ class WageBars extends Component {
                 <p className={"h4-stat"}>{`${yearLabel} 2030`}</p>
                 {this.props.language === "en" ?
                     <p>{`${averageWageLabel} (€${this.formatNumber(2315)})`}</p> :
-                    <p>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
+                    <p>{`${averageWageLabel} (${this.formatNumber(2315)}€)`}</p>
                 }
               </div>
               {this.getColor(this.state.payload.wageCategory30Min)}
