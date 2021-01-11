@@ -144,9 +144,9 @@ const noDataLabelEng = [
   "Valitud ameti kohta andmed puuduvad.",
 ];
 const noDataEng = ["No data", "Нет данных", "Andmed puuduvad"];
-const averageWageEng = ["Average Wage", "Средняя зарплата", "Keskmine palk"];
+const averageWageEng = ["Average wage", "Средняя зарплата", "Keskmine palk"];
 const medianWageEng = [
-  "Median Wage",
+  "Median wage",
   "Медианная зарплата",
   "Mediaanpalk",
 ];

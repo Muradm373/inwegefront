@@ -49,7 +49,6 @@ class WageForecast extends Component {
           <OccupationSelector
             onChange={this.onIscoChange}
             occupations={this.props.occupations}
-            placeholder={wageForecastOccupationSelectorPlaceholder}
           />
         </div>
         <WageBars isco={this.state.isco} setContent={this.setContent} />
