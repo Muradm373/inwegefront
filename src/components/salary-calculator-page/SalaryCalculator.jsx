@@ -183,14 +183,14 @@ class SalaryCalculator extends Component {
               <div>
                 {this.props.description !== "" && this.props.description !== null ?
                     <>
-                      <div className={"body-stat ml-1 row"}
+                      <div className={"body-stat ml-1 row text-left"}
                       >
-                        <p>
-                          {levelLabel[0]}
+                        <p className={"text-left"}>
+                          {levelLabel[0]}&nbsp;
                         </p>
-                        <p className={"text-lowercase font-weight-bold"}>{` ${this.props.generalName} `}
+                        <p className={"text-lowercase font-weight-bold text-left"}>{` ${this.props.generalName} `} &nbsp;
                         </p>
-                        <p>{`(${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
+                        <p className={"text-left"}>{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
                       </div>
                       <br/>
                     <p className={"description-label"}>{`${occupationDescriptionLabel}`} </p>
