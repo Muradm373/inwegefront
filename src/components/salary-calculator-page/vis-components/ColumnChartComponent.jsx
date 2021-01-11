@@ -137,7 +137,7 @@ class ColumnChartComponent extends Component {
     let options = this.state.options;
 
     options.xaxis.categories[0] = [occupationLabel];
-    options.xaxis.categories[1] = [`${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,`${columnChartOccupationLabel[1]}`];
+    options.xaxis.categories[1] = [`${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,`${columnChartOccupationLabel[1]}`] ;
     this.setState({ options: options });
   }
 
@@ -149,9 +149,12 @@ class ColumnChartComponent extends Component {
       case "es":
         return county;
       case "ru":
-        return counties[countySelected] === undefined ?
+        if(countySelected === "")
+          return "уезду";
+        else
+        return (counties[countySelected] === undefined ?
             averageDataSpec[2] :
-            counties[countySelected]
+            counties[countySelected])
       case "en":
         return county
     }

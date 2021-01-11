@@ -168,7 +168,7 @@ const  totalNumberOfEmployeesOccupationEng = [
 ];
 const averageDataSpecEng = [
   ["Occupation", "Over County"],
-  ["По профессии", "Региону"],
+  ["По профессии", "По уезду"],
   ["Kogu ametiala", "Maakond"],
 ];
 const columnChartOccupationLabelEng = [
@@ -361,11 +361,11 @@ let pensionDescriptionEng =  [["The above applies when the following simple assu
 
 
 const gapsWageLabelEng =
-["Difference in males’ and females’ monthly wages | in Euros of 2020","Разница в заработной плате у мужчин и женщин | в евро 2020 года","Meeste ja naiste kuupalga erinevus | 2020 aasta eurodes"];
+["Difference in males’ and females’ monthly wages | in Euros of 2020","Разница в заработной плате у мужчин и женщин | 2020 год, в евро","Meeste ja naiste kuupalga erinevus | 2020 aasta eurodes"];
 
 
 let gapsPensionLabelEng =
-  ["Difference in males’ and female’s pensions | in Euros of 2071","Разница в пенсии у мужчин и женщин  | в евро 2071 года","Meeste ja naiste pensioni erinevus | 2071. aasta eurodes"];
+  ["Difference in males’ and female’s pensions | in Euros of 2071","Разница в пенсии у мужчин и женщин  | 2071 год, в евро","Meeste ja naiste pensioni erinevus | 2071. aasta eurodes"];
 
 const submittedLabelEng = [
   "Message Submitted",
@@ -436,6 +436,7 @@ const downloadPngEng = [
 let pensionDifferenceLabel2020Eng = [
   ["In 2020, ","In 2071, ", "the average monthly wages of men are ", "the average pension of men is ", " higher ", " lower ", "than the average wages of women.", "than the average pension of women."],
   ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин на ", "средняя пенсия мужчин на ", " выше", " ниже", ", чем у женщин.", ", чем пенсия у женщин."],
+  ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин на ", "средняя пенсия мужчин на ", " выше", " ниже", ", чем у женщин.", ", чем пенсия у женщин."],
   ["Aastal 2020 ", "Aastal 2071 ", "on meeste kuupalk keskmiselt ", "on meeste pension keskmiselt ", " suurem ", " väiksem ", "kui naiste kuupalk.", "kui naiste pension."]
 ]
 
@@ -460,7 +461,7 @@ const joinEng = ["Subscribe", "Присоединиться", "Liitu"];
 const joinBodyEng = ["By subscribing, you agree to our privacy policy.","Подписываясь на рассылку, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
 const joinLinkEng = ["Read about data protection (privacy policy).", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
 const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
-const monthLabelEng = ["month", "месяц","kuus"]
+const monthLabelEng = ["month", "в месяц","kuus"]
 const wageGapTabInfoEng= ["The difference between the average wages of males and females divided by the average wages of males. Covers full-time employees. 2.5% of the lowest and highest wages of both sexes are excluded.",
   "Разница между средней заработной платой мужчин и женщин, поделенная на среднюю заработную плату мужчин. Исключаются работающие на полную ставку обоих полов 2,5% от самой низкой и самой высокой заработной платы.",
 "Meeste ja naiste keskmise palga vahe, mis on jagatud meeste keskmise palgaga. Täistööajaga töötajad, mõlema soo kõige madalamatest ja kõige kõrgematest palkadest 2,5% on välja jäetud."]
