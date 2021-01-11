@@ -204,6 +204,7 @@ class PensionGraph extends Component {
           menColor={menColor}
           womenColor={womenColor}
           occupation={""}
+            percentage={this.props.percentage}
           label={
           this.getLabel(this.props.type, parseInt(this.state.menMean) - parseInt(this.state.womenMean), this.props.year, this.props.language)
           }

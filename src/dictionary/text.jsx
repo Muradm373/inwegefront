@@ -361,11 +361,11 @@ let pensionDescriptionEng =  [["The above applies when the following simple assu
 
 
 const gapsWageLabelEng =
-["Difference in males’ and females’ monthly wages | in Euros of 2020","Разница в заработной плате у мужчин и женщин | 2020 год, в евро","Meeste ja naiste kuupalga erinevus | 2020 aasta eurodes"];
+["Difference in males’ and females’ monthly wages | in euros of 2020","Разница в заработной плате у мужчин и женщин | 2020 год, в евро","Meeste ja naiste kuupalga erinevus | 2020 aasta eurodes"];
 
 
 let gapsPensionLabelEng =
-  ["Difference in males’ and female’s pensions | in Euros of 2071","Разница в пенсии у мужчин и женщин  | 2071 год, в евро","Meeste ja naiste pensioni erinevus | 2071. aasta eurodes"];
+  ["Difference in males’ and female’s pensions | in euros of 2071","Разница в пенсии у мужчин и женщин  | 2071 год, в евро","Meeste ja naiste pensioni erinevus | 2071. aasta eurodes"];
 
 const submittedLabelEng = [
   "Message Submitted",

@@ -63,6 +63,7 @@ class PensionsComponent extends Component {
                 tickTotal="7"
                 genderLabel={genderLabel}
                 occupation={""}
+                percentage = {false}
               ></PensionGraph>
             </div>
 
@@ -82,6 +83,7 @@ class PensionsComponent extends Component {
                 genderLabel={genderLabel}
                 tickTotal="8"
                 occupation={""}
+                percentage = {false}
               ></PensionGraph>
             </div>
           </div>
@@ -106,6 +108,7 @@ class PensionsComponent extends Component {
             tickTotal="8"
             genderLabel={genderLabel}
             occupation={""}
+            percentage = {true}
           ></PensionGraph>
             </div>
           <br></br>
@@ -127,6 +130,7 @@ class PensionsComponent extends Component {
             tickTotal="8"
             genderLabel={genderLabel}
             occupation={""}
+            percentage = {true}
           ></PensionGraph>
             </div>
           </div>

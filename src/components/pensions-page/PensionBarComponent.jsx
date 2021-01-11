@@ -8,6 +8,7 @@ import {
 } from "react-vis";
 import { averageBetweenMenAndWomen, quarter } from "../../dictionary/text";
 import {connect} from "react-redux";
+import {formatNumber} from "../../actions/actions";
 
 class PensionBarComponent extends Component {
 
@@ -37,7 +38,7 @@ class PensionBarComponent extends Component {
                                     return d;
                                 }
                                 }
-                                title={"eurot"}
+                                title={"€"}
 
                             />
                         }
@@ -52,7 +53,7 @@ class PensionBarComponent extends Component {
                                 {
                                     y: 2,
                                     x: this.props.menMean * 0.5,
-                                    label: this.props.menMean.toString(),
+                                    label: this.props.percentage ? this.props.menMean.toString() : formatNumber(parseInt(this.props.menMean.toString()), this.props.language),
                                     yOffset: -15,
                                 },
                             ]}
@@ -69,7 +70,7 @@ class PensionBarComponent extends Component {
                                 {
                                     y: 2,
                                     x: this.props.menMean * 0.5,
-                                    label: this.props.womenMean.toString(),
+                                    label: this.props.percentage ? this.props.womenMean.toString() :formatNumber(parseInt(this.props.womenMean.toString()), this.props.language),
                                     yOffset: 20,
                                 },
                             ]}
