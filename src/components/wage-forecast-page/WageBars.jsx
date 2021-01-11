@@ -221,7 +221,7 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p style={{whiteSpace: "nowrap"}}>{computarization[0]}</p>
+                <p style={{wordBreak: "break-word"}}>{computarization[0]}</p>
               </div>
               <div
                 className={
@@ -233,7 +233,7 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p style={{whiteSpace: "nowrap"}}>{computarization[1]}</p>
+                <p style={{wordBreak: "break-word"}}>{computarization[1]}</p>
               </div>
               <div
                 className={
@@ -245,7 +245,7 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p style={{whiteSpace: "nowrap"}}>{computarization[2]}</p>
+                <p style={{wordBreak: "break-word"}}>{computarization[2]}</p>
               </div>
             </div>
 
@@ -261,7 +261,7 @@ class WageBars extends Component {
                   this.itemColor(0, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p style={{whiteSpace: "nowrap"}}>{retirement[2]}</p>
+                <p style={{wordBreak: "break-word"}}>{retirement[2]}</p>
               </div>
               <div
                 className={
@@ -269,7 +269,7 @@ class WageBars extends Component {
                   this.itemColor(1, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p style={{whiteSpace: "nowrap"}}>{retirement[1]}</p>
+                <p style={{wordBreak: "break-word"}}>{retirement[1]}</p>
               </div>
               <div
                 className={
@@ -277,7 +277,7 @@ class WageBars extends Component {
                   this.itemColor(2, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p style={{whiteSpace: "nowrap"}}>{retirement[0]}</p>
+                <p style={{wordBreak: "break-word"}}>{retirement[0]}</p>
               </div>
             </div>
           </div>
