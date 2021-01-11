@@ -120,6 +120,23 @@ class SalaryCalculator extends Component {
     this.props.setWage(event);
   }
 
+  occupationToLowerCase(occupationRaw){
+    let occupation = occupationRaw + " ";
+    let lowerCaseOccupation = "";
+
+
+    for(let characterIndex = 0; characterIndex < occupation.length-1; characterIndex++){
+      let character = occupation.charAt(characterIndex)
+      let nextCharacter = occupation.charAt(characterIndex+1)
+      if(nextCharacter.toUpperCase() === nextCharacter)
+        lowerCaseOccupation += character
+      else
+        lowerCaseOccupation += character.toLowerCase()
+    }
+
+    return lowerCaseOccupation
+  }
+
   render() {
     return (
       <div className="graph-component graph-component-cards mb-5">
@@ -188,7 +205,7 @@ class SalaryCalculator extends Component {
                         <p className={"text-left"}>
                           {levelLabel[0]}&nbsp;
                         </p>
-                        <p className={"text-lowercase font-weight-bold text-left"}>{` ${this.props.generalName} `} &nbsp;
+                        <p className={"font-weight-bold text-left"}>{` ${this.occupationToLowerCase(this.props.generalName)} `} &nbsp;
                         </p>
                         <p className={"text-left"}>{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
                       </div>
