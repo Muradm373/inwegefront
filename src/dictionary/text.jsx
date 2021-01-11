@@ -449,11 +449,14 @@ const joinBodyEng = ["By subscribing, you agree to our privacy policy.","Под�
 const joinLinkEng = ["Read about data protection (privacy policy).", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
 const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
 const monthLabelEng = ["month", "месяц","kuus"]
-const wageGapTabInfoEng= ["","",
+const wageGapTabInfoEng= ["The difference between the average wages of males and females divided by the average wages of males. Covers full-time employees. 2.5% of the lowest and highest wages of both sexes are excluded.",
+  "Разница между средней заработной платой мужчин и женщин, поделенная на среднюю заработную плату мужчин. Исключаются работающие на полную ставку обоих полов 2,5% от самой низкой и самой высокой заработной платы.",
 "Meeste ja naiste keskmise palga vahe, mis on jagatud meeste keskmise palgaga. Täistööajaga töötajad, mõlema soo kõige madalamatest ja kõige kõrgematest palkadest 2,5% on välja jäetud."]
-const medianTabInfoEng = ["","",
+const medianTabInfoEng = ["A payment from which half the people earn more and half earn less. Covers full-time employees and 2.5% of the lowest and highest wages are excluded.",
+  "Сумма, больше и меньше которой зарабатывает одинаковое количество работающих. Работники, работающие на полную ставку, без учета 2,5% от самых низких и самых высоких заработных плат.",
 "Väljamakse, millest teenitakse võrdselt rohkem ja vähem. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
-const averageTabInfoEng = ["","",
+const averageTabInfoEng = ["Arithmetic mean, i.e. the sum of all wages divided by the number of wage earners. Covers full-time employees. 2.5% of the lowest and highest wages are excluded.",
+  "Среднее арифметическое, то есть сумма всех заработных плат, поделенная на количество работников, получающих заработную плату. Работающие на полную ставку, без учета 2,5% от самой низкой и самой высокой заработной платы.",
 "Aritmeetiline keskmine ehk kõigi palkade summa, mis on jagatud palgasaajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
 const noOccupationSelectedLabelEng = ["No county or profession selected.", "Не выбраны уезд или профессия.", "Maakonda ega ametiala ei ole valitud."]
 const yearLabelEng = ["Year", "", "Aasta"]
