@@ -131,7 +131,7 @@ class PensionGraph extends Component {
       return label +  " €";
   }
 
-  getLabel(type, difference, yearProp){
+  getLabel(type, difference, yearProp, language){
     let year = yearProp === "2020" ? pensionDifferenceLabel2020[0] : pensionDifferenceLabel2020[1] ;
 
     let label;
@@ -160,6 +160,14 @@ class PensionGraph extends Component {
       : pensionFractionLabel[4]) 
       +
       pensionFractionLabel[5]
+
+      if(language === "ru")
+        return pensionFractionLabel[0] +
+            Math.abs(difference)
+            +
+            (difference >= 0 ? pensionFractionLabel[1]
+                : pensionFractionLabel[2]) +
+            pensionFractionLabel[3]
     }
 
     if(type === "am_oma"){
@@ -171,6 +179,14 @@ class PensionGraph extends Component {
       : pensionFractionLabel[4]) 
       +
       pensionFractionLabel[5]
+
+      if(language === "ru")
+        return pensionFractionLabel[4] +
+            Math.abs(difference)
+            +
+            (difference >= 0 ? pensionFractionLabel[1]
+                : pensionFractionLabel[2]) +
+            pensionFractionLabel[3]
 
     }
 
@@ -190,7 +206,7 @@ class PensionGraph extends Component {
           womenColor={womenColor}
           occupation={""}
           label={
-          this.getLabel(this.props.type, parseInt(this.state.menMean) - parseInt(this.state.womenMean), this.props.year)
+          this.getLabel(this.props.type, parseInt(this.state.menMean) - parseInt(this.state.womenMean), this.props.year, this.props.language)
           }
         />
 

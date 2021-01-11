@@ -68,8 +68,8 @@ const genderEng = [
 ];
 const selectRegionEng = ["Select region", "Выберите регион", "Vali maakond"];
 const selectOccupationEng = [
-  "SELECT OCCUPATION",
-  "ВЫБЕРИТЕ ДОЛЖНОСТЬ",
+  "SEARCH",
+  "ПОИСК",
   "OTSI",
 ];
 const averageBetweenMenAndWomenEng = [
@@ -386,7 +386,7 @@ const ageTickLabelEng = [
 ]
 
 const propsLabelEng = [
-  "Proportion (%)",
+  "Share (%)",
   "Пропорции (%)",
   "Osatähtsus (%)"
 ]
@@ -441,7 +441,7 @@ let pensionDifferenceLabel2020Eng = [
 
 let pensionFractionLabelEng = [
   ["The ratio of pension to the last monthly wage for men is on average ", "The ratio of pension to average gross wages in the year of retirement for men is on average ", " percentage points ", "higher ", "lower ", "than for women.  "],
-  ["В 2020 году "," В 2071 году "," средняя заработная плата мужчин "," средняя пенсия мужчин "," выше "," ниже "," чем заработная плата женщин."," чем пенсия женщин."],
+  ["Доля пенсии мужчин от средней брутто-зарплаты в год выхода на пенсию в среднем на "," процента больше "," процента меньше ",", чем у женщин", "Доля пенсии мужчин от последней месячной зарплаты в среднем на "],
   ["Meeste pensioni osatähtsus viimasest kuupalgast on keskmiselt  ", "Meeste pensioni osatähtsus keskmisest palgast pensionile minemise aastal on keskmiselt ", " protsendipunkti ", "suurem ", "väiksem ", "kui naistel."]
 ]
 
