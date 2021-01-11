@@ -451,7 +451,7 @@ const pensionHeaderEng = [
   ["Разница в ", "в ежемесячной заработной плате мужчин и женщин со временем станет разницей в ", " в размере пенсий, но не исчезнет."],
   ["Meeste ja naiste kuupalkade erinevus on ", "mis ajapikku muutub pensionide erinevuseks ", ", aga ei kao. "]]
 
-const euroUnitsEng = ["euro", "евро", "eurot"];
+const euroUnitsEng = ["euros", "евро", "eurot"];
 
 const columnchartLabelEng = ['Average gross wages', ' Средняя месячная брутто-зарплата', 'Keskmine brutokuupalk'];
 

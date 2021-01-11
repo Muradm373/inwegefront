@@ -182,7 +182,12 @@ class WageBars extends Component {
                 style={{ width: "15rem" }}
             >
               <div className="p-2 carditem">
-                <p className={"h4-stat"}>{`${yearLabel} 2019`}</p><p>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
+                <p className={"h4-stat"}>{`${yearLabel} 2019`}</p>
+                {this.props.language === "en" ?
+                    <p>{`${averageWageLabel} (€${this.formatNumber(1404)})`}</p> :
+                  <p>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
+                }
+
               </div>
               {this.getColor(this.state.payload.wageCategory19Min)}
             </div>
@@ -193,7 +198,11 @@ class WageBars extends Component {
               style={{ width: "15rem" }}
             >
               <div className="p-2 h-3 carditem">
-                <p className={"h4-stat"}>{`${yearLabel} 2030`}</p><p>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
+                <p className={"h4-stat"}>{`${yearLabel} 2030`}</p>
+                {this.props.language === "en" ?
+                    <p>{`${averageWageLabel} (€${this.formatNumber(2315)})`}</p> :
+                    <p>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
+                }
               </div>
               {this.getColor(this.state.payload.wageCategory30Min)}
             </div>
