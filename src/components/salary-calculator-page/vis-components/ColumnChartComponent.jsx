@@ -12,7 +12,7 @@ import {
   occupationLabel,
   monthLabel,
   columnchartLabel, quarter,
-  columnChartOccupationLabel, counties, source, overall
+  columnChartOccupationLabel, counties, source, overall, downloadJpeg, downloadPng
 } from "../../../dictionary/text";
 import {connect} from "react-redux";
 import {displayLegends} from "./Graph";
@@ -389,18 +389,18 @@ class ColumnChartComponent extends Component {
                 onClick={() => {
                   this.promiseState().then(()=>exportComponentAsPNG(this.componentRef))
                 }}
-                title="Download PNG"
+                title={downloadPng}
             >
-              Download PNG
+              {downloadPng}
             </div>
             <div
                 className="apexcharts-menu-item exportPDF"
-                title="Download JPEG"
+                title={downloadJpeg}
                 onClick={() => {
                   this.promiseState().then(()=>exportComponentAsJPEG(this.componentRef))
                 }}
             >
-              Download JPEG
+              {downloadJpeg}
             </div>
           </div>
         </div>

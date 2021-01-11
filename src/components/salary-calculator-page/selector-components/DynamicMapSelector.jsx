@@ -6,10 +6,11 @@ import {
   quarter,
   noDataInfo,
   source,
-  counties, averageTabInfo,medianTabInfo,wageGapInfoTab, genderLabel,
+  counties, averageTabInfo, medianTabInfo, wageGapInfoTab, genderLabel,
   genderWageGap,
   averageWage,
-  medianWage,} from "../../../dictionary/text";
+  medianWage, downloadPng, downloadJpeg,
+} from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
 import * as htmlToImage from 'html-to-image';
 import downloadjs from "downloadjs";
@@ -763,13 +764,13 @@ class DynamicMapSelector extends Component {
                        downloadjs(dataUrl, "map.png");
                     });
                 }}
-                title="Download PNG"
+                title={downloadPng}
               >
-                Download PNG
+                {downloadPng}
               </div>
               <div
                 className="apexcharts-menu-item exportPDF"
-                title="Download JPEG"
+                title={downloadJpeg}
                 onClick={() => {
                   htmlToImage.toJpeg(document.getElementById("composable-map"), {
                       quality: 0.95,
@@ -780,7 +781,7 @@ class DynamicMapSelector extends Component {
                     });
                 }}
               >
-                Download JPEG
+                {downloadJpeg}
               </div>
             </div>
           </div>

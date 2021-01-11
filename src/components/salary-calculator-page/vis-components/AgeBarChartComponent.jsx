@@ -1,5 +1,14 @@
 import React, { Component } from "react";
-import {API_URL, menColor, monthLabel, propsLabel, quarter, source, womenColor} from "../../../dictionary/text";
+import {
+  API_URL,
+  downloadJpeg, downloadPng,
+  menColor,
+  monthLabel,
+  propsLabel,
+  quarter,
+  source,
+  womenColor
+} from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
@@ -276,18 +285,18 @@ class AgeBarChartComponent extends Component {
                 onClick={() => {
                   this.promiseState().then(()=>exportComponentAsPNG(this.componentRef))
                 }}
-                title="Download PNG"
+                title={downloadPng}
             >
-              Download PNG
+              {downloadPng}
             </div>
             <div
                 className="apexcharts-menu-item exportPDF"
-                title="Download JPEG"
+                title={downloadJpeg}
                 onClick={() => {
                   this.promiseState().then(()=>exportComponentAsJPEG(this.componentRef))
                 }}
             >
-              Download JPEG
+              {downloadJpeg}
             </div>
           </div>
 

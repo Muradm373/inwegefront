@@ -421,6 +421,18 @@ const  checkMyPlanLabelEng = [
   "Pensionikalkulaator"
 ]
 
+const downloadJpegEng = [
+  "Download JPEG",
+  "Скачать JPEG",
+  "Laadi alla JPEG"
+]
+
+const downloadPngEng = [
+  "Download PNG",
+  "Скачать PNG",
+  "Laadi alla PNG"
+]
+
 let pensionDifferenceLabel2020Eng = [
   ["In 2020, ","In 2071, ", "the average monthly wages of men are ", "the average pension of men is ", " higher ", " lower ", "than the average wages of women.", "than the average pension of women."],
   ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин ", "средняя пенсия мужчин ", " выше ", " ниже ", "чем у женщин.", "чем пенсия у женщин."],
@@ -577,7 +589,8 @@ export default function changeLanguage(language) {
   occupationDescriptionLabel = occupationDescriptionLabelEng[i];
   euroUnits = euroUnitsEng[i];
   Livelihood =  LivelihoodEng[i];
-
+  downloadJpeg = downloadJpegEng[i];
+  downloadPng = downloadPngEng[i];
 }
 
 export let wageGapInfoTab = wageGapTabInfoEng[0];
@@ -685,6 +698,8 @@ export let averageWageLabel = averageWageLabelEng[0];
 export let occupationDescriptionLabel = occupationDescriptionLabelEng[0];
 export let euroUnits = euroUnitsEng[0];
 export let Livelihood = LivelihoodEng[0];
+export let downloadJpeg = downloadJpegEng[0];
+export let downloadPng = downloadPngEng[0];
 
 export let counties = {"Valga maakond": "Валгамаа",
   "Viljandi maakond": "Вильяндимаа",
