@@ -237,7 +237,7 @@ function Graph(props) {
                         : props.differenceLabel[4]) +
                     " " +
                     props.differenceLabel[7]
-                    : ""}
+                    : ""}.
             </p>
         </div>
 

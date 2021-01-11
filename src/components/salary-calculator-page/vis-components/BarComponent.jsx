@@ -95,7 +95,7 @@ class BarComponent extends Component {
             labelAnchorY="middleAlignment"
           />
         </FlexibleWidthXYPlot>
-        <p className={"body-stat ml-3"}>{this.props.label}</p>
+        <p className={"body-stat ml-3"}>{this.props.label}.</p>
       </div>
         </div>
     );

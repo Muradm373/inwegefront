@@ -23,7 +23,7 @@ const differenceEng = [
     " women",
     " men",
     "You earn",
-    " on average.",
+    " on average",
   ],
   [
     "Мужчины зарабатывают на ",
@@ -33,7 +33,7 @@ const differenceEng = [
     " женщины",
     " мужчины",
     "Вы зарабатываете на",
-    " в среднем.",
+    " в среднем",
   ],
   [
     "Mehed teenivad ",
@@ -473,7 +473,7 @@ const medianTabInfoEng = ["A payment from which half the people earn more and ha
 const averageTabInfoEng = ["Arithmetic mean, i.e. the sum of all wages divided by the number of wage earners. Covers full-time employees. 2.5% of the lowest and highest wages are excluded.",
   "Среднее арифметическое, то есть сумма всех заработных плат, поделенная на количество работников, получающих заработную плату. Работающие на полную ставку, без учета 2,5% от самой низкой и самой высокой заработной платы.",
 "Aritmeetiline keskmine ehk kõigi palkade summa, mis on jagatud palgasaajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest."]
-const noOccupationSelectedLabelEng = ["No county or profession selected.", "Не выбраны уезд или профессия.", "Maakonda ega ametiala ei ole valitud."]
+const noOccupationSelectedLabelEng = ["No county or profession selected.", "Не выбраны уезд или профессия", "Maakonda ega ametiala ei ole valitud."]
 const yearLabelEng = ["Year", "", "Aasta"]
 const occupationDescriptionLabelEng = ["Occupation description", "Описание профессии", "Ametikirjeldus"]
 const averageWageLabelEng = ["Average wages", "Средняя зарплата", "Keskmine palk"]
