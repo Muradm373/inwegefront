@@ -125,7 +125,7 @@ const occupationSelectorPlaceholderEng = [
   "Выберите уезд на карте",
   "Esmalt tuleb kaardilt valida maakond",
 ];
-const overallEng = ["Overall in Estonia", "B Эстонии", "Kogu Eesti"];
+const overallEng = ["Overall in Estonia", "По Эстонии", "Kogu Eesti"];
 
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
@@ -460,7 +460,7 @@ const workingMenEng = ["Male employees", "работающих мужчин", "t
 const joinEng = ["Subscribe", "Присоединиться", "Liitu"];
 const joinBodyEng = ["By subscribing, you agree to our privacy policy.","Подписываясь на рассылку, вы соглашаетесь с условиями и политикой конфиденциальности.","Liitudes uudiskirjaga, nõustud meie privaatsustingimustega."]
 const joinLinkEng = ["Read about data protection (privacy policy).", "Наша политика конфиденциальности", "Statistikaameti privaatsustingimused"]
-const sourceEng = ["Source: Statistics Estonia","Источник: Комитет статистики","Allikas: statistikaamet"]
+const sourceEng = ["Source: Statistics Estonia","Источник: Департамент статистики","Allikas: statistikaamet"]
 const monthLabelEng = ["month", "в месяц","kuus"]
 const wageGapTabInfoEng= ["The difference between the average wages of males and females divided by the average wages of males. Covers full-time employees. 2.5% of the lowest and highest wages of both sexes are excluded.",
   "Разница между средней заработной платой мужчин и женщин, поделенная на среднюю заработную плату мужчин. Исключаются работающие на полную ставку обоих полов 2,5% от самой низкой и самой высокой заработной платы.",
