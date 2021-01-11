@@ -1,4 +1,5 @@
 import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsTextEng,LivelihoodEng } from "./textMethodology";
+import React from "react";
 
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const menColor = "#3F1A84";
@@ -178,36 +179,36 @@ const columnChartOccupationLabelEng = [
 ];
 const computarizationEng = [
   [
-    "High risk of computerisation",
-    "Medium risk of computerisation",
-    "Low risk of computerisation",
+    <p>High risk of<wbr/> computerisation</p>,
+    <p>Medium risk of<wbr/> computerisation</p>,
+    <p>Low risk of<wbr/> computerisation</p>,
   ],
   [
-    "Высокий риск компьютеризации",
-    "Средний риск компьютеризации",
-    "Низкий риск компьютеризации",
+    <p>Высокий риск<wbr/> компьютеризации</p>,
+    <p>Средний риск<wbr/> компьютеризации</p>,
+    <p>Низкий риск <wbr/>компьютеризации</p>,
   ],
   [
-    "Suur tõenäosus, et inimese asendab arvuti",
-    "Keskmine tõenäosus, et inimese asendab arvuti",
-    "Väike tõenäosus, et inimese asendab arvuti",
+    <p>Suur tõenäosus, <wbr/>et inimese asendab arvuti</p>,
+    <p>Keskmine tõenäosus,<wbr/> et inimese asendab arvuti</p>,
+      <p>Väike tõenäosus, <wbr/>et inimese asendab arvuti</p>,
   ],
 ];
 const retirementEng = [
   [
-    "High age-related replacement need",
-    "Medium age-related replacement need",
-    "Low age-related replacement need",
+      <p>High age-related<wbr/> replacement need</p>,
+      <p>Medium age-related<wbr/> replacement need</p>,
+      <p>Low age-related<wbr/> replacement need"</p>,
   ],
   [
-    "Высокая потребность в замене из-за выхода на пенсию",
-    "Средняя потребность в замене из-за выхода на пенсию",
-    "Низкая потребность в замене из-за выхода на пенсию",
+      <p>Высокая потребность в<wbr/> замене из-за выхода на пенсию</p>,
+      <p>Средняя потребность в<wbr/> замене из-за выхода на пенсию</p>,
+      <p>Низкая потребность в<wbr/> замене из-за выхода на пенсию</p>,
   ],
   [
-    "Suur asendusvajadus vanuse tõttu",
-    "Keskmine asendusvajadus vanuse tõttu",
-    "Väike asendusvajadus vanuse tõttu",
+    <p>Suur asendusvajadus<wbr/> vanuse tõttu</p>,
+    <p>Keskmine asendusvajadus<wbr/> vanuse tõttu</p>,
+    <p>Väike asendusvajadus <wbr/>vanuse tõttu</p>,
   ],
 ];
 const pensionLabelEng = [

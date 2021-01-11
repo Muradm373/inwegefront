@@ -213,7 +213,7 @@ class WageBars extends Component {
             >
               <div
                 className={
-                  "carditem p-5 " +
+                  "carditem p-3 " +
                   this.itemColor(
                     2,
                     this.state.computerizationRisk,
@@ -221,11 +221,11 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p>{computarization[0]}</p>
+                <p style={{whiteSpace: "nowrap"}}>{computarization[0]}</p>
               </div>
               <div
                 className={
-                  "carditem p-5 " +
+                  "carditem p-3 " +
                   this.itemColor(
                     1,
                     this.state.computerizationRisk,
@@ -233,11 +233,11 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p>{computarization[1]}</p>
+                <p style={{whiteSpace: "nowrap"}}>{computarization[1]}</p>
               </div>
               <div
                 className={
-                  "carditem p-5 " +
+                  "carditem p-3 " +
                   this.itemColor(
                     0,
                     this.state.computerizationRisk,
@@ -245,7 +245,7 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p>{computarization[2]}</p>
+                <p style={{whiteSpace: "nowrap"}}>{computarization[2]}</p>
               </div>
             </div>
 
@@ -257,27 +257,27 @@ class WageBars extends Component {
             >
               <div
                 className={
-                  "carditem p-5 " +
+                  "carditem p-3 " +
                   this.itemColor(0, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p>{retirement[2]}</p>
+                <p style={{whiteSpace: "nowrap"}}>{retirement[2]}</p>
               </div>
               <div
                 className={
-                  "carditem p-5 " +
+                  "carditem p-3 " +
                   this.itemColor(1, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p>{retirement[1]}</p>
+                <p style={{whiteSpace: "nowrap"}}>{retirement[1]}</p>
               </div>
               <div
                 className={
-                  "carditem p-5 " +
+                  "carditem p-3 " +
                   this.itemColor(2, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p>{retirement[0]}</p>
+                <p style={{whiteSpace: "nowrap"}}>{retirement[0]}</p>
               </div>
             </div>
           </div>
