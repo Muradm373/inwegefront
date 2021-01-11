@@ -484,6 +484,9 @@ font {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
+    .age-bar-mobile{
+        margin-top: 100px
+    }
     .graph-component-cards {
         display: flex;
         flex-direction: column;
