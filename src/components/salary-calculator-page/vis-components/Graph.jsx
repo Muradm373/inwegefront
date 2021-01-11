@@ -14,7 +14,7 @@ import {
     noOccupationSelectedLabel,
     decileLabel
 } from "../../../dictionary/text";
-import {formatNumber} from "../../../actions/actions";
+import {formatNumber, setOccupationData} from "../../../actions/actions";
 import { fetchData } from "../entityFunc";
 import BarComponent from "./BarComponent";
 import { useMediaQuery } from 'react-responsive';
@@ -80,6 +80,7 @@ function Graph(props) {
   let women = data.women;
   let menMean = data.menMean;
   let womenMean = data.womenMean;
+  props.setOccupationData(menMean, womenMean)
   let myWage = props.myWage;
   let mean =
     props.myGender === genderLabel[0]
@@ -259,6 +260,14 @@ const mapStateToProps = (state) => {
     };
 };
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setOccupationData: (menMean, womenMean) => {
+            dispatch(setOccupationData(menMean, womenMean));
+        },
+    };
+};
 
 
-export default connect(mapStateToProps)(Graph);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Graph);

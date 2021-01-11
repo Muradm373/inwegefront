@@ -9,7 +9,7 @@ import {
 import { averageBetweenMenAndWomen, quarter } from "../../../dictionary/text";
 import {connect} from "react-redux";
 import {translateCounty} from "../entityFunc";
-import {formatNumber} from "../../../actions/actions";
+import {formatNumber, getOccupations, getSalaryEntities, setGender, setWage} from "../../../actions/actions";
 
 class BarComponent extends Component {
 
@@ -108,5 +108,7 @@ const mapStateToProps = (state) => {
     ...state
   };
 }
+
+
 
 export default connect(mapStateToProps)(BarComponent);

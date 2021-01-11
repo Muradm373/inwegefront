@@ -23,6 +23,8 @@ const initState = {
     pensionStartDate: "2030",
     pensionEndDate: "2071"
   },
+  menGraphMean:0,
+  womenGraphMean: 0
 };
 
 const rootReduce = (state = initState, action) => {
@@ -53,6 +55,10 @@ const rootReduce = (state = initState, action) => {
   }
   if (action.type === "SET_LANGUAGE") {
     return { ...state, language: action.lang}
+  }
+
+  if (action.type === "SET_MEANS") {
+    return { ...state, menGraphMean: action.menMean,womenGraphMean: action.womenMean}
   }
 
   return { ...state };

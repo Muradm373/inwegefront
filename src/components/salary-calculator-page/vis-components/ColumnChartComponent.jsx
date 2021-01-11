@@ -224,69 +224,93 @@ class ColumnChartComponent extends Component {
   }
 
   getMean(region, isco, code, type) {
-    let url =
-      `${API_URL}/jobs?region=` +
-      region +
-      "&isco=" +
-      isco +
-      "&code=" +
-      code +
-      "&lang=" +
-      lng;
+    if(region === overall){
+      this.setState({
+        series: [
+          {
+            name: genderLabel[0],
+            data: [
+              this.props.menGraphMean,
+              this.state.menMeanRegion,
+              this.state.menMean,
+            ],
+          },
+          {
+            name: genderLabel[1],
+            data: [
+              this.props.womenGraphMean,
+              this.state.womenMeanRegion,
+              this.state.womenMean,
+            ],
+          },
+        ],
+      });
+    }else {
+      let url =
+          `${API_URL}/jobs?region=` +
+          region +
+          "&isco=" +
+          isco +
+          "&code=" +
+          code +
+          "&lang=" +
+          lng;
 
-    if (
-      isco !== "" &&
-      !(isco === this.state.isco &&
-      region === this.state.region)
-    ) {
-      this.setState({code: code,
-        isco: isco,
-        region: region})
-      axios
-        .get(url)
-        .then((response) => response.data)
-        .then((data) => {
-          let entities = data.payload.salaryEntities;
-          let jobEntity = data.payload.jobEntity;
-          if (jobEntity !== undefined && entities[0] !== undefined) {
-            if (entities[0].region !== "All") {
-              let menMean = 0;
-              let womenMean = 0;
+      if (
+          isco !== "" &&
+          !(isco === this.state.isco &&
+              region === this.state.region)
+      ) {
+        this.setState({
+          code: code,
+          isco: isco,
+          region: region
+        })
+        axios
+            .get(url)
+            .then((response) => response.data)
+            .then((data) => {
+              let entities = data.payload.salaryEntities;
+              let jobEntity = data.payload.jobEntity;
+              if (jobEntity !== undefined && entities[0] !== undefined) {
+                if (entities[0].region !== "All") {
+                  let menMean = 0;
+                  let womenMean = 0;
 
-              if (entities[0] !== undefined) {
-                if (entities[0].female === "1") womenMean = entities[0].mean;
-                else menMean = entities[0].mean;
-              }
-              if (entities[1] !== undefined) {
-                if (entities[1].female === "1") womenMean = entities[1].mean;
-                else menMean = entities[1].mean;
-              }
-
-              this.setState({
-                series: [
-                  {
-                    name: genderLabel[0],
-                    data: [
-                      menMean,
-                      this.state.menMeanRegion,
-                      this.state.menMean,
+                  if (entities[0] !== undefined) {
+                    if (entities[0].female === "1") womenMean = entities[0].mean;
+                    else menMean = entities[0].mean;
+                  }
+                  if (entities[1] !== undefined) {
+                    if (entities[1].female === "1") womenMean = entities[1].mean;
+                    else menMean = entities[1].mean;
+                  }
+                  this.setState({
+                    series: [
+                      {
+                        name: genderLabel[0],
+                        data: [
+                          menMean,
+                          this.state.menMeanRegion,
+                          this.state.menMean,
+                        ],
+                      },
+                      {
+                        name: genderLabel[1],
+                        data: [
+                          womenMean,
+                          this.state.womenMeanRegion,
+                          this.state.womenMean,
+                        ],
+                      },
                     ],
-                  },
-                  {
-                    name: genderLabel[1],
-                    data: [
-                      womenMean,
-                      this.state.womenMeanRegion,
-                      this.state.womenMean,
-                    ],
-                  },
-                ],
-                menMeanOccupation: menMean,
-                womenMeanOccupation: womenMean,
-              });
-            }
-          }
-        });
+                    menMeanOccupation: menMean,
+                    womenMeanOccupation: womenMean,
+                  });
+                }
+              }
+            });
+      }
     }
   }
 

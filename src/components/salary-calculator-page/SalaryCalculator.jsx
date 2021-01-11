@@ -29,6 +29,7 @@ import {
   setGender,
   setWage,
   getSalaryEntities,
+  occupationToLowerCase
 } from "../../actions/actions";
 import {translateCounty} from "./entityFunc";
 const lang = "&lang=";
@@ -120,22 +121,6 @@ class SalaryCalculator extends Component {
     this.props.setWage(event);
   }
 
-  occupationToLowerCase(occupationRaw){
-    let occupation = occupationRaw + " ";
-    let lowerCaseOccupation = "";
-
-
-    for(let characterIndex = 0; characterIndex < occupation.length-1; characterIndex++){
-      let character = occupation.charAt(characterIndex)
-      let nextCharacter = occupation.charAt(characterIndex+1)
-      if(nextCharacter.toUpperCase() === nextCharacter)
-        lowerCaseOccupation += character
-      else
-        lowerCaseOccupation += character.toLowerCase()
-    }
-
-    return lowerCaseOccupation
-  }
 
   render() {
     return (
@@ -205,7 +190,7 @@ class SalaryCalculator extends Component {
                         <p className={"text-left"}>
                           {levelLabel[0]}&nbsp;
                         </p>
-                        <p className={"font-weight-bold text-left"}>{` ${this.occupationToLowerCase(this.props.generalName)} `} &nbsp;
+                        <p className={"font-weight-bold text-left"}>{` ${occupationToLowerCase(this.props.generalName)} `} &nbsp;
                         </p>
                         <p className={"text-left"}>{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
                       </div>

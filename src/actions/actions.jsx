@@ -91,6 +91,9 @@ export const setLanguage = (lang) =>{
   return ({ type: "SET_LANGUAGE", lang:lang });
 }
 
+export const setOccupationData = (menMean,womenMean) =>{
+  return ({ type: "SET_MEANS", menMean:menMean, womenMean:womenMean });
+}
 const parseSalaryEntities = (data, type, dispatch) => {
   let entities;
   let code = "";
@@ -152,4 +155,21 @@ export const formatNumber=(numberInt, language)=>{
     return formattedNumber;
   }else
     return numberInt
+}
+
+export const occupationToLowerCase = (occupationRaw) =>{
+  let occupation = occupationRaw + " ";
+  let lowerCaseOccupation = "";
+
+
+  for(let characterIndex = 0; characterIndex < occupation.length-1; characterIndex++){
+    let character = occupation.charAt(characterIndex)
+    let nextCharacter = occupation.charAt(characterIndex+1)
+    if(nextCharacter.toUpperCase() === nextCharacter)
+      lowerCaseOccupation += character
+    else
+      lowerCaseOccupation += character.toLowerCase()
+  }
+
+  return lowerCaseOccupation
 }

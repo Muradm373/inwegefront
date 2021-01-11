@@ -13,6 +13,7 @@ import axios from "axios";
 import ReactApexChart from "react-apexcharts";
 import {connect} from "react-redux";
 import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image';
+import {occupationToLowerCase} from "../../../actions/actions";
 
 
 class AgeBarChartComponent extends Component {
@@ -66,6 +67,13 @@ class AgeBarChartComponent extends Component {
             show: true,
             color: '#78909C',
             height: 6,
+          },
+          labels: {
+            formatter: function (val) {
+              let upd = val.toString().replace("-", "–");
+
+              return upd;
+            }
           },
         },
         yaxis: {
@@ -139,14 +147,14 @@ class AgeBarChartComponent extends Component {
               return val + "%";
             },
           },
-          custom: this.getOccupation
+          custom: (data) => this.getOccupation(data, props.language)
         },
       }
     })
     this.resize();
   }
 
-  getOccupation(data){
+  getOccupation(data, language){
       return (
           `<div class="arrow_box text-left"> 
                   <p class="arrow-box-p">
@@ -155,8 +163,9 @@ class AgeBarChartComponent extends Component {
                      <br/>
                      <div class="row ml-3" >
                   <div class="circle-legend mt-2" style="background-color: ${"#FFBC45"}"></div>
-                  <p class="ml-1 text-left h6-stat-white mt-1">
-                    ${this.splitWords(` ${this.state.occupation}`, 25)} 
+                  <p class="ml-1 text-left h6-stat-white mt-1"> 
+                                       
+                    ${this.splitWords(` ${(language === "es" ? "Kokku ametialal — " + occupationToLowerCase(this.state.occupation) : this.state.occupation)}`, 25)} 
                         ${this.props.language==="en" ? data.series[data.seriesIndex][data.dataPointIndex].toString():
               data.series[data.seriesIndex][data.dataPointIndex].toString().replace('.', ",")}%
                   </p>
