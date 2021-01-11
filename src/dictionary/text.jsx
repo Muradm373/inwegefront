@@ -131,12 +131,12 @@ const overallEng = ["Overall in Estonia", "По Эстонии", "Kogu Eesti"];
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
   "Fill in the fields to compare your wage to average gross wages on the distributions graph.",
-  "Чтобы увидеть разницу между вашей и средней брутто-заработной платой, заполнитe поля ниже.",
+  "Чтобы увидеть разницу между вашей и cредней брутто-зарплатой, заполнитe поля ниже.",
   "Täida lahtrid, et jaotuste joonisel võrrelda oma palka keskmise brutopalgaga.",
 ];
 const sideParagraph2Eng = [
-  ["Select county on the map.", "Select occupation"],
-  ["Выберите уезд на карте.", "Выберите профессию"],
+  ["Select county on the map.", "Select occupation."],
+  ["Выберите уезд на карте", "Выберите профессию"],
   ["Vali kaardil maakond.", "Vali amet."],
 ];
 const noDataLabelEng = [
