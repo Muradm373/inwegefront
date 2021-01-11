@@ -74,6 +74,9 @@ class ColumnChartComponent extends Component {
         },
         yaxis: {
           labels: {
+            formatter: function (value) {
+              return formatNumber(value, props.language)
+            }
           },
           tickAmount: 5
         },

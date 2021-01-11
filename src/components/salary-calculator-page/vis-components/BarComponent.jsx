@@ -9,6 +9,7 @@ import {
 import { averageBetweenMenAndWomen, quarter } from "../../../dictionary/text";
 import {connect} from "react-redux";
 import {translateCounty} from "../entityFunc";
+import {formatNumber} from "../../../actions/actions";
 
 class BarComponent extends Component {
 
@@ -70,7 +71,7 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: this.props.menMean.toString(),
+                label: formatNumber(this.props.menMean.toString(), this.props.language),
                 yOffset: -15,
               },
             ]}
@@ -87,7 +88,7 @@ class BarComponent extends Component {
               {
                 y: 2,
                 x: this.props.menMean * 0.5,
-                label: this.props.womenMean.toString(),
+                label: formatNumber(this.props.womenMean.toString(), this.props.language),
                 yOffset: 20,
               },
             ]}

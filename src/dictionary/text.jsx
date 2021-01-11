@@ -73,7 +73,7 @@ const selectOccupationEng = [
   "OTSI",
 ];
 const averageBetweenMenAndWomenEng = [
-  "Average wages of males and females working full time",
+  "Average wages of males and females working full-time",
   "Средняя зарплата у мужчин и женщин, работающих на полную занятость",
   "Täisajaga töötavate meeste ja naiste keskmine palk",
 ];
