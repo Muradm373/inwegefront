@@ -390,7 +390,7 @@ class Main extends Component {
                 >
                   <a onClick={this.changeMenu} href={"/"} rel="home" className="site-logo">
                     <img
-                      src={require("./resources/logo.svg")}
+                      src={this.props.language === "en" ?  require("./resources/logo-en.svg"): require("./resources/logo.svg")}
                       alt="Home" className={"ml-5"}
                       style={{
                         display: "block",
@@ -628,6 +628,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     dates: state.dates,
+    language: state.language
   };
 };
 
