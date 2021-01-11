@@ -435,7 +435,7 @@ const downloadPngEng = [
 
 let pensionDifferenceLabel2020Eng = [
   ["In 2020, ","In 2071, ", "the average monthly wages of men are ", "the average pension of men is ", " higher ", " lower ", "than the average wages of women.", "than the average pension of women."],
-  ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин ", "средняя пенсия мужчин ", " выше ", " ниже ", "чем у женщин.", "чем пенсия у женщин."],
+  ["В 2020 году ", "В 2071 году ", "средняя заработная плата мужчин на ", "средняя пенсия мужчин на ", " выше", " ниже", ", чем у женщин.", ", чем пенсия у женщин."],
   ["Aastal 2020 ", "Aastal 2071 ", "on meeste kuupalk keskmiselt ", "on meeste pension keskmiselt ", " suurem ", " väiksem ", "kui naiste kuupalk.", "kui naiste pension."]
 ]
 

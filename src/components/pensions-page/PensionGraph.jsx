@@ -148,7 +148,6 @@ class PensionGraph extends Component {
        this.getAmountFormatBasedOnLanguage(difference, this.props.language) +
       (difference >= 0 ? pensionDifferenceLabel2020[4]
       : pensionDifferenceLabel2020[5]) +
-      " " +
       pensionDifferenceLabel2020[6];
     }
     if(type === "am_kesk"){
