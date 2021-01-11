@@ -393,6 +393,8 @@ class DynamicMapSelector extends Component {
 
       default:
         mapContentType = genderWageGap;
+        if(this.props.language === "en")
+          mapContentType += " by county"
         break;
     }
 
