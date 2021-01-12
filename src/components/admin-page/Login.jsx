@@ -1,7 +1,7 @@
 import axios from "axios";
 import { sha256 } from 'js-sha256';
 import React, { Component } from "react";
-import { API_URL } from "../../dictionary/text";
+import { API_URL, seed } from "../../dictionary/text";
 
 class Login extends Component {
   state = {
@@ -9,7 +9,7 @@ class Login extends Component {
     password: "",
     userToken: "",
     incorrect: false,
-    seed: "UserPassword"
+    seed: seed
   };
   constructor() {
     super();

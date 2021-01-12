@@ -3,6 +3,7 @@ import { methodologyEng, wageDifferencesTextEng,wageForecastTextEng,PensionsText
 export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const menColor = "#3F1A84";
 export const womenColor = "#F58FA9";
+export const seed = "UserPassword";
 const averageEng = [
   "Average in Estonia for ",
   "Среднее по Эстонии для ",
