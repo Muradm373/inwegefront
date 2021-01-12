@@ -157,6 +157,8 @@ class ColumnChartComponent extends Component {
             counties[countySelected])
       case "en":
         return county
+      default:
+        return county
     }
   }
 

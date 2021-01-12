@@ -12,6 +12,17 @@ import {formatNumber} from "../../actions/actions";
 
 class PensionBarComponent extends Component {
 
+    formatPensionBarLabel(data){
+        if(this.props.percentage) {
+            if(this.props.language !== "en")
+                return data.replace(".", ",")
+            else
+                return data
+        }
+        else
+            return formatNumber(parseInt(data), this.props.language)
+    }
+
     render() {
         return (
             <div>
@@ -53,7 +64,7 @@ class PensionBarComponent extends Component {
                                 {
                                     y: 2,
                                     x: this.props.menMean * 0.5,
-                                    label: this.props.percentage ? this.props.menMean.toString() : formatNumber(parseInt(this.props.menMean.toString()), this.props.language),
+                                    label: this.formatPensionBarLabel(this.props.menMean.toString()),
                                     yOffset: -15,
                                 },
                             ]}
@@ -70,7 +81,7 @@ class PensionBarComponent extends Component {
                                 {
                                     y: 2,
                                     x: this.props.menMean * 0.5,
-                                    label: this.props.percentage ? this.props.womenMean.toString() :formatNumber(parseInt(this.props.womenMean.toString()), this.props.language),
+                                    label: this.formatPensionBarLabel(this.props.womenMean.toString()),
                                     yOffset: 20,
                                 },
                             ]}

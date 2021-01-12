@@ -3,7 +3,7 @@ import OccupationSelector from "../salary-calculator-page/selector-components/Oc
 import WageBars from "./WageBars";
 import { getOccupations } from "../../actions/actions";
 import { connect } from "react-redux";
-import {wageForecastText, wageForecastOccupationSelectorPlaceholder} from "../../dictionary/text"
+import {wageForecastText} from "../../dictionary/text"
 
 class WageForecast extends Component {
   constructor(props) {

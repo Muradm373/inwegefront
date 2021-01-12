@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import {
   AreaSeries,
   FlexibleWidthXYPlot,
-  Highlight,
   HorizontalGridLines,
   VerticalGridLines,
   XAxis,
@@ -150,7 +149,7 @@ class PensionGraph extends Component {
       : pensionDifferenceLabel2020[5]) +
       pensionDifferenceLabel2020[6];
     }
-    if(type === "am_kesk"){
+    if(type === "am_oma"){
       label = pensionFractionLabel[0] +
       Math.abs(difference) +
       pensionFractionLabel[2]
@@ -169,7 +168,7 @@ class PensionGraph extends Component {
             pensionFractionLabel[3]
     }
 
-    if(type === "am_oma"){
+    if(type === "am_kesk"){
       label = pensionFractionLabel[1] +
       Math.abs(difference) +
       pensionFractionLabel[2]
@@ -251,8 +250,6 @@ class PensionGraph extends Component {
             strokeWidth="0"
             stroke="transparent"
           />
-
-          <Highlight onBrushEnd="" highlightY="false" highlightX="false" />
 
         </FlexibleWidthXYPlot>
         <div className="pension-graph-xaxis-label">

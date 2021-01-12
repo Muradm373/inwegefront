@@ -84,5 +84,7 @@ export function translateCounty(county, language){
       return counties[county]
     case "en":
       return county.replace("maakond", "county")
+    default:
+      return county;
   }
 }

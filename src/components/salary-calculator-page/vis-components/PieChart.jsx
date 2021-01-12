@@ -58,11 +58,11 @@ class PieChartComponent extends Component {
 
     if (isco !== "")
       url =
-        `${API_URL}/entities/count-worker?region=` + region + "&isco=" + isco;
+        `${API_URL}/entities/count-worker?region=${region}&isco=${isco}`;
     else url = `${API_URL}/entities/count-worker?region=` + region;
 
     if(region === overall){
-     url = `${API_URL}/entities/count-worker?region=all` + "&isco=" + isco;
+     url = `${API_URL}/entities/count-worker?region=all&isco=${isco}`;
     }
 
     axios

@@ -1,8 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import {
-  AreaSeries, FlexibleWidthXYPlot,
-  Highlight, Hint, HorizontalGridLines,
+  AreaSeries, FlexibleWidthXYPlot, Hint, HorizontalGridLines,
   LineSeries, VerticalGridLines, XAxis,
   YAxis
 } from "react-vis";
@@ -210,16 +209,7 @@ function Graph(props) {
         :
         <></>}
 
-        {/*<Hint*/}
-        {/*  style={display(myWage, mean, men)}*/}
-        {/*  value={{*/}
-        {/*    x: parseInt(myWage)/2 + parseInt(mean)/ 2,*/}
-        {/*    y: 3,*/}
-        {/*  }}*/}
-        {/*>*/}
 
-        {/*</Hint>*/}
-        <Highlight highlightY="false" highlightX="false" />
 
       </FlexibleWidthXYPlot>
         <div style={display(myWage, mean, men)}>

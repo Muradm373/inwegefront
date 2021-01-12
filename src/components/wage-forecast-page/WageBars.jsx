@@ -38,6 +38,24 @@ class WageBars extends Component {
         return response.data;
       })
       .then((data) => {
+          if (data.code === 404)
+          {
+            this.setState({
+              computerizationRisk: undefined,
+              replacementsNeeds: undefined,
+              payload: {
+                wageCategory19Min: 0,
+                wageCategory19Max: 0,
+                wageCategory30Min: 0,
+                wageCategory30Max: 0,
+                compProbability: 0.0,
+                meanWageSep19: 0,
+                meanWage30: 0,
+                share: 0,
+              },
+            });
+        }
+        else
         this.setState({
           payload: data.payload,
           computerizationRisk: this.calculateComputerizationRisk(
@@ -132,7 +150,7 @@ class WageBars extends Component {
 
     for (let i = 2; i < 9; i++) {
       items.push(
-        <div className={"p-2 carditem " + this.idToColor(id, i)}>
+        <div className={"p-2 carditem " + this.idToColor(id, i)} key={i}>
           <p>
             {this.formatNumber(1000 + (i - 2) * 500)}–{this.formatNumber(1499 + (i - 2) * 500)} {euroUnits}
           </p>
@@ -168,7 +186,6 @@ class WageBars extends Component {
               {pensionLabel[1]}{this.formatNumber(this.state.payload.wageCategory30Max)} {euroUnits} .{" "}
               {pensionLabel[2]} {this.state.computerizationRisk}{" "}
               {pensionLabel[3]} {this.state.replacementsNeeds}.
-              <isindex />
             </p>
           ) : (
             <></>

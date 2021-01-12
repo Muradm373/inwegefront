@@ -2,12 +2,9 @@ import React, { Component } from "react";
 import {
   API_URL,
   downloadJpeg, downloadPng,
-  menColor,
-  monthLabel,
   propsLabel,
   quarter,
   source,
-  womenColor
 } from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
