@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import {
   API_URL,
-  downloadJpeg, downloadPng,
+  downloadJpeg,
+  downloadPng,
   propsLabel,
   quarter,
   source,
 } from "../../../dictionary/text";
 import axios from "axios";
 import ReactApexChart from "react-apexcharts";
-import {connect} from "react-redux";
-import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image';
-import {occupationToLowerCase} from "../../../actions/actions";
-
+import { connect } from "react-redux";
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPNG,
+} from "react-component-export-image";
+import { occupationToLowerCase } from "../../../actions/actions";
 
 class AgeBarChartComponent extends Component {
   constructor(props) {
@@ -36,11 +39,11 @@ class AgeBarChartComponent extends Component {
       options: {
         chart: {
           toolbar: {
-            show: false
+            show: false,
           },
           type: "bar",
           height: 350,
-          width: "100%"
+          width: "100%",
         },
         plotOptions: {
           bar: {
@@ -62,7 +65,7 @@ class AgeBarChartComponent extends Component {
           categories: [],
           axisTicks: {
             show: true,
-            color: '#78909C',
+            color: "#78909C",
             height: 6,
           },
           labels: {
@@ -70,16 +73,16 @@ class AgeBarChartComponent extends Component {
               let upd = val.toString().replace("-", "–");
 
               return upd;
-            }
+            },
           },
         },
         yaxis: {
           labels: {
             formatter: function (val) {
               return val;
-            }
+            },
           },
-          tickAmount: 5
+          tickAmount: 5,
         },
         fill: {
           opacity: 1,
@@ -87,13 +90,12 @@ class AgeBarChartComponent extends Component {
 
         tooltip: {
           y: {
-              formatter: function (val) {
-               return val + "%";
-               },
+            formatter: function (val) {
+              return val + "%";
             },
-          custom: function({ series, seriesIndex, dataPointIndex, w }) {
-            return (
-                `<div class="arrow_box text-left wrap-stat">
+          },
+          custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            return `<div class="arrow_box text-left wrap-stat">
                 <p class="arrow-box-p">
                 </p>
                 <div className="row ml-3 " style="margin-top: -35px">
@@ -104,9 +106,8 @@ class AgeBarChartComponent extends Component {
                       ${series[seriesIndex][dataPointIndex]}
                   </p>
                   </div>
-                </div>`
-            );
-          }
+                </div>`;
+          },
         },
         title: {
           text: "",
@@ -130,53 +131,73 @@ class AgeBarChartComponent extends Component {
   }
 
   async promiseState() {
-    new Promise(resolve => this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu }, resolve));
+    new Promise((resolve) =>
+      this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu }, resolve)
+    );
   }
 
   componentWillReceiveProps(props) {
     this.getAgeData(props.isco);
     window.addEventListener("resize", this.resize.bind(this));
 
-    this.setState({ occupation:props.occupation,options: {
-        ...this.state.options, tooltip: {
+    this.setState({
+      occupation: props.occupation,
+      options: {
+        ...this.state.options,
+        tooltip: {
           y: {
             formatter: function (val) {
               return val + "%";
             },
           },
-          custom: (data) => this.getOccupation(data, props.language)
+          custom: (data) => this.getOccupation(data, props.language),
         },
-      }
-    })
+      },
+    });
     this.resize();
   }
 
-  getOccupation(data, language){
-      return (
-          `<div class="arrow_box text-left"> 
+  getOccupation(data, language) {
+    return `<div class="arrow_box text-left"> 
                   <p class="arrow-box-p">
-                    ${data.w.globals.labels[data.dataPointIndex].replace("-", "–")}:
+                    ${data.w.globals.labels[data.dataPointIndex].replace(
+                      "-",
+                      "–"
+                    )}:
                      </p>
                      <br/>
                      <div class="row ml-3" >
                   <div class="circle-legend mt-2" style="background-color: ${"#FFBC45"}"></div>
                   <p class="ml-1 text-left h6-stat-white mt-1"> 
                                        
-                    ${this.splitWords(` ${(language === "es" ? "Kokku ametialal — " + occupationToLowerCase(this.state.occupation) : this.state.occupation)}`, 25)} 
-                        ${this.props.language==="en" ? data.series[data.seriesIndex][data.dataPointIndex].toString():
-              data.series[data.seriesIndex][data.dataPointIndex].toString().replace('.', ",")}%
+                    ${this.splitWords(
+                      ` ${
+                        language === "et"
+                          ? "Kokku ametialal — " +
+                            occupationToLowerCase(this.state.occupation)
+                          : this.state.occupation
+                      }`,
+                      25
+                    )} 
+                        ${
+                          this.props.language === "en"
+                            ? data.series[data.seriesIndex][
+                                data.dataPointIndex
+                              ].toString()
+                            : data.series[data.seriesIndex][data.dataPointIndex]
+                                .toString()
+                                .replace(".", ",")
+                        }%
                   </p>
                   </div>
-                </div>`
-      );
+                </div>`;
   }
 
-  splitWords(text, limit){
+  splitWords(text, limit) {
     let splitText = "";
-    for(let i = 0; i < text.length; i++){
+    for (let i = 0; i < text.length; i++) {
       splitText += text[i];
-      if(i !== 0 && i % limit === 0)
-        splitText += '<br/>'
+      if (i !== 0 && i % limit === 0) splitText += "<br/>";
     }
 
     return splitText;
@@ -230,22 +251,25 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div ref={this.componentRef} >
-        <p className="graph-legends mx-auto pl-4 h4-stat text-left px-auto" style={{height: "40px", position: "absolute"}}>
+      <div ref={this.componentRef}>
+        <p
+          className="graph-legends mx-auto pl-4 h4-stat text-left px-auto"
+          style={{ height: "40px", position: "absolute" }}
+        >
           {this.props.label +
-          ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
+            ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
         </p>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div id="chart" className={"mb-0 mt-3"}>
           <ReactApexChart
-          id="apexchart"
+            id="apexchart"
             className={"mx-auto"}
             options={this.state.options}
             series={this.state.series}
             type="bar"
             height={300}
-            width = {360}
+            width={360}
           />
         </div>
         <div className="agebar-xaxis-label h6-stat-gray">
@@ -253,27 +277,23 @@ class AgeBarChartComponent extends Component {
         </div>
 
         <div className={"source-tip-agebar"}>
-          <p className={"source-label-style"}>
-            {source}
-          </p>
+          <p className={"source-label-style"}>{source}</p>
         </div>
 
-        <div
-            className="apexcharts-toolbar apexcharts-toolbar-holder-agebar"
-        >
+        <div className="apexcharts-toolbar apexcharts-toolbar-holder-agebar">
           <div
-              className="apexcharts-menu-icon"
-              style={{}}
-              title="Menu"
-              onClick={() => {
-                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
-              }}
+            className="apexcharts-menu-icon"
+            style={{}}
+            title="Menu"
+            onClick={() => {
+              this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
+            }}
           >
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
             >
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
@@ -281,49 +301,50 @@ class AgeBarChartComponent extends Component {
           </div>
 
           <div
-              className={
-                "apexcharts-menu " +
-                (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
-              }
+            className={
+              "apexcharts-menu " +
+              (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
+            }
           >
             <div
-                className="apexcharts-menu-item exportPNG"
-                onClick={() => {
-                  this.promiseState().then(()=>exportComponentAsPNG(this.componentRef))
-                }}
-                title={downloadPng}
+              className="apexcharts-menu-item exportPNG"
+              onClick={() => {
+                this.promiseState().then(() =>
+                  exportComponentAsPNG(this.componentRef)
+                );
+              }}
+              title={downloadPng}
             >
               {downloadPng}
             </div>
             <div
-                className="apexcharts-menu-item exportPDF"
-                title={downloadJpeg}
-                onClick={() => {
-                  this.promiseState().then(()=>exportComponentAsJPEG(this.componentRef))
-                }}
+              className="apexcharts-menu-item exportPDF"
+              title={downloadJpeg}
+              onClick={() => {
+                this.promiseState().then(() =>
+                  exportComponentAsJPEG(this.componentRef)
+                );
+              }}
             >
               {downloadJpeg}
             </div>
           </div>
-
         </div>
         <div className="graph-legends mx-auto pl-5">
           <div className={"row"}>
             <div
-                className="circle-legend"
-                style={{
-                  background: "#FFBC45",
-                }}
+              className="circle-legend"
+              style={{
+                background: "#FFBC45",
+              }}
             ></div>
-            <p
-                className="graph-legend-age h6-stat-gray"
-            >
-              {this.props.language === "en" || this.props.language==="ru" ? `${this.props.occupation}`: `Kokku ametialal - ${this.props.occupation}`}
+            <p className="graph-legend-age h6-stat-gray">
+              {this.props.language === "en" || this.props.language === "ru"
+                ? `${this.props.occupation}`
+                : `Kokku ametialal - ${this.props.occupation}`}
             </p>
-
           </div>
         </div>
-
       </div>
     );
   }
@@ -335,5 +356,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-
-export default connect(mapStateToProps) (AgeBarChartComponent);
+export default connect(mapStateToProps)(AgeBarChartComponent);

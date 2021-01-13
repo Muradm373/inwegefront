@@ -11,14 +11,22 @@ import {
   womenColor,
   occupationLabel,
   monthLabel,
-  columnchartLabel, quarter,
-  columnChartOccupationLabel, counties, source, overall, downloadJpeg, downloadPng
+  columnchartLabel,
+  quarter,
+  columnChartOccupationLabel,
+  counties,
+  source,
+  overall,
+  downloadJpeg,
+  downloadPng,
 } from "../../../dictionary/text";
-import {connect} from "react-redux";
-import {displayLegends} from "./Graph";
-import { exportComponentAsJPEG, exportComponentAsPNG } from 'react-component-export-image';
-import {formatNumber} from "../../../actions/actions";
-
+import { connect } from "react-redux";
+import { displayLegends } from "./Graph";
+import {
+  exportComponentAsJPEG,
+  exportComponentAsPNG,
+} from "react-component-export-image";
+import { formatNumber } from "../../../actions/actions";
 
 class ColumnChartComponent extends Component {
   constructor(props) {
@@ -39,9 +47,9 @@ class ColumnChartComponent extends Component {
       ],
       options: {
         chart: {
-            toolbar: {
-              show: false
-            },
+          toolbar: {
+            show: false,
+          },
           type: "bar",
           height: 350,
         },
@@ -61,7 +69,7 @@ class ColumnChartComponent extends Component {
           floating: true,
           itemMargin: {
             horizontal: 5,
-            vertical: 27
+            vertical: 27,
           },
         },
         stroke: {
@@ -70,15 +78,15 @@ class ColumnChartComponent extends Component {
           colors: ["transparent"],
         },
         xaxis: {
-          categories: [averageDataSpec[0],  averageDataSpec[1], averageData,],
+          categories: [averageDataSpec[0], averageDataSpec[1], averageData],
         },
         yaxis: {
           labels: {
             formatter: function (value) {
-              return formatNumber(value, props.language)
-            }
+              return formatNumber(value, props.language);
+            },
           },
-          tickAmount: 5
+          tickAmount: 5,
         },
         fill: {
           opacity: 1,
@@ -90,21 +98,25 @@ class ColumnChartComponent extends Component {
               return val + " €";
             },
           },
-          custom: function({ series, seriesIndex, dataPointIndex, w }) {
-            return (
-                `<div class="arrow-box-small text-left"> 
+          custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            return `<div class="arrow-box-small text-left"> 
                   <p class="arrow-box-p">
                     ${w.globals.labels[dataPointIndex]} </p><br/>
                     <br/>
                   <div class="row ml-3 " style="margin-top: -35px">
-                  <div class="circle-legend mt-2" style="background-color: ${seriesIndex === 0? menColor : womenColor}"></div>
+                  <div class="circle-legend mt-2" style="background-color: ${
+                    seriesIndex === 0 ? menColor : womenColor
+                  }"></div>
                   <p class="ml-1 h6-stat-white mt-1">
                   ${w.globals.seriesNames[seriesIndex]} 
-                        ${formatNumber(series[seriesIndex][dataPointIndex], props.language)} €
+                        ${formatNumber(
+                          series[seriesIndex][dataPointIndex],
+                          props.language
+                        )} €
                   </p>
                   </div>
-                </div>`);
-          }
+                </div>`;
+          },
         },
         title: {
           text: ``,
@@ -137,28 +149,29 @@ class ColumnChartComponent extends Component {
     let options = this.state.options;
 
     options.xaxis.categories[0] = [occupationLabel];
-    options.xaxis.categories[1] = [`${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,`${columnChartOccupationLabel[1]}`] ;
+    options.xaxis.categories[1] = [
+      `${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,
+      `${columnChartOccupationLabel[1]}`,
+    ];
     this.setState({ options: options });
   }
 
-  translateCounty(countySelected){
-    if(countySelected === overall)
-      return "";
+  translateCounty(countySelected) {
+    if (countySelected === overall) return "";
     let county = countySelected.replace("maakond", "");
-    switch(this.props.language){
-      case "es":
+    switch (this.props.language) {
+      case "et":
         return county;
       case "ru":
-        if(countySelected === "")
-          return "уезду";
+        if (countySelected === "") return "уезду";
         else
-        return (counties[countySelected] === undefined ?
-            averageDataSpec[2] :
-            counties[countySelected])
+          return counties[countySelected] === undefined
+            ? averageDataSpec[2]
+            : counties[countySelected];
       case "en":
-        return county
+        return county;
       default:
-        return county
+        return county;
     }
   }
 
@@ -167,30 +180,34 @@ class ColumnChartComponent extends Component {
     this.getMean(props.region, props.isco, props.code, props.type);
     this.getMeanForRegion(props.region);
 
-    this.setState({ occupation:props.occupation,options: {
-        ...this.state.options, tooltip: {
+    this.setState({
+      occupation: props.occupation,
+      options: {
+        ...this.state.options,
+        tooltip: {
           y: {
             formatter: function (val) {
               return val + " €";
             },
           },
-          custom: this.getOccupation
+          custom: this.getOccupation,
         },
-      }
-    })
+      },
+    });
   }
 
-  getRegion(data){
-    return (
-        `<div class="arrow-box-small text-left"> 
+  getRegion(data) {
+    return `<div class="arrow-box-small text-left"> 
                   <p class="arrow-box-p">
                     ${data.w.globals.labels[data.dataPointIndex]}: <br/>
                     <br/>
                     ${this.state.occupation} : 
-                        ${formatNumber(data.series[data.seriesIndex][data.dataPointIndex], this.props.language)} €
+                        ${formatNumber(
+                          data.series[data.seriesIndex][data.dataPointIndex],
+                          this.props.language
+                        )} €
                   </p>
-                </div>`
-    );
+                </div>`;
   }
 
   getAllMean() {
@@ -226,7 +243,7 @@ class ColumnChartComponent extends Component {
   }
 
   getMean(region, isco, code, type) {
-    if(region === overall){
+    if (region === overall) {
       this.setState({
         series: [
           {
@@ -247,71 +264,70 @@ class ColumnChartComponent extends Component {
           },
         ],
       });
-    }else {
+    } else {
       let url =
-          `${API_URL}/jobs?region=` +
-          region +
-          "&isco=" +
-          isco +
-          "&code=" +
-          code +
-          "&lang=" +
-          lng;
+        `${API_URL}/jobs?region=` +
+        region +
+        "&isco=" +
+        isco +
+        "&code=" +
+        code +
+        "&lang=" +
+        lng;
 
       if (
-          isco !== "" &&
-          !(isco === this.state.isco &&
-              region === this.state.region)
+        isco !== "" &&
+        !(isco === this.state.isco && region === this.state.region)
       ) {
         this.setState({
           code: code,
           isco: isco,
-          region: region
-        })
+          region: region,
+        });
         axios
-            .get(url)
-            .then((response) => response.data)
-            .then((data) => {
-              let entities = data.payload.salaryEntities;
-              let jobEntity = data.payload.jobEntity;
-              if (jobEntity !== undefined && entities[0] !== undefined) {
-                if (entities[0].region !== "All") {
-                  let menMean = 0;
-                  let womenMean = 0;
+          .get(url)
+          .then((response) => response.data)
+          .then((data) => {
+            let entities = data.payload.salaryEntities;
+            let jobEntity = data.payload.jobEntity;
+            if (jobEntity !== undefined && entities[0] !== undefined) {
+              if (entities[0].region !== "All") {
+                let menMean = 0;
+                let womenMean = 0;
 
-                  if (entities[0] !== undefined) {
-                    if (entities[0].female === "1") womenMean = entities[0].mean;
-                    else menMean = entities[0].mean;
-                  }
-                  if (entities[1] !== undefined) {
-                    if (entities[1].female === "1") womenMean = entities[1].mean;
-                    else menMean = entities[1].mean;
-                  }
-                  this.setState({
-                    series: [
-                      {
-                        name: genderLabel[0],
-                        data: [
-                          menMean,
-                          this.state.menMeanRegion,
-                          this.state.menMean,
-                        ],
-                      },
-                      {
-                        name: genderLabel[1],
-                        data: [
-                          womenMean,
-                          this.state.womenMeanRegion,
-                          this.state.womenMean,
-                        ],
-                      },
-                    ],
-                    menMeanOccupation: menMean,
-                    womenMeanOccupation: womenMean,
-                  });
+                if (entities[0] !== undefined) {
+                  if (entities[0].female === "1") womenMean = entities[0].mean;
+                  else menMean = entities[0].mean;
                 }
+                if (entities[1] !== undefined) {
+                  if (entities[1].female === "1") womenMean = entities[1].mean;
+                  else menMean = entities[1].mean;
+                }
+                this.setState({
+                  series: [
+                    {
+                      name: genderLabel[0],
+                      data: [
+                        menMean,
+                        this.state.menMeanRegion,
+                        this.state.menMean,
+                      ],
+                    },
+                    {
+                      name: genderLabel[1],
+                      data: [
+                        womenMean,
+                        this.state.womenMeanRegion,
+                        this.state.womenMean,
+                      ],
+                    },
+                  ],
+                  menMeanOccupation: menMean,
+                  womenMeanOccupation: womenMean,
+                });
               }
-            });
+            }
+          });
       }
     }
   }
@@ -334,7 +350,6 @@ class ColumnChartComponent extends Component {
                   this.state.menMeanOccupation,
                   averages.maleAverage,
                   this.state.menMean,
-                 
                 ],
               },
               {
@@ -343,7 +358,6 @@ class ColumnChartComponent extends Component {
                   this.state.womenMeanOccupation,
                   averages.femaleAverage,
                   this.state.womenMean,
-                  
                 ],
               },
             ],
@@ -355,27 +369,37 @@ class ColumnChartComponent extends Component {
   }
 
   async promiseState() {
-    new Promise(resolve => this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu }, resolve));
+    new Promise((resolve) =>
+      this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu }, resolve)
+    );
   }
 
   render() {
     return (
-      <div id="chart-column" className={"text-center mx-auto"} ref={this.componentRef}>
-        <p className="graph-legends mx-auto pl-4 h4-stat text-left w-100" style={{height: "40px", position: "absolute"}}>
-          {columnchartLabel + ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
+      <div
+        id="chart-column"
+        className={"text-center mx-auto"}
+        ref={this.componentRef}
+      >
+        <p
+          className="graph-legends mx-auto pl-4 h4-stat text-left w-100"
+          style={{ height: "40px", position: "absolute" }}
+        >
+          {columnchartLabel +
+            ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
         </p>
-        <br/>
-        <br/>
+        <br />
+        <br />
         <div id="agebar-chart" className={"mb-0 mt-3"}>
-        <ReactApexChart
-          id="apexchart"
-          className={"ml-2"}
-          options={this.state.options}
-          series={this.state.series}
-          type="bar"
-          height={300}
-          width = {360}
-        />
+          <ReactApexChart
+            id="apexchart"
+            className={"ml-2"}
+            options={this.state.options}
+            series={this.state.series}
+            type="bar"
+            height={300}
+            width={360}
+          />
         </div>
         <div className="columnchart-xaxis-label h6-stat-gray">
           <p>{`€/${monthLabel}`}</p>
@@ -389,63 +413,65 @@ class ColumnChartComponent extends Component {
           {displayLegends(menColor, womenColor)}
         </div>
 
-        <div
-            className="apexcharts-toolbar apexcharts-toolbar-holder"
-        >
+        <div className="apexcharts-toolbar apexcharts-toolbar-holder">
           <div
-              className="apexcharts-menu-icon"
-              style={{}}
-              title="Menu"
-              onClick={() => {
-                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
-              }}
+            className="apexcharts-menu-icon"
+            style={{}}
+            title="Menu"
+            onClick={() => {
+              this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
+            }}
           >
             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
             >
               <path fill="none" d="M0 0h24v24H0V0z"></path>
               <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
             </svg>
           </div>
           <div
-              className={
-                "apexcharts-menu " +
-                (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
-              }
+            className={
+              "apexcharts-menu " +
+              (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
+            }
           >
             <div
-                className="apexcharts-menu-item exportPNG"
-                onClick={() => {
-                  this.promiseState().then(()=>exportComponentAsPNG(this.componentRef))
-                }}
-                title={downloadPng}
+              className="apexcharts-menu-item exportPNG"
+              onClick={() => {
+                this.promiseState().then(() =>
+                  exportComponentAsPNG(this.componentRef)
+                );
+              }}
+              title={downloadPng}
             >
               {downloadPng}
             </div>
             <div
-                className="apexcharts-menu-item exportPDF"
-                title={downloadJpeg}
-                onClick={() => {
-                  this.promiseState().then(()=>exportComponentAsJPEG(this.componentRef))
-                }}
+              className="apexcharts-menu-item exportPDF"
+              title={downloadJpeg}
+              onClick={() => {
+                this.promiseState().then(() =>
+                  exportComponentAsJPEG(this.componentRef)
+                );
+              }}
             >
               {downloadJpeg}
             </div>
           </div>
         </div>
 
-        {this.props.generalName !== null ?
-            <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
-              {`* ${this.props.generalName} (${this.props.occupationCode})`}
-            </p>
-            :
-            <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
-              {` `}
-            </p>
-        }
+        {this.props.generalName !== null ? (
+          <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
+            {`* ${this.props.generalName} (${this.props.occupationCode})`}
+          </p>
+        ) : (
+          <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
+            {` `}
+          </p>
+        )}
       </div>
     );
   }
@@ -457,4 +483,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default  connect(mapStateToProps) (ColumnChartComponent);
+export default connect(mapStateToProps)(ColumnChartComponent);

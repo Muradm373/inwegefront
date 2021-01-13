@@ -14,7 +14,12 @@ import {
   totalNumberOfEmployeesOccupation,
   womenColor,
   occupationDescriptionLabel,
-  noDataLabel, emailLabel, occupationLabel, overall, levelLabel, descriptionLabel,
+  noDataLabel,
+  emailLabel,
+  occupationLabel,
+  overall,
+  levelLabel,
+  descriptionLabel,
 } from "../../dictionary/text";
 import AgeBarChartComponent from "./vis-components/AgeBarChartComponent";
 import ColumnChartComponent from "./vis-components/ColumnChartComponent";
@@ -29,9 +34,9 @@ import {
   setGender,
   setWage,
   getSalaryEntities,
-  occupationToLowerCase
+  occupationToLowerCase,
 } from "../../actions/actions";
-import {translateCounty} from "./entityFunc";
+import { translateCounty } from "./entityFunc";
 const lang = "&lang=";
 
 class SalaryCalculator extends Component {
@@ -49,9 +54,9 @@ class SalaryCalculator extends Component {
     this.setContent = this.setContent.bind(this);
     this.changeWage = this.changeWage.bind(this);
     props.getOccupations("Harju maakond");
-    
+    props.getSalaryEntities(overall, "", "");
   }
-  
+
   setContent(content) {
     this.setState({ content: content });
   }
@@ -71,7 +76,7 @@ class SalaryCalculator extends Component {
     this.props.getOccupations(region, tab);
   };
 
-  onOverallDataForMapSelected=(event)=>{
+  onOverallDataForMapSelected = (event) => {
     const region = event.value;
     const isco = this.state.isco;
     const code = this.state.code;
@@ -81,8 +86,8 @@ class SalaryCalculator extends Component {
     } else {
       this.props.getSalaryEntities(region, "averages", 0);
     }
-    this.setState({ region: overall});
-  }
+    this.setState({ region: overall });
+  };
 
   onIscoChange = (event) => {
     if (event.value === "reset") {
@@ -108,7 +113,9 @@ class SalaryCalculator extends Component {
       this.props.getSalaryEntities(region, isco, code);
       this.props.onDataChange(this.state.region, isco, code, event.value.name);
 
-      this.setState({ occupation: event.value.name + " ("+code.substring(0,4)+")"});
+      this.setState({
+        occupation: event.value.name + " (" + code.substring(0, 4) + ")",
+      });
     }
   };
 
@@ -121,7 +128,6 @@ class SalaryCalculator extends Component {
     this.props.setWage(event);
   }
 
-
   render() {
     return (
       <div className="graph-component graph-component-cards mb-5">
@@ -129,12 +135,8 @@ class SalaryCalculator extends Component {
           <br></br>
 
           <ol className={"ol-stat"}>
-            <li className={"body-stat"}>
-             {sideParagraph2[0]}
-            </li>
-            <li className={"body-stat"}>
-              {sideParagraph2[1]}
-            </li>
+            <li className={"body-stat"}>{sideParagraph2[0]}</li>
+            <li className={"body-stat"}>{sideParagraph2[1]}</li>
           </ol>
           <div className="form-group shiny-input-container">
             <div id="occupation-selector" className={"mt-3"}>
@@ -145,37 +147,32 @@ class SalaryCalculator extends Component {
               />
 
               <ol className={"ol-stat"}>
-                <li className={"body-stat"}>
-                  {sideParagraph1}
-                </li>
+                <li className={"body-stat"}>{sideParagraph1}</li>
               </ol>
 
-
-              <div className={"mt-3"} style={{ display: "flex", flexDirection: "row" }}>
+              <div
+                className={"mt-3"}
+                style={{ display: "flex", flexDirection: "row" }}
+              >
                 <div>
-                  <div >
+                  <div>
                     <div id={"salary-selector"}>
-                      <p
-                          className="mnimi-w"
-                      >
+                      <p className="mnimi-w">
                         <input
-                            id="inputWage"
-                            type="text"
-                            required
-                            onChange={this.props.setWage}
-                            value={this.props.wage}
+                          id="inputWage"
+                          type="text"
+                          required
+                          onChange={this.props.setWage}
+                          value={this.props.wage}
                         />
                         <label
-                            htmlFor={"input"}
-                            alt={`${salary[0]} ${salary[1]}`}
-                            placeholder={`${salary[0]} ${salary[1]}`}
-                        >
-                        </label>
+                          htmlFor={"input"}
+                          alt={`${salary[0]} ${salary[1]}`}
+                          placeholder={`${salary[0]} ${salary[1]}`}
+                        ></label>
                       </p>
                     </div>
                   </div>
-
-
                 </div>
                 <div style={{ marginLeft: "10px" }} id={"gender-selector"}>
                   <GenderSelector onGenderChange={this.props.setGender} />
@@ -183,27 +180,33 @@ class SalaryCalculator extends Component {
               </div>
               <br></br>
               <div>
-                {this.props.description !== "" && this.props.description !== null ?
-                    <>
-                      <div className={"body-stat ml-1 row text-left"}
-                      >
-                        <p className={"text-left"}>
-                          {levelLabel[0]}&nbsp;
+                {this.props.description !== "" &&
+                this.props.description !== null ? (
+                  <>
+                    {this.props.occupationCode !== null ? (
+                      <div className={"body-stat ml-1 row text-left"}>
+                        <p className={"text-left"}>{levelLabel[0]}&nbsp;</p>
+                        <p className={"font-weight-bold text-left"}>
+                          {` ${occupationToLowerCase(this.props.generalName)} `}{" "}
+                          &nbsp;
                         </p>
-                        <p className={"font-weight-bold text-left"}>{` ${occupationToLowerCase(this.props.generalName)} `} &nbsp;
-                        </p>
-                        <p className={"text-left"}>{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
+                        <p
+                          className={"text-left"}
+                        >{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
+                        )
                       </div>
-                      <br/>
-                    <p className={"description-label"}>{`${occupationDescriptionLabel}`} </p>
-                    </>
-                    :
-                    <></>
-                }
-                <p className={"body-stat"}
-                >
-                  {this.props.description}
-                </p>
+                    ) : (
+                      <></>
+                    )}
+                    <br />
+                    <p className={"description-label"}>
+                      {`${occupationDescriptionLabel}`}{" "}
+                    </p>
+                  </>
+                ) : (
+                  <></>
+                )}
+                <p className={"body-stat"}>{this.props.description}</p>
               </div>
             </div>
           </div>
@@ -225,7 +228,12 @@ class SalaryCalculator extends Component {
                 onOverallDataForMapSelected={this.onOverallDataForMapSelected}
                 setTooltipContent={this.setContent}
                 mapElementColor={this.props.mapElementColor}
-                occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
+                occupation={
+                  this.props.generalName +
+                  " (" +
+                  this.props.occupationCode +
+                  ")"
+                }
                 region={this.state.region}
               />
             </div>
@@ -240,7 +248,9 @@ class SalaryCalculator extends Component {
               genderLabel={genderLabel}
               myWage={this.props.wage}
               myGender={this.props.gender}
-              occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
+              occupation={
+                this.props.generalName + " (" + this.props.occupationCode + ")"
+              }
               region={this.state.region}
             ></Graph>
 
@@ -248,26 +258,36 @@ class SalaryCalculator extends Component {
 
             <div className="feature-1 text-center my-3 h4-stat">
               {this.state.occupation === "" && (
-                  <>
-                  <p className={"h4-stat text-left ml-3"} style={{ color: "black" }}>
+                <>
+                  <p
+                    className={"h4-stat text-left ml-3"}
+                    style={{ color: "black" }}
+                  >
                     {totalNumberOfEmployees}
                   </p>
                   <p className={"body-stat ml-3"}>
-                  {translateCounty(this.state.region, this.props.language)}
+                    {translateCounty(this.state.region, this.props.language)}
                   </p>
-                  </>
+                </>
               )}
 
-              {this.state.occupation !== "" && (<>
-                  <p className={"h4-stat text-left ml-3"} style={{ color: "black" }}>
+              {this.state.occupation !== "" && (
+                <>
+                  <p
+                    className={"h4-stat text-left ml-3"}
+                    style={{ color: "black" }}
+                  >
                     {totalNumberOfEmployeesOccupation[0]}
                   </p>
-                   <p className={"body-stat ml-3"}>
-                     {this.props.generalName + " ("+this.props.occupationCode + ")" +
-                    totalNumberOfEmployeesOccupation[1] +
-                     translateCounty(this.state.region, this.props.language)}
+                  <p className={"body-stat ml-3"}>
+                    {this.props.generalName +
+                      " (" +
+                      this.props.occupationCode +
+                      ")" +
+                      totalNumberOfEmployeesOccupation[1] +
+                      translateCounty(this.state.region, this.props.language)}
                   </p>
-                  </>
+                </>
               )}
               <div className="row d-flex ml-2">
                 <PieChartComponent
@@ -280,8 +300,7 @@ class SalaryCalculator extends Component {
                 />
               </div>
 
-
-              <br/>
+              <br />
 
               {
                 <div>
@@ -291,7 +310,12 @@ class SalaryCalculator extends Component {
                         region={this.state.region}
                         isco={this.state.isco}
                         code={this.state.code}
-                        occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
+                        occupation={
+                          this.props.generalName +
+                          " (" +
+                          this.props.occupationCode +
+                          ")"
+                        }
                       />
                     </div>
                     <div className={"col-sm"}>
@@ -301,7 +325,12 @@ class SalaryCalculator extends Component {
                             <AgeBarChartComponent
                               isco={this.state.isco}
                               label={[`${ageLabel} `]}
-                              occupation={this.props.generalName + " ("+this.props.occupationCode + ")"}
+                              occupation={
+                                this.props.generalName +
+                                " (" +
+                                this.props.occupationCode +
+                                ")"
+                              }
                             ></AgeBarChartComponent>
                           </div>
                         </div>
@@ -345,10 +374,8 @@ const mapStateToProps = (state) => {
     mean: state.mean,
     generalName: state.generalName,
     occupationCode: state.occupationCode,
-    language: state.language
+    language: state.language,
   };
 };
-
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SalaryCalculator);

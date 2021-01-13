@@ -27,9 +27,9 @@ import changeLanguage, {
   webpageLabel,
   joinBody,
   joinLink,
-  foundationLabel
+  foundationLabel,
 } from "./dictionary/text";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 
 class Main extends Component {
   constructor(props) {
@@ -112,7 +112,7 @@ class Main extends Component {
             id="salary-calculator-component"
             onDataChange={this.getData}
             mapElementColor={this.state.mapElementColor}
-          ></SalaryCalculator>      
+          ></SalaryCalculator>
         </div>
       );
     }
@@ -122,30 +122,33 @@ class Main extends Component {
     changeLanguage(this.props.lang);
     return (
       <div>
-        <div className={"blur"} style={{ display: this.state.isActive ? "block" : "none" }}></div>
+        <div
+          className={"blur"}
+          style={{ display: this.state.isActive ? "block" : "none" }}
+        ></div>
 
         <button
-            className="menu-toggle hamburger"
-            style={{
-              position: "absolute",
-              top: "50px",
-              right: "15px",
-              padding: "10px",
-            }}
-            onClick={() =>
-                this.setState({
-                  isActive: !this.state.isActive,
-                })
-            }
+          className="menu-toggle hamburger"
+          style={{
+            position: "absolute",
+            top: "50px",
+            right: "15px",
+            padding: "10px",
+          }}
+          onClick={() =>
+            this.setState({
+              isActive: !this.state.isActive,
+            })
+          }
         >
-                  <span
-                      className={
-                        "si hamburger-box hamburger--boring " +
-                        (this.state.isActive ? "is-active" : "" )
-                      }
-                  >
-                    <span className="hamburger-inner"></span>
-                  </span>
+          <span
+            className={
+              "si hamburger-box hamburger--boring " +
+              (this.state.isActive ? "is-active" : "")
+            }
+          >
+            <span className="hamburger-inner"></span>
+          </span>
         </button>
         <div
           id="sidenav"
@@ -155,16 +158,24 @@ class Main extends Component {
           <div className=" row ">
             <ul className="link-list">
               <li>
-                <a href={"#"} onClick={this.changeMenu}>{tabs[0]}</a>
+                <a href={"#"} onClick={this.changeMenu}>
+                  {tabs[0]}
+                </a>
               </li>
               <li>
-                <a href={"#"} onClick={this.changeMenu}>{tabs[1]}</a>
+                <a href={"#"} onClick={this.changeMenu}>
+                  {tabs[1]}
+                </a>
               </li>
               <li>
-                <a href={"#"} onClick={this.changeMenu}>{tabs[2]}</a>
+                <a href={"#"} onClick={this.changeMenu}>
+                  {tabs[2]}
+                </a>
               </li>
               <li>
-                <a href={"#"} onClick={this.changeMenu}>{tabs[3]}</a>
+                <a href={"#"} onClick={this.changeMenu}>
+                  {tabs[3]}
+                </a>
               </li>
             </ul>
           </div>
@@ -193,7 +204,9 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a href={"/"} tabIndex="0">{webpageLabel}</a>
+                        <a href={"/"} tabIndex="0">
+                          {webpageLabel}
+                        </a>
                         <ul className="menu">
                           <li className="menu-item">
                             <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
@@ -326,13 +339,15 @@ class Main extends Component {
                           <a
                             href="/"
                             className="wpml-ls-link"
-                            onClick={() => this.refresh("es")}
+                            onClick={() => this.refresh("et")}
                           >
                             <span
                               className="wpml-ls-native"
                               style={{
                                 color:
-                                  this.defaultValue() === "es" ? "#FFF" : "#929292",
+                                  this.defaultValue() === "et"
+                                    ? "#FFF"
+                                    : "#929292",
                                 fontSize: "10pt",
                               }}
                             >
@@ -350,7 +365,9 @@ class Main extends Component {
                               className="wpml-ls-native"
                               style={{
                                 color:
-                                  this.defaultValue() === "en" ? "#FFF" : "#929292",
+                                  this.defaultValue() === "en"
+                                    ? "#FFF"
+                                    : "#929292",
                                 fontSize: "10pt",
                               }}
                             >
@@ -368,7 +385,9 @@ class Main extends Component {
                               className="wpml-ls-native"
                               style={{
                                 color:
-                                  this.defaultValue() === "ru" ? "#FFF" : "#929292",
+                                  this.defaultValue() === "ru"
+                                    ? "#FFF"
+                                    : "#929292",
                                 fontSize: "10pt",
                               }}
                             >
@@ -388,21 +407,30 @@ class Main extends Component {
                   id="block-stat-branding"
                   className="block block-system block-system-branding-block"
                 >
-                  <a onClick={this.changeMenu} href={"/"} rel="home" className="site-logo">
+                  <a
+                    onClick={this.changeMenu}
+                    href={"/"}
+                    rel="home"
+                    className="site-logo"
+                  >
                     <img
-                      src={this.props.language === "en" ?  require("./resources/logo-en.svg"): require("./resources/logo.svg")}
-                      alt="Home" className={"ml-5"}
+                      src={
+                        this.props.language === "en"
+                          ? require("./resources/logo-en.svg")
+                          : require("./resources/logo.svg")
+                      }
+                      alt="Home"
+                      className={"ml-5"}
                       style={{
                         display: "block",
                         width: "150px",
                         backgroundColor: "#FFFFFF",
                         cursor: "pointer",
-                        marginTop: "-5px"
+                        marginTop: "-5px",
                       }}
                     />
                   </a>
                 </div>
-
               </div>
             </div>
             <nav
@@ -410,12 +438,12 @@ class Main extends Component {
               aria-labelledby="block-mainnavigationenglish-menu"
               id="block-mainnavigationenglish"
               className="block block-menu menu--main-en layout__nav__top__center"
-              style={{ marginTop: "-54px"}}
+              style={{ marginTop: "-54px" }}
             >
               <ul
                 data-region="header_bottom"
                 className="menu"
-                style={{ backgroundColor: "white", height: "50px"}}
+                style={{ backgroundColor: "white", height: "50px" }}
               >
                 <li className="menu-item menu-item--expanded h4-stat">
                   <span
@@ -465,7 +493,11 @@ class Main extends Component {
               </ul>
             </nav>
           </header>
-          <main id="main" className={"px-5 main-padding"} style={{ marginTop: "-90px" }}>
+          <main
+            id="main"
+            className={"px-5 main-padding"}
+            style={{ marginTop: "-90px" }}
+          >
             <div>
               <div className="selector-style text-center mx-auto">
                 {this.props.type === "admin" ? (
@@ -529,7 +561,12 @@ class Main extends Component {
               id="block-jaluselogo"
               className="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo  eu-logo-holder"
             >
-              <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo eu-logo-picture"}>
+              <a
+                href="http://inwege.cloud.ut.ee/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={"eu-logo eu-logo-picture"}
+              >
                 <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                   <div className="field__item">
                     <img
@@ -540,75 +577,86 @@ class Main extends Component {
                   </div>
                 </div>
               </a>
-              <p className={"h6-stat eu-logo-label"}>
-                {foundationLabel}
-                    </p>
+              <p className={"h6-stat eu-logo-label"}>{foundationLabel}</p>
             </div>
           </div>
 
           <div className={"container"}>
-          <div className="mt-3  logos-container">
-            <div
+            <div className="mt-3  logos-container">
+              <div
                 id="block-jalusekontaktid"
                 className="block block-fixed-block-content block-fixed-block-contentfooter-contacts row align-left partners"
-            >
-              <p className={"col-md-3 col-sm-6 my-auto partners-text"}>KOOSTÖÖPARTNERID</p>
+              >
+                <p className={"col-md-3 col-sm-6 my-auto partners-text"}>
+                  KOOSTÖÖPARTNERID
+                </p>
 
-              <div className="field field--label-hidden field__items col-md-8 row" >
-                <div className="field__item col-md my-auto">
-                  <a href="http://inwege.cloud.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo sf-logo"}>
-                    <div
-                        className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
-                      <div className="field__item">
-                        <img
+                <div className="field field--label-hidden field__items col-md-8 row">
+                  <div className="field__item col-md my-auto">
+                    <a
+                      href="http://inwege.cloud.ut.ee/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={"eu-logo sf-logo"}
+                    >
+                      <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                        <div className="field__item">
+                          <img
                             src={require("./resources/stat_logo.jpg")}
                             width="400"
                             height="116"
                             alt="SF logo"
                             typeof="foaf:Image"
-                        />
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="field__item col-md my-auto">
-                  <a href="https://www.ut.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo ut-logo"}>
-                    <div
-                        className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
-                      <div className="field__item">
-                        <img
+                    </a>
+                  </div>
+                  <div className="field__item col-md my-auto">
+                    <a
+                      href="https://www.ut.ee/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={"eu-logo ut-logo"}
+                    >
+                      <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                        <div className="field__item">
+                          <img
                             src={require("./resources/ut_logo.png")}
                             width="400"
                             alt="SF logo"
                             typeof="foaf:Image"
-                        />
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </div>
-                <div className="field__item">
-                  <a href="https://taltech.ee/" target="_blank" rel="noopener noreferrer" className={"eu-logo"}>
-                    <div
-                        className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
-                      <div className="field__item">
-                        <img
+                    </a>
+                  </div>
+                  <div className="field__item">
+                    <a
+                      href="https://taltech.ee/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={"eu-logo"}
+                    >
+                      <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
+                        <div className="field__item">
+                          <img
                             src={require("./resources/taltech_logo.png")}
                             className={"footer-logo"}
                             width="120"
                             height="116"
                             alt="SF logo"
                             typeof="foaf:Image"
-                        />
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </a>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          </div>
-            </footer>
-
+        </footer>
       </div>
     );
   }
@@ -619,16 +667,16 @@ const mapDispatchToProps = (dispatch) => {
     getDates: () => {
       getDates(dispatch);
     },
-    setLang: (lang) =>{
+    setLang: (lang) => {
       dispatch(setLanguage(lang));
-    }
+    },
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     dates: state.dates,
-    language: state.language
+    language: state.language,
   };
 };
 

@@ -1,24 +1,23 @@
-import {counties} from "../../dictionary/text";
+import { counties } from "../../dictionary/text";
 
 export function fetchData(prop) {
   let menMean = [];
   let womenMean = [];
   let men = [];
   let women = [];
-  if (prop !== undefined ) {
+  if (prop !== undefined) {
     let entities = prop;
     let menData, womenData;
 
-    if(prop[0] !== undefined){
-    if(entities[0].female==="1"){
-      menData = entities[1];
-      womenData = entities[0];
-    }else{
-      menData = entities[0];
-      womenData = entities[1];
+    if (prop[0] !== undefined) {
+      if (entities[0].female === "1") {
+        menData = entities[1];
+        womenData = entities[0];
+      } else {
+        menData = entities[0];
+        womenData = entities[1];
+      }
     }
-  }
-
 
     if (menData !== undefined && womenData !== undefined) {
       menMean = menData.mean;
@@ -46,7 +45,7 @@ export function fetchData(prop) {
 function clearData(data) {
   let { median, p1, p2, p3, p4, p6, p7, p8, p9, minVal, maxVal } = data;
 
-  return { minVal, p1, p2, p3, p4, median, p6, p7, p8, p9, maxVal};
+  return { minVal, p1, p2, p3, p4, median, p6, p7, p8, p9, maxVal };
 }
 
 function distributeData(dataMen, dataWomen) {
@@ -56,34 +55,30 @@ function distributeData(dataMen, dataWomen) {
   let menObject = [];
   let womenObject = [];
 
-
   for (let i = 0; i < 11; i++) {
     if (i < 5) {
       menObject.push({ x: parseInt(men[i]), y: i });
       womenObject.push({ x: parseInt(women[i]), y: i });
-    }else if(i===5) {
-      menObject.push({ x: parseInt(men[i]), y: i+0.5 });
-      womenObject.push({ x: parseInt(women[i]), y: i+0.5 });
-    }
-    else {
+    } else if (i === 5) {
+      menObject.push({ x: parseInt(men[i]), y: i + 0.5 });
+      womenObject.push({ x: parseInt(women[i]), y: i + 0.5 });
+    } else {
       menObject.push({ x: parseInt(men[i]), y: 10 - i });
       womenObject.push({ x: parseInt(women[i]), y: 10 - i });
     }
-
-
   }
 
   return { menObject, womenObject };
 }
 
-export function translateCounty(county, language){
-  switch(language){
-    case "es":
+export function translateCounty(county, language) {
+  switch (language) {
+    case "et":
       return county;
     case "ru":
-      return counties[county]
+      return counties[county];
     case "en":
-      return county.replace("maakond", "county")
+      return county.replace("maakond", "county");
     default:
       return county;
   }
