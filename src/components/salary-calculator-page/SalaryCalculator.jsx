@@ -271,24 +271,29 @@ class SalaryCalculator extends Component {
                 </>
               )}
 
-              {this.state.occupation !== "" && (
-                <>
-                  <p
-                    className={"h4-stat text-left ml-3"}
-                    style={{ color: "black" }}
-                  >
-                    {totalNumberOfEmployeesOccupation[0]}
-                  </p>
-                  <p className={"body-stat ml-3"}>
-                    {this.props.generalName +
-                      " (" +
-                      this.props.occupationCode +
-                      ")" +
-                      totalNumberOfEmployeesOccupation[1] +
-                      translateCounty(this.state.region, this.props.language)}
-                  </p>
-                </>
-              )}
+              {this.state.occupation !== "" &&
+                this.props.occupationCode !== null && (
+                  <>
+                    <p
+                      className={"h4-stat text-left ml-3"}
+                      style={{ color: "black" }}
+                    >
+                      {totalNumberOfEmployeesOccupation[0]}
+                    </p>
+                    <p className={"body-stat ml-3"}>
+                      {this.props.generalName +
+                        " (" +
+                        this.props.occupationCode +
+                        ")" +
+                        totalNumberOfEmployeesOccupation[1] +
+                        (this.props.region === overall ||
+                        this.props.region === ""
+                          ? ". "
+                          : "") +
+                        translateCounty(this.state.region, this.props.language)}
+                    </p>
+                  </>
+                )}
               <div className="row d-flex ml-2">
                 <PieChartComponent
                   style={{ paddingTop: "-1000px" }}

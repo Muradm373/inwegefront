@@ -6,7 +6,11 @@ import {
   XAxis,
   LabelSeries,
 } from "react-vis";
-import { averageBetweenMenAndWomen, quarter } from "../../../dictionary/text";
+import {
+  averageBetweenMenAndWomen,
+  quarter,
+  overall,
+} from "../../../dictionary/text";
 import { connect } from "react-redux";
 import { translateCounty } from "../entityFunc";
 import {
@@ -43,12 +47,11 @@ class BarComponent extends Component {
           this.props.occupation !== "" &&
           this.props.occupation !== "null (undefined)" ? (
             <div className={"bar-series-label"}>
-              <p className={"body-stat ml-3"}>{`${
-                this.props.occupation
-              }. ${translateCounty(
-                this.props.region,
-                this.props.language
-              )}`}</p>
+              <p className={"body-stat ml-3"}>{`${this.props.occupation} ${
+                this.props.region !== overall && this.props.region !== ""
+                  ? "."
+                  : ""
+              } ${translateCounty(this.props.region, this.props.language)}`}</p>
             </div>
           ) : (
             <div className={"bar-series-label"}>

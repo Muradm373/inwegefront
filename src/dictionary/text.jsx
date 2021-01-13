@@ -158,8 +158,8 @@ const totalNumberOfEmployeesEng = [
 ];
 const totalNumberOfEmployeesOccupationEng = [
   ["Total number of full-time employees ", " "],
-  ["Общее количество работников на полную занятость ", ", "],
-  ["Täisajaga töötajate koguarv ", ", "],
+  ["Общее количество работников на полную занятость ", " "],
+  ["Täisajaga töötajate koguarv ", " "],
 ];
 const averageDataSpecEng = [
   ["Occupation", "Over County"],
