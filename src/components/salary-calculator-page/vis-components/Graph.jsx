@@ -3,7 +3,6 @@ import React from "react";
 import {
   AreaSeries,
   FlexibleWidthXYPlot,
-  Highlight,
   Hint,
   HorizontalGridLines,
   LineSeries,
@@ -219,7 +218,6 @@ function Graph(props) {
         {/*>*/}
 
         {/*</Hint>*/}
-        <Highlight highlightY="false" highlightX="false" />
       </FlexibleWidthXYPlot>
       <div style={display(myWage, mean, men)}>
         <p className="differenceLabel text-left h6-stat graph-salary-label">
