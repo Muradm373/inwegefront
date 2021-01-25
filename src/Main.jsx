@@ -7,6 +7,12 @@ import PensionsComponent from "./components/pensions-page/PensionsComponent";
 import SalaryCalculator from "./components/salary-calculator-page/SalaryCalculator";
 import SubscriptionComponent from "./components/subscription-headline/SubscriptionComponent";
 import WageForecast from "./components/wage-forecast-page/WageForecast";
+import logoEn from "./resources/logo-en.svg";
+import logo from "./resources/logo.svg";
+import eulogo from "./resources/eu.jpg";
+import statlogo from "./resources/stat_logo.jpg";
+import utlogo from "./resources/ut_logo.png";
+import taltechlogo from "./resources/taltech_logo.png";
 import changeLanguage, {
   main,
   tabs,
@@ -401,7 +407,7 @@ class Main extends Component {
                 </div>
               </div>
             </div>
-            <div className="layout__header__bottom">
+            <div className="layout__header__bottom mt-1">
               <div className="u-container">
                 <div
                   id="block-stat-branding"
@@ -416,8 +422,8 @@ class Main extends Component {
                     <img
                       src={
                         this.props.language === "en"
-                          ? require("./resources/logo-en.svg")
-                          : require("./resources/logo.svg")
+                          ? logoEn
+                          : logo
                       }
                       alt="Home"
                       className={"ml-5"}
@@ -570,7 +576,7 @@ class Main extends Component {
                 <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                   <div className="field__item">
                     <img
-                      src={require("./resources/eu.jpg")}
+                      src={eulogo}
                       alt="SF logo"
                       typeof="foaf:Image"
                     />
@@ -602,7 +608,7 @@ class Main extends Component {
                       <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                         <div className="field__item">
                           <img
-                            src={require("./resources/stat_logo.jpg")}
+                            src={statlogo}
                             width="400"
                             height="116"
                             alt="SF logo"
@@ -622,7 +628,7 @@ class Main extends Component {
                       <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                         <div className="field__item">
                           <img
-                            src={require("./resources/ut_logo.png")}
+                            src={utlogo}
                             width="400"
                             alt="SF logo"
                             typeof="foaf:Image"
@@ -641,7 +647,7 @@ class Main extends Component {
                       <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                         <div className="field__item">
                           <img
-                            src={require("./resources/taltech_logo.png")}
+                            src={taltechlogo}
                             className={"footer-logo"}
                             width="120"
                             height="116"

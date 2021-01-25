@@ -2,6 +2,9 @@ import axios from "axios";
 import React, { Component } from "react";
 import { API_URL, workingWomen, workingMen, overall } from "../../../dictionary/text";
 import {connect} from "react-redux";
+import maleIcon from "../../../resources/male.svg";
+import femaleIcon from "../../../resources/female.svg";
+
 
 class PieChartComponent extends Component {
   constructor() {
@@ -118,7 +121,7 @@ class PieChartComponent extends Component {
             <img
               className="col"
               alt={""}
-              src={require("../../../resources/male.svg")}
+              src={maleIcon}
               height="60"
               width="60"
             />
@@ -136,7 +139,7 @@ class PieChartComponent extends Component {
           <div className="row m-3">
             <img
               className="col"
-              src={require("../../../resources/female.svg")}
+              src={femaleIcon}
               alt={""}
               height="60"
               width="60"

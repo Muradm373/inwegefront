@@ -12,7 +12,7 @@ class AboutEst extends Component {
         <div className="pns-graphs description-page body-stat">
           <p className={"h4-stat"}>Definitsioonid</p>
           <br />
-          <p className="text-left body-stat">
+          <div className="text-left body-stat">
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Ametite klassifikaator
             </p>{" "}
@@ -304,7 +304,7 @@ class AboutEst extends Component {
             tulu (s.t töine tulu on suurem kui null). Mediaanpalga leidmisel
             võetakse arvesse inimesed, kelle töötamise liigiks on TÖR-is
             märgitud „Tööleping“, „Avalik teenistus“ või „Kõrgem riigiteenija“.
-          </p>
+          </div>
           <br></br>
         </div>
       </div>

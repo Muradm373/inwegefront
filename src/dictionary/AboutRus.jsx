@@ -11,7 +11,7 @@ class AboutRus extends Component {
       <div className="pns-graphs description-page body-stat">
         <p className={"h4-stat"}>Понятия</p>
         <br />
-        <p className="text-left body-stat">
+        <div className="text-left body-stat">
           <p className="body-stat-bold" style={{ display: "inline" }}>
             Классификатор профессий
           </p>{" "}
@@ -326,7 +326,7 @@ class AboutRus extends Component {
           медианной заработной платы учитываются те, в качестве вида занятости
           которых в TÖR были отмечены «Трудовой договор», «Публичная служба» или
           «Государственный служащий высшего звена».
-        </p>
+        </div>
         <br></br>
       </div>
     );

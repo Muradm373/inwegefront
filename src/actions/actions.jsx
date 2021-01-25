@@ -77,7 +77,6 @@ export const getSalaryEntities = (regionSelected, isco, code, dispatch) => {
       .get(url)
       .then((response) => response.data)
       .then((data) => {
-        console.log(data);
         let entities = data.payload.salaryEntities;
         dispatch({
           type: "SET_ENTITIES",

@@ -204,7 +204,6 @@ class PensionGraph extends Component {
   }
 
   render() {
-    console.log(this.state.data)
     return (
       <div className="centered graph mb-5" id="bar-component">
         <PensionBarComponent

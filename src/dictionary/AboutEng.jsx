@@ -12,7 +12,7 @@ class AboutEng extends Component {
         <div className="pns-graphs description-page body-stat">
           <p className={"h4-stat"}>Definitions</p>
           <br />
-          <p className="text-left body-stat">
+          <div className="text-left body-stat">
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Classification of Occupations
             </p>{" "}
@@ -319,7 +319,7 @@ class AboutEng extends Component {
             determining the median wage, these persons are taken into account
             whose type of employment was marked ‘Employment Contract’, ‘Civil
             Service’ or ‘Senior Civil Servant’ in the employment register.
-          </p>
+          </div>
           <br></br>
         </div>
       </div>

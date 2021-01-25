@@ -10999,14 +10999,7 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner {
     font-family: "Font Awesome 5 Brands"
 }
 
-@font-face {
-    font-family: "Font Awesome 5 Duotone";
-    font-style: normal;
-    font-weight: 900;
-    font-display: auto;
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-duotone-900.eot);
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-duotone-900.eot#iefix) format("embedded-opentype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-duotone-900.woff2) format("woff2"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-duotone-900.woff) format("woff"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-duotone-900.ttf) format("truetype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-duotone-900.svg#fontawesome) format("svg")
-}
+
 
 .fad {
     position: relative;
@@ -18313,27 +18306,12 @@ fad.fa-sensor-alert:after {
     content: "\10f6ad"
 }
 
-@font-face {
-    font-family: "Font Awesome 5 Pro";
-    font-style: normal;
-    font-weight: 300;
-    font-display: auto;
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-light-300.eot);
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-light-300.eot#iefix) format("embedded-opentype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-light-300.woff2) format("woff2"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-light-300.woff) format("woff"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-light-300.ttf) format("truetype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-light-300.svg#fontawesome) format("svg")
-}
+
 
 .fal {
     font-weight: 300
 }
 
-@font-face {
-    font-family: "Font Awesome 5 Pro";
-    font-style: normal;
-    font-weight: 400;
-    font-display: auto;
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-regular-400.eot);
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-regular-400.eot#iefix) format("embedded-opentype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-regular-400.woff2) format("woff2"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-regular-400.woff) format("woff"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-regular-400.ttf) format("truetype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-regular-400.svg#fontawesome) format("svg")
-}
 
 .fal, .far {
     font-family: "Font Awesome 5 Pro"
@@ -18341,15 +18319,6 @@ fad.fa-sensor-alert:after {
 
 .far {
     font-weight: 400
-}
-
-@font-face {
-    font-family: "Font Awesome 5 Pro";
-    font-style: normal;
-    font-weight: 900;
-    font-display: auto;
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-solid-900.eot);
-    src: url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-solid-900.eot#iefix) format("embedded-opentype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-solid-900.woff2) format("woff2"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-solid-900.woff) format("woff"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-solid-900.ttf) format("truetype"), url(/themes/stat/assets/%40fortawesome/fontawesome-pro/webfonts/fa-solid-900.svg#fontawesome) format("svg")
 }
 
 .fa, .fas {
@@ -18494,7 +18463,6 @@ fad.fa-sensor-alert:after {
     opacity: 0.9;
     border-radius: 7px;
     background-color: #232323;
-    background-image: url(/core/misc/loading-small.gif);
     background-repeat: no-repeat;
     background-position: center center;
 }
@@ -18629,7 +18597,6 @@ body {
 }
 
 body.path-frontpage {
-    background-image: url(/themes/stat/images/pattern.svg);
     background-repeat: repeat
 }
 
@@ -18668,14 +18635,6 @@ body.path-frontpage {
     }
 }
 
-@font-face {
-    font-family: stat;
-    src: url(/themes/stat/assets/fonts/stat.eot?z0ahb=);
-    src: url(/themes/stat/assets/fonts/stat.eot?z0ahb=#iefix) format("embedded-opentype"), url(/themes/stat/assets/fonts/stat.ttf?z0ahb=) format("truetype"), url(/themes/stat/assets/fonts/stat.woff?z0ahb=) format("woff"), url(/themes/stat/assets/fonts/stat.svg?z0ahb=#stat) format("svg");
-    font-weight: 400;
-    font-style: normal;
-    font-display: block
-}
 
 .si {
     font-family: stat !important;
@@ -21658,7 +21617,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 20px;
     right: 10px;
     bottom: 10px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-repeat: repeat
 }
 
@@ -21768,7 +21726,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 20px;
     right: 10px;
     bottom: 10px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-repeat: repeat
 }
 
@@ -22247,7 +22204,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 20px;
     right: 10px;
     bottom: 10px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-repeat: repeat
 }
 
@@ -22346,7 +22302,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 20px;
     right: 10px;
     bottom: 10px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-repeat: repeat
 }
 
@@ -22914,7 +22869,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
 .page-auth__body {
     -webkit-box-flex: 1;
     flex: 1;
-    background-image: url(/themes/stat/images/bo-auth-bg.png);
     background-repeat: no-repeat;
     background-position: bottom;
     background-size: cover
@@ -23716,7 +23670,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 20px;
     right: 10px;
     bottom: 10px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-repeat: repeat
 }
 
@@ -25188,7 +25141,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 20px;
     right: 10px;
     bottom: 10px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-repeat: repeat
 }
 
@@ -26912,7 +26864,6 @@ body:not(.search-open):not(.nav-open) .layout__header {
     left: 0;
     right: 0;
     bottom: 22px;
-    background-image: url(/themes/stat/images/pattern-white.svg);
     background-position: 0 0;
     background-repeat: repeat
 }
@@ -26994,7 +26945,6 @@ body:not(.search-open) .block--intro_block__body > * {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(/themes/stat/images/pattern.svg);
     background-repeat: repeat;
     background-position: top 15px center;
     background-color: #fff;
