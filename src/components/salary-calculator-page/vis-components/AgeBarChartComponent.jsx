@@ -195,9 +195,15 @@ class AgeBarChartComponent extends Component {
 
   splitWords(text, limit) {
     let splitText = "";
+    let wordEnd = false;
     for (let i = 0; i < text.length; i++) {
       splitText += text[i];
-      if (i !== 0 && i % limit === 0) splitText += "<br/>";
+      if (i !== 0 && i % limit === 0) wordEnd = true;
+
+      if(wordEnd && text[i] === " "){
+        wordEnd = false;
+        splitText += "<br/>"
+      }
     }
 
     return splitText;
@@ -273,7 +279,7 @@ class AgeBarChartComponent extends Component {
           />
         </div>
         <div className="agebar-xaxis-label h6-stat-gray">
-          <p>{`${propsLabel}`}</p>
+          <p className="h6-stat-gray-label">{`${propsLabel}`}</p>
         </div>
 
         <div className={"source-tip-agebar"}>
@@ -341,7 +347,7 @@ class AgeBarChartComponent extends Component {
             <p className="graph-legend-age h6-stat-gray">
               {this.props.language === "en" || this.props.language === "ru"
                 ? `${this.props.occupation}`
-                : `Kokku ametialal - ${this.props.occupation}`}
+                : `Kokku ametialal — ${ occupationToLowerCase(this.state.occupation)}`}
             </p>
           </div>
         </div>

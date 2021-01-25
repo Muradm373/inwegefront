@@ -41,7 +41,7 @@ class WageForecast extends Component {
             id="methodology-component"
             className="block-page-title-block"
           >
-            <p className="text-justify">
+            <p className="text-justify body-stat">
               {wageForecastText}
             </p>
             <br></br>

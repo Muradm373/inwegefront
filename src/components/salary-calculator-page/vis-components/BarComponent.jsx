@@ -22,6 +22,12 @@ import {
 } from "../../../actions/actions";
 
 class BarComponent extends Component {
+  decapitalize (s) {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toLocaleLowerCase() + s.slice(1)
+  }
+
+
   render() {
     return (
       <div>
@@ -47,11 +53,11 @@ class BarComponent extends Component {
           this.props.occupation !== "" &&
           this.props.occupation !== "null (undefined)" ? (
             <div className={"bar-series-label"}>
-              <p className={"body-stat ml-3"}>{`${this.props.occupation} ${
+                           <p className={"body-stat ml-3"}>{`${this.props.occupation}${
                 this.props.region !== overall && this.props.region !== ""
-                  ? "."
-                  : ""
-              } ${translateCounty(this.props.region, this.props.language)}`}</p>
+                  ? (", " + translateCounty(this.props.region, this.props.language))
+                  : (", " + this.decapitalize(overall))
+              }`}</p>
             </div>
           ) : (
             <div className={"bar-series-label"}>
@@ -69,7 +75,7 @@ class BarComponent extends Component {
               <XAxis
                 style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
                 tickTotal={7}
-                title={"euro"}
+                title={"€"}
               />
             ) : (
               <XAxis

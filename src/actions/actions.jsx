@@ -71,7 +71,6 @@ export const setWage = (wage) => {
 
 export const getSalaryEntities = (regionSelected, isco, code, dispatch) => {
   let region = regionSelected;
-  console.log(regionSelected + "AAA");
   if (regionSelected === overall && isco === "" && code === "") {
     let url = `${API_URL}/jobs?lang=en&region=all`;
     axios

@@ -95,7 +95,7 @@ class PensionGraph extends Component {
   clearData(data) {
     let { min, p1, p2, p3, p4, p5, mean, p6, p7, p8, p9, max } = data;
 
-    return { min, p1, p2, p3, p4, mean, p6, p7, p8, p9, max: "0" };
+    return { min, p1, p2, p3, p4, mean, p6, p7, p8, p9, max };
   }
 
   componentDidMount() {
@@ -147,7 +147,7 @@ class PensionGraph extends Component {
         (difference >= 0
           ? pensionDifferenceLabel2020[4]
           : pensionDifferenceLabel2020[5]) +
-        " " +
+        (language === "ru" ? "" : " ") +
         pensionDifferenceLabel2020[7];
     }
     if (type === "palk") {
@@ -160,7 +160,7 @@ class PensionGraph extends Component {
           : pensionDifferenceLabel2020[5]) +
         pensionDifferenceLabel2020[6];
     }
-    if (type === "am_oma") {
+    if (type === "am_kesk") {
       label =
         pensionFractionLabel[0] +
         Math.abs(difference) +
@@ -179,7 +179,7 @@ class PensionGraph extends Component {
         );
     }
 
-    if (type === "am_kesk") {
+    if (type === "am_oma") {
       label =
         pensionFractionLabel[1] +
         Math.abs(difference) +
@@ -204,6 +204,7 @@ class PensionGraph extends Component {
   }
 
   render() {
+    console.log(this.state.data)
     return (
       <div className="centered graph mb-5" id="bar-component">
         <PensionBarComponent

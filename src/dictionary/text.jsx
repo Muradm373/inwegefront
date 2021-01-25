@@ -91,7 +91,7 @@ const leaveAFeedBackEng = [
   "Оставьте отзыв!",
   "Saada tagasiside siit!",
 ];
-const averageDataEng = ["Overall in Estonia", "По Эстонии", "Kogu Eesti"];
+const averageDataEng = ["Over Estonia", "По Эстонии", "Kogu Eesti"];
 
 const smallAverageDataEng = ["overall Estonia", "по Эстонии", "kogu Eesti"];
 const aboutEng = [
@@ -167,7 +167,7 @@ const averageDataSpecEng = [
   ["Kogu ametiala", "Maakond"],
 ];
 const columnChartOccupationLabelEng = [
-  ["", "County"],
+  ["Over", "county"],
   ["По", ""],
   ["Kogu", "maakond"],
 ];
@@ -233,6 +233,11 @@ const lessMoreLabelEng = [
 const levelsEng = [
   ["low", "medium", "high"],
   ["низкий", "средний", "высокий"],
+  ["väike", "keskmine", "suur"],
+];
+const levelsFemEng = [
+  ["low", "medium", "high"],
+  ["низкяя", "средняя", "высокая"],
   ["väike", "keskmine", "suur"],
 ];
 const ageLabelEng = [
@@ -429,16 +434,6 @@ let pensionDifferenceLabel2020Eng = [
     ", чем пенсия у женщин.",
   ],
   [
-    "В 2020 году ",
-    "В 2071 году ",
-    "средняя заработная плата мужчин на ",
-    "средняя пенсия мужчин на ",
-    " выше",
-    " ниже",
-    ", чем у женщин.",
-    ", чем пенсия у женщин.",
-  ],
-  [
     "Aastal 2020 ",
     "Aastal 2071 ",
     "on meeste kuupalk keskmiselt ",
@@ -461,9 +456,9 @@ let pensionFractionLabelEng = [
   ],
   [
     "Доля пенсии мужчин от средней брутто-зарплаты в год выхода на пенсию в среднем на ",
-    " процента больше ",
-    " процента меньше ",
-    ", чем у женщин",
+    " процента больше",
+    " процента меньше",
+    ", чем у женщин.",
     "Доля пенсии мужчин от последней месячной зарплаты в среднем на ",
   ],
   [
@@ -635,6 +630,7 @@ export default function changeLanguage(language) {
   pensionLabel = pensionLabelEng[i];
   lessMoreLabel = lessMoreLabelEng[i];
   levels = levelsEng[i];
+  levelsFem = levelsFemEng[i];
   noInformationLabel = noInformationLabelEng[i];
   allOcupationsLabel = allOcupationsLabelEng[i];
   fullTime = fullTimeEng[i];
@@ -751,6 +747,7 @@ export let retirement = retirementEng[0];
 export let pensionLabel = pensionLabelEng[0];
 export let lessMoreLabel = lessMoreLabelEng[0];
 export let levels = levelsEng[0];
+export let levelsFem = levelsFemEng[0];
 export let ageLabel = ageLabelEng[0];
 export let noInformationLabel = noInformationLabelEng[0];
 export let allOcupationsLabel = allOcupationsLabelEng[0];

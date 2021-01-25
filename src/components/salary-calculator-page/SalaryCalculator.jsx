@@ -61,6 +61,27 @@ class SalaryCalculator extends Component {
     this.setState({ content: content });
   }
 
+  decapitalize (s) {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toLocaleLowerCase() + s.slice(1)
+  }
+
+  buildPiechartLabel(code, name, region){
+    let result = `${name} (${code})`
+
+      let ending = "";
+
+      if(region === "" || region === overall){
+        
+        return result
+      }else{
+        return result + ", " + 
+        translateCounty(this.state.region, this.props.language);
+      }
+      
+
+  }
+
   onRegionChange = (event) => {
     const region = event.value;
     const tab = event.tab;
@@ -193,7 +214,7 @@ class SalaryCalculator extends Component {
                         <p
                           className={"text-left"}
                         >{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
-                        )
+                        
                       </div>
                     ) : (
                       <></>
@@ -281,16 +302,7 @@ class SalaryCalculator extends Component {
                       {totalNumberOfEmployeesOccupation[0]}
                     </p>
                     <p className={"body-stat ml-3"}>
-                      {this.props.generalName +
-                        " (" +
-                        this.props.occupationCode +
-                        ")" +
-                        totalNumberOfEmployeesOccupation[1] +
-                        (this.props.region === overall ||
-                        this.props.region === ""
-                          ? ". "
-                          : "") +
-                        translateCounty(this.state.region, this.props.language)}
+                    {this.buildPiechartLabel(this.props.occupationCode, this.props.generalName, this.state.region)}
                     </p>
                   </>
                 )}

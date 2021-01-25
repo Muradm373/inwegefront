@@ -301,6 +301,8 @@ class DynamicMapSelector extends Component {
 
   generateValueString(val) {
     if (val !== 0) {
+      if(this.props.language === "en")
+      return ": €" + val;
       return ": " + val + " €";
     }
 
@@ -312,7 +314,11 @@ class DynamicMapSelector extends Component {
     if (this.state.mapType === "Median Wage" || this.state.mapType==="Average Wage") {
       this.state.averages.map((el) => {
         if (el.region === region) {
+          if(this.props.language === "en")
+            data = "€"+formatNumber(el.average, this.props.language);
+          else
           data = formatNumber(el.average, this.props.language) + " €";
+         
           return data;
         }
 
@@ -402,7 +408,7 @@ class DynamicMapSelector extends Component {
   }
 
   getOccupation() {
-    return this.props.generalName === null || this.props.region === ""
+    return this.props.generalName === null
       ? ""
       : `${this.props.generalName} (${this.props.occupationCode})`;
   }
@@ -426,9 +432,15 @@ class DynamicMapSelector extends Component {
     } else {
       switch (this.state.mapType) {
         case "Median Wage":
-          return formatNumber(this.state.median, this.props.language) + " €";
+          if(this.props.language === "en")
+           return "€"+formatNumber(this.state.median, this.props.language);
+          else
+           return formatNumber(this.state.median, this.props.language) +" €" ;
 
         case "Average Wage":
+          if(this.props.language === "en")
+          return "€"+formatNumber(this.state.average, this.props.language);
+         else
           return formatNumber(this.state.average, this.props.language) + " €";
 
         case "Gender Wage Gap":
@@ -556,7 +568,7 @@ class DynamicMapSelector extends Component {
                          content = wageGapInfoTab;
                          break;
                      }
-                     this.setState({ content: `<p>${content} </p>`});
+                     this.setState({ content: `<p class="text-left">${content} </p>`});
 
                    }}
                    onMouseLeave={() => {
@@ -589,7 +601,7 @@ class DynamicMapSelector extends Component {
                 cursor:"pointer"
               }}
               x="-15"
-              y= {this.props.generalName === null || this.props.region === "" ? "25" : "50"}
+              y= {this.props.generalName === null  ? "25" : "50"}
               textAnchor="start"
               alignmentBaseline="start"
 
@@ -610,7 +622,7 @@ class DynamicMapSelector extends Component {
                 fill: "#595959"
               }}
               x="-15"
-              y= {this.props.generalName === null || this.props.region === "" ? "55":"75"}
+              y= {this.props.generalName === null ? "55":"75"}
               textAnchor="start"
               alignmentBaseline="start"
             >
@@ -625,7 +637,7 @@ class DynamicMapSelector extends Component {
                 fill: "#595959"
               }}
               x="500"
-              y={"30"}
+              y={"40"}
               textAnchor="start"
               alignmentBaseline="start"
             >

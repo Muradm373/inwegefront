@@ -79,12 +79,18 @@ class ColumnChartComponent extends Component {
         },
         xaxis: {
           categories: [averageDataSpec[0], averageDataSpec[1], averageData],
+          labels: {
+            rotateAlways: false,
+            trim: true,
+            rotate: 0,
+          }
         },
         yaxis: {
           labels: {
             formatter: function (value) {
               return formatNumber(value, props.language);
             },
+            rotateAlways: false,
           },
           tickAmount: 5,
         },
@@ -101,18 +107,24 @@ class ColumnChartComponent extends Component {
           custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return `<div class="arrow-box-small text-left"> 
                   <p class="arrow-box-p">
-                    ${w.globals.labels[dataPointIndex]} </p><br/>
+                  ${w.globals.labels[dataPointIndex].length === 2  ? (w.globals.labels[dataPointIndex][0] + w.globals.labels[dataPointIndex][1].charAt(0).toLocaleLowerCase() + w.globals.labels[dataPointIndex][1].slice(1)) :
+                    w.globals.labels[dataPointIndex]} </p><br/>
                     <br/>
                   <div class="row ml-3 " style="margin-top: -35px">
                   <div class="circle-legend mt-2" style="background-color: ${
                     seriesIndex === 0 ? menColor : womenColor
                   }"></div>
                   <p class="ml-1 h6-stat-white mt-1">
-                  ${w.globals.seriesNames[seriesIndex]} 
-                        ${formatNumber(
+                  ${ w.globals.seriesNames[seriesIndex]} 
+                        ${props.language === "en" ?
+                        ("€"+formatNumber(
                           series[seriesIndex][dataPointIndex],
                           props.language
-                        )} €
+                        ))
+                          :(formatNumber(
+                          series[seriesIndex][dataPointIndex],
+                          props.language
+                        ) + "€" )}
                   </p>
                   </div>
                 </div>`;
@@ -267,7 +279,7 @@ class ColumnChartComponent extends Component {
     } else {
       let url =
         `${API_URL}/jobs?region=` +
-        region +
+        "all" +
         "&isco=" +
         isco +
         "&code=" +
@@ -401,8 +413,8 @@ class ColumnChartComponent extends Component {
             width={360}
           />
         </div>
-        <div className="columnchart-xaxis-label h6-stat-gray">
-          <p>{`€/${monthLabel}`}</p>
+        <div className="columnchart-xaxis-label h6-stat-gray-label">
+          <p className="h6-stat-gray-label">{`€/${monthLabel}`}</p>
         </div>
         <div className={"source-tip"}>
           <p className={"source-label-style h6-stat font-weight-bold"}>

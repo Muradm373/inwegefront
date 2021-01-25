@@ -26,7 +26,7 @@ import { useMediaQuery } from "react-responsive";
 import { connect } from "react-redux";
 
 const display = (myWage, mean, men) => {
-  return Math.abs(parseInt(myWage) - parseInt(mean)) > 50 && men.length !== 0
+  return Math.abs(parseInt(myWage) - parseInt(mean)) > -1 && men.length !== 0
     ? {}
     : { display: "none" };
 };
@@ -224,11 +224,18 @@ function Graph(props) {
           {!isNaN(Math.abs(parseInt(myWage) - parseInt(mean)))
             ? props.differenceLabel[6] +
               " " +
-              formatNumber(
+              (props.language === "en" ?
+              ( "€" + formatNumber(
+                Math.abs(parseInt(myWage) - parseInt(mean)),
+                props.language
+              )
+             ) :
+              (formatNumber(
                 Math.abs(parseInt(myWage) - parseInt(mean)),
                 props.language
               ) +
-              " €" +
+              " €"))
+              +
               (parseInt(myWage) - parseInt(mean) > 0
                 ? props.differenceLabel[1]
                 : props.differenceLabel[2]) +

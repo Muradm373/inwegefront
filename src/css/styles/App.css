@@ -478,15 +478,19 @@ font {
     position: absolute;
     z-index: 1;
 }
-
+@media screen and (min-width: 1000px) {
+    .age-bar-mobile{
+        margin-top: 100px
+    }
+}
 @media screen and (max-width: 1000px) {
     .main-padding {
         padding-left: 0 !important;
         padding-right: 0 !important;
     }
-    .age-bar-mobile{
-        margin-top: 100px
-    }
+    /* .age-bar-mobile{
+        top: 100000px
+    } */
     .graph-component-cards {
         display: flex;
         flex-direction: column;
@@ -1361,6 +1365,14 @@ body {
     color: #595959 ;
 }
 
+.h6-stat-gray-label {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 12px !important;
+    line-height: 13px !important;
+    color: #595959 ;
+}
+
 .h6-stat-white {
     font-family: Roboto !important;
     font-weight: normal !important;
@@ -1391,6 +1403,29 @@ body {
     margin-top: -300px;
     float: right;
 }
+.table-stat {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table-stat td, .table-stat th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .table-stat tr:nth-child(odd){background-color: #f2f2f2;}
+  
+  .table-stat tr:hover {background-color: #ddd;}
+  
+  .table-stat th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #f2f2f2;
+    color: black;
+    font-weight: bold;
+  }
 
 .body-stat {
     font-family: Roboto !important;
@@ -1401,6 +1436,14 @@ body {
     color: #595959 ;
 }
 
+.body-stat-bold {
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    text-align: left;
+    color: #595959 ;
+}
 .body-stat-black {
     font-family: Roboto !important;
     font-weight: normal !important;
@@ -1408,6 +1451,21 @@ body {
     line-height: 20px !important;
     text-align: left;
     color: #000000 ;
+}
+
+.ol-stat-bullet li{
+    display: list-item;
+    list-style-position: inside;
+    counter-increment: none;
+    list-style-type: disc;
+    text-align: -webkit-match-parent;
+    position: relative;
+    padding: 2.5px 0 2.5px 40px;
+
+}
+
+.ol-stat-bullet b{
+    list-style-position: inside;
 }
 
 .ol-stat {
@@ -1438,6 +1496,17 @@ body {
     line-height: 25px;
     position: absolute;
     left: 0;
+
+}
+
+
+.ol-stat li li {
+    display: list-item;
+    counter-increment: none;
+    list-style-type: disc;
+}
+.ol-stat li  li::before {
+    display: none;
 
 }
 

@@ -5,7 +5,7 @@ import {
   computarization,
   pensionLabel,
   lessMoreLabel,
-  levels, yearLabel, averageWageLabel, euroUnits, euroUnitsThousand,
+  levels, levelsFem, yearLabel, averageWageLabel, euroUnits, euroUnitsThousand,
 } from "../../dictionary/text";
 import {connect} from "react-redux"
 import axios from "axios";
@@ -24,7 +24,7 @@ class WageBars extends Component {
         meanWage30: 0,
         share: 0,
         computerizationRisk: levels[0],
-        replacementsNeeds: levels[0],
+        replacementsNeeds: levelsFem[0],
       },
       row: true
     };
@@ -80,7 +80,7 @@ class WageBars extends Component {
           meanWage30: 0,
           share: 0,
           computerizationRisk: levels[0],
-          replacementsNeeds: levels[0],
+          replacementsNeeds: levelsFem[0],
         },
       });
     }
@@ -107,9 +107,9 @@ class WageBars extends Component {
   }
 
   calculateReplacementRisk(value) {
-    if (value < 0.2) return levels[0];
-    if (value >= 0.2 && value <= 0.4) return levels[1];
-    else return levels[2];
+    if (value < 0.2) return levelsFem[0];
+    if (value >= 0.2 && value <= 0.4) return levelsFem[1];
+    else return levelsFem[2];
   }
 
   itemColor(self, grade, type) {
@@ -183,7 +183,7 @@ class WageBars extends Component {
               className={"h4-stat text-left"}
             >
               {pensionLabel[0]} {this.formatNumber(this.state.payload.wageCategory30Min)}
-              {pensionLabel[1]}{this.formatNumber(this.state.payload.wageCategory30Max)} {euroUnits} .{" "}
+              {pensionLabel[1]}{this.formatNumber(this.state.payload.wageCategory30Max)} {euroUnits}.{" "}
               {pensionLabel[2]} {this.state.computerizationRisk}{" "}
               {pensionLabel[3]} {this.state.replacementsNeeds}.
             </p>
@@ -202,7 +202,7 @@ class WageBars extends Component {
                 <p className={"h4-stat"}>{`${yearLabel} 2019`}</p>
                 {this.props.language === "en" ?
                     <p>{`${averageWageLabel} (€${this.formatNumber(1404)})`}</p> :
-                  <p>{`${averageWageLabel} (${this.formatNumber(1404)}€)`}</p>
+                  <p style={{wordBreak: "keep-all"}}>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
                 }
 
               </div>
@@ -218,7 +218,7 @@ class WageBars extends Component {
                 <p className={"h4-stat"}>{`${yearLabel} 2030`}</p>
                 {this.props.language === "en" ?
                     <p>{`${averageWageLabel} (€${this.formatNumber(2315)})`}</p> :
-                    <p>{`${averageWageLabel} (${this.formatNumber(2315)}€)`}</p>
+                    <p style={{wordBreak: "keep-all"}}>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
                 }
               </div>
               {this.getColor(this.state.payload.wageCategory30Min)}
