@@ -44,12 +44,12 @@ class SalaryCalculator extends Component {
     super();
     this.state = {
       isco: "",
-      region: "",
+      region: overall,
       occupation: "",
       code: "",
       content: "",
       tab: 0,
-      mobile: false
+      mobile: false,
     };
 
     this.setContent = this.setContent.bind(this);
@@ -64,37 +64,34 @@ class SalaryCalculator extends Component {
   }
 
   resize() {
-      this.setState({mobile: window.innerWidth <= 1490});
+    this.setState({ mobile: window.innerWidth <= 1490 });
   }
 
   componentWillUnmount() {
-      window.removeEventListener("resize", this.resize.bind(this));
+    window.removeEventListener("resize", this.resize.bind(this));
   }
-
 
   setContent(content) {
     this.setState({ content: content });
   }
 
-  decapitalize (s) {
-    if (typeof s !== 'string') return ''
-    return s.charAt(0).toLocaleLowerCase() + s.slice(1)
+  decapitalize(s) {
+    if (typeof s !== "string") return "";
+    return s.charAt(0).toLocaleLowerCase() + s.slice(1);
   }
 
-  buildPiechartLabel(code, name, region){
-    let result = `${name} (${code})`
+  buildPiechartLabel(code, name, region) {
+    let result = `${name} (${code})`;
 
-      let ending = "";
+    let ending = "";
 
-      if(region === "" || region === overall){
-        
-        return result
-      }else{
-        return result + ", " + 
-        translateCounty(this.state.region, this.props.language);
-      }
-      
-
+    if (region === "" || region === overall) {
+      return result + ", " + this.decapitalize(overall);
+    } else {
+      return (
+        result + ", " + translateCounty(this.state.region, this.props.language)
+      );
+    }
   }
 
   onRegionChange = (event) => {
@@ -120,25 +117,38 @@ class SalaryCalculator extends Component {
     if (this.state.isco !== "") {
       this.props.getSalaryEntities(region, isco, code);
     } else {
-      this.props.getSalaryEntities(region, "averages", 0);
+      this.props.getSalaryEntities(region, "", "");
     }
     this.setState({ region: overall });
   };
 
   onIscoChange = (event) => {
     if (event.value === "reset") {
-      this.setState({
-        entities: [],
-        iscos: [],
-        isco: "",
-        occupation: "",
-        mean: [],
-        code: "",
-        wage: undefined,
-        gender: genderLabel[0],
-        content: "",
-        tab: 0,
-      });
+      if (this.state.region !== "" && this.state.region !== overall) {
+        this.props.getSalaryEntities(
+          this.state.region,
+          "averages",
+          this.state.code
+        );
+        this.setState({
+          isco: "",
+          occupation: "",
+          code: "",
+          content: "",
+          tab: 0,
+        });
+      } else {
+        this.setState({
+          isco: "",
+          occupation: "",
+          code: "",
+          content: "",
+          tab: 0,
+        });
+        this.props.getSalaryEntities(overall, "", "");
+      }
+
+      this.props.getOccupations("Harju maakond");
     } else {
       const region = this.state.region;
 
@@ -229,7 +239,6 @@ class SalaryCalculator extends Component {
                         <p
                           className={"text-left"}
                         >{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
-                        
                       </div>
                     ) : (
                       <></>
@@ -317,7 +326,11 @@ class SalaryCalculator extends Component {
                       {totalNumberOfEmployeesOccupation[0]}
                     </p>
                     <p className={"body-stat ml-3"}>
-                    {this.buildPiechartLabel(this.props.occupationCode, this.props.generalName, this.state.region)}
+                      {this.buildPiechartLabel(
+                        this.props.occupationCode,
+                        this.props.generalName,
+                        this.state.region
+                      )}
                     </p>
                   </>
                 )}
@@ -353,7 +366,11 @@ class SalaryCalculator extends Component {
                     <div className={"col-sm"}>
                       {this.state.isco ? (
                         <div>
-                          <div className={this.state.mobile ? "age-bar-mobile" : ""}>
+                          <div
+                            className={
+                              this.state.mobile ? "age-bar-mobile" : ""
+                            }
+                          >
                             <AgeBarChartComponent
                               isco={this.state.isco}
                               label={[`${ageLabel} `]}

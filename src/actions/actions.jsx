@@ -71,6 +71,30 @@ export const setWage = (wage) => {
 
 export const getSalaryEntities = (regionSelected, isco, code, dispatch) => {
   let region = regionSelected;
+  
+
+  if (
+    (regionSelected === overall || regionSelected === "all") &&
+    isco === "" &&
+    code === ""
+  ) {
+    let url = `${API_URL}/jobs?lang=en&region=all`;
+    axios
+      .get(url)
+      .then((response) => response.data)
+      .then((data) => {
+        let entities = data.payload.salaryEntities;
+        dispatch({
+          type: "SET_ENTITIES",
+          entities: entities,
+          description: "",
+          generalName: null,
+          code: undefined,
+        });
+      });
+    return;
+  }
+
   if (regionSelected === overall && isco === "" && code === "") {
     let url = `${API_URL}/jobs?lang=en&region=all`;
     axios

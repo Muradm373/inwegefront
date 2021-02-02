@@ -257,7 +257,8 @@ class AgeBarChartComponent extends Component {
 
   render() {
     return (
-      <div ref={this.componentRef}>
+      <div>
+      <div className="p-2" ref={this.componentRef}>
         <p
           className="graph-legends mx-auto pl-4 h4-stat text-left px-auto"
           style={{ height: "40px", position: "absolute" }}
@@ -286,13 +287,30 @@ class AgeBarChartComponent extends Component {
           <p className={"source-label-style"}>{source}</p>
         </div>
 
-        <div className="apexcharts-toolbar apexcharts-toolbar-holder-agebar">
+        
+        <div className="graph-legends mx-auto pl-5">
+          <div className={"row"}>
+            <div
+              className="circle-legend"
+              style={{
+                background: "#FFBC45",
+              }}
+            ></div>
+            <p className="graph-legend-age h6-stat-gray">
+              {this.props.language === "en" || this.props.language === "ru"
+                ? `${this.props.occupation}`
+                : `Kokku ametialal — ${ occupationToLowerCase(this.state.occupation)}`}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="apexcharts-toolbar apexcharts-toolbar-holder-agebar">
           <div
             className="apexcharts-menu-icon"
             style={{}}
             title="Menu"
             onClick={() => {
-              this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
+              this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu, options: {...this.state.options, tooltip: {...this.state.options.tooltip, enabled: this.state.mapDownloadMenu} }});
             }}
           >
             <svg
@@ -318,6 +336,8 @@ class AgeBarChartComponent extends Component {
                 this.promiseState().then(() =>
                   exportComponentAsPNG(this.componentRef)
                 );
+                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu, options: {...this.state.options, tooltip: {...this.state.options.tooltip, enabled: this.state.mapDownloadMenu} }});
+          
               }}
               title={downloadPng}
             >
@@ -330,25 +350,12 @@ class AgeBarChartComponent extends Component {
                 this.promiseState().then(() =>
                   exportComponentAsJPEG(this.componentRef)
                 );
+                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu, options: {...this.state.options, tooltip: {...this.state.options.tooltip, enabled: this.state.mapDownloadMenu} }});
+          
               }}
             >
               {downloadJpeg}
             </div>
-          </div>
-        </div>
-        <div className="graph-legends mx-auto pl-5">
-          <div className={"row"}>
-            <div
-              className="circle-legend"
-              style={{
-                background: "#FFBC45",
-              }}
-            ></div>
-            <p className="graph-legend-age h6-stat-gray">
-              {this.props.language === "en" || this.props.language === "ru"
-                ? `${this.props.occupation}`
-                : `Kokku ametialal — ${ occupationToLowerCase(this.state.occupation)}`}
-            </p>
           </div>
         </div>
       </div>

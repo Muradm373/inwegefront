@@ -1702,15 +1702,15 @@ body {
 }
 .apexcharts-toolbar-holder{
     position: absolute;
-    margin-top: -340px;
-    margin-left: 330px;
+    margin-top: -380px;
+    margin-left: 350px;
     float: right;
 }
 
 .apexcharts-toolbar-holder-agebar{
     position: absolute;
-    margin-top: -330px;
-    margin-left: 330px;
+    margin-top: -360px;
+    margin-left: 350px;
     float: right;
 }
 
