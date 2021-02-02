@@ -193,8 +193,8 @@ class DynamicMapSelector extends Component {
                 >
                   {this.state.mapType !== "Gender Wage Gap"
                     ? e.length > 1
-                      ? `${e[0].item}–${e[e.length - 1].item} ${euroUnits}`
-                      : `${e[0].item} ${euroUnits}`
+                      ? `${formatNumber(e[0].item, this.props.language)}–${formatNumber(e[e.length - 1].item, this.props.language)} ${euroUnits}`
+                      : `${formatNumber(e[0].item, this.props.language)} ${euroUnits}`
                     : e.length > 1
                     ? this.props.language==="en" ?
                           `${e[0].percentage.toFixed(2)}–${e[
@@ -300,9 +300,9 @@ class DynamicMapSelector extends Component {
   }
 
   generateValueString(val) {
-    if (val !== 0) {
+    if (val !== "0") {
       if(this.props.language === "en")
-      return ": €" + val;
+        return ": €" + val;
       return ": " + val + " €";
     }
 
@@ -317,7 +317,7 @@ class DynamicMapSelector extends Component {
           if(this.props.language === "en")
             data = "€"+formatNumber(el.average, this.props.language);
           else
-          data = formatNumber(el.average, this.props.language) + " €";
+            data = formatNumber(el.average, this.props.language) + " €";
          
           return data;
         }

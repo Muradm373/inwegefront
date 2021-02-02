@@ -206,7 +206,7 @@ class AboutEng extends Component {
             register has been made under the following conditions:
             <ol className={"ol-stat"}>
               <li>
-                <p className="ml-4">
+                <p className="ml-4 body-stat">
                   data on the median wage, wage distributions, average wage and
                   number of employees cover the full-time employees in the
                   position or county
@@ -233,7 +233,7 @@ class AboutEng extends Component {
                 </ul>
               </li>
               <li>
-                <p className="ml-4">
+                <p className="ml-4 body-stat">
                   the average gross monthly wage of the employee in the position
                   is calculated on the basis of the payment amounts of Annexes 1
                   and 2 of the tax return TSD declared by the employer during
@@ -241,7 +241,7 @@ class AboutEng extends Component {
                 </p>
               </li>
               <li>
-                <p className="ml-4">
+                <p className="ml-4 body-stat">
                   only income from work is taken into account when calculating
                   the wages of employees. For this purpose, Annex 1 types of
                   payment 10, 12 and 13 and Annex 2 types of payment 120, 121,

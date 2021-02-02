@@ -55,7 +55,7 @@ class WageBars extends Component {
               },
             });
         }
-        else
+        else{
         this.setState({
           payload: data.payload,
           computerizationRisk: this.calculateComputerizationRisk(
@@ -63,6 +63,7 @@ class WageBars extends Component {
           ),
           replacementsNeeds: this.calculateReplacementRisk(data.payload.share),
         });
+      }
       });
   }
 
@@ -113,7 +114,8 @@ class WageBars extends Component {
   }
 
   itemColor(self, grade, type) {
-    if (levels[self] === grade && grade !== undefined) {
+    console.log(self + " " + grade + " " + type)
+    if ( grade !== undefined && levels[self][0] === grade[0]) {
       if (type === "computerization") return "pns-active-" + self;
       else {
         return "pns-active-comp-" + self;

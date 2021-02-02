@@ -3,7 +3,7 @@ import OccupationSelector from "../salary-calculator-page/selector-components/Oc
 import WageBars from "./WageBars";
 import { getOccupations } from "../../actions/actions";
 import { connect } from "react-redux";
-import {wageForecastText} from "../../dictionary/text"
+import {wageForecastText, tartuUlikooli} from "../../dictionary/text"
 
 class WageForecast extends Component {
   constructor(props) {
@@ -35,12 +35,14 @@ class WageForecast extends Component {
 
   render() {
     return (
-      <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 wage-forecast">
+      <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 wage-forecast p-5">
         <div className="wageforecast-component ">
           <div
             id="methodology-component"
             className="block-page-title-block"
           >
+            <p className={"h4-stat"}>{tartuUlikooli}</p>
+            <br/>
             <p className="text-justify body-stat">
               {wageForecastText}
             </p>

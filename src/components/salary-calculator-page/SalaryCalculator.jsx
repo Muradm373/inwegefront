@@ -49,6 +49,7 @@ class SalaryCalculator extends Component {
       code: "",
       content: "",
       tab: 0,
+      mobile: false
     };
 
     this.setContent = this.setContent.bind(this);
@@ -56,6 +57,20 @@ class SalaryCalculator extends Component {
     props.getOccupations("Harju maakond");
     props.getSalaryEntities(overall, "", "");
   }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.resize.bind(this));
+    this.resize();
+  }
+
+  resize() {
+      this.setState({mobile: window.innerWidth <= 1490});
+  }
+
+  componentWillUnmount() {
+      window.removeEventListener("resize", this.resize.bind(this));
+  }
+
 
   setContent(content) {
     this.setState({ content: content });
@@ -338,7 +353,7 @@ class SalaryCalculator extends Component {
                     <div className={"col-sm"}>
                       {this.state.isco ? (
                         <div>
-                          <div className="age-bar-mobile">
+                          <div className={this.state.mobile ? "age-bar-mobile" : ""}>
                             <AgeBarChartComponent
                               isco={this.state.isco}
                               label={[`${ageLabel} `]}

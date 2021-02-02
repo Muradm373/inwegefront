@@ -91,7 +91,7 @@ const leaveAFeedBackEng = [
   "Оставьте отзыв!",
   "Saada tagasiside siit!",
 ];
-const averageDataEng = ["Over Estonia", "По Эстонии", "Kogu Eesti"];
+const averageDataEng = ["Estonia", "По Эстонии", "Kogu Eesti"];
 
 const smallAverageDataEng = ["overall Estonia", "по Эстонии", "kogu Eesti"];
 const aboutEng = [
@@ -162,12 +162,12 @@ const totalNumberOfEmployeesOccupationEng = [
   ["Täisajaga töötajate koguarv ", " "],
 ];
 const averageDataSpecEng = [
-  ["Occupation", "Over County"],
+  ["Occupation", "County"],
   ["По профессии", "По уезду"],
   ["Kogu ametiala", "Maakond"],
 ];
 const columnChartOccupationLabelEng = [
-  ["Over", "county"],
+  ["", "county"],
   ["По", ""],
   ["Kogu", "maakond"],
 ];
@@ -237,7 +237,7 @@ const levelsEng = [
 ];
 const levelsFemEng = [
   ["low", "medium", "high"],
-  ["низкяя", "средняя", "высокая"],
+  ["низкая", "средняя", "высокая"],
   ["väike", "keskmine", "suur"],
 ];
 const ageLabelEng = [
@@ -302,6 +302,11 @@ const statisticsEstoniaEng = [
   "Statistikaamet:",
 ];
 
+const tartuUlikooliEng = [
+  "The wage and pension projections have been compiled by a research group at the University of Tartu School of Economic and Business Administration as an outcome of the InWeGe research project.",
+  "Прогноз по заработной плате и пенсиям подготовлен учеными исследовательской группы экономического факультета Тартуского университета в рамках научного проекта InWeGe.",
+  "Palga- ja pensioniprognoosi on koostanud teadusprojekti InWeGe tulemusena Tartu ülikooli majandusteaduskonna uurimisrühma teadlased.",
+];
 const replacementNeeds1Eng = [
   "Replacement rate in relation to employee’s last wage",
   "Kоэффициент замещения по отношению к последней заработной плате работника",
@@ -447,8 +452,9 @@ let pensionDifferenceLabel2020Eng = [
 
 let pensionFractionLabelEng = [
   [
-    "The ratio of pension to the last monthly wage for men is on average ",
+    
     "The ratio of pension to average gross wages in the year of retirement for men is on average ",
+    "The ratio of pension to the last monthly wage for men is on average ",
     " percentage points ",
     "higher ",
     "lower ",
@@ -462,8 +468,9 @@ let pensionFractionLabelEng = [
     "Доля пенсии мужчин от последней месячной зарплаты в среднем на ",
   ],
   [
-    "Meeste pensioni osatähtsus viimasest kuupalgast on keskmiselt  ",
+    
     "Meeste pensioni osatähtsus keskmisest palgast pensionile minemise aastal on keskmiselt ",
+    "Meeste pensioni osatähtsus viimasest kuupalgast on keskmiselt  ",
     " protsendipunkti ",
     "suurem ",
     "väiksem ",
@@ -694,6 +701,7 @@ export default function changeLanguage(language) {
   Livelihood = LivelihoodEng[i];
   downloadJpeg = downloadJpegEng[i];
   downloadPng = downloadPngEng[i];
+  tartuUlikooli = tartuUlikooliEng[i];
 }
 
 export let wageGapInfoTab = wageGapTabInfoEng[0];
@@ -807,6 +815,7 @@ export let euroUnitsThousand = euroUnitsThousandEng[0];
 export let Livelihood = LivelihoodEng[0];
 export let downloadJpeg = downloadJpegEng[0];
 export let downloadPng = downloadPngEng[0];
+export let tartuUlikooli = tartuUlikooliEng[0];
 
 export let counties = {
   "Valga maakond": "Валгамаа",

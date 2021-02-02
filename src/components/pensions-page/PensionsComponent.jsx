@@ -12,7 +12,8 @@ import {
   gapsPensionLabel,
   checkMyPlanLabel,
   pensionLink,
-  PensionsText, Livelihood
+  PensionsText, Livelihood,
+  tartuUlikooli
 
 } from "../../dictionary/text";
 import {connect} from "react-redux";
@@ -24,6 +25,9 @@ class PensionsComponent extends Component {
       <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 pension-component">
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs description-page">
+          <p className={"h4-stat"}>{tartuUlikooli}</p>
+          <br/>
+          <br/>
             <p className="text-justify">
               {PensionsText}
             </p>

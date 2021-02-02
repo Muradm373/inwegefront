@@ -198,7 +198,7 @@ class AboutEst extends Component {
             korral:
             <ol className={"ol-stat"}>
               <li>
-                <p className="ml-4">
+                <p className="ml-4 body-stat">
                   mediaanpalga, palgajaotuste, keskmise palga ja töötajate arvu
                   leidmisel on võetud arvesse kõik sellel ametikohal või
                   maakonnas täiskohaga töötajad
@@ -221,7 +221,7 @@ class AboutEst extends Component {
                 </ul>
               </li>
               <li>
-                <p className="ml-4">
+                <p className="ml-4 body-stat">
                   töötaja keskmine kuu brutopalk ametikohal arvutatakse välja
                   valitud perioodi jooksul tööandja deklareeritud
                   maksudeklaratsiooni TSD lisade 1 ja 2 väljamakse summade
@@ -229,12 +229,10 @@ class AboutEst extends Component {
                 </p>
               </li>
               <li>
-                <p className="ml-4">
+                <p className="ml-4 body-stat">
                   töötajate palga arvutamisel võetakse arvesse vaid töine tulu.
                   Selleks kasutatakse TSD lisa 1 väljamakseliike 10, 12 ja 13
                   ning lisa 2 väljamakseliike 120, 121, 126, 127, 144, 145.
-                  Kõigist arvutustest on välja jäetud 2,5% kõige madalamatest ja
-                  kõige kõrgematest palkadest.
                 </p>
               </li>
             </ol>

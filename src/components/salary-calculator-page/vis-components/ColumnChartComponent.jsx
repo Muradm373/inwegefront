@@ -83,7 +83,7 @@ class ColumnChartComponent extends Component {
             rotateAlways: false,
             trim: true,
             rotate: 0,
-          }
+          },
         },
         yaxis: {
           labels: {
@@ -107,24 +107,34 @@ class ColumnChartComponent extends Component {
           custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             return `<div class="arrow-box-small text-left"> 
                   <p class="arrow-box-p">
-                  ${w.globals.labels[dataPointIndex].length === 2  ? (w.globals.labels[dataPointIndex][0] + w.globals.labels[dataPointIndex][1].charAt(0).toLocaleLowerCase() + w.globals.labels[dataPointIndex][1].slice(1)) :
-                    w.globals.labels[dataPointIndex]} </p><br/>
+                  ${
+                    w.globals.labels[dataPointIndex].length === 2
+                      ? w.globals.labels[dataPointIndex][0] +
+                        w.globals.labels[dataPointIndex][1]
+                          .charAt(0)
+                          .toLocaleLowerCase() +
+                        w.globals.labels[dataPointIndex][1].slice(1)
+                      : w.globals.labels[dataPointIndex]
+                  } </p><br/>
                     <br/>
                   <div class="row ml-3 " style="margin-top: -35px">
                   <div class="circle-legend mt-2" style="background-color: ${
                     seriesIndex === 0 ? menColor : womenColor
                   }"></div>
                   <p class="ml-1 h6-stat-white mt-1">
-                  ${ w.globals.seriesNames[seriesIndex]} 
-                        ${props.language === "en" ?
-                        ("€"+formatNumber(
-                          series[seriesIndex][dataPointIndex],
-                          props.language
-                        ))
-                          :(formatNumber(
-                          series[seriesIndex][dataPointIndex],
-                          props.language
-                        ) + "€" )}
+                  ${w.globals.seriesNames[seriesIndex]} 
+                        ${
+                          props.language === "en"
+                            ? "€" +
+                              formatNumber(
+                                series[seriesIndex][dataPointIndex],
+                                props.language
+                              )
+                            : formatNumber(
+                                series[seriesIndex][dataPointIndex],
+                                props.language
+                              ) + "€"
+                        }
                   </p>
                   </div>
                 </div>`;
@@ -161,10 +171,22 @@ class ColumnChartComponent extends Component {
     let options = this.state.options;
 
     options.xaxis.categories[0] = [occupationLabel];
-    options.xaxis.categories[1] = [
-      `${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,
-      `${columnChartOccupationLabel[1]}`,
-    ];
+
+    if (props.language === "en")
+      if (props.region === "")
+        options.xaxis.categories[1] = [`${this.translateCounty(props.region)}`];
+      else
+        options.xaxis.categories[1] = [
+          `${this.translateCounty(props.region)}`,
+          `${columnChartOccupationLabel[1]}`,
+        ];
+    else
+      options.xaxis.categories[1] = [
+        `${columnChartOccupationLabel[0]} ${this.translateCounty(
+          props.region
+        )}`,
+        `${columnChartOccupationLabel[1]}`,
+      ];
     this.setState({ options: options });
   }
 
@@ -181,6 +203,7 @@ class ColumnChartComponent extends Component {
             ? averageDataSpec[2]
             : counties[countySelected];
       case "en":
+        if (countySelected === "") return "County";
         return county;
       default:
         return county;
