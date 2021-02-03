@@ -172,16 +172,24 @@ class ColumnChartComponent extends Component {
 
     options.xaxis.categories[0] = [occupationLabel];
 
-    if (props.language === "en"){
-      if (props.region === overall || props.region==="")
+    if (props.language === "en") {
+      if (props.region === overall || props.region === "")
         options.xaxis.categories[1] = [`County`];
       else
         options.xaxis.categories[1] = [
           `${this.translateCounty(props.region)}`,
           `${columnChartOccupationLabel[1]}`,
         ];
-      }
-    else
+    }
+    else if (props.language === "ru") {
+      if (props.region === overall || props.region === "")
+        options.xaxis.categories[1] = [`По уезду`];
+      else
+        options.xaxis.categories[1] = [
+          `${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,
+          `${columnChartOccupationLabel[1]}`,
+        ];
+    } else
       options.xaxis.categories[1] = [
         `${columnChartOccupationLabel[0]} ${this.translateCounty(
           props.region
@@ -301,31 +309,23 @@ class ColumnChartComponent extends Component {
           },
         ],
       });
-    }if(isco==="" || code===""){
+    }
+    if (isco === "" || code === "") {
       this.setState({
         series: [
           {
             name: genderLabel[0],
-            data: [
-              0,
-              this.state.menMeanRegion,
-              this.state.menMean,
-            ],
+            data: [0, this.state.menMeanRegion, this.state.menMean],
           },
           {
             name: genderLabel[1],
-            data: [
-              0,
-              this.state.womenMeanRegion,
-              this.state.womenMean,
-            ],
+            data: [0, this.state.womenMeanRegion, this.state.womenMean],
           },
         ],
         menMeanOccupation: 0,
         womenMeanOccupation: 0,
       });
-    } 
-    else {
+    } else {
       let url =
         `${API_URL}/jobs?region=` +
         "all" +
@@ -476,8 +476,6 @@ class ColumnChartComponent extends Component {
             {displayLegends(menColor, womenColor)}
           </div>
 
-         
-
           {this.props.generalName !== null ? (
             <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
               {`* ${this.props.generalName} (${this.props.occupationCode})`}
@@ -490,56 +488,83 @@ class ColumnChartComponent extends Component {
         </div>
 
         <div className="apexcharts-toolbar apexcharts-toolbar-holder">
+          <div
+            className="apexcharts-menu-icon"
+            style={{}}
+            title="Menu"
+            onClick={() => {
+              this.setState({
+                mapDownloadMenu: !this.state.mapDownloadMenu,
+                options: {
+                  ...this.state.options,
+                  tooltip: {
+                    ...this.state.options.tooltip,
+                    enabled: this.state.mapDownloadMenu,
+                  },
+                },
+              });
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+            >
+              <path fill="none" d="M0 0h24v24H0V0z"></path>
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+            </svg>
+          </div>
+          <div
+            className={
+              "apexcharts-menu " +
+              (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
+            }
+          >
             <div
-              className="apexcharts-menu-icon"
-              style={{}}
-              title="Menu"
+              className="apexcharts-menu-item exportPNG"
               onClick={() => {
-                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu, options: {...this.state.options, tooltip: {...this.state.options.tooltip, enabled: this.state.mapDownloadMenu} }});
+                this.promiseState().then(() =>
+                  exportComponentAsPNG(this.componentRef)
+                );
+                this.setState({
+                  mapDownloadMenu: !this.state.mapDownloadMenu,
+                  options: {
+                    ...this.state.options,
+                    tooltip: {
+                      ...this.state.options.tooltip,
+                      enabled: this.state.mapDownloadMenu,
+                    },
+                  },
+                });
+              }}
+              title={downloadPng}
+            >
+              {downloadPng}
+            </div>
+            <div
+              className="apexcharts-menu-item exportPDF"
+              title={downloadJpeg}
+              onClick={() => {
+                this.promiseState().then(() =>
+                  exportComponentAsJPEG(this.componentRef)
+                );
+                this.setState({
+                  mapDownloadMenu: !this.state.mapDownloadMenu,
+                  options: {
+                    ...this.state.options,
+                    tooltip: {
+                      ...this.state.options.tooltip,
+                      enabled: this.state.mapDownloadMenu,
+                    },
+                  },
+                });
               }}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-              >
-                <path fill="none" d="M0 0h24v24H0V0z"></path>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-              </svg>
-            </div>
-            <div
-              className={
-                "apexcharts-menu " +
-                (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
-              }
-            >
-              <div
-                className="apexcharts-menu-item exportPNG"
-                onClick={() => {
-                  this.promiseState().then(() =>
-                    exportComponentAsPNG(this.componentRef)
-                  );
-                  this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu, options: {...this.state.options, tooltip: {...this.state.options.tooltip, enabled: this.state.mapDownloadMenu} }});
-                }}
-                title={downloadPng}
-              >
-                {downloadPng}
-              </div>
-              <div
-                className="apexcharts-menu-item exportPDF"
-                title={downloadJpeg}
-                onClick={() => {
-                  this.promiseState().then(() =>
-                    exportComponentAsJPEG(this.componentRef)
-                  );
-                  this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu, options: {...this.state.options, tooltip: {...this.state.options.tooltip, enabled: this.state.mapDownloadMenu} }});
-                }}
-              >
-                {downloadJpeg}
-              </div>
+              {downloadJpeg}
             </div>
           </div>
+        </div>
       </div>
     );
   }
