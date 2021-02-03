@@ -172,7 +172,7 @@ class ColumnChartComponent extends Component {
 
     options.xaxis.categories[0] = [occupationLabel];
 
-    if (props.language === "en")
+    if (props.language === "en"){
       if (props.region === overall || props.region==="")
         options.xaxis.categories[1] = [`County`];
       else
@@ -180,6 +180,7 @@ class ColumnChartComponent extends Component {
           `${this.translateCounty(props.region)}`,
           `${columnChartOccupationLabel[1]}`,
         ];
+      }
     else
       options.xaxis.categories[1] = [
         `${columnChartOccupationLabel[0]} ${this.translateCounty(
