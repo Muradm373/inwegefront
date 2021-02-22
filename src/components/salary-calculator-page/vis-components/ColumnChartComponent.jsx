@@ -122,10 +122,10 @@ class ColumnChartComponent extends Component {
                     seriesIndex === 0 ? menColor : womenColor
                   }"></div>
                   <p class="ml-1 h6-stat-white mt-1">
-                  ${w.globals.seriesNames[seriesIndex]} 
+                  ${w.globals.seriesNames[seriesIndex]}:
                         ${
                           props.language === "en"
-                            ? "€" +
+                            ? " €" +
                               formatNumber(
                                 series[seriesIndex][dataPointIndex],
                                 props.language
@@ -133,7 +133,7 @@ class ColumnChartComponent extends Component {
                             : formatNumber(
                                 series[seriesIndex][dataPointIndex],
                                 props.language
-                              ) + "€"
+                              ) + " €"
                         }
                   </p>
                   </div>

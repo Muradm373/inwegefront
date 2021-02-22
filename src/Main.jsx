@@ -203,7 +203,7 @@ class Main extends Component {
                   <nav className="navigation menu--app-menu">
                     <span
                       id="block-rakendustemenuu-menu"
-                      className="menu--app-menu__title"
+                      className="menu--app-menu__title ml-5"
                     >
                       {statisticsEstonia}
                     </span>
@@ -339,7 +339,7 @@ class Main extends Component {
                     id="block-paiseviited"
                     className="block block-menu navigation menu--header-references"
                   >
-                    <div className="flex-list wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal">
+                    <div className="flex-list wpml-ls-statics-shortcode_actions wpml-ls wpml-ls-legacy-list-horizontal mr-5">
                       <ul>
                         <li className="wpml-ls-slot-shortcode_actions wpml-ls-item wpml-ls-item-et wpml-ls-first-item wpml-ls-item-legacy-list-horizontal">
                           <a

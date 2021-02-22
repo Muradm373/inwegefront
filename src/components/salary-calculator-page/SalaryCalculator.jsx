@@ -200,7 +200,7 @@ class SalaryCalculator extends Component {
                 className={"mt-3"}
                 style={{ display: "flex", flexDirection: "row" }}
               >
-                <div>
+                <div className="w-50">
                   <div>
                     <div id={"salary-selector"}>
                       <p className="mnimi-w">
@@ -220,7 +220,7 @@ class SalaryCalculator extends Component {
                     </div>
                   </div>
                 </div>
-                <div style={{ marginLeft: "10px" }} id={"gender-selector"}>
+                <div className="w-50" style={{ marginLeft: "10px" }} id={"gender-selector"}>
                   <GenderSelector onGenderChange={this.props.setGender} />
                 </div>
               </div>
@@ -231,20 +231,20 @@ class SalaryCalculator extends Component {
                   <>
                     {this.props.occupationCode !== null ? (
                       <div className={"body-stat ml-1 row text-left"}>
-                        <p className={"text-left"}>{levelLabel[0]}&nbsp;</p>
-                        <p className={"font-weight-bold text-left"}>
+                        <p className={"text-left body-stat"}>{levelLabel[0]}&nbsp;</p>
+                        <p className={"text-left body-stat-bold "}>
                           {` ${occupationToLowerCase(this.props.generalName)} `}{" "}
                           &nbsp;
                         </p>
                         <p
-                          className={"text-left"}
+                          className={"text-left body-stat"}
                         >{` (${this.props.occupationCode}, ${levelLabel[1]} ${this.props.occupationCode.length} ${levelLabel[2]}).`}</p>
                       </div>
                     ) : (
                       <></>
                     )}
                     <br />
-                    <p className={"description-label"}>
+                    <p className={"description-label "}>
                       {`${occupationDescriptionLabel}`}{" "}
                     </p>
                   </>

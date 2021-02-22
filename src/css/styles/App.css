@@ -118,7 +118,7 @@ label::placeholder {
 }
 
 .map-legend {
-    margin-top: -13px;
+    margin-top: -15px;
     margin-left: 3px;
     font-family: Roboto;
     font-size: 14px;
@@ -304,7 +304,12 @@ font {
 
 .description-label {
     text-align: left;
-    font-weight: bold;
+    font-family: Roboto !important;
+    font-weight: bold !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    text-align: left;
+    color: #595959 ;
 }
 
 .paragraph {
@@ -402,8 +407,9 @@ font {
 }
 
 .selector {
-    margin: 5px;
+    margin-top: 5px;
 }
+
 
 .graph-component-cards {
     display: flex;
@@ -450,7 +456,7 @@ font {
 }
 
 .card-occupation-selector {
-    width: 35%;
+    width: 36.7%;
     counter-reset: bullet-counter;
 }
 
@@ -1160,7 +1166,7 @@ body {
     line-height: 20px;
     font-weight: normal;
     color: #595959;
-    padding: 5%;
+    padding: 35px;
 }
 
 .center {
@@ -1181,9 +1187,12 @@ body {
 
 .css-1wa3eu0-placeholder{
     color: black !important;
+    font-family: Roboto !important;
     font-weight: initial !important;
-    font-size: 14px !important;
-    line-height: 16px !important;
+    font-size: 14.5px !important;
+}
+
+#salary-selector{
 }
 
 .css-yk16xz-control:focus{
@@ -1580,7 +1589,7 @@ body {
 .y-axis-label {
     position: absolute;
     margin-top: -20px;
-    margin-left: 40px;
+    margin-left: 17px;
 }
 
 .wage-change-label {
@@ -1592,18 +1601,16 @@ body {
 
 .graph-xaxis-label {
     mix-blend-mode: difference;
-    position: absolute;
-    margin-top: -65px;
-    margin-left: 48%;
+    margin-top: -60px;
+    margin-right: 2%;
     text-align: right;
     z-index: 1000;
     float:right;
 }
 .pension-graph-xaxis-label {
     mix-blend-mode: difference;
-    position: absolute;
-    margin-top: -65px;
-    right: 50px;
+    margin-top: -60px;
+    margin-right: 2%;
     text-align: right;
     z-index: 1000;
     float:right;
@@ -1712,6 +1719,12 @@ body {
     margin-top: -360px;
     margin-left: 350px;
     float: right;
+}
+
+.apexcharts-toolbar-map{
+   position: absolute;
+   margin-top: 5%;
+   right: 15%;
 }
 
 .rotate-180 {

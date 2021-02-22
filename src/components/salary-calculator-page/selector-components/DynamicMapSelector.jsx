@@ -175,7 +175,7 @@ class DynamicMapSelector extends Component {
         if (e[0] !== undefined) {
           return (
             <div key={index}>
-              <div>
+              <div className="mt-2">
                 <div
                   className="circle-legend m-1"
                   style={{
@@ -186,7 +186,7 @@ class DynamicMapSelector extends Component {
                   }}
                 ></div>
                 <p
-                  className="map-legend h6-stat-gray"
+                  className="map-legend h6-stat-gray text-left ml-3"
                   onClick={() => {
                     this.selectGroupColor(this.getGroupByItem(e[0].item));
                   }}
@@ -650,13 +650,15 @@ class DynamicMapSelector extends Component {
         {this.state.groups[0].length !== 0 ?
             <div className="legends">
               {this.getLegends()}
+              <div className="mt-2">
               <div
                   className="circle-legend m-1"
                   style={{
                     background: this.state.noDataColor,
                   }}
               ></div>
-              <p className="map-legend text-left pl-5 h6-stat-gray">{noData}</p>
+              <p className="map-legend text-left ml-3 h6-stat-gray">{noData}</p>
+              </div>
             </div> :
             <div className="legends-info text-left ml-2 mb-5" >
             <p className={"text-left ml-5"}>{noDataInfo}</p>
@@ -674,7 +676,7 @@ class DynamicMapSelector extends Component {
             <ul className={"w-100 row"}>
               <li
                 style={{ cursor: "pointer" }}
-                className={"col-sm p-1"}
+                className={"col-sm px-1"}
                 onClick={() => {
                   this.setColor("Gender Wage Gap");
                   this.getMeansForAllRegions(
@@ -698,7 +700,7 @@ class DynamicMapSelector extends Component {
               </li>
               <li
                 style={{ cursor: "pointer" }}
-                className={"col-sm p-1"}
+                className={"col-sm px-1"}
                 onClick={() => {
                   this.setColor("Median Wage");
                   this.getMeansForAllRegions("Median Wage", this.state.isco);
@@ -719,7 +721,7 @@ class DynamicMapSelector extends Component {
               </li>
               <li
                 style={{ cursor: "pointer" }}
-                className={"col-sm p-1"}
+                className={"col-sm px-1"}
                 onClick={() => {
                   this.setColor("Average Wage");
                   this.getMeansForAllRegions("Average Wage", this.state.isco);
@@ -742,8 +744,7 @@ class DynamicMapSelector extends Component {
           </div>
           <div className="c-tabs-line"></div>
           <div
-            className="apexcharts-toolbar"
-            style={{ marginLeft: "50%", marginTop: "10px" }}
+            className="apexcharts-toolbar-map"
           >
             <div
               className="apexcharts-menu-icon"
@@ -758,6 +759,7 @@ class DynamicMapSelector extends Component {
                 width="24"
                 height="24"
                 viewBox="0 0 24 24"
+                style={{fill: "#000"}}
               >
                 <path fill="none" d="M0 0h24v24H0V0z"></path>
                 <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>

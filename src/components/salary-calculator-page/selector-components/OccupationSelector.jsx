@@ -7,7 +7,7 @@ import arrowDown from "../../../resources/arrow-down.svg"
 
 
 export const colourStyles = {
-    control: styles => ({ ...styles, backgroundColor: 'white', borderColor: "black" }),
+    control: styles => ({ ...styles, backgroundColor: 'white', borderColor: "black"}),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
         return {
             ...styles,
@@ -30,6 +30,7 @@ export const colourStyles = {
                 ...styles[':active'],
                 fontWeight: "900"
             },
+      
         };
     },
 };

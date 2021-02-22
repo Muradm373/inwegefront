@@ -6,14 +6,17 @@ import {colourStyles} from "./OccupationSelector";
 
 export function GenderSelector(props) {
   return (
-    <div className="selector" style={{ width: "10rem", marginLeft: "5px" }}>
+    <div className="selector" style={{marginLeft: "7px" }}>
       <Select
+
+      className="body-stat"
         onChange={props.onGenderChange}
         placeholder={defaultGender}
         options={[
           { label: genderLabel[0], value: genderLabel[0] },
           { label: genderLabel[1], value: genderLabel[1] },
         ]}
+        styles={colourStyles}
         theme={theme => ({
             ...theme,
             colors: {
@@ -21,12 +24,10 @@ export function GenderSelector(props) {
                 primary: 'black',
             },
             borderRadius: "0px",
-            fontSize: "30px"
-
 
         })}
 
-        styles={colourStyles}
+ 
       ></Select>
     </div>
   );
