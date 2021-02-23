@@ -475,7 +475,7 @@ class DynamicMapSelector extends Component {
         backgroundColor: this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)"
       }}>
 
-        <ComposableMap data-tip="" projectionConfig={{ scale: 300 }} viewBox="30 30 800 600">
+        <ComposableMap data-tip="" projectionConfig={{ scale: 300 }} viewBox="40 30 800 600">
           <Geographies geography={ee}>
             {({ geographies }) => (
               <>
