@@ -153,7 +153,7 @@ class WageBars extends Component {
     for (let i = 2; i < 9; i++) {
       items.push(
         <div className={"p-2 carditem " + this.idToColor(id, i)} key={i}>
-          <p>
+          <p className="body-stat-center">
             {this.formatNumber(1000 + (i - 2) * 500)}–{this.formatNumber(1499 + (i - 2) * 500)} {euroUnits}
           </p>
         </div>
@@ -162,11 +162,11 @@ class WageBars extends Component {
     let result = (
       <div>
         <div className={"p-2 carditem " + this.idToColor(id, 1)}>
-          <p>{lessMoreLabel[1]} {this.formatNumber(1000)} {euroUnitsThousand} </p>
+          <p className="body-stat-center">{lessMoreLabel[1]} {this.formatNumber(1000)} {euroUnitsThousand} </p>
         </div>
         {items}
         <div className={"p-2 carditem " + this.idToColor(id, 9)}>
-          <p>{lessMoreLabel[0]} {this.formatNumber(4500)} {euroUnits} {lessMoreLabel[2]}</p>
+          <p className="body-stat-center">{lessMoreLabel[0]} {this.formatNumber(4500)} {euroUnits} {lessMoreLabel[2]}</p>
         </div>
       </div>
     );
@@ -178,7 +178,6 @@ class WageBars extends Component {
     return (
       <div>
         <div className="bar-holders">
-          <br />
           {this.state.payload.wageCategory30Max !==
           this.state.payload.wageCategory30Min ? (
             <p
@@ -197,14 +196,14 @@ class WageBars extends Component {
             {/* <!-- Wages distribution --> */}
 
               <div
-                className="card  col-sm rounded-0 p-0 bar"
+                className="card  col-sm rounded-0 p-0 bar m-3"
                 style={{ width: "15rem" }}
             >
               <div className="p-2 carditem">
                 <p className={"h4-stat"}>{`${yearLabel} 2019`}</p>
                 {this.props.language === "en" ?
                     <p>{`${averageWageLabel} (€${this.formatNumber(1404)})`}</p> :
-                  <p style={{wordBreak: "keep-all"}}>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
+                  <p className="body-stat-center" style={{wordBreak: "keep-all"}}>{`${averageWageLabel} (${this.formatNumber(1404)} €)`}</p>
                 }
 
               </div>
@@ -213,21 +212,21 @@ class WageBars extends Component {
 
             {/* 2030 */}
             <div
-              className="card  col-sm rounded-0 p-0 bar"
+              className="card  col-sm rounded-0 p-0 bar m-3"
               style={{ width: "15rem" }}
             >
               <div className="p-2 h-3 carditem">
                 <p className={"h4-stat"}>{`${yearLabel} 2030`}</p>
                 {this.props.language === "en" ?
                     <p>{`${averageWageLabel} (€${this.formatNumber(2315)})`}</p> :
-                    <p style={{wordBreak: "keep-all"}}>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
+                    <p className="body-stat-center" style={{wordBreak: "keep-all"}}>{`${averageWageLabel} (${this.formatNumber(2315)} €)`}</p>
                 }
               </div>
               {this.getColor(this.state.payload.wageCategory30Min)}
             </div>
             {/* End of wages */}
             <div
-              className="card  col-sm rounded-0 p-0 bar"
+              className="card  col-sm rounded-0 p-0 bar m-3"
               style={{ width: "15rem" }}
             >
               <div
@@ -240,7 +239,7 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p style={{wordBreak: "break-word"}}>{computarization[0]}</p>
+                <p className="body-stat-center mt-4" style={{wordBreak: "break-word"}}>{computarization[0]}</p>
               </div>
               <div
                 className={
@@ -252,7 +251,7 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p style={{wordBreak: "break-word"}}>{computarization[1]}</p>
+                <p className="body-stat-center mt-4" style={{wordBreak: "break-word"}}>{computarization[1]}</p>
               </div>
               <div
                 className={
@@ -264,12 +263,12 @@ class WageBars extends Component {
                   )
                 }
               >
-                <p style={{wordBreak: "break-word"}}>{computarization[2]}</p>
+                <p className="body-stat-center mt-4" style={{wordBreak: "break-word"}}>{computarization[2]}</p>
               </div>
             </div>
 
             <div
-              className="card col-sm rounded-0 p-0 bar"
+              className="card col-sm rounded-0 p-0 bar m-3"
               style={{ width: "15rem" }}
               data-tip=""
               multiline="true"
@@ -280,7 +279,7 @@ class WageBars extends Component {
                   this.itemColor(0, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p style={{wordBreak: "break-word"}}>{retirement[2]}</p>
+                <p className="body-stat-center mt-4" style={{wordBreak: "break-word"}}>{retirement[2]}</p>
               </div>
               <div
                 className={
@@ -288,7 +287,7 @@ class WageBars extends Component {
                   this.itemColor(1, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p style={{wordBreak: "break-word"}}>{retirement[1]}</p>
+                <p className="body-stat-center mt-4" style={{wordBreak: "break-word"}}>{retirement[1]}</p>
               </div>
               <div
                 className={
@@ -296,7 +295,7 @@ class WageBars extends Component {
                   this.itemColor(2, this.state.replacementsNeeds, "replacement")
                 }
               >
-                <p style={{wordBreak: "break-word"}}>{retirement[0]}</p>
+                <p className="body-stat-center mt-4" style={{wordBreak: "break-word"}}>{retirement[0]}</p>
               </div>
             </div>
           </div>

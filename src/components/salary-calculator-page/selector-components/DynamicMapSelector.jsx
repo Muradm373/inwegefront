@@ -475,7 +475,7 @@ class DynamicMapSelector extends Component {
         backgroundColor: this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)"
       }}>
 
-        <ComposableMap data-tip="" projectionConfig={{ scale: 300 }}>
+        <ComposableMap data-tip="" projectionConfig={{ scale: 300 }} viewBox="30 30 800 600">
           <Geographies geography={ee}>
             {({ geographies }) => (
               <>
@@ -637,7 +637,7 @@ class DynamicMapSelector extends Component {
                 fill: "#595959"
               }}
               x="500"
-              y={"40"}
+              y={"25"}
               textAnchor="start"
               alignmentBaseline="start"
             >
@@ -648,7 +648,7 @@ class DynamicMapSelector extends Component {
         </ComposableMap>
         <StyledTooltip multiline={true} html={true}>{this.state.content}</StyledTooltip>
         {this.state.groups[0].length !== 0 ?
-            <div className="legends">
+            <div className="legends ml-3">
               {this.getLegends()}
               <div className="mt-2">
               <div
@@ -743,6 +743,7 @@ class DynamicMapSelector extends Component {
             </ul>
           </div>
           <div className="c-tabs-line"></div>
+          <div>
           <div
             className="apexcharts-toolbar-map"
           >
@@ -803,6 +804,7 @@ class DynamicMapSelector extends Component {
           </div>
         </div>
         {this.getComposableMap()}
+        </div>
 
 
       </>

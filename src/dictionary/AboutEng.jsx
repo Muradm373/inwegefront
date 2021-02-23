@@ -36,7 +36,7 @@ class AboutEng extends Component {
             Fishery Workers’.
             <br />
             <br />
-            <table className="table-stat w-75 mx-auto">
+            <table className="table-stat mx-auto">
               <tr>
                 <th>Level</th>
                 <th>Code</th>

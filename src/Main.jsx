@@ -13,6 +13,8 @@ import eulogo from "./resources/eu.jpg";
 import statlogo from "./resources/stat_logo.jpg";
 import utlogo from "./resources/ut_logo.png";
 import taltechlogo from "./resources/taltech_logo.png";
+import phone from "./resources/phone.svg"
+import mail from "./resources/email.svg"
 import changeLanguage, {
   main,
   tabs,
@@ -528,13 +530,13 @@ class Main extends Component {
 
               <div className="field field--label-hidden field__items">
                 <div className="field__item">
-                  <span className="icofont-phone"></span>
+                  <img src={phone}></img>
                   <a href="tel:%2B3726259300">+372 625 9300</a>
                 </div>
               </div>
               <div className="field field--label-hidden field__items">
                 <div className="field__item">
-                  <span className="icofont-email"></span>
+                  <img src={mail}></img>
                   <a href="mailto:stat@stat.ee" className="spamspan">
                     stat@stat.ee
                   </a>

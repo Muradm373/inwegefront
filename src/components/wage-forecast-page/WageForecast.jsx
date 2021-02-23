@@ -35,7 +35,7 @@ class WageForecast extends Component {
 
   render() {
     return (
-      <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 wage-forecast p-5">
+      <div className="text-center mx-auto card-shadow-forecast mb-5 m-3 wage-forecast">
         <div className="wageforecast-component ">
           <div
             id="methodology-component"

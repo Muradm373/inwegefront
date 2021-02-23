@@ -445,15 +445,13 @@ class ColumnChartComponent extends Component {
           ref={this.componentRef}
         >
           <p
-            className="graph-legends mx-auto pl-4 h4-stat text-left w-100"
+            className="graph-legends mx-auto h4-stat text-left w-100"
             style={{ height: "40px", position: "absolute" }}
           >
             {columnchartLabel +
               ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
           </p>
-          <br />
-          <br />
-          <div id="agebar-chart" className={"mb-0 mt-3"}>
+          <div id="agebar-chart" className={"mb-0 mt-5"}>
             <ReactApexChart
               id="apexchart"
               className={"ml-2"}

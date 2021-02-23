@@ -19,7 +19,7 @@ class MethodologyComponent extends Component {
   render() {
     return (
       <div className="methodology-paper text-center mx-auto card-shadow-forecast m-3 mb-5">
-        <div id="methodology-component" className="block-page-title-block p-5">
+        <div id="methodology-component" className="block-page-title-block wageforecast-component">
           {this.renderAboutPage(this.props.language)}
         </div>
       </div>

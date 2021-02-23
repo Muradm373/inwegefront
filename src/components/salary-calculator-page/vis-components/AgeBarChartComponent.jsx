@@ -260,15 +260,13 @@ class AgeBarChartComponent extends Component {
       <div>
       <div className="p-2" ref={this.componentRef}>
         <p
-          className="graph-legends mx-auto pl-4 h4-stat text-left px-auto"
+          className="graph-legends mx-auto h4-stat text-left px-auto"
           style={{ height: "40px", position: "absolute" }}
         >
           {this.props.label +
             ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
         </p>
-        <br />
-        <br />
-        <div id="chart" className={"mb-0 mt-3"}>
+        <div id="chart" className={"mb-0 mt-5"}>
           <ReactApexChart
             id="apexchart"
             className={"mx-auto"}

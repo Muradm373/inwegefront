@@ -33,7 +33,7 @@ class AboutEst extends Component {
             oskustöölised“.
             <br />
             <br />
-            <table className="table-stat w-75 mx-auto">
+            <table className="table-stat mx-auto">
               <tr>
                 <th>Tase</th>
                 <th>Kood</th>

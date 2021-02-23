@@ -36,7 +36,7 @@ class AboutRus extends Component {
           сельском, лесном, рыбном и охотничьем хозяйствах».
           <br />
           <br />
-          <table className="table-stat w-75 mx-auto">
+          <table className="table-stat mx-auto">
             <tr>
               <th>Уровень</th>
               <th>Код</th>

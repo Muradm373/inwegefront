@@ -200,9 +200,9 @@ const retirementEng = [
     "Низкая потребность в замене из-за выхода на пенсию",
   ],
   [
-    "Suur asendusvajadus vanuse tõttu",
-    "Keskmine asendusvajadus vanuse tõttu",
-    "Väike asendusvajadus vanuse tõttu",
+    "Suur asendusvaja­­­dus vanuse tõttu",
+    "Keskmine asendusvaja­­­dus vanuse tõttu",
+    "Väike asendusvaja­­­dus vanuse tõttu",
   ],
 ];
 const pensionLabelEng = [

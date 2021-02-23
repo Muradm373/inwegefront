@@ -127,6 +127,11 @@ label::placeholder {
     cursor: pointer;
 }
 
+.apexchart-menu-map{
+    width: auto !important;
+    float: right;
+}
+
 .flex-list li {
     flex-grow: 1;
     flex-basis: auto;
@@ -776,9 +781,8 @@ p {
     padding: 0;
 }
 
-.carditem {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+.wageforecast-component {
+    padding: 35px;
 }
 
 *,
@@ -945,7 +949,6 @@ body {
 }
 
 .bar {
-    margin: 2%;
 }
 
 .graph {
@@ -1349,6 +1352,15 @@ body {
     color: #000000 ;
 }
 
+.body-stat-center {
+    font-family: Roboto !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    line-height: 20px !important;
+    text-align: center;
+    color: #000000 ;
+}
+
 .h6-stat-white {
     font-family: Roboto !important;
     font-weight: normal !important;
@@ -1709,22 +1721,26 @@ body {
 }
 .apexcharts-toolbar-holder{
     position: absolute;
-    margin-top: -380px;
-    margin-left: 350px;
+    margin-top: -360px;
+    margin-left: 340px;
     float: right;
 }
 
 .apexcharts-toolbar-holder-agebar{
     position: absolute;
     margin-top: -360px;
-    margin-left: 350px;
+    margin-left: 340px;
     float: right;
 }
 
 .apexcharts-toolbar-map{
    position: absolute;
-   margin-top: 5%;
-   right: 15%;
+   margin-top: 3.3%;
+   margin-left: 43.5%;
+}
+
+.apexcharts-selection-icon, .apexcharts-menu-icon {
+    position: absolute !important;
 }
 
 .rotate-180 {
