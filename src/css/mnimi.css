@@ -19277,7 +19277,15 @@ body:not(.search-open):not(.nav-open) .layout__header {
     text-decoration: none
 }
 
-.menu--main-en > ul > li:hover > a, .menu--main-en > ul > li:hover > span, .menu--main > ul > li:hover > a, .menu--main > ul > li:hover > span {
+.menu--main-en > ul > li:hover > a, .menu--main-en > ul > li:hover > span, .menu--main-en > ul > li:hover > span > a, .menu--main > ul > li:hover > a, .menu--main > ul > li:hover > span, .menu--main > ul > li:hover > span> a {
+    background: #000;
+    color: #fff;
+    padding: 15px;
+    margin: -15px;
+    text-decoration: none
+}
+
+.menu--main-en > ul > .selected-menu > span, .menu--main-en > ul > .selected-menu > span > a{
     background: #000;
     color: #fff;
     padding: 15px;

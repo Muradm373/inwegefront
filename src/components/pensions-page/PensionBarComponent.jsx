@@ -30,7 +30,7 @@ class PensionBarComponent extends Component {
                     className="barseries h4-stat"
                     style={{ width: "100%",}}
                 >
-                    <FlexibleWidthXYPlot height={130} animation="gentle">
+                    <FlexibleWidthXYPlot height={130} animation="gentle" margin={{right: 15 }} >
                         {this.props.language === "en" ? <XAxis
                                 style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
                                 tickTotal={7}
@@ -88,7 +88,7 @@ class PensionBarComponent extends Component {
                             labelAnchorY="middleAlignment"
                         />
                     </FlexibleWidthXYPlot>
-                    <p className={"body-stat text-left ml-5"}>{this.props.label}</p>
+                    <p className={"body-stat text-left"}>{this.props.label}</p>
                 </div>
             </div>
         );

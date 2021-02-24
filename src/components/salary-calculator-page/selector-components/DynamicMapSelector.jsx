@@ -15,6 +15,8 @@ import { geoCentroid } from "d3-geo";
 import * as htmlToImage from 'html-to-image';
 import downloadjs from "downloadjs";
 import infoIcon from "../../../resources/info.svg"
+import linkIcon from "../../../resources/arrow-link.svg"
+import linkIconHovered from "../../../resources/arrow-link-hovered.png"
 import {translateCounty} from "../entityFunc";
 
 import {
@@ -65,6 +67,8 @@ class DynamicMapSelector extends Component {
       content: "",
       mapDownloadMenu: false,
       noDataModal: false,
+
+      linkHovered: false
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -590,21 +594,37 @@ class DynamicMapSelector extends Component {
             >
               {this.getOccupation()}
             </text>
+            <image x="-13"
+                   y= {this.props.generalName === null  ? "12" : "37"}
+                   style={{
+                    cursor: "pointer"
+                  }}
+                  onClick={()=>{
+                    this.setState({ selected: "all" });
+                    this.props.onOverallDataForMapSelected({ value: "all" });
+                  }}
+
+                   alignmentBaseline="bottom" href={this.state.linkHovered ? linkIconHovered : linkIcon} width={17} height={17}
+                   onMouseEnter={()=>this.setState({linkHovered: true})}
+                  onMouseLeave={()=>this.setState({linkHovered: false})}
+                   />
           <text
               style={{
                 fontFamily: "Roboto",
                 fontSize: "13px",
                 lineHeight: "16px",
-                fill: "#595959",
+                fill: "#000",
                 fontWeight: this.state.selected === "all" ? "bold": "",
-                textDecoration: "underline",
+                textDecoration: this.state.linkHovered ? "underline" : "none",
                 cursor:"pointer"
               }}
-              x="-15"
+              x="7"
               y= {this.props.generalName === null  ? "25" : "50"}
               textAnchor="start"
               alignmentBaseline="start"
 
+              onMouseEnter={()=>this.setState({linkHovered: true})}
+              onMouseLeave={()=>this.setState({linkHovered: false})}
               onClick={()=>{
                 this.setState({ selected: "all" });
                 this.props.onOverallDataForMapSelected({ value: "all" });
@@ -636,7 +656,7 @@ class DynamicMapSelector extends Component {
                 lineHeight: "16px",
                 fill: "#595959"
               }}
-              x="500"
+              x="550"
               y={"25"}
               textAnchor="start"
               alignmentBaseline="start"

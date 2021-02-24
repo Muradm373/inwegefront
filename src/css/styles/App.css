@@ -979,7 +979,7 @@ body {
 }
 
 .graph-legends {
-    margin-left: 5%;
+    margin-left: 2%;
 }
 
 .legends {
@@ -1614,18 +1614,23 @@ body {
 .graph-xaxis-label {
     mix-blend-mode: difference;
     margin-top: -60px;
-    margin-right: 2%;
+    margin-right: 6%;
     text-align: right;
     z-index: 1000;
     float:right;
+    font-weight: bold !important;
+
 }
 .pension-graph-xaxis-label {
     mix-blend-mode: difference;
     margin-top: -60px;
-    margin-right: 2%;
+    margin-right: 6%;
     text-align: right;
     z-index: 1000;
     float:right;
+    font-size: 13px !important;
+    font-weight: bold !important;
+    
 }
 
 .columnchart-xaxis-label{
@@ -1736,7 +1741,11 @@ body {
 .apexcharts-toolbar-map{
    position: absolute;
    margin-top: 3.3%;
-   margin-left: 43%;
+   margin-left: 46%;
+}
+
+.rv-xy-plot__inner {
+    margin-left: -35px;
 }
 
 .apexcharts-selection-icon, .apexcharts-menu-icon {

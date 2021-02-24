@@ -205,7 +205,7 @@ class PensionGraph extends Component {
 
   render() {
     return (
-      <div className="centered graph mb-5" id="bar-component">
+      <div className="centered graph " id="bar-component">
         <PensionBarComponent
           pension={true}
           menMean={this.state.menMean}

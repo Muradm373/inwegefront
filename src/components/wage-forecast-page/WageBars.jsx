@@ -114,7 +114,6 @@ class WageBars extends Component {
   }
 
   itemColor(self, grade, type) {
-    console.log(self + " " + grade + " " + type)
     if ( grade !== undefined && levels[self][0] === grade[0]) {
       if (type === "computerization") return "pns-active-" + self;
       else {

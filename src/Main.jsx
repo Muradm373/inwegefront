@@ -15,6 +15,7 @@ import utlogo from "./resources/ut_logo.png";
 import taltechlogo from "./resources/taltech_logo.png";
 import phone from "./resources/phone.svg"
 import mail from "./resources/email.svg"
+import { BrowserRouter as Router, Link, Route, useLocation  } from "react-router-dom";
 import changeLanguage, {
   main,
   tabs,
@@ -47,10 +48,11 @@ class Main extends Component {
       occupation: "",
       isco: "",
       code: 9629,
-      lang: "en",
+      lang: this.props.lang,
       mapElementColor: "#73e8ff",
-      menu: tabs[0],
+      menu: parseInt(this.props.menu),
       isActive: false,
+      selectedMenu:parseInt(this.props.menu)
     };
 
     this.getData = this.getData.bind(this);
@@ -59,6 +61,8 @@ class Main extends Component {
     this.changeMenu = this.changeMenu.bind(this);
     this.props.getDates();
     this.props.setLang(props.lang);
+
+    console.log(props.path.location.pathname)
   }
 
   defaultValue() {
@@ -89,8 +93,19 @@ class Main extends Component {
     this.setState({ menu: e.target.textContent, isActive: false });
   }
 
+  getPath(){
+    switch(this.props.lang){
+      case "ru":
+        return "/ru/";
+      case "en":
+        return "/en/";
+      default:
+        return "/"
+    }
+  }
+
   renderMenu() {
-    if (this.state.menu === tabs[1]) {
+    if (this.state.menu === 1 ||  this.state.menu === tabs[1]) {
       return (
         <div id="wage-forecast-component">
           <WageForecast
@@ -100,14 +115,14 @@ class Main extends Component {
         </div>
       );
     }
-    if (this.state.menu === tabs[3]) {
+    if (this.state.menu === 3 || this.state.menu === tabs[3]) {
       return (
         <div id="methodology-component">
           <MethodologyComponent></MethodologyComponent>
         </div>
       );
     }
-    if (this.state.menu === tabs[2]) {
+    if (this.state.menu === 2 || this.state.menu === tabs[2]) {
       return (
         <div id="pension-component">
           <PensionsComponent></PensionsComponent>
@@ -452,8 +467,10 @@ class Main extends Component {
                 data-region="header_bottom"
                 className="menu"
                 style={{ backgroundColor: "white", height: "50px" }}
+                
               >
-                <li className="menu-item menu-item--expanded h4-stat">
+                <li className={"menu-item h4-stat " + (this.state.selectedMenu === 0 ? "selected-menu" : "") }
+                onClick={()=>this.setState({selectedMenu: 0})}>
                   <span
                     tabIndex="0"
                     onClick={this.changeMenu}
@@ -461,10 +478,11 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    {tabs[0]}
+                    <Link to={this.getPath() + "palgavordlus"} >{tabs[0]}</Link>
                   </span>
                 </li>
-                <li className="menu-item menu-item--expanded h4-stat">
+                <li className={"menu-item  h4-stat "  + (this.state.selectedMenu === 1 ? "selected-menu" : "")}
+                onClick={()=>this.setState({selectedMenu: 1})}>
                   <span
                     tabIndex="0"
                     onClick={this.changeMenu}
@@ -472,10 +490,11 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    {tabs[1]}
+                    <Link to={this.getPath() + "palgaprognoos"} >{tabs[1]}</Link>
                   </span>
                 </li>
-                <li className="menu-item menu-item--expanded h4-stat">
+                <li className={"menu-item h4-stat "  + (this.state.selectedMenu === 2 ? "selected-menu" : "")}
+                onClick={()=>this.setState({selectedMenu: 2})}>
                   <span
                     tabIndex="1"
                     onClick={this.changeMenu}
@@ -483,10 +502,11 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    {tabs[2]}
+                    <Link to={this.getPath() + "pensioniprognoos"} >{tabs[2]}</Link>
                   </span>
                 </li>
-                <li className="menu-item menu-item--expanded h4-stat">
+                <li className={"menu-item h4-stat " + (this.state.selectedMenu === 3 ? "selected-menu" : "")}
+                onClick={()=>this.setState({selectedMenu: 3})}>
                   <span
                     tabIndex="2"
                     className="menuSpan"
@@ -495,7 +515,7 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    {tabs[3]}
+                    <Link to={this.getPath() + "selgitused"} >{tabs[3]}</Link>
                   </span>
                 </li>
               </ul>

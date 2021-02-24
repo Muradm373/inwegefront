@@ -282,7 +282,7 @@ class SalaryCalculator extends Component {
                 region={this.state.region}
               />
             </div>
-            <div className="c-tabs-line my-3"></div>
+            <div className="c-tabs-line my-4"></div>
 
             <Graph
               entities={this.props.entities}
@@ -299,7 +299,7 @@ class SalaryCalculator extends Component {
               region={this.state.region}
             ></Graph>
 
-            <div className={"my-5"} style={{ height: "20px" }}></div>
+            <div class="c-tabs-line my-4"></div>
 
             <div className="feature-1 text-center my-3 h4-stat">
               {this.state.occupation === "" && (
@@ -345,11 +345,11 @@ class SalaryCalculator extends Component {
                 />
               </div>
 
-              <br />
+              <div class="c-tabs-line my-4"></div>
 
               {
                 <div>
-                  <div className="graph-component-cards mt-3 row">
+                  <div className="graph-component-cards row">
                     <div className={"col-sm"}>
                       <ColumnChartComponent
                         region={this.state.region}

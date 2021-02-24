@@ -26,15 +26,12 @@ class PensionsComponent extends Component {
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs description-page">
           <p className={"h4-stat"}>{tartuUlikooli}</p>
-          <br/>
-          <br/>
+
             <p className="text-justify">
               {PensionsText}
             </p>
-            <br></br>
-            <br></br>
+
             <p className={"h4-stat"}>{Livelihood}</p>
-            <br></br>
 
 
             <ol className={"ol-stat"}>
@@ -46,14 +43,10 @@ class PensionsComponent extends Component {
               <li>{pensionDescription[4]}</li>
             </ol>
           </div>
-
-          <br></br>
-          <br></br>
-          <br></br>
-
+          <div class="c-tabs-line my-4"></div>
           <div className="row">
             <div className="col-md-6">
-              <p className={"h4-stat text-left ml-4 pl-2"}
+              <p className={"h4-stat text-left"}
               >
                 {gapsWageLabel.replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}
               </p>
@@ -73,7 +66,7 @@ class PensionsComponent extends Component {
 
             <div className="col-md-6">
               <p
-               className={"h4-stat text-left ml-4 pl-2"}
+               className={"h4-stat text-left "}
               >
                 {gapsPensionLabel.replace("2020", this.props.dates.pensionStartDate).replace("2071", this.props.dates.pensionEndDate)}
               </p>
@@ -91,18 +84,15 @@ class PensionsComponent extends Component {
               ></PensionGraph>
             </div>
           </div>
-
-          <br></br>
-          <br></br>
-
+          <div class="c-tabs-line my-4"></div>
           <p
-            className={"h4-stat text-left ml-4 pl-2"}
+            className={"h4-stat text-left "}
           >
             {replacementNeeds2}
           </p>
 
           <div>
-            <div className={"col-md-12"}>
+            <div className={""}>
           <PensionGraph
             menColor={menColor}
             womenColor={womenColor}
@@ -115,16 +105,14 @@ class PensionsComponent extends Component {
             percentage = {true}
           ></PensionGraph>
             </div>
-          <br></br>
-
-          <br></br>
+            <div class="c-tabs-line my-4"></div>
           <p
-            className={"h4-stat text-left ml-4 pl-2"}
+            className={"h4-stat text-left "}
           >
             {replacementNeeds1}
           </p>
 
-            <div className={"col-md-12"}>
+            <div className={""}>
           <PensionGraph
             menColor={menColor}
             womenColor={womenColor}
