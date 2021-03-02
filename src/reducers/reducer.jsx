@@ -24,7 +24,8 @@ const initState = {
     pensionEndDate: "2071"
   },
   menGraphMean:0,
-  womenGraphMean: 0
+  womenGraphMean: 0,
+  menu: 0
 };
 
 const rootReduce = (state = initState, action) => {

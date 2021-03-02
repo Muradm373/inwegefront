@@ -9,9 +9,9 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path="/" render={(path) => <Main lang="et" path={path} />} />
-          <Route exact path="/ru/" render={(path) => <Main lang="ru" path={path} />} />
-          <Route exact path="/en/" render={(path) => <Main lang="en" path={path} />} />
+          <Route exact path="/" render={(path) => <Main lang="et" menu="0" path={path} />} />
+          <Route exact path="/ru/" render={(path) => <Main lang="ru" menu="0" path={path} />} />
+          <Route exact path="/en/" render={(path) => <Main lang="en" menu="0" path={path} />} />
 
           <Route exact path="/palgavordlus" render={(path) => <Main lang="et" menu="0"path={path} />} />
           <Route exact path="/ru/palgavordlus" render={(path) => <Main lang="ru" menu="0"path={path} />} />
