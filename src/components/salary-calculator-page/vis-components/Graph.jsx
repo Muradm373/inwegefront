@@ -83,7 +83,7 @@ function Graph(props) {
   const isMobile = useMediaQuery({ query: "(max-width: 760px)" });
 
   return (
-    <div className="centered" id="entity" className="graph">
+    <div className="centered" id="entity" className="graph ">
       <BarComponent
         menMean={menMean}
         womenMean={womenMean}
@@ -114,6 +114,7 @@ function Graph(props) {
       <br />
       <div className={"y-axis-label h6-stat-gray"}>{decileLabel}</div>
       <FlexibleWidthXYPlot
+      className="graph-ml"
         height={350}
         margin={{ right: 20 }}
         animation="gentle"
@@ -258,7 +259,7 @@ function Graph(props) {
         <p>€</p>
       </div>
 
-      <div className="graph-legends">
+      <div className="graph-legends graph-legend-ml  ">
         {displayLegends(menColor, womenColor)}
       </div>
     </div>

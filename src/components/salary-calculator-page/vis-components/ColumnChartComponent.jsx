@@ -47,6 +47,7 @@ class ColumnChartComponent extends Component {
       ],
       options: {
         chart: {
+          fontFamily: "Roboto",
           toolbar: {
             show: false,
           },
@@ -445,7 +446,7 @@ class ColumnChartComponent extends Component {
           ref={this.componentRef}
         >
           <p
-            className="graph-legends mx-auto h4-stat text-left w-100"
+            className="graph-legends mx-auto h4-stat text-left w-100 pl-2"
             style={{ height: "40px", position: "absolute" }}
           >
             {columnchartLabel +
@@ -454,7 +455,7 @@ class ColumnChartComponent extends Component {
           <div id="agebar-chart" className={"mb-0 mt-5"}>
             <ReactApexChart
               id="apexchart"
-              className={"ml-2"}
+              className={"barchart-ml"}
               options={this.state.options}
               series={this.state.series}
               type="bar"
@@ -470,12 +471,12 @@ class ColumnChartComponent extends Component {
               {source}
             </p>
           </div>
-          <div className="graph-legends mx-auto pl-5">
+          <div className="graph-legends mx-auto pl-4">
             {displayLegends(menColor, womenColor)}
           </div>
 
           {this.props.generalName !== null ? (
-            <p className="graph-legends mx-auto pl-4 h6-stat-gray text-left mt-1">
+            <p className="h6-stat-gray text-left mt-1 ml-2">
               {`* ${this.props.generalName} (${this.props.occupationCode})`}
             </p>
           ) : (
@@ -520,7 +521,7 @@ class ColumnChartComponent extends Component {
             }
           >
             <div
-              className="apexcharts-menu-item exportPNG"
+              className="apexcharts-menu-item exportPNG text-left"
               onClick={() => {
                 this.promiseState().then(() =>
                   exportComponentAsPNG(this.componentRef)
@@ -541,7 +542,7 @@ class ColumnChartComponent extends Component {
               {downloadPng}
             </div>
             <div
-              className="apexcharts-menu-item exportPDF"
+              className="apexcharts-menu-item exportPDF text-left"
               title={downloadJpeg}
               onClick={() => {
                 this.promiseState().then(() =>

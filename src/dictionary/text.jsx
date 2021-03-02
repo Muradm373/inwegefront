@@ -313,7 +313,8 @@ const replacementNeeds1Eng = [
   "Asendusmäär töötaja viimase palga alusel",
 ];
 
-const webpageLabelEng = ["Webpage", "Домашняя страница", "Palgarakendus"];
+const webpageLabelEng = [  "Wages and salaries application",
+"Приложение по заработной плате", "Palgarakendus"];
 
 const foundationLabelEng = [
   "This project was funded by Horizon 2020, the European " +
@@ -370,7 +371,7 @@ let pensionDescriptionEng = [
 const gapsWageLabelEng = [
   "Difference in males’ and females’ monthly wages | in euros of 2020",
   "Разница в заработной плате у мужчин и женщин | 2020 год, в евро",
-  "Meeste ja naiste kuupalga erinevus | 2020 aasta eurodes",
+  "Meeste ja naiste kuupalga erinevus | 2020. aasta eurodes",
 ];
 
 let gapsPensionLabelEng = [

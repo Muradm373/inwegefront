@@ -469,6 +469,9 @@ font {
     counter-reset: bullet-counter;
 }
 
+.counter-reset {
+    counter-reset: bullet-counter;
+}
 .card-dynamic-map {
     width: 60%;
     height: 50%;
@@ -979,7 +982,7 @@ body {
 }
 
 .graph-legends {
-    margin-left: 2%;
+    margin-left: 1rem;
 }
 
 .legends {
@@ -1229,7 +1232,7 @@ body {
     text-align: left;
     text-transform: uppercase;
     transition-duration: 0.2s;
-    transform: translate(0em, -1.4em) scale(0.8, 0.8);
+    transform: translate(0em, -1.7em) scale(0.8, 0.8);
     font-weight: initial;
     font-size: 13px;
     line-height: 16px;
@@ -1252,7 +1255,7 @@ body {
     display: block;
     pointer-events: none;
     line-height: 1.25em;
-    margin-top: calc(-3em - 0px);
+    margin-top: calc(-3.25em - 0px);
     margin-bottom: calc((3em - 1em) + 2px);
     text-align: left;
 }
@@ -1473,6 +1476,21 @@ body {
     color: #000000 ;
 }
 
+.graph-ml {
+    margin-left: 2.4rem;
+}
+
+.pension-graph-ml {
+    margin-left: 1.35rem;
+}
+
+.graph-legend-ml {
+    margin-left: 2.1rem;
+}
+
+.barchart-ml{
+    margin-left: -0.6rem;
+}
 .ol-stat-bullet li{
     display: list-item;
     list-style-position: inside;
@@ -1504,9 +1522,21 @@ body {
     padding: 2.5px 0 2.5px 40px;
 
 }
+.ol-stat li:nth-child(-n+18):before {
+    content: "0" counter(bullet-counter);
+    width: 25px;
+    height: 25px;
+    background: #000;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    left: 0;
+}
 
 .ol-stat li::before {
-    content: "0" counter(bullet-counter);
+    content: counter(bullet-counter);
     width: 25px;
     height: 25px;
     background: #000;
@@ -1552,12 +1582,18 @@ body {
     position: relative;
     background: #000000;
     border: 0px solid #000000;
-    height: 150px;
+    height: 100px;
     width: 260px;
     padding: 10px;
     margin-top: -105px;
     word-wrap: break-word !important;
 
+}
+
+.apexcharts-tooltip.apexcharts-theme-light{
+    border-radius: 0px;
+    border:none !important;
+    width: 200px !important;
 }
 
 .arrow-box-small {
@@ -1586,6 +1622,8 @@ body {
     word-break: break-word;
     width: auto;
     text-align: left;
+    font-size: 12px !important;
+    font-family: Roboto !important;
 }
 
 .graph-salary-label {
@@ -1603,28 +1641,50 @@ body {
     margin-top: -20px;
     margin-left: 17px;
 }
+.y-axis-label-pension {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 0px;
+}
 
 .wage-change-label {
     margin-top: -15px;
 }
 
-.bar-series-label{
-}
 
 .graph-xaxis-label {
     mix-blend-mode: difference;
-    margin-top: -60px;
-    margin-right: 6%;
+    margin-top: -35px;
+    margin-right: 2%;
     text-align: right;
     z-index: 1000;
     float:right;
     font-weight: bold !important;
-
 }
+.graph-xaxis-tick{
+    mix-blend-mode: difference;
+    margin-top: -48px;
+    margin-right: 3%;
+    text-align: right;
+    z-index: 1000;
+    float:right;
+    font-weight: bold !important;
+}
+
+.xaxis-tick{
+    mix-blend-mode: difference;
+    margin-top: -48px;
+    margin-right: 2%;
+    text-align: right;
+    z-index: 1000;
+    float: right;
+    font-weight: bold !important;
+}
+
 .pension-graph-xaxis-label {
     mix-blend-mode: difference;
-    margin-top: -60px;
-    margin-right: 6%;
+    margin-top: -35px;
+    margin-right: 1%;
     text-align: right;
     z-index: 1000;
     float:right;
@@ -1636,13 +1696,13 @@ body {
 .columnchart-xaxis-label{
     position: absolute;
     margin-top: -305px;
-    margin-left: 60px;
+    margin-left: 40px;
     float: left;
 }
 
 .agebar-xaxis-label{
     position: absolute;
-    margin-top: -305px;
+    margin-top: 55px;
     margin-left: 40px;
     float: left;
 }
@@ -1733,8 +1793,8 @@ body {
 
 .apexcharts-toolbar-holder-agebar{
     position: absolute;
-    margin-top: -360px;
-    margin-left: 340px;
+    margin-top: 45px;
+    margin-left: 335px;
     float: right;
 }
 
@@ -1744,12 +1804,22 @@ body {
    margin-left: 46%;
 }
 
+.apexcharts-menu.apexcharts-menu-open{
+    font-weight: normal !important;
+    text-align: left im !important;
+}
+
 .rv-xy-plot__inner {
     margin-left: -35px;
 }
 
 .apexcharts-selection-icon, .apexcharts-menu-icon {
     position: absolute !important;
+}
+
+.bar-holders{
+    padding-left: 35px;
+    padding-right: 35px;
 }
 
 .rotate-180 {

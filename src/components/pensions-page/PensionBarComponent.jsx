@@ -49,7 +49,6 @@ class PensionBarComponent extends Component {
                                     return d;
                                 }
                                 }
-                                title={this.props.percentage?"%" : "€"}
 
                             />
                         }
@@ -88,6 +87,9 @@ class PensionBarComponent extends Component {
                             labelAnchorY="middleAlignment"
                         />
                     </FlexibleWidthXYPlot>
+                    <div className="graph-xaxis-tick body-stat mr-4 ">
+          <p>{this.props.percentage?"%" : "€"}</p>
+        </div>
                     <p className={"body-stat text-left"}>{this.props.label}</p>
                 </div>
             </div>

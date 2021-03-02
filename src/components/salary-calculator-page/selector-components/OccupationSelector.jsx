@@ -7,7 +7,9 @@ import arrowDown from "../../../resources/arrow-down.svg"
 
 
 export const colourStyles = {
-    control: styles => ({ ...styles, backgroundColor: 'white', borderColor: "black"}),
+    control: styles => ({ ...styles, backgroundColor: 'white', borderColor: "black", height: 45,  '&:hover': {
+      outline: "1px solid black !important"
+    }}),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
         return {
             ...styles,
@@ -35,7 +37,7 @@ export const colourStyles = {
     },
 };
 
-const DropdownIndicator = props => {
+export const DropdownIndicator = props => {
         return (
             components.DropdownIndicator && (
                 <components.DropdownIndicator {...props}>

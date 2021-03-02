@@ -6,18 +6,25 @@ import {
   quarter,
   noDataInfo,
   source,
-  counties, averageTabInfo, medianTabInfo, wageGapInfoTab, genderLabel,
+  counties,
+  averageTabInfo,
+  medianTabInfo,
+  wageGapInfoTab,
+  genderLabel,
   genderWageGap,
   averageWage,
-  medianWage, downloadPng, downloadJpeg, euroUnits,
+  medianWage,
+  downloadPng,
+  downloadJpeg,
+  euroUnits,
 } from "../../../dictionary/text";
 import { geoCentroid } from "d3-geo";
-import * as htmlToImage from 'html-to-image';
+import * as htmlToImage from "html-to-image";
 import downloadjs from "downloadjs";
-import infoIcon from "../../../resources/info.svg"
-import linkIcon from "../../../resources/arrow-link.svg"
-import linkIconHovered from "../../../resources/arrow-link-hovered.png"
-import {translateCounty} from "../entityFunc";
+import infoIcon from "../../../resources/info.svg";
+import linkIcon from "../../../resources/arrow-link.svg";
+import linkIconHovered from "../../../resources/arrow-link-hovered.png";
+import { translateCounty } from "../entityFunc";
 
 import {
   ComposableMap,
@@ -29,9 +36,9 @@ import {
 import ee from "../../../resources/ee.json";
 import axios from "axios";
 import ReactTooltip from "react-tooltip";
-import styled from 'styled-components';
+import styled from "styled-components";
 import { connect } from "react-redux";
-import {formatNumber} from "../../../actions/actions";
+import { formatNumber } from "../../../actions/actions";
 
 const replaceMaakond = (maakond) => {
   return maakond.replace("maakond", "");
@@ -40,12 +47,12 @@ const replaceMaakond = (maakond) => {
 const StyledTooltip = styled(ReactTooltip)`
   opacity: 1 !important;
   color: white !important;
-  width: 190px ;
+  width: 190px;
   white-space: normal;
   font-size: 18px;
   padding: 15px;
   border-radius: 0% !important;
-`
+`;
 
 class DynamicMapSelector extends Component {
   constructor(props) {
@@ -60,7 +67,7 @@ class DynamicMapSelector extends Component {
       median: "",
       average: "",
       genderGap: "",
-      groups: [[],[],[]],
+      groups: [[], [], []],
       colors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       legendColors: ["#CCB0FF", "#A476F9", "#6939C5", "#3F1A84", "#301563"],
       noDataColor: "#eeeeee",
@@ -68,7 +75,7 @@ class DynamicMapSelector extends Component {
       mapDownloadMenu: false,
       noDataModal: false,
 
-      linkHovered: false
+      linkHovered: false,
     };
 
     this.getMeansForAllRegions = this.getMeansForAllRegions.bind(this);
@@ -109,7 +116,6 @@ class DynamicMapSelector extends Component {
       url_dataType = "regions/average?isco=" + isco;
     }
 
-
     const url = `${API_URL}/`;
     axios
       .get(url + url_dataType)
@@ -131,9 +137,8 @@ class DynamicMapSelector extends Component {
           list.push({
             item: parseInt(Math.abs(el.maleAverage - el.femaleAverage)),
             percentage:
-              parseFloat(
-                (el.maleAverage - el.femaleAverage) / el.maleAverage
-              ) * 100,
+              parseFloat((el.maleAverage - el.femaleAverage) / el.maleAverage) *
+              100,
           });
       });
     } else {
@@ -158,7 +163,6 @@ class DynamicMapSelector extends Component {
         result[line].push(value);
       }
     }
-
 
     this.setState({ groups: result });
   }
@@ -197,19 +201,30 @@ class DynamicMapSelector extends Component {
                 >
                   {this.state.mapType !== "Gender Wage Gap"
                     ? e.length > 1
-                      ? `${formatNumber(e[0].item, this.props.language)}–${formatNumber(e[e.length - 1].item, this.props.language)} ${euroUnits}`
-                      : `${formatNumber(e[0].item, this.props.language)} ${euroUnits}`
+                      ? `${formatNumber(
+                          e[0].item,
+                          this.props.language
+                        )}–${formatNumber(
+                          e[e.length - 1].item,
+                          this.props.language
+                        )} ${euroUnits}`
+                      : `${formatNumber(
+                          e[0].item,
+                          this.props.language
+                        )} ${euroUnits}`
                     : e.length > 1
-                    ? this.props.language==="en" ?
-                          `${e[0].percentage.toFixed(2)}–${e[
-                        e.length - 1].percentage.toFixed(2)}%`
-                              :
-                              `${e[0].percentage.toFixed(2).replace(".", ',') }–${e[
-                              e.length - 1].percentage.toFixed(2).replace(".", ',') }%`
-                    : this.props.language==="en" ?
-                          `${e[0].percentage.toFixed(2) }%` :
-                              `${e[0].percentage.toFixed(2).replace(".", ',') }%`
-                  }
+                    ? this.props.language === "en"
+                      ? `${e[0].percentage.toFixed(2)}–${e[
+                          e.length - 1
+                        ].percentage.toFixed(2)}%`
+                      : `${e[0].percentage.toFixed(2).replace(".", ",")}–${e[
+                          e.length - 1
+                        ].percentage
+                          .toFixed(2)
+                          .replace(".", ",")}%`
+                    : this.props.language === "en"
+                    ? `${e[0].percentage.toFixed(2)}%`
+                    : `${e[0].percentage.toFixed(2).replace(".", ",")}%`}
                 </p>
               </div>
             </div>
@@ -305,8 +320,7 @@ class DynamicMapSelector extends Component {
 
   generateValueString(val) {
     if (val !== "0") {
-      if(this.props.language === "en")
-        return ": €" + val;
+      if (this.props.language === "en") return ": €" + val;
       return ": " + val + " €";
     }
 
@@ -315,14 +329,16 @@ class DynamicMapSelector extends Component {
 
   getMeanForRegion(region) {
     let data = {};
-    if (this.state.mapType === "Median Wage" || this.state.mapType==="Average Wage") {
+    if (
+      this.state.mapType === "Median Wage" ||
+      this.state.mapType === "Average Wage"
+    ) {
       this.state.averages.map((el) => {
         if (el.region === region) {
-          if(this.props.language === "en")
-            data = "€"+formatNumber(el.average, this.props.language);
-          else
-            data = formatNumber(el.average, this.props.language) + " €";
-         
+          if (this.props.language === "en")
+            data = "€" + formatNumber(el.average, this.props.language);
+          else data = formatNumber(el.average, this.props.language) + " €";
+
           return data;
         }
 
@@ -333,10 +349,14 @@ class DynamicMapSelector extends Component {
         if (el.region === region) {
           data =
             genderLabel[0] +
-            this.generateValueString(formatNumber(el.maleAverage, this.props.language)) +
+            this.generateValueString(
+              formatNumber(el.maleAverage, this.props.language)
+            ) +
             "<br/>" +
             genderLabel[1] +
-            this.generateValueString(formatNumber(el.femaleAverage, this.props.language));
+            this.generateValueString(
+              formatNumber(el.femaleAverage, this.props.language)
+            );
           return data;
         }
         return 0;
@@ -403,12 +423,11 @@ class DynamicMapSelector extends Component {
 
       default:
         mapContentType = genderWageGap;
-        if(this.props.language === "en")
-          mapContentType += " by county"
+        if (this.props.language === "en") mapContentType += " by county";
         break;
     }
 
-    return  `${mapContentType} | ${this.props.dates.occupationEntityDateQuarter} ${quarter} ${this.props.dates.occupationEntityDate}`;
+    return `${mapContentType} | ${this.props.dates.occupationEntityDateQuarter} ${quarter} ${this.props.dates.occupationEntityDate}`;
   }
 
   getOccupation() {
@@ -436,16 +455,16 @@ class DynamicMapSelector extends Component {
     } else {
       switch (this.state.mapType) {
         case "Median Wage":
-          if(this.props.language === "en")
-           return "€"+formatNumber(this.state.median, this.props.language);
+          if (this.props.language === "en")
+            return "€" + formatNumber(this.state.median, this.props.language);
           else
-           return formatNumber(this.state.median, this.props.language) +" €" ;
+            return formatNumber(this.state.median, this.props.language) + " €";
 
         case "Average Wage":
-          if(this.props.language === "en")
-          return "€"+formatNumber(this.state.average, this.props.language);
-         else
-          return formatNumber(this.state.average, this.props.language) + " €";
+          if (this.props.language === "en")
+            return "€" + formatNumber(this.state.average, this.props.language);
+          else
+            return formatNumber(this.state.average, this.props.language) + " €";
 
         case "Gender Wage Gap":
           return parseInt(this.state.genderGap * 100) + "%";
@@ -457,14 +476,16 @@ class DynamicMapSelector extends Component {
   }
 
   onMapHover(geo) {
-
     const l = geo.properties.MNIMI;
     const data = this.getMeanForRegion(l);
-      let dataString =
-        Object.keys(data).length === 0 ? noData : data.toString();
-      this.setState({ content: `<p class="h6-stat-white-bold text-left">${translateCounty(l, this.props.language)}:</p> <br/> <p class="h6-stat-white text-left">${dataString}</p> `});
+    let dataString = Object.keys(data).length === 0 ? noData : data.toString();
+    this.setState({
+      content: `<p class="h6-stat-white-bold text-left">${translateCounty(
+        l,
+        this.props.language
+      )}:</p> <br/> <p class="h6-stat-white text-left">${dataString}</p> `,
+    });
   }
-
 
   onOccupationHover() {
     if (this.props.generalName !== null)
@@ -475,11 +496,18 @@ class DynamicMapSelector extends Component {
 
   getComposableMap() {
     return (
-      <div id="composable-map" style={{
-        backgroundColor: this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)"
-      }}>
-
-        <ComposableMap data-tip="" projectionConfig={{ scale: 300 }} viewBox="40 30 800 600">
+      <div
+        id="composable-map"
+        style={{
+          backgroundColor:
+            this.state.groups[0].length !== 0 ? "" : "rgba(247,247,247,0.46)",
+        }}
+      >
+        <ComposableMap
+          data-tip=""
+          projectionConfig={{ scale: 300 }}
+          viewBox="40 30 800 600"
+        >
           <Geographies geography={ee}>
             {({ geographies }) => (
               <>
@@ -494,7 +522,10 @@ class DynamicMapSelector extends Component {
                     onClick={() => {
                       const selectedRegion = geo.properties.MNIMI;
                       this.setState({ selected: selectedRegion });
-                      this.props.onRegionChange({ value: selectedRegion, tab: this.state.mapType });
+                      this.props.onRegionChange({
+                        value: selectedRegion,
+                        tab: this.state.mapType,
+                      });
                     }}
                     style={this.styleForSelectedRegion(geo.properties.MNIMI)}
                   />
@@ -509,22 +540,35 @@ class DynamicMapSelector extends Component {
                             style={{
                               fontFamily: "Roboto",
                               fontWeight: "normal",
-                              fontSize: this.props.language === "ru"?"10px" : "13px",
+                              fontSize:
+                                this.props.language === "ru" ? "10px" : "13px",
                               lineHeight: "16px",
                               fill: "#FFFFFF",
-                              cursor: "default"
+                              cursor: "default",
                             }}
                             onClick={() => {
                               const selectedRegion = geo.properties.MNIMI;
                               this.setState({ selected: selectedRegion });
-                              this.props.onRegionChange({ value: selectedRegion, tab: this.state.mapType });
+                              this.props.onRegionChange({
+                                value: selectedRegion,
+                                tab: this.state.mapType,
+                              });
                             }}
-                            x={geo.properties.MNIMI.includes("Lääne maakond")?"-5": "0"}
+                            x={
+                              geo.properties.MNIMI.includes("Lääne maakond")
+                                ? "-5"
+                                : "0"
+                            }
                             y="2"
-                            textAnchor={geo.properties.MNIMI.includes("Lääne maakond")?"":"middle"}
+                            textAnchor={
+                              geo.properties.MNIMI.includes("Lääne maakond")
+                                ? ""
+                                : "middle"
+                            }
                           >
-
-                            {this.props.language === "ru"? counties[geo.properties.MNIMI] : replaceMaakond(geo.properties.MNIMI)}
+                            {this.props.language === "ru"
+                              ? counties[geo.properties.MNIMI]
+                              : replaceMaakond(geo.properties.MNIMI)}
                           </text>
                         </Marker>
                       ) : (
@@ -537,47 +581,50 @@ class DynamicMapSelector extends Component {
             )}
           </Geographies>
           <Annotation subject={[-75, 35]} dx={0} dy={0}>
-
             <text
               style={{
                 fontFamily: "Roboto",
-                fontWeight: "bold",
-                fontSize: "18px",
-                lineHeight: "22px",
-                fill: "#000000"
               }}
-              x="10"
+              x="-8"
+              fontWeight="bold"
+              lineHeight="20px"
+              fontSize="14px"
               textAnchor="start"
               alignmentBaseline="start"
             >
               {this.getMapType()}
-
             </text>
-            <image x="-15"
-                   y={"-17"}
-                   alignmentBaseline="bottom" href={infoIcon} width={21} height={21}
-                   onMouseEnter={() => {
-                     let content = "";
+            <image
+              x="-33"
+              y={"-16"}
+              alignmentBaseline="bottom"
+              href={infoIcon}
+              width={21}
+              height={21}
+              onMouseEnter={() => {
+                let content = "";
 
-                     switch (this.state.mapType) {
-                       case "Median Wage":
-                         content = medianTabInfo;
-                         break;
+                switch (this.state.mapType) {
+                  case "Median Wage":
+                    content = medianTabInfo;
+                    break;
 
-                       case "Average Wage":
-                         content = averageTabInfo;
-                         break;
+                  case "Average Wage":
+                    content = averageTabInfo;
+                    break;
 
-                       default:
-                         content = wageGapInfoTab;
-                         break;
-                     }
-                     this.setState({ content: `<p class="text-left">${content} </p>`});
-
-                   }}
-                   onMouseLeave={() => {
-                     this.setState({ content: "" });
-                   }}/>
+                  default:
+                    content = wageGapInfoTab;
+                    break;
+                }
+                this.setState({
+                  content: `<p class="text-left">${content} </p>`,
+                });
+              }}
+              onMouseLeave={() => {
+                this.setState({ content: "" });
+              }}
+            />
 
             <text
               style={{
@@ -585,53 +632,55 @@ class DynamicMapSelector extends Component {
                 fontWeight: "normal",
                 fontSize: "13px",
                 lineHeight: "16px",
-                fill: "#595959"
+                fill: "#595959",
               }}
-              x="-15"
+              x="-30"
               y="25"
               textAnchor="start"
               alignmentBaseline="start"
             >
               {this.getOccupation()}
             </text>
-            <image x="-13"
-                   y= {this.props.generalName === null  ? "12" : "37"}
-                   style={{
-                    cursor: "pointer"
-                  }}
-                  onClick={()=>{
-                    this.setState({ selected: "all" });
-                    this.props.onOverallDataForMapSelected({ value: "all" });
-                  }}
-
-                   alignmentBaseline="bottom" href={this.state.linkHovered ? linkIconHovered : linkIcon} width={17} height={17}
-                   onMouseEnter={()=>this.setState({linkHovered: true})}
-                  onMouseLeave={()=>this.setState({linkHovered: false})}
-                   />
-          <text
+            <image
+              x="-31"
+              y={this.props.generalName === null ? "12" : "37"}
+              style={{
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                this.setState({ selected: "all" });
+                this.props.onOverallDataForMapSelected({ value: "all" });
+              }}
+              alignmentBaseline="bottom"
+              href={this.state.linkHovered ? linkIconHovered : linkIcon}
+              width={17}
+              height={17}
+              onMouseEnter={() => this.setState({ linkHovered: true })}
+              onMouseLeave={() => this.setState({ linkHovered: false })}
+            />
+            <text
               style={{
                 fontFamily: "Roboto",
                 fontSize: "13px",
                 lineHeight: "16px",
                 fill: "#000",
-                fontWeight: this.state.selected === "all" ? "bold": "",
+                fontWeight: this.state.selected === "all" ? "bold" : "",
                 textDecoration: this.state.linkHovered ? "underline" : "none",
-                cursor:"pointer"
+                cursor: "pointer",
               }}
-              x="7"
-              y= {this.props.generalName === null  ? "25" : "50"}
+              x="-8"
+              y={this.props.generalName === null ? "25" : "50"}
               textAnchor="start"
               alignmentBaseline="start"
-
-              onMouseEnter={()=>this.setState({linkHovered: true})}
-              onMouseLeave={()=>this.setState({linkHovered: false})}
-              onClick={()=>{
+              onMouseEnter={() => this.setState({ linkHovered: true })}
+              onMouseLeave={() => this.setState({ linkHovered: false })}
+              onClick={() => {
                 this.setState({ selected: "all" });
                 this.props.onOverallDataForMapSelected({ value: "all" });
               }}
-          >
-            {overall}
-          </text>
+            >
+              {overall}
+            </text>
 
             <text
               style={{
@@ -639,10 +688,10 @@ class DynamicMapSelector extends Component {
                 fontWeight: "normal",
                 fontSize: "13px",
                 lineHeight: "16px",
-                fill: "#595959"
+                fill: "#595959",
               }}
-              x="-15"
-              y= {this.props.generalName === null ? "55":"75"}
+              x="-30"
+              y={this.props.generalName === null ? "55" : "75"}
               textAnchor="start"
               alignmentBaseline="start"
             >
@@ -654,36 +703,61 @@ class DynamicMapSelector extends Component {
                 fontWeight: "normal",
                 fontSize: "11px",
                 lineHeight: "16px",
-                fill: "#595959"
+                fill: "#595959",
               }}
               x="550"
-              y={"25"}
+              y={"43"}
               textAnchor="start"
               alignmentBaseline="start"
             >
-             {source}
+              {source}
             </text>
+            <g
+              width="20"
+              height="20"
+              x="637"
+              style={{ cursor: "pointer" }}
+              y={"4"}
+              onClick={() => {
+                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
+              }}
+            >
+              <svg
+                width="20"
+                height="20"
+                backgroundColor="#fff"
+                viewBox="0 0 24 24"
+                style={{ fill: "#000" }}
+                x={this.props.language==="en"? "655" : this.props.language==="ru" ? "717":"637"}
+                y={"12"}
+              >
+                <path fill="#fff" d="M0 0h24v24H0V0z"></path>
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+              </svg>
+            </g>
           </Annotation>
-
         </ComposableMap>
-        <StyledTooltip multiline={true} html={true}>{this.state.content}</StyledTooltip>
-        {this.state.groups[0].length !== 0 ?
-            <div className="legends ml-3">
-              {this.getLegends()}
-              <div className="mt-2">
+        <StyledTooltip multiline={true} html={true}>
+          {this.state.content}
+        </StyledTooltip>
+        {this.state.groups[0].length !== 0 ? (
+          <div className="legends ml-3">
+            {this.getLegends()}
+            <div className="mt-2">
               <div
-                  className="circle-legend m-1"
-                  style={{
-                    background: this.state.noDataColor,
-                  }}
+                className="circle-legend m-1"
+                style={{
+                  background: this.state.noDataColor,
+                }}
               ></div>
               <p className="map-legend text-left ml-3 h6-stat-gray">{noData}</p>
-              </div>
-            </div> :
-            <div className="legends-info text-left ml-2 mb-5" >
-            <p className={"text-left ml-5"}>{noDataInfo}</p>
             </div>
-        }
+          </div>
+        ) : (
+          <div className="legends-info text-left ml-2 mb-5">
+            <p className={"text-left ml-5"}>{noDataInfo}</p>
+          </div>
+        )}
       </div>
     );
   }
@@ -764,69 +838,57 @@ class DynamicMapSelector extends Component {
           </div>
           <div className="c-tabs-line"></div>
           <div>
-          <div
-            className="apexcharts-toolbar-map"
-          >
-            <div
-              className="apexcharts-menu-icon"
-              style={{}}
-              title="Menu"
-              onClick={() => {
-                this.setState({ mapDownloadMenu: !this.state.mapDownloadMenu });
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                style={{fill: "#000"}}
-              >
-                <path fill="none" d="M0 0h24v24H0V0z"></path>
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
-              </svg>
-            </div>
-            <div
-              className={
-                "apexcharts-menu " +
-                (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
-              }
-            >
+            <div className="apexcharts-toolbar-map">
               <div
-                className="apexcharts-menu-item exportPNG"
+                className="apexcharts-menu-icon"
+                style={{}}
+                title="Menu"
                 onClick={() => {
-                  htmlToImage
-                    .toPng(document.getElementById("composable-map"))
-                    .then(function (dataUrl) {
-                       downloadjs(dataUrl, "map.png");
-                    });
+                  this.setState({
+                    mapDownloadMenu: !this.state.mapDownloadMenu,
+                  });
                 }}
-                title={downloadPng}
-              >
-                {downloadPng}
-              </div>
+              ></div>
               <div
-                className="apexcharts-menu-item exportPDF"
-                title={downloadJpeg}
-                onClick={() => {
-                  htmlToImage.toJpeg(document.getElementById("composable-map"), {
-                      quality: 0.95,
-                      backgroundColor: "#FFF",
-                    })
-                    .then(function (dataUrl) {
-                      downloadjs(dataUrl, "map.jpg");
-                    });
-                }}
+                className={
+                  "apexcharts-menu " +
+                  (this.state.mapDownloadMenu ? "apexcharts-menu-open" : "")
+                }
               >
-                {downloadJpeg}
+                <div
+                  className="apexcharts-menu-item exportPNG text-left"
+                  onClick={() => {
+                    htmlToImage
+                      .toPng(document.getElementById("composable-map"))
+                      .then(function (dataUrl) {
+                        downloadjs(dataUrl, "map.png");
+                      });
+                  }}
+                  title={downloadPng}
+                >
+                  {downloadPng}
+                </div>
+                <div
+                  className="apexcharts-menu-item exportPDF text-left"
+                  title={downloadJpeg}
+                  onClick={() => {
+                    htmlToImage
+                      .toJpeg(document.getElementById("composable-map"), {
+                        quality: 0.95,
+                        backgroundColor: "#FFF",
+                      })
+                      .then(function (dataUrl) {
+                        downloadjs(dataUrl, "map.jpg");
+                      });
+                  }}
+                >
+                  {downloadJpeg}
+                </div>
               </div>
             </div>
           </div>
+          {this.getComposableMap()}
         </div>
-        {this.getComposableMap()}
-        </div>
-
-
       </>
     );
   }

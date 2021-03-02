@@ -38,6 +38,7 @@ class AgeBarChartComponent extends Component {
       ],
       options: {
         chart: {
+          fontFamily: "Roboto",
           toolbar: {
             show: false,
           },
@@ -165,7 +166,6 @@ class AgeBarChartComponent extends Component {
                       "–"
                     )}:
                      </p>
-                     <br/>
                      <div class="row ml-3" >
                   <div class="circle-legend mt-2" style="background-color: ${"#FFBC45"}"></div>
                   <p class="ml-1 text-left h6-stat-white mt-1"> 
@@ -177,7 +177,7 @@ class AgeBarChartComponent extends Component {
                             occupationToLowerCase(this.state.occupation)
                           : this.state.occupation
                       }`,
-                      25
+                      20
                     )} 
                         ${
                           this.props.language === "en"
@@ -266,43 +266,7 @@ class AgeBarChartComponent extends Component {
           {this.props.label +
             ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
         </p>
-        <div id="chart" className={"mb-0 mt-5"}>
-          <ReactApexChart
-            id="apexchart"
-            className={"mx-auto"}
-            options={this.state.options}
-            series={this.state.series}
-            type="bar"
-            height={300}
-            width={360}
-          />
-        </div>
-        <div className="agebar-xaxis-label h6-stat-gray">
-          <p className="h6-stat-gray-label">{`${propsLabel}`}</p>
-        </div>
-
-        <div className={"source-tip-agebar"}>
-          <p className={"source-label-style"}>{source}</p>
-        </div>
-
-        
-        <div className="graph-legends mx-auto pl-5">
-          <div className={"row"}>
-            <div
-              className="circle-legend"
-              style={{
-                background: "#FFBC45",
-              }}
-            ></div>
-            <p className="graph-legend-age h6-stat-gray">
-              {this.props.language === "en" || this.props.language === "ru"
-                ? `${this.props.occupation}`
-                : `Kokku ametialal — ${ occupationToLowerCase(this.state.occupation)}`}
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className="apexcharts-toolbar apexcharts-toolbar-holder-agebar">
+        <div className="apexcharts-toolbar apexcharts-toolbar-holder-agebar">
           <div
             className="apexcharts-menu-icon"
             style={{}}
@@ -329,7 +293,7 @@ class AgeBarChartComponent extends Component {
             }
           >
             <div
-              className="apexcharts-menu-item exportPNG"
+              className="apexcharts-menu-item exportPNG text-left"
               onClick={() => {
                 this.promiseState().then(() =>
                   exportComponentAsPNG(this.componentRef)
@@ -342,7 +306,7 @@ class AgeBarChartComponent extends Component {
               {downloadPng}
             </div>
             <div
-              className="apexcharts-menu-item exportPDF"
+              className="apexcharts-menu-item exportPDF text-left"
               title={downloadJpeg}
               onClick={() => {
                 this.promiseState().then(() =>
@@ -356,6 +320,44 @@ class AgeBarChartComponent extends Component {
             </div>
           </div>
         </div>
+        <div className="agebar-xaxis-label h6-stat-gray">
+          <p className="h6-stat-gray-label">{`${propsLabel}`}</p>
+        </div>
+        <div id="chart" className={"mb-0 mt-5"}>
+          <ReactApexChart
+            id="apexchart"
+            className={"mx-auto"}
+            options={this.state.options}
+            series={this.state.series}
+            type="bar"
+            height={300}
+            width={360}
+          />
+        </div>
+      
+
+        <div className={"source-tip-agebar"}>
+          <p className={"source-label-style"}>{source}</p>
+        </div>
+
+        
+        <div className="graph-legends mx-auto pl-5">
+          <div className={"row"}>
+            <div
+              className="circle-legend"
+              style={{
+                background: "#FFBC45",
+              }}
+            ></div>
+            <p className="graph-legend-age h6-stat-gray">
+              {this.props.language === "en" || this.props.language === "ru"
+                ? `${this.props.occupation}`
+                : `Kokku ametialal — ${ occupationToLowerCase(this.state.occupation)}`}
+            </p>
+          </div>
+        </div>
+      </div>
+     
       </div>
     );
   }

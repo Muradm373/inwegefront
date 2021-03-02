@@ -93,7 +93,6 @@ class BarComponent extends Component {
                 tickFormat={(d) => {
                   return d;
                 }}
-                title={"€"}
               />
             )}
 
@@ -137,6 +136,9 @@ class BarComponent extends Component {
               labelAnchorY="middleAlignment"
             />
           </FlexibleWidthXYPlot>
+          <div className="xaxis-tick body-stat">
+          <p>{"€"}</p>
+        </div>
           <p className={"body-stat ml-3"}>{this.props.label}.</p>
         </div>
       </div>

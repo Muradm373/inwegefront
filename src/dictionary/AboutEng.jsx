@@ -13,7 +13,8 @@ class AboutEng extends Component {
           <p className={"h4-stat"}>Definitions</p>
           <br />
           <div className="text-left body-stat">
-            <p className="body-stat-bold" style={{ display: "inline" }}>
+          <ul className={"ol-stat"}>
+           <li> <p className="body-stat-bold" style={{ display: "inline" }}>
               Classification of Occupations
             </p>{" "}
             – the application uses the Classification of Occupations to classify
@@ -74,8 +75,9 @@ class AboutEng extends Component {
             employees there. In larger counties, the wage of gardeners can be
             expressed at the unit group level (Level 4), but in smaller
             counties, it is limited to Level 2 or 3.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Replacement rate in relation to average wage in Estonia at the
               time of retirement
@@ -86,8 +88,9 @@ class AboutEng extends Component {
             wages in Estonia in the same year. The figure shows the estimated
             frequency distribution based on the deciles of the replacement
             rates.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Replacement rate based on the employee’s last wage
             </p>{" "}
@@ -97,8 +100,9 @@ class AboutEng extends Component {
             gross wage before retirement. The figure shows the estimated
             frequency distribution based on the deciles of the replacement
             rates.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Decile-based estimation of frequency
             </p>{" "}
@@ -112,22 +116,25 @@ class AboutEng extends Component {
             decile. On the right of the median, deciles are shown on the axis as
             one hundred minus decile in per cent, i.e. the value of the ninth
             decile is found on the y-axis at 100 – 90 = 10%.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Average wage
             </p>{" "}
             – arithmetic mean, the sum of the wages of all full-time employees
             divided by the number of wage earners.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Difference in males’ and females’ monthly wages
             </p>{" "}
             – difference between the average wages of males and females divided
             by the average wages of males.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Median wage
             </p>{" "}
@@ -136,8 +143,9 @@ class AboutEng extends Component {
             means that half of the employees in this position earn up to 1,000
             euros and half of the employees earn more than 1,000 euros per
             month.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Wage projection for 2030
             </p>{" "}
@@ -149,8 +157,9 @@ class AboutEng extends Component {
             average wage projected by the Ministry of Economic Affairs and
             Communications in this year. No occupation was allowed a negative
             increase in the average wage.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Risk that a person will be replaced by a computer
             </p>{" "}
@@ -172,8 +181,9 @@ class AboutEng extends Component {
             B., & Osborne, M. A. (2017). The future of employment: How
             susceptible are jobs to computerisation? Technological forecasting
             and social change, 114, 254–280.
+            </li>
             <br />
-            <br />
+             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Age-related replacement need
             </p>{" "}
@@ -193,10 +203,10 @@ class AboutEng extends Component {
                 0.4.
               </li>
             </ul>
-            <br />
+            </li>
+            </ul>
             <br />
             <p className={"h4-stat"}>Data</p>
-            <br />
             <br />
             The application shows the gross wages and salaries of employees
             registered in Estonia for the selected period. The data of the
@@ -204,7 +214,7 @@ class AboutEng extends Component {
             (income and social tax, mandatory funded pension tax and
             unemployment insurance tax return) are used. An extract from the
             register has been made under the following conditions:
-            <ol className={"ol-stat"}>
+            <ol className={"ol-stat counter-reset"}>
               <li>
                 <p className="ml-4 body-stat">
                   data on the median wage, wage distributions, average wage and
@@ -252,7 +262,6 @@ class AboutEng extends Component {
             2.5% of the lowest and highest wages are excluded from all
             calculations.
             <br />
-            <br />
             The methodology used in the application differs from the tables of
             the average monthly gross income per employee (Statistical activity
             50101) in terms of payment types and location. In this application,
@@ -262,7 +271,6 @@ class AboutEng extends Component {
             <br />
             <br />
             <p className={"h4-stat"}>Q&A</p>
-            <br />
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
               What does the wages and salaries application show?

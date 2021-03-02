@@ -13,7 +13,8 @@ class AboutEst extends Component {
           <p className={"h4-stat"}>Definitsioonid</p>
           <br />
           <div className="text-left body-stat">
-            <p className="body-stat-bold" style={{ display: "inline" }}>
+          <ul className={"ol-stat"}>
+           <li><p className="body-stat-bold" style={{ display: "inline" }}>
               Ametite klassifikaator
             </p>{" "}
             – rakenduses kasutatakse ametite liigitamiseks ametite
@@ -73,8 +74,9 @@ class AboutEst extends Component {
             oleneb maakonna suurusest ja sealsete töötajate arvust. Suuremates
             maakondades saab aednike palga avaldada ametirühma järgi (4.
             tasemel), väiksemates aga peab piirduma 2. või 3. tasemega.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Asendusmäär Eesti keskmise palga alusel pensionile minemise hetkel
             </p>{" "}
@@ -83,8 +85,9 @@ class AboutEst extends Component {
             kuus, mis on jagatud Eesti keskmise brutopalgaga kuus samal aastal.
             Joonisel on kujutatud hinnanguline sagedusjaotus asendusmäärade
             detsiilide põhjal.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Asendusmäär töötaja viimase palga alusel
             </p>{" "}
@@ -93,8 +96,9 @@ class AboutEst extends Component {
             aastal inimese enda brutopalga alusel enne pensionile minemist.
             Joonisel on kujutatud hinnanguline sagedusjaotus asendusmäärade
             detsiilide põhjal.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Detsiilide põhjal hinnatud sagedusjaotus
             </p>{" "}
@@ -108,22 +112,25 @@ class AboutEst extends Component {
             viiendat detsiili toodud kumulatiivsena, paremal pool mediaani on
             detsiilid näidatud teljel kui sada miinus detsiil protsentides, ehk
             üheksanda detsiili väärtuse leiab y-teljel 100 – 90 = 10% juurest.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Keskmine palk
             </p>{" "}
             – aritmeetiline keskmine, kõigi täisajaga töötavate inimeste palkade
             summa, mis on jagatud palgasaajate arvuga.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Meeste ja naiste kuupalga erinevus
             </p>{" "}
             – meeste ja naiste keskmise palga vahe, mis on jagatud meeste
             keskmise palgaga.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mediaanpalk
             </p>{" "}
@@ -131,8 +138,9 @@ class AboutEst extends Component {
             töötajaid on ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et
             pool sellel ametikohal töötajatest teenib kuni 1000 ja pool üle 1000
             euro kuus.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Palgaprognoos 2030. aastaks
             </p>{" "}
@@ -144,8 +152,9 @@ class AboutEst extends Component {
             kommunikatsiooniministeeriumi prognoositava keskmise palgaga sel
             aastal. Ühelgi ametialal ei lubatud keskmise palga negatiivset
             kasvu.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Tõenäosus, et inimese asendab arvuti
             </p>{" "}
@@ -167,8 +176,9 @@ class AboutEst extends Component {
             kohta: Frey, C. B., & Osborne, M. A. (2017). The future of
             employment: How susceptible are jobs to computerisation?
             Technological forecasting and social change, 114, 254–280.
+            </li>
             <br />
-            <br />
+            <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Asendusvajadus vanuse tõttu
             </p>{" "}
@@ -185,10 +195,10 @@ class AboutEst extends Component {
                 suur, kui üle 55-aastaste inimeste osatähtsus on suurem kui 0,4.
               </li>
             </ul>
-            <br />
+            </li>
+            </ul>
             <br />
             <p className={"h4-stat"}>Andmed</p>
-            <br />
             <br />
             Rakenduses näidatakse Eestis registreeritud töötajate brutopalk
             valitud ajavahemikus. Kasutatakse töötamise registri (TÖR) ja
@@ -196,7 +206,7 @@ class AboutEst extends Component {
             kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade
             1 ja 2 andmeid. Registriväljavõte on tehtud järgmiste tingimuste
             korral:
-            <ol className={"ol-stat"}>
+            <ol className={"ol-stat counter-reset"}>
               <li>
                 <p className="ml-4 body-stat">
                   mediaanpalga, palgajaotuste, keskmise palga ja töötajate arvu
@@ -239,7 +249,6 @@ class AboutEst extends Component {
             Kõigist arvutustest on välja jäetud 2,5% kõige madalamatest ja kõige
             kõrgematest palkadest.
             <br />
-            <br />
             Palgatöötaja kuu keskmise brutotulu tabelitest (Statistikatöö 50101)
             erineb rakenduses kasutatud metoodika väljamakse liikide ja asukoha
             määratluse poolest. Selles rakenduses näidatakse palku töökoha
@@ -247,7 +256,6 @@ class AboutEst extends Component {
             <br />
             <br />
             <p className={"h4-stat"}>Küsimused ja vastused</p>
-            <br />
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mida näitab palgarakendus?

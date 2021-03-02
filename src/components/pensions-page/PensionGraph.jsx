@@ -225,9 +225,9 @@ class PensionGraph extends Component {
         <br />
         <br />
 
-        <div className={"y-axis-label h6-stat-gray"}>{decileLabel}</div>
+        <div className={"y-axis-label-pension h6-stat-gray"}>{decileLabel}</div>
 
-        <FlexibleWidthXYPlot height={350} animation="gentle">
+        <FlexibleWidthXYPlot height={350} animation="gentle" className="pension-graph-ml">
           <VerticalGridLines className="grid-line-vertical" />
           <HorizontalGridLines className="grid-line-horizontal" />
           <XAxis

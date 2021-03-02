@@ -26,13 +26,16 @@ class PensionsComponent extends Component {
         <div className="methodology-component" id="pensions-component">
           <div className="pns-graphs description-page">
           <p className={"h4-stat"}>{tartuUlikooli}</p>
+          <br></br>
 
             <p className="text-justify">
               {PensionsText}
             </p>
+            <br></br>
 
             <p className={"h4-stat"}>{Livelihood}</p>
 
+            <br></br>
 
             <ol className={"ol-stat"}>
               {pensionDescription[0]}
