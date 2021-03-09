@@ -10,7 +10,7 @@ class AboutEst extends Component {
     return (
       <div>
         <div className="pns-graphs description-page body-stat">
-          <p className={"h4-stat"}>Definitsioonid</p>
+          <p className={"h3-stat"}>Definitsioonid</p>
           <br />
           <div className="text-left body-stat">
           <ul className={"ol-stat"}>
@@ -19,7 +19,7 @@ class AboutEst extends Component {
             </p>{" "}
             – rakenduses kasutatakse ametite liigitamiseks ametite
             klassifikaatorit
-            <a href="http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee">(http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee</a>),
+            <a href="http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee">(http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee)</a>,
             kus ametid on jagatud täpselt määratletud rühmadesse töö sisu,
             tööülesannete ja kvalifikatsiooni alusel, mida töö eeldab. Eesti
             riigisisese klassifikaatori hierarhias on viis taset, millest
@@ -198,7 +198,7 @@ class AboutEst extends Component {
             </li>
             </ul>
             <br />
-            <p className={"h4-stat"}>Andmed</p>
+            <p className={"h3-stat"}>Andmed</p>
             <br />
             Rakenduses näidatakse Eestis registreeritud töötajate brutopalk
             valitud ajavahemikus. Kasutatakse töötamise registri (TÖR) ja
@@ -208,12 +208,12 @@ class AboutEst extends Component {
             korral:
             <ol className={"ol-stat counter-reset"}>
               <li>
-                <p className="ml-4 body-stat">
+                <p className="body-stat">
                   mediaanpalga, palgajaotuste, keskmise palga ja töötajate arvu
                   leidmisel on võetud arvesse kõik sellel ametikohal või
                   maakonnas täiskohaga töötajad
                 </p>
-                <ul className={"ol-stat"}>
+                <ul className={"ol-stat-bullet"}>
                   <li>
                     kellel oli töötamise registris koos ametinimetusega kehtiv
                     töötamise kirje perioodi lõpu seisuga;
@@ -231,7 +231,7 @@ class AboutEst extends Component {
                 </ul>
               </li>
               <li>
-                <p className="ml-4 body-stat">
+                <p className="body-stat">
                   töötaja keskmine kuu brutopalk ametikohal arvutatakse välja
                   valitud perioodi jooksul tööandja deklareeritud
                   maksudeklaratsiooni TSD lisade 1 ja 2 väljamakse summade
@@ -239,7 +239,7 @@ class AboutEst extends Component {
                 </p>
               </li>
               <li>
-                <p className="ml-4 body-stat">
+                <p className="body-stat">
                   töötajate palga arvutamisel võetakse arvesse vaid töine tulu.
                   Selleks kasutatakse TSD lisa 1 väljamakseliike 10, 12 ja 13
                   ning lisa 2 väljamakseliike 120, 121, 126, 127, 144, 145.
@@ -255,11 +255,12 @@ class AboutEst extends Component {
             asukoha järgi, brutotulu statistikas isiku kohta tema elukoha järgi.
             <br />
             <br />
-            <p className={"h4-stat"}>Küsimused ja vastused</p>
+            <p className={"h3-stat"}>Küsimused ja vastused</p>
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mida näitab palgarakendus?
             </p>{" "}
+            <br />
             Palgarakendus annab teavet keskmise ja mediaanpalga ning meeste ja
             naiste palgaerinevuste kohta Eestis. Ühtlasi saab uurida, kuidas
             praegune sooline palgaerinevus mõjutab tulevast pensioni ja mis
@@ -269,6 +270,7 @@ class AboutEst extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mis andmetele rakendus tugineb?
             </p>{" "}
+            <br />
             Rakenduses näidatakse Eestis registreeritud töötajate brutopalka
             valitud ajal. Kasutatakse töötamise registri (TÖR) ja
             maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku
@@ -279,6 +281,7 @@ class AboutEst extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Millised töötajad on arvesse võetud?
             </p>{" "}
+            <br />
             Registriväljavõte on tehtud nende töötajate kohta, kellel oli
             töötamise registris kehtiv töötamise kirje perioodi lõpu seisuga.
             Arvesse võetakse vaid need TÖR-i kirjed, kus on märgitud töötaja
@@ -290,6 +293,7 @@ class AboutEst extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Kuidas arvutatakse keskmist brutopalka?
             </p>{" "}
+            <br />
             Töötaja ametikoha keskmine brutopalk kuus arvutatakse valitud
             perioodi jooksul tööandja deklareeritud maksudeklaratsiooni TSD
             lisade 1 ja 2 väljamaksesummade põhjal. Töötajate palga arvutamisel
@@ -302,6 +306,7 @@ class AboutEst extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mis on mediaanpalk ja kuidas seda arvutatakse?
             </p>{" "}
+            <br />
             Rakenduses näidatakse ametikoha mediaanpalka, s.t väljamakset,
             millest rohkem ja millest vähem teenivaid töötajaid on sellel
             ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et

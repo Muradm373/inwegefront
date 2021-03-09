@@ -10,7 +10,7 @@ class AboutEng extends Component {
     return (
       <div>
         <div className="pns-graphs description-page body-stat">
-          <p className={"h4-stat"}>Definitions</p>
+          <p className={"h3-stat"}>Definitions</p>
           <br />
           <div className="text-left body-stat">
           <ul className={"ol-stat"}>
@@ -19,7 +19,7 @@ class AboutEng extends Component {
             </p>{" "}
             – the application uses the Classification of Occupations to classify
             occupations
-            (<a href="http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee">http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee</a>).
+            <a href="http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee">(http://metaweb.stat.ee/classificator_publish_list.htm?siteLanguage=ee)</a>.
             Occupations are divided into defined groups based on the content,
             duties and qualifications required by the job. There are five levels
             in the hierarchy of the Estonian classification, the first four of
@@ -206,7 +206,7 @@ class AboutEng extends Component {
             </li>
             </ul>
             <br />
-            <p className={"h4-stat"}>Data</p>
+            <p className={"h3-stat"}>Data</p>
             <br />
             The application shows the gross wages and salaries of employees
             registered in Estonia for the selected period. The data of the
@@ -216,12 +216,12 @@ class AboutEng extends Component {
             register has been made under the following conditions:
             <ol className={"ol-stat counter-reset"}>
               <li>
-                <p className="ml-4 body-stat">
+                <p className=" body-stat">
                   data on the median wage, wage distributions, average wage and
                   number of employees cover the full-time employees in the
                   position or county
                 </p>
-                <ul className={"ol-stat"}>
+                <ul className={"ol-stat-bullet"}>
                   <li>
                     who at the end of the employment record period had a valid
                     entry including their job title in the employment register;
@@ -243,7 +243,7 @@ class AboutEng extends Component {
                 </ul>
               </li>
               <li>
-                <p className="ml-4 body-stat">
+                <p className=" body-stat">
                   the average gross monthly wage of the employee in the position
                   is calculated on the basis of the payment amounts of Annexes 1
                   and 2 of the tax return TSD declared by the employer during
@@ -251,7 +251,7 @@ class AboutEng extends Component {
                 </p>
               </li>
               <li>
-                <p className="ml-4 body-stat">
+                <p className=" body-stat">
                   only income from work is taken into account when calculating
                   the wages of employees. For this purpose, Annex 1 types of
                   payment 10, 12 and 13 and Annex 2 types of payment 120, 121,
@@ -270,11 +270,12 @@ class AboutEng extends Component {
             residence.
             <br />
             <br />
-            <p className={"h4-stat"}>Q&A</p>
+            <p className={"h3-stat"}>Q&A</p>
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
               What does the wages and salaries application show?
             </p>{" "}
+            <br />
             The wages and salaries application provides information on the
             average and median wages and wage differences between men and women
             in Estonia. It is also possible to examine how the current gender
@@ -285,6 +286,7 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               What data are used in the application?
             </p>{" "}
+            <br />
             The application shows the gross wages of employees registered in
             Estonia during the selected period. The data of the employment
             register and Annexes 1 and 2 of the tax return TSD (income and
@@ -295,6 +297,7 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Which employees have been taken into account?
             </p>{" "}
+            <br />
             An extract from the register has been taken for those employees who
             had a valid employment record in the employment register as at the
             end of the period. Only those employment register records that
@@ -307,6 +310,7 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               How are average gross wages calculated?
             </p>{" "}
+            <br />
             The average gross monthly wage for the employee’s position is
             calculated on the basis of the payment amounts of Annexes 1 and 2 of
             the tax return TSD declared by the employer for the selected period.
@@ -320,6 +324,7 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               What is the median wage and how is it calculated?
             </p>{" "}
+            <br />
             half of the employees in this position earn up to 1,000 euros and
             half of the employees earn more than 1,000 euros per month.
             Full-time employees who have received income from work are taken

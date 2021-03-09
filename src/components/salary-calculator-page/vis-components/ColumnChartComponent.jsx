@@ -446,12 +446,14 @@ class ColumnChartComponent extends Component {
           ref={this.componentRef}
         >
           <p
-            className="graph-legends mx-auto h4-stat text-left w-100 pl-2"
-            style={{ height: "40px", position: "absolute" }}
+            className="graph-legends mx-auto h4-stat text-left pl-2"
+            style={{ height: "40px", position: "absolute", width: "360px" }}
           >
             {columnchartLabel +
               ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
           </p>
+
+          {this.props.language==="ru" ? <br/>: <></>}
           <div id="agebar-chart" className={"mb-0 mt-5"}>
             <ReactApexChart
               id="apexchart"
@@ -476,7 +478,7 @@ class ColumnChartComponent extends Component {
           </div>
 
           {this.props.generalName !== null ? (
-            <p className="h6-stat-gray text-left mt-1 ml-2">
+            <p className="h6-stat-gray text-left mt-1 ml-2" style={{width: "360px"}}>
               {`* ${this.props.generalName} (${this.props.occupationCode})`}
             </p>
           ) : (
@@ -488,8 +490,8 @@ class ColumnChartComponent extends Component {
 
         <div className="apexcharts-toolbar apexcharts-toolbar-holder">
           <div
-            className="apexcharts-menu-icon"
-            style={{}}
+            className={"apexcharts-menu-icon" }
+            style={{marginTop: (this.props.generalName !== null&&this.props.generalName.length > 50 ? " -30px" : "")}}
             title="Menu"
             onClick={() => {
               this.setState({

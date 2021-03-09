@@ -260,12 +260,13 @@ class AgeBarChartComponent extends Component {
       <div>
       <div className="p-2" ref={this.componentRef}>
         <p
-          className="graph-legends mx-auto h4-stat text-left px-auto"
-          style={{ height: "40px", position: "absolute" }}
+          className="graph-legends mx-auto h4-stat text-left pl-3"
+          style={{ height: "40px", position: "absolute", width: "380px" }}
         >
           {this.props.label +
             ` | ${this.props.dates.ageDataQuarter} ${quarter} ${this.props.dates.ageDate}`}
         </p>
+        {this.props.language==="ru" ? <br/>: <></>}
         <div className="apexcharts-toolbar apexcharts-toolbar-holder-agebar">
           <div
             className="apexcharts-menu-icon"
@@ -341,7 +342,7 @@ class AgeBarChartComponent extends Component {
         </div>
 
         
-        <div className="graph-legends mx-auto pl-5">
+        <div className="graph-legends pl-4 ml-1">
           <div className={"row"}>
             <div
               className="circle-legend"
