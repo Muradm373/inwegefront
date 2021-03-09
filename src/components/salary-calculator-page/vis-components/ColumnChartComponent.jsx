@@ -491,7 +491,7 @@ class ColumnChartComponent extends Component {
         <div className="apexcharts-toolbar apexcharts-toolbar-holder">
           <div
             className={"apexcharts-menu-icon" }
-            style={{marginTop: (this.props.generalName !== null&&this.props.generalName.length > 50 ? " -30px" : "")}}
+            style={{marginTop: (this.props.generalName !== null && this.props.generalName.length > 50 ? " -30px" : (this.props.generalName === null ? "40px": "10px"))}}
             title="Menu"
             onClick={() => {
               this.setState({
