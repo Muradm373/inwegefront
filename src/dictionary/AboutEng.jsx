@@ -37,7 +37,7 @@ class AboutEng extends Component {
             Fishery Workers’.
             <br />
             <br />
-            <table className="table-stat mx-auto">
+            <table className="table-stat mx-auto h6-stat">
               <tr>
                 <th>Level</th>
                 <th>Code</th>
@@ -76,7 +76,6 @@ class AboutEng extends Component {
             expressed at the unit group level (Level 4), but in smaller
             counties, it is limited to Level 2 or 3.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Replacement rate in relation to average wage in Estonia at the
@@ -89,7 +88,6 @@ class AboutEng extends Component {
             frequency distribution based on the deciles of the replacement
             rates.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Replacement rate based on the employee’s last wage
@@ -101,7 +99,6 @@ class AboutEng extends Component {
             frequency distribution based on the deciles of the replacement
             rates.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Decile-based estimation of frequency
@@ -117,7 +114,6 @@ class AboutEng extends Component {
             one hundred minus decile in per cent, i.e. the value of the ninth
             decile is found on the y-axis at 100 – 90 = 10%.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Average wage
@@ -125,7 +121,6 @@ class AboutEng extends Component {
             – arithmetic mean, the sum of the wages of all full-time employees
             divided by the number of wage earners.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Difference in males’ and females’ monthly wages
@@ -133,7 +128,6 @@ class AboutEng extends Component {
             – difference between the average wages of males and females divided
             by the average wages of males.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Median wage
@@ -144,7 +138,6 @@ class AboutEng extends Component {
             euros and half of the employees earn more than 1,000 euros per
             month.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Wage projection for 2030
@@ -158,7 +151,6 @@ class AboutEng extends Component {
             Communications in this year. No occupation was allowed a negative
             increase in the average wage.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Risk that a person will be replaced by a computer
@@ -182,7 +174,6 @@ class AboutEng extends Component {
             susceptible are jobs to computerisation? Technological forecasting
             and social change, 114, 254–280.
             </li>
-            <br />
              <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Age-related replacement need
@@ -270,11 +261,13 @@ class AboutEng extends Component {
             residence.
             <br />
             <br />
+            <br />
             <p className={"h3-stat"}>Q&A</p>
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
               What does the wages and salaries application show?
             </p>{" "}
+            <br />
             <br />
             The wages and salaries application provides information on the
             average and median wages and wage differences between men and women
@@ -287,6 +280,7 @@ class AboutEng extends Component {
               What data are used in the application?
             </p>{" "}
             <br />
+            <br />
             The application shows the gross wages of employees registered in
             Estonia during the selected period. The data of the employment
             register and Annexes 1 and 2 of the tax return TSD (income and
@@ -297,6 +291,7 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Which employees have been taken into account?
             </p>{" "}
+            <br />
             <br />
             An extract from the register has been taken for those employees who
             had a valid employment record in the employment register as at the
@@ -311,6 +306,7 @@ class AboutEng extends Component {
               How are average gross wages calculated?
             </p>{" "}
             <br />
+            <br />
             The average gross monthly wage for the employee’s position is
             calculated on the basis of the payment amounts of Annexes 1 and 2 of
             the tax return TSD declared by the employer for the selected period.
@@ -324,6 +320,7 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               What is the median wage and how is it calculated?
             </p>{" "}
+            <br />
             <br />
             half of the employees in this position earn up to 1,000 euros and
             half of the employees earn more than 1,000 euros per month.

@@ -34,7 +34,7 @@ class AboutEst extends Component {
             oskustöölised“.
             <br />
             <br />
-            <table className="table-stat mx-auto">
+            <table className="table-stat mx-auto h6-stat">
               <tr>
                 <th>Tase</th>
                 <th>Kood</th>
@@ -75,7 +75,6 @@ class AboutEst extends Component {
             maakondades saab aednike palga avaldada ametirühma järgi (4.
             tasemel), väiksemates aga peab piirduma 2. või 3. tasemega.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Asendusmäär Eesti keskmise palga alusel pensionile minemise hetkel
@@ -86,7 +85,6 @@ class AboutEst extends Component {
             Joonisel on kujutatud hinnanguline sagedusjaotus asendusmäärade
             detsiilide põhjal.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Asendusmäär töötaja viimase palga alusel
@@ -97,7 +95,6 @@ class AboutEst extends Component {
             Joonisel on kujutatud hinnanguline sagedusjaotus asendusmäärade
             detsiilide põhjal.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Detsiilide põhjal hinnatud sagedusjaotus
@@ -113,7 +110,6 @@ class AboutEst extends Component {
             detsiilid näidatud teljel kui sada miinus detsiil protsentides, ehk
             üheksanda detsiili väärtuse leiab y-teljel 100 – 90 = 10% juurest.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Keskmine palk
@@ -121,7 +117,6 @@ class AboutEst extends Component {
             – aritmeetiline keskmine, kõigi täisajaga töötavate inimeste palkade
             summa, mis on jagatud palgasaajate arvuga.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Meeste ja naiste kuupalga erinevus
@@ -129,7 +124,6 @@ class AboutEst extends Component {
             – meeste ja naiste keskmise palga vahe, mis on jagatud meeste
             keskmise palgaga.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mediaanpalk
@@ -139,7 +133,6 @@ class AboutEst extends Component {
             pool sellel ametikohal töötajatest teenib kuni 1000 ja pool üle 1000
             euro kuus.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Palgaprognoos 2030. aastaks
@@ -153,7 +146,6 @@ class AboutEst extends Component {
             aastal. Ühelgi ametialal ei lubatud keskmise palga negatiivset
             kasvu.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Tõenäosus, et inimese asendab arvuti
@@ -177,7 +169,6 @@ class AboutEst extends Component {
             employment: How susceptible are jobs to computerisation?
             Technological forecasting and social change, 114, 254–280.
             </li>
-            <br />
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Asendusvajadus vanuse tõttu
@@ -255,11 +246,13 @@ class AboutEst extends Component {
             asukoha järgi, brutotulu statistikas isiku kohta tema elukoha järgi.
             <br />
             <br />
+            <br />
             <p className={"h3-stat"}>Küsimused ja vastused</p>
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mida näitab palgarakendus?
             </p>{" "}
+            <br />
             <br />
             Palgarakendus annab teavet keskmise ja mediaanpalga ning meeste ja
             naiste palgaerinevuste kohta Eestis. Ühtlasi saab uurida, kuidas
@@ -271,6 +264,7 @@ class AboutEst extends Component {
               Mis andmetele rakendus tugineb?
             </p>{" "}
             <br />
+            <br />
             Rakenduses näidatakse Eestis registreeritud töötajate brutopalka
             valitud ajal. Kasutatakse töötamise registri (TÖR) ja
             maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku
@@ -281,6 +275,7 @@ class AboutEst extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Millised töötajad on arvesse võetud?
             </p>{" "}
+            <br />
             <br />
             Registriväljavõte on tehtud nende töötajate kohta, kellel oli
             töötamise registris kehtiv töötamise kirje perioodi lõpu seisuga.
@@ -294,6 +289,7 @@ class AboutEst extends Component {
               Kuidas arvutatakse keskmist brutopalka?
             </p>{" "}
             <br />
+            <br />
             Töötaja ametikoha keskmine brutopalk kuus arvutatakse valitud
             perioodi jooksul tööandja deklareeritud maksudeklaratsiooni TSD
             lisade 1 ja 2 väljamaksesummade põhjal. Töötajate palga arvutamisel
@@ -306,6 +302,7 @@ class AboutEst extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Mis on mediaanpalk ja kuidas seda arvutatakse?
             </p>{" "}
+            <br />
             <br />
             Rakenduses näidatakse ametikoha mediaanpalka, s.t väljamakset,
             millest rohkem ja millest vähem teenivaid töötajaid on sellel

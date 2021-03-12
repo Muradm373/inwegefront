@@ -42,7 +42,7 @@ class AboutRus extends Component {
               лесном, рыбном и охотничьем хозяйствах».
               <br />
               <br />
-              <table className="table-stat mx-auto">
+              <table className="table-stat mx-auto h6-stat">
                 <tr>
                   <th>Уровень</th>
                   <th>Код</th>
@@ -84,7 +84,6 @@ class AboutRus extends Component {
               садовников может публиковаться по группе профессий (4-й уровень),
               но в небольших уездах ограничивается 2-м или 3-м уровнем.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Коэффициент замещения в момент выхода на пенсию на основе
@@ -97,7 +96,6 @@ class AboutRus extends Component {
               показано предполагаемое частотное распределение, основанное на
               децилях коэффициентов замещения.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Коэффициент замещения на основе последней заработной платы
@@ -109,7 +107,6 @@ class AboutRus extends Component {
               предполагаемое частотное распределение, основанное на децилях
               коэффициентов замещения.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Частота, оцененная на основе децилей
@@ -125,7 +122,6 @@ class AboutRus extends Component {
               или значение девятого дециля можно найти на оси «у» около 100 – 90
               = 10%.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Средняя заработная плата
@@ -134,7 +130,6 @@ class AboutRus extends Component {
               работающих на полную ставку, поделенная на количество получающих
               зарплату.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Разница между месячной заработной платой мужчин и женщин
@@ -142,7 +137,6 @@ class AboutRus extends Component {
               — разница между средней заработной платой мужчин и женщин,
               поделенная на среднюю заработную плату мужчин.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Медианная заработная плата
@@ -153,7 +147,6 @@ class AboutRus extends Component {
               что половина работающих на этой должности зарабатывает до 1000
               евро, а половина — более 1000 евро в месяц.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Прогноз заработной платы на 2030 год
@@ -168,7 +161,6 @@ class AboutRus extends Component {
               Ни для одной профессии не допускалось отрицательного роста средней
               заработной платы.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Вероятность замены человека компьютером
@@ -196,7 +188,6 @@ class AboutRus extends Component {
               to computerisation? Technological forecasting and social change,
               114, 254–280.
             </li>
-            <br />
             <li>
               <p className="body-stat-bold" style={{ display: "inline" }}>
                 Необходимость замены в связи с возрастом
@@ -287,12 +278,14 @@ class AboutRus extends Component {
           статистика брутто-дохода человека — по месту жительства.
           <br />
           <br />
+          <br />
           <p className={"h3-stat"}>Вопросы и ответы</p>
           <br />
           <br />
           <p className="body-stat-bold" style={{ display: "inline" }}>
             Что показывает приложение по заработной плате?
           </p>{" "}
+          <br />
           <br />
           В приложении по заработной плате представлена информация о средней и
           медианной заработной плате, а также о разнице в оплате труда мужчин и
@@ -304,6 +297,7 @@ class AboutRus extends Component {
           <p className="body-stat-bold" style={{ display: "inline" }}>
             На какие данные опирается приложение?
           </p>{" "}
+          <br />
           <br />
           В приложении отражаются данные о брутто-зарплатах зарегистрированных в
           Эстонии работающих в выбранный промежуток времени. Используются данные
@@ -317,6 +311,7 @@ class AboutRus extends Component {
             Какие работники учитываются?
           </p>{" "}
           <br />
+          <br />
           Выборка из регистра была сделана по тем работникам, которые по
           состоянию на конец периода имели действующую запись в трудовом
           регистре. Учитываются только записи TÖR с указанием должности
@@ -328,6 +323,7 @@ class AboutRus extends Component {
           <p className="body-stat-bold" style={{ display: "inline" }}>
             Как рассчитывается средняя брутто-зарплата?
           </p>{" "}
+          <br />
           <br />
           Среднемесячная брутто-зарплата работающего по данной профессии
           рассчитывается на основании задекларированных работодателем в
@@ -342,6 +338,7 @@ class AboutRus extends Component {
           <p className="body-stat-bold" style={{ display: "inline" }}>
             Что такое медианная заработная плата и как она рассчитывается?
           </p>{" "}
+          <br />
           <br />
           Приложение показывает медианную зарплату для соответствующей
           должности, т.е. сумму, больше и меньше которой зарабатывает одинаковое

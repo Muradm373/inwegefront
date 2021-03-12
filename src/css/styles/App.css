@@ -1522,7 +1522,7 @@ body {
     padding: 2.5px 0 2.5px 40px;
 
 }
-.ol-stat li:nth-child(-n+18):before {
+.ol-stat li:nth-child(-n+9):before {
     content: "0" counter(bullet-counter);
     width: 25px;
     height: 25px;
