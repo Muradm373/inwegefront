@@ -1427,7 +1427,7 @@ body {
     float: right;
 }
 .table-stat {
-    font-family: Roboto;
+    font-family: Roboto !important;
     border-collapse: collapse;
     width: 100%;
   }
