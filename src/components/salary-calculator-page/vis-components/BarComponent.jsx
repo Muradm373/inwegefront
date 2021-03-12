@@ -75,7 +75,6 @@ class BarComponent extends Component {
               <XAxis
                 style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
                 tickTotal={7}
-                title={"€"}
               />
             ) : (
               <XAxis

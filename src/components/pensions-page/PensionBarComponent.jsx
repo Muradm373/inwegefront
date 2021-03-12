@@ -34,7 +34,6 @@ class PensionBarComponent extends Component {
                         {this.props.language === "en" ? <XAxis
                                 style={{ stroke: "black", strokeWidth: 0.5, opacity: 1 }}
                                 tickTotal={7}
-                                title={this.props.percentage?"%" : "€"}
                             />:
                             <XAxis
                                 style={{stroke: "black", strokeWidth: 0.5, opacity: 1,
