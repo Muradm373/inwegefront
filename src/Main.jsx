@@ -52,6 +52,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      menuOpen: false,
       region: "Harjumaa maakond",
       occupation: "",
       isco: "",
@@ -235,10 +236,12 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a href={"/"} tabIndex="0">
+                        <a tabIndex="0"  onClick={()=>{
+                        this.setState({menuOpen: !this.state.menuOpen})
+                      }}>
                           {webpageLabel}
                         </a>
-                        <ul className="menu">
+                        <ul className="menu" style={{visibility: this.state.menuOpen ? "visible": "", opacity:this.state.menuOpen ? "1":""}}>
                           <li className="menu-item">
                             <a href={pXWeb}>
                               {statisticalDbLabel} PxWeb
