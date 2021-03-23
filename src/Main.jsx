@@ -189,22 +189,22 @@ class Main extends Component {
           <div className=" row ">
             <ul className="link-list">
               <li>
-                <a href={"#"} onClick={this.changeMenu}>
+                <a href={"palgavordlus"} onClick={this.changeMenu}>
                   {tabs[0]}
                 </a>
               </li>
               <li>
-                <a href={"#"} onClick={this.changeMenu}>
+                <a href={"palgaprognoos"} onClick={this.changeMenu}>
                   {tabs[1]}
                 </a>
               </li>
               <li>
-                <a href={"#"} onClick={this.changeMenu}>
+                <a href={"pensioniprognoos"} onClick={this.changeMenu}>
                   {tabs[2]}
                 </a>
               </li>
               <li>
-                <a href={"#"} onClick={this.changeMenu}>
+                <a href={"selgitused"} onClick={this.changeMenu}>
                   {tabs[3]}
                 </a>
               </li>
