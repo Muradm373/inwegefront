@@ -16,6 +16,11 @@ import taltechlogo from "./resources/taltech_logo.png";
 import phone from "./resources/phone.svg"
 import mail from "./resources/email.svg"
 import { BrowserRouter as Router, Link, Route, useLocation  } from "react-router-dom";
+import { nimede,
+  valiska,
+  toetamm,
+  eStat,
+  pXWeb} from "./dictionary/text"
 import changeLanguage, {
   main,
   tabs,
@@ -23,6 +28,7 @@ import changeLanguage, {
   instagram,
   youtube,
   twitter,
+  slideshare,
   linkedin,
   treeOfTruthLabel,
   mapApplication,
@@ -37,6 +43,8 @@ import changeLanguage, {
   joinBody,
   joinLink,
   foundationLabel,
+  privaatsustingimused,
+  partners
 } from "./dictionary/text";
 import { connect } from "react-redux";
 
@@ -232,7 +240,7 @@ class Main extends Component {
                         </a>
                         <ul className="menu">
                           <li className="menu-item">
-                            <a href="http://pub.stat.ee/px-web.2001/dialog/statfile1.asp">
+                            <a href={pXWeb}>
                               {statisticalDbLabel} PxWeb
                             </a>
                           </li>
@@ -242,7 +250,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href="https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&amp;language=en">
+                            <a href={eStat}>
                               eSTAT
                             </a>
                           </li>
@@ -255,7 +263,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href="https://tamm.stat.ee/?lang=en">
+                            <a href={toetamm}>
                               {treeOfTruthLabel}
                             </a>
                           </li>
@@ -265,7 +273,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href="https://valiskaubandus.stat.ee/?locale=en">
+                            <a href={valiska}>
                               {foreignTrade}
                             </a>
                           </li>
@@ -275,7 +283,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href="/nimed/">{nameStatistics}</a>
+                            <a href={nimede}>{nameStatistics}</a>
                           </li>
                         </ul>
                       </li>
@@ -344,6 +352,16 @@ class Main extends Component {
                           onClick={() => {
                             window.open(instagram, "_blank");
                           }}
+                        ></span>
+                      </li>
+
+                      <li className="menu-item"  onClick={() => {
+                            window.open(slideshare, "_blank");
+                          }}>
+                        <span
+                          className="fab fa-slideshare"
+                          style={{ cursor: "pointer" }}
+                         
                         ></span>
                       </li>
                     </ul>
@@ -577,7 +595,7 @@ class Main extends Component {
                 <p className={"text-left ml-2 subscription-label"}>
                   {joinBody}{" "}
                   <a
-                    href="https://saextwebtest.stat.ee/et/statistikaamet/andmekaitse"
+                    href={privaatsustingimused}
                     target="_self"
                   >
                     {joinLink}
@@ -590,7 +608,7 @@ class Main extends Component {
               className="block--image_block block block-fixed-block-content block-fixed-block-contentfooter-logo  eu-logo-holder"
             >
               <a
-                href="http://inwege.cloud.ut.ee/"
+                href="https://volinik.ee/inwege/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={"eu-logo eu-logo-picture"}
@@ -616,13 +634,13 @@ class Main extends Component {
                 className="block block-fixed-block-content block-fixed-block-contentfooter-contacts row align-left partners"
               >
                 <p className={"col-md-3 col-sm-6 my-auto partners-text"}>
-                  KOOSTÖÖPARTNERID
+                  {partners}
                 </p>
 
                 <div className="field field--label-hidden field__items col-md-8 row">
                   <div className="field__item col-md my-auto">
                     <a
-                      href="http://inwege.cloud.ut.ee/"
+                      href="https://volinik.ee/inwege/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={"eu-logo sf-logo"}

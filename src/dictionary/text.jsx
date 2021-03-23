@@ -586,6 +586,48 @@ const wageForecastOccupationSelectorPlaceholderEng = [
   "ВЫБЕРИТЕ ПРОФЕССИЮ",
   "VALI AMETIALA",
 ];
+
+const pXWebEng = [
+  "https://andmed.stat.ee/en/stat",
+  "https://andmed.stat.ee/en/stat",
+  "https://andmed.stat.ee/et/stat"
+]
+
+const eStatEng = [
+  "https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&language=en",
+  "https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&language=ru",
+  "https://estat.stat.ee/sa-auth/login?TARGET=https%3A//estat.stat.ee/valisportaal/j_spring_cas_security_check&language=et"
+]
+
+const toetammEng = [
+  "https://tamm.stat.ee/?lang=en",
+  "https://tamm.stat.ee/?lang=en",
+  "https://tamm.stat.ee/?lang=et"
+]
+
+const valiskaEng = [
+  "https://valiskaubandus.stat.ee/profile/country/ee/?locale=en",
+  "https://valiskaubandus.stat.ee/profile/country/ee/?locale=en",
+  "https://valiskaubandus.stat.ee/profile/country/ee/?locale=et "
+]
+
+const nimedeEng = [
+  "https://www.stat.ee/nimed/",
+  "https://www.stat.ee/nimed/",
+  "https://www.stat.ee/nimed/"
+]
+
+const privaatsustingimusedEng = [
+  "https://www.stat.ee/en/statistics-estonia/data-protection-privacy-policy",
+  "https://www.stat.ee/en/statistics-estonia/data-protection-privacy-policy",
+  "https://www.stat.ee/et/statistikaamet/andmekaitse"
+]
+
+const partnersEng = [
+  "COOPERATION PARTNERS",
+  "ПАРТНЕРЫ",
+  "KOOSTÖÖPARTNERID"
+]
 export default function changeLanguage(language) {
   let i;
   switch (language) {
@@ -600,6 +642,12 @@ export default function changeLanguage(language) {
       break;
   }
 
+  nimede = nimedeEng[i];
+  valiska = valiskaEng[i];
+  toetamm = toetammEng[i];
+  eStat = eStatEng[i];
+  pXWeb = pXWebEng[i];
+  privaatsustingimused = privaatsustingimusedEng[i];
   ageLabel = ageLabelEng[i];
   averageLabel = averageEng[i];
   differenceLabel = differenceEng[i];
@@ -703,18 +751,20 @@ export default function changeLanguage(language) {
   downloadJpeg = downloadJpegEng[i];
   downloadPng = downloadPngEng[i];
   tartuUlikooli = tartuUlikooliEng[i];
+  partners = partnersEng[i];
 }
 
 export let wageGapInfoTab = wageGapTabInfoEng[0];
 export let averageTabInfo = averageTabInfoEng[0];
 export let medianTabInfo = medianTabInfoEng[0];
 export let levelLabel = levelLabelEng[0];
-export let youtube = "https://www.youtube.com/channel/UCh3mRDb9k85oIZ-LREMCopA";
-export let facebook = "https://www.facebook.com/Vordsetevoimalustevolinik";
-export let instagram = "https://www.instagram.com/vordsetevoimalustevolinik/";
+export let youtube = "https://www.youtube.com/user/Statistikaamet/featured";
+export let facebook = "https://et-ee.facebook.com/Statistikaamet";
+export let instagram = "https://www.instagram.com/eesti_statistika/";
 export let linkedin =
   "https://www.linkedin.com/company/statistikaamet-statistics-estonia/";
 export let twitter = "https://twitter.com/eestistatistika";
+export let slideshare = "https://www.slideshare.net/Statistikaamet";
 export let pensionLink =
   "https://pension.sotsiaalkindlustusamet.ee/kalkulaator";
 export let occupationSelectorPlaceholder = occupationSelectorPlaceholderEng[0];
@@ -817,6 +867,13 @@ export let Livelihood = LivelihoodEng[0];
 export let downloadJpeg = downloadJpegEng[0];
 export let downloadPng = downloadPngEng[0];
 export let tartuUlikooli = tartuUlikooliEng[0];
+export let nimede = nimedeEng[0];
+export let valiska = valiskaEng[0];
+export let toetamm = toetammEng[0];
+export let eStat = eStatEng[0];
+export let pXWeb = pXWebEng[0];
+export let privaatsustingimused = privaatsustingimusedEng[0];
+export let partners = partnersEng[0];
 
 export let counties = {
   "Valga maakond": "Валгамаа",
