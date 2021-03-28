@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Dropzone from "./Dropzone";
 import Progress from "./Progress";
 import { API_URL } from "../../../dictionary/text";
+import axios from "axios";
 
 class Upload extends Component {
   constructor(props) {
@@ -32,11 +33,12 @@ class Upload extends Component {
       promises.push(this.sendRequest(file));
     });
     try {
+      console.log("upload");
       await Promise.all(promises);
 
       this.setState({ successfullUploaded: true, uploading: false });
     } catch (e) {
-      // Not Production ready! Do some error handling here instead...
+      console.log(e);
       this.setState({ successfullUploaded: true, uploading: false });
     }
   }
@@ -44,7 +46,8 @@ class Upload extends Component {
   sendRequest(file) {
     return new Promise((resolve, reject) => {
       const req = new XMLHttpRequest();
-      req.setRequestHeader("Authorization", `Bearer ${this.props.userToken}`);
+      req.open("POST", `${API_URL}/file/${this.props.type}`);
+      req.setRequestHeader("Authorization", `${this.props.userToken}`);
 
       req.upload.addEventListener("progress", (event) => {
         if (event.lengthComputable) {
@@ -74,8 +77,15 @@ class Upload extends Component {
       const formData = new FormData();
       formData.append("file", file, "file.xls");
 
-      req.open("POST", `${API_URL}/file/${this.props.type}`);
-      req.send(formData);
+      // req.open("POST", `${API_URL}/file/${this.props.type}`);
+      // req.setRequestHeader("Authorization", `${this.props.userToken}`);
+      // req.send(formData);
+      axios.post(`${API_URL}/file/${this.props.type}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${this.props.userToken}`,
+        },
+      });
     });
   }
 
