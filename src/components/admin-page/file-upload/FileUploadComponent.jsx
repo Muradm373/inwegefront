@@ -8,9 +8,11 @@ class FileUploadModal extends Component {
         <br></br>
         <br></br>
         <div className="">
-          <div
-          >
-            <div className="row card-shadow-forecast " style={{width: "180%"}}>
+          <div>
+            <div
+              className="row card-shadow-forecast "
+              style={{ width: "180%" }}
+            >
               <div className="col-md-6">
                 <Upload userToken={this.props.userToken} type={"job"}></Upload>
               </div>
@@ -34,6 +36,12 @@ class FileUploadModal extends Component {
                 <Upload
                   userToken={this.props.userToken}
                   type={"pension"}
+                ></Upload>
+              </div>
+              <div className="col-md-6">
+                <Upload
+                  userToken={this.props.userToken}
+                  type={"job-update"}
                 ></Upload>
               </div>
             </div>

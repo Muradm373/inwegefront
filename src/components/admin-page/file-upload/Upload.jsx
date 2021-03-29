@@ -147,7 +147,11 @@ class Upload extends Component {
       >
         <div class="card mb-2">
           <div class="card-header">
-            <span className="Title m-2">Upload {this.props.type} file</span>
+            <span className="Title m-2">
+              Upload{" "}
+              {this.props.type === "job-update" ? "job codes" : this.props.type}{" "}
+              file
+            </span>
           </div>
           <div class="card-body">
             <div className="Upload m-2">
