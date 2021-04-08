@@ -82,7 +82,7 @@ class ColumnChartComponent extends Component {
           categories: [averageDataSpec[0], averageDataSpec[1], averageData],
           labels: {
             rotateAlways: false,
-            trim: true,
+            trim: false,
             rotate: 0,
           },
         },
@@ -181,13 +181,14 @@ class ColumnChartComponent extends Component {
           `${this.translateCounty(props.region)}`,
           `${columnChartOccupationLabel[1]}`,
         ];
-    }
-    else if (props.language === "ru") {
+    } else if (props.language === "ru") {
       if (props.region === overall || props.region === "")
         options.xaxis.categories[1] = [`По уезду`];
       else
         options.xaxis.categories[1] = [
-          `${columnChartOccupationLabel[0]} ${this.translateCounty(props.region)}`,
+          `${columnChartOccupationLabel[0]} ${this.translateCounty(
+            props.region
+          )}`,
           `${columnChartOccupationLabel[1]}`,
         ];
     } else
@@ -453,7 +454,7 @@ class ColumnChartComponent extends Component {
               ` | ${this.props.dates.salaryEntityDateQuarter} ${quarter} ${this.props.dates.salaryEntityDate} `}
           </p>
 
-          {this.props.language==="ru" ? <br/>: <></>}
+          {this.props.language === "ru" ? <br /> : <></>}
           <div id="agebar-chart" className={"mb-0 mt-5"}>
             <ReactApexChart
               id="apexchart"
@@ -478,7 +479,10 @@ class ColumnChartComponent extends Component {
           </div>
 
           {this.props.generalName !== null ? (
-            <p className="h6-stat-gray text-left mt-1 ml-2" style={{width: "360px"}}>
+            <p
+              className="h6-stat-gray text-left mt-1 ml-2"
+              style={{ width: "360px" }}
+            >
               {`* ${this.props.generalName} (${this.props.occupationCode})`}
             </p>
           ) : (
@@ -490,8 +494,16 @@ class ColumnChartComponent extends Component {
 
         <div className="apexcharts-toolbar apexcharts-toolbar-holder">
           <div
-            className={"apexcharts-menu-icon" }
-            style={{marginTop: (this.props.generalName !== null && this.props.generalName.length > 50 ? " -30px" : (this.props.generalName === null ? "40px": "10px"))}}
+            className={"apexcharts-menu-icon"}
+            style={{
+              marginTop:
+                this.props.generalName !== null &&
+                this.props.generalName.length > 50
+                  ? " -30px"
+                  : this.props.generalName === null
+                  ? "40px"
+                  : "10px",
+            }}
             title="Menu"
             onClick={() => {
               this.setState({
