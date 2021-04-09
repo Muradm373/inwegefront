@@ -728,7 +728,13 @@ class DynamicMapSelector extends Component {
                 backgroundColor="#fff"
                 viewBox="0 0 24 24"
                 style={{ fill: "#000" }}
-                x={this.props.language==="en"? "655" : this.props.language==="ru" ? "717":"637"}
+                x={
+                  this.props.language === "en"
+                    ? "655"
+                    : this.props.language === "ru"
+                    ? "717"
+                    : "637"
+                }
                 y={"12"}
               >
                 <path fill="#fff" d="M0 0h24v24H0V0z"></path>
@@ -777,6 +783,10 @@ class DynamicMapSelector extends Component {
                     "Gender Wage Gap",
                     this.state.isco
                   );
+                  this.props.onRegionChange({
+                    value: this.state.selected,
+                    tab: this.state.mapType,
+                  });
                 }}
               >
                 <a
@@ -798,6 +808,10 @@ class DynamicMapSelector extends Component {
                 onClick={() => {
                   this.setColor("Median Wage");
                   this.getMeansForAllRegions("Median Wage", this.state.isco);
+                  this.props.onRegionChange({
+                    value: this.state.selected,
+                    tab: this.state.mapType,
+                  });
                 }}
               >
                 <a
@@ -819,6 +833,10 @@ class DynamicMapSelector extends Component {
                 onClick={() => {
                   this.setColor("Average Wage");
                   this.getMeansForAllRegions("Average Wage", this.state.isco);
+                  this.props.onRegionChange({
+                    value: this.state.selected,
+                    tab: this.state.mapType,
+                  });
                 }}
               >
                 <a
