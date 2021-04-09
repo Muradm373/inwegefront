@@ -785,8 +785,9 @@ class DynamicMapSelector extends Component {
                   );
                   this.props.onRegionChange({
                     value: this.state.selected,
-                    tab: this.state.mapType,
+                    tab: "Gender Wage Gap",
                   });
+                  console.log("Gender Wage Gap");
                 }}
               >
                 <a
@@ -810,8 +811,9 @@ class DynamicMapSelector extends Component {
                   this.getMeansForAllRegions("Median Wage", this.state.isco);
                   this.props.onRegionChange({
                     value: this.state.selected,
-                    tab: this.state.mapType,
+                    tab: "Median Wage",
                   });
+                  console.log("Median Wage");
                 }}
               >
                 <a
@@ -835,8 +837,9 @@ class DynamicMapSelector extends Component {
                   this.getMeansForAllRegions("Average Wage", this.state.isco);
                   this.props.onRegionChange({
                     value: this.state.selected,
-                    tab: this.state.mapType,
+                    tab: "Average Wage",
                   });
+                  console.log("Average Wage");
                 }}
               >
                 <a
