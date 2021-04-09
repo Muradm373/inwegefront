@@ -15,7 +15,8 @@ export const getOccupations = (dispatch, regionSelected, tab) => {
   if (tab === "Median Wage") selectedTab = "median";
   if (tab === "Average Wage") selectedTab = "mean";
 
-  if (region === overall || region === "") region = "Harju maakond";
+  if (region === overall || region === "" || region === "all")
+    region = "Harju maakond";
   axios
     .get(
       `${API_URL}/jobs/names?region=${region}&lang=${lng}&tab=${selectedTab}`
