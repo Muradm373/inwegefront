@@ -220,7 +220,11 @@ class SalaryCalculator extends Component {
                     </div>
                   </div>
                 </div>
-                <div className="w-50" style={{ marginLeft: "10px" }} id={"gender-selector"}>
+                <div
+                  className="w-50"
+                  style={{ marginLeft: "10px" }}
+                  id={"gender-selector"}
+                >
                   <GenderSelector onGenderChange={this.props.setGender} />
                 </div>
               </div>
@@ -231,7 +235,9 @@ class SalaryCalculator extends Component {
                   <>
                     {this.props.occupationCode !== null ? (
                       <div className={"body-stat ml-1 row text-left"}>
-                        <p className={"text-left body-stat"}>{levelLabel[0]}&nbsp;</p>
+                        <p className={"text-left body-stat"}>
+                          {levelLabel[0]}&nbsp;
+                        </p>
                         <p className={"text-left body-stat-bold "}>
                           {` ${occupationToLowerCase(this.props.generalName)} `}{" "}
                           &nbsp;
@@ -270,6 +276,7 @@ class SalaryCalculator extends Component {
               <DynamicMapSelector
                 isco={this.state.isco}
                 onRegionChange={this.onRegionChange}
+                onTabChange={this.props.getOccupations}
                 onOverallDataForMapSelected={this.onOverallDataForMapSelected}
                 setTooltipContent={this.setContent}
                 mapElementColor={this.props.mapElementColor}

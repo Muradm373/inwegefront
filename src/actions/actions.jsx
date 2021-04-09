@@ -8,6 +8,7 @@ import {
 } from "../dictionary/text";
 
 export const getOccupations = (dispatch, regionSelected, tab) => {
+  console.log(tab);
   let region = regionSelected;
   let selectedTab = "";
 
@@ -71,7 +72,6 @@ export const setWage = (wage) => {
 
 export const getSalaryEntities = (regionSelected, isco, code, dispatch) => {
   let region = regionSelected;
-  
 
   if (
     (regionSelected === overall || regionSelected === "all") &&

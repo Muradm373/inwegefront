@@ -25,6 +25,7 @@ import infoIcon from "../../../resources/info.svg";
 import linkIcon from "../../../resources/arrow-link.svg";
 import linkIconHovered from "../../../resources/arrow-link-hovered.png";
 import { translateCounty } from "../entityFunc";
+import { getOccupations } from "../../../actions/actions";
 
 import {
   ComposableMap,
@@ -783,10 +784,10 @@ class DynamicMapSelector extends Component {
                     "Gender Wage Gap",
                     this.state.isco
                   );
-                  this.props.onRegionChange({
-                    value: this.state.selected,
-                    tab: "Gender Wage Gap",
-                  });
+                  this.props.getOccupations(
+                    this.state.selected,
+                    "Gender Wage Gap"
+                  );
                   console.log("Gender Wage Gap");
                 }}
               >
@@ -809,10 +810,7 @@ class DynamicMapSelector extends Component {
                 onClick={() => {
                   this.setColor("Median Wage");
                   this.getMeansForAllRegions("Median Wage", this.state.isco);
-                  this.props.onRegionChange({
-                    value: this.state.selected,
-                    tab: "Median Wage",
-                  });
+                  this.props.getOccupations(this.state.selected, "Median Wage");
                   console.log("Median Wage");
                 }}
               >
@@ -835,10 +833,10 @@ class DynamicMapSelector extends Component {
                 onClick={() => {
                   this.setColor("Average Wage");
                   this.getMeansForAllRegions("Average Wage", this.state.isco);
-                  this.props.onRegionChange({
-                    value: this.state.selected,
-                    tab: "Average Wage",
-                  });
+                  this.props.getOccupations(
+                    this.state.selected,
+                    "Average Wage"
+                  );
                   console.log("Average Wage");
                 }}
               >
@@ -921,4 +919,14 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default memo(connect(mapStateToProps)(DynamicMapSelector));
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getOccupations: (region, tab) => {
+      getOccupations(dispatch, region, tab);
+    },
+  };
+};
+
+export default memo(
+  connect(mapStateToProps, mapDispatchToProps)(DynamicMapSelector)
+);
