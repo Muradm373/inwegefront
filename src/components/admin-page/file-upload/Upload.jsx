@@ -33,12 +33,10 @@ class Upload extends Component {
       promises.push(this.sendRequest(file));
     });
     try {
-      console.log("upload");
       await Promise.all(promises);
 
       this.setState({ successfullUploaded: true, uploading: false });
     } catch (e) {
-      console.log(e);
       this.setState({ successfullUploaded: true, uploading: false });
     }
   }

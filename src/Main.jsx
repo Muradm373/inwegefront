@@ -13,14 +13,15 @@ import eulogo from "./resources/eu.jpg";
 import statlogo from "./resources/stat_logo.jpg";
 import utlogo from "./resources/ut_logo.png";
 import taltechlogo from "./resources/taltech_logo.png";
-import phone from "./resources/phone.svg"
-import mail from "./resources/email.svg"
-import { BrowserRouter as Router, Link, Route, useLocation  } from "react-router-dom";
-import { nimede,
-  valiska,
-  toetamm,
-  eStat,
-  pXWeb} from "./dictionary/text"
+import phone from "./resources/phone.svg";
+import mail from "./resources/email.svg";
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  useLocation,
+} from "react-router-dom";
+import { nimede, valiska, toetamm, eStat, pXWeb } from "./dictionary/text";
 import changeLanguage, {
   main,
   tabs,
@@ -44,7 +45,7 @@ import changeLanguage, {
   joinLink,
   foundationLabel,
   privaatsustingimused,
-  partners
+  partners,
 } from "./dictionary/text";
 import { connect } from "react-redux";
 
@@ -61,7 +62,7 @@ class Main extends Component {
       mapElementColor: "#73e8ff",
       menu: parseInt(this.props.menu),
       isActive: false,
-      selectedMenu:parseInt(this.props.menu)
+      selectedMenu: parseInt(this.props.menu),
     };
 
     this.getData = this.getData.bind(this);
@@ -70,8 +71,6 @@ class Main extends Component {
     this.changeMenu = this.changeMenu.bind(this);
     this.props.getDates();
     this.props.setLang(props.lang);
-
-    console.log(props.path.location.pathname)
   }
 
   defaultValue() {
@@ -102,19 +101,19 @@ class Main extends Component {
     this.setState({ menu: e.target.textContent, isActive: false });
   }
 
-  getPath(){
-    switch(this.props.lang){
+  getPath() {
+    switch (this.props.lang) {
       case "ru":
         return "/ru/";
       case "en":
         return "/en/";
       default:
-        return "/"
+        return "/";
     }
   }
 
   renderMenu() {
-    if (this.state.menu === 1 ||  this.state.menu === tabs[1]) {
+    if (this.state.menu === 1 || this.state.menu === tabs[1]) {
       return (
         <div id="wage-forecast-component">
           <WageForecast
@@ -236,16 +235,23 @@ class Main extends Component {
 
                     <ul data-region="header_top_left" className="menu">
                       <li className="menu-item">
-                        <a tabIndex="0"  onClick={()=>{
-                        this.setState({menuOpen: !this.state.menuOpen})
-                      }}>
+                        <a
+                          tabIndex="0"
+                          onClick={() => {
+                            this.setState({ menuOpen: !this.state.menuOpen });
+                          }}
+                        >
                           {webpageLabel}
                         </a>
-                        <ul className="menu" style={{visibility: this.state.menuOpen ? "visible": "", opacity:this.state.menuOpen ? "1":""}}>
+                        <ul
+                          className="menu"
+                          style={{
+                            visibility: this.state.menuOpen ? "visible" : "",
+                            opacity: this.state.menuOpen ? "1" : "",
+                          }}
+                        >
                           <li className="menu-item">
-                            <a href={pXWeb}>
-                              {statisticalDbLabel} PxWeb
-                            </a>
+                            <a href={pXWeb}>{statisticalDbLabel} PxWeb</a>
                           </li>
                           <li className="menu-item">
                             <a href="http://andmebaas.stat.ee/?lang=en&amp;SubSessionId=d6bed41d-cf9f-44f2-975b-4680e7060ae1&amp;themetreeid=-200">
@@ -253,9 +259,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href={eStat}>
-                              eSTAT
-                            </a>
+                            <a href={eStat}>eSTAT</a>
                           </li>
                           <li className="menu-item">
                             <a
@@ -266,9 +270,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href={toetamm}>
-                              {treeOfTruthLabel}
-                            </a>
+                            <a href={toetamm}>{treeOfTruthLabel}</a>
                           </li>
                           <li className="menu-item">
                             <a href="https://estat.stat.ee/StatistikaKaart/VKR">
@@ -276,9 +278,7 @@ class Main extends Component {
                             </a>
                           </li>
                           <li className="menu-item">
-                            <a href={valiska}>
-                              {foreignTrade}
-                            </a>
+                            <a href={valiska}>{foreignTrade}</a>
                           </li>
                           <li className="menu-item">
                             <a href="https://ametipalk.stat.ee/">
@@ -358,13 +358,15 @@ class Main extends Component {
                         ></span>
                       </li>
 
-                      <li className="menu-item"  onClick={() => {
-                            window.open(slideshare, "_blank");
-                          }}>
+                      <li
+                        className="menu-item"
+                        onClick={() => {
+                          window.open(slideshare, "_blank");
+                        }}
+                      >
                         <span
                           className="fab fa-slideshare"
                           style={{ cursor: "pointer" }}
-                         
                         ></span>
                       </li>
                     </ul>
@@ -458,11 +460,7 @@ class Main extends Component {
                     className="site-logo"
                   >
                     <img
-                      src={
-                        this.props.language === "en"
-                          ? logoEn
-                          : logo
-                      }
+                      src={this.props.language === "en" ? logoEn : logo}
                       alt="Home"
                       className={"ml-5"}
                       style={{
@@ -488,10 +486,14 @@ class Main extends Component {
                 data-region="header_bottom"
                 className="menu"
                 style={{ backgroundColor: "white", height: "50px" }}
-                
               >
-                <li className={"menu-item h4-stat " + (this.state.selectedMenu === 0 ? "selected-menu" : "") }
-                onClick={()=>this.setState({selectedMenu: 0})}>
+                <li
+                  className={
+                    "menu-item h4-stat " +
+                    (this.state.selectedMenu === 0 ? "selected-menu" : "")
+                  }
+                  onClick={() => this.setState({ selectedMenu: 0 })}
+                >
                   <span
                     tabIndex="0"
                     onClick={this.changeMenu}
@@ -499,11 +501,16 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    <Link to={this.getPath() + "palgavordlus"} >{tabs[0]}</Link>
+                    <Link to={this.getPath() + "palgavordlus"}>{tabs[0]}</Link>
                   </span>
                 </li>
-                <li className={"menu-item  h4-stat "  + (this.state.selectedMenu === 1 ? "selected-menu" : "")}
-                onClick={()=>this.setState({selectedMenu: 1})}>
+                <li
+                  className={
+                    "menu-item  h4-stat " +
+                    (this.state.selectedMenu === 1 ? "selected-menu" : "")
+                  }
+                  onClick={() => this.setState({ selectedMenu: 1 })}
+                >
                   <span
                     tabIndex="0"
                     onClick={this.changeMenu}
@@ -511,11 +518,16 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    <Link to={this.getPath() + "palgaprognoos"} >{tabs[1]}</Link>
+                    <Link to={this.getPath() + "palgaprognoos"}>{tabs[1]}</Link>
                   </span>
                 </li>
-                <li className={"menu-item h4-stat "  + (this.state.selectedMenu === 2 ? "selected-menu" : "")}
-                onClick={()=>this.setState({selectedMenu: 2})}>
+                <li
+                  className={
+                    "menu-item h4-stat " +
+                    (this.state.selectedMenu === 2 ? "selected-menu" : "")
+                  }
+                  onClick={() => this.setState({ selectedMenu: 2 })}
+                >
                   <span
                     tabIndex="1"
                     onClick={this.changeMenu}
@@ -523,11 +535,18 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    <Link to={this.getPath() + "pensioniprognoos"} >{tabs[2]}</Link>
+                    <Link to={this.getPath() + "pensioniprognoos"}>
+                      {tabs[2]}
+                    </Link>
                   </span>
                 </li>
-                <li className={"menu-item h4-stat " + (this.state.selectedMenu === 3 ? "selected-menu" : "")}
-                onClick={()=>this.setState({selectedMenu: 3})}>
+                <li
+                  className={
+                    "menu-item h4-stat " +
+                    (this.state.selectedMenu === 3 ? "selected-menu" : "")
+                  }
+                  onClick={() => this.setState({ selectedMenu: 3 })}
+                >
                   <span
                     tabIndex="2"
                     className="menuSpan"
@@ -536,7 +555,7 @@ class Main extends Component {
                       cursor: "pointer",
                     }}
                   >
-                    <Link to={this.getPath() + "selgitused"} >{tabs[3]}</Link>
+                    <Link to={this.getPath() + "selgitused"}>{tabs[3]}</Link>
                   </span>
                 </li>
               </ul>
@@ -597,10 +616,7 @@ class Main extends Component {
               <div className="block__text">
                 <p className={"text-left ml-2 subscription-label"}>
                   {joinBody}{" "}
-                  <a
-                    href={privaatsustingimused}
-                    target="_self"
-                  >
+                  <a href={privaatsustingimused} target="_self">
                     {joinLink}
                   </a>
                 </p>
@@ -618,11 +634,7 @@ class Main extends Component {
               >
                 <div className="field field--name-field-image field--type-image field--label-hidden field__items black-bg">
                   <div className="field__item">
-                    <img
-                      src={eulogo}
-                      alt="SF logo"
-                      typeof="foaf:Image"
-                    />
+                    <img src={eulogo} alt="SF logo" typeof="foaf:Image" />
                   </div>
                 </div>
               </a>

@@ -8,7 +8,6 @@ import {
 } from "../dictionary/text";
 
 export const getOccupations = (dispatch, regionSelected, tab) => {
-  console.log(tab);
   let region = regionSelected;
   let selectedTab = "";
 

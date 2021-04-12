@@ -788,7 +788,6 @@ class DynamicMapSelector extends Component {
                     this.state.selected,
                     "Gender Wage Gap"
                   );
-                  console.log("Gender Wage Gap");
                 }}
               >
                 <a
@@ -811,7 +810,6 @@ class DynamicMapSelector extends Component {
                   this.setColor("Median Wage");
                   this.getMeansForAllRegions("Median Wage", this.state.isco);
                   this.props.getOccupations(this.state.selected, "Median Wage");
-                  console.log("Median Wage");
                 }}
               >
                 <a
@@ -837,7 +835,6 @@ class DynamicMapSelector extends Component {
                     this.state.selected,
                     "Average Wage"
                   );
-                  console.log("Average Wage");
                 }}
               >
                 <a
