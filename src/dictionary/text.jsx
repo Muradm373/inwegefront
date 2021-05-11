@@ -10,15 +10,15 @@ export const API_URL = "http://inwege-api.cloud.ut.ee/api";
 export const menColor = "#3F1A84";
 export const womenColor = "#F58FA9";
 export const seed = "UserPassword";
-const averageEng = [
+const averageEng =  [
   "Average in Estonia for ",
   "Среднее по Эстонии для ",
-  "Keskmine palk Eestis ametialal",
+  "Keskmine töötasu Eestis ametialal",
 ];
-const salaryEng = [
-  ["your", "wage"],
+const salaryEng =  [
+  ["your", "earnings"],
   ["Bаша", "зарплата"],
-  ["Sinu", "palk"],
+  ["Sinu", "töötasu"],
 ];
 const differenceEng = [
   [
@@ -54,7 +54,7 @@ const differenceEng = [
 ];
 const lngEng = ["en", "ru", "et"];
 const tabsEng = [
-  ["Wage comparison", "Wage projection", "Pension projection", "Background"],
+  ["Earnings comparison", "Earnings projection", "Pension projection", "Background"],
   [
     "Разница в зарплате",
     "Прогноз по зарплате",
@@ -81,9 +81,9 @@ const genderEng = [
 const selectRegionEng = ["Select region", "Выберите регион", "Vali maakond"];
 const selectOccupationEng = ["SEARCH", "ПОИСК", "OTSI"];
 const averageBetweenMenAndWomenEng = [
-  "Average wages of males and females working full-time",
+  "Average earnings of males and females working full-time",
   "Средняя зарплата у мужчин и женщин, работающих на полную занятость",
-  "Täisajaga töötavate meeste ja naiste keskmine palk",
+  "Täisajaga töötavate meeste ja naiste keskmine töötasu",
 ];
 
 const leaveAFeedBackEng = [
@@ -99,11 +99,11 @@ const aboutEng = [
   "Palgakompass.ee это веб-приложение, целью которого является увеличение доступности информации на рынке труда в Эстонии с использованием данных о заработной плате в Эстонии. Любой человек может использовать Palgakompass для сравнения заработной платы по различным профессиям, округам и полам. В приложении также есть раздел о пенсиях и прогнозе заработной платы.",
   "Palgakompass.ee on veebirakendus, mille eesmärk on suurendada teabe kättesaadavust Eesti tööturul kasutades palgaandmeid. Igaüks saab Palgakompassi kasutada eri ametite, maakondade ja sugude palkade võrdlemiseks. Lisaks on eraldi rubriigid pensioni- ja palgaprognooside kohta.",
 ];
-const pieChartLabelsEng = [
+const pieChartLabelsEng =  [
   [
-    "Average wages for the given occupation in the given county.",
-    "Average wages for all occupations in \nthe given county.",
-    "Average wages for all occupations \nfor all counties.",
+    "Average earnings for the given occupation in the given county.",
+    "Average earnings for all occupations in \nthe given county.",
+    "Average earnings for all occupations \nfor all counties.",
   ],
   [
     "Средняя зарплата для выбранных должности и региона.",
@@ -111,9 +111,9 @@ const pieChartLabelsEng = [
     "Средняя зарплата для выбранной должности относительно всех регионов.",
   ],
   [
-    "Keskmine palk valitud ametikohal ja piirkonnas.",
-    "Valitud piirkonna keskmine palk kõigi ametikohtade suhtes.",
-    "Valitud ametikoha keskmine palk kõigi piirkondade suhtes.",
+    "Keskmine töötasu valitud ametikohal ja piirkonnas.",
+    "Valitud piirkonna keskmine töötasu kõigi ametikohtade suhtes.",
+    "Valitud ametikoha keskmine töötasu kõigi piirkondade suhtes.",
   ],
 ];
 const detailsLabelEng = ["Details", "Описание", "Detailid"];
@@ -128,25 +128,27 @@ const overallEng = ["Overall in Estonia", "По Эстонии", "Kogu Eesti"];
 
 const searchLabelEng = ["Search", "Поиск", "Otsing"];
 const sideParagraph1Eng = [
-  "Fill in the fields to compare your wage to average gross wages on the distributions graph.",
+  "Fill in the fields to compare your earnings to average gross earnings on the distributions graph.",
   "Чтобы увидеть разницу между вашей и cредней брутто-зарплатой, заполнитe поля ниже.",
-  "Täida lahtrid, et jaotuste joonisel võrrelda oma palka keskmise brutopalgaga.",
+  "Täida lahtrid, et jaotuste joonisel võrrelda oma töötasu keskmise brutotöötasuga.",
 ];
 const sideParagraph2Eng = [
   ["Select county on the map.", "Select occupation."],
   ["Выберите уезд на карте", "Выберите профессию"],
   ["Vali kaardil maakond.", "Vali amet."],
 ];
-const noDataLabelEng = [
-  "No data for the selected occupation.",
-  "Нет данных по выбранной профессии.",
-  "Valitud ameti kohta andmed puuduvad.",
+const noDataLabelEng = 
+[
+ "No data for the selected occupation.",
+ "Нет данных по выбранной профессии.",
+ "Valitud ameti kohta andmed puuduvad.",
 ];
 const noDataEng = ["No data", "Нет данных", "Andmed puuduvad"];
-const averageWageEng = ["Average wage", "Средняя зарплата", "Keskmine palk"];
-const medianWageEng = ["Median wage", "Медианная зарплата", "Mediaanpalk"];
-const genderWageGapEng = [
-  "Difference in males’ and females’ monthly wages",
+const averageWageEng = ["Average earnings", "Средняя зарплата", "Keskmine palk"];
+const medianWageEng = ["Median earnings", "Медианная зарплата", "Mediaanpalk"];
+const genderWageGapEng = 
+[
+  "Difference in males’ and females’ monthly earnings",
   "Разница в месячной зарплате у мужчин и женщин",
   "Meeste ja naiste kuupalga erinevus",
 ];
@@ -205,9 +207,10 @@ const retirementEng = [
     "Väike asendusvaja­­­dus vanuse tõttu",
   ],
 ];
-const pensionLabelEng = [
+const pensionLabelEng = 
+[
   [
-    "In 2030, the projected wage for this occupation is between",
+    "In 2030, the projected earnings for this occupation are between",
     "–",
     "The risk of computerisation for this occupation is",
     "and the age-related replacement need is ",
@@ -303,17 +306,19 @@ const statisticsEstoniaEng = [
 ];
 
 const tartuUlikooliEng = [
-  "The wage and pension projections have been compiled by a research group at the University of Tartu School of Economic and Business Administration as an outcome of the InWeGe research project.",
+  "The earnings and pension projections have been compiled by a research group at the University of Tartu School of Economic and Business Administration as an outcome of the InWeGe research project.",
   "Прогноз по заработной плате и пенсиям подготовлен учеными исследовательской группы экономического факультета Тартуского университета в рамках научного проекта InWeGe.",
   "Palga- ja pensioniprognoosi on koostanud teadusprojekti InWeGe tulemusena Tartu ülikooli majandusteaduskonna uurimisrühma teadlased.",
 ];
-const replacementNeeds1Eng = [
-  "Replacement rate in relation to employee’s last wage",
+const replacementNeeds1Eng = 
+[
+  "Replacement rate in relation to employee’s most recent earnings",
   "Kоэффициент замещения по отношению к последней заработной плате работника",
   "Asendusmäär töötaja viimase palga alusel",
 ];
 
-const webpageLabelEng = [  "Wages and salaries application",
+
+const webpageLabelEng = [  "Earnings application",
 "Приложение по заработной плате", "Palgarakendus"];
 
 const foundationLabelEng = [
@@ -324,33 +329,38 @@ const foundationLabelEng = [
   "Projekti on rahastatud EL-i õiguste, võrdõiguslikkuse ja kodakondsuse programmist (2014–2020)",
 ];
 
-const wageChangeInfoEng = [
+const wageChangeInfoEng = 
+[
   "To see the difference, please check the graph",
   "Чтобы увидеть разницу, посмотрите график",
   "Erinevuse nägemiseks kontrollige palun graafikut",
 ];
 
-const noDataInfoEng = [
-  "For this occupation, there is no information on wage differences between men and women. See the median wage or average wage.",
+
+const noDataInfoEng =  [
+  "For this occupation, there is no information on differences between men's and women's earnings. See median or average earnings.",
   "Информация о разнице в зарплатах у мужчин и женщин по этой профессии недоступна. Смотрите медианную зарплату или среднюю зарплату.",
-  "Sellel ametialal ei ole infot meeste ja naiste palgaerinevuse kohta, vaata mediaanpalka või keskmist palka.",
+  "Sellel ametialal ei ole infot meeste ja naiste töötasu erinevuse kohta, vaata mediaantöötasu või keskmist töötasu.",
 ];
+
 
 const quarterEng = ["quarter", "квартал", "kvartal"];
 
 const replacementNeeds2Eng = [
-  "Replacement rate in relation to average wage in Estonia at the time of retirement",
+  "Replacement rate in relation to Estonian average earnings at the time of retiring",
   "Коэффициент замещения по отношению к средней заработной плате по Эстонии при выходе на пенсию",
   "Asendusmäär Eesti keskmise palga alusel pensionile minemise hetkel",
 ];
 
-let pensionDescriptionEng = [
+
+let pensionDescriptionEng = 
+[
   [
     "The above applies when the following simple assumptions are used in the calculations:",
-    "The distribution of gross wages includes all occupations and reflects the wage distributions of men and women in Estonia.",
+    "The distribution of gross earnings includes all occupations and reflects the earnings distributions of men and women in Estonia.",
     "The date of birth of all employees is 1 January 2002. They all start working on 1 January 2020 and retire on 1 November 2071. No one has any interruptions in working or any children.",
     "All employees have joined the second pillar from the moment they start working, but no one has joined the third pillar.",
-    "The expected wage growth is from the projections of the Ministry of Finance, life expectancy at the time of retirement is from Eurostat projections.",
+    "The expected growth in earnings is from the projections of the Ministry of Finance, life expectancy at the time of retirement is from Eurostat projections.",
   ],
   [
     "При расчетах предполагается следующее:",
@@ -369,12 +379,13 @@ let pensionDescriptionEng = [
 ];
 
 const gapsWageLabelEng = [
-  "Difference in males’ and females’ monthly wages | in euros of 2020",
+  "Difference in males’ and females’ monthly earnings | in euros of 2020",
   "Разница в заработной плате у мужчин и женщин | 2020 год, в евро",
   "Meeste ja naiste kuupalga erinevus | 2020. aasta eurodes",
 ];
 
-let gapsPensionLabelEng = [
+let gapsPensionLabelEng = 
+[
   "Difference in males’ and female’s pensions | in euros of 2071",
   "Разница в пенсии у мужчин и женщин  | 2071 год, в евро",
   "Meeste ja naiste pensioni erinevus | 2071. aasta eurodes",
@@ -418,15 +429,15 @@ const downloadJpegEng = ["Download JPEG", "Скачать JPEG", "Laadi alla JPE
 
 const downloadPngEng = ["Download PNG", "Скачать PNG", "Laadi alla PNG"];
 
-let pensionDifferenceLabel2020Eng = [
+let pensionDifferenceLabel2020Eng =[
   [
     "In 2020, ",
     "In 2071, ",
-    "the average monthly wages of men are ",
+    "the average monthly earnings of men are ",
     "the average pension of men is ",
     " higher ",
     " lower ",
-    "than the average wages of women.",
+    "than the average earnings of women.",
     "than the average pension of women.",
   ],
   [
@@ -451,11 +462,12 @@ let pensionDifferenceLabel2020Eng = [
   ],
 ];
 
+
 let pensionFractionLabelEng = [
   [
     
-    "The ratio of pension to average gross wages in the year of retirement for men is on average ",
-    "The ratio of pension to the last monthly wage for men is on average ",
+    "The ratio of pension to average gross earnings in the year of retirement for men is on average ",
+    "The ratio of pension to the most recent monthly earnings for men is on average ",
     " percentage points ",
     "higher ",
     "lower ",
@@ -482,7 +494,7 @@ let pensionFractionLabelEng = [
 const pensionHeaderEng = [
   [
     "Over time, the ",
-    " difference in men's and women's monthly wages becomes a ",
+    " difference in men's and women's monthly earnings becomes a ",
     " difference in pensions, not disappearing.",
   ],
   [
@@ -497,14 +509,16 @@ const pensionHeaderEng = [
   ],
 ];
 
+
 const euroUnitsEng = ["euros", "евро", "eurot"];
 const euroUnitsThousandEng = ["euros", "евро", "euro"];
 
 const columnchartLabelEng = [
-  "Average gross wages",
+  "Average gross earnings",
   " Средняя месячная брутто-зарплата",
   "Keskmine brutokuupalk",
 ];
+
 
 const workingWomenEng = [
   "Female employees",
@@ -534,19 +548,19 @@ const sourceEng = [
 ];
 const monthLabelEng = ["month", "в месяц", "kuus"];
 const wageGapTabInfoEng = [
-  "The difference between the average wages of males and females divided by the average wages of males. Covers full-time employees. 2.5% of the lowest and highest wages of both sexes are excluded.",
+  "The difference between the average earnings of males and females divided by the average earnings of males. Covers full-time employees. 2.5% of the lowest and highest earnings of both sexes are excluded.",
   "Разница между средней заработной платой мужчин и женщин, поделенная на среднюю заработную плату мужчин. Исключаются работающие на полную ставку обоих полов 2,5% от самой низкой и самой высокой заработной платы.",
-  "Meeste ja naiste keskmise palga vahe, mis on jagatud meeste keskmise palgaga. Täistööajaga töötajad, mõlema soo kõige madalamatest ja kõige kõrgematest palkadest 2,5% on välja jäetud.",
+  "Meeste ja naiste keskmise töötasu vahe, mis on jagatud meeste keskmise töötasuga. Täistööajaga töötajad, mõlema soo kõige madalamatest ja kõige kõrgematest töötasudest 2,5% on välja jäetud.",
 ];
 const medianTabInfoEng = [
-  "A payment from which half the people earn more and half earn less. Covers full-time employees and 2.5% of the lowest and highest wages are excluded.",
+  "A payment from which half the people earn more and half earn less. Covers full-time employees and 2.5% of the lowest and highest earnings are excluded.",
   "Сумма, больше и меньше которой зарабатывает одинаковое количество работающих. Работники, работающие на полную ставку, без учета 2,5% от самых низких и самых высоких заработных плат.",
-  "Väljamakse, millest teenitakse võrdselt rohkem ja vähem. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest.",
+  "Väljamakse, millest teenitakse võrdselt rohkem ja vähem. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest töötasudest.",
 ];
-const averageTabInfoEng = [
-  "Arithmetic mean, i.e. the sum of all wages divided by the number of wage earners. Covers full-time employees. 2.5% of the lowest and highest wages are excluded.",
+const averageTabInfoEng =  [
+  "Arithmetic mean, i.e. the sum of all earnings divided by the number of earners. Covers full-time employees. 2.5% of the lowest and highest earnings are excluded.",
   "Среднее арифметическое, то есть сумма всех заработных плат, поделенная на количество работников, получающих заработную плату. Работающие на полную ставку, без учета 2,5% от самой низкой и самой высокой заработной платы.",
-  "Aritmeetiline keskmine ehk kõigi palkade summa, mis on jagatud palgasaajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest palkadest.",
+  "Aritmeetiline keskmine ehk kõigi töötasude summa, mis on jagatud töötasu saajate arvuga. Täistööajaga töötajad, välja on jäetud 2,5% kõige madalamatest ja kõige kõrgematest töötasudest.",
 ];
 const noOccupationSelectedLabelEng = [
   "No county or profession selected.",
@@ -559,12 +573,12 @@ const occupationDescriptionLabelEng = [
   "Описание профессии",
   "Ametikirjeldus",
 ];
-const averageWageLabelEng = [
-  "Average wages",
+const averageWageLabelEng =  [
+  "Average earnings",
   "Средняя зарплата",
-  "Keskmine palk",
+  "Keskmine töötasu",
 ];
-const levelLabelEng = [
+const levelLabelEng =[
   [
     "The selected occupation belongs to the group of occupations",
     "level ",
