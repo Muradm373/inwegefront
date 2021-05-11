@@ -112,17 +112,17 @@ class AboutEst extends Component {
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Keskmine palk
+              Keskmine töötasu 
             </p>{" "}
             – aritmeetiline keskmine, kõigi täisajaga töötavate inimeste palkade
             summa, mis on jagatud palgasaajate arvuga.
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Meeste ja naiste kuupalga erinevus
+              Meeste ja naiste töötasu erinevus
             </p>{" "}
-            – meeste ja naiste keskmise palga vahe, mis on jagatud meeste
-            keskmise palgaga.
+            – meeste ja naiste keskmise töötasu vahe, mis on jagatud meeste
+            keskmise töötasuga.
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
@@ -191,7 +191,7 @@ class AboutEst extends Component {
             <br />
             <p className={"h3-stat"}>Andmed</p>
             <br />
-            Rakenduses näidatakse Eestis registreeritud töötajate brutopalk
+            Rakenduses näidatakse Eestis registreeritud töötajate brutotöötasu
             valitud ajavahemikus. Kasutatakse töötamise registri (TÖR) ja
             maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku
             kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade
@@ -200,7 +200,7 @@ class AboutEst extends Component {
             <ol className={"ol-stat counter-reset"}>
               <li>
                 <p className="body-stat">
-                  mediaanpalga, palgajaotuste, keskmise palga ja töötajate arvu
+                  mediaantöötasu, töötasu jaotuste, keskmise töötasu ja töötajate arvu
                   leidmisel on võetud arvesse kõik sellel ametikohal või
                   maakonnas täiskohaga töötajad
                 </p>
@@ -223,26 +223,26 @@ class AboutEst extends Component {
               </li>
               <li>
                 <p className="body-stat">
-                  töötaja keskmine kuu brutopalk ametikohal arvutatakse välja
-                  valitud perioodi jooksul tööandja deklareeritud
+                  töötaja keskmine kuine brutotöötasu ametikohal on välja arvutatud valitud 
+                  perioodi jooksul tööandja deklareeritud
                   maksudeklaratsiooni TSD lisade 1 ja 2 väljamakse summade
                   põhjal;
                 </p>
               </li>
               <li>
                 <p className="body-stat">
-                  töötajate palga arvutamisel võetakse arvesse vaid töine tulu.
+                  töötasu arvutamisel on võetud arvesse vaid töine tulu. 
                   Selleks kasutatakse TSD lisa 1 väljamakseliike 10, 12 ja 13
                   ning lisa 2 väljamakseliike 120, 121, 126, 127, 144, 145.
                 </p>
               </li>
             </ol>
             Kõigist arvutustest on välja jäetud 2,5% kõige madalamatest ja kõige
-            kõrgematest palkadest.
+            kõrgematest töötasudest.
             <br />
             Palgatöötaja kuu keskmise brutotulu tabelitest (Statistikatöö 50101)
             erineb rakenduses kasutatud metoodika väljamakse liikide ja asukoha
-            määratluse poolest. Selles rakenduses näidatakse palku töökoha
+            määratluse poolest. Selles rakenduses näidatakse töötasu töökoha
             asukoha järgi, brutotulu statistikas isiku kohta tema elukoha järgi.
             <br />
             <br />
@@ -254,8 +254,8 @@ class AboutEst extends Component {
             </p>{" "}
             <br />
             <br />
-            Palgarakendus annab teavet keskmise ja mediaanpalga ning meeste ja
-            naiste palgaerinevuste kohta Eestis. Ühtlasi saab uurida, kuidas
+            Palgarakendus annab teavet keskmise ja mediaantöötasu ning meeste ja
+            naiste töötasu erinevuste kohta Eestis. Ühtlasi saab uurida, kuidas
             praegune sooline palgaerinevus mõjutab tulevast pensioni ja mis
             ameteid võib oodata automatiseerimine.
             <br />
@@ -265,7 +265,7 @@ class AboutEst extends Component {
             </p>{" "}
             <br />
             <br />
-            Rakenduses näidatakse Eestis registreeritud töötajate brutopalka
+            Rakenduses näidatakse Eestis registreeritud töötajate brutotöötasu
             valitud ajal. Kasutatakse töötamise registri (TÖR) ja
             maksudeklaratsiooni TSD (tulu- ja sotsiaalmaksu, kohustusliku
             kogumispensioni makse ja töötuskindlustusmakse deklaratsioon) lisade
@@ -286,30 +286,30 @@ class AboutEst extends Component {
             <br />
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Kuidas arvutatakse keskmist brutopalka?
+              Kuidas arvutatakse keskmist brutotöötasu?
             </p>{" "}
             <br />
             <br />
-            Töötaja ametikoha keskmine brutopalk kuus arvutatakse valitud
+            Töötaja ametikoha keskmine brutotöötasu kuus arvutatakse valitud
             perioodi jooksul tööandja deklareeritud maksudeklaratsiooni TSD
-            lisade 1 ja 2 väljamaksesummade põhjal. Töötajate palga arvutamisel
+            lisade 1 ja 2 väljamaksesummade põhjal. Töötasu arvutamisel
             võetakse arvesse vaid töine tulu. Selleks kasutatakse TSD lisa 1
             väljamakseliike 10, 12 ja 13 ning lisa 2 väljamakseliike 120, 121,
-            126, 127, 144, 145. Kõigi palkade summa jagatakse palgasaajate
+            126, 127, 144, 145. Töötasude summa jagatakse töötasu saajate
             arvuga.
             <br />
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Mis on mediaanpalk ja kuidas seda arvutatakse?
+              Mis on mediaantöötasu ja kuidas seda arvutatakse?
             </p>{" "}
             <br />
             <br />
-            Rakenduses näidatakse ametikoha mediaanpalka, s.t väljamakset,
+            Rakenduses näidatakse ametikoha mediaantöötasu, s.t väljamakset,
             millest rohkem ja millest vähem teenivaid töötajaid on sellel
-            ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et
+            ametikohal ühepalju. Näiteks tähendab mediaantöötasu 1000 eurot, et
             pool sellel ametikohal töötajatest teenib kuni 1000 ja pool üle 1000
             euro kuus. Arvesse võetakse täiskohaga töötajad, kes on saanud töist
-            tulu (s.t töine tulu on suurem kui null). Mediaanpalga leidmisel
+            tulu (s.t töine tulu on suurem kui null). Mediaantöötasu leidmisel
             võetakse arvesse inimesed, kelle töötamise liigiks on TÖR-is
             märgitud „Tööleping“, „Avalik teenistus“ või „Kõrgem riigiteenija“.
           </div>
