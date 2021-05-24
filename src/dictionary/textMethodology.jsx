@@ -59,7 +59,7 @@ const methodologyEng = [
       "mediaanpalga leidmisel võetakse arvesse inimesed, kelle töötamise liigiks on TÖR-is märgitud „Tööleping“, „Avalik teenistus“ või „Kõrgem riigiteenija“.",
     ],
     itemsDescription:
-      "Rakenduses näidatakse vastava ametikoha mediaanpalka, s.t palka, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaanpalk 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid palkasid.",
+      "Rakenduses näidatakse vastava ametikoha mediaantöötasu, s.t töötasu, millest rohkem ja millest vähem teenivaid töötajaid on sellel ametikohal ühepalju. Näiteks tähendab mediaantöötasu 1000 eurot, et pooled sellel ametikohal töötavad inimesed teenivad alla ja pooled üle 1000 euro kuus. Palgajaotuse joonistel ei näidata 2,5% kõige madalamaid ja 2,5% kõige kõrgemaid töötasusid.",
   },
 ];
 

@@ -20,7 +20,7 @@ const initState = {
     salaryEntityDateQuarter: "I",
     wageForecastDate: "2020",
     wageForecastDateQuarter: "I",
-    pensionStartDate: "2030",
+    pensionStartDate: "2020",
     pensionEndDate: "2071"
   },
   menGraphMean:0,

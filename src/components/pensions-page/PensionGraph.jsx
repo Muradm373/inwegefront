@@ -95,7 +95,7 @@ class PensionGraph extends Component {
   clearData(data) {
     let { min, p1, p2, p3, p4, p5, mean, p6, p7, p8, p9, max } = data;
 
-    return { min, p1, p2, p3, p4, mean, p6, p7, p8, p9, max };
+    return { min, p1, p2, p3, p4, p5, p6, p7, p8, p9, max };
   }
 
   componentDidMount() {

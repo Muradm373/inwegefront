@@ -144,14 +144,15 @@ const noDataLabelEng =
  "Valitud ameti kohta andmed puuduvad.",
 ];
 const noDataEng = ["No data", "Нет данных", "Andmed puuduvad"];
-const averageWageEng = ["Average earnings", "Средняя зарплата", "Keskmine palk"];
-const medianWageEng = ["Median earnings", "Медианная зарплата", "Mediaanpalk"];
+const averageWageEng = ["Average earnings", "Средняя зарплата", "Keskmine töötasu"];
+const medianWageEng = ["Median earnings", "Медианная зарплата", "Mediaantöötasu"];
 const genderWageGapEng = 
 [
   "Difference in males’ and females’ monthly earnings",
   "Разница в месячной зарплате у мужчин и женщин",
-  "Meeste ja naiste kuupalga erinevus",
+  "Meeste ja naiste töötasu erinevus",
 ];
+
 
 const totalNumberOfEmployeesEng = [
   "Total number of full-time employees",
@@ -516,9 +517,8 @@ const euroUnitsThousandEng = ["euros", "евро", "euro"];
 const columnchartLabelEng = [
   "Average gross earnings",
   " Средняя месячная брутто-зарплата",
-  "Keskmine brutokuupalk",
+  "Keskmine kuine brutotöötasu",
 ];
-
 
 const workingWomenEng = [
   "Female employees",

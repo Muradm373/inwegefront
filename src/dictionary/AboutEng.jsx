@@ -70,21 +70,21 @@ class AboutEng extends Component {
               </tr>
             </table>
             <br />
-            The level of the classification at which the wage can be shown in
+            The level of the classification at which the earnings can be shown in
             the application depends on the size of the county and the number of
-            employees there. In larger counties, the wage of gardeners can be
+            employees there. In larger counties, the earnings of gardeners can be
             expressed at the unit group level (Level 4), but in smaller
             counties, it is limited to Level 2 or 3.
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Replacement rate in relation to average wage in Estonia at the
+              Replacement rate in relation to average earnings in Estonia at the
               time of retirement
             </p>{" "}
             – the sum of the I and II pension pillars per month calculated on
             the basis of the assumptions presented on the pension projection
             page in the year of retirement, divided by the average gross monthly
-            wages in Estonia in the same year. The figure shows the estimated
+            earnings in Estonia in the same year. The figure shows the estimated
             frequency distribution based on the deciles of the replacement
             rates.
             </li>
@@ -95,7 +95,7 @@ class AboutEng extends Component {
             – the sum of the I and II pension pillar components calculated on
             the basis of the assumptions presented on the pension projection
             page in the year of retirement on the basis of the person’s own
-            gross wage before retirement. The figure shows the estimated
+            gross earnings before retirement. The figure shows the estimated
             frequency distribution based on the deciles of the replacement
             rates.
             </li>
@@ -105,8 +105,8 @@ class AboutEng extends Component {
             </p>{" "}
             – it is not an exact frequency distribution. The values of deciles
             in euros are accurate, but the frequencies are derived from deciles.
-            The deciles divide the values of wages (or pensions) into ten equal
-            parts. 10% of the values of the lowest wages (pensions) are smaller
+            The deciles divide the values of earnings (or pensions) into ten equal
+            parts. 10% of the values of the lowest earnings (pensions) are smaller
             than the first decile, 20% of the lowest values are lower than the
             second decile, etc. Deciles are expressed as percentages on the
             y-axis on the left of the median, i.e. cumulatively before the fifth
@@ -118,36 +118,36 @@ class AboutEng extends Component {
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Average wage
             </p>{" "}
-            – arithmetic mean, the sum of the wages of all full-time employees
-            divided by the number of wage earners.
+            – arithmetic mean, the sum of the earnings of all full-time employees
+            divided by the number of earnings earners.
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Difference in males’ and females’ monthly wages
+              Difference in males’ and females’ monthly earnings
             </p>{" "}
-            – difference between the average wages of males and females divided
-            by the average wages of males.
+            – difference between the average earnings of males and females divided
+            by the average earnings of males.
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
               Median wage
             </p>{" "}
             – a payment from which a half the employees in this occupation earn
-            more and half earn less. For example, a median wage of 1,000 euros
+            more and half earn less. For example, a median earnings of 1,000 euros
             means that half of the employees in this position earn up to 1,000
             euros and half of the employees earn more than 1,000 euros per
             month.
             </li>
             <li>
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              Wage projection for 2030
+              earnings projection for 2030
             </p>{" "}
-            – for each occupation, wage increase from September 2018 to
+            – for each occupation, earnings increase from September 2018 to
             September 2019 has been used in the projection. The weighted average
-            wages of all occupations in 2019 have been aligned with the official
-            average wages in 2019 and the weighted average wages of all
+            earnings of all occupations in 2019 have been aligned with the official
+            average earnings in 2019 and the weighted average earnings of all
             occupations under consideration in 2030 have been aligned with the
-            average wage projected by the Ministry of Economic Affairs and
+            average earnings projected by the Ministry of Economic Affairs and
             Communications in this year. No occupation was allowed a negative
             increase in the average wage.
             </li>
@@ -199,7 +199,7 @@ class AboutEng extends Component {
             <br />
             <p className={"h3-stat"}>Data</p>
             <br />
-            The application shows the gross wages and salaries of employees
+            The application shows the gross earnings and salaries of employees
             registered in Estonia for the selected period. The data of the
             employment register and Annexes 1 and 2 of the tax return TSD
             (income and social tax, mandatory funded pension tax and
@@ -208,7 +208,7 @@ class AboutEng extends Component {
             <ol className={"ol-stat counter-reset"}>
               <li>
                 <p className=" body-stat">
-                  data on the median wage, wage distributions, average wage and
+                  data on the median wage, earnings distributions, average earnings and
                   number of employees cover the full-time employees in the
                   position or county
                 </p>
@@ -235,7 +235,7 @@ class AboutEng extends Component {
               </li>
               <li>
                 <p className=" body-stat">
-                  the average gross monthly wage of the employee in the position
+                  the average gross monthly earnings of the employee in the position
                   is calculated on the basis of the payment amounts of Annexes 1
                   and 2 of the tax return TSD declared by the employer during
                   the selected period;
@@ -244,19 +244,19 @@ class AboutEng extends Component {
               <li>
                 <p className=" body-stat">
                   only income from work is taken into account when calculating
-                  the wages of employees. For this purpose, Annex 1 types of
+                  the earnings of employees. For this purpose, Annex 1 types of
                   payment 10, 12 and 13 and Annex 2 types of payment 120, 121,
                   126, 127, 144, 145 are used.
                 </p>
               </li>
             </ol>
-            2.5% of the lowest and highest wages are excluded from all
+            2.5% of the lowest and highest earnings are excluded from all
             calculations.
             <br />
             The methodology used in the application differs from the tables of
             the average monthly gross income per employee (Statistical activity
             50101) in terms of payment types and location. In this application,
-            wages are shown by the location of the workplace, whereas in the
+            earnings are shown by the location of the workplace, whereas in the
             gross income statistics they are shown by the person’s place of
             residence.
             <br />
@@ -265,12 +265,12 @@ class AboutEng extends Component {
             <p className={"h3-stat"}>Q&A</p>
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              What does the wages and salaries application show?
+              What does the earnings and salaries application show?
             </p>{" "}
             <br />
             <br />
-            The wages and salaries application provides information on the
-            average and median wages and wage differences between men and women
+            The earnings and salaries application provides information on the
+            average and median earnings and earnings differences between men and women
             in Estonia. It is also possible to examine how the current gender
             pay gap affects future pensions and what occupations can be expected
             to be automated.
@@ -281,7 +281,7 @@ class AboutEng extends Component {
             </p>{" "}
             <br />
             <br />
-            The application shows the gross wages of employees registered in
+            The application shows the gross earnings of employees registered in
             Estonia during the selected period. The data of the employment
             register and Annexes 1 and 2 of the tax return TSD (income and
             social tax, mandatory funded pension tax and unemployment insurance
@@ -303,22 +303,22 @@ class AboutEng extends Component {
             <br />
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              How are average gross wages calculated?
+              How are average gross earnings calculated?
             </p>{" "}
             <br />
             <br />
-            The average gross monthly wage for the employee’s position is
+            The average gross monthly earnings for the employee’s position is
             calculated on the basis of the payment amounts of Annexes 1 and 2 of
             the tax return TSD declared by the employer for the selected period.
             Only income from work is taken into account when calculating the
-            wages of employees. For this purpose, Annex 1 types of payment 10,
+            earnings of employees. For this purpose, Annex 1 types of payment 10,
             12 and 13 and Annex 2 types of payment 120, 121, 126, 127, 144, 145
-            are used. The sum of all wages is divided by the number of wage
+            are used. The sum of all earnings is divided by the number of wage
             earners.
             <br />
             <br />
             <p className="body-stat-bold" style={{ display: "inline" }}>
-              What is the median wage and how is it calculated?
+              What is the median earnings and how is it calculated?
             </p>{" "}
             <br />
             <br />
