@@ -32,6 +32,8 @@ class PensionGraph extends Component {
         men: [],
         women: [],
       },
+      menMedian: undefined,
+      womenMedian: undefined,
     };
   }
 
@@ -51,6 +53,11 @@ class PensionGraph extends Component {
     let womenClear = this.clearData(data[1]);
     let menArray = [...new Map(Object.entries(menClear)).values()];
     let womenArray = [...new Map(Object.entries(womenClear)).values()];
+
+    let menMedian = data[0].mean;
+    let womenMedian = data[1].mean;
+
+    console.log(menMedian + " " + womenMedian);
 
     let men = menArray.sort(
       (a, b) => parseFloat(a).toFixed(2) - parseFloat(b).toFixed(2)
@@ -85,6 +92,8 @@ class PensionGraph extends Component {
     this.setState({
       menMean: parseFloat(men[5]).toFixed(2),
       womenMean: parseFloat(women[5]).toFixed(2),
+      menMedian: parseFloat(menMedian).toFixed(2),
+      womenMedian: parseFloat(womenMedian).toFixed(2),
     });
 
     let dataGraph = { men: menGraphObject, women: womenGraphObject };
@@ -208,8 +217,8 @@ class PensionGraph extends Component {
       <div className="centered graph " id="bar-component">
         <PensionBarComponent
           pension={true}
-          menMean={this.state.menMean}
-          womenMean={this.state.womenMean}
+          menMean={(this.state.menMedian !== undefined && (this.props.type === "palk" || this.props.type === "pension"))? this.state.menMedian : this.state.menMean }
+          womenMean={(this.state.womenMedian !== undefined && (this.props.type === "palk" || this.props.type === "pension"))? this.state.womenMedian :  this.state.womenMean}
           menColor={menColor}
           womenColor={womenColor}
           occupation={""}

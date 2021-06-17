@@ -20,7 +20,7 @@ class PensionBarComponent extends Component {
                 return data
         }
         else
-            return formatNumber(parseInt(data), this.props.language)
+            return formatNumber(Math.ceil(data), this.props.language)
     }
 
     render() {

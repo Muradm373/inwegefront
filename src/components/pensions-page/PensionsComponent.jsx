@@ -64,6 +64,7 @@ class PensionsComponent extends Component {
                 genderLabel={genderLabel}
                 occupation={""}
                 percentage = {false}
+                mean={true}
               ></PensionGraph>
             </div>
 
@@ -84,6 +85,7 @@ class PensionsComponent extends Component {
                 tickTotal="8"
                 occupation={""}
                 percentage = {false}
+                mean={true}
               ></PensionGraph>
             </div>
           </div>
